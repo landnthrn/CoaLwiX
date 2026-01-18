@@ -1,0 +1,39 @@
+Model: verus
+Plate Style: 12
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 0
+Wheel Colour: 55
+Wheel Type: 8
+Spoiler: 0
+Exhaust: 3
+Chassis: 0
+Grille: 2
+Hood: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 0
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 6
+Front Wheels: 122
+Livery: 10
+Tyre Smoke Colour: #ff00ff
+Window Tint: 1
+Custom Primary Colour: #00ff00
+Custom Secondary Colour: #ff00ff
+Neon Colour: #ff00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 153
+Tyres Mode: 1

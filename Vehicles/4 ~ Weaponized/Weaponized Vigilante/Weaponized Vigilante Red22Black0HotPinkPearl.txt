@@ -1,0 +1,35 @@
+Model: vigilante
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 120
+Pearl Colour: 135
+Wheel Colour: 134
+Wheel Type: 7
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 0
+Livery: -1
+Tyre Smoke Colour: #ff0078
+Window Tint: 1
+Custom Primary Colour: #160000
+Custom Secondary Colour: #000000
+Neon Colour: #ff0050
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

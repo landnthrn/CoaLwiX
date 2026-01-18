@@ -1,0 +1,44 @@
+Model: lm87
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 73
+Secondary Colour: 1
+Pearl Colour: 134
+Wheel Colour: 0
+Wheel Type: 7
+Spoiler: 26
+Front Bumper: 11
+Rear Bumper: 3
+Sideskirt: 4
+Exhaust: 10
+Grille: 2
+Hood: 7
+Fender: 4
+Right Fender: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 58
+Suspension: 2
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 40
+Livery: 10
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 37
+Tyres Mode: 1
+Extra 1: No

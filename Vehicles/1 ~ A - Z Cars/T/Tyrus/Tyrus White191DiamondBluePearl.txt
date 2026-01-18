@@ -1,0 +1,36 @@
+Model: tyrus
+Plate Style: 11
+Plate Text:  DKARME 
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 67
+Wheel Colour: 67
+Wheel Type: 8
+Spoiler: 0
+Exhaust: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 114
+Livery: 0
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #c1bfff
+Neon Colour: #ffffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 111
+Tyres Mode: 1

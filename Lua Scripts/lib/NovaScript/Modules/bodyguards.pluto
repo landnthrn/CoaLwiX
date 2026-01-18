@@ -1,0 +1,319 @@
+require("NovaScript.NovaScript_natives")
+local tables = require("NovaScript.tables")
+local T = require("NovaScript.NovaS_translations")
+local func = require("NovaScript.functions")
+
+-----------------------------------------------
+-------------------FUNCTIONS-------------------
+-----------------------------------------------
+local function bodyguards_group_follow(bodyguards, godmode, all_proofs, rel_group, body_formation)
+    local own_group = get_ped_group_index(players.user_ped())
+    for i, ped in bodyguards do
+        set_ped_as_group_member(ped, own_group)
+        set_ped_as_group_leader(players.user_ped(), own_group)
+        set_ped_can_be_targetted_by_team(ped, own_group, false)
+        set_entity_can_be_damaged_by_relationship_group(players.user_ped(), false, own_group)
+        set_entity_can_be_damaged_by_relationship_group(ped, false, own_group)
+        set_ped_infinite_ammo_clip(ped, true)
+        
+        set_can_attack_friendly(ped, false, false)
+        set_ped_relationship_group_hash(ped, rel_group)
+        set_group_separation_range(own_group, 9999.0)
+        set_group_formation_spacing(own_group, 1.0, -1.0, -1.0)
+        set_group_formation(own_group, body_formation)
+
+        set_entity_load_collision_flag(ped, false, false)
+        set_entity_as_mission_entity(ped, false, false)
+        set_blocking_of_non_temporary_events(ped, false)
+        entities.set_can_migrate(ped, false)
+    end
+end
+
+-----------------------------------------------
+---------------------LISTS---------------------
+-----------------------------------------------
+local root = menu.my_root()
+local bodyguards_main = root:list(T"Bodyguards")
+local settings_list = bodyguards_main:list(T"Settings")
+
+-----------------------------------------------
+--------------------OPTIONS--------------------
+-----------------------------------------------
+local bodyguards_set = {
+    ped = "a_f_m_beach_01",
+    amount = 1, godmode = false,
+    all_proofs = false,
+    relationship_group = util.joaat("rgFM_HateEveryOne"),
+    blips = {},
+    neaby_veh = false,
+    set_amount = 0,
+    body_formation = 0,
+    driving_style = 786468
+}
+local spawned_bodyguards = {}
+
+settings_list:toggle(T"Godmode", {}, "", function(on)
+    bodyguards_set.godmode = on
+end)
+
+settings_list:toggle(T"All Proofs", {}, "", function(on)
+    bodyguards_set.all_proofs = on
+end)
+
+settings_list:toggle(T"Follow In Nearby Vehicle", {}, T"Will put the bodyguards into 2 nearby vehicles, they won't shoot when inside a vehicle.", function(on)
+    bodyguards_set.neaby_veh = on
+end)
+
+local driving_styles_names = {T"Avoid Traffic Extremely", T"Sometimes Overtake Traffic", T"Rushed", T"Normal", T"Ignore Lights", T"Avoid Traffic", T"Lazy", T"Precise"}
+local driving_styles = {6, 5, 1074528293, 786603, 2883621, 786468, 1076, 8388614}
+local sel_driving_style = 1074528293
+settings_list:list_select(T"Driving Style", {}, "", driving_styles_names, 3, function(index)
+    bodyguards_set.driving_style = index
+end)
+
+local relationship_groups_names = {
+    T"Like Players",
+    T"Dislike Players, Like Gangs",
+    T"Hate Players, Like Gangs",
+    T"Like Players, Hate Player Haters",
+    T"Dislike Players, Like Cops",
+    T"Hate Players, Like Cops",
+    T"Hate Everyone"
+}
+settings_list:list_select(T"Relationship Group", {}, "", relationship_groups_names, 7, function(index)
+    local relationship_group
+    switch index do
+        case 1:
+            relationship_group = util.joaat("rgFM_AiLike")
+            break
+        case 2:
+            relationship_group = util.joaat("rgFM_AiDislike")
+            break
+        case 3:
+            relationship_group = util.joaat("rgFM_AiHate")
+            break
+        case 4:
+            relationship_group = util.joaat("rgFM_AiLike_HateAiHate")
+            break
+        case 5:
+            relationship_group = util.joaat("rgFM_AiDislikePlyrLikeCops")
+            break
+        case 6:
+            relationship_group = util.joaat("rgFM_AiHatePlyrLikeCops")
+            break
+        case 7:
+            relationship_group = util.joaat("rgFM_HateEveryOne")
+            break
+    end
+    bodyguards_set.relationship_group = relationship_group
+end)
+
+local formations =  {T"Default", T"Circle Around Leader", T"Alternative Circle Around Leader", T"Line, with Leader at center"}
+settings_list:list_action(T"Formation", {}, "", formations, function(index)
+    bodyguards_set.body_formation = index - 1
+end)
+
+func.make_all_peds_list(bodyguards_main, function(ped)
+    bodyguards_set.ped = ped
+end)
+
+bodyguards_main:slider(T"Bodyguards Amount", {"Nbodyamound"}, "", 1, 7, 1, 1, function(count)
+    bodyguards_set.amount = count
+end)
+
+bodyguards_main:action(T"Teleport To Me", {}, "", function()
+    for i, ped in spawned_bodyguards do
+        local user_offset = get_offset_from_entity_in_world_coords(players.user_ped(), math.random(-4, 4), -math.random(1, 4), 0.0)
+        set_entity_coords(ped, user_offset.x, user_offset.y, user_offset.z, false, false, false, false)
+    end
+end)
+
+local are_sitting_in_vehicle = false
+bodyguards_main:action(T"Spawn Bodyguards", {}, "", function()
+    for i = 1, bodyguards_set.amount do
+        if #spawned_bodyguards < 7 then
+            local ped_hash = util.joaat(bodyguards_set.ped)
+            util.request_model(ped_hash)
+            local user_offset = get_offset_from_entity_in_world_coords(players.user_ped(), math.random(-4, 4), -math.random(1, 4), 0.0)
+            local ped = entities.create_ped(1, ped_hash, user_offset, 0)
+            local blip = add_blip_for_entity(ped)
+            bodyguards_set.set_amount = bodyguards_set.amount
+            are_sitting_in_vehicle = false
+            table.insert(spawned_bodyguards, ped)
+            table.insert(bodyguards_set.blips, blip)
+        end
+    end
+    bodyguards_group_follow(spawned_bodyguards, bodyguards_set.godmode, bodyguards_set.all_proofs, bodyguards_set.body_formation)
+end)
+
+bodyguards_main:action(T"Delete Bodyguards", {}, "", function()
+    if next(spawned_bodyguards) != nil then
+        for i, ped in spawned_bodyguards do
+            entities.delete_by_handle(ped)
+        end
+        spawned_bodyguards = {}
+        for i, blip in bodyguards_set.blips do
+            util.remove_blip(blip)
+        end
+        bodyguards_set.blips = {}
+    end
+end)
+
+local spawned_in_closest, vehicle_blips, first_vehicle, second_vehicle = {}, {}, nil, nil
+util.create_tick_handler(function()
+    if next(spawned_bodyguards) != nil then
+        for i, ped in spawned_bodyguards do
+            if get_selected_ped_weapon(ped) != get_selected_ped_weapon(players.user_ped()) then
+                give_weapon_to_ped(ped, get_selected_ped_weapon(players.user_ped()), 20, true, true)
+            end
+            if bodyguards_set.godmode then
+                set_entity_invincible(ped, true)
+            else
+                set_entity_invincible(ped, false)
+            end
+            if bodyguards_set.all_proofs then
+                set_entity_proofs(ped, true, true, true, true, true, true, true, true)
+            else
+                set_entity_proofs(ped, false, false, false, false, false, false, false, false)
+            end
+
+            set_ped_relationship_group_hash(ped, bodyguards_set.relationship_group)
+            local own_group = get_ped_group_index(players.user_ped())
+            set_group_formation(own_group, bodyguards_set.body_formation)
+
+            if bodyguards_set.neaby_veh then
+                if is_ped_in_any_vehicle(players.user_ped(), false) then
+                    if not are_sitting_in_vehicle then
+                        util.yield(1000)
+                        first_vehicle = func.get_closest_vehicle(players.get_position(players.user()), nil)
+                        local driver_ped1 = get_ped_in_vehicle_seat(first_vehicle, -1, false)
+                        if not is_ped_a_player(driver_ped1) then
+                            entities.delete_by_handle(driver_ped1)
+                        end
+                        local free_seats = func.get_free_seats(first_vehicle)
+                        for i, ped in spawned_bodyguards do
+                            entities.delete_by_handle(ped)
+                        end
+                        spawned_bodyguards = {}
+
+                        local veh_blip1 = add_blip_for_entity(first_vehicle)
+                        table.insert(vehicle_blips, veh_blip1)
+                        for i = 1, bodyguards_set.set_amount do
+                            local ped_hash = util.joaat(bodyguards_set.ped)
+                            util.request_model(ped_hash)
+                            local ped = entities.create_ped(1, ped_hash, {x = 0, y = 0, z = 0}, 0)
+                            set_entity_load_collision_flag(ped, true, true)
+                            set_entity_as_mission_entity(ped, true, true)
+                            set_blocking_of_non_temporary_events(ped, true)
+                            entities.set_can_migrate(ped, false)
+                            table.insert(spawned_bodyguards, ped)
+                        end
+                        for i, seat in free_seats do
+                            set_ped_into_vehicle(spawned_bodyguards[i], first_vehicle, seat)
+                            if seat == -1 then
+                                set_vehicle_engine_on(first_vehicle, true, true, false)
+                                util.yield(100)
+                                local position = players.get_position(players.user())
+                                task_vehicle_drive_to_coord(get_ped_in_vehicle_seat(first_vehicle, -1, false), first_vehicle, position.x, position.y, position.y, 150, 1, get_entity_model(first_vehicle), bodyguards_set.driving_style, 15, 0)
+                            end
+                            util.yield(50)
+                            table.insert(spawned_in_closest, spawned_bodyguards[i])
+                        end
+
+                        if #spawned_in_closest != bodyguards_set.set_amount then
+                            second_vehicle = func.get_closest_vehicle(players.get_position(players.user()), entities.handle_to_pointer(first_vehicle))
+                            local driver_ped2 = get_ped_in_vehicle_seat(second_vehicle, -1, false)
+                            if not is_ped_a_player(driver_ped2) then
+                                entities.delete_by_handle(driver_ped2)
+                            end
+
+                            local veh_blip2 = add_blip_for_entity(second_vehicle)
+                            table.insert(vehicle_blips, veh_blip2)
+                            local second_free_seats = func.get_free_seats(second_vehicle)
+                            for i, seat in second_free_seats do
+                                set_ped_into_vehicle(spawned_bodyguards[1 + #spawned_in_closest], second_vehicle, seat)
+                                if seat == -1 then
+                                    set_vehicle_engine_on(second_vehicle, true, true, false)
+                                    util.yield(100)
+                                    local position = players.get_position(players.user())
+                                    task_vehicle_drive_to_coord(get_ped_in_vehicle_seat(second_vehicle, -1, false), second_vehicle, position.x, position.y, position.y, 150, 1, get_entity_model(second_vehicle), bodyguards_set.driving_style, 15, 0)
+                                end
+                                util.yield(50)
+                                table.insert(spawned_in_closest, spawned_bodyguards[1 + #spawned_in_closest])
+                            end
+                        end
+
+                        util.yield(200)
+                        for i, ped in spawned_bodyguards do
+                            if not is_ped_in_any_vehicle(ped, false) then
+                                entities.delete_by_handle(ped)
+                                if does_entity_exist(ped) then
+                                    for i = 1, 4 do
+                                        entities.delete_by_handle(ped)
+                                    end
+                                end
+                                table.remove(spawned_bodyguards, i)
+                            end
+                        end
+                        are_sitting_in_vehicle = true
+                    end
+                else
+                    if are_sitting_in_vehicle then
+                        for i, ped in spawned_in_closest do
+                            local vehicle = func.get_vehicle_from_ped(ped)
+                            task_leave_vehicle(ped, vehicle, 0)
+                        end
+                        util.yield(1500)
+                        for i, ped in spawned_bodyguards do
+                            entities.delete_by_handle(ped)
+                        end
+                        for i, blip in vehicle_blips do
+                            util.remove_blip(blip)
+                        end
+                        vehicle_blips = {}
+                        spawned_bodyguards = {}
+
+                        for i = 1, bodyguards_set.amount do
+                            local ped_hash = util.joaat(bodyguards_set.ped)
+                            util.request_model(ped_hash)
+                            local user_offset = get_offset_from_entity_in_world_coords(players.user_ped(), math.random(-4, 4), -math.random(1, 4), 0.0)
+                            local ped = entities.create_ped(1, ped_hash, user_offset, 0)
+                            local blip = add_blip_for_entity(ped)
+                            bodyguards_set.set_amount = bodyguards_set.amount
+                            are_sitting_in_vehicle = false
+                            table.insert(spawned_bodyguards, ped)
+                            table.insert(bodyguards_set.blips, blip)
+                        end
+                        bodyguards_group_follow(spawned_bodyguards, bodyguards_set.godmode, bodyguards_set.all_proofs, bodyguards_set.body_formation)
+
+                        spawned_in_closest = {}
+                        are_sitting_in_vehicle = false
+                    end
+                end
+                
+                while is_ped_in_any_vehicle(players.user_ped(), false) do
+                    util.yield(100)
+                    local position = players.get_position(players.user())
+                    task_vehicle_drive_to_coord(get_ped_in_vehicle_seat(first_vehicle, -1, false), first_vehicle, position.x, position.y, position.y, 150, 1, get_entity_model(first_vehicle), bodyguards_set.driving_style, 15, 0)
+                    task_vehicle_drive_to_coord(get_ped_in_vehicle_seat(second_vehicle, -1, false), second_vehicle, position.x, position.y, position.y, 150, 1, get_entity_model(second_vehicle), bodyguards_set.driving_style, 15, 0)
+                end
+            end
+        end
+    end
+end)
+
+util.on_stop(function()
+    if next(spawned_bodyguards) != nil then
+        for i, ped in spawned_bodyguards do
+            entities.delete_by_handle(ped)
+        end
+        for i, blip in bodyguards_set.blips do
+            util.remove_blip(blip)
+        end
+    end
+    if next(vehicle_blips) != nil then
+        for i, blip in vehicle_blips do
+            util.remove_blip(blip)
+        end
+    end
+end)

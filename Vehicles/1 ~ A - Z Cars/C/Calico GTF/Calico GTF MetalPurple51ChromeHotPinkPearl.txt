@@ -1,0 +1,57 @@
+Model: calico
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 135
+Wheel Colour: 134
+Wheel Type: 8
+Spoiler: 8
+Front Bumper: 10
+Rear Bumper: 7
+Sideskirt: 22
+Exhaust: 10
+Chassis: 7
+Grille: 0
+Hood: 19
+Fender: 0
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 12
+Front Wheels: 122
+Plate Holder: 1
+Dashboard: 4
+Seats: 7
+Door Speaker: 14
+Steering Wheel: 16
+Engine Block: 3
+Air Filter: 1
+Struts: 6
+Arch Cover: 0
+Aerials: 0
+Trim2: 0
+Tank: 2
+Right Door: 0
+Livery: 0
+Tyre Smoke Colour: #ff00ff
+Window Tint: 1
+Custom Primary Colour: #0e0d33
+Custom Secondary Colour: #5870a1
+Neon Colour: #ff00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 92
+Tyres Mode: 1

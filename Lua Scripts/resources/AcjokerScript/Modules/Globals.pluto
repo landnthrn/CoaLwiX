@@ -1,0 +1,73 @@
+--build 2944
+Globals = {}
+
+--am_pi_menu
+
+Globals.Pegasus1 = 2672524 + 3788
+
+Globals.Pegasus2 = 2672524 + 3787
+
+Globals.CEO = 1895156 + (players.user() * 609 + 1) + 10 + 62
+
+Globals.RequestCEO = 1895156 + (players.user() * 609 + 1) + 10 + 60 
+
+Globals.SeaSparrow = 2766633
+
+Globals.ReturnSeaSparrow = 1853988 + 1 + (players.user() * 867) + 267 + 479
+
+Globals.Avisa = 2766634
+
+Globals.RetAvisa = 1853988 + 1 + (players.user() * 867) + 267 + 479
+
+Globals.AcidLab = 2794162 + 944
+
+Globals.RetAcidLab = 2657704 + 1 + (players.user() * 463) + 321 + 6
+
+Globals.RetAcidLab2 = 2657704 + 1 + (players.user() * 463) + 321 + 5
+
+Globals.AcidBike = 2794162 + 994
+
+Globals.RetAcidBike = 2657704 + 1 + (players.user() * 463) + 321 + 6
+
+Globals.Avenger = 2794162 + 938
+
+Globals.RetAvengerFac = 2657704 + 1 + (players.user() * 463) + 321 + 2
+
+Globals.RetAvengerHang1 = 2657704 + 1 + (players.user() * 463) + 321 + 6
+
+Globals.RetAvengerHang2 = 2657704 + 1 + (players.user() * 463) + 321 + 2
+
+Globals.AvengerThruster = 2766630
+
+Globals.Kosatka = 2794162 + 960
+
+Globals.RetKosatka1 = 2657704 + 1 + (players.user() * 463) + 321 + 3
+
+Globals.RetKosatka2 = 2672524 + 62 + 9
+
+Globals.RetKosatka3 = 2672524 + 62 + 10
+
+Globals.MOC = 2794162 + 930
+
+Globals.RetMOC1 = 2657704 + 1 + (players.user() * 463) + 321
+
+Globals.RetMOC2 = 2657704 + 1 + (players.user() * 463) + 321 + 1
+
+Globals.Terror = 2794162 + 943
+
+Globals.RetTerror = 2657704 + 1 + (players.user() * 463) + 321 + 3
+
+--freemode
+Globals.PlayerPointNoStop = 4521801 + 935
+
+Globals.PlayerPoint = 4521801 + 930
+
+--one left in functions
+
+--tuneables processing
+Globals.KosMisRange = 262145 + 30383
+
+Globals.KosMisCool = 262145 + 30394
+
+
+return Globals

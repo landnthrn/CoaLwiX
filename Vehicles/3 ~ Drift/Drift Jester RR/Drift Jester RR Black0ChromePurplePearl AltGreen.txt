@@ -1,0 +1,59 @@
+Model: driftjester
+Plate Style: 12
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 120
+Pearl Colour: 145
+Wheel Colour: 134
+Wheel Type: 8
+Spoiler: 9
+Front Bumper: 10
+Rear Bumper: 10
+Sideskirt: 8
+Exhaust: 1
+Chassis: 9
+Grille: 7
+Hood: 12
+Fender: 0
+Right Fender: 1
+Roof: 4
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 13
+Front Wheels: 119
+Vanity Plates: 3
+Trim: 2
+Ornaments: 2
+Dashboard: 4
+Dial: 4
+Seats: 8
+Door Speaker: 8
+Steering Wheel: 15
+Engine Block: 3
+Air Filter: 7
+Struts: 16
+Arch Cover: 1
+Trim2: 2
+Tank: 5
+Livery: 8
+Tyre Smoke Colour: #00ff00
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #5870a1
+Neon Colour: #00ff00
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 137
+Dashboard Colour: 0
+Tyres Mode: 1

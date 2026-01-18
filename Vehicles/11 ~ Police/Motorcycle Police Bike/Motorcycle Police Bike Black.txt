@@ -1,0 +1,28 @@
+Model: policeb
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 10
+Wheel Colour: 160
+Wheel Type: 10
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 0
+Livery: -1
+Tyre Smoke Colour: #0000b8
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #000000
+Neon Colour: #ffffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

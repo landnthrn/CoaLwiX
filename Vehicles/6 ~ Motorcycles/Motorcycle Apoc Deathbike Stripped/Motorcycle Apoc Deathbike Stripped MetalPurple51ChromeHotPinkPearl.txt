@@ -1,0 +1,40 @@
+Model: deathbike
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 135
+Wheel Colour: 81
+Wheel Type: 6
+Chassis: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 13
+Front Wheels: 0
+Back Wheels: 0
+Air Filter: 3
+Struts: 3
+Aerials: 0
+Trim2: 0
+Tank: 0
+Livery: 0
+Tyre Smoke Colour: #7800ff
+Window Tint: 1
+Custom Primary Colour: #0e0d33
+Custom Secondary Colour: #5870a1
+Neon Colour: #3c00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 2
+Dashboard Colour: 156
+Tyres Mode: 1

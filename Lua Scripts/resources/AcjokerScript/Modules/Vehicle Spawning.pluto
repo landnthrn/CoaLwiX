@@ -1,0 +1,871 @@
+local Tables = require 'resources/AcjokerScript/ACJSTables'
+local func = require 'resources/AcjokerScript/Modules/Functions'
+local menus = {}
+local vspawnroot = menu.my_root():list(T('Vehicle Spawning'), {}, '')
+local chat_control_character = "?"
+local commandbox_characters = "pv"
+local Vehicle_names_pv = {}
+local Vehicle_names = {}
+local pv_veh_menus = {}
+local veh_menus = {}
+local FlyingVehiclesDir = filesystem.store_dir()..'AcjokerScript\\Flying Vehicles\\'
+
+local function regenpvnames(root)
+    for pv_veh_menus as pv_veh_menu do
+        if pv_veh_menu:isValid() then pv_veh_menu:delete() end
+    end
+    pv_veh_menus = {}
+	local vehicles = util.get_vehicles()
+	for vehicles as vehicle do
+	    table.insert(Vehicle_names_pv, commandbox_characters..vehicle.name)
+	end
+
+	for Vehicle_names_pv as name do
+	    local pv = {
+	    [name] = name
+	    }
+	    table.insert(Vehicle_names, pv)
+	end
+    for Vehicle_names as v do
+        for v as i do 
+            pv_veh_menu = root:action(i, {i}, i, function()
+                i = i:gsub(commandbox_characters, '')
+                func.FindVeh(i)
+            end)
+            table.insert(pv_veh_menus, pv_veh_menu)
+        end
+    end
+end
+
+local function regennames(root) --credits to mr robot and the king for helping figure this out
+    for veh_menus as veh_menu do
+        if veh_menu:isValid() then veh_menu:delete() end
+    end
+    veh_menus = {}
+	local vehicles = util.get_vehicles()
+	for vehicles as vehicle do
+	    veh_menu = root:action(vehicle.name, {}, vehicle.name, function()
+	    	local data = memory.script_global(Globals.Pegasus1)
+    		memory.write_int(data, util.joaat(vehicle.name))
+    		local data2 = memory.script_global(Globals.Pegasus2)
+		    memory.write_int(data2, memory.read_int(data2) | (1 << 7))
+		    util.yield(10)
+		    memory.write_int(data2, memory.read_int(data2) &~ (1 << 7))
+	    end)
+	    table.insert(veh_menus, veh_menu)
+	end
+end
+
+local function regenceonames(root) --credits to mr robot helping figure this out
+    for veh_menus as veh_menu do
+        if veh_menu:isValid() then veh_menu:delete() end
+    end
+    veh_menus = {}
+    local vehicles = util.get_vehicles()
+    for vehicles as vehicle do
+        veh_menu = root:action(vehicle.name, {}, vehicle.name, function()
+            local data = memory.script_global(Globals.CEO)
+            memory.write_int(data, util.joaat(vehicle.name))
+            local data2 = memory.script_global(Globals.RequestCEO)
+            memory.write_byte(data2, 1)
+        end)
+        table.insert(veh_menus, veh_menu)
+    end 
+end 
+
+
+local function regenopvnames(root, sortbyname) --credits to mr robot helping figure this out
+    for veh_menus as veh_menu do
+        if veh_menu:isValid() then veh_menu:delete() end
+    end
+    veh_menus = {}
+    veh_names = {}
+    local data = memory.script_global(2794162 + 985)
+    for slot = 0, 415 do
+        local g = memory.script_global(1586488 + 1 + (slot * 142))
+        local hash = memory.read_int(g + (66 * 8))
+        local vname = GET_DISPLAY_NAME_FROM_VEHICLE_MODEL(hash)
+        if hash != 0 and hash != -1 then table.insert(veh_names, util.get_label_text(vname)) end
+    end
+
+        if not sortbyname then
+            for veh_names as vname do
+                local curlist = root:list(vname, {}, vname)
+                local veh_menu = curlist:action(Str_trans('Spawn ')..vname, {}, vname, function()
+                    func.FindVeh(name)
+                end)
+                table.insert(veh_menus, curlist)
+            end
+        else
+            table.sort(veh_names)
+            for veh_names as name do 
+                local curlist = root:list(name, {}, name)
+                local veh_menu = curlist:action(Str_trans('Spawn ')..name, {}, name, function()
+                    func.FindVeh(name)
+                end)
+                table.insert(veh_menus, curlist)
+            end
+        end
+end 
+
+
+
+
+function string.starts(String,Start) --hexarobi function
+    return string.sub(String,1,string.len(Start))==Start
+end
+local chatcomset = {spawn = false, strangers = false, friends = false, org = false, crew = false}
+chat.on_message(function(playerid, reserved, message_text, is_team_chat)
+    local targets = GET_PLAYER_PED_SCRIPT_INDEX(playerid)
+    local tar1 = GET_ENTITY_COORDS(targets, true)
+    if string.starts(message_text, chat_control_character) then
+        message_text = message_text:gsub(chat_control_character, '')
+        if chatcomset.spawn and not chatcomset.strangers and not chatcomset.friends and not chatcomset.org then 
+            func.FindVeh(message_text)
+            return
+        elseif chatcomset.spawn and chatcomset.friends and func.Friend_player(playerid) then
+            func.Vspawn(message_text, tar1, targets, 'custveh')
+        elseif chatcomset.spawn and chatcomset.org  and func.ArePlayersInTheSameOrg(players.user(), playerid) then
+            func.Vspawn(message_text, tar1, targets, 'orgveh')
+        elseif chatcomset.spawn and chatcomset.crew  and func.ArePlayersInTheSameCrew(players.user(), playerid) then
+            func.Vspawn(message_text, tar1, targets, 'crewveh')
+        elseif chatcomset.spawn and chatcomset.strangers then
+            func.Vspawn(message_text, tar1, targets, 'custveh')
+        end
+    end
+end)
+
+local chatspawn = vspawnroot:list(Str_trans('Chat Spawn'), {}, Str_trans('Change chat spawn settings'))
+
+local control_characters = {"?", "#", "@", "&", "*"}
+chatspawn:list_select(Str_trans('Change Chat Spawn Character'), {}, Str_trans('Change Chat Character used for spawning vehicles'), control_characters, 1, function(sel)
+    chat_control_character = control_characters[sel]
+end)
+
+chatspawn:toggle(Str_trans('Turn on Chat Spawn Character'), {}, Str_trans('Turn on Chat Spawn Character'), function(on)
+    chatcomset.spawn = on 
+end)
+
+chatspawn:toggle(Str_trans('Enable Friends'), {}, Str_trans('Turn on Chat Spawn for friends'), function(on)
+    chatcomset.friends = on 
+end)
+
+chatspawn:toggle(Str_trans('Enable Org'), {}, Str_trans('Turn on Chat Spawn for people in your Organisation'), function(on)
+    chatcomset.org = on 
+end)
+
+chatspawn:toggle(Str_trans('Enable Crew'), {}, Str_trans('Turn on Chat Spawn for people in your Crew'), function(on)
+    chatcomset.crew = on 
+end)
+
+chatspawn:toggle(Str_trans('Enable Stangers'), {}, Str_trans('Turn on Chat Spawn for strangers'), function(on)
+    chatcomset.strangers = on 
+end)
+
+vspawnroot:action(Str_trans('Change Command Box Spawn Characters'), {}, Str_trans('Change Command Box Spawn Characters used for spawning vehicles'), function()
+    for pv_veh_menus as pv_veh_menu do
+        if pv_veh_menu:isValid() then util.toast('fuckoff') pv_veh_menu:delete() end
+    end
+    local input = ""
+    local label = 'Enter Car Name'
+    while true do
+        input = func.get_input_from_screen_keyboard(label, 31, "")
+        if input == "" then
+            return func.ACutil(Str_trans('No text entered save canceled'))
+        end
+
+        if not input:find '[^%w_%.%-]' then break end
+        label = func.ACutil(Str_trans('Invalid Character'))
+        util.yield(250)
+    end
+    commandbox_characters = input
+    Vehicle_names = {}
+    Vehicle_names_pv = {}
+    pv_veh_menus = {}
+end)
+
+menus.pvmenu = vspawnroot:list(Str_trans('Personal Vehicle List'), {}, Str_trans('Creates a list of all vehicles so you can spawn personal vehicles by typing pv in the command box'), function ()
+    for pv_veh_menus as pv_veh_menu do
+        if pv_veh_menu:isValid() then pv_veh_menu:delete() end
+    end
+    Vehicle_names = {}
+    Vehicle_names_pv = {}
+    pv_veh_menus = {}
+    regenpvnames(menus.pvmenu)
+end)
+regenpvnames(menus.pvmenu)
+
+---------------------------------Custom Veh------------------------------------------------
+local customveh = vspawnroot:list(T('Custom Vehicle'), {}, '')
+
+local car_attach
+local plane_attach 
+menus.flyingcar = customveh:list(T('Car Plane'), {}, '')
+
+local function planecreate()
+    local planehash = util.joaat(Tables.flyingcarset.plane)
+    local coords = GET_ENTITY_COORDS(players.user_ped())
+    local plane = func.Vspawn(planehash, coords, players.user_ped(), 'Acjoker')
+    if Tables.flyingcarset.invis then
+        SET_ENTITY_VISIBLE(plane, false, 0)
+        SET_ENTITY_ALPHA(plane, 0, false)
+    end
+    SET_ENTITY_INVINCIBLE(plane, true)
+    entities.set_can_migrate(plane, false)
+    return plane
+end
+
+local function carcreate()
+    local carhash = util.joaat(Tables.flyingcarset.car)
+    local coords = GET_ENTITY_COORDS(players.user_ped())
+    local car = func.Vspawn(carhash, coords, players.user_ped(), 'Acjoker')
+    SET_ENTITY_INVINCIBLE(car, true)
+     entities.set_can_migrate(car, false)
+    return car
+end
+local regen_flying_cars = {}
+local function regenflycars(root)
+    for regen_flying_cars as flyingcar do
+        if flyingcar:isValid() then flyingcar:delete() end
+    end
+    for filesystem.list_files(FlyingVehiclesDir) as path do
+        local _, dirname = string.match(path,  "(.-)([^\\/]-%.?)$")
+        dirname = dirname:gsub('.txt', '')
+        local flying_car = root:action(dirname, {}, dirname, function()
+            local settings = util.read_colons_and_tabs_file(path)
+            for I, V in settings do
+                switch I do
+                    case 'Vehicle Hash' :
+                        Tables.flyingcarset.car = V
+                    break
+                    case 'Plane Hash' :
+                        Tables.flyingcarset.plane = V
+                    break
+                    case 'Xcoord' :
+                        Tables.flyingcarset.x = V
+                    break
+                    case 'Ycoord' :
+                        Tables.flyingcarset.y = V
+                    break
+                    case 'Zcoord' :
+                        Tables.flyingcarset.z = V
+                    break
+                    case 'Pitch' :
+                        Tables.flyingcarset.pitch = V
+                    break
+                end
+            end
+            Tables.flyingcarset.invis = true
+            car_attach = carcreate()
+            plane_attach = planecreate()
+            ATTACH_ENTITY_TO_ENTITY(car_attach, plane_attach, 0, Tables.flyingcarset.x, Tables.flyingcarset.y, Tables.flyingcarset.z, Tables.flyingcarset.pitch, Tables.flyingcarset.roll, Tables.flyingcarset.yaw, false, true, true, false, 0, true)
+        	menu.trigger_commands('invisibility'..' on')
+        end)
+        table.insert(regen_flying_cars, flying_car)
+    end
+end
+
+local function save_flying(settings)
+    local input = ""
+    local label = 'Enter Car Name'
+    while true do
+        input = func.get_input_from_screen_keyboard(label, 31, "")
+        if input == "" then
+            return func.ACutil(Str_trans('No text entered save canceled'))
+        end
+
+        if not input:find '[^%w_%.%-]' then break end
+        label = func.ACutil(Str_trans('Invalid Character'))
+        util.yield(250)
+    end
+    util.write_colons_file(FlyingVehDir..input..'.txt', settings)
+end
+
+
+menus.flyingcar:action(T('Spawn Car Plane'), {'flycar'}, T('Spawn Car Plane from your choice'), function()
+    plane_attach = planecreate()
+    car_attach = carcreate()
+    local min, max = v3.new(), v3.new()
+    GET_MODEL_DIMENSIONS(GET_ENTITY_MODEL(car_attach), min, max)
+    local x = Tables.flyingcarset.x
+    local y = Tables.flyingcarset.y
+    local z = Tables.flyingcarset.z
+    ATTACH_ENTITY_TO_ENTITY(car_attach, plane_attach, 0, Tables.flyingcarset.x, Tables.flyingcarset.y, Tables.flyingcarset.z, Tables.flyingcarset.pitch, Tables.flyingcarset.roll, Tables.flyingcarset.yaw, false, true, true, false, 0, true)
+    SET_PED_INTO_VEHICLE(players.user_ped(), plane_attach, -1)
+    menu.trigger_commands('invisibility'..' on')
+end)
+
+menus.createveh = menus.flyingcar:list(T('Change Vehicle'), {}, T('Change Vehicle used to fly'), function()
+    func.getallvehicles(menus.createveh, {3})
+end)
+
+   local cur_list = nil
+menus.createplne = menus.flyingcar:list(T('Change Plane'), {}, T('Change Plane used to fly'), function()
+    local vehicles = util.get_vehicles()
+    local cur_class
+ 
+
+    for vehicles as vehicle do
+        cur_class = vehicle.class
+        local vehname = util.get_label_text(vehicle.name)
+        vehtitle = string.gsub(vehname, "(%a)([%w_']*)", func.TitleCase)
+        if lang.get_string(vehicle.class) == 'Planes' and not cur_list then
+            cur_list = menus.createplne:list(vehicle.class)
+            local flyveh = cur_list:action(vehtitle or "Unknown", {}, vehname or "", function()
+                    Tables.flyingcarset.plane = vehicle.name
+            end)
+            flyveh:onFocus(function(direction) if direction != 0 then func.add_preview(util.joaat(vehicle.name)) end end)
+            flyveh:onBlur(function(direction) if direction != 0 then func.remove_preview() end end)
+        elseif cur_list and lang.get_string(vehicle.class) == 'Planes' then
+            local flyveh = cur_list:action(vehtitle or "Unknown", {}, vehname or "", function()
+                    Tables.flyingcarset.plane = vehicle.name
+                    func.ACutil(Str_trans('Plane Selected'))
+            end)
+            flyveh:onFocus(function(direction) if direction != 0 then func.add_preview(util.joaat(vehicle.name)) end end)
+            flyveh:onBlur(function(direction) if direction != 0 then func.remove_preview() end end)
+        end
+    end
+    menus.createplne:onFocus(function() if cur_list != nil and  cur_list:isValid() then cur_list:delete() end cur_list = nil end)
+end)
+
+menus.flyingcar:slider_float(T('Adjust Vehicle X axis'), {}, T('Adjust the vehicle left and right'), -10000, 10000, 100, 25, function(s)
+    DETACH_ENTITY(car_attach, true, true)
+    Tables.flyingcarset.x = s*0.01
+    ATTACH_ENTITY_TO_ENTITY(car_attach, plane_attach, 0, Tables.flyingcarset.x, Tables.flyingcarset.y, Tables.flyingcarset.z, Tables.flyingcarset.pitch, Tables.flyingcarset.roll, Tables.flyingcarset.yaw, false, true, true, false, 0, true)
+end)
+
+menus.flyingcar:slider_float(T('Adjust Vehicle Y axis'), {}, T('Adjust the vehicle forward and backward'), -10000, 10000, 100, 25, function(s)
+    DETACH_ENTITY(car_attach, true, true)
+    Tables.flyingcarset.y = s*0.01
+    ATTACH_ENTITY_TO_ENTITY(car_attach, plane_attach, 0, Tables.flyingcarset.x, Tables.flyingcarset.y, Tables.flyingcarset.z, Tables.flyingcarset.pitch, Tables.flyingcarset.roll, Tables.flyingcarset.yaw, false, true, true, false, 0, true)
+end)
+
+menus.flyingcar:slider_float(T('Adjust Vehicle Z axis'), {}, T('Adjust the vehicle up and down'), -10000, 10000, 100, 25, function(s)
+    DETACH_ENTITY(car_attach, true, true)
+    Tables.flyingcarset.z = s*0.01
+    ATTACH_ENTITY_TO_ENTITY(car_attach, plane_attach, 0, Tables.flyingcarset.x, Tables.flyingcarset.y, Tables.flyingcarset.z, Tables.flyingcarset.pitch, Tables.flyingcarset.roll, Tables.flyingcarset.yaw, false, true, true, false, 0, true)
+end)
+
+menus.flyingcar:slider_float(T('Adjust Vehicle Pitch'), {}, T('Adjust the vehicle up and down'), -10000, 10000, 100, 25, function(s)
+    DETACH_ENTITY(car_attach, true, true)
+    Tables.flyingcarset.pitch = s*0.01
+    ATTACH_ENTITY_TO_ENTITY(car_attach, plane_attach, 0, Tables.flyingcarset.x, Tables.flyingcarset.y, Tables.flyingcarset.z, Tables.flyingcarset.pitch, Tables.flyingcarset.roll, Tables.flyingcarset.yaw, false, true, true, false, 0, true)
+end)
+
+menus.flytog = menus.flyingcar:toggle(T('Make Plane Invisible'), {}, T('Turn the plane you are using to fly invisible'), function (on)
+    if on then
+        Tables.flyingcarset.invis = true
+    else
+        Tables.flyingcarset.invis = false
+    end
+end)
+
+menus.flyingcar:action(T('Delete Current Plane'), {'delplane'}, T('Deletes the current plane you have built'), function()
+    if DOES_ENTITY_EXIST(plane_attach) then
+        entities.delete_by_handle(plane_attach)
+    end
+    menu.trigger_commands('invisibility'..' off')
+    Tables.flyingcarset.invis = false
+    menus.flytog.value = false
+end)
+
+
+menus.flyingcar:action(T('Save Vehicle'), {}, T('Save Current Plane'), function()
+    local settings = {
+        ['Vehicle Hash'] = util.reverse_joaat(GET_ENTITY_MODEL(car_attach)),
+        ['Plane Hash'] = util.reverse_joaat(GET_ENTITY_MODEL(plane_attach)),
+        ['Xcoord'] = Tables.flyingcarset.x,
+        ['Ycoord'] = Tables.flyingcarset.y,
+        ['Zcoord'] = Tables.flyingcarset.z,
+        ['Pitch'] = Tables.flyingcarset.pitch,
+    }
+    save_flying(settings)
+end)
+
+menus.savedflying = menus.flyingcar:list(T('Saved Vehicles'), {}, T('A list of your saved planes'), function()
+    regenflycars(menus.savedflying)
+end)
+
+
+--------------------------------Space Docker-----------------------------------------------
+
+local sdroot = customveh:list(T('Lazer Space Docker'), {}, T('Space Docker with lazers')) --credits to Nowiry for the functions to make this work
+local lsd ={weap = 'WEAPON_RAYCARBINE', hash = util.joaat('dune2')}
+
+local function SDcreate(pCoor)
+    Lsdcar = CREATE_VEHICLE(lsd.hash, pCoor.x, pCoor.y, pCoor.z, 0, true, true, false)
+    SET_PED_INTO_VEHICLE(players.user_ped(), Lsdcar, -1)
+    func.Vmod(Lsdcar, 'Lazers', 100, 40)
+    local CV = GET_GAMEPLAY_CAM_RELATIVE_HEADING()
+    SET_ENTITY_HEADING(Lsdcar, CV)
+ 
+    local lsdweap = {
+    T('Unholy Hellbringer'),
+    T('Up-n-Atomizer'),} 
+
+    local lsdh = {
+        'weapon_raycarbine',
+        'weapon_raypistol',
+    }
+
+    Lsd_w = sdroot:list_select(T('LSD Weapon'), {'lsdweap'}, T('Changes weapon for Lazer Space Docker'), lsdweap, 1, function(vweap)
+        lsd.weap = lsdh[vweap]
+    end)
+ 
+   util.create_tick_handler(function ()
+        if IS_PED_IN_VEHICLE(players.user_ped(), Lsdcar, false) then
+            SET_VEHICLE_DIRT_LEVEL(Lsdcar, 0)
+            SET_ENTITY_INVINCIBLE(Lsdcar, true)
+            SET_VEHICLE_CAN_BE_VISIBLY_DAMAGED(Lsdcar, false)
+            if func.set.scale then
+                SF.SFlsd()
+            end
+        else
+            return false
+        end
+    end)
+end
+
+
+local get_vehicle_cam_relative_heading = function(vehicle)
+    local camDir = GET_GAMEPLAY_CAM_ROT(0):toDir()
+    local fwdVector = GET_ENTITY_FORWARD_VECTOR(vehicle)
+    camDir.z, fwdVector.z = 0.0, 0.0
+    local angle = math.acos(fwdVector:dot(camDir) / (#camDir * #fwdVector))
+    return math.deg(angle)
+end
+
+local shoot_from_vehicle = function (vehicle, damage, weaponHash, ownerPed, isAudible, isVisible, speed, target, position)
+    local min, max = v3.new(), v3.new()
+    local offset
+    GET_MODEL_DIMENSIONS(GET_ENTITY_MODEL(vehicle), min, max)
+    if position == 0 then
+        offset = v3.new(min.x + 0.3, max.y + 0.25, 0.5)
+    elseif position == 1 then
+        offset = v3.new(min.x + 0.3, min.y + 4, 0.5)
+    elseif position == 2 then
+        offset = v3.new(max.x - 0.3, max.y + 0.25, 0.5)
+    elseif position == 3 then
+        offset = v3.new(max.x - 0.3, min.y + 4, 0.5)
+    else
+        error("got unexpected position")offset = v3.new(min.x + 0.25, max.y, 0.5)
+    end
+    local a = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(vehicle, offset.x, offset.y - 3.15, offset.z + 1.05)
+    local direction = GET_ENTITY_ROTATION(vehicle, 2):toDir()
+    if get_vehicle_cam_relative_heading(vehicle) > 95.0 then
+        direction:mul(-1)
+    end
+    local b = v3.new(direction)
+    b:mul(300.0); b:add(a)
+
+    SHOOT_SINGLE_BULLET_BETWEEN_COORDS_IGNORE_ENTITY_NEW( a.x, a.y, a.z, b.x, b.y, b.z - 15, damage, true, weaponHash, ownerPed, isAudible, not isVisible, speed, vehicle, false, false, target, false, 0, 0, 0)
+end
+
+
+SDspawn = sdroot:toggle_loop(T('Spawn Lazer Space Docker'), {'lsdspawn'}, T('Space Docker that can shoot lazers'), function ()
+
+    func.Streament(lsd.hash)
+    local pCoor = GET_ENTITY_COORDS(players.user_ped())
+    local pH = GET_ENTITY_HEADING(pCoor)
+
+        if players.is_in_interior(players.user()) and not DOES_ENTITY_EXIST(Lsdcar) then
+            if func.set.alert then
+                func.ACutil(Str_trans('Lazer Space Docker will not Spawn in interior'))
+            end
+            SDspawn.value = false
+            return
+        end
+        
+    if IS_PED_IN_VEHICLE(players.user_ped(), Lsdcar, true) ==false and IS_PED_IN_ANY_VEHICLE(players.user_ped()) ==true then
+        local curcar = entities.get_user_vehicle_as_handle()
+        SET_ENTITY_AS_MISSION_ENTITY(curcar)
+        entities.delete_by_handle(curcar)
+        if func.set.alert then
+            func.ACutil(Str_trans('Fuck that car'))
+        end
+        for i = 1, 1 do
+            SDcreate(pCoor)
+        end
+    elseif IS_PED_IN_VEHICLE(players.user_ped(), Lsdcar, true) ==true then
+        local weap = util.joaat(lsd.weap)
+        REQUEST_WEAPON_ASSET(weap)
+    
+        if not DOES_ENTITY_EXIST(Lsdcar) or not IS_CONTROL_PRESSED(0, 86) then
+            return
+        elseif get_vehicle_cam_relative_heading(Lsdcar) < 95.0 then
+            shoot_from_vehicle(Lsdcar, 200, weap, players.user_ped(), true, true, 2000.0, 0, 0)
+            shoot_from_vehicle(Lsdcar, 200, weap, players.user_ped(), true, true, 2000.0, 0, 2)
+        else
+            shoot_from_vehicle(Lsdcar, 200, weap, players.user_ped(), true, true, 2000.0, 0, 1)
+            shoot_from_vehicle(Lsdcar, 200, weap, players.user_ped(), true, true, 2000.0, 0, 3)
+        end
+    elseif IS_PED_IN_ANY_VEHICLE(players.user_ped()) ==false and not DOES_ENTITY_EXIST(Lsdcar) then
+        SDcreate(pCoor)
+             if func.set.alert then
+                func.ACutil(Str_trans('Lazer Space Docker Spawned'))
+             end
+    end
+
+    if IS_PED_GETTING_INTO_A_VEHICLE(players.user_ped()) ==false and IS_PED_IN_VEHICLE(players.user_ped(), Lsdcar , false) ==false then
+        if func.set.alert then
+            func.ACutil(Str_trans('Player has left the Lazer Space Docker and it has been deleted'))
+        end
+    ---@diagnostic disable-next-line: param-type-mismatch
+        SDspawn.value = false
+        SET_MODEL_AS_NO_LONGER_NEEDED(lsd.hash)
+        SET_ENTITY_AS_MISSION_ENTITY(Lsdcar)
+        entities.delete_by_handle(Lsdcar)
+        Lsd_w:delete()
+        util.stop_thread()
+    end
+end)
+
+    ----------------------------------------------
+
+    local function BBcreate(coor)
+        local bhash = util.joaat("PBUS2")
+        func.Streament(bhash)
+        Bbbus = CREATE_VEHICLE(bhash, coor.x, coor.y, coor.z, 0, true, true, false)
+        SET_PED_INTO_VEHICLE(players.user_ped(), Bbbus, -1)
+        SET_VEHICLE_COLOURS(Bbbus, math.random(0, 160), math.random(0, 160))
+        func.Vmod(Bbbus, "Big Bass", 100, 40)
+        local CV = GET_GAMEPLAY_CAM_RELATIVE_HEADING()
+        SET_ENTITY_HEADING(Bbbus, CV)
+        return Bbbus
+    end
+
+    menus.BBbus = customveh:list(Str_trans('Big Bass Bus'), {})
+ local busset = {hit = 10, delay = 250}
+menus.bustog = menus.BBbus:toggle_loop(Str_trans('Big Bass Bus'), {'BBbus'}, Str_trans('Spawn Big Bass Bus'), function ()
+    if players.is_in_interior(players.user()) and not DOES_ENTITY_EXIST(Bbbus) then
+        if func.set.alert then
+            func.ACutil(Str_trans('Big Bass Bus will not Spawn in interior'))
+        end
+        menus.bustog.value = false
+        return
+    end
+    if not DOES_ENTITY_EXIST(Bbbus) then
+        local coor = GET_ENTITY_COORDS(players.user_ped())
+        BBcreate(coor)
+    end
+    local allcar = entities.get_all_vehicles_as_handles()
+    for allcar as car do
+        local carpos = GET_ENTITY_COORDS(car)
+        local buspos = GET_ENTITY_COORDS(Bbbus)
+        local disbet = VDIST2(carpos.x, carpos.y, carpos.z, buspos.x, buspos.y, buspos.z)
+        if disbet <= 6000 then
+            if car != Bbbus then
+                func.Getent(car)
+                APPLY_FORCE_TO_ENTITY_CENTER_OF_MASS(car, 1, 0, 0, busset.hit, true, true, true, true)
+                util.yield(busset.delay)
+            end
+        end
+    end
+end, function()
+    if DOES_ENTITY_EXIST(Bbbus) then
+        entities.delete_by_handle(Bbbus)
+    end
+end)
+
+menus.BBbus:slider(T('Bass Hit'), {}, T('Change how hard the bass hits and forces cars up'), 0, 100, 10, 1, function (s)
+    busset.hit = s
+end)
+
+menus.BBbus:slider(T('Bass Delay'), {}, T('Change the delay for the bass hits expect lag if set too low'), 0, 4000, 250, 25, function (s)
+    busset.delay = s
+end)
+
+
+---------------------------------- FF9 Charger ----------------------------------
+local charroot = customveh:list(T('Charger'), {}, T('Duke O Death with Electro Magnet capabilities'))
+local charger = {charg = util.joaat('dukes2'), emp = util.joaat('hei_prop_heist_emp')}
+local magval = {scale = 5000, nodam = true}
+local FFchar = 0
+local function Ccreate(pCoor)
+
+    FFchar = CREATE_VEHICLE(charger.charg, pCoor.x, pCoor.y, pCoor.z + 1, 0, true, true, false)
+    SET_PED_INTO_VEHICLE(players.user_ped(), FFchar, -1)
+    SET_VEHICLE_COLOURS(FFchar, 118, 0)
+    func.Vmod(FFchar, 'Mopar', 100, 40)
+    SET_VEHICLE_WHEEL_TYPE(FFchar, 7)
+    SET_VEHICLE_MOD(FFchar, 23, 26)
+    util.yield(150)
+
+   local ccoor = GET_ENTITY_COORDS(FFchar)
+
+    if not DOES_ENTITY_EXIST(charger.emp) then 
+        Empa = CREATE_OBJECT(charger.emp, ccoor.x, ccoor.y -1, ccoor.z -1, true, true, true)
+        ATTACH_ENTITY_TO_ENTITY(Empa, FFchar, 0, 0.0, -2.0, 0.5, 0.0, 0.0, 0.0, false, true, true, false, 0, true)
+        local CV = GET_GAMEPLAY_CAM_RELATIVE_HEADING()
+        SET_ENTITY_HEADING(FFchar, CV)
+        util.yield()
+    end
+
+
+
+    function Magout()
+        if  IS_CONTROL_PRESSED(0, 86) then
+            local car = GET_ENTITY_COORDS(players.user_ped())
+        for x = 0, 10 do
+            ADD_EXPLOSION(car.x + x, car.y, car.z, 81, magval.scale, false, true, 0.0, magval.nodam)
+        end
+        for y = 0, 10 do
+            ADD_EXPLOSION(car.x, car.y + y, car.z, 81, magval.scale, false, true, 0.0, magval.nodam)
+        end
+    end
+end
+
+local closeveh = {}
+function Yeet()
+    local car = entities.get_all_vehicles_as_handles()
+    for car as value do
+	    local cvc = GET_ENTITY_COORDS(value)
+	    local chc = GET_ENTITY_COORDS(FFchar)
+	    local disbet = VDIST2(chc.x, chc.y, chc.z, cvc.x, cvc.y, cvc.z)
+	    if  IS_CONTROL_PRESSED(0, 72) and IS_CONTROL_PRESSED(0, 76) then
+	        for car as pveh do
+	            if disbet >= 5 then
+	                table.insert(closeveh, pveh)
+	            end
+	            if #closeveh >= 50 then break end
+	        for closeveh as cv do
+	            if cv != car then
+	                FREEZE_ENTITY_POSITION(FFchar, true)
+	                func.Getent(cv)
+	                APPLY_FORCE_TO_ENTITY(cv, 1, math.random(1, 100), math.random(1, 100), math.random(1, 100), 0.0, 0.0, 0.0, 0, false, false, true, false, false)
+	                closeveh = {}
+	            end
+
+	        end
+	        end
+	        if func.set.alert then
+	            func.ACutil(Str_trans('Yeet'))
+	        end
+	        else 
+	            closeveh = {}
+	        end
+	        FREEZE_ENTITY_POSITION(FFchar, false)
+	    end
+	end
+end
+    
+	util.create_tick_handler(function ()
+        if IS_PED_IN_VEHICLE(players.user_ped(), FFchar, false) then
+            SET_VEHICLE_DIRT_LEVEL(FFchar, 0)
+            SET_ENTITY_INVINCIBLE(FFchar, true)
+            SET_VEHICLE_CAN_BE_VISIBLY_DAMAGED(FFchar, false)
+            if func.set.scale then
+                SF.SF()
+            end
+        end
+    end)
+
+Spawn = charroot:toggle_loop(T('Spawn FF9 EMP Charger'), {'FF9Wspawn'}, T('Spawn Charger from FF9 with Electro Magnet capabilities'), function ()
+
+    func.Streament(charger.charg)
+    func.Streament(charger.emp)
+        if players.is_in_interior(players.user()) and not DOES_ENTITY_EXIST(FFchar)then
+            if func.set.alert then
+                func.ACutil(Str_trans('Charger will not Spawn in interior'))
+            end
+            Spawn.value = false
+            return
+        end
+
+    if not IS_PED_IN_VEHICLE(players.user_ped(), FFchar, true) and IS_PED_IN_ANY_VEHICLE(players.user_ped()) then
+        local curcar = entities.get_user_vehicle_as_handle()
+        entities.delete_by_handle(curcar)
+        if func.set.alert then
+            func.ACutil(Str_trans('Fuck that car'))
+        end
+        for i = 1, 1 do
+            local pCoor = GET_ENTITY_COORDS(players.user_ped(), true)
+            Ccreate(pCoor)
+        end
+        
+
+        elseif IS_PED_IN_VEHICLE(players.user_ped(), FFchar, true) ==true then
+            Magout()
+            Yeet()
+        elseif IS_PED_IN_ANY_VEHICLE(players.user_ped()) ==false then
+            local pCoor = GET_ENTITY_COORDS(players.user_ped(), true)
+            Ccreate(pCoor)
+            if func.set.alert then
+                func.ACutil(Str_trans('Charger Spawned'))
+            end
+        end
+
+    if IS_PED_GETTING_INTO_A_VEHICLE(players.user_ped()) ==false and IS_PED_IN_VEHICLE(players.user_ped(), FFchar , false) ==false then
+        if func.set.alert then
+            func.ACutil(Str_trans('Player has left Charger and it has been deleted'))
+        end
+        Spawn.value = false
+        SET_ENTITY_AS_MISSION_ENTITY(FFchar)
+        entities.delete_by_handle(FFchar)
+        SET_ENTITY_AS_MISSION_ENTITY(Empa)
+        entities.delete_by_handle(Empa)
+        menus.Mag_int:delete()
+        menus.Mag_sca:delete()
+        SET_MODEL_AS_NO_LONGER_NEEDED(charger.charg)
+        SET_MODEL_AS_NO_LONGER_NEEDED(charger.emp)
+        util.stop_thread()
+    end
+end)
+
+local magtf = {true, false}
+local maglist = {Str_trans('Push Away'), Str_trans('Blow Up')}
+
+menus.Mag_int = charroot:list_action(Str_trans('Magnet Intensity'), {'Magint'}, Str_trans('Changes Magnet to Push Away or Blow up'), maglist, function(magint)
+    magval.nodam = magtf[magint]
+end)
+
+menus.Mag_sca = charroot:slider(Str_trans('Magnet Push Away Scale'), {}, Str_trans('Change how far you push away objects'), 0, 10000, 5000, 5000, function (s)
+    magval.scale = s
+end)
+ -----------------------------------------
+
+
+local vteles = vspawnroot:list(T('Vehicle Teleports'), {}, '')
+
+vteles:action(T('TP into Acid Lab'), {''},  T('Teleports you into the Acid Lab'), function ()
+	menu.trigger_commands('tplab')
+end)
+
+vteles:action(T('Return Acid Lab'), {''}, T('Return Acid Lab to storage'), function ()
+	menu.trigger_commands('retacid')
+end)
+
+vteles:action(T('TP onto Acid Lab Bike'), {''},  T('Teleports you onto the Acid Lab Bike'), function ()
+	menu.trigger_commands('tpbikelab')
+end)
+
+vteles:action(T('Return Acid Lab Bike'), {''}, T('Return Acid Lab Bike to storage'), function ()
+	menu.trigger_commands('retbikeacid')
+end)
+
+
+vteles:action(T('TP into Avenger'), {''}, T('Teleport into Avengers holding area'), function ()
+	menu.trigger_commands('tpaven')
+end)
+
+vteles:action(T('Return Avenger Facility'), {''}, T('Return Avenger to Facility'), function ()
+	menu.trigger_commands('retfacilityavenger')
+end)
+
+vteles:action(T('Return Avenger Hangar'), {''}, T('Return Avenger to Hangar'), function ()
+	menu.trigger_commands('rethangavenger')
+end)
+
+vteles:action(T('TP into Avenger Thruster'), {''}, T('Teleport to Avenger Thruster'), function ()
+	menu.trigger_commands('tpathruster')
+end)
+
+vteles:action(T('Return Avenger Thruster'), {''}, T('Return Avenger Thruster to storage'), function ()
+	menu.trigger_commands('retathruster')
+end)
+
+
+vteles:action(T('TP into Kosatka'), {''}, T('Teleport to Kosatka Cayo Perico Heist board'), function ()
+	menu.trigger_commands('tpkosatka')
+end)
+
+vteles:action(T('Return Kosatka'), {''}, T('Do NOT be on the Kosatka to Return Kosatka to storage'), function ()
+	menu.trigger_commands('retkos')
+end)
+
+vteles:action(T('TP into Sea Sparrow'), {''}, T('Teleport to Kosatka Sea Sparrow'), function ()
+	menu.trigger_commands('tpssparrow')
+end)
+
+vteles:action(T('Return Sea Sparrow'), {''}, T('Return Sea Sparrow back to Kosatka'), function ()
+	menu.trigger_commands('retssparrow')
+end)
+
+vteles:action(T('TP into Avisa'), {''}, T('Teleport to Kosatka Avisa'), function ()
+	menu.trigger_commands('tpavisa')
+end)
+
+vteles:action(T('Return Avisa'), {''}, T('Return Avisa back to Kosatka'), function ()
+	menu.trigger_commands('retavisa') 
+end)
+
+vteles:action(T('TP into MOC'), {''}, T('Teleport into MOC command center/bunker'), function ()
+	menu.trigger_commands('tpMOC')
+end)
+
+vteles:action(T('Return MOC'), {''}, T('Return MOC to storage'), function ()
+	menu.trigger_commands('retMOC')
+end)
+
+vteles:action(T('TP into Terrorbyte'), {''}, T('Teleport to Terrorbyte Business control'), function ()
+    menu.trigger_commands('tpterro')
+end)
+
+vteles:action(T('Return Terrorbyte'), {''}, T('Return Terrorbyte to storage'), function ()
+	menu.trigger_commands('retter')
+end)
+
+vteles:action(T('Return Personal Vehicle'), {''}, T('Return Personal Vehicle'), function () --credits to Mr Robot
+	func.ReturnPV()
+end)
+
+----------------------------------------------------------------
+
+menus.peg = vspawnroot:list(T('Make any vehicle a Pegasus Vehicle'), {}, T('Make any vehicle a Pegasus Vehicle'))
+
+menus.choose = menus.peg:list(T('Choose the Vehicle'), {}, T('Choose the vehicle you want to turn into a Pegasus Vehicle'), function ()
+	regennames(menus.choose)
+end)
+
+menus.peg:text_input(T('Search for a Pegasus Vehicle'), {'pegasus'}, T('Search for a Pegasus vehicle'), function (sel)
+    if sel != "" then
+        if IS_MODEL_A_VEHICLE(util.joaat(sel)) then
+            local data = memory.script_global(Globals.Pegasus1)
+            memory.write_int(data, util.joaat(vehicle.name))
+            local data2 = memory.script_global(Globals.Pegasus2)
+            memory.write_int(data2, memory.read_int(data2) | (1 << 7))
+            util.yield(10)
+            memory.write_int(data2, memory.read_int(data2) &~ (1 << 7))
+        else
+            if func.set.alert then
+                func.ACutil(Str_trans('Improper Vehicle Name (check the spelling)'))
+            end
+        end
+    end
+end)
+
+menus.ceo = vspawnroot:list(T('Make any vehicle a CEO Vehicle'), {}, T('Make any vehicle a CEO Vehicle'))
+
+menus.chooseceo = menus.ceo:list(T('Choose the Vehicle'), {}, T('Choose the vehicle you want to turn into a Pegasus Vehicle'), function ()
+    regenceonames(menus.chooseceo)
+end)
+
+menus.ceo:text_input(T('Search for a CEO Vehicle'), {'CEO'}, T('Search for a CEO vehicle'), function (sel)
+    if sel != "" then
+        if IS_MODEL_A_VEHICLE(util.joaat(sel)) then
+            local data = memory.script_global(Globals.CEO)
+            memory.write_int(data, util.joaat(sel))
+            local data2 = memory.script_global(Globals.RequestCEO)
+            memory.write_byte(data2, 1)
+        else
+            if func.set.alert then
+                func.ACutil(Str_trans('Improper Vehicle Name (check the spelling)'))
+            end
+        end
+    end
+end)    
+
+    local sortbyname = true
+    menus.pvlist = vspawnroot:list(Str_trans('Personal Vehicles'), {}, Str_trans('Personal Vehicles List'))
+
+    menus.pvspawn = menus.pvlist:list(Str_trans('Personal Vehicles'), {}, Str_trans('Personal Vehicles List'), function()
+        regenopvnames(menus.pvspawn, sortbyname)
+    end)
+
+    menus.pvlist:toggle(T('Change Sorting'), {}, T('Change Sorting of the Personal Vehicles from name to slot'), function (on)
+        if on then 
+            sortbyname = false
+        else
+            sortbyname = true
+        end
+    end)

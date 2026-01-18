@@ -1,0 +1,31 @@
+Model: raiju
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 67
+Pearl Colour: 0
+Wheel Colour: 156
+Wheel Type: 9
+Engine: 4
+Brakes: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 1
+Front Wheels: 14
+Livery: 0
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #929899
+Custom Secondary Colour: 
+Neon Colour: #ffffff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

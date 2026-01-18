@@ -1,0 +1,41 @@
+Model: deluxo
+Plate Style: 1
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 0
+Wheel Colour: 0
+Wheel Type: 8
+Spoiler: 6
+Front Bumper: 3
+Sideskirt: 2
+Exhaust: 3
+Grille: 9
+Hood: 3
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 2
+Front Wheels: 88
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #000000
+Neon Colour: #ffffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 158
+Tyres Mode: 1

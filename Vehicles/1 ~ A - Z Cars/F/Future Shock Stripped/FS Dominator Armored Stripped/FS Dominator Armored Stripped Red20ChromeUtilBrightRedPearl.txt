@@ -1,0 +1,45 @@
+Model: dominator5
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 120
+Pearl Colour: 44
+Wheel Colour: 134
+Wheel Type: 8
+Front Bumper: 1
+Sideskirt: 1
+Exhaust: 4
+Chassis: 2
+Grille: 3
+Right Fender: 0
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 41
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 12
+Front Wheels: 114
+Air Filter: 4
+Struts: 3
+Arch Cover: 3
+Aerials: 0
+Tank: 0
+Livery: 0
+Tyre Smoke Colour: #ff006e
+Window Tint: 1
+Custom Primary Colour: #140000
+Custom Secondary Colour: #5870a1
+Neon Colour: #ff0032
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 120
+Dashboard Colour: 140
+Tyres Mode: 1

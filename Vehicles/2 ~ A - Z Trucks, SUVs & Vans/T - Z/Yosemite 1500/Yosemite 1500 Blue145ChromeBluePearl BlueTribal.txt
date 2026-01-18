@@ -1,0 +1,44 @@
+Model: 0x8EF5E388
+Plate Style: 1
+Plate Text: 45PTN687
+Primary Colour: 161
+Secondary Colour: 120
+Pearl Colour: 140
+Wheel Colour: 70
+Wheel Type: 8
+Spoiler: 6
+Front Bumper: 6
+Rear Bumper: 6
+Sideskirt: 5
+Exhaust: 8
+Chassis: 1
+Grille: 7
+Hood: 13
+Fender: 1
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 1
+Front Wheels: 119
+Livery: 10
+Tyre Smoke Colour: #00aeef
+Window Tint: 1
+Custom Primary Colour: #190091
+Custom Secondary Colour: 
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 0
+Tyres Mode: 1

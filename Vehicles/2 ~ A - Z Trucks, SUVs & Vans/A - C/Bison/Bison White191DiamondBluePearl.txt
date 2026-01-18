@@ -1,0 +1,36 @@
+Model: bison
+Plate Style: 7
+Plate Text:  DKARME 
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 67
+Wheel Colour: 67
+Wheel Type: 8
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 119
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #c1bfff
+Neon Colour: #0a00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 10: Yes
+Extra 11: No

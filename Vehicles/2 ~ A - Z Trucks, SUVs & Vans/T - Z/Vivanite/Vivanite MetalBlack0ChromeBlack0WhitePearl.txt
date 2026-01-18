@@ -1,0 +1,45 @@
+Model: vivanite
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 117
+Secondary Colour: 120
+Pearl Colour: 134
+Wheel Colour: 7
+Wheel Type: 10
+Spoiler: 7
+Front Bumper: 5
+Rear Bumper: 5
+Sideskirt: 10
+Exhaust: 8
+Chassis: 1
+Grille: 9
+Hood: 13
+Fender: 1
+Roof: 1
+Engine: 0
+Brakes: 0
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 2
+Front Wheels: 20
+Shifter Leavers: 0
+Speakers: 0
+Livery: 0
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #000000
+Neon Colour: #ffffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 83
+Dashboard Colour: 83
+Tyres Mode: 1

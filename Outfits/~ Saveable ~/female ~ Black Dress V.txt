@@ -1,0 +1,36 @@
+Model: Online Female
+Head: 0
+Head Variation: 0
+Mask: 11
+Mask Variation: 2
+Hair: 53
+Hair Colour: 29
+Hair Colour\: Highlight: 36
+Top: 583
+Top Variation: 0
+Gloves / Torso: 16
+Gloves / Torso Variation: 1
+Top 2: 3
+Top 2 Variation: 0
+Top 3: 0
+Top 3 Variation: 0
+Parachute / Bag: 0
+Parachute / Bag Variation: 0
+Pants: 218
+Pants Variation: 0
+Shoes: 146
+Shoes Variation: 0
+Accessories: 159
+Accessories Variation: 2
+Decals: 0
+Decals Variation: 0
+Hat: -1
+Hat Variation: -1
+Glasses: -1
+Glasses Variation: -1
+Earwear: -1
+Earwear Variation: -1
+Watch: -1
+Watch Variation: -1
+Bracelet: -1
+Bracelet Variation: -1

@@ -1,0 +1,53 @@
+Model: brioso3
+Plate Style: 1
+Plate Text:  0 MPH  
+Primary Colour: 88
+Secondary Colour: 0
+Pearl Colour: 0
+Wheel Colour: 0
+Wheel Type: 8
+Spoiler: 6
+Front Bumper: 7
+Rear Bumper: 3
+Sideskirt: 3
+Exhaust: 4
+Chassis: 1
+Grille: 1
+Hood: 3
+Fender: 6
+Right Fender: 2
+Roof: 11
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 1
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 8
+Front Wheels: 60
+Trim: 8
+Dashboard: 5
+Seats: 0
+Door Speaker: 0
+Steering Wheel: 0
+Trunk: 6
+Engine Block: 1
+Arch Cover: 9
+Livery: 3
+Tyre Smoke Colour: #ff9600
+Window Tint: 3
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ffbe00
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 88
+Tyres Mode: 1

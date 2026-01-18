@@ -1,0 +1,47 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The FSL Save Files have a $Quintillion on it if you'd like to use this instead of the FSL Money Lua Script to do it
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HOW TO INSTALL SAVE FILES:
+
+Drag the 2 files into your FSL Folder > located in your   %appdata%
+
+Open File Explorer > Clear the path address bar and type   %appdata%   hit enter
+
+Find the FSL Folder in there, if you can't find it just create a folder and title it FSL
+
+Drag the 2 files in
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HOW TO INSTALL FSL MONEY LUA SCRIPT: ( STILL WORKS ON HIGHER FSL VERSIONS THAN v1.0 )
+Just drag the .lua file into your Stand Lua Scripts folder
+
+Open Stand Menu go to Stand > Lua Scripts > FSLMoney_v1.0
+
+The rest is self explainitory :)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

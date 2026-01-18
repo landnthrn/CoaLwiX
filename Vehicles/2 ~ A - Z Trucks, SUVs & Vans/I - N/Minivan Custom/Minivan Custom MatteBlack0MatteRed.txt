@@ -1,0 +1,52 @@
+Model: minivan2
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 39
+Pearl Colour: 10
+Wheel Colour: 39
+Wheel Type: 8
+Spoiler: 1
+Exhaust: 1
+Grille: 0
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 147
+Back Wheels: 0
+Plate Holder: 0
+Vanity Plates: 0
+Trim: 3
+Ornaments: 44
+Dial: 14
+Seats: 5
+Door Speaker: 1
+Steering Wheel: 13
+Shifter Leavers: 15
+Plaques: 19
+Trunk: 9
+Hydraulics: 4
+Engine Block: 4
+Air Filter: 3
+Livery: 0
+Tyre Smoke Colour: #ff0000
+Window Tint: 0
+Custom Primary Colour: #000000
+Custom Secondary Colour: #cf1f21
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 150
+Dashboard Colour: 158
+Tyres Mode: 1

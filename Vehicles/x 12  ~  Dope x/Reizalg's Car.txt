@@ -1,0 +1,39 @@
+Model: deveste
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 64
+Secondary Colour: 64
+Pearl Colour: 0
+Wheel Colour: 64
+Wheel Type: 4
+Spoiler: 8
+Front Bumper: 4
+Rear Bumper: 5
+Exhaust: 8
+Chassis: 5
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 1
+Suspension: 1
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 1
+Front Wheels: 1, Custom
+Livery: 6
+Tyre Smoke Colour: #00aeef
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #0215ff
+Neon Front: Yes
+Neon Back: No
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 73
+Dashboard Colour: 0
+Tyres Mode: 1

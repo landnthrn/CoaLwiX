@@ -1,0 +1,48 @@
+Model: terminus
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 87
+Pearl Colour: 67
+Wheel Colour: 159
+Wheel Type: 9
+Spoiler: 5
+Front Bumper: 8
+Rear Bumper: 4
+Sideskirt: 6
+Exhaust: 4
+Chassis: 1
+Grille: 10
+Hood: 10
+Fender: 4
+Right Fender: 0
+Roof: 4
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 124
+Arch Cover: 3
+Trim2: 1
+Left Door: 0
+Livery: 10
+Tyre Smoke Colour: #d5ffff
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #74b5d8
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 158
+Dashboard Colour: 158
+Tyres Mode: 1
+Extra 1: No

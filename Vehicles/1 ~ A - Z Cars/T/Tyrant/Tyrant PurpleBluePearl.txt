@@ -1,0 +1,39 @@
+Model: tyrant
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 141
+Secondary Colour: 158
+Pearl Colour: 70
+Wheel Colour: 81
+Wheel Type: 9
+Spoiler: 3
+Sideskirt: 1
+Exhaust: 2
+Hood: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 119
+Livery: 974607620
+Tyre Smoke Colour: #5000ff
+Window Tint: 1
+Custom Primary Colour: #2c037d
+Custom Secondary Colour: #9e41b9
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 132
+Tyres Mode: 1
+Extra 1: Yes

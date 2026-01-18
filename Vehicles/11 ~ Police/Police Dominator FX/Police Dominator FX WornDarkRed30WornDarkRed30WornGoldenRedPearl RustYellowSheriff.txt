@@ -1,0 +1,50 @@
+Model: poldominator10
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 47
+Wheel Colour: 47
+Wheel Type: 10
+Spoiler: 10
+Front Bumper: 7
+Rear Bumper: 2
+Sideskirt: 9
+Exhaust: 6
+Chassis: 3
+Grille: 6
+Hood: 7
+Fender: 9
+Right Fender: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 9
+Front Wheels: 6
+Arch Cover: 3
+Trim2: 6
+Livery: 10
+Tyre Smoke Colour: #a54839
+Window Tint: 1
+Custom Primary Colour: #190603
+Custom Secondary Colour: #190603
+Neon Colour: #b72500
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 3
+Dashboard Colour: 156
+Tyres Mode: 1
+Extra 1: No
+Extra 2: Yes
+Extra 3: No
+Extra 4: No

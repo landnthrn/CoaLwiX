@@ -1,0 +1,36 @@
+Model: btype2
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 120
+Pearl Colour: 0
+Wheel Colour: 0
+Wheel Type: 8
+Hood: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: Yes
+Tiresmoke: Yes
+Unk21: Yes
+Headlights: 14
+Front Wheels: 14
+Ornaments: 20
+Livery: 3
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #5870a1
+Neon Colour: #ff3200
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 56
+Dashboard Colour: 56
+Tyres Mode: 1

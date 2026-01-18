@@ -1,0 +1,40 @@
+Model: vagrant
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 146
+Secondary Colour: 92
+Pearl Colour: 145
+Wheel Colour: 145
+Wheel Type: 8
+Exhaust: 0
+Chassis: 2
+Grille: 0
+Hood: 0
+Fender: 2
+Right Fender: 2
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 42
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 13
+Front Wheels: 55
+Livery: 10
+Tyre Smoke Colour: #7a2dff
+Window Tint: 0
+Custom Primary Colour: #d9fb53
+Custom Secondary Colour: #501da4
+Neon Colour: #d9fb53
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 67
+Dashboard Colour: 0
+Tyres Mode: 1

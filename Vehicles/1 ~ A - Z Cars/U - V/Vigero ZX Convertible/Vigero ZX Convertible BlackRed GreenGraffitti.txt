@@ -1,0 +1,47 @@
+Model: vigero3
+Plate Style: 7
+Plate Text:  0 KPH  
+Primary Colour: 0
+Secondary Colour: 32
+Pearl Colour: 29
+Wheel Colour: 150
+Wheel Type: 9
+Spoiler: 4
+Front Bumper: 8
+Rear Bumper: 2
+Sideskirt: 14
+Exhaust: 7
+Chassis: 1
+Grille: 8
+Hood: 24
+Fender: 7
+Right Fender: 3
+Roof: 12
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 119
+Shifter Leavers: 0
+Speakers: 0
+Livery: 18
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #0d1116
+Custom Secondary Colour: #8e1b1f
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 0
+Tyres Mode: 1

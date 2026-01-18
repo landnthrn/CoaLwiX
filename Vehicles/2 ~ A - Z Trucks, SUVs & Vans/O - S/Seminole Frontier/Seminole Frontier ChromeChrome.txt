@@ -1,0 +1,46 @@
+Model: seminole2
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 120
+Secondary Colour: 120
+Pearl Colour: 134
+Wheel Colour: 13
+Wheel Type: 10
+Spoiler: 3
+Front Bumper: 9
+Rear Bumper: 1
+Sideskirt: 2
+Exhaust: 5
+Chassis: 4
+Grille: 6
+Hood: 8
+Fender: 5
+Right Fender: 1
+Roof: 7
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 6
+Arch Cover: 1
+Livery: 0
+Tyre Smoke Colour: #3c00ff
+Window Tint: 1
+Custom Primary Colour: #5870a1
+Custom Secondary Colour: #5870a1
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 13
+Dashboard Colour: 111
+Tyres Mode: 1

@@ -1,0 +1,41 @@
+Model: penetrator
+Plate Style: 10
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 120
+Pearl Colour: 148
+Wheel Colour: 134
+Wheel Type: 8
+Spoiler: 3
+Front Bumper: 5
+Rear Bumper: 5
+Sideskirt: 5
+Exhaust: 3
+Grille: 6
+Hood: 2
+Roof: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 13
+Front Wheels: 110
+Livery: -1
+Tyre Smoke Colour: #7800ff
+Window Tint: 1
+Custom Primary Colour: #020015
+Custom Secondary Colour: #5870a1
+Neon Colour: #3c00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 10
+Dashboard Colour: 82
+Tyres Mode: 1

@@ -1,0 +1,33 @@
+Model: slamvan2
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 117
+Secondary Colour: 117
+Pearl Colour: 134
+Wheel Colour: 7
+Wheel Type: 8
+Engine: 0
+Brakes: 0
+Transmission: 0
+Horns: 41
+Suspension: 4
+Armor: 0
+Nitrous: No
+Turbo: No
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 2
+Front Wheels: 117
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #000000
+Neon Colour: #ffffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 158
+Dashboard Colour: 158
+Tyres Mode: 1

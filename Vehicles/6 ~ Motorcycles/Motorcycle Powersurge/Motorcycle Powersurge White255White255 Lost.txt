@@ -1,0 +1,41 @@
+Model: powersurge
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 161
+Wheel Colour: 0
+Wheel Type: 6
+Spoiler: 1
+Front Bumper: 2
+Rear Bumper: 2
+Chassis: 2
+Grille: 7
+Hood: 7
+Right Fender: 1
+Roof: 8
+Engine: 5
+Brakes: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 2
+Front Wheels: 72
+Back Wheels: 72
+Livery: 5
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #ffffff
+Custom Secondary Colour: #ffffff
+Neon Colour: #ffffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 83
+Dashboard Colour: 28
+Tyres Mode: 1

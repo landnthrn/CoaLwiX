@@ -1,0 +1,34 @@
+Model: stafford
+Plate Style: 0
+Plate Text:  0 MPH  
+Primary Colour: 67
+Secondary Colour: 24
+Pearl Colour: 67
+Wheel Colour: 0
+Wheel Type: 2
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 0
+Suspension: 0
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 0
+Front Wheels: 0
+Livery: 8
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #d3d3d3
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 157
+Dashboard Colour: 157
+Tyres Mode: 1

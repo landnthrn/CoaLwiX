@@ -1,0 +1,40 @@
+Model: deathbike2
+Plate Style: 0
+Plate Text: 43VFW952
+Primary Colour: 107
+Secondary Colour: 159
+Pearl Colour: 160
+Wheel Colour: 158
+Wheel Type: 6
+Chassis: 6
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 58
+Armor: 5
+Unk17: No
+Turbo: Yes
+Unk19: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 72
+Back Wheels: 72
+Air Filter: 3
+Struts: 3
+Aerials: 1
+Trim2: 1
+Tank: 1
+Livery: 18
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #dabf43
+Custom Secondary Colour: #b909f4
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 160
+Dashboard Colour: 140
+Tyres Mode: 1

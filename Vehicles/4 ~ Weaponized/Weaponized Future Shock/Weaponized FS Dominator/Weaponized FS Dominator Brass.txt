@@ -1,0 +1,45 @@
+Model: dominator5
+Plate Style: 1
+Plate Text: 46RLW822
+Primary Colour: 107
+Secondary Colour: 159
+Pearl Colour: 111
+Wheel Colour: 156
+Wheel Type: 0
+Front Bumper: 1
+Sideskirt: 1
+Exhaust: 5
+Chassis: 3
+Grille: 1
+Right Fender: 0
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 2
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 4
+Front Wheels: 0
+Air Filter: 3
+Struts: 0
+Arch Cover: 1
+Aerials: 0
+Tank: 2
+Livery: 4
+Tyre Smoke Colour: #141414
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #dedeff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 107
+Tyres Mode: 1

@@ -1,0 +1,58 @@
+Model: warrener2
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 10
+Wheel Colour: 28
+Wheel Type: 8
+Spoiler: 1
+Front Bumper: 3
+Rear Bumper: 2
+Exhaust: 4
+Chassis: 4
+Grille: 2
+Hood: 3
+Fender: 1
+Roof: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 148
+Vanity Plates: 4
+Trim: 2
+Dashboard: 5
+Dial: 3
+Seats: 9
+Door Speaker: 14
+Steering Wheel: 16
+Engine Block: 4
+Air Filter: 4
+Struts: 12
+Arch Cover: 2
+Aerials: 4
+Trim2: 6
+Tank: 5
+Right Door: 11
+Livery: 5
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #ff0000
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 3
+Dashboard Colour: 27
+Tyres Mode: 1

@@ -1,0 +1,53 @@
+Model: postlude
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 134
+Wheel Colour: 44
+Wheel Type: 8
+Spoiler: 11
+Front Bumper: 5
+Rear Bumper: 5
+Exhaust: 17
+Chassis: 5
+Hood: 19
+Fender: 5
+Roof: 6
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 114
+Vanity Plates: 7
+Trim: 3
+Dashboard: 5
+Seats: 7
+Door Speaker: 14
+Steering Wheel: 16
+Engine Block: 6
+Struts: 15
+Arch Cover: 5
+Left Door: 2
+Right Door: 5
+Livery: 8
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #ffffff
+Custom Secondary Colour: #ff0000
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 44
+Dashboard Colour: 44
+Tyres Mode: 1

@@ -1,0 +1,42 @@
+Model: cheburek
+Plate Style: 12
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 161
+Pearl Colour: 0
+Wheel Colour: 139
+Wheel Type: 8
+Spoiler: 7
+Front Bumper: 5
+Rear Bumper: 4
+Sideskirt: 2
+Grille: 0
+Hood: 5
+Fender: 2
+Roof: 7
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 5
+Armor: 5
+Nitrous: Yes
+Turbo: Yes
+Subwoofer: Yes
+Tiresmoke: Yes
+Unk21: Yes
+Headlights: 6
+Front Wheels: 108
+Livery: 0
+Tyre Smoke Colour: #b4ff3c
+Window Tint: 1
+Custom Primary Colour: #78ff00
+Custom Secondary Colour: #78ff00
+Neon Colour: #5aff00
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 107
+Dashboard Colour: 0
+Tyres Mode: 1

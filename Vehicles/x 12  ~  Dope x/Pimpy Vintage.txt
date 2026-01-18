@@ -1,0 +1,37 @@
+Model: ztype
+Plate Style: 3
+Plate Text:  0 KPH  
+Primary Colour: 117
+Secondary Colour: 117
+Pearl Colour: 0
+Wheel Colour: 156
+Wheel Type: 9
+Front Bumper: 0
+Sideskirt: 1
+Grille: 0
+Hood: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 0
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 1
+Front Wheels: 22
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #280017
+Custom Secondary Colour: #280017
+Neon Colour: #dedeff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

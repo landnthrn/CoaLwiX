@@ -1,0 +1,44 @@
+Model: monster3
+Plate Style: 0
+Plate Text: 29BXJ997
+Primary Colour: 12
+Secondary Colour: 120
+Pearl Colour: 0
+Wheel Colour: 0
+Wheel Type: 10
+Front Bumper: 0
+Rear Bumper: 0
+Exhaust: 0
+Chassis: 0
+Hood: 0
+Right Fender: 4
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 1
+Armor: 0
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 1
+Plaques: 0
+Air Filter: 3
+Struts: 3
+Arch Cover: 0
+Tank: 0
+Livery: 0
+Tyre Smoke Colour: #8466e2
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 0
+Dashboard Colour: 132
+Tyres Mode: 1

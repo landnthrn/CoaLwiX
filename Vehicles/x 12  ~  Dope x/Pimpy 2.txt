@@ -1,0 +1,56 @@
+Model: manana2
+Plate Style: 3
+Plate Text:  0 KPH  
+Primary Colour: 21
+Secondary Colour: 0
+Pearl Colour: 4
+Wheel Colour: 156
+Wheel Type: 2
+Front Bumper: 3
+Exhaust: 1
+Grille: 1
+Fender: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 58
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 30
+Back Wheels: 4
+Plate Holder: 13
+Vanity Plates: 16
+Trim: 14
+Ornaments: 45
+Dial: 14
+Steering Wheel: 16
+Shifter Leavers: 15
+Plaques: 22
+Trunk: 5
+Hydraulics: 5
+Engine Block: 4
+Air Filter: 5
+Arch Cover: 2
+Tank: 2
+Livery: 12
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: No
+Extra 2: Yes
+Extra 3: No
+Extra 4: No

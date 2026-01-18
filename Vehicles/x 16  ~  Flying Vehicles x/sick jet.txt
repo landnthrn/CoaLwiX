@@ -1,0 +1,33 @@
+Model: strikeforce
+Plate Style: 0
+Plate Text: 200 KPH 
+Primary Colour: 121
+Secondary Colour: 121
+Pearl Colour: 8
+Wheel Colour: 156
+Wheel Type: 0
+Front Bumper: 2
+Right Fender: 4
+Engine: 4
+Brakes: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 50
+Livery: 11
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

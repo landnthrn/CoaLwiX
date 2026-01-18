@@ -1,0 +1,28 @@
+Model: lazer
+Plate Style: 7
+Plate Text: 143 MPH 
+Primary Colour: 12
+Secondary Colour: 120
+Pearl Colour: 0
+Wheel Colour: 0
+Wheel Type: 9
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 124
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #5870a1
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

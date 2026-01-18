@@ -1,0 +1,45 @@
+Model: sultan2
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 159
+Secondary Colour: 0
+Pearl Colour: 160
+Wheel Colour: 37
+Wheel Type: 8
+Spoiler: 10
+Front Bumper: 4
+Rear Bumper: 4
+Sideskirt: 3
+Exhaust: 9
+Chassis: 5
+Grille: 3
+Hood: 12
+Fender: 2
+Right Fender: 5
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 9
+Front Wheels: 114
+Livery: 2
+Tyre Smoke Colour: #bea064
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff4600
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 132
+Tyres Mode: 1

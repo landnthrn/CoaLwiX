@@ -1,0 +1,34 @@
+Model: innovation
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 161
+Pearl Colour: 0
+Wheel Colour: 134
+Wheel Type: 6
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 2
+Front Wheels: 67
+Back Wheels: 67
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #000000
+Neon Colour: #ffffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 8
+Dashboard Colour: 148
+Tyres Mode: 1

@@ -1,0 +1,41 @@
+Model: ardent
+Plate Style: 11
+Plate Text:  DKARME 
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 65
+Wheel Colour: 67
+Wheel Type: 8
+Spoiler: 3
+Front Bumper: 3
+Rear Bumper: 1
+Exhaust: 1
+Hood: 4
+Fender: 2
+Roof: 6
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 41
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 2
+Front Wheels: 111
+Livery: 37
+Tyre Smoke Colour: #c1bfff
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #c1bfff
+Neon Colour: #c1bfff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 111
+Tyres Mode: 1

@@ -1,0 +1,45 @@
+Model: tenf
+Plate Style: 2
+Plate Text:  0 KPH  
+Primary Colour: 117
+Secondary Colour: 0
+Pearl Colour: 4
+Wheel Colour: 0
+Wheel Type: 8
+Spoiler: 21
+Front Bumper: 12
+Rear Bumper: 13
+Sideskirt: 2
+Exhaust: 12
+Chassis: 2
+Grille: 4
+Hood: 11
+Fender: 1
+Right Fender: 0
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 0
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: No
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 4
+Front Wheels: 178
+Livery: 4
+Tyre Smoke Colour: #1f277f
+Window Tint: 1
+Custom Primary Colour: #1f277f
+Custom Secondary Colour: #3f4fff
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 3
+Dashboard Colour: 0
+Tyres Mode: 1

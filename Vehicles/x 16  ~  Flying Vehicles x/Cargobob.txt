@@ -1,0 +1,30 @@
+Model: cargobob4
+Plate Style: 4
+Plate Text:  4 KPH  
+Primary Colour: 131
+Secondary Colour: 131
+Pearl Colour: 3
+Wheel Colour: 156
+Wheel Type: 0
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 0
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: Yes

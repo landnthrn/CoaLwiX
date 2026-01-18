@@ -1,0 +1,39 @@
+Model: manchez2
+Plate Style: 0
+Plate Text:  DKARME 
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 10
+Wheel Colour: 0
+Wheel Type: 6
+Spoiler: 0
+Front Bumper: 1
+Exhaust: 2
+Chassis: 5
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 0
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 1
+Front Wheels: 29, Custom
+Back Wheels: 29, Custom
+Livery: 17
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 1
+Dashboard Colour: 132
+Tyres Mode: 1

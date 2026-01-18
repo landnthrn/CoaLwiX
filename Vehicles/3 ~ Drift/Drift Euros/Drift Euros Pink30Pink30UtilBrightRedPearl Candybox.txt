@@ -1,0 +1,56 @@
+Model: drifteuros
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 0
+Pearl Colour: 44
+Wheel Colour: 35
+Wheel Type: 8
+Spoiler: 16
+Front Bumper: 3
+Rear Bumper: 3
+Sideskirt: 12
+Exhaust: 6
+Chassis: 8
+Hood: 20
+Fender: 7
+Roof: 9
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 12
+Front Wheels: 114
+Vanity Plates: 5
+Trim: 1
+Dashboard: 3
+Seats: 7
+Door Speaker: 15
+Steering Wheel: 16
+Engine Block: 3
+Air Filter: 10
+Struts: 17
+Arch Cover: 4
+Aerials: 5
+Trim2: 14
+Right Door: 0
+Livery: 15
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #1e001e
+Custom Secondary Colour: #1e001e
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 30
+Dashboard Colour: 30
+Tyres Mode: 1

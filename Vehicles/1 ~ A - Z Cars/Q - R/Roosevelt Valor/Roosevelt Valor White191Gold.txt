@@ -1,0 +1,48 @@
+Model: btype3
+Plate Style: 1
+Plate Text:  DKARME 
+Primary Colour: 0
+Secondary Colour: 158
+Pearl Colour: 67
+Wheel Colour: 160
+Wheel Type: 9
+Spoiler: 2
+Front Bumper: 1
+Rear Bumper: 1
+Sideskirt: 1
+Chassis: 3
+Grille: 1
+Hood: 2
+Fender: 2
+Right Fender: 1
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 124
+Arch Cover: 1
+Aerials: 1
+Trim2: 3
+Left Door: 2
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: 
+Neon Colour: #1900ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

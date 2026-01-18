@@ -1,0 +1,53 @@
+Model: virgo2
+Plate Style: 1
+Plate Text:  0 MPH  
+Primary Colour: 158
+Secondary Colour: 158
+Pearl Colour: 126
+Wheel Colour: 0
+Wheel Type: 9
+Exhaust: 2
+Chassis: 0
+Grille: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 8
+Front Wheels: 113
+Back Wheels: 0
+Plate Holder: 0
+Vanity Plates: 0
+Trim: 3
+Ornaments: 33
+Dial: 2
+Steering Wheel: 7
+Shifter Leavers: 1
+Plaques: 20
+Speakers: 3
+Trunk: 3
+Hydraulics: 4
+Engine Block: 5
+Air Filter: 2
+Aerials: 3
+Trim2: 1
+Tank: 4
+Livery: 5
+Tyre Smoke Colour: #ffffff
+Window Tint: 3
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff9605
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 102
+Tyres Mode: 1

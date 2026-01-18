@@ -1,0 +1,44 @@
+Model: fagaloa
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 140
+Wheel Colour: 79
+Wheel Type: 8
+Spoiler: 3
+Front Bumper: 0
+Rear Bumper: 0
+Sideskirt: 8
+Exhaust: 2
+Chassis: 1
+Grille: 5
+Fender: 3
+Right Fender: 6
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 108
+Livery: 0
+Tyre Smoke Colour: #3c00ff
+Window Tint: 1
+Custom Primary Colour: #0f003c
+Custom Secondary Colour: #5870a1
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 3
+Dashboard Colour: 0
+Tyres Mode: 1

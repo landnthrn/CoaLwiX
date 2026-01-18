@@ -1,0 +1,35 @@
+Model: reaper
+Plate Style: 12
+Plate Text:  0 MPH  
+Primary Colour: 109
+Secondary Colour: 157
+Pearl Colour: 55
+Wheel Colour: 139
+Wheel Type: 8
+Spoiler: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 6
+Front Wheels: 113
+Livery: 1816693180
+Tyre Smoke Colour: #46ff33
+Window Tint: 1
+Custom Primary Colour: #81d803
+Custom Secondary Colour: #28f534
+Neon Colour: #2dff00
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 151
+Dashboard Colour: 150
+Tyres Mode: 1

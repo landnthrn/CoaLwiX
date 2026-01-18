@@ -1,0 +1,34 @@
+Model: insurgent2
+Plate Style: 1
+Plate Text: URMOM69 
+Primary Colour: 0
+Secondary Colour: 12
+Pearl Colour: 7
+Wheel Colour: 142
+Wheel Type: 10
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 3
+Suspension: 0
+Armor: 4
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 13
+Front Wheels: 3
+Livery: -1
+Tyre Smoke Colour: #8466e2
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: #bd7fff
+Neon Colour: #2301ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

@@ -1,0 +1,45 @@
+Model: driftl352
+Plate Style: 7
+Plate Text:  0 KPH  
+Primary Colour: 150
+Secondary Colour: 41
+Pearl Colour: 42
+Wheel Colour: 104
+Wheel Type: 8
+Spoiler: 10
+Front Bumper: 7
+Rear Bumper: 1
+Sideskirt: 2
+Exhaust: 5
+Chassis: 5
+Grille: 7
+Hood: 12
+Fender: 8
+Right Fender: 8
+Roof: 6
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 0
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 15
+Livery: 7
+Tyre Smoke Colour: #174f95
+Window Tint: 5
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #d6d5e0
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 112
+Dashboard Colour: 112
+Tyres Mode: 1

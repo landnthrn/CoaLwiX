@@ -1,0 +1,52 @@
+Model: weevil2
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 140
+Wheel Colour: 79
+Wheel Type: 8
+Spoiler: 8
+Front Bumper: 3
+Rear Bumper: 7
+Sideskirt: 5
+Exhaust: 14
+Chassis: 4
+Grille: 10
+Hood: 5
+Fender: 8
+Roof: 16
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 110
+Trim: 9
+Door Speaker: 3
+Steering Wheel: 17
+Shifter Leavers: 13
+Arch Cover: 4
+Aerials: 10
+Left Door: 2
+Right Door: 6
+Livery: 0
+Tyre Smoke Colour: #3c00ff
+Window Tint: 1
+Custom Primary Colour: #0f003c
+Custom Secondary Colour: #5870a1
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 82
+Dashboard Colour: 82
+Tyres Mode: 1

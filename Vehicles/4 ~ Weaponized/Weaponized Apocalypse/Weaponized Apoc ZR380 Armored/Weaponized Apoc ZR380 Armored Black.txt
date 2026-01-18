@@ -1,0 +1,48 @@
+Model: zr380
+Plate Style: 0
+Plate Text:  DKARME 
+Primary Colour: 52
+Secondary Colour: 151
+Pearl Colour: 11
+Wheel Colour: 0
+Wheel Type: 1
+Spoiler: 6
+Front Bumper: 1
+Rear Bumper: 1
+Exhaust: 2
+Chassis: 3
+Hood: 5
+Fender: 3
+Right Fender: 5
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 58
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 36
+Ornaments: 3
+Air Filter: 4
+Struts: 3
+Arch Cover: 4
+Aerials: 1
+Trim2: 1
+Tank: 2
+Livery: 4
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #00ff6e
+Neon Front: No
+Neon Back: Yes
+Neon Left: No
+Neon Right: No
+Interior Colour: 2
+Dashboard Colour: 156
+Tyres Mode: 1

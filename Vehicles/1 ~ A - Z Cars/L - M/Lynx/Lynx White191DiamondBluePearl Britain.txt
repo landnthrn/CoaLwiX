@@ -1,0 +1,41 @@
+Model: lynx
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 67
+Wheel Colour: 131
+Wheel Type: 10
+Spoiler: 1
+Front Bumper: 2
+Rear Bumper: 3
+Sideskirt: 1
+Exhaust: 4
+Chassis: 1
+Hood: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 25
+Livery: 2
+Tyre Smoke Colour: #0000ff
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #c1bfff
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 111
+Tyres Mode: 1

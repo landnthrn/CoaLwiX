@@ -1,0 +1,34 @@
+Model: hakuchou
+Plate Style: 7
+Plate Text:  DKARME 
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 67
+Wheel Colour: 67
+Wheel Type: 6
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 36, Custom
+Back Wheels: 36, Custom
+Livery: -1
+Tyre Smoke Colour: #1288ff
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #c1bfff
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

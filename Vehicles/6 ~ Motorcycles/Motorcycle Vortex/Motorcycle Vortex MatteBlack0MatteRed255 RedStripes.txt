@@ -1,0 +1,42 @@
+Model: vortex
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 10
+Wheel Colour: 28
+Wheel Type: 6
+Spoiler: 5
+Front Bumper: 4
+Sideskirt: 2
+Exhaust: 0
+Chassis: 3
+Hood: 2
+Fender: 0
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 46
+Back Wheels: 46
+Livery: 1
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #ff0000
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

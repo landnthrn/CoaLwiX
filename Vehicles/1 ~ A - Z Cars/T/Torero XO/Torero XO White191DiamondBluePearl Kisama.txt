@@ -1,0 +1,44 @@
+Model: torero2
+Plate Style: 11
+Plate Text:  DKARME 
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 67
+Wheel Colour: 67
+Wheel Type: 9
+Spoiler: 17
+Front Bumper: 15
+Rear Bumper: 12
+Sideskirt: 17
+Exhaust: 14
+Chassis: 9
+Grille: 11
+Hood: 16
+Fender: 3
+Roof: 14
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 84
+Livery: 8
+Tyre Smoke Colour: #ffc700
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #c1bfff
+Neon Colour: #1900ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 67
+Dashboard Colour: 134
+Tyres Mode: 1

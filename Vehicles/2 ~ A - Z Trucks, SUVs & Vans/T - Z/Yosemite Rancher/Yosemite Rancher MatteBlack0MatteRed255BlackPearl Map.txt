@@ -1,0 +1,63 @@
+Model: yosemite3
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 0
+Wheel Colour: 28
+Wheel Type: 8
+Spoiler: 5
+Front Bumper: 7
+Rear Bumper: 1
+Sideskirt: 4
+Exhaust: 4
+Chassis: 4
+Grille: 7
+Hood: 14
+Fender: 4
+Right Fender: 14
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 204
+Ornaments: 44
+Dial: 14
+Seats: 2
+Door Speaker: 9
+Steering Wheel: 16
+Shifter Leavers: 15
+Trunk: 2
+Engine Block: 4
+Air Filter: 5
+Arch Cover: 7
+Aerials: 0
+Trim2: 1
+Tank: 7
+Left Door: 0
+Right Door: 2
+Livery: 9
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #ff0000
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 150
+Dashboard Colour: 150
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: Yes
+Extra 3: Yes

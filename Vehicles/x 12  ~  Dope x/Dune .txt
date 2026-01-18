@@ -1,0 +1,38 @@
+Model: dune3
+Plate Style: 5
+Plate Text:  0 KPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 145
+Wheel Colour: 142
+Wheel Type: 10
+Sideskirt: 0
+Chassis: 2
+Right Fender: 1
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 57
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 1
+Front Wheels: 9
+Livery: 29
+Tyre Smoke Colour: #8466e2
+Window Tint: 1
+Custom Primary Colour: #1e0000
+Custom Secondary Colour: #1e0000
+Neon Colour: #65d3ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

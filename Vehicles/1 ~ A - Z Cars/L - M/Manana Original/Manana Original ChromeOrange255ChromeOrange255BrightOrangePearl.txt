@@ -1,0 +1,45 @@
+Model: manana
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 120
+Secondary Colour: 120
+Pearl Colour: 138
+Wheel Colour: 138
+Wheel Type: 8
+Front Bumper: 3
+Rear Bumper: 1
+Exhaust: 2
+Chassis: 2
+Grille: 1
+Hood: 0
+Fender: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 11
+Front Wheels: 88
+Livery: -1
+Tyre Smoke Colour: #ffaf00
+Window Tint: 1
+Custom Primary Colour: #ff8200
+Custom Secondary Colour: #ff8200
+Neon Colour: #ff9600
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: No
+Extra 10: Yes
+Extra 11: Yes
+Extra 12: Yes

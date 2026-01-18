@@ -1,0 +1,36 @@
+Model: btype2
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 142
+Secondary Colour: 0
+Pearl Colour: 145
+Wheel Colour: 90
+Wheel Type: 1
+Hood: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 58
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 36
+Ornaments: 45
+Livery: 4
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 156
+Dashboard Colour: 73
+Tyres Mode: 1

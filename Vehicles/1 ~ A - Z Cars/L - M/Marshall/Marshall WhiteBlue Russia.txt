@@ -1,0 +1,31 @@
+Model: marshall
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 10
+Wheel Colour: 28
+Wheel Type: 8
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 2
+Front Wheels: 119
+Livery: 19
+Tyre Smoke Colour: #ff0000
+Window Tint: 6
+Custom Primary Colour: #ffffff
+Custom Secondary Colour: #0000e0
+Neon Colour: #ffffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: Yes
+Extra 3: Yes

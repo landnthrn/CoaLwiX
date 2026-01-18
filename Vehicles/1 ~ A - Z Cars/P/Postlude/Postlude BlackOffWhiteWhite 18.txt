@@ -1,0 +1,53 @@
+Model: postlude
+Plate Style: 7
+Plate Text:  DKARME 
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 67
+Wheel Colour: 67
+Wheel Type: 8
+Spoiler: 11
+Front Bumper: 5
+Rear Bumper: 5
+Exhaust: 15
+Chassis: 5
+Hood: 1
+Fender: 5
+Roof: 6
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 116
+Vanity Plates: 7
+Trim: 3
+Dashboard: 5
+Seats: 7
+Door Speaker: 14
+Steering Wheel: 16
+Engine Block: 6
+Struts: 15
+Arch Cover: 5
+Left Door: 4
+Right Door: 5
+Livery: 11
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #c1bfff
+Neon Colour: #0f00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 67
+Dashboard Colour: 70
+Tyres Mode: 1

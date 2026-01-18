@@ -1,0 +1,41 @@
+Model: nightshark
+Plate Style: 7
+Plate Text:  DKARME 
+Primary Colour: 153
+Secondary Colour: 0
+Pearl Colour: 89
+Wheel Colour: 160
+Wheel Type: 9
+Front Bumper: 2
+Rear Bumper: 2
+Exhaust: 2
+Chassis: 2
+Grille: 8
+Hood: 9
+Fender: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 119
+Livery: 32
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #00ff82
+Custom Secondary Colour: #bec800
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

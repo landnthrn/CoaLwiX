@@ -1,0 +1,41 @@
+Model: pfister811
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 120
+Secondary Colour: 120
+Pearl Colour: 10
+Wheel Colour: 160
+Wheel Type: 9
+Spoiler: 1
+Front Bumper: 4
+Rear Bumper: 1
+Sideskirt: 0
+Exhaust: 3
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 0
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 12
+Front Wheels: 124
+Livery: -1
+Tyre Smoke Colour: #ff00e6
+Window Tint: 3
+Custom Primary Colour: #ff00ff
+Custom Secondary Colour: #ff00ff
+Neon Colour: #ff00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: Yes

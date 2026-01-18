@@ -1,0 +1,268 @@
+--Tis script is made my Nova_Plays if you need any help with the script join https://discord.gg/E4m6pMUwpx--
+
+local scripts_dir = filesystem.scripts_dir()
+local requirements = {
+    folder_paths = {
+        $"{scripts_dir}/lib/NovaScript",
+        $"{scripts_dir}/lib/NovaScript/Modules",
+        $"{scripts_dir}/lib/NovaScript/Songs",
+    },
+    file_paths = {
+        $"{scripts_dir}/lib/NovaScript/avatar_info.txt",
+        $"{scripts_dir}/lib/NovaScript/death_note.txt",
+    },
+    all_file_paths = {
+        $"{scripts_dir}/lib/NovaScript/Modules/self.pluto",
+        $"{scripts_dir}/lib/NovaScript/Modules/online.pluto",
+        $"{scripts_dir}/lib/NovaScript/Modules/vehicle.pluto",
+        $"{scripts_dir}/lib/NovaScript/Modules/weapon.pluto",
+        $"{scripts_dir}/lib/NovaScript/Modules/world.pluto",
+        $"{scripts_dir}/lib/NovaScript/Modules/bodyguards.pluto",
+        $"{scripts_dir}/lib/Novascript/Modules/player_menu.pluto",
+        $"{scripts_dir}/lib/Novascript/NovaS_translations.pluto",
+        $"{scripts_dir}/lib/Novascript/NovaScript_natives.pluto",
+        $"{scripts_dir}/lib/Novascript/tables.pluto",
+        $"{scripts_dir}/lib/Novascript/functions.pluto",
+        $"{scripts_dir}/lib/Novascript/NovaScript_logo.png",
+    },
+    all_file_names = {
+        "'self module'",
+        "'online module'",
+        "'vehicle module'",
+        "'weapon module'",
+        "'world module'",
+        "'bodyguards module'",
+        "'player_menu module'",
+        "'NovaS_translations'",
+        "'NovaScript_natives'",
+        "'tables'",
+        "'functions'",
+        "'NovaScript_logo'"
+    },
+    modules = {
+        "NovaScript/Modules/self",
+        "NovaScript/Modules/online",
+        "NovaScript/Modules/vehicle",
+        "NovaScript/Modules/weapon",
+        "NovaScript/Modules/world",
+        "NovaScript/Modules/bodyguards",
+        "Novascript/Modules/player_menu"
+    },
+    modules_names = {
+        "'self module'",
+        "'online module'",
+        "'vehicle module'",
+        "'weapon module'",
+        "'world module'",
+        "'bodyguards module'",
+        "'player_menu module'"
+    },
+    old_files_paths = {
+        $"{scripts_dir}/lib/NovaScript/ent_func.pluto",
+        $"{scripts_dir}/lib/NovaScript/ent_func.lua",
+        $"{scripts_dir}/lib/NovaScript/tables.pluto",
+        $"{scripts_dir}/lib/NovaScript/tables.lua",
+        $"{scripts_dir}/lib/NovaScript/NovaS_translations.lua",
+    },
+}
+
+for i, folder_path in requirements.folder_paths do
+    if not filesystem.exists(folder_path) then
+        filesystem.mkdir(folder_path)
+    end
+end
+
+for i, file_path in requirements.file_paths do
+    if not filesystem.exists(file_path) then
+        local file = io.open(file_path, "w")
+        file:close()
+    end
+end
+
+util.keep_running()
+local scaleform = require("ScaleformLib")
+sf = scaleform("instructional_buttons")
+
+
+local is_installed = {}
+for i, file_path in requirements.all_file_paths do
+    if not filesystem.exists(file_path) then
+        util.toast(requirements.all_file_names[i] .. " is missing, try reinstalling the script with the repository.")
+        util.toast("Based on what's missing will the script decide what files/options it can load.")
+        table.insert(is_installed, false)
+    else
+        table.insert(is_installed, true)
+    end
+end
+
+if is_installed[7] and is_installed[8] and is_installed[9] and is_installed[10] then
+    do
+        local backup = package.path
+        package.path = ""
+        
+        local script_modules = $"{scripts_dir}/lib/NovaScript/Modules"
+        
+        package.path = package.path .. ";" .. script_modules .. "/?.pluto"
+        
+        package.path = package.path .. ";" .. backup
+        backup = nil
+    end
+    
+    util.ensure_package_is_installed("lua/ScaleformLib")
+    
+    util.execute_in_os_thread(function()
+        for i, mod in requirements.modules do
+            package.loaded[mod] = nil
+            xpcall(
+                function()
+                    local required_mod = require(mod)
+                end,
+                function(err)
+                    local failed_mod_name = requirements.modules_names[i]
+                    util.toast($"Failed to load: {failed_mod_name}. Check the log for more info")
+                    util.log($"[NovaScript]: Failed to load a module ({failed_mod_name}), error: {err}")
+                end
+            )
+        end
+    end)
+    
+    if is_installed[11] then
+        local T = require("NovaScript.NovaS_translations")
+        local logo = directx.create_texture(scripts_dir .. "lib/NovaScript/NovaScript_logo.png")
+        
+        local credits_lines = {
+            {text = "Special Thanks to", size = 0.9},
+            {text = "", size = 0.7},
+            {text = "", size = 0.7},
+            {text = "Hexarobi", size = 0.7},
+            {text = "For helping me getting started", size = 0.6},
+            {text = "", size = 0.7},
+            {text = "", size = 0.7},
+            {text = "Mr. Robot", size = 0.7},
+            {text = "For helping me learning more about writing code with the module system", size = 0.6},
+            {text = "", size = 0.7},
+            {text = "", size = 0.7},
+            {text = "Thanks to", size = 0.9},
+            {text = "", size = 0.7},
+            {text = "", size = 0.7},
+            {text = "Aaron", size = 0.7},
+            {text = "Hexarobi", size = 0.7},
+            {text = "AcJoker", size = 0.7},
+            {text = "well in that case", size = 0.7},
+            {text = "JayMontana", size = 0.7},
+            {text = "ShadowCat", size = 0.7},
+            {text = "Davus", size = 0.7},
+            {text = "", size = 0.7},
+            {text = "For helping me with stuff in #programming", size = 0.6},
+            {text = "", size = 0.7},
+            {text = "", size = 0.7},
+            {text = "Where i looked at some code", size = 0.9},
+            {text = "", size = 0.7},
+            {text = "", size = 0.7},
+            {text = "JerryScript", size = 0.7},
+            {text = "LanceScript", size = 0.7},
+            {text = "", size = 0.7},
+            {text = "", size = 0.7},
+            {text = "", size = 0.7},
+            {text = "Thank you translators for translating the script", size = 0.9},
+            {text = "", size = 0.7},
+            {text = "", size = 0.7},
+            {text = "-Negotium- for polish", size = 0.7},
+            {text = "N0mbyy for german", size = 0.7},
+            {text = "Erstarisk for portuguese", size = 0.7},
+            {text = "XenonMido for french", size = 0.7},
+            {text = "lu_zi for chinese", size = 0.7},
+            {text = "Rodri for spanish", size = 0.7},
+            {text = "Арена for korean", size = 0.7},
+            {text = "", size = 0.7},
+            {text = "And chazuki for helping me making the translations tables", size = 0.7},
+            {text = "and being a good admin ofc", size = 0.7},
+            {text = "and zex (she did nothing)", size = 0.7},
+            {text = "", size = 0.7},
+            {text = "", size = 0.7},
+            {text = "And you!!", size = 1},
+        }
+        
+        -----------------------------------------------
+        --------------------OPTIONS--------------------
+        -----------------------------------------------
+        local root = menu.my_root()
+        root:hyperlink(T"Join The Discord Server", "https://discord.gg/E4m6pMUwpx")
+        
+        local credit_text_positions = {}
+        local ready_for_text = false
+        local show_credits;show_credits = root:toggle(T"Show Credits", {}, "", function(on)
+            if on then
+                for i = 1, #credits_lines do
+                    table.insert(credit_text_positions, 1)
+                end
+        
+                set_radio_frontend_fade_time(3)
+                set_audio_flag("MobileRadioInGame", true)
+                set_frontend_radio_active(true)
+                set_radio_station_music_only("RADIO_18_90S_ROCK", true)
+                set_radio_to_station_name("RADIO_03_HIPHOP_NEW")
+                force_music_track_list("RADIO_03_HIPHOP_NEW", "radio_03_hiphop_new_core_music", 3 * 61000 - 15000) --timed the best--
+                local delay_time = util.current_time_millis() + 2000
+                while show_credits.value do
+                    directx.draw_rect(0, 0, 1, 1, {r = 0, g = 0, b = 0, a = 1})
+                    directx.draw_texture(logo, 0.14, 0.14, 0.5, 0.5, 0.12, 0.5, 0, {r = 1, g = 1, b = 1, a = 1})
+        
+                    if not ready_for_text and delay_time < util.current_time_millis() then
+                        ready_for_text = true
+                        util.toast(tostring(ready_for_text))
+                    end
+        
+                    if ready_for_text then
+                        for i = 1, #credits_lines do
+                            local new_position = credit_text_positions[i] - (-i/40)
+                            if new_position <= 0.95 then
+                                if new_position > 0.05 then
+                                    directx.draw_text(0.5, new_position, credits_lines[i].text, ALIGN_CENTRE, credits_lines[i].size, { r = 1, g = 1, b = 1, a = 1 }, true)
+                                else
+                                    if i == 46 then
+                                        show_credits.value = false
+                                    end
+                                end 
+                            end
+                            credit_text_positions[i] = credit_text_positions[i] - 0.0009
+                        end
+                    end
+                    util.yield()
+                end
+            else
+                ready_for_text = false
+                credit_text_positions = {}
+                set_audio_flag("MobileRadioInGame", false)
+                set_frontend_radio_active(false)
+            end
+        end)
+
+        if SCRIPT_MANUAL_START and not SCRIPT_SILENT_START then
+            util.create_thread(function()
+                local l = -100
+                while l <= 90 do
+                    for j = 1, 195, 5 do
+                        directx.draw_texture(logo, 0.10, 0.10, 0.5, 0.5, l/1000, 0.73, 0, {r = 1, g = 1, b = 1, a = j/255})
+                        util.yield(0)
+                        l = l + 5
+                    end
+                end
+        
+                for i = 1, 220 do
+                    directx.draw_texture(logo, 0.10, 0.10, 0.5, 0.5, 0.09, 0.73, 0, {r = 1, g = 1, b = 1, a = 255})
+                    util.yield(0)
+                end
+        
+                local k = 90
+                while k >= -10 do
+                    for j = 195, 1, -5 do
+                        directx.draw_texture(logo, 0.10, 0.10, 0.5, 0.5, k/1000, 0.73, 0, {r = 1, g = 1, b = 1, a = j/255})
+                        util.yield(0)
+                        k = k - 5
+                    end
+                end
+            end)
+        end
+    end
+end

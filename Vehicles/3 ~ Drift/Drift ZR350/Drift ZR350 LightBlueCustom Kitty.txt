@@ -1,0 +1,60 @@
+Model: driftzr350
+Plate Style: 7
+Plate Text:  DKARME 
+Primary Colour: 71
+Secondary Colour: 28
+Pearl Colour: 70
+Wheel Colour: 140
+Wheel Type: 9
+Spoiler: 1
+Front Bumper: 5
+Rear Bumper: 2
+Sideskirt: 14
+Exhaust: 8
+Chassis: 2
+Grille: 5
+Hood: 14
+Fender: 4
+Right Fender: 3
+Roof: 4
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 45
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 119
+Vanity Plates: 2
+Trim: 8
+Dashboard: 4
+Dial: 3
+Seats: 6
+Door Speaker: 14
+Steering Wheel: 16
+Engine Block: 2
+Air Filter: 8
+Struts: 9
+Arch Cover: 2
+Aerials: 8
+Trim2: 2
+Left Door: 5
+Right Door: 0
+Livery: 12
+Tyre Smoke Colour: #00aeef
+Window Tint: 1
+Custom Primary Colour: #00aadc
+Custom Secondary Colour: 
+Neon Colour: #1900ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 28
+Dashboard Colour: 88
+Tyres Mode: 1

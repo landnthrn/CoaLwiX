@@ -1,0 +1,46 @@
+Model: club
+Plate Style: 12
+Plate Text:  0 MPH  
+Primary Colour: 70
+Secondary Colour: 0
+Pearl Colour: 92
+Wheel Colour: 160
+Wheel Type: 9
+Spoiler: 9
+Front Bumper: 8
+Rear Bumper: 4
+Sideskirt: 2
+Exhaust: 9
+Chassis: 6
+Grille: 2
+Hood: 1
+Fender: 0
+Right Fender: 0
+Roof: 4
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 124
+Livery: 2
+Tyre Smoke Colour: #00ae00
+Window Tint: 1
+Custom Primary Colour: #46be00
+Custom Secondary Colour: #46be00
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: Yes

@@ -1,0 +1,41 @@
+Model: chimera
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 126
+Wheel Colour: 158
+Wheel Type: 4
+Spoiler: 6
+Front Bumper: 4
+Sideskirt: 8
+Exhaust: 6
+Chassis: 3
+Hood: 1
+Fender: 8
+Roof: 7
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 8
+Front Wheels: 0
+Livery: 0
+Tyre Smoke Colour: #ffb923
+Window Tint: 1
+Custom Primary Colour: #47391b
+Custom Secondary Colour: #5870a1
+Neon Colour: #ff9605
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 111
+Tyres Mode: 1

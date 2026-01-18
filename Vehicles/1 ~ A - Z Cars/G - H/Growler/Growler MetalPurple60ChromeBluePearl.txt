@@ -1,0 +1,57 @@
+Model: growler
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 140
+Wheel Colour: 79
+Wheel Type: 8
+Spoiler: 7
+Front Bumper: 0
+Rear Bumper: 0
+Sideskirt: 6
+Exhaust: 6
+Chassis: 1
+Grille: 5
+Hood: 15
+Fender: 0
+Right Fender: 1
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 95
+Plate Holder: 6
+Vanity Plates: 5
+Trim: 3
+Dashboard: 1
+Dial: 2
+Seats: 0
+Door Speaker: 3
+Steering Wheel: 2
+Struts: 15
+Aerials: 7
+Left Door: 3
+Right Door: 3
+Livery: 0
+Tyre Smoke Colour: #3c00ff
+Window Tint: 1
+Custom Primary Colour: #0f003c
+Custom Secondary Colour: #5870a1
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 83
+Dashboard Colour: 38
+Tyres Mode: 1

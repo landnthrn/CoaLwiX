@@ -1,0 +1,973 @@
+require("NovaScript.NovaScript_natives")
+local tables = require("NovaScript.tables")
+local T = require("NovaScript.NovaS_translations")
+local func = require("NovaScript.functions")
+
+-----------------------------------------------
+---------------------LISTS---------------------
+-----------------------------------------------
+local root = menu.my_root()
+local vehicle_main = root:list(T"Vehicle")
+local movement_list = vehicle_main:list(T"Movement")
+local npcs_list = vehicle_main:list(T"NPCs")
+local trail_effects_list = vehicle_main:list(T"Trail Effects")
+local rpm_flames_list = vehicle_main:list(T"Rpm Flames")
+local indicator_lights_list = vehicle_main:list(T"Indicator Lights")
+local door_control_list = vehicle_main:list(T"Door Control")
+local window_control_list = vehicle_main:list(T"Window Control")
+local horn_explosion_list = vehicle_main:list(T"Horn Explosion")
+
+-----------------------------------------------
+--------------------OPTIONS--------------------
+-----------------------------------------------
+local vehilce_fly_list = movement_list:list(T"Vehicle Fly")
+---------------
+--VEHICLE FLY--
+---------------
+local vehicle_fly = {
+    speed = 75,
+    disable_col = false
+}
+local speed = 75
+local vehicle_fly_opt;vehicle_fly_opt = vehilce_fly_list:toggle_loop(T"Vehicle Fly", {}, "", function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local no_freeze = false
+        local current_speed = vehicle_fly.speed
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        local cam_rot = get_gameplay_cam_rot(0)
+        set_entity_rotation(vehicle, cam_rot.x, cam_rot.y, cam_rot.z, 2, true)
+
+        if is_control_pressed(0, 76) then
+            vehicle_fly.speed = vehicle_fly.speed * 2
+        end
+        if is_control_pressed(0, 71) then
+            set_vehicle_forward_speed(vehicle, vehicle_fly.speed)
+            freeze_entity_position(vehicle, false)
+            no_freeze = true
+        elseif is_control_pressed(0, 72) then
+            set_vehicle_forward_speed(vehicle, -vehicle_fly.speed)
+            freeze_entity_position(vehicle, false)
+            no_freeze = true
+        end
+        if is_control_pressed(0, 64) then
+            apply_force_to_entity_center_of_mass(vehicle, 1, vehicle_fly.speed, 0, 0, true, true, true, true)
+            freeze_entity_position(vehicle, false)
+            no_freeze = true
+        elseif is_control_pressed(0, 63) then
+            apply_force_to_entity_center_of_mass(vehicle, 1, -vehicle_fly.speed, 0, 0, true, true, true, true)
+            freeze_entity_position(vehicle, false)
+            no_freeze = true
+        end
+
+        if is_control_pressed(0, 61) then
+            apply_force_to_entity_center_of_mass(vehicle, 1, 0, 0, vehicle_fly.speed, true, true, true, true)
+            freeze_entity_position(vehicle, false)
+            no_freeze = true
+        elseif is_control_pressed(0, 62) then
+            apply_force_to_entity_center_of_mass(vehicle, 1, 0, 0, -vehicle_fly.speed, true, true, true, true)
+            freeze_entity_position(vehicle, false)
+            no_freeze = true
+        end
+        if not no_freeze then
+            freeze_entity_position(vehicle, true)
+        end
+        if vehicle_fly.disable_col then
+            set_entity_collision(vehicle, false, false)
+        else
+            set_entity_collision(vehicle, true, true)
+        end
+        vehicle_fly.speed = current_speed
+
+    else
+        util.toast(T"Your not in any vehicle.")
+        vehicle_fly_opt.value = false
+    end
+end, function()
+    local vehicle = entities.get_user_vehicle_as_handle(false)
+    freeze_entity_position(vehicle, false)
+    set_entity_collision(vehicle, true, true)
+end)
+
+vehilce_fly_list:slider(T"Speed", {"Nvehfly_speed"}, "", 10, 350, 75, 1, function(count)
+	vehicle_fly.speed = count
+end)
+
+vehilce_fly_list:toggle(T"Disable Collision", {}, "", function(on)
+	vehicle_fly.disable_col = on
+end)
+
+local horn_boost_list = movement_list:list(T"Horn Boost")
+---------------
+--BOOST SPEED--
+---------------
+local horn_boost_speed = 100
+horn_boost_list:slider(T"Boost speed", {"Nboostspeed"}, "", 10, 400, 100, 10, function(count)
+	horn_boost_speed = count
+end)
+
+--------------
+--HORN BOOST--
+--------------
+horn_boost_list:toggle_loop(T"Horn Boost", {}, "", function()
+	if is_ped_in_any_vehicle(players.user_ped(), false) then
+	    local vehicle = entities.get_user_vehicle_as_handle(false)
+        if is_horn_active(vehicle) then
+	    	set_vehicle_forward_speed(vehicle, horn_boost_speed)
+        end
+    end
+end)
+
+local nitrous_list = movement_list:list(T"Nitrous")
+local nitro = {power = 1, duration = 20}
+---------------
+--NITRO POWER--
+---------------
+nitrous_list:slider(T"Nitro Power", {"Nnitropower"}, "", 1, 100, 10, 1, function(count)
+	nitro.power = (count/10)
+end)
+
+------------------
+--NITRO DURATION--
+------------------
+nitrous_list:slider(T"Nitro Duration", {"Nnitrodur"}, "", 1, 120, 20, 1, function(count)
+	nitro.duration = count
+end)
+
+-----------
+--NITROUS--
+-----------
+nitrous_list:toggle_loop(T"Nitrous", {}, "", function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle()
+        func.use_fx_asset("veh_xs_vehicle_mods")
+        if is_control_just_pressed(0, 357) then
+            local nitrous_start = util.current_time_millis()
+            set_override_nitrous_level(vehicle, true, nitro.duration*1000, nitro.power, 0, false)
+            while util.current_time_millis() < nitrous_start + nitro.duration*1000 do
+                util.yield(10)
+                if is_control_just_pressed(0, 357) then
+                    break
+                end
+            end
+            set_override_nitrous_level(vehicle, false, nitro.duration*1000, nitro.power, 0, false)
+        end
+    end
+end, function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle()
+        set_override_nitrous_level(vehicle, false, nitro.duration*1000, nitro.power, 0, false)
+    end
+end)
+
+-------------------------
+--PREVENT MK2 IDLE FALL--
+-------------------------
+local vehicle_coords_on_stop = nil
+movement_list:toggle_loop(T"Prevent Mk2 Idle Fall", {}, "", function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        if util.get_label_text(players.get_vehicle_model(players.user())) == "Oppressor Mk II" then
+            local vehicle = entities.get_user_vehicle_as_handle(false)
+            local speed = math.ceil(get_entity_speed(vehicle))
+            if speed > 3 or is_control_pressed(0, 71) or is_control_pressed(0, 72) or is_control_pressed(0, 63) or is_control_pressed(0, 64) or is_control_pressed(0, 61) or is_control_pressed(0, 62) then
+                vehicle_coords_on_stop = nil
+            else
+                if vehicle_coords_on_stop == nil then
+                    vehicle_coords_on_stop = get_entity_coords(vehicle)
+                end
+                if get_entity_height_above_ground(vehicle) >= 3 then
+                    local current_coords = get_entity_coords(vehicle)
+                    set_entity_coords(vehicle, current_coords.x, current_coords.y, vehicle_coords_on_stop.z, false, false, false, false)
+                end
+            end
+        end
+    end
+end)
+
+---------
+--DRIFT--
+---------
+movement_list:toggle_loop(T"Drift", {},  T"While holding down shift, you drift.", function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        if is_disabled_control_pressed(0, 61) then
+            set_vehicle_reduce_grip(vehicle, true)
+        else
+            set_vehicle_reduce_grip(vehicle, false)
+        end
+    end
+end, function()
+    local vehicle = entities.get_user_vehicle_as_handle(false)
+    set_vehicle_reduce_grip(vehicle, false)
+end)
+
+------------------
+--RATATION SPEED--
+------------------
+local rotation_speed = 50
+movement_list:slider(T"Rotation Speed", {} , "", 50, 1000, 50, 50, function(value)
+    rotation_speed = value
+end)
+
+----------------------------------------------
+--SET VEHICLE TO CAM ROTATION WHILE AIRBORNE--
+----------------------------------------------
+local vehicle_rotation = nil
+local set_vehicle_to_cam_rot;set_vehicle_to_cam_rot = movement_list:toggle_loop(T"Set Vehicle To Cam Rotation While Airborne", {}, "", function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        local height = get_entity_height_above_ground(vehicle)
+        if height >= 2.0 and not is_entity_in_water(vehicle) then
+            local cam_rot = get_gameplay_cam_rot(0)
+            local desired_rotation = func.from_euler(cam_rot.x, cam_rot.y, cam_rot.z)
+            if vehicle_rotation == nil then
+                vehicle_rotation = desired_rotation
+            else
+                vehicle_rotation = func.slerp(vehicle_rotation, desired_rotation, rotation_speed/1000)
+                set_entity_quaternion(vehicle, vehicle_rotation.x, vehicle_rotation.y, vehicle_rotation.z, vehicle_rotation.w)
+            end
+        end
+    end
+end, function()
+    vehicle_rotation = nil
+end)
+
+
+local drive_around_map_set = {ped = nil, was_driver = false, speed = 100, driving_style = 786603}
+local drive_to_waypoint_set = {ped = nil, was_driver = false, speed = 100, driving_style = 786603}
+local drive_to_closest_player_set = {ped = nil, was_driver = false, speed = 100, driving_style = 786603}
+
+---------
+--SPEED--
+---------
+npcs_list:slider(T"Speed", {}, "", 10, 150, 100, 10, function(count)
+    drive_around_map_set.speed = count
+    drive_to_waypoint_set.speed = count
+    drive_to_closest_player_set.speed = count
+end)
+
+-----------------
+--DRIVING STYLE--
+-----------------
+local driving_styles_names = {T"Avoid Traffic Extremely", T"Sometimes Overtake Traffic", T"Rushed", T"Normal", T"Ignore Lights", T"Avoid Traffic", T"Lazy", T"Precise"}
+local driving_styles = {6, 5, 1074528293, 786603, 2883621, 786468, 1076, 8388614}
+npcs_list:list_select(T"Driving Style", {}, "", driving_styles_names, 4, function(index)
+    drive_around_map_set.driving_style = driving_styles[index]
+    drive_to_waypoint_set.driving_style = driving_styles[index]
+    drive_to_closest_player_set.driving_style = driving_styles[index]
+end)
+
+------------------------
+--DRIVE AROUND THE MAP--
+------------------------
+local drive_around_map;drive_around_map = npcs_list:toggle(T"Drive Around The Map", {}, "", function(on)
+    if on then
+        if is_ped_in_any_vehicle(players.user_ped(), false) then
+            local vehicle = entities.get_user_vehicle_as_handle(false)
+            local closest_seat = func.get_closet_free_seat_near_driver(vehicle)
+            if closest_seat then
+                local vehicle_coords = get_entity_coords(vehicle)
+                local ped = create_random_ped(vehicle_coords.x, vehicle_coords.y, vehicle_coords.z)
+                drive_around_map_set.ped = ped
+                entities.set_can_migrate(ped, false)
+                set_entity_load_collision_flag(ped, true, true)
+                set_entity_as_mission_entity(ped, true, true)
+                set_blocking_of_non_temporary_events(ped, true)
+                set_ped_into_vehicle(players.user_ped(), vehicle, 0)
+                util.yield(50)
+                set_ped_into_vehicle(ped, vehicle, -1)
+                util.yield(100)
+                task_vehicle_drive_wander(ped, vehicle, drive_around_map_set.speed, drive_around_map_set.driving_style)
+                drive_around_map_set.was_driver = true
+
+                while drive_around_map.value do
+                    if not is_ped_in_any_vehicle(players.user_ped(), false) then
+                        drive_around_map.value = false
+                    end
+                    util.yield()
+                end
+            end
+        else
+            util.toast(T"Your not in any vehicle.")
+            drive_around_map.value = false
+        end
+    else
+        if drive_around_map_set.was_driver then
+            if drive_around_map_set.ped != nil then
+                entities.delete_by_handle(drive_around_map_set.ped)
+                drive_around_map_set.ped = nil
+            end
+            if is_ped_in_any_vehicle(players.user_ped(), false) then
+                local vehicle = entities.get_user_vehicle_as_handle(false)
+                if get_ped_in_vehicle_seat(vehicle, -1, true) != players.user_ped() then
+                    set_ped_into_vehicle(players.user_ped(), vehicle, -1)
+                end
+            end
+            drive_around_map_set.was_driver = false
+        end
+    end
+end)
+
+---------------------
+--DRIVE TO WAYPOINT--
+---------------------
+local drive_to_waypoint;drive_to_waypoint = npcs_list:toggle(T"Drive To Waypoint", {}, "", function(on)
+    if on then
+        if is_ped_in_any_vehicle(players.user_ped(), false) then
+            if get_first_blip_info_id(8) != 0 then
+                local vehicle = entities.get_user_vehicle_as_handle(false)
+                local closest_seat = func.get_closet_free_seat_near_driver(vehicle)
+                if closest_seat then
+                    local vehicle_coords = get_entity_coords(vehicle)
+                    local ped = create_random_ped(vehicle_coords.x, vehicle_coords.y, vehicle_coords.z)
+                    drive_to_waypoint_set.ped = ped
+                    entities.set_can_migrate(ped, false)
+                    set_entity_load_collision_flag(ped, true, true)
+                    set_entity_as_mission_entity(ped, true, true)
+                    set_blocking_of_non_temporary_events(ped, true)
+                    set_ped_into_vehicle(players.user_ped(), vehicle, 0)
+                    util.yield(50)
+                    set_ped_into_vehicle(ped, vehicle, -1)
+                    util.yield(100)
+                    local x, y, z, bool = players.get_waypoint(players.user())
+                    task_vehicle_drive_to_coord(ped, vehicle, x, y, z, drive_to_waypoint_set.speed, 1, get_entity_model(vehicle), drive_to_waypoint_set.driving_style, 5, 0)
+                    drive_to_waypoint_set.was_driver = true
+
+                    while drive_to_waypoint.value do
+                        if is_ped_in_any_vehicle(players.user_ped(), false) then
+                            if get_first_blip_info_id(8) == 0 then
+                                drive_to_waypoint.value = false
+                            end
+                        else
+                            drive_to_waypoint.value = false
+                        end
+                        util.yield()
+                    end
+                end
+            else
+                util.toast(T"No waypoint set.")
+                drive_to_waypoint.value = false
+            end
+        else
+            util.toast(T"Your not in any vehicle.")
+            drive_to_waypoint.value = false
+        end
+    else
+        if drive_to_waypoint_set.was_driver then
+            if drive_to_waypoint_set.ped != nil then
+                entities.delete_by_handle(drive_to_waypoint_set.ped)
+                drive_to_waypoint_set.ped = nil
+            end
+            if is_ped_in_any_vehicle(players.user_ped(), false) then
+                local vehicle = entities.get_user_vehicle_as_handle(false)
+                if get_ped_in_vehicle_seat(vehicle, -1, true) != players.user_ped() then
+                    set_ped_into_vehicle(players.user_ped(), vehicle, -1)
+                end
+            end
+            drive_to_waypoint_set.was_driver = false
+        end
+    end
+end)
+
+---------------------------
+--DRIVE TO CLOSEST PLAYER--
+---------------------------
+local drive_to_closest_player;drive_to_closest_player = npcs_list:toggle(T"Drive To Closest Player", {}, "", function(on)
+    if on then
+        if util.is_session_started() then
+            if is_ped_in_any_vehicle(players.user_ped(), false) then
+                local vehicle = entities.get_user_vehicle_as_handle(false)
+                local closest_seat = func.get_closet_free_seat_near_driver(vehicle)
+                if closest_seat then
+                    local vehicle_coords = get_entity_coords(vehicle)
+                    local ped = create_random_ped(vehicle_coords.x, vehicle_coords.y, vehicle_coords.z)
+                    drive_to_closest_player_set.ped = ped
+                    entities.set_can_migrate(ped, false)
+                    set_entity_load_collision_flag(ped, true, true)
+                    set_entity_as_mission_entity(ped, true, true)
+                    set_blocking_of_non_temporary_events(ped, true)
+                    set_ped_into_vehicle(players.user_ped(), vehicle, 0)
+                    util.yield(50)
+                    set_ped_into_vehicle(ped, vehicle, -1)
+                    util.yield(100)
+
+                    local closest_player = func.get_closest_player(players.get_position(players.user()))
+                    if closest_player != nil and not players.is_in_interior(closest_player) then
+                        util.toast(T"Driving to:" .. " " .. players.get_name(closest_player))
+                        local player_coords = players.get_position(closest_player)
+                        task_vehicle_drive_to_coord(ped, vehicle, player_coords.x, player_coords.y, player_coords.z, drive_to_closest_player_set.speed, 1, get_entity_model(vehicle), drive_to_closest_player_set.driving_style, 5, 0)
+                        drive_to_closest_player_set.was_driver = true
+
+                        while drive_to_closest_player.value do
+                            if is_ped_in_any_vehicle(players.user_ped(), false) and func.get_distance_between(players.user_ped(), players.get_position(closest_player)) then
+                                local player_coords = players.get_position(closest_player)
+                                task_vehicle_drive_to_coord(ped, vehicle, player_coords.x, player_coords.y, player_coords.z, drive_to_closest_player_set.speed, 1, get_entity_model(vehicle), drive_to_closest_player_set.driving_style, 5, 0)
+                                util.yield(5000)
+                            else
+                                drive_to_closest_player.value = false
+                            end
+                            util.yield()
+                        end
+                    else
+                        drive_to_closest_player.value = false
+                    end
+                end
+            else
+                util.toast(T"Your not in any vehicle.")
+                drive_to_closest_player.value = false
+            end
+        else
+            util.toast(T"Only available in online.")
+            drive_to_closest_player.value = false
+        end
+    else
+        if drive_to_closest_player_set.was_driver then
+            if drive_to_closest_player_set.ped != nil then
+                entities.delete_by_handle(drive_to_closest_player_set.ped)
+                drive_to_closest_player_set.ped = nil
+            end
+            if is_ped_in_any_vehicle(players.user_ped(), false) then
+                local vehicle = entities.get_user_vehicle_as_handle(false)
+                if get_ped_in_vehicle_seat(vehicle, -1, true) != players.user_ped() then
+                    set_ped_into_vehicle(players.user_ped(), vehicle, -1)
+                end
+            end
+            drive_to_closest_player_set.was_driver = false
+        end
+    end
+end)
+
+local ptfx_trails_list = trail_effects_list:list(T"PTFX Trails")
+
+local PTFX_trails = {
+    {name = "scr_mich4_firework_trail_spawn", asset = "scr_rcpaparazzo1", particle = "scr_mich4_firework_trail_spawn"},
+    {name = "scr_mich4_firework_sparkle_spawn", asset = "scr_rcpaparazzo1", particle = "scr_mich4_firework_sparkle_spawn"},
+    {name = "proj_flare_trail", asset = "core", particle = "proj_flare_trail"},
+    {name = "trail_splash_oil", asset = "core", particle = "trail_splash_oil"},
+    {name = "veh_trailer_petrol_spray", asset = "core", particle = "veh_trailer_petrol_spray"},
+    {name = "trail_splash_blood", asset = "core", particle = "trail_splash_blood"},
+    {name = "sp_fbi_fire_drip_trails", asset = "core", particle = "sp_fbi_fire_drip_trails"},
+    {name = "trail_splash_water", asset = "core", particle = "trail_splash_water"},
+    {name = "proj_rpg_trail", asset = "core", particle = "proj_rpg_trail"},
+}
+
+---------------
+--PTFX TRAILS--
+---------------
+local ptfx_trails = {}
+local particle_fx = {}
+local time_delay = 0
+for i, data in PTFX_trails do
+    ptfx_trails[i] = ptfx_trails_list:toggle_loop(data.name, {}, "", function()
+        if is_ped_in_any_vehicle(players.user_ped(), false) then
+            local vehicle = entities.get_user_vehicle_as_handle(false)
+            local height = func.get_model_dimensions_from_hash(get_entity_model(vehicle))
+            local posX1 = -height.x/3 --left--
+            local posX2 = height.x/3 --right--
+            local posY = -height.y/3
+            for i, posX in {posX1, posX2} do
+                func.use_fx_asset(data.asset)
+                local fx = start_networked_particle_fx_looped_on_entity(data.particle, vehicle, posX, posY, 0.0, 0.0, 0.0, 0.0, 0.6, false, false, false, 0, 0, 0, 0)
+                table.insert(particle_fx, fx)
+            end
+            if time_delay >= 40 then
+                for i, fx in particle_fx do
+	    	        stop_particle_fx_looped(fx, false)
+	    	        remove_particle_fx(fx, false)
+	            end
+                time_delay = 0
+            end
+            time_delay = time_delay + 1
+        else
+            util.toast(T"Your not in any vehicle.")
+            for j = 1, #ptfx_trails do
+                if ptfx_trails[j] == ptfx_trails[i] then
+                    ptfx_trails[j].value = false
+                end
+            end
+        end
+    end, function()
+        remove_named_ptfx_asset(data.asset)
+	    for i, fx in particle_fx do
+	    	stop_particle_fx_looped(fx, false)
+	    	remove_particle_fx(fx, false)
+	    end
+    end)
+end
+
+local ped_trails_list = trail_effects_list:list(T"Ped Trails")
+
+local PED_trails = {
+    {name= "a_m_y_acult_02", hash = util.joaat("a_m_y_acult_02")},
+    {name= "a_m_m_acult_01", hash = util.joaat("a_m_m_acult_01")},
+    {name= "s_f_y_baywatch_01", hash = util.joaat("s_f_y_baywatch_01")},
+    {name= "s_m_y_baywatch_01", hash = util.joaat("s_m_y_baywatch_01")},
+    {name= "s_m_y_blackops_02", hash = util.joaat("s_m_y_blackops_02")},
+    {name= "cs_bradcadaver", hash = util.joaat("cs_bradcadaver")},
+    {name= "a_m_y_breakdance_01", hash = util.joaat("a_m_y_breakdance_01")},
+    {name= "s_m_y_clown_01", hash = util.joaat("s_m_y_clown_01")},
+    {name= "csb_cop", hash = util.joaat("csb_cop")},
+    {name= "u_f_m_drowned_01", hash = util.joaat("u_f_m_drowned_01")},
+    {name= "s_m_y_factory_01", hash = util.joaat("s_m_y_factory_01")},
+    {name= "u_m_y_imporage", hash = util.joaat("u_m_y_imporage")},
+    {name= "u_m_m_jesus_01", hash = util.joaat("u_m_m_jesus_01")},
+    {name= "ig_magenta", hash = util.joaat("ig_magenta")},
+    {name= "mp_m_marston_01", hash = util.joaat("mp_m_marston_01")},
+    {name= "s_m_m_movalien_01", hash = util.joaat("s_m_m_movalien_01")},
+    {name= "a_m_y_musclbeac_01", hash = util.joaat("a_m_y_musclbeac_01")},
+    {name= "ig_orleans", hash = util.joaat("ig_orleans")},
+    {name= "u_m_y_rsranger_01", hash = util.joaat("u_m_y_rsranger_01")},
+    {name= "csb_stripper_02", hash = util.joaat("csb_stripper_02")},
+    {name= "a_m_m_tranvest_01", hash = util.joaat("a_m_m_tranvest_01")},
+    {name= "a_m_m_acult_01", hash = util.joaat("a_m_m_acult_01")},
+    {name= "u_m_y_zombie_01", hash = util.joaat("u_m_y_zombie_01")}
+}
+
+--------------
+--PED TRIALS--
+--------------
+local spawned_peds = {}
+local ped_trails = {}
+for i, data in PED_trails do
+    ped_trails[i] = ped_trails_list:toggle_loop(data.name, {}, "", function()
+        if is_ped_in_any_vehicle(players.user_ped(), false) then
+            local vehicle = entities.get_user_vehicle_as_handle(false)
+            local height = func.get_model_dimensions_from_hash(get_entity_model(vehicle))
+            local pos1 = get_offset_from_entity_in_world_coords(vehicle, -height.x/3, -height.y/2, 0.0)
+            local pos2 = get_offset_from_entity_in_world_coords(vehicle, height.x/3, -height.y/2, 0.0)
+            for i, pos in {pos1, pos2} do
+                util.request_model(data.hash)
+                local trail_ped = entities.create_ped(1, data.hash, pos, 0)
+                task_wander_standard(trail_ped, 10.0, 10)
+                table.insert(spawned_peds, trail_ped)
+            end
+
+            for i = #spawned_peds, 1, -1 do
+                local ped_distance = func.get_distance_between(vehicle, spawned_peds[i])
+                if ped_distance >= 15 then
+                    entities.delete_by_handle(spawned_peds[i])
+                    table.remove(spawned_peds, i)
+                end
+            end
+            util.yield(500)
+        else
+            util.toast(T"Your not in any vehicle.")
+            for j = 1, #ped_trails do
+                if ped_trails[j] == ped_trails[i] then
+                    ped_trails[j].value = false
+                end
+            end
+        end
+    end, function()
+        for i = #spawned_peds, 1, -1 do
+            entities.delete_by_handle(spawned_peds[i])
+            table.remove(spawned_peds, i)
+        end
+    end)
+end
+
+----------------
+--FLAMES SPEED--
+----------------
+local rpm_flames_speed = 150
+rpm_flames_list:slider(T"Flames Speed", {} , "", 100, 1000, 150, 5, function(value)
+    rpm_flames_speed = value
+end)
+
+--------------
+--RPM FLAMES--
+--------------
+rpm_flames_list:toggle_loop(T"Rpm Flames", {}, "", function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_pointer(user_vehicle)
+        entities.set_rpm(vehicle, 2.0)
+    end
+    util.yield(rpm_flames_speed)
+end)
+
+--------------
+--ALL LIGHTS--
+--------------
+indicator_lights_list:toggle(T"All Lights", {}, "", function(on)
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        set_vehicle_indicator_lights(vehicle, 0, on)
+        set_vehicle_indicator_lights(vehicle, 1, on)
+    end
+end)
+
+--------------
+--RIGHT SIDE--
+--------------
+indicator_lights_list:toggle(T"Right Side", {}, "", function(on)
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        set_vehicle_indicator_lights(vehicle, 0, on)
+    end
+end)
+
+-------------
+--LEFT SIDE--
+-------------
+indicator_lights_list:toggle(T"Left Side", {}, "", function(on)
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        set_vehicle_indicator_lights(vehicle, 1, on)
+    end
+end)
+
+--------------------------------
+--INDESTRUCTIBLE VEHICLE DOORS--
+--------------------------------
+local indestructible_vehicle_doors;indestructible_vehicle_doors = door_control_list:toggle_loop(T"Indestructible Vehicle Doors", {}, "", function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        for i = -1, get_number_of_vehicle_doors(vehicle) do
+            set_door_allowed_to_be_broken_off(vehicle, i, false)
+        end
+    end
+end, function()
+    local vehicle = entities.get_user_vehicle_as_handle(false)
+    for i = -1, get_number_of_vehicle_doors(vehicle) do
+        set_door_allowed_to_be_broken_off(vehicle, i, true)
+    end
+end)
+
+--------------------------
+--OPEN ALL VEHICLE DOORS--
+--------------------------
+door_control_list:action(T"Open All Vehicle Doors", {}, "", function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        for i = -1, get_number_of_vehicle_doors(vehicle) do
+            set_vehicle_door_open(vehicle, i, false, true)
+        end
+    else
+        util.toast(T"Your not in any vehicle.")
+    end
+end)
+
+---------------------------
+--CLOSE ALL VEHICLE DOORS--
+---------------------------
+door_control_list:action(T"Close All Vehicle Doors", {}, "", function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        for i = -1, get_number_of_vehicle_doors(vehicle) do
+            set_vehicle_door_shut(vehicle, i, true)
+        end
+    else
+        util.toast(T"Your not in any vehicle.")
+    end
+end)
+
+---------------------------
+--BREAK ALL VEHICLE DOORS--
+---------------------------
+door_control_list:action(T"Break All Vehicle Doors", {}, "", function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        for i = -1, get_number_of_vehicle_doors(vehicle) do
+            set_vehicle_door_broken(vehicle, i, false)
+        end
+    else
+        util.toast(T"Your not in any vehicle.")
+    end
+end)
+
+------------------
+--REMOVE WINDOWS--
+------------------
+window_control_list:action(T"Remove Windows", {}, "", function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        for i = 0, 7 do
+            remove_vehicle_window(vehicle, i)
+        end
+    else
+        util.toast(T"Your not in any vehicle.")
+    end
+end)
+
+---------------------
+--ROLL UP WINDOWS--
+---------------------
+window_control_list:action(T"Roll Up Windows", {}, "", function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        for i = 0, 7 do
+            roll_up_window(vehicle, i)
+        end
+    else
+        util.toast(T"Your not in any vehicle.")
+    end
+end)
+
+---------------------
+--ROLL DOWN WINDOWS--
+---------------------
+window_control_list:action(T"Roll Down Windows", {}, "", function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        for i = 0, 7 do
+            roll_down_window(vehicle, i)
+        end
+    else
+        util.toast(T"Your not in any vehicle.")
+    end
+end)
+
+-----------------
+--SMASH WINDOWS--
+-----------------
+window_control_list:action(T"Smash Windows", {}, "", function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        for i = 0, 7 do
+            smash_vehicle_window(vehicle, i)
+        end
+    else
+        util.toast(T"Your not in any vehicle.")
+    end
+end)
+
+---------------
+--FIX WINDOWS--
+---------------
+window_control_list:action(T"Fix Windows", {}, "", function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        for i = 0, 7 do
+            fix_vehicle_window(vehicle, i)
+        end
+    else
+        util.toast(T"Your not in any vehicle.")
+    end
+end)
+
+----------------------
+--POP OUT WINDSCREEN--
+----------------------
+window_control_list:action(T"Pop Out Windscreen", {}, "", function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        pop_out_vehicle_windscreen(vehicle)
+    else
+        util.toast(T"Your not in any vehicle.")
+    end
+end)
+
+-------------------
+--SET WINDOW TINT--
+-------------------
+window_control_list:slider(T"Set Window Tint", {"Nsetwintint"}, "", 0, 6, 0, 1, function(count)
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        set_vehicle_window_tint(vehicle, count)
+    else
+        util.toast(T"Your not in any vehicle.")
+    end
+end)
+
+
+local process;process = window_control_list:toggle(T"Non Processed Windows", {}, T"You see the windows but nothing will break them.", function(on)
+    if on then
+        if is_ped_in_any_vehicle(players.user_ped(), false) then
+            local vehicle = entities.get_user_vehicle_as_handle(false)
+            set_dont_process_vehicle_glass(vehicle, true)
+        else
+            util.toast(T"Your not in any vehicle.")
+            process.value = false
+        end
+    else
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        set_dont_process_vehicle_glass(vehicle, false)
+    end
+end)
+
+------------------
+--EXPLOSION TYPE--
+------------------
+local explosion_type_horn_boost = 0
+horn_explosion_list:list_action(T"Explosion Type", {}, T"All explosion types in the game.", tables.explosion_types_name, function(index)
+    explosion_type_horn_boost = indexF
+end)
+
+------------------
+--HORN EXPLOSION--
+------------------
+horn_explosion_list:toggle_loop(T"Horn Explosion", {}, "", function()
+	if is_ped_in_any_vehicle(players.user_ped(), false) then
+	    local vehicle = entities.get_user_vehicle_as_handle(false)
+	    if is_horn_active(vehicle) then
+            local rand_num = math.random(20, 80)
+            local veh_coords_offset = get_offset_from_entity_in_world_coords(vehicle, 0.0, rand_num, 1)
+            add_explosion(veh_coords_offset.x, veh_coords_offset.y, veh_coords_offset.z, explosion_type_horn_boost, 1.0, true, false, 0.4, false)
+            util.yield(100)
+        end
+    end
+end)
+
+---------------
+--AUTO REPAIR--
+---------------
+vehicle_main:toggle_loop(T"Auto Repair", {}, "", function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        local vehicle_engine_health = get_vehicle_engine_health(vehicle)
+        local vehicle_body_health = get_vehicle_body_health(vehicle)
+        if vehicle_engine_health <= 950 or vehicle_body_health <= 800 then
+            set_vehicle_fixed(vehicle)
+            set_vehicle_deformation_fixed(vehicle)
+            set_vehicle_engine_health(vehicle, 1000)
+            set_vehicle_petrol_tank_health(vehicle, 1000)
+            set_vehicle_body_health(vehicle, 1000)
+        end
+    end
+end)
+
+--------------------------
+--SAFEGUARDS TRANSPORTER--
+--------------------------
+local truck = nil
+local nuke = nil
+local is_set_off = false
+local safeguards_transporter;safeguards_transporter = vehicle_main:toggle_loop(T"Safeguards Transporter", {}, T"Destroy or press the horn to set it off.", function(on)
+    if truck == nil then
+        local vehicle_hash = util.joaat("tiptruck")
+        local object_hash = util.joaat("prop_military_pickup_01")
+        util.request_model(object_hash)
+        util.request_model(vehicle_hash)
+        local position = get_offset_from_entity_in_world_coords(players.user_ped(), 0.0, 10, 0.0)
+        truck = entities.create_vehicle(vehicle_hash, v3.new(position.x , position.y, position.z), get_entity_heading(players.user_ped()))
+        if not is_ped_in_any_vehicle(players.user_ped(), false) then
+            set_ped_into_vehicle(players.user_ped(), truck, -1)
+        end
+        local truck_position = get_entity_coords(truck, true)
+        local truck_rot = get_entity_rotation(truck, 0)
+        nuke = entities.create_object(object_hash, v3.new(truck_position.x, truck_position.y-1.5, truck_position.z + 2))
+        set_entity_has_gravity(nuke, true)
+        set_entity_rotation(nuke, truck_rot.x, truck_rot.y, truck_rot.z+90, 0, true)
+        attach_entity_to_entity(nuke, truck, 0, 0.0, -1.5, 1.7, 0.0, 0.0, 90.0, false, false, false, false, 2, true)
+    else
+        if is_horn_active(truck) or get_vehicle_engine_health(truck) <= 0 and does_entity_exist(nuke) then
+            local nuke_position = get_entity_coords(nuke, true)
+            entities.delete_by_handle(nuke)
+            func.create_nuke_explosion(nuke_position)
+            is_set_off = true
+            safeguards_transporter.value = false
+        end
+
+        if func.get_distance_between(truck, players.user_ped()) > 500 then
+            util.toast(T"Deleted safeguards transporter because your to far from it.")
+            safeguards_transporter.value = false
+        end
+    end
+end, function()
+    if does_entity_exist(nuke) then
+        entities.delete_by_handle(nuke)
+        nuke = nil
+    end
+    if not is_set_off then
+        if does_entity_exist(truck) then
+            entities.delete_by_handle(truck)
+            truck = nil
+        end
+    else
+        is_set_off = false
+        truck = nil
+    end
+end)
+
+---------------------------
+--ATTRACT NEARBY VEHICLES--
+---------------------------
+local found_vehicles = {}
+local delete_attached_vehicles = false
+vehicle_main:action(T"Attract Nearby Vehicles", {}, T"To delete the attached vehicles: get out your vehicle and click this option one time.", function()
+    if next(found_vehicles) != nil then
+        delete_attached_vehicles = true
+    end
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        for i, v in found_vehicles do
+            table.remove(found_vehicles, i)
+        end
+        local user_vehicle = entities.get_user_vehicle_as_handle(false)
+        for entities.get_all_vehicles_as_pointers() as vehicle do
+            local vehicle_handle = entities.pointer_to_handle(vehicle)
+            if vehicle_handle != user_vehicle then
+                if func.get_distance_between(vehicle_handle, players.user_ped()) <= 10 then
+                    table.insert(found_vehicles, vehicle_handle)
+                    local vehicle_pos = get_entity_coords(vehicle_handle)
+                    local rel = v3.new(vehicle_pos)
+                    rel:sub(players.get_position(players.user()))
+                    rel:normalise()
+                    rel:mul(100)
+                    apply_force_to_entity(vehicle_handle, 3, -rel.x, -rel.y, -rel.z, 0.0, 0.0, 10, 0, false, false, true, false, false)
+                end
+            end
+        end
+        util.yield(100)
+        if next(found_vehicles) != nil then
+            for found_vehicles as vehicle do
+                if not is_entity_attached_to_entity(vehicle, user_vehicle) then
+                    attach_entity_to_entity(vehicle, user_vehicle, 0, math.random(-3, 3), math.random(-3, 3), math.random(3), math.random(-180, 180), math.random(-180, 180), math.random(-180, 180), true, false, false, false, 0, true)
+                end
+            end
+        end
+    else
+        if delete_attached_vehicles then
+            for i, vehicle in found_vehicles do
+                if is_entity_attached_to_entity(vehicle, entities.get_user_vehicle_as_handle(true)) then
+                    entities.delete_by_handle(vehicle)
+                end
+                table.remove(found_vehicles, i)
+            end
+            delete_attached_vehicles = false
+        else
+            util.toast(T"Your not in any vehicle.")
+        end
+    end
+end)
+
+--------------------------
+--SPAWN BIG RAMP VEHICLE--
+--------------------------
+vehicle_main:action(T"Spawn Big Ramp Vehicle", {}, "", function()
+    local hash = util.joaat("dune4")
+    util.request_model(hash)
+    local position = get_offset_from_entity_in_world_coords(players.user_ped(), 0.0, 3, 0.0)
+    local vehicle = entities.create_vehicle(hash, position, get_entity_heading(players.user_ped()))
+    set_ped_into_vehicle(players.user_ped(), vehicle, -1)
+    for i = 1, 2 do
+        local left_vehicle = entities.create_vehicle(hash, position, get_entity_heading(vehicle))
+        attach_entity_to_entity(left_vehicle, vehicle, 0, -2*i, 0.0, 0.0, 0.0, 0.0, 0.0, true, false, false, false, 0, true)
+        set_entity_collision(left_vehicle, true, true)
+        local right_vehicle = entities.create_vehicle(hash, position, get_entity_heading(vehicle))
+        attach_entity_to_entity(right_vehicle, vehicle, 0, 2*i, 0.0, 0.0, 0.0, 0.0, 0.0, true, false, false, false, 0, true)
+        set_entity_collision(right_vehicle, true, true)
+    end
+end)
+
+----------------------
+--HEADLIGHT STRENGTH--
+-----------------------
+vehicle_main:slider(T"Headlight Strength", {"Nheadlightstrength"}, "", 0, 100, 1, 1, function(count)
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        set_vehicle_light_multiplier(vehicle, count)
+    else
+        util.toast(T"Your not in any vehicle.")
+    end
+end)
+
+-------------
+--SET ALPHA--
+-------------
+vehicle_main:slider(T"Set Alpha", {"Nset_alpha"}, "", 0, 100, 100, 20, function(count)
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        local vehicle = entities.get_user_vehicle_as_handle(false)
+        set_entity_alpha(vehicle, (count/100) * 255, false)
+    else
+        util.toast(T"Your not in any vehicle.")
+    end
+end)

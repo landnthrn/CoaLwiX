@@ -1,0 +1,42 @@
+Model: thrax
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 161
+Wheel Colour: 120
+Wheel Type: 8
+Spoiler: 4
+Front Bumper: 2
+Rear Bumper: 3
+Sideskirt: 1
+Exhaust: 9
+Chassis: 2
+Grille: 7
+Hood: 9
+Roof: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 2
+Front Wheels: 14
+Livery: 0
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #000000
+Neon Colour: #ffffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 65
+Tyres Mode: 1

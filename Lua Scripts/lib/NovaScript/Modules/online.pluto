@@ -1,0 +1,726 @@
+require("NovaScript.NovaScript_natives")
+local tables = require("NovaScript.tables")
+local T = require("NovaScript.NovaS_translations")
+local func = require("NovaScript.functions")
+
+local scripts_dir = filesystem.scripts_dir()
+
+-----------------------------------------------
+-------------------FUNCTIONS-------------------
+-----------------------------------------------
+local screen_coord_x, screen_coord_y = memory.alloc(4), memory.alloc(4)
+local function draw_esp(ped, colour)
+    local coords = {}
+    local screen_coords_x = {}
+    local screen_coords_y = {}
+    for i, bone in tables.bones do
+        local bone_name = bone.name
+        coords[bone_name] = get_world_position_of_entity_bone(ped, get_ped_bone_index(ped, bone.bone))
+        local position = coords[bone_name]
+        get_screen_coord_from_world_coord(position.x, position.y, position.z, screen_coord_x, screen_coord_y)
+        screen_coords_x[bone_name] = memory.read_float(screen_coord_x)
+        screen_coords_y[bone_name] = memory.read_float(screen_coord_y)
+    end
+    for i, bones in tables.boneLines do
+        local bone1, bone2 = bones[1], bones[2]
+        local x1, y1, x2, y2 = screen_coords_x[bone1], screen_coords_y[bone1], screen_coords_x[bone2], screen_coords_y[bone2]
+
+        if (x1 > 0 and x1 < 1) and (y1 > 0 and y1 < 1) and (x2 > 0 and x2 < 1) and (y2 > 0 and y2 < 1) then
+            directx.draw_line(x1, y1, x2, y2, colour)
+        end
+    end
+end
+
+local info_screen_coord_x, info_screen_coord_y = memory.alloc(4), memory.alloc(4)
+local function draw_ped_info_with_esp(pid, distance, rect_colour, text_colour1, text_colour2, show_background)
+    local head = get_world_position_of_entity_bone(get_player_ped_script_index(pid), get_ped_bone_index(get_player_ped_script_index(pid), 0x796e))
+    get_screen_coord_from_world_coord(head.x, head.y, head.z, info_screen_coord_x, info_screen_coord_y)
+
+    if show_background then
+        local name_len = string.len(players.get_name(pid))
+        local rect_len = name_len * 0.0032
+        local rect_x_coord = memory.read_float(info_screen_coord_x)+(0.03-rect_len/(name_len/2))
+        if name_len <= 16 then
+            rect_x_coord = memory.read_float(info_screen_coord_x)+0.025
+            rect_len = 0.04
+        end
+        func.draw_rect_with_text(rect_x_coord, memory.read_float(info_screen_coord_y)-0.04, 3, rect_len, rect_colour, true)
+    end
+
+    local health, maxhealth = get_entity_health(get_player_ped_script_index(pid)), get_entity_max_health(get_player_ped_script_index(pid))
+    local armor, maxarmor = get_ped_armour(get_player_ped_script_index(pid)), get_player_max_armour(pid)
+
+    directx.draw_text(memory.read_float(info_screen_coord_x)+0.04, memory.read_float(info_screen_coord_y)-0.035, players.get_name(pid), ALIGN_CENTRE, 0.30, text_colour1, true)
+    directx.draw_text(memory.read_float(info_screen_coord_x)+0.04, memory.read_float(info_screen_coord_y)-0.020, math.ceil(distance) .. "m", ALIGN_CENTRE, 0.30, text_colour1, true)
+    func.draw_info_text(T"Health:", health .. "/" .. maxhealth, memory.read_float(info_screen_coord_x)+0.022, memory.read_float(info_screen_coord_y)-0.010, 35, 0.30, 0.27, text_colour1, text_colour2, true)
+    func.draw_info_text(T"Armor:", armor .. "/" .. maxarmor, memory.read_float(info_screen_coord_x)+0.022, memory.read_float(info_screen_coord_y)+0.004, 35, 0.30, 0.27, text_colour1, text_colour2, true)
+    func.draw_info_text(T"God:", players.is_godmode(pid), memory.read_float(info_screen_coord_x)+0.022, memory.read_float(info_screen_coord_y)+0.018, 35, 0.30, 0.30, text_colour1, text_colour2, true)
+end
+
+-----------------------------------------------
+---------------------LISTS---------------------
+-----------------------------------------------
+local root = menu.my_root()
+local online_main = root:list(T"Online")
+local explode_all_list = online_main:list(T"Explode all")
+local chat_list = online_main:list(T"Chat")
+local player_esp_list = online_main:list(T"Player ESP")
+local smoke_bomb_list = online_main:list(T"Smoke Bomb")
+-----------------------------------------------
+--------------------OPTIONS--------------------
+-----------------------------------------------
+
+local explode_all_settings = explode_all_list:list(T"Settings")
+local explode_all = {explosion_type = 0, damage_scale = 1, is_audible = true, is_invisible = false, camera_shake = 0, loop_speed = 200}
+------------------
+--EXPLOSION TYPE--
+------------------
+explode_all_settings:list_action(T"Explosion Type", {}, T"All explosion types in the game.", tables.explosion_types_name, function(index)
+    explode_all.explosion_type = index - 1
+end)
+
+----------------
+--DAMAGE SCALE--
+----------------
+explode_all_settings:slider(T"Damage Scale", {"Ndamagescaleall"}, "", 1, 100, 1, 1, function(count)
+	explode_all.damage_scale = count
+end)
+
+--------------
+--IS AUDIBLE--
+--------------
+explode_all_settings:toggle(T"Is Audible", {}, "", function(on)
+    explode_all.is_audible = on
+end, true)
+
+----------------
+--IS INVISIBLE--
+----------------
+explode_all_settings:toggle(T"Is Invisible", {}, "", function(on)
+    explode_all.is_invisible = on
+end)
+
+----------------
+--CAMERA SHAKE--
+----------------
+explode_all_settings:slider(T"Camera Shake", {"Ncamshakeall"}, "", 0, 100, 0, 10, function(count)
+	explode_all.camera_shake = count
+end)
+
+----------------------
+--EXPLODE LOOP DELAY--
+----------------------
+explode_all_settings:slider(T"Explode Loop Delay", {"Nexplloopdelayall"}, "", 20, 2000, 200, 10, function(count)
+	explode_all.loop_speed = count
+end)
+
+---------------
+--EXPLODE ALL--
+---------------
+explode_all_list:action(T"Explode all", {}, "", function()
+    if util.is_session_started() then
+        for i, pid in players.list(false, true, true) do
+            local position = players.get_position(pid)
+            add_explosion(position.x, position.y, position.z-1, explode_all.explosion_type, explode_all.damage_scale, explode_all.is_audible, explode_all.is_invisible, explode_all.camera_shake, false)
+        end
+    else
+        util.toast(T"Only available in online.")
+    end
+end)
+
+-------------------------
+--EXPLODE ALL NO DAMAGE--
+-------------------------
+explode_all_list:action(T"Explode All No Damage", {}, "", function()
+    if util.is_session_started() then
+        for i, pid in players.list(false, true, true) do
+            local position = players.get_position(pid)
+            add_explosion(position.x, position.y, position.z-1, explode_all.explosion_type, explode_all.damage_scale, explode_all.is_audible, explode_all.is_invisible, explode_all.camera_shake, true)
+        end
+    else
+        util.toast(T"Only available in online.")
+    end
+end)
+
+--------------------
+--EXPLODE ALL LOOP--
+--------------------
+local expl_all_loop;expl_all_loop = explode_all_list:toggle_loop(T"Explode All Loop", {}, "", function()
+    if util.is_session_started() then
+        for i, pid in players.list(false, true, true) do
+            local position = players.get_position(pid)
+            add_explosion(position.x, position.y, position.z-1, explode_all.explosion_type, explode_all.damage_scale, explode_all.is_audible, explode_all.is_invisible, explode_all.camera_shake, false)
+        end
+        util.yield(explode_all.loop_speed)
+    else
+        util.toast(T"Only available in online.")
+        expl_all_loop.value = false
+    end
+end)
+
+------------------------------
+--EXPLODE ALL NO DAMAGE LOOP--
+------------------------------
+local expl_all_no_dam_loop_opt;expl_all_no_dam_loop_opt = explode_all_list:toggle_loop(T"Explode All No Damage Loop", {}, "", function()
+    if util.is_session_started() then
+        for i, pid in players.list(false, true, true) do
+            local position = players.get_position(pid)
+            add_explosion(position.x, position.y, position.z-1, explode_all.explosion_type, explode_all.damage_scale, explode_all.is_audible, explode_all.is_invisible, explode_all.camera_shake, true)
+        end
+        util.yield(explode_all.loop_speed)
+    else
+        util.toast(T"Only available in online.")
+        expl_all_no_dam_loop_opt.value = false
+    end
+end)
+
+
+local sing_in_chat_list = chat_list:list(T"Sing In Chat")
+---------------------
+--OPEN SONGS FOLDER--
+---------------------
+sing_in_chat_list:action(T"Open Songs Folder", {}, "", function()
+    local folder_path = $"{scripts_dir}/lib/NovaScript/Songs"
+    util.open_folder(folder_path)
+end)
+
+-----------------
+--MESSAGE DELAY--
+-----------------
+local message_delay = 1000
+sing_in_chat_list:slider(T"Message Delay", {"Nmessage_delay"}, "", 500, 10000, 1000, 1, function(count)
+	message_delay = count
+end)
+
+local select_song_list = sing_in_chat_list:list(T"Songs")
+
+------------------------
+--CREATE NEW SONG FILE--
+------------------------
+select_song_list:action(T"Create New Song File", {"Ncreatenewsongfile"}, "", function()
+    menu.show_command_box("Ncreatenewsongfile ")
+end, function(file_name)
+    local file_path = $"{scripts_dir}/lib/NovaScript/Songs/{file_name}.txt"
+    local file = io.open(file_path, "w")
+    file:close()
+    local folder_path = $"{scripts_dir}/lib/NovaScript/Songs "
+    util.open_folder(folder_path)
+    util.restart_script()
+end)
+
+---------------------------------
+--GETTING FILES IN SONGS FOLDER--
+---------------------------------
+local songs_folder_path = $"{scripts_dir}/lib/NovaScript/Songs"
+local song_files = {}
+for i, file_path in filesystem.list_files(songs_folder_path) do
+    local file_name = string.sub(string.match(file_path, "[/\\]([^/\\]+)$"), 1, -5)
+    table.insert(song_files, {name = file_name, file_path = file_path})
+end
+
+---------
+--SONGS--
+---------
+local song_toggles = {}
+for i, file in song_files do
+    song_toggles[i] = select_song_list:toggle(file.name, {}, "", function(on)
+        if util.is_session_started() then
+            for j, v in song_files do
+                if song_toggles[j] != song_toggles[i] and song_toggles[j].value then
+                    song_toggles[i].value = false
+                    break
+                end
+            end
+            if on then
+                local selected_file = io.open(file.file_path, "r")
+                if selected_file then
+                    if selected_file:seek("end") == 0 then
+                        song_toggles[i].value = false
+                        is_empty = true
+                        selected_file:close()
+                        util.toast(T"Empty file.")
+                    else
+                        if not is_empty then
+                            while song_toggles[i].value do
+                                selected_file:seek("set")
+                                for line in selected_file:lines() do
+                                    if not song_toggles[i].value then
+                                        song_toggles[i].value = false
+                                        break
+                                    end
+                                    chat.send_message(line, false, true, true)
+                                    util.yield(message_delay)
+                                end
+                                util.yield()
+                            end
+                            selected_file:close()
+                        end
+                    end
+                end
+            end
+        else
+            is_empty = false
+            util.toast(T"Only available in online.")
+            song_toggles[i].value = false
+        end
+    end)
+end
+
+local poll_list = chat_list:list(T"Poll")
+---------------------
+--SET POLL QUESTION--
+---------------------
+local poll_question
+poll_list:action(T"Set Poll Question", {"Nsendpollquestion"}, "", function()
+    menu.show_command_box("Nsendpollquestion ")
+end, function(question)
+    poll_question = question
+end)
+
+------------
+--CHOICE A--
+------------
+local choice_A
+poll_list:action(T"Choice A", {"NchoiceA"}, "", function()
+    menu.show_command_box("NchoiceA ")
+end, function(choice)
+    choice_A = choice
+end)
+
+------------
+--CHOICE B--
+------------
+local choice_B
+poll_list:action(T"Choice B", {"NchoiceB"}, "", function()
+    menu.show_command_box("NchoiceB ")
+end, function(choice)
+    choice_B = choice
+end)
+
+-----------------
+--VOTING PERIOD--
+-----------------
+local voting_period = 10000
+poll_list:slider(T"Voting Period", {"Nvotingperiod"}, "", 5, 100, 10, 1, function(count)
+	voting_period = (count * 1000)
+end)
+
+--------------
+--START POLL--
+--------------
+poll_list:action(T"Start Poll", {}, T"Will Read the chat in the voting period time and calculate the results when the poll ends.", function()
+    if util.is_session_started() then
+        if choice_A == nil or choice_B == nil then
+            util.toast(T"A option has not yet been filled.")
+        else
+            local chat_messages_within_poll_time = {}
+            chat.send_message("[" .. "POLL" .. "] " .. poll_question  .. ": " .. choice_A  .. " or " .. choice_B, false, true, true)
+            local new_chat_handler = chat.on_message(function(packet_sender, message_sender, text, team_chat)
+                table.insert(chat_messages_within_poll_time, text)
+            end)
+            util.yield(voting_period)
+            util.remove_handler(new_chat_handler)
+            chat.send_message(T"Poll is done, calculating results.", false, true, true)
+            util.yield(1000)
+            local choice_A_count = 0
+            local choice_B_count = 0
+            for i, text in chat_messages_within_poll_time do
+                if text == choice_A then
+                    choice_A_count = choice_A_count + 1
+                elseif text == choice_B then
+                    choice_B_count = choice_B_count + 1
+                end
+            end
+            if choice_A_count > choice_B_count then
+                chat.send_message("'" .. choice_A .. "' " .. T"Is the winner of the poll." .. " (" .. choice_A_count .. ")" , false, true, true)
+            elseif choice_B_count > choice_A_count then
+                chat.send_message("'" .. choice_B .. "' " .. T"Is the winner of the poll." .. " (" .. choice_B_count .. ")", false, true, true)
+            else
+                chat.send_message(T"Both Choices have the same count." .. " (" .. choice_A_count .. ")", false, true, true)
+            end
+        end
+    else
+        util.toast(T"Only available in online.")
+    end
+end)
+
+---------------
+--RANDOM JOKE--
+---------------
+chat_list:action(T"Random Joke", {}, "", function()
+    if util.is_session_started() then
+        local i = math.random(1, #tables.jokes)
+        local joke = tables.jokes[i]
+        chat.send_message(joke.message1, false, true, true)
+        util.yield(1000)
+        chat.send_message(joke.message2, false, true, true)
+    else
+        util.toast(T"Only available in online.")
+    end
+end)
+
+--------------------------------
+--RANDOM GTA V TRIVIA QUESTION--
+--------------------------------
+chat_list:action(T"Random GTA V Trivia Question", {}, "", function()
+    if util.is_session_started() then
+        local i = math.random(1, #tables.gta_v_trivia_questions)
+        local trivia_question = tables.gta_v_trivia_questions[i]
+        chat.send_message(trivia_question, false, true, true)
+    else
+        util.toast(T"Only available in online.")
+    end
+end)
+
+local esp_settings_list = player_esp_list:list(T"Settings")
+------------------------------
+--ESP INFO BOX SETTINGS LIST--
+------------------------------
+local bone_esp_settings = esp_settings_list:list(T"Bone ESP")
+local bone_esp = {
+    show_esp_for_yourself = true,
+    show_info_box_background = true,
+    show_info_box_for_yourself = false,
+    show_info_box_for_close_players = true,
+    show_info_box_for_far_players = true,
+    default_colour = {r = 255/255, g = 0/255, b = 255/255, a = 1},
+    not_in_los_colour = {r = 1, g = 0, b = 0, a = 1},
+    dead_colour = {r = 0, g = 0, b = 0, a = 1},
+    friend_colour  = {r = 0, g = 1, b = 0, a = 1},
+    info_box_background_colour = {r = 0/255, g = 0/255, b = 0/255, a = 175/255},
+    info_box_text_colour1 = {r = 1, g = 1, b = 1, a = 1},
+    info_box_text_colour2 = {r = 160/255, g = 160/255, b = 160/255, a = 1.0}
+}
+
+bone_esp_settings:toggle(T"Apply On Yourself", {}, "", function(on)
+    bone_esp.show_esp_for_yourself = on
+end, true)
+
+local info_box_esp_settings_list = bone_esp_settings:list(T"Info Box")
+
+info_box_esp_settings_list:toggle(T"Show Info Box Background", {}, "", function(on)
+    bone_esp.show_info_box_background = on
+end, true)
+
+info_box_esp_settings_list:toggle(T"Show Info Box For Yourself", {}, "", function(on)
+    bone_esp.show_info_box_for_yourself = on
+end)
+
+info_box_esp_settings_list:toggle(T"Show Info Box For Close Players", {}, "", function(on)
+    bone_esp.show_info_box_for_close_players = on
+end, true)
+
+info_box_esp_settings_list:toggle(T"Show Info Box For Far Players", {}, "", function(on)
+    bone_esp.show_info_box_for_far_players = on
+end, true)
+
+info_box_esp_settings_list:colour(T"Background Colour", {}, "", bone_esp.info_box_background_colour, false, function(colour)
+    bone_esp.info_box_background_colour = colour
+end)
+
+info_box_esp_settings_list:colour(T"Text Colour 1", {}, "", bone_esp.info_box_text_colour1, false, function(colour)
+    bone_esp.info_box_text_colour1 = colour 
+end)
+
+info_box_esp_settings_list:colour(T"Text Colour 2", {}, "", bone_esp.info_box_text_colour2, false, function(colour)
+    bone_esp.info_box_text_colour2 = colour 
+end)
+
+bone_esp_settings:colour(T"Default Colour", {}, "", bone_esp.default_colour, false, function(colour)
+    bone_esp.default_colour = colour 
+end)
+
+bone_esp_settings:colour(T"Out Of Sight Colour", {}, "", bone_esp.not_in_los_colour, false, function(colour)
+    bone_esp.not_in_los_colour = colour 
+end)
+
+bone_esp_settings:colour(T"Dead Colour", {}, "", bone_esp.dead_colour, false, function(colour)
+    bone_esp.dead_colour = colour 
+end)
+
+bone_esp_settings:colour(T"Friend Colour", {}, "", bone_esp.friend_colour, false, function(colour)
+    bone_esp.friend_colour = colour 
+end)
+
+------------
+--BONE ESP--
+------------
+rect_screen_coord_x, rect_screen_coord_y = memory.alloc(4), memory.alloc(4)
+local bone_esp_opt;bone_esp_opt = player_esp_list:toggle_loop(T"Bone ESP", {}, "", function()
+    if util.is_session_started() then
+        for i, pid in players.list(true, true, true) do
+            local colour = bone_esp.default_colour
+            if pid == players.user() then
+                if not is_player_free_aiming(pid) then
+                    if bone_esp.show_esp_for_yourself then
+                        if is_entity_dead(players.user_ped(), true) then
+                            colour = bone_esp.dead_colour
+                        end
+                        if bone_esp.show_info_box_for_yourself then
+                            draw_ped_info_with_esp(pid, 0, bone_esp.info_box_background_colour, bone_esp.info_box_text_colour1, bone_esp.info_box_text_colour2, bone_esp.show_info_box_background)
+                        end
+                        draw_esp(players.user_ped(), colour)
+                    end
+                end
+            else
+                if not players.is_in_interior(pid) then
+                    local player_distance = func.get_distance_between(players.user_ped(), get_player_ped_script_index(pid))
+                    if not has_entity_clear_los_to_entity(players.user_ped(), get_player_ped_script_index(pid), 17) then
+                        colour = bone_esp.not_in_los_colour
+                    end
+                    
+                    local network_handle = memory.alloc(104)
+	                network_handle_from_player(pid, network_handle, 13)
+	                if network_is_handle_valid(network_handle, 13) then
+                        if network_is_friend(network_handle) then
+                            colour = bone_esp.friend_colour
+                        end
+                    end
+                    
+                    if is_entity_dead(get_player_ped_script_index(pid), true) then
+                        colour = bone_esp.dead_colour
+                    end
+        
+                    if player_distance <= 300 then
+                        if bone_esp.show_info_box_for_close_players then
+                            draw_ped_info_with_esp(pid, player_distance, bone_esp.info_box_background_colour, bone_esp.info_box_text_colour1, bone_esp.info_box_text_colour2, bone_esp.show_info_box_background)
+                        end
+                        draw_esp(get_player_ped_script_index(pid), colour)
+                    elseif player_distance <= 500 and player_distance > 300 then
+                        local head = get_world_position_of_entity_bone(get_player_ped_script_index(pid), get_ped_bone_index(get_player_ped_script_index(pid), 0x796e))
+                        get_screen_coord_from_world_coord(head.x, head.y, head.z, rect_screen_coord_x, rect_screen_coord_y)
+                        local scale_factor = 1 - ((player_distance - 301) / (500 - 300))
+                        local rect_size = (300 + (600 - 300) * scale_factor) / 100000
+                        if bone_esp.show_info_box_for_far_players then
+                            draw_ped_info_with_esp(pid, player_distance, bone_esp.info_box_background_colour, bone_esp.info_box_text_colour1, bone_esp.info_box_text_colour2, bone_esp.show_info_box_background)
+                        end
+                        directx.draw_rect(memory.read_float(rect_screen_coord_x), memory.read_float(rect_screen_coord_y), rect_size/1.5, rect_size, colour)
+                    end
+                end
+            end
+        end
+    else
+        util.toast(T"Only available in online.")
+        bone_esp_opt.value = false
+    end
+end)
+
+
+--------------------
+--BOX ESP SETTINGS--
+--------------------
+local box_esp_settings = esp_settings_list:list(T"Box ESP")
+local box_esp = {
+    show_esp_for_yourself = true,
+    show_esp_on_vehicles = true,
+    default_colour = {r = 255, g = 0, b = 255, a = 255},
+    dead_colour = {r = 0, g = 0, b = 0, a = 255},
+    friend_colour  = {r = 255, g = 255, b = 0, a = 255},
+}
+
+box_esp_settings:toggle(T"Apply On Yourself", {}, "", function(on)
+    box_esp.show_esp_for_yourself = on
+end, true)
+
+box_esp_settings:toggle(T"Apply On Vehicles", {}, "", function(on)
+    box_esp.show_esp_on_vehicles = on
+end, true)
+
+func.colour_list(box_esp_settings, T"Default Colour", box_esp.default_colour, 1)
+
+func.colour_list(box_esp_settings, T"Dead Colour", box_esp.dead_colour, 1)
+
+func.colour_list(box_esp_settings, T"Friend Colour", box_esp.friend_colour, 1)
+
+-----------
+--BOX ESP--
+-----------
+local box_esp_opt;box_esp_opt = player_esp_list:toggle_loop(T"Box ESP", {}, "", function()
+    if util.is_session_started() then
+        for i, pid in players.list(true, true, true) do
+            local colour = box_esp.default_colour
+            local player_distance = func.get_distance_between(players.user_ped(), get_player_ped_script_index(pid))
+            if player_distance > 200 or players.is_in_interior(pid) then
+                goto continue
+            end
+    
+            local network_handle = memory.alloc(104)
+	        network_handle_from_player(pid, network_handle, 13)
+	        if network_is_handle_valid(network_handle, 13) then
+                if network_is_friend(network_handle) then
+                    colour = box_esp.friend_colour
+                end
+            end
+    
+            if is_entity_dead(get_player_ped_script_index(pid), true) then
+                colour = box_esp.dead_colour
+            end
+    
+            if is_ped_in_any_vehicle(get_player_ped_script_index(pid)) then
+                if not box_esp.show_esp_on_vehicles then
+                    goto continue
+                end
+                local vehicle = func.get_vehicle_from_ped(get_player_ped_script_index(pid))
+                if is_vehicle_seat_free(vehicle, -1, false) then
+                    func.draw_box_esp(get_player_ped_script_index(pid), colour, true)
+                else
+                    local driver = get_ped_in_vehicle_seat(vehicle, -1, false)
+                    if driver != players.user_ped() or box_esp.show_esp_for_yourself then
+                        func.draw_box_esp(driver, colour, true)
+                    end
+                end
+            else
+                if pid == players.user() and not box_esp.show_esp_for_yourself then
+                    goto continue
+                end
+                func.draw_box_esp(get_player_ped_script_index(pid), colour, false)
+            end
+            ::continue::
+        end
+    else
+        util.toast(T"Only available in online.")
+        box_esp_opt.value = false
+    end
+end)
+
+---------------------
+--LINE ESP SETTINGS--
+---------------------
+local line_esp_settings = esp_settings_list:list(T"Line ESP")
+local line_esp = {
+    default_colour = {r = 255, g = 0, b = 255, a = 255},
+    not_in_los_colour = {r = 255, g = 0, b = 0, a = 255},
+    dead_colour = {r = 0, g = 0, b = 0, a = 255},
+    friend_colour  = {r = 255, g = 255, b = 0, a = 255},
+}
+
+func.colour_list(line_esp_settings, T"Default Colour", line_esp.default_colour, 2)
+
+func.colour_list(line_esp_settings, T"Out Of Sight Colour", line_esp.not_in_los_colour, 2)
+
+func.colour_list(line_esp_settings, T"Dead Colour", line_esp.dead_colour, 2)
+
+func.colour_list(line_esp_settings, T"Friend Colour", line_esp.friend_colour, 2)
+
+------------
+--LINE ESP--
+------------
+local line_esp_opt;line_esp_opt = player_esp_list:toggle_loop(T"Line ESP", {}, "", function()
+    if util.is_session_started() then
+        for i, pid in players.list(true, true, true) do
+            if not players.is_in_interior(pid) then
+                local colour = line_esp.default_colour
+                local player_distance = func.get_distance_between(players.user_ped(), get_player_ped_script_index(pid))
+                if player_distance <= 500 and player_distance > 10 then
+    
+                    if not has_entity_clear_los_to_entity(players.user_ped(), get_player_ped_script_index(pid), 17) then
+                        colour = line_esp.not_in_los_colour
+                    end
+    
+                    local network_handle = memory.alloc(104)
+	                network_handle_from_player(pid, network_handle, 13)
+	                if network_is_handle_valid(network_handle, 13) then
+                        if network_is_friend(network_handle) then
+                            colour = line_esp.friend_colour
+                        end
+                    end
+            
+                    if is_entity_dead(get_player_ped_script_index(pid), true) then
+                        colour = line_esp.dead_colour
+                    end
+                    local user_pos = players.get_position(players.user())
+                    local target_pos = players.get_position(pid)
+                    draw_line(user_pos.x, user_pos.y, user_pos.z, target_pos.x, target_pos.y, target_pos.z, colour.r, colour.g, colour.b, colour.a)
+                end
+            end
+        end
+    else
+        util.toast(T"Only available in online.")
+        line_esp_opt.value = false
+    end
+end)
+
+--------------
+--SMOKE BOMB--
+--------------
+local activated_players = {}
+local active_smoke_bombs = {}
+local new_chat_handler = nil
+local smoke_bomb_opt = smoke_bomb_list:toggle(T"Smoke Bomb", {}, "Cmd is !smoke in the chat, this will spawn smoke in the coords the player shoots one time.", function(on)
+    if on then
+        new_chat_handler = chat.on_message(function(packet_sender, message_sender, text, team_chat)
+            if text == "!smoke" then
+                table.insert(activated_players, packet_sender)
+            end
+        end)
+    end
+    if not on then
+        util.remove_handler(new_chat_handler)
+    end
+end)
+
+local smoke_duration = 5
+smoke_bomb_list:slider(T"Smoke Duration", {"Nsmokeduration"}, "", 1, 20, 5, 1, function(count)
+	smoke_duration = count
+end)
+
+local smoke_scale = 5
+smoke_bomb_list:slider(T"Smoke Scale", {"Nsmokescale"}, "", 1, 8, 5, 1, function(count)
+	smoke_scale = count
+end)
+
+------------------
+--EXPLOSIVE HITS--
+------------------
+online_main:toggle_loop(T"Explosive Hits", {}, T"Only works for players around u.", function()
+	local hit_coords = v3.new()
+    for i, pid in players.list(true, true, true) do
+        local ped = get_player_ped_script_index(pid)
+	    if get_ped_last_weapon_impact_coord(ped, hit_coords) and get_selected_ped_weapon(ped) == util.joaat("weapon_unarmed") then
+            add_explosion(hit_coords.x, hit_coords.y, hit_coords.z, 1, 1, true, false, 0.0, false)
+        end
+    end
+end)
+
+------------------
+--EXPLOSIVE GUN--
+------------------
+online_main:toggle_loop(T"Explosive Gun", {}, T"Only works for players around u.", function()
+	local hit_coords = v3.new()
+    for i, pid in players.list(true, true, true) do
+        local ped = get_player_ped_script_index(pid)
+	    if get_ped_last_weapon_impact_coord(ped, hit_coords) then
+            add_explosion(hit_coords.x, hit_coords.y, hit_coords.z, 1, 1, true, false, 0.0, false)
+        end
+    end
+end)
+
+util.create_tick_handler(function()
+
+    if smoke_bomb_opt.value then
+        for i, pid in activated_players do
+	        local hit_coords = v3.new()
+	        if get_ped_last_weapon_impact_coord(get_player_ped_script_index(pid), hit_coords) then
+                local hash = util.joaat("w_ex_grenadesmoke")
+                util.request_model(hash)
+                local smoke_grenade = entities.create_object(hash, hit_coords)
+                func.use_fx_asset("scr_as_trans")
+                local ptfx = start_networked_particle_fx_looped_on_entity("scr_as_trans_smoke", smoke_grenade, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, smoke_scale, false, false, false, 0, 0, 0, 255)
+                table.insert(active_smoke_bombs, {ptfx = ptfx, object = smoke_grenade, delay = util.current_time_millis() + (smoke_duration * 1000)})
+                table.remove(activated_players, i)
+            end
+        end
+
+        if #active_smoke_bombs != 0 then
+            for i, bomb in active_smoke_bombs do
+                if bomb.delay < util.current_time_millis() then
+                    stop_particle_fx_looped(bomb.ptfx, false)
+                    table.remove(active_smoke_bombs, i)
+                    entities.delete_by_handle(bomb.object)
+                end
+            end
+        end
+    end
+
+end)
+

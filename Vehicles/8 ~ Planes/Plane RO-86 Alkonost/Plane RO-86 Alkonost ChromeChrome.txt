@@ -1,0 +1,33 @@
+Model: alkonost
+Plate Style: 0
+Plate Text:  0 MPH  
+Primary Colour: 120
+Secondary Colour: 120
+Pearl Colour: 10
+Wheel Colour: 158
+Wheel Type: 0
+Front Bumper: 2
+Right Fender: 4
+Engine: 4
+Brakes: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 50
+Livery: 0
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #5870a1
+Custom Secondary Colour: #5870a1
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 13
+Dashboard Colour: 111
+Tyres Mode: 1

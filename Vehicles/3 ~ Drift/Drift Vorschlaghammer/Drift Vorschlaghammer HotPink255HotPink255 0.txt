@@ -1,0 +1,46 @@
+Model: driftvorschlag
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 0
+Wheel Colour: 112
+Wheel Type: 8
+Spoiler: 9
+Front Bumper: 5
+Rear Bumper: 6
+Sideskirt: 3
+Exhaust: 9
+Chassis: 14
+Grille: 2
+Hood: 7
+Fender: 3
+Right Fender: 4
+Roof: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 12
+Front Wheels: 122
+Trim: 2
+Livery: 14
+Tyre Smoke Colour: #ff00ff
+Window Tint: 1
+Custom Primary Colour: #ff00ff
+Custom Secondary Colour: #ff00ff
+Neon Colour: #ff00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 70
+Dashboard Colour: 156
+Tyres Mode: 1

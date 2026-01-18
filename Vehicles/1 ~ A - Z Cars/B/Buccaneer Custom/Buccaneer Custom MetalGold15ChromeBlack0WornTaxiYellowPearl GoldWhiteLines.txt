@@ -1,0 +1,58 @@
+Model: buccaneer2
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 117
+Secondary Colour: 120
+Pearl Colour: 126
+Wheel Colour: 134
+Wheel Type: 1
+Front Bumper: 1
+Rear Bumper: 1
+Exhaust: 1
+Grille: 1
+Hood: 1
+Fender: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 8
+Front Wheels: 0
+Back Wheels: 1
+Plate Holder: 13
+Vanity Plates: 0
+Trim: 8
+Ornaments: 21
+Dial: 3
+Steering Wheel: 10
+Shifter Leavers: 3
+Plaques: 19
+Speakers: 4
+Trunk: 1
+Hydraulics: 4
+Engine Block: 5
+Air Filter: 4
+Tank: 2
+Livery: 7
+Tyre Smoke Colour: #937539
+Window Tint: 1
+Custom Primary Colour: #0f0c05
+Custom Secondary Colour: #000000
+Neon Colour: #634f26
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 158
+Dashboard Colour: 132
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: No
+Extra 3: No
+Extra 4: No

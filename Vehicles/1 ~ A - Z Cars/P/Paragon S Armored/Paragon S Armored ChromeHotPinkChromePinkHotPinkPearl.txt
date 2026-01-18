@@ -1,0 +1,46 @@
+Model: paragon3
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 120
+Secondary Colour: 120
+Pearl Colour: 136
+Wheel Colour: 134
+Wheel Type: 8
+Spoiler: 4
+Front Bumper: 17
+Rear Bumper: 13
+Sideskirt: 10
+Exhaust: 8
+Chassis: 1
+Grille: 9
+Hood: 14
+Fender: 2
+Right Fender: 1
+Roof: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 12
+Front Wheels: 122
+Trim2: 2
+Livery: 0
+Tyre Smoke Colour: #ff00ff
+Window Tint: 1
+Custom Primary Colour: #ff00ff
+Custom Secondary Colour: #ff00ff
+Neon Colour: #ff00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 134
+Dashboard Colour: 134
+Tyres Mode: 1

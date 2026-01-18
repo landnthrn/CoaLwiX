@@ -1,0 +1,605 @@
+util.require_natives("3095a", "g")
+
+local radio_root = menu.my_root()
+local selected_radio_station = "RADIO_16_SILVERLAKE"
+local party_buses = {}
+local static_buses = {}
+local refs = {}
+local volume = 4
+local size = 1 
+local height = -53 * 0.10
+local heightp = 0
+local rot = 90
+local yaw = 90
+local roll = 0
+local xOffset = 1
+local yOffset = 1
+local finalValueX = 0
+local finalValueY = 0
+local xAnimOffset = 0
+local yAnimOffset = 0
+local staticX = 0
+local staticY = 0
+local staticR = 90
+local staticRR = 90
+local StaticH = -53 * 0.10
+local StaticH_b = 0
+local attach_position_z = 0
+
+local circleRotation = 0
+local circleAnimation = 0
+local rotationAnimation = 0
+local animationSpeed = 0
+
+local animMin = 0
+local animMax = 1
+local oldSize = 0
+local visibilityToggle = true --true to make busses default to visible
+local collisionToggle = false
+local sizeToggle = true
+local heightToggle = false
+local radioNames = { 
+    "RADIO_01_CLASS_ROCK", -- Los Santos Rock Radio
+    "RADIO_02_POP", -- Non-Stop-Pop FM
+    "RADIO_03_HIPHOP_NEW", -- Radio Los Santos
+    "RADIO_04_PUNK", -- Channel X
+    "RADIO_05_TALK_01", -- West Coast Talk Radio
+    "RADIO_06_COUNTRY", -- Rebel Radio
+    "RADIO_07_DANCE_01", -- Soulwax FM
+    "RADIO_08_MEXICAN", -- East Los FM
+    "RADIO_09_HIPHOP_OLD", -- West Coast Classics
+    "RADIO_11_TALK_02", -- Blaine County Radio
+    "RADIO_12_REGGAE", -- The Blue Ark
+    "RADIO_13_JAZZ", -- Worldwide FM
+    "RADIO_14_DANCE_02", -- FlyLo FM
+    "RADIO_15_MOTOWN", -- The Lowdown 9.11
+    "RADIO_16_SILVERLAKE", -- Radio Mirror Park
+    "RADIO_17_FUNK", -- Space 103.2
+    "RADIO_18_90S_ROCK", -- Vinewood Boulevard Radio
+    "RADIO_19_USER", -- Self Radio
+    "RADIO_20_THELAB", -- The Lab
+    "RADIO_21_DLC_XM17", -- Blonded Los Santos 97.8 FM
+    "RADIO_22_DLC_BATTLE_MIX1_RADIO", -- Los Santos Underground Radio
+    "RADIO_23_DLC_XM19_RADIO", -- iFruit Radio
+    "RADIO_27_DLC_PRHEI4", -- Still Slipping Los Santos
+    "RADIO_34_DLC_HEI4_KULT", -- Kult FM
+    "RADIO_35_DLC_HEI4_MLR", -- The Music Locker
+    "RADIO_36_AUDIOPLAYER", -- Media Player
+    "RADIO_37_MOTOMAMI", -- Motomami
+ };
+
+-- Function to get station number from radioNames (the only function out there that was used multiple times) 
+local function getRadioStationNumber(radioStationName)
+    for i, name in ipairs(radioNames) do
+        if name == radioStationName then
+            return i
+        end
+    end
+    return nil
+end
+
+local function animation(speed, movement, total)-- Animates a value based on a given speed and total range.
+    movement = movement + speed-- Adjust the variable based on speed
+    if speed > 0 then
+        if movement > total then
+            movement = movement - total -- Reset if exceeds total
+        end
+    else -- Handle negative speed
+        if movement < 0 then
+            movement = total + movement -- Resets if below 0
+        end
+    end
+    util.yield()
+    return movement
+end
+
+radio_root:toggle_loop("Toggle Radio", {"LRRadio-Go-BRRR"}, "", function()
+    local shouldBeVisible = visibilityToggle and not IS_PED_RAGDOLL(players.user_ped())
+    if GET_PLAYER_RADIO_STATION_NAME() ~= nil then
+        selected_radio_station = GET_PLAYER_RADIO_STATION_NAME()
+        SET_RADIO_TO_STATION_NAME("OFF")
+        if IS_PED_IN_ANY_VEHICLE(players.user_ped(), true) then
+            local veh = entities.get_user_vehicle_as_handle(false)
+            local speed = GET_ENTITY_SPEED(veh) * 2.236936
+            local velo = GET_ENTITY_VELOCITY(veh)
+            local user_rotation = GET_ENTITY_ROTATION(players.user_ped(), 0)
+            if speed > 15 then
+                SET_ENTITY_HEADING(veh, GET_ENTITY_HEADING(veh))
+                FREEZE_ENTITY_POSITION(veh, true)
+                util.yield(1)
+                FREEZE_ENTITY_POSITION(veh, false)
+                SET_ENTITY_ROTATION(veh, user_rotation.x, user_rotation.y, user_rotation.z, 0, true)
+                SET_ENTITY_VELOCITY(veh, velo.x, velo.y, velo.z)
+            end
+        end
+    end
+
+    --local offset_position = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(players.user_ped(), 0.0, 0.0, -35)
+    if #party_buses == 0 then
+        table.insert(refs, menu.ref_by_path("Game>Radio>Mobile Radio").value)
+        table.insert(refs, menu.ref_by_path("Online>Reveal Invisible Players").value)
+        if menu.ref_by_path("Game>Radio>Mobile Radio").value == false then
+            menu.ref_by_path("Game>Radio>Mobile Radio"):trigger()
+        end
+        if menu.ref_by_path("Online>Reveal Invisible Players").value == true then
+            menu.ref_by_path("Online>Reveal Invisible Players"):trigger()
+        end
+
+        local vehicle_hash = util.joaat("pbus2")
+        util.request_model(vehicle_hash)
+
+        -- Create buses in a circular formation around the player or vehicle
+        local angle_increment = 2 * math.pi / volume
+        for i = 1, volume do
+            local angle = (i - 1) * angle_increment + rot -- Add rotation
+            local xOffset = size * math.cos(angle)
+            local yOffset = size * math.sin(angle)
+            local offset_position = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(players.user_ped(), xOffset, yOffset, -35) -- Adjusted line
+            local bus = entities.create_vehicle(vehicle_hash, offset_position, 0)
+            entities.set_can_migrate(bus, false)
+            SET_ENTITY_COLLISION(bus, collisionToggle, false)
+            SET_ENTITY_INVINCIBLE(bus, true)
+            FREEZE_ENTITY_POSITION(bus, true)
+            SET_ENTITY_VISIBLE(bus, visibilityToggle)
+            SET_ENTITY_PROOFS(bus, true, true, true, true, true, true, 1, true)
+            for e = 2, 7 do
+                SET_VEHICLE_EXTRA(bus, e, -1)
+            end
+            SET_VEHICLE_ENGINE_ON(bus, true, true, false)
+            SET_VEHICLE_KEEP_ENGINE_ON_WHEN_ABANDONED(bus, true)
+            SET_VEHICLE_RADIO_ENABLED(bus, true)
+            SET_VEH_HAS_NORMAL_RADIO(bus)
+            SET_VEH_RADIO_STATION(bus, selected_radio_station)
+            SET_VEHICLE_RADIO_LOUD(bus)
+            table.insert(party_buses, bus)
+        end
+    else
+        local points = {}
+        local angle_increment = 2 * math.pi / volume
+        for i = 1, volume do
+            local angle = (i - 1) * angle_increment
+            local xOffset = size * math.cos(angle)
+            local yOffset = size * math.sin(angle)
+            local X = xOffset * math.cos(math.rad(circleRotation)) - yOffset * math.sin(math.rad(circleRotation)) -- Corrected spelling
+            local Y = xOffset * math.sin(math.rad(circleRotation)) + yOffset * math.cos(math.rad(circleRotation)) -- Corrected spelling
+            points[i] = {x = X, y = Y}
+        end
+        for i, bus in ipairs(party_buses) do
+            DETACH_ENTITY(bus, false, false)
+            if IS_PED_IN_ANY_VEHICLE(players.user_ped(), true) then
+                local veh = GET_VEHICLE_PED_IS_IN(players.user_ped(), true)
+                --local veh = GetVehiclePedIsIn(playerPed, true)
+                --local currentVehicleHash = GetEntityModel(veh)
+                if heightToggle then
+                    StaticH = -1 * GET_ENTITY_HEIGHT_ABOVE_GROUND(veh) + 1
+                else
+                    if veh ~= prevVeh then
+                        util.yield(100)
+                        StaticH = -1 * GET_ENTITY_HEIGHT_ABOVE_GROUND(veh) + 1
+                        StaticH_b = StaticH
+                        prevVeh = veh
+                    end
+                    StaticH = StaticH_b
+                end
+                
+                ATTACH_ENTITY_TO_ENTITY(bus, veh, -1, points[i].x *xOffset, points[i].y *yOffset, StaticH + height + heightp, yaw, roll, -1*(360/volume)+(360/volume)*i + rot, false, false, false, false, 2, true, 0)--doc? check the line 277
+            else 
+                if heightToggle then
+                    StaticH = -1 * GET_ENTITY_HEIGHT_ABOVE_GROUND(players.user_ped()) + 1
+                else
+                    StaticH = 0
+                end
+                ATTACH_ENTITY_TO_ENTITY(bus, players.user_ped(), -1, points[i].x *xOffset, points[i].y *yOffset, StaticH + height + heightp, yaw, roll, -1*(360/volume)+(360/volume)*i + rot, false, false, false, true, 2, true, 0)
+                --util.yield()
+            end
+            SET_VEH_RADIO_STATION(bus, selected_radio_station)
+            SET_VEH_FORCED_RADIO_THIS_FRAME(bus)
+            SET_ENTITY_VISIBLE(bus, visibilityToggle)
+        end        
+        for _, bus in ipairs(static_buses) do
+            SET_VEH_RADIO_STATION(bus, selected_radio_station)
+            SET_VEH_FORCED_RADIO_THIS_FRAME(bus)
+        end
+    end
+    util.draw_debug_text("Current Height: " .. height)
+    util.draw_debug_text("Current StaticH: " .. StaticH)
+    util.draw_debug_text("Current attach_position_z: " .. attach_position_z)
+end, function()
+    for _, bus in ipairs(party_buses) do
+        entities.delete_by_handle(bus)
+    end
+    party_buses = {}
+
+    while #static_buses ~= 0 and #party_buses == 0 do
+        if menu.ref_by_path("Game>Radio>Mobile Radio").value == false then
+            menu.ref_by_path("Game>Radio>Mobile Radio"):trigger()
+        end
+        if GET_PLAYER_RADIO_STATION_NAME() ~= nil then
+            selected_radio_station = GET_PLAYER_RADIO_STATION_NAME()
+            SET_RADIO_TO_STATION_NAME("OFF")
+        end
+        for _, bus in ipairs(static_buses) do
+            SET_VEH_RADIO_STATION(bus, selected_radio_station)
+            SET_VEH_FORCED_RADIO_THIS_FRAME(bus)
+            util.yield()
+        end
+        util.yield()
+    end
+    
+    menu.ref_by_path("Game>Radio>Mobile Radio").value = refs[1]
+    menu.ref_by_path("Online>Reveal Invisible Players").value = refs[2]
+    refs={}
+
+end)
+
+radio_root:slider('Volume', {"LRvolume"}, 'Will change the volume\nNote: only 10 busses seems to produce sound simultaneously, the rest could be silent', 1, 50, 4, 1, function (h) 
+    volume = h
+    for _, bus in ipairs(party_buses) do
+        entities.delete_by_handle(bus)
+    end
+    party_buses = {}
+end)
+
+local settings_root = menu.list(radio_root, "Settings", {"LRsettings"}, "Additional settings")
+
+settings_root:slider('Size', {"LRsize"}, 'Will change the distance between the busses', 0, 100, 1, 1, function (h) 
+    size = h
+end)
+
+settings_root:slider_float('Height', {"LRheight"}, 'Will change the height of the busses', -100, 100, -53, 1, function (h) 
+    height = h * 0.10
+end)
+
+settings_root:slider_float('Precise Height', {"LRheightp"}, 'Will change the height of the busses with small increments', -100, 100, 0, 1, function (h) 
+    heightp = h/100
+end)
+
+settings_root:slider_float('Rotation', {"LRrotation"}, 'Will change the Rotation of the busses', -180, 180, 18, 1, function (h) 
+    rot = h * 5
+    staticR = rot
+    staticRR = rot
+end)
+
+settings_root:slider_float('Circle Rotation', {"LRcircle"}, 'Controls the rotation of buses around the player in a circular motion', -180, 180, 0, 1, function (h) 
+    circleRotation = h
+    rot = h + staticRR
+end)
+
+settings_root:slider_float('X offset', {"LRxOffset"}, 'Will change the x Offset of the busses', 0, 300, 100, 10, function (h) 
+    xOffset = h / 100
+    staticX = xOffset
+end)
+
+settings_root:slider_float('Y offset', {"LRyOffset"}, 'Will change the y Offset of the busses', 0, 300, 100, 10, function (h) 
+    yOffset = h / 100 
+    staticY = yOffset
+end)
+
+settings_root:slider_float('Roll', {"LRroll"}, 'Will change the roll of the busses', -180, 180, 0, 1, function (h) 
+    roll = h
+end)
+
+settings_root:slider_float('Yaw', {"LRyaw"}, 'Will change the yaw of the busses', -180, 180, 90, 1, function (h) 
+    yaw = h
+end)
+
+settings_root:toggle('Visibility Toggle', {"LRvisibil"}, 'Toggles the invisibility', function (on)
+    visibilityToggle = on
+    visibilityToggle2 = on
+end, true)--true at the end to make it default to on, instead of off
+
+settings_root:toggle('Collision Toggle', {"LRcollis"}, 'Toggles the collision of detached busses', function (on)
+    collisionToggle = on
+    for _, bus in ipairs(static_buses) do
+        SET_ENTITY_COLLISION(bus, collisionToggle, false)
+    end
+end)
+
+settings_root:toggle("Keep at ground", {"LRkeepAtGround"}, "", function(on)
+    heightToggle=on
+end)
+
+settings_root:action("Next Station", {"LRnext"}, "", function()
+    local count = getRadioStationNumber(selected_radio_station)
+    selected_radio_station=radioNames[(count % #radioNames) +1]
+end)
+
+settings_root:action("Previous Station", {"LRprev"}, "", function()
+    local count = getRadioStationNumber(selected_radio_station)
+    selected_radio_station=radioNames[((count+25) % #radioNames)+1 ]
+end)
+
+settings_root:action("Detach", {"LRdetach"}, "Detach the busses", function()
+    for _, bus in ipairs(party_buses) do
+        table.insert(static_buses, bus)
+    end
+    party_buses = {}
+    for _, bus in ipairs(static_buses) do
+        util.yield()
+    end
+    for _, bus in ipairs(static_buses) do
+        DETACH_ENTITY(bus, false, false)
+        SET_ENTITY_COLLISION(bus, collisionToggle, false)
+    end
+end)
+
+settings_root:action("Delete All", {"LRdelete"}, "Delete all detached buses", function()
+    for _, bus in ipairs(static_buses) do
+        entities.delete_by_handle(bus)
+    end
+    static_buses = {}
+    util.yield()
+end)
+
+util.on_stop(function()
+    for _, bus in ipairs(static_buses) do
+        entities.delete_by_handle(bus)
+    end
+    static_buses = {}
+end)
+
+local anim_settings_root = menu.list(radio_root, "Animation Settings", {"animsettings"}, "Animation settings")
+
+--[[ isnt that just the rotation?
+anim_settings_root:slider_float('Circle Rotation', {"LRcircle"}, 'Controls the rotation of buses around the player in a circular motion', -180, 180, 0, 1, function (h) 
+    if animationSpeed == 0 then
+        circleRotation = h -- Only allow manual control when animation is stopped
+    end
+end)
+]]
+
+-- Second one
+local animspeed=0
+
+anim_settings_root:slider('Circle animation speed', {"LRCircleAnimationSpeed"}, 'Controls the speed of circle rotation', -10, 10, 0, 1, function(h)
+    circleAnimation = h  /10
+    local temp = h/10
+    while circleAnimation == temp do
+        circleRotation = animation(h/10, circleRotation, 360)
+        util.yield()
+    end
+end)
+
+anim_settings_root:slider('Rotation animation speed', {"LRRotaionAnimationSpeed"}, 'Controls the speed of Rotation animation', -10, 10, 0, 1, function(h)
+    rotationAnimation=h/10
+    local temp = h/10
+    while rotationAnimation  == temp do
+        rot = animation(h/10, rot, 360)
+        util.yield()
+    end
+end)
+ 
+--\\\///i know that it was supposed to be used, but is it actually usefull and useable?\\\///
+--[[
+anim_settings_root:slider_float('X to moveby', {"LRxAnimOffset"}, 'Will change the x Offset of the busses', -300, 300, 0, 10, function (h) 
+xAnimOffset = h * 0.10
+end)
+
+anim_settings_root:slider_float('Y to moveby', {"LRyAnimOffset"}, 'Will change the y Offset of the busses', -300, 300, 0, 10, function (h) 
+yAnimOffset = h * 0.10
+end)
+]]
+--///\\\------------------------------------------------------------------------------///\\\
+
+anim_settings_root:slider('anim max', {"LRanimmax"}, '', 1, 30, 1, 1, function (h) 
+    animMax = h 
+    if animMin>=animMax then
+        menu.trigger_commands("LRanimmin "..animMax-1)
+    end
+
+end)
+
+anim_settings_root:slider('anim min', {"LRanimmin"}, '', 0, 29, 0, 1, function (h) 
+    animMin = h 
+    if animMin>=animMax then
+        menu.trigger_commands("LRanimmax "..animMin+1)
+
+    end
+end)
+
+------mons test space
+anim_settings_root:slider('anim delay', {}, '', 0, 50, 0, 5, function (h) 
+    animspeed = hS
+end)--thats personal, but imo it should be just left at like 5 or even 0
+
+local animoffset=0.01
+anim_settings_root:slider('anim speed', {}, '', 1, 5, 1, 1, function (h) 
+    animoffset = h/100
+end)--1 to 5 seems fine to me
+
+local isAnimation = false
+anim_settings_root:toggle_loop('Anim Toggle', {"LRanim"}, 'Toggles the Animation of buses', function()
+    isAnimation = true
+    
+    if sizeToggle then
+        oldSize = size -- remembering size before animation
+        sizeToggle = false
+    end
+
+    --animation itself
+    while size>animMin do --to small (animMin)
+        size-=animoffset
+        util.yield(animspeed)
+    end
+    while size<animMax do --to big (animMax)
+        size+=animoffset
+        util.yield(animspeed)
+    end
+
+    isAnimation = false
+end, function()
+    while isAnimation do --waiting for anim to end
+        util.yield()
+    end
+    size = oldSize --restoring old size
+    sizeToggle = true
+
+end)  
+
+local presets_root = menu.list(radio_root, "Presets", {"LRpresets"}, "Additional presets for rotation")
+
+presets_root:action("Make Big", {"LR0"}, "", function()
+    menu.trigger_commands("LRanim off")
+    --menu.trigger_commands("LRanimc off")
+    menu.trigger_commands("LRheight -0.26")
+    menu.trigger_commands("LRroll -0.91")
+    menu.trigger_commands("LRyaw 0")
+end)
+
+presets_root:action("1", {"LR1"}, "", function()
+    menu.trigger_commands("LRanim off")
+    --menu.trigger_commands("LRanimc off")
+    menu.trigger_commands("LRvolume 6")
+    menu.trigger_commands("LRsize 1")
+    menu.trigger_commands("LRrotation 0.18")
+    menu.trigger_commands("LRyOffset 1")
+    menu.trigger_commands("LRxOffset 1")
+    menu.trigger_commands("LRroll 0")
+    menu.trigger_commands("LRyaw 0.90")
+    menu.trigger_commands("LRheight -0.53")
+    menu.trigger_commands("LRcircle 0")
+end)
+
+presets_root:action("2", {"LR2"}, "", function()
+    menu.trigger_commands("LRanim off")
+    --menu.trigger_commands("LRanimc off")
+    menu.trigger_commands("LRvolume 5")
+    menu.trigger_commands("LRsize 1")
+    menu.trigger_commands("LRrotation -0.08")
+    menu.trigger_commands("LRyOffset 1")
+    menu.trigger_commands("LRxOffset 1")
+    menu.trigger_commands("LRroll 0")
+    menu.trigger_commands("LRyaw 0.90")
+    menu.trigger_commands("LRheight -0.53")
+    menu.trigger_commands("LRcircle 0")
+end)
+
+presets_root:action("3", {"LR3"}, "", function()
+    menu.trigger_commands("LRanim off")
+    --menu.trigger_commands("LRanimc off")
+    menu.trigger_commands("LRvolume 5")
+    menu.trigger_commands("LRsize 1")
+    menu.trigger_commands("LRrotation -0.9")
+    menu.trigger_commands("LRyOffset 1.4")
+    menu.trigger_commands("LRxOffset 1.4")
+    menu.trigger_commands("LRroll 0")
+    menu.trigger_commands("LRyaw 0.90")
+    menu.trigger_commands("LRheight -0.53")
+    menu.trigger_commands("LRcircle 0")
+end)
+
+presets_root:action("4", {"LR4"}, "", function()
+    menu.trigger_commands("LRanim off")
+    --menu.trigger_commands("LRanimc off")
+    menu.trigger_commands("LRvolume 7")
+    menu.trigger_commands("LRsize 1")
+    menu.trigger_commands("LRrotation -0.9")
+    menu.trigger_commands("LRyOffset 1.4")
+    menu.trigger_commands("LRxOffset 1.4")
+    menu.trigger_commands("LRroll 0")
+    menu.trigger_commands("LRyaw 0.90")
+    menu.trigger_commands("LRheight -0.53")
+    menu.trigger_commands("LRcircle 0")
+end)
+
+presets_root:action("5", {"LR5"}, "", function()
+    menu.trigger_commands("LRanim off")
+    --menu.trigger_commands("LRanimc off")
+    menu.trigger_commands("LRvolume 6")
+    menu.trigger_commands("LRsize 1")
+    menu.trigger_commands("LRrotation -0.18")
+    menu.trigger_commands("LRyOffset 1")
+    menu.trigger_commands("LRxOffset 1")
+    menu.trigger_commands("LRroll 0")
+    menu.trigger_commands("LRyaw 0.90")
+    menu.trigger_commands("LRheight -0.53")
+    menu.trigger_commands("LRcircle 0")
+end)
+
+presets_root:action("6", {"LR6"}, "", function()
+    menu.trigger_commands("LRanim off")
+    --menu.trigger_commands("LRanimc off")
+    menu.trigger_commands("LRvolume 6")
+    menu.trigger_commands("LRsize 2")
+    menu.trigger_commands("LRrotation -0.18")
+    menu.trigger_commands("LRyOffset 0.6")
+    menu.trigger_commands("LRxOffset 0.6")
+    menu.trigger_commands("LRroll 0")
+    menu.trigger_commands("LRyaw 0.90")
+    menu.trigger_commands("LRheight -0.53")
+    menu.trigger_commands("LRcircle 0")
+end)
+
+presets_root:action("7", {"LR7"}, "", function()
+    menu.trigger_commands("LRanim off")
+    --menu.trigger_commands("LRanimc off")
+    menu.trigger_commands("LRvolume 49")
+    menu.trigger_commands("LRsize 1")
+    menu.trigger_commands("LRrotation 0.18")
+    menu.trigger_commands("LRyOffset 1")
+    menu.trigger_commands("LRxOffset 1")
+    menu.trigger_commands("LRroll 0")
+    menu.trigger_commands("LRyaw 0.90")
+    menu.trigger_commands("LRheight -0.53")
+    menu.trigger_commands("LRcircle 0")
+end)
+
+players.on_join(function(pid)
+
+
+local mon_player_root   = menu.list(menu.player_root(pid), "BussesScript", {}, "")
+local busCage = {}
+
+mon_player_root:action( "test", {}, "", function ()
+    local focused_tbl = players.get_focused()
+    local focused = focused_tbl[1]
+    local targetPlayerPed = GET_PLAYER_PED_SCRIPT_INDEX(focused)
+    local pos = players.get_position(pid)
+    local vehicle_hash = util.joaat("pbus2")
+    util.request_model(vehicle_hash)
+
+    local offset_position = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(players.user_ped(), xOffset, yOffset, -35) -- Adjusted line
+    local points = {}
+    local angle_increment = 2 * math.pi / 8
+    for i = 1, 8 do
+        local angle = (i - 1) * angle_increment
+        local x = 4 * math.cos(angle)
+        local y = 4 * math.sin(angle)
+        points[i] = {x = x, y = y}
+    end
+
+    for i = 1, 8 do
+        local angle = (i - 1) * angle_increment + rot -- Add rotation
+        local xOffset = size * math.cos(angle)
+        local yOffset = size * math.sin(angle)
+        local offset_position = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(players.user_ped(), xOffset, yOffset, -35) -- Adjusted line
+        local bus = entities.create_vehicle(vehicle_hash, offset_position, 0)
+        entities.set_can_migrate(bus, false)
+        SET_ENTITY_COLLISION(bus, true, false)
+        SET_ENTITY_INVINCIBLE(bus, true)
+        FREEZE_ENTITY_POSITION(bus, true)
+        SET_ENTITY_PROOFS(bus, true, true, true, true, true, true, 1, true)
+        for e = 2, 7 do
+            SET_VEHICLE_EXTRA(bus, e, -1)
+        end
+        SET_VEHICLE_ENGINE_ON(bus, true, true, false)
+        SET_VEHICLE_KEEP_ENGINE_ON_WHEN_ABANDONED(bus, true)
+        SET_VEHICLE_RADIO_ENABLED(bus, true)
+        SET_VEH_HAS_NORMAL_RADIO(bus)
+        SET_VEH_RADIO_STATION(bus, selected_radio_station)
+        SET_VEHICLE_RADIO_LOUD(bus)
+        DETACH_ENTITY(bus, false, false)
+        SET_ENTITY_COORDS(bus, points[i].x + pos.x, points[i].y + pos.y , pos.z,  false, false, false, false)
+        -- 90, 0, -1*(360/8)+(360/8)*i + rot, false, false, false, false, 2, true, 0)
+        SET_ENTITY_ROTATION(bus, 90, 0, 45*i+45+180, 1, true)
+        SET_VEH_FORCED_RADIO_THIS_FRAME(bus)
+        SET_ENTITY_VISIBLE(bus, true)
+        table.insert(static_buses , bus)
+
+    end
+end)
+
+end)
+
+
+players.dispatch_on_join()

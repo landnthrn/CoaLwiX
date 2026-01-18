@@ -1,0 +1,46 @@
+Model: tailgater
+Plate Style: 7
+Plate Text:  DKARME 
+Primary Colour: 0
+Secondary Colour: 158
+Pearl Colour: 10
+Wheel Colour: 160
+Wheel Type: 9
+Spoiler: 4
+Front Bumper: 3
+Rear Bumper: 4
+Sideskirt: 4
+Exhaust: 3
+Grille: 1
+Hood: 6
+Fender: 1
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 124
+Livery: -1
+Tyre Smoke Colour: #e20606
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: 
+Neon Colour: #1900ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 132
+Tyres Mode: 1
+Extra 1: No
+Extra 2: Yes
+Extra 3: No

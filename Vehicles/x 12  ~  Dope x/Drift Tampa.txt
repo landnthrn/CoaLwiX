@@ -1,0 +1,34 @@
+Model: drifttampa
+Plate Style: 1
+Plate Text:  0 KPH  
+Primary Colour: 142
+Secondary Colour: 141
+Pearl Colour: 0
+Wheel Colour: 81
+Wheel Type: 7
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 57
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 2, Custom
+Livery: 0
+Tyre Smoke Colour: #8466e2
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 111
+Tyres Mode: 1

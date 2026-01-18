@@ -1,0 +1,36 @@
+Model: tornado6
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 0
+Pearl Colour: 47
+Wheel Colour: 0
+Wheel Type: 9
+Exhaust: 1
+Hood: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 124
+Back Wheels: 0
+Livery: -1
+Tyre Smoke Colour: #520000
+Window Tint: 1
+Custom Primary Colour: #140502
+Custom Secondary Colour: #0d1116
+Neon Colour: #2c0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 157
+Dashboard Colour: 157
+Tyres Mode: 1

@@ -1,0 +1,39 @@
+Model: entity2
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 145
+Secondary Colour: 140
+Pearl Colour: 67
+Wheel Colour: 140
+Wheel Type: 8
+Spoiler: 2
+Front Bumper: 2
+Rear Bumper: 2
+Exhaust: 3
+Hood: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 4
+Front Wheels: 122
+Livery: -1
+Tyre Smoke Colour: #00ffff
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #08e9fa
+Neon Colour: #00ffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 140
+Dashboard Colour: 89
+Tyres Mode: 1

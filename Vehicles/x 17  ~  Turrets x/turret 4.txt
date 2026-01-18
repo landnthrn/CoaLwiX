@@ -1,0 +1,41 @@
+Model: menacer
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 98
+Secondary Colour: 21
+Pearl Colour: 14
+Wheel Colour: 1
+Wheel Type: 3
+Front Bumper: 14
+Rear Bumper: 8
+Sideskirt: 16
+Exhaust: 12
+Chassis: 1
+Grille: 9
+Hood: 21
+Roof: 4
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 58
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 38
+Livery: 30
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

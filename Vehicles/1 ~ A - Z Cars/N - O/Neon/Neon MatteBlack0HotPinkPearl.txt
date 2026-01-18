@@ -1,0 +1,39 @@
+Model: neon
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 135
+Pearl Colour: 10
+Wheel Colour: 135
+Wheel Type: 8
+Spoiler: 2
+Front Bumper: 2
+Rear Bumper: 1
+Sideskirt: 8
+Hood: 1
+Fender: 0
+Engine: 4
+Brakes: 3
+Horns: 41
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 12
+Front Wheels: 119
+Livery: -1
+Tyre Smoke Colour: #ff00ff
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #f21f99
+Neon Colour: #ff00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 1
+Tyres Mode: 1

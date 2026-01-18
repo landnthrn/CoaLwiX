@@ -1,0 +1,28 @@
+Model: seashark
+Plate Style: 4
+Plate Text:  DKARME 
+Primary Colour: 67
+Secondary Colour: 0
+Pearl Colour: 67
+Wheel Colour: 0
+Wheel Type: 0
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 3
+Front Wheels: 0
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #c1bfff
+Neon Colour: #00ffff
+Neon Front: No
+Neon Back: Yes
+Neon Left: No
+Neon Right: No
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

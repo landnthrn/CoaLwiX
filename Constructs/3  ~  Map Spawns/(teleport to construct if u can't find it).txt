@@ -1,0 +1,1 @@
+Teleport to construct by going to Stand > Lua Scripts > Constructor > Loaded Constructs > Select the construct (likely the bottom one) > Teleport > Teleport Me to Construct

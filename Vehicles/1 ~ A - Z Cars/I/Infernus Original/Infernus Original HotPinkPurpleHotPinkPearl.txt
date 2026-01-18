@@ -1,0 +1,37 @@
+Model: infernus
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 135
+Secondary Colour: 145
+Pearl Colour: 135
+Wheel Colour: 135
+Wheel Type: 10
+Spoiler: 2
+Exhaust: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 12
+Front Wheels: 4
+Livery: -1
+Tyre Smoke Colour: #ff00ff
+Window Tint: 1
+Custom Primary Colour: #f21f99
+Custom Secondary Colour: #621276
+Neon Colour: #ff00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: Yes

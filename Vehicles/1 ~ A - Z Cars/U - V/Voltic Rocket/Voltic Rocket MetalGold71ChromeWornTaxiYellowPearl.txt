@@ -1,0 +1,32 @@
+Model: voltic2
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 126
+Wheel Colour: 160
+Wheel Type: 9
+Engine: 4
+Brakes: 3
+Suspension: 4
+Armor: 5
+Nitrous: Yes
+Turbo: Yes
+Subwoofer: Yes
+Tiresmoke: Yes
+Unk21: Yes
+Headlights: 8
+Front Wheels: 70
+Livery: -1
+Tyre Smoke Colour: #ffb923
+Window Tint: 1
+Custom Primary Colour: #47391b
+Custom Secondary Colour: #5870a1
+Neon Colour: #ff9605
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

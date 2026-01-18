@@ -1,0 +1,60 @@
+Model: zr350
+Plate Style: 1
+Plate Text:  DKARME 
+Primary Colour: 136
+Secondary Colour: 136
+Pearl Colour: 0
+Wheel Colour: 136
+Wheel Type: 2
+Spoiler: 9
+Front Bumper: 6
+Rear Bumper: 2
+Sideskirt: 13
+Exhaust: 7
+Chassis: 5
+Grille: 5
+Hood: 13
+Fender: 0
+Right Fender: 3
+Roof: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 3
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 1
+Front Wheels: 8, Custom
+Vanity Plates: 8
+Trim: 8
+Dashboard: 4
+Dial: 3
+Seats: 8
+Door Speaker: 14
+Steering Wheel: 16
+Engine Block: 2
+Air Filter: 8
+Struts: 12
+Arch Cover: 2
+Aerials: 2
+Trim2: 1
+Left Door: 5
+Right Door: 3
+Livery: 8
+Tyre Smoke Colour: #cb3694
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff3264
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 136
+Dashboard Colour: 111
+Tyres Mode: 1

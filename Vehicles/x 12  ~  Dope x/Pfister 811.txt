@@ -1,0 +1,41 @@
+Model: pfister811
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 0
+Secondary Colour: 117
+Pearl Colour: 29
+Wheel Colour: 156
+Wheel Type: 10
+Spoiler: 1
+Front Bumper: 5
+Rear Bumper: 1
+Sideskirt: 2
+Exhaust: 3
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 58
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 0
+Front Wheels: 41
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #b191fb
+Custom Secondary Colour: #b191fb
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: No

@@ -1,0 +1,1775 @@
+{
+	"position": {
+		"z": 40.448868,
+		"y": 3076.067383,
+		"x": 1315.776367
+	},
+	"num_bones": 100,
+	"created": "2022-09-25T16:13:51Z",
+	"rotation": {
+		"z": 0,
+		"y": 0,
+		"x": 0
+	},
+	"blip_handle": 41943103,
+	"target_version": "3.16",
+	"blip_color": 2,
+	"children": [{
+		"position": {
+			"z": 40.902935,
+			"y": 3077.85376,
+			"x": 1322.726196
+		},
+		"num_bones": 0,
+		"children": {},
+		"update_position": true,
+		"rotation": {
+			"z": 180,
+			"y": 0,
+			"x": 10
+		},
+		"name": "prop_jetski_ramp_01",
+		"target_version": "3.16",
+		"type": "OBJECT",
+		"options": {
+			"spawn_mode": 1,
+			"is_bullet_proof": true,
+			"is_visible": true,
+			"lod_distance": 16960,
+			"has_gravity": true,
+			"is_attached": true,
+			"is_driver_visible": true,
+			"is_mission_entity": false,
+			"is_melee_proof": true,
+			"is_dynamic": true,
+			"is_frozen": false,
+			"use_soft_pinning": true,
+			"object_tint": 0,
+			"is_invincible": true,
+			"buoyancy": 0.0,
+			"is_light_on": true,
+			"is_networked": true,
+			"weight": 0.0,
+			"alpha": 255,
+			"bone_index": 0,
+			"is_fire_proof": true,
+			"gravity": 0.0,
+			"is_explosion_proof": true,
+			"has_collision": true
+		},
+		"model": "prop_jetski_ramp_01",
+		"offset": {
+			"z": 0.4,
+			"y": 7.18,
+			"x": 0
+		},
+		"rotation_order": 2,
+		"hash": -1081534242,
+		"world_rotation": {
+			"z": 104.819023,
+			"y": -1.794487,
+			"x": 9.402534
+		}
+	}, {
+		"position": {
+			"z": 40.635204,
+			"y": 3074.094971,
+			"x": 1308.231934
+		},
+		"num_bones": 29,
+		"rotation": {
+			"z": 0,
+			"y": 0,
+			"x": 0
+		},
+		"target_version": "0.39",
+		"blip_icon": 1,
+		"blip_color": 2,
+		"children": [{
+			"position": {
+				"z": 42.852783,
+				"y": 3073.363037,
+				"x": 1307.706177
+			},
+			"num_bones": 0,
+			"rotation_order": 2,
+			"children": {},
+			"model": "prop_boxpile_10a",
+			"rotation": {
+				"z": 90,
+				"y": 0,
+				"x": 0
+			},
+			"name": "prop_boxpile_10a",
+			"target_version": "0.39",
+			"type": "OBJECT",
+			"options": {
+				"spawn_mode": 1,
+				"is_bullet_proof": false,
+				"is_visible": true,
+				"lod_distance": 16960,
+				"has_gravity": true,
+				"is_attached": true,
+				"is_driver_visible": true,
+				"is_mission_entity": true,
+				"is_melee_proof": false,
+				"is_dynamic": true,
+				"is_frozen": false,
+				"use_soft_pinning": true,
+				"object_tint": 0,
+				"is_invincible": true,
+				"buoyancy": 0.0,
+				"is_light_on": true,
+				"is_networked": true,
+				"weight": 0.0,
+				"alpha": 255,
+				"bone_index": 0,
+				"is_fire_proof": false,
+				"gravity": 0.0,
+				"is_explosion_proof": false,
+				"has_collision": true
+			},
+			"hash": -1480604471,
+			"offset": {
+				"z": 2.23,
+				"y": -0.69,
+				"x": 0.53
+			},
+			"blip_icon": 1,
+			"blip_color": 2,
+			"world_rotation": {
+				"z": 14.624782,
+				"y": -0.090671,
+				"x": 1.173967
+			}
+		}, {
+			"position": {
+				"z": 41.933605,
+				"y": 3073.972412,
+				"x": 1308.06543
+			},
+			"num_bones": 0,
+			"rotation_order": 2,
+			"children": {},
+			"model": "prop_boxpile_10a",
+			"rotation": {
+				"z": 180,
+				"y": 0,
+				"x": 0
+			},
+			"name": "prop_boxpile_10a",
+			"target_version": "0.39",
+			"type": "OBJECT",
+			"options": {
+				"spawn_mode": 1,
+				"is_bullet_proof": false,
+				"is_visible": true,
+				"lod_distance": 16960,
+				"has_gravity": true,
+				"is_attached": true,
+				"is_driver_visible": true,
+				"is_mission_entity": true,
+				"is_melee_proof": false,
+				"is_dynamic": true,
+				"is_frozen": false,
+				"use_soft_pinning": true,
+				"object_tint": 0,
+				"is_invincible": true,
+				"buoyancy": 0.0,
+				"is_light_on": true,
+				"is_networked": true,
+				"weight": 0.0,
+				"alpha": 255,
+				"bone_index": 0,
+				"is_fire_proof": false,
+				"gravity": 0.0,
+				"is_explosion_proof": false,
+				"has_collision": true
+			},
+			"hash": -1480604471,
+			"offset": {
+				"z": 1.3,
+				"y": -0.19,
+				"x": 0.05
+			},
+			"blip_icon": 1,
+			"blip_color": 2,
+			"world_rotation": {
+				"z": 104.622932,
+				"y": -1.173969,
+				"x": -0.090652
+			}
+		}, {
+			"position": {
+				"z": 42.872658,
+				"y": 3074.30127,
+				"x": 1307.461304
+			},
+			"num_bones": 0,
+			"rotation_order": 2,
+			"children": {},
+			"model": "prop_boxpile_10a",
+			"rotation": {
+				"z": 90,
+				"y": 0,
+				"x": 0
+			},
+			"name": "prop_boxpile_10a",
+			"target_version": "0.39",
+			"type": "OBJECT",
+			"options": {
+				"is_bullet_proof": false,
+				"is_visible": true,
+				"lod_distance": 16960,
+				"has_gravity": true,
+				"is_attached": true,
+				"is_driver_visible": true,
+				"is_mission_entity": true,
+				"is_melee_proof": false,
+				"is_dynamic": true,
+				"is_frozen": false,
+				"use_soft_pinning": true,
+				"object_tint": 0,
+				"is_invincible": true,
+				"buoyancy": 0.0,
+				"is_light_on": true,
+				"is_networked": true,
+				"weight": 0.0,
+				"alpha": 255,
+				"bone_index": 0,
+				"is_fire_proof": false,
+				"gravity": 0.0,
+				"is_explosion_proof": false,
+				"has_collision": true
+			},
+			"hash": -1480604471,
+			"offset": {
+				"z": 2.23,
+				"y": -0.69,
+				"x": -0.44
+			},
+			"blip_icon": 1,
+			"blip_color": 2,
+			"world_rotation": {
+				"z": 14.624782,
+				"y": -0.090671,
+				"x": 1.173967
+			}
+		}, {
+			"position": {
+				"z": 41.021538,
+				"y": 3073.507812,
+				"x": 1308.746216
+			},
+			"num_bones": 0,
+			"rotation_order": 2,
+			"children": {},
+			"model": "ba_prop_club_tonic_can",
+			"rotation": {
+				"z": 0,
+				"y": 0,
+				"x": 0
+			},
+			"name": "ba_prop_club_tonic_can",
+			"target_version": "0.39",
+			"type": "OBJECT",
+			"options": {
+				"is_bullet_proof": false,
+				"is_visible": true,
+				"lod_distance": 16960,
+				"has_gravity": true,
+				"is_attached": true,
+				"is_driver_visible": true,
+				"is_mission_entity": true,
+				"is_melee_proof": false,
+				"is_dynamic": true,
+				"is_frozen": false,
+				"use_soft_pinning": true,
+				"object_tint": 0,
+				"is_invincible": true,
+				"buoyancy": 0.0,
+				"is_light_on": true,
+				"is_networked": true,
+				"weight": 0.0,
+				"alpha": 255,
+				"bone_index": 0,
+				"is_fire_proof": false,
+				"gravity": 0.0,
+				"is_explosion_proof": false,
+				"has_collision": true
+			},
+			"hash": -360789139,
+			"offset": {
+				"z": 0.4,
+				"y": 0.35,
+				"x": 0.69
+			},
+			"blip_icon": 1,
+			"blip_color": 2,
+			"world_rotation": {
+				"z": -75.377052,
+				"y": 1.173969,
+				"x": 0.090652
+			}
+		}, {
+			"position": {
+				"z": 41.94154,
+				"y": 3074.087402,
+				"x": 1306.526489
+			},
+			"num_bones": 0,
+			"rotation_order": 2,
+			"children": {},
+			"model": "prop_boxpile_10a",
+			"rotation": {
+				"z": 90,
+				"y": 0,
+				"x": 0
+			},
+			"name": "prop_boxpile_10a",
+			"target_version": "0.39",
+			"type": "OBJECT",
+			"options": {
+				"is_bullet_proof": false,
+				"is_visible": true,
+				"lod_distance": 16960,
+				"has_gravity": true,
+				"is_attached": true,
+				"is_driver_visible": true,
+				"is_mission_entity": true,
+				"is_melee_proof": false,
+				"is_dynamic": true,
+				"is_frozen": false,
+				"use_soft_pinning": true,
+				"object_tint": 0,
+				"is_invincible": true,
+				"buoyancy": 0.0,
+				"is_light_on": true,
+				"is_networked": true,
+				"weight": 0.0,
+				"alpha": 255,
+				"bone_index": 0,
+				"is_fire_proof": false,
+				"gravity": 0.0,
+				"is_explosion_proof": false,
+				"has_collision": true
+			},
+			"hash": -1480604471,
+			"offset": {
+				"z": 1.3,
+				"y": -1.65,
+				"x": -0.45
+			},
+			"blip_icon": 1,
+			"blip_color": 2,
+			"world_rotation": {
+				"z": 14.624782,
+				"y": -0.090671,
+				"x": 1.173967
+			}
+		}, {
+			"position": {
+				"z": 41.95166,
+				"y": 3075.587402,
+				"x": 1312.077637
+			},
+			"num_bones": 0,
+			"rotation_order": 2,
+			"children": {},
+			"model": "prop_vend_soda_02",
+			"rotation": {
+				"z": -90,
+				"y": 0,
+				"x": 0
+			},
+			"name": "prop_vend_soda_02",
+			"target_version": "0.39",
+			"type": "OBJECT",
+			"options": {
+				"is_bullet_proof": false,
+				"is_visible": true,
+				"lod_distance": 16960,
+				"has_gravity": true,
+				"is_attached": true,
+				"is_driver_visible": true,
+				"is_mission_entity": true,
+				"is_melee_proof": false,
+				"is_dynamic": true,
+				"is_frozen": false,
+				"use_soft_pinning": true,
+				"object_tint": 0,
+				"is_invincible": true,
+				"buoyancy": 0.0,
+				"is_light_on": true,
+				"is_networked": true,
+				"weight": 0.0,
+				"alpha": 255,
+				"bone_index": 0,
+				"is_fire_proof": false,
+				"gravity": 0.0,
+				"is_explosion_proof": false,
+				"has_collision": true
+			},
+			"hash": 1114264700,
+			"offset": {
+				"z": 1.3,
+				"y": 4.1,
+				"x": -0.5
+			},
+			"blip_icon": 1,
+			"blip_color": 2,
+			"world_rotation": {
+				"z": -165.375198,
+				"y": 0.090671,
+				"x": -1.173967
+			}
+		}, {
+			"position": {
+				"z": 41.931171,
+				"y": 3074.620117,
+				"x": 1312.330078
+			},
+			"num_bones": 0,
+			"rotation_order": 2,
+			"children": {},
+			"model": "prop_vend_soda_02",
+			"rotation": {
+				"z": 90,
+				"y": 0,
+				"x": 0
+			},
+			"name": "prop_vend_soda_02",
+			"target_version": "0.39",
+			"type": "OBJECT",
+			"options": {
+				"is_bullet_proof": false,
+				"is_visible": true,
+				"lod_distance": 16960,
+				"has_gravity": true,
+				"is_attached": true,
+				"is_driver_visible": true,
+				"is_mission_entity": true,
+				"is_melee_proof": false,
+				"is_dynamic": true,
+				"is_frozen": false,
+				"use_soft_pinning": true,
+				"object_tint": 0,
+				"is_invincible": true,
+				"buoyancy": 0.0,
+				"is_light_on": true,
+				"is_networked": true,
+				"weight": 0.0,
+				"alpha": 255,
+				"bone_index": 0,
+				"is_fire_proof": false,
+				"gravity": 0.0,
+				"is_explosion_proof": false,
+				"has_collision": true
+			},
+			"hash": 1114264700,
+			"offset": {
+				"z": 1.3,
+				"y": 4.1,
+				"x": 0.5
+			},
+			"blip_icon": 1,
+			"blip_color": 2,
+			"world_rotation": {
+				"z": 14.624782,
+				"y": -0.090671,
+				"x": 1.173967
+			}
+		}, {
+			"position": {
+				"z": 41.930042,
+				"y": 3073.288574,
+				"x": 1305.246704
+			},
+			"num_bones": 0,
+			"rotation_order": 2,
+			"children": {},
+			"model": "prop_boxpile_10a",
+			"rotation": {
+				"z": 0,
+				"y": 0,
+				"x": 0
+			},
+			"name": "prop_boxpile_10a",
+			"target_version": "0.39",
+			"type": "OBJECT",
+			"options": {
+				"is_bullet_proof": false,
+				"is_visible": true,
+				"lod_distance": 16960,
+				"has_gravity": true,
+				"is_attached": true,
+				"is_driver_visible": true,
+				"is_mission_entity": true,
+				"is_melee_proof": false,
+				"is_dynamic": true,
+				"is_frozen": false,
+				"use_soft_pinning": true,
+				"object_tint": 0,
+				"is_invincible": true,
+				"buoyancy": 0.0,
+				"is_light_on": true,
+				"is_networked": true,
+				"weight": 0.0,
+				"alpha": 255,
+				"bone_index": 0,
+				"is_fire_proof": false,
+				"gravity": 0.0,
+				"is_explosion_proof": false,
+				"has_collision": true
+			},
+			"hash": -1480604471,
+			"offset": {
+				"z": 1.3,
+				"y": -3.09,
+				"x": 0
+			},
+			"blip_icon": 1,
+			"blip_color": 2,
+			"world_rotation": {
+				"z": -75.377052,
+				"y": 1.173969,
+				"x": 0.090652
+			}
+		}, {
+			"position": {
+				"z": 41.948372,
+				"y": 3075.062256,
+				"x": 1310.065063
+			},
+			"num_bones": 0,
+			"rotation_order": 2,
+			"children": {},
+			"model": "prop_vend_soda_02",
+			"rotation": {
+				"z": -90,
+				"y": 0,
+				"x": 0
+			},
+			"name": "prop_vend_soda_02",
+			"target_version": "0.39",
+			"type": "OBJECT",
+			"options": {
+				"is_bullet_proof": false,
+				"is_visible": true,
+				"lod_distance": 16960,
+				"has_gravity": true,
+				"is_attached": true,
+				"is_driver_visible": true,
+				"is_mission_entity": true,
+				"is_melee_proof": false,
+				"is_dynamic": true,
+				"is_frozen": false,
+				"use_soft_pinning": true,
+				"object_tint": 0,
+				"is_invincible": true,
+				"buoyancy": 0.0,
+				"is_light_on": true,
+				"is_networked": true,
+				"weight": 0.0,
+				"alpha": 255,
+				"bone_index": 0,
+				"is_fire_proof": false,
+				"gravity": 0.0,
+				"is_explosion_proof": false,
+				"has_collision": true
+			},
+			"hash": 1114264700,
+			"offset": {
+				"z": 1.3,
+				"y": 2.02,
+				"x": -0.5
+			},
+			"blip_icon": 1,
+			"blip_color": 2,
+			"world_rotation": {
+				"z": -165.375198,
+				"y": 0.090671,
+				"x": -1.173967
+			}
+		}, {
+			"position": {
+				"z": 41.950062,
+				"y": 3075.33252,
+				"x": 1311.100342
+			},
+			"num_bones": 0,
+			"rotation_order": 2,
+			"children": {},
+			"model": "prop_vend_soda_02",
+			"rotation": {
+				"z": -90,
+				"y": 0,
+				"x": 0
+			},
+			"name": "prop_vend_soda_02",
+			"target_version": "0.39",
+			"type": "OBJECT",
+			"options": {
+				"is_bullet_proof": false,
+				"is_visible": true,
+				"lod_distance": 16960,
+				"has_gravity": true,
+				"is_attached": true,
+				"is_driver_visible": true,
+				"is_mission_entity": true,
+				"is_melee_proof": false,
+				"is_dynamic": true,
+				"is_frozen": false,
+				"use_soft_pinning": true,
+				"object_tint": 0,
+				"is_invincible": true,
+				"buoyancy": 0.0,
+				"is_light_on": true,
+				"is_networked": true,
+				"weight": 0.0,
+				"alpha": 255,
+				"bone_index": 0,
+				"is_fire_proof": false,
+				"gravity": 0.0,
+				"is_explosion_proof": false,
+				"has_collision": true
+			},
+			"hash": 1114264700,
+			"offset": {
+				"z": 1.3,
+				"y": 3.09,
+				"x": -0.5
+			},
+			"blip_icon": 1,
+			"blip_color": 2,
+			"world_rotation": {
+				"z": -165.375198,
+				"y": 0.090671,
+				"x": -1.173967
+			}
+		}, {
+			"position": {
+				"z": 41.921856,
+				"y": 3073.15625,
+				"x": 1306.759155
+			},
+			"num_bones": 0,
+			"rotation_order": 2,
+			"children": {},
+			"model": "prop_boxpile_10a",
+			"rotation": {
+				"z": 90,
+				"y": 0,
+				"x": 0
+			},
+			"name": "prop_boxpile_10a",
+			"target_version": "0.39",
+			"type": "OBJECT",
+			"options": {
+				"is_bullet_proof": false,
+				"is_visible": true,
+				"lod_distance": 16960,
+				"has_gravity": true,
+				"is_attached": true,
+				"is_driver_visible": true,
+				"is_mission_entity": true,
+				"is_melee_proof": false,
+				"is_dynamic": true,
+				"is_frozen": false,
+				"use_soft_pinning": true,
+				"object_tint": 0,
+				"is_invincible": true,
+				"buoyancy": 0.0,
+				"is_light_on": true,
+				"is_networked": true,
+				"weight": 0.0,
+				"alpha": 255,
+				"bone_index": 0,
+				"is_fire_proof": false,
+				"gravity": 0.0,
+				"is_explosion_proof": false,
+				"has_collision": true
+			},
+			"hash": -1480604471,
+			"offset": {
+				"z": 1.3,
+				"y": -1.66,
+				"x": 0.51
+			},
+			"blip_icon": 1,
+			"blip_color": 2,
+			"world_rotation": {
+				"z": 14.624782,
+				"y": -0.090671,
+				"x": 1.173967
+			}
+		}, {
+			"position": {
+				"z": 41.224461,
+				"y": 3072.388916,
+				"x": 1301.741455
+			},
+			"num_bones": 0,
+			"rotation_order": 2,
+			"children": {},
+			"model": "prop_jetski_ramp_01",
+			"rotation": {
+				"z": 0,
+				"y": 0,
+				"x": 15
+			},
+			"name": "prop_jetski_ramp_01",
+			"target_version": "0.39",
+			"type": "OBJECT",
+			"options": {
+				"is_bullet_proof": false,
+				"is_visible": true,
+				"lod_distance": 16960,
+				"has_gravity": true,
+				"is_attached": true,
+				"is_driver_visible": true,
+				"is_mission_entity": true,
+				"is_melee_proof": false,
+				"is_dynamic": true,
+				"is_frozen": false,
+				"use_soft_pinning": true,
+				"object_tint": 0,
+				"is_invincible": true,
+				"buoyancy": 0.0,
+				"is_light_on": true,
+				"is_networked": true,
+				"weight": 0.0,
+				"alpha": 255,
+				"bone_index": 0,
+				"is_fire_proof": false,
+				"gravity": 0.0,
+				"is_explosion_proof": false,
+				"has_collision": true
+			},
+			"hash": -1081534242,
+			"offset": {
+				"z": 0.6,
+				"y": -6.71,
+				"x": 0
+			},
+			"blip_icon": 1,
+			"blip_color": 2,
+			"world_rotation": {
+				"z": -75.691734,
+				"y": 1.215886,
+				"x": 15.087426
+			}
+		}, {
+			"position": {
+				"z": 42.87009,
+				"y": 3073.845947,
+				"x": 1305.637207
+			},
+			"num_bones": 0,
+			"rotation_order": 2,
+			"children": {},
+			"model": "prop_boxpile_10a",
+			"rotation": {
+				"z": -90,
+				"y": 0,
+				"x": 0
+			},
+			"name": "prop_boxpile_10a",
+			"target_version": "0.39",
+			"type": "OBJECT",
+			"options": {
+				"is_bullet_proof": false,
+				"is_visible": true,
+				"lod_distance": 16960,
+				"has_gravity": true,
+				"is_attached": true,
+				"is_driver_visible": true,
+				"is_mission_entity": true,
+				"is_melee_proof": false,
+				"is_dynamic": true,
+				"is_frozen": false,
+				"use_soft_pinning": true,
+				"object_tint": 0,
+				"is_invincible": true,
+				"buoyancy": 0.0,
+				"is_light_on": true,
+				"is_networked": true,
+				"weight": 0.0,
+				"alpha": 255,
+				"bone_index": 0,
+				"is_fire_proof": false,
+				"gravity": 0.0,
+				"is_explosion_proof": false,
+				"has_collision": true
+			},
+			"hash": -1480604471,
+			"offset": {
+				"z": 2.23,
+				"y": -2.57,
+				"x": -0.46
+			},
+			"blip_icon": 1,
+			"blip_color": 2,
+			"world_rotation": {
+				"z": -165.375198,
+				"y": 0.090671,
+				"x": -1.173967
+			}
+		}, {
+			"position": {
+				"z": 41.927883,
+				"y": 3074.094971,
+				"x": 1310.317505
+			},
+			"num_bones": 0,
+			"rotation_order": 2,
+			"children": {},
+			"model": "prop_vend_soda_02",
+			"rotation": {
+				"z": 90,
+				"y": 0,
+				"x": 0
+			},
+			"name": "prop_vend_soda_02",
+			"target_version": "0.39",
+			"type": "OBJECT",
+			"options": {
+				"is_bullet_proof": false,
+				"is_visible": true,
+				"lod_distance": 16960,
+				"has_gravity": true,
+				"is_attached": true,
+				"is_driver_visible": true,
+				"is_mission_entity": true,
+				"is_melee_proof": false,
+				"is_dynamic": true,
+				"is_frozen": false,
+				"use_soft_pinning": true,
+				"object_tint": 0,
+				"is_invincible": true,
+				"buoyancy": 0.0,
+				"is_light_on": true,
+				"is_networked": true,
+				"weight": 0.0,
+				"alpha": 255,
+				"bone_index": 0,
+				"is_fire_proof": false,
+				"gravity": 0.0,
+				"is_explosion_proof": false,
+				"has_collision": true
+			},
+			"hash": 1114264700,
+			"offset": {
+				"z": 1.3,
+				"y": 2.02,
+				"x": 0.5
+			},
+			"blip_icon": 1,
+			"blip_color": 2,
+			"world_rotation": {
+				"z": 14.624782,
+				"y": -0.090671,
+				"x": 1.173967
+			}
+		}, {
+			"position": {
+				"z": 41.929573,
+				"y": 3074.36499,
+				"x": 1311.352783
+			},
+			"num_bones": 0,
+			"rotation_order": 2,
+			"children": {},
+			"model": "prop_vend_soda_02",
+			"rotation": {
+				"z": 90,
+				"y": 0,
+				"x": 0
+			},
+			"name": "prop_vend_soda_02",
+			"target_version": "0.39",
+			"type": "OBJECT",
+			"options": {
+				"is_bullet_proof": false,
+				"is_visible": true,
+				"lod_distance": 16960,
+				"has_gravity": true,
+				"is_attached": true,
+				"is_driver_visible": true,
+				"is_mission_entity": true,
+				"is_melee_proof": false,
+				"is_dynamic": true,
+				"is_frozen": false,
+				"use_soft_pinning": true,
+				"object_tint": 0,
+				"is_invincible": true,
+				"buoyancy": 0.0,
+				"is_light_on": true,
+				"is_networked": true,
+				"weight": 0.0,
+				"alpha": 255,
+				"bone_index": 0,
+				"is_fire_proof": false,
+				"gravity": 0.0,
+				"is_explosion_proof": false,
+				"has_collision": true
+			},
+			"hash": 1114264700,
+			"offset": {
+				"z": 1.3,
+				"y": 3.09,
+				"x": 0.5
+			},
+			"blip_icon": 1,
+			"blip_color": 2,
+			"world_rotation": {
+				"z": 14.624782,
+				"y": -0.090671,
+				"x": 1.173967
+			}
+		}, {
+			"position": {
+				"z": 42.849808,
+				"y": 3072.888428,
+				"x": 1305.887085
+			},
+			"num_bones": 0,
+			"rotation_order": 2,
+			"children": {},
+			"model": "prop_boxpile_10a",
+			"rotation": {
+				"z": -90,
+				"y": 0,
+				"x": 0
+			},
+			"name": "prop_boxpile_10a",
+			"target_version": "0.39",
+			"type": "OBJECT",
+			"options": {
+				"is_bullet_proof": false,
+				"is_visible": true,
+				"lod_distance": 16960,
+				"has_gravity": true,
+				"is_attached": true,
+				"is_driver_visible": true,
+				"is_mission_entity": true,
+				"is_melee_proof": false,
+				"is_dynamic": true,
+				"is_frozen": false,
+				"use_soft_pinning": true,
+				"object_tint": 0,
+				"is_invincible": true,
+				"buoyancy": 0.0,
+				"is_light_on": true,
+				"is_networked": true,
+				"weight": 0.0,
+				"alpha": 255,
+				"bone_index": 0,
+				"is_fire_proof": false,
+				"gravity": 0.0,
+				"is_explosion_proof": false,
+				"has_collision": true
+			},
+			"hash": -1480604471,
+			"offset": {
+				"z": 2.23,
+				"y": -2.57,
+				"x": 0.53
+			},
+			"blip_icon": 1,
+			"blip_color": 2,
+			"world_rotation": {
+				"z": -165.375198,
+				"y": 0.090671,
+				"x": -1.173967
+			}
+		}, {
+			"position": {
+				"z": 40.486774,
+				"y": 3053.177002,
+				"x": 1232.650513
+			},
+			"blip_color": 2,
+			"num_bones": 128,
+			"children": {},
+			"model": "s_m_m_bouncer_02",
+			"hash": 1376128402,
+			"rotation": {
+				"z": 90,
+				"y": 0,
+				"x": 0
+			},
+			"name": "s_m_m_bouncer_02",
+			"target_version": "0.39",
+			"type": "PED",
+			"options": {
+				"is_bullet_proof": false,
+				"is_visible": true,
+				"lod_distance": 16960,
+				"has_gravity": true,
+				"is_attached": true,
+				"is_driver_visible": true,
+				"is_mission_entity": true,
+				"is_melee_proof": false,
+				"is_dynamic": true,
+				"is_frozen": false,
+				"use_soft_pinning": true,
+				"object_tint": 0,
+				"is_invincible": true,
+				"buoyancy": 0.0,
+				"is_light_on": true,
+				"is_networked": true,
+				"weight": 0.0,
+				"alpha": 255,
+				"bone_index": 0,
+				"is_fire_proof": false,
+				"gravity": 0.0,
+				"is_explosion_proof": false,
+				"has_collision": true
+			},
+			"ped_attributes": {
+				"head_overlays": {
+					"_2": -1,
+					"_1": -1,
+					"_0": -1,
+					"_6": -1,
+					"_10": -1,
+					"_5": -1,
+					"_12": -1,
+					"_3": -1,
+					"_4": -1,
+					"_8": -1,
+					"_7": -1,
+					"_11": -1,
+					"_9": -1
+				},
+				"seat": -3,
+				"max_health": 200,
+				"props": {
+					"_2": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					},
+					"_1": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					},
+					"_0": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					},
+					"_5": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					},
+					"_6": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					},
+					"_3": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					},
+					"_4": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					},
+					"_8": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					},
+					"_7": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					},
+					"_9": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					}
+				},
+				"armor": 0,
+				"eye_color": -1,
+				"ignore_events": true,
+				"animation_dict": "anim@amb@casino@peds@",
+				"weapon": {},
+				"animation_name": "amb_world_human_stand_guard_male_base",
+				"animation": {
+					"scenario": "WORLD_HUMAN_GUARD_STAND",
+					"name": "Guard Stand"
+				},
+				"components": {
+					"_2": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 1
+					},
+					"_1": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 1
+					},
+					"_0": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 1
+					},
+					"_11": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 1
+					},
+					"_5": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 1
+					},
+					"_6": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 1
+					},
+					"_3": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 0
+					},
+					"_10": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 1
+					},
+					"_8": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 0
+					},
+					"_7": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 0
+					},
+					"_4": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 1
+					},
+					"_9": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 0
+					}
+				}
+			},
+			"offset": {
+				"z": 1.4,
+				"y": 0.93,
+				"x": -0.7
+			},
+			"rotation_order": 2,
+			"blip_icon": 1,
+			"world_rotation": {
+				"z": -142.024048,
+				"y": 0.0,
+				"x": 0.0
+			}
+		}, {
+			"position": {
+				"z": 40.534111,
+				"y": 3059.478516,
+				"x": 1231.926147
+			},
+			"blip_color": 2,
+			"num_bones": 128,
+			"children": {},
+			"model": "s_m_m_bouncer_02",
+			"hash": 1376128402,
+			"rotation": {
+				"z": -90,
+				"y": 0,
+				"x": 0
+			},
+			"name": "s_m_m_bouncer_02",
+			"target_version": "0.39",
+			"type": "PED",
+			"options": {
+				"is_bullet_proof": false,
+				"is_visible": true,
+				"lod_distance": 16960,
+				"has_gravity": true,
+				"is_attached": true,
+				"is_driver_visible": true,
+				"is_mission_entity": true,
+				"is_melee_proof": false,
+				"is_dynamic": true,
+				"is_frozen": false,
+				"use_soft_pinning": true,
+				"object_tint": 0,
+				"is_invincible": true,
+				"buoyancy": 0.0,
+				"is_light_on": true,
+				"is_networked": true,
+				"weight": 0.0,
+				"alpha": 255,
+				"bone_index": 0,
+				"is_fire_proof": false,
+				"gravity": 0.0,
+				"is_explosion_proof": false,
+				"has_collision": true
+			},
+			"ped_attributes": {
+				"head_overlays": {
+					"_2": -1,
+					"_1": -1,
+					"_0": -1,
+					"_6": -1,
+					"_10": -1,
+					"_5": -1,
+					"_12": -1,
+					"_3": -1,
+					"_4": -1,
+					"_8": -1,
+					"_7": -1,
+					"_11": -1,
+					"_9": -1
+				},
+				"seat": -3,
+				"max_health": 200,
+				"props": {
+					"_2": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					},
+					"_1": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					},
+					"_0": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					},
+					"_5": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					},
+					"_6": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					},
+					"_3": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					},
+					"_4": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					},
+					"_8": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					},
+					"_7": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					},
+					"_9": {
+						"drawable_variation": -1,
+						"texture_variation": -1
+					}
+				},
+				"armor": 0,
+				"eye_color": -1,
+				"ignore_events": true,
+				"animation_dict": "anim@amb@casino@peds@",
+				"weapon": {},
+				"animation_name": "amb_world_human_stand_guard_male_base",
+				"animation": {
+					"scenario": "WORLD_HUMAN_GUARD_STAND",
+					"name": "Guard Stand"
+				},
+				"components": {
+					"_2": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 1
+					},
+					"_1": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 1
+					},
+					"_0": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 1
+					},
+					"_11": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 1
+					},
+					"_5": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 1
+					},
+					"_6": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 1
+					},
+					"_3": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 0
+					},
+					"_10": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 1
+					},
+					"_8": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 0
+					},
+					"_7": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 0
+					},
+					"_4": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 1
+					},
+					"_9": {
+						"drawable_variation": 0,
+						"texture_variation": 0,
+						"palette_variation": 0
+					}
+				}
+			},
+			"offset": {
+				"z": 1.4,
+				"y": 0.93,
+				"x": 0.7
+			},
+			"rotation_order": 2,
+			"blip_icon": 1,
+			"world_rotation": {
+				"z": -150.280807,
+				"y": -0.,
+				"x": -0.
+			}
+		}],
+		"always_spawn_at_position": false,
+		"hash": -1352468814,
+		"name": "trailer",
+		"type": "VEHICLE",
+		"options": {
+			"spawn_mode": 1,
+			"is_bullet_proof": false,
+			"is_visible": true,
+			"lod_distance": 16960,
+			"object_tint": 0,
+			"has_gravity": true,
+			"is_attached": false,
+			"is_light_on": true,
+			"is_dynamic": true,
+			"is_mission_entity": true,
+			"match_parents_heading": true,
+			"is_invincible": true,
+			"is_frozen": false,
+			"use_soft_pinning": true,
+			"is_melee_proof": false,
+			"alpha": 255,
+			"is_networked": true,
+			"is_driver_visible": true,
+			"weight": 0.0,
+			"buoyancy": 0.0,
+			"match_parents_rotation": true,
+			"bone_index": 0,
+			"is_fire_proof": false,
+			"gravity": 0.0,
+			"is_explosion_proof": false,
+			"has_collision": true
+		},
+		"model": "trflat",
+		"offset": {
+			"z": 0.562991,
+			"y": -7.76791,
+			"x": 0.001
+		},
+		"vehicle_attributes": {
+			"neon": {
+				"color": {
+					"r": 0,
+					"b": 0,
+					"g": 255
+				},
+				"lights": {
+					"left": true,
+					"right": true,
+					"back": true,
+					"front": true
+				}
+			},
+			"doors": {
+				"open": {
+					"frontleft": false,
+					"backleft": false,
+					"trunk2": false,
+					"trunk": false,
+					"hood": false,
+					"frontright": false,
+					"backright": false
+				},
+				"broken": {}
+			},
+			"wheels": {
+				"bulletproof_tires": true,
+				"tires_burst": {},
+				"detached": {},
+				"tire_smoke_color": {
+					"r": 0,
+					"b": 255,
+					"g": 0
+				},
+				"wheel_type": 0
+			},
+			"windows": {
+				"rolled_down": {},
+				"broken": {
+					"rearright": false,
+					"frontleft": false,
+					"midleft": false,
+					"midright": false,
+					"rearleft": false,
+					"rear": false,
+					"frontright": false,
+					"front": false
+				}
+			},
+			"extras": {},
+			"mods": {
+				"_1": -1,
+				"_39": -1,
+				"_15": -1,
+				"_35": -1,
+				"_5": -1,
+				"_12": -1,
+				"_17": true,
+				"_48": -1,
+				"_44": -1,
+				"_9": -1,
+				"_11": -1,
+				"_37": -1,
+				"_31": -1,
+				"_33": -1,
+				"_13": -1,
+				"_20": true,
+				"_16": -1,
+				"_36": -1,
+				"_2": -1,
+				"_46": -1,
+				"_0": -1,
+				"_24": -1,
+				"_41": -1,
+				"_8": -1,
+				"_45": -1,
+				"_49": -1,
+				"_38": -1,
+				"_6": -1,
+				"_22": true,
+				"_4": -1,
+				"_34": -1,
+				"_42": -1,
+				"_14": -1,
+				"_32": -1,
+				"_27": -1,
+				"_28": -1,
+				"_47": -1,
+				"_18": true,
+				"_43": -1,
+				"_3": -1,
+				"_23": -1,
+				"_19": true,
+				"_7": -1,
+				"_30": -1,
+				"_21": true,
+				"_10": -1,
+				"_29": -1,
+				"_26": -1,
+				"_25": -1,
+				"_40": -1
+			},
+			"options": {
+				"bulletproof_tires": false,
+				"siren": false,
+				"window_tint": -1,
+				"engine_running": false,
+				"search_light": false,
+				"license_plate_text": " SPRUNK ",
+				"license_plate_type": 3,
+				"radio_loud": false,
+				"emergency_lights": false
+			},
+			"paint": {
+				"color_combo": -1,
+				"interior_color": 55,
+				"extra_colors": {
+					"pearlescent": 0,
+					"wheel": 0
+				},
+				"dirt_level": 7.0,
+				"livery_legacy": -1,
+				"dashboard_color": 55,
+				"livery2_legacy": -1,
+				"secondary": {
+					"is_custom": true,
+					"custom_color": {
+						"r": 0,
+						"b": 0,
+						"g": 255
+					},
+					"vehicle_standard_color": 0,
+					"vehicle_custom_color": {
+						"r": 8,
+						"b": 8,
+						"g": 8
+					}
+				},
+				"fade": 0.27451,
+				"livery": -1,
+				"primary": {
+					"is_custom": true,
+					"custom_color": {
+						"r": 0,
+						"b": 0,
+						"g": 255
+					},
+					"vehicle_standard_color": 0,
+					"vehicle_custom_color": {
+						"r": 8,
+						"b": 8,
+						"g": 8
+					}
+				},
+				"vehicle_custom_color": {
+					"r": 8,
+					"b": 8,
+					"g": 8
+				}
+			},
+			"headlights": {
+				"headlights_type": true,
+				"headlight_color": -1,
+				"headlights_color": 255
+			}
+		},
+		"rotation_order": 2,
+		"world_rotation": {
+			"z": -75.377052,
+			"y": 1.173969,
+			"x": 0.090652
+		}
+	}],
+	"blip_sprite": 1,
+	"name": "sprunk-wedge-trailer2",
+	"hash": -1649536104,
+	"version": "Constructor 0.16 / Lib 3.16",
+	"offset": {
+		"z": 0,
+		"y": 0,
+		"x": 0
+	},
+	"type": "VEHICLE",
+	"options": {
+		"spawn_mode": 1,
+		"is_bullet_proof": true,
+		"is_visible": true,
+		"lod_distance": 16960,
+		"has_gravity": true,
+		"is_attached": false,
+		"is_driver_visible": true,
+		"is_mission_entity": false,
+		"is_melee_proof": true,
+		"is_dynamic": true,
+		"is_frozen": false,
+		"use_soft_pinning": true,
+		"object_tint": 0,
+		"is_invincible": true,
+		"buoyancy": 0.0,
+		"is_light_on": true,
+		"is_networked": true,
+		"weight": 0.0,
+		"alpha": 255,
+		"bone_index": 0,
+		"is_fire_proof": true,
+		"gravity": 0.0,
+		"is_explosion_proof": true,
+		"has_collision": true
+	},
+	"author": "hexarobi",
+	"model": "phantom2",
+	"vehicle_attributes": {
+		"neon": {
+			"color": {
+				"r": 0,
+				"b": 0,
+				"g": 255
+			},
+			"lights": {
+				"left": true,
+				"right": true,
+				"back": true,
+				"front": true
+			}
+		},
+		"doors": {
+			"open": {
+				"frontleft": false,
+				"backleft": false,
+				"trunk2": false,
+				"trunk": false,
+				"hood": false,
+				"frontright": false,
+				"backright": false
+			},
+			"broken": {}
+		},
+		"wheels": {
+			"wheel_type": 3,
+			"tires_burst": {},
+			"tire_smoke_color": {
+				"r": 0,
+				"b": 0,
+				"g": 255
+			},
+			"detached": {}
+		},
+		"windows": {
+			"rolled_down": {},
+			"broken": {
+				"frontleft": false,
+				"rear": false,
+				"rearright": false,
+				"rearleft": false,
+				"front": false
+			}
+		},
+		"extras": {},
+		"mods": {
+			"_1": -1,
+			"_39": -1,
+			"_15": 3,
+			"_35": -1,
+			"_5": -1,
+			"_28": -1,
+			"_17": true,
+			"_32": -1,
+			"_44": -1,
+			"_9": -1,
+			"_11": 3,
+			"_37": -1,
+			"_31": -1,
+			"_33": -1,
+			"_13": 2,
+			"_20": true,
+			"_16": 4,
+			"_36": -1,
+			"_49": -1,
+			"_46": -1,
+			"_0": -1,
+			"_2": -1,
+			"_25": -1,
+			"_48": -1,
+			"_45": -1,
+			"_24": -1,
+			"_38": -1,
+			"_6": -1,
+			"_22": true,
+			"_4": -1,
+			"_34": -1,
+			"_42": -1,
+			"_14": 4,
+			"_12": 2,
+			"_27": -1,
+			"_29": -1,
+			"_47": -1,
+			"_18": true,
+			"_43": -1,
+			"_8": -1,
+			"_23": 3,
+			"_19": true,
+			"_7": -1,
+			"_30": -1,
+			"_21": true,
+			"_10": -1,
+			"_3": -1,
+			"_26": -1,
+			"_41": -1,
+			"_40": -1
+		},
+		"options": {
+			"bulletproof_tires": true,
+			"siren": false,
+			"window_tint": -1,
+			"engine_running": true,
+			"search_light": false,
+			"license_plate_type": 0,
+			"license_plate_text": " SPRUNK ",
+			"radio_loud": true,
+			"headlights_color": 4,
+			"emergency_lights": false
+		},
+		"paint": {
+			"color_combo": -1,
+			"interior_color": 55,
+			"extra_colors": {
+				"pearlescent": 0,
+				"wheel": 0
+			},
+			"dirt_level": 14.87066,
+			"livery_legacy": -1,
+			"dashboard_color": 55,
+			"livery2_legacy": -1,
+			"secondary": {
+				"is_custom": true,
+				"vehicle_standard_color": 0,
+				"custom_color": {
+					"r": 0,
+					"b": 0,
+					"g": 255
+				}
+			},
+			"fade": 0.227451,
+			"livery": -1,
+			"primary": {
+				"is_custom": true,
+				"vehicle_standard_color": 0,
+				"custom_color": {
+					"r": 0,
+					"b": 0,
+					"g": 255
+				}
+			},
+			"vehicle_custom_color": {
+				"r": 8,
+				"b": 8,
+				"g": 8
+			}
+		},
+		"headlights": {
+			"headlights_type": true,
+			"headlight_color": -1,
+			"headlights_color": 4
+		}
+	},
+	"rotation_order": 2,
+	"world_rotation": {
+		"z": -75.492546,
+		"y": 1.770465,
+		"x": 0.592655
+	}
+}

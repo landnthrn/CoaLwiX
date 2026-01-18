@@ -1,0 +1,37 @@
+Model: romero
+Plate Style: 10
+Plate Text:  0 MPH  
+Primary Colour: 120
+Secondary Colour: 0
+Pearl Colour: 140
+Wheel Colour: 148
+Wheel Type: 10
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 13
+Front Wheels: 6
+Livery: 1419439199
+Tyre Smoke Colour: #8200ff
+Window Tint: 1
+Custom Primary Colour: #7403ff
+Custom Secondary Colour: #7403ff
+Neon Colour: #3c03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: Yes
+Extra 10: Yes

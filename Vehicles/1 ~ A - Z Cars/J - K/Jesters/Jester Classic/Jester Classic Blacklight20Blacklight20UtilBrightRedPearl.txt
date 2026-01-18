@@ -1,0 +1,44 @@
+Model: jester3
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 12
+Pearl Colour: 44
+Wheel Colour: 134
+Wheel Type: 8
+Spoiler: 8
+Front Bumper: 12
+Rear Bumper: 2
+Sideskirt: 1
+Exhaust: 4
+Chassis: 3
+Grille: 4
+Hood: 3
+Fender: 2
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 119
+Livery: 0
+Tyre Smoke Colour: #ff0055
+Window Tint: 1
+Custom Primary Colour: #020014
+Custom Secondary Colour: #020014
+Neon Colour: #ff0023
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 150
+Dashboard Colour: 157
+Tyres Mode: 1

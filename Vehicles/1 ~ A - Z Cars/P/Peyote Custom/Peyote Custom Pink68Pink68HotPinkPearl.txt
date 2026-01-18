@@ -1,0 +1,57 @@
+Model: peyote3
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 120
+Pearl Colour: 135
+Wheel Colour: 135
+Wheel Type: 8
+Exhaust: 3
+Chassis: 1
+Grille: 3
+Hood: 0
+Right Fender: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 12
+Front Wheels: 119
+Back Wheels: 0
+Plate Holder: 10
+Vanity Plates: 0
+Trim: 14
+Ornaments: 44
+Dial: 6
+Steering Wheel: 5
+Shifter Leavers: 9
+Plaques: 22
+Speakers: 4
+Trunk: 5
+Hydraulics: 5
+Engine Block: 6
+Aerials: 3
+Tank: 2
+Livery: 0
+Tyre Smoke Colour: #d500ff
+Window Tint: 1
+Custom Primary Colour: #330044
+Custom Secondary Colour: #330044
+Neon Colour: #b400ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 134
+Dashboard Colour: 134
+Tyres Mode: 1
+Extra 1: No
+Extra 2: No
+Extra 3: No
+Extra 4: No

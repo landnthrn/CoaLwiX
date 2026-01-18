@@ -1,0 +1,33 @@
+Model: monster
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 117
+Secondary Colour: 0
+Pearl Colour: 111
+Wheel Colour: 156
+Wheel Type: 8
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 58
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 120
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #ff0026
+Custom Secondary Colour: #ff0026
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

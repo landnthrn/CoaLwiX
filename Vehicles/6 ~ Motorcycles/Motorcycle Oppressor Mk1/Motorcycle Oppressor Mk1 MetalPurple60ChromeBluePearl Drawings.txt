@@ -1,0 +1,41 @@
+Model: oppressor
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 140
+Wheel Colour: 0
+Wheel Type: 6
+Spoiler: 1
+Front Bumper: 1
+Rear Bumper: 1
+Chassis: 1
+Hood: 2
+Fender: 1
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 47
+Back Wheels: 47
+Livery: 37
+Tyre Smoke Colour: #3c00ff
+Window Tint: 1
+Custom Primary Colour: #0f003c
+Custom Secondary Colour: #5870a1
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 158
+Dashboard Colour: 158
+Tyres Mode: 1

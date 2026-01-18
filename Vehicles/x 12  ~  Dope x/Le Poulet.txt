@@ -1,0 +1,33 @@
+Model: jester5
+Plate Style: 0
+Plate Text: 69YPU451
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 0
+Wheel Colour: 0
+Wheel Type: 12
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 0
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 1
+Front Wheels: 57
+Livery: -1
+Tyre Smoke Colour: #141414
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

@@ -1,0 +1,1616 @@
+require("NovaScript.NovaScript_natives")
+local tables = require("NovaScript.tables")
+local T = require("NovaScript.NovaS_translations")
+local func = require("NovaScript.functions")
+
+-----------------------------------------------
+--------------------TABLES---------------------
+-----------------------------------------------
+local relationships = {
+    [0] = "Companion",
+    [1] = "Respect",
+    [2] = "Like",
+    [3] = "Neutral",
+    [4] = "Dislike",
+    [5] = "Hate",
+    [255] = "Pedestrians",
+}
+
+local languages = {
+    [0] = T"English",
+    [1] = T"French",
+    [2] = T"German",
+    [3] = T"Italian",
+    [4] = T"Spanish",
+    [5] = T"Brazilian",
+    [6] = T"Polish",
+    [7] = T"Russian",
+    [8] = T"Korean",
+    [9] = T"Chinese",
+    [10] = T"Japanese",
+    [11] = T"Mexican",
+    [12] = T"Chinese",
+}
+
+local seat_names = {
+    [-1] = T"Driver",
+    [0] = T"Front Right",
+    [1] = T"Back Left",
+    [2] = T"Back Right",
+    [3] = T"Further Back Left",
+    [4] = T"Further Back Right",
+}
+
+local effects = {
+    "scr_mich4_firework_trailburst",
+    "scr_indep_firework_air_burst",
+    "scr_indep_firework_starburst",
+    "scr_indep_firework_trailburst_spawn",
+    "scr_firework_indep_burst_rwb",
+    "scr_firework_indep_spiral_burst_rwb",
+    "scr_firework_indep_ring_burst_rwb",
+    "scr_xmas_firework_burst_fizzle",
+    "scr_firework_indep_repeat_burst_rwb",
+    "scr_firework_xmas_ring_burst_rgw",
+    "scr_firework_xmas_repeat_burst_rgw",
+    "scr_firework_xmas_spiral_burst_rgw",
+}
+local assets = {
+    "scr_rcpaparazzo1",
+    "proj_indep_firework",
+    "scr_indep_fireworks",
+    "scr_indep_fireworks",
+    "proj_indep_firework_v2",
+    "proj_indep_firework_v2",
+    "proj_indep_firework_v2",
+    "proj_indep_firework_v2",
+    "proj_indep_firework_v2",
+    "proj_xmas_firework",
+    "proj_xmas_firework",
+    "proj_xmas_firework",
+}
+
+-----------------------------------------------
+-------------------FUNCTIONS-------------------
+-----------------------------------------------
+local function draw_rect_with_text(x, y, text_amound, width, colour)
+    local total_text_height = 0
+    local one_text_height = 0.01874 + 0.007
+    
+    for i = 1, text_amound do
+        total_text_height = total_text_height + one_text_height
+    end
+
+    local draw_rect = directx.draw_rect(x - 0.0045, y - 0.0045, width, total_text_height, colour)
+    
+    return draw_rect
+end
+
+local function draw_info_text(text, infotext, posX, posY, distance, size1, size2, bool)
+    local draw_text = directx.draw_text(posX, posY, text, ALIGN_TOP_LEFT, size1, {r = 1, g = 1, b = 1, a = 1.0}, true)
+
+    local first_text_width, first_text_height = directx.get_text_size(text, size1)
+    
+    local posX2, alignment
+    local posY2 = posY + (first_text_height/1.9)
+    if bool then
+        posX2 = posX - (-distance/1000)
+        alignment = ALIGN_CENTRE_RIGHT
+    else
+        posX2 = posX + first_text_width + (distance/1000)
+        alignment = ALIGN_CENTRE_LEFT
+    end
+    
+    local draw_infotext = directx.draw_text(posX2, posY2, infotext, alignment, size2, {r = 160/255, g = 160/255, b = 160/255, a = 1.0}, true)
+    
+    return draw_text, draw_infotext
+end
+
+local function dec_to_ipv4(ip)
+    return string.format(
+        "%i.%i.%i.%i", 
+        ip >> 24 & 0xFF, 
+        ip >> 16 & 0xFF, 
+        ip >> 8  & 0xFF, 
+        ip       & 0xFF
+    )
+end
+
+local all_weapons = {}
+local temp_weapons = util.get_weapons()
+for a,b in pairs(temp_weapons) do
+    all_weapons[#all_weapons + 1] = {hash = b['hash'], label_key = b['label_key']}
+end
+
+local function get_weapon_name_from_hash(hash) 
+    for k,v in pairs(all_weapons) do 
+        if v.hash == hash then 
+            return util.get_label_text(v.label_key)
+        end
+    end
+    return T"Unarmed"
+end
+
+local function bool(bool)
+    if bool then
+        return T"Yes"
+    else
+        return T"No"
+    end
+end
+
+local function check(info)
+    if info == nil or info == "NULL" or info == 0 or info == " " then
+        return T"None"
+    else
+        return info
+    end
+end
+
+local function queuecheck(info)
+    if info == nil or info == "NULL" or info == " " then
+        return 0
+    else
+        return "#" .. info
+    end
+end
+
+local function org(org_type)
+    if org_type == -1 then
+        return T"Isn't in any"
+    elseif org_type == 0 then
+        return "CEO"
+    else
+        return "MC"
+    end
+end
+
+local function round(num, dp)
+    local mult = 10^(dp or 0)
+    return math.floor(num * mult + 0.5) / mult
+end
+
+local function format_money(money)
+    if money >= 1000 and money < 999950 then
+        return round(money / 1000, 1) .. "K"
+    elseif money >= 999950 and money < 999999950 then
+        return round(money / 1000000, 1) .. "M"
+    elseif money >= 999999950 then
+        return round(money / 1000000000, 1) .. "B"
+    else return money
+    end
+end
+
+local function get_targeted_ent_of_type(vehicles, peds, objects)
+    local ent_tables = {
+        vehicles ? entities.get_all_vehicles_as_pointers() : nil,
+        peds ? entities.get_all_peds_as_pointers() : nil,
+    }
+
+    local cam_pos = get_final_rendered_cam_coord()
+    local cam_dir = get_final_rendered_cam_rot():toDir()
+
+    local closest = {}
+    for i, ent_table in ent_tables do
+        for i = 1, #ent_table, 1 do
+            local ent_dir = entities.get_position(ent_table[i])
+            ent_dir:sub(cam_pos)
+            ent_dir:normalise()
+            local dot = cam_dir:dot(ent_dir)
+
+            if dot > 0.2 and ent_table[i] != players.user_ped() then
+                table.insert(closest, {ent = ent_table[i], dist = dot})
+            end
+        end
+    end
+
+    table.sort(closest, function (a, b)
+        return a.dist > b.dist
+    end)
+
+    for i, value in closest do
+        local ent = entities.pointer_to_handle(value.ent)
+        if has_entity_clear_los_to_entity(players.user_ped(), ent, 17) then
+            return ent
+        else
+            return nil
+        end
+    end
+end
+
+local box_colors = {
+    {r = 0, g = 0, b = 0, a = 177/255},
+    {r = 0, g = 0, b = 0, a = 177/255},
+    {r = 0, g = 0, b = 0, a = 177/255},
+    {r = 0, g = 0, b = 0, a = 177/255},
+    {r = 0, g = 0, b = 0, a = 177/255},
+    {r = 0, g = 0, b = 0, a = 177/255},
+    {r = 0, g = 0, b = 0, a = 177/255},
+    {r = 0, g = 0, b = 0, a = 177/255},
+}
+
+local function draw_world_hacking_base()
+    --sides--
+    directx.draw_rect(0.5 - (0.035 *2.5), 0.5 - (0.055/2), 0.035, 0.055, box_colors[1])
+    directx.draw_rect(0.5 + (0.035*1.5), 0.5 - (0.055/2), 0.035, 0.055, box_colors[2])
+    
+    --top/bottom--
+    directx.draw_rect(0.5 - (0.035/2), 0.5 - (0.055*2.5), 0.035, 0.055, box_colors[3])
+    directx.draw_rect(0.5 - (0.035/2), 0.5 + (0.055*1.5), 0.035, 0.055, box_colors[4])
+
+    --middle under--
+    directx.draw_rect(0.5 - (0.035 *2), 0.5 + (0.055/1.2), 0.035, 0.055, box_colors[5])
+    directx.draw_rect(0.5 + 0.035, 0.5 + (0.055/1.2), 0.035, 0.055, box_colors[6])
+
+    --middle top--
+    directx.draw_rect(0.5 - (0.035 *2), 0.5 - (0.055*1.8), 0.035, 0.055, box_colors[7])
+    directx.draw_rect(0.5 + 0.035, 0.5 - (0.055*1.8), 0.035, 0.055, box_colors[8])
+
+    local base_positions = {
+        {x = 0.5 - (0.035 * 2), y = 0.5},
+        {x = 0.5 + (0.035 * 2), y = 0.5},
+        {x = 0.5, y = 0.5 - (0.055 * 2)},
+        {x = 0.5, y = 0.5 + (0.055 * 2)},
+        {x = 0.5 - (0.035 * 1.5), y = 0.5 + (0.055*1.3)},
+        {x = 0.5 + (0.035 * 1.5), y = 0.5 + (0.055*1.3)},
+        {x = 0.5 - (0.035 * 1.5), y = 0.5 - (0.055*1.3)},
+        {x = 0.5 + (0.035 * 1.5), y = 0.5 - (0.055*1.3)},
+    }
+
+    local box_positions = {
+        {x1 = 0.5 - (0.035 *2.5), y1 = 0.5 - (0.055/2), x2 = 0.5 - (0.035 *2.5) + 0.035, y2 = 0.5 - (0.055/2) + 0.055},
+        {x1 = 0.5 + (0.035*1.5), y1 = 0.5 - (0.055/2), x2 = 0.5 + (0.035*1.5) + 0.035, y2 = 0.5 - (0.055/2) + 0.055},
+        {x1 = 0.5 - (0.035/2), y1 = 0.5 - (0.055*2.5), x2 = 0.5 - (0.035/2) + 0.035, y2 = 0.5 - (0.055*2.5) + 0.055},
+        {x1 = 0.5 - (0.035/2), y1 = 0.5 + (0.055*1.5), x2 = 0.5 - (0.035/2) + 0.035, y2 = 0.5 + (0.055*1.5) + 0.055},
+        {x1 = 0.5 - (0.035 *2), y1 = 0.5 + (0.055/1.2), x2 = 0.5 - (0.035 *2) + 0.035, y2 = 0.5 + (0.055/1.2) + 0.055},
+        {x1 = 0.5 + 0.035, y1 = 0.5 + (0.055/1.2), x2 = 0.5 + 0.035 + 0.035, y2 = 0.5 + (0.055/1.2) + 0.055},
+        {x1 = 0.5 - (0.035 *2), y1 = 0.5 - (0.055*1.8), x2 = 0.5 - (0.035 *2) + 0.035, y2 = 0.5 - (0.055*1.8) + 0.055},
+        {x1 = 0.5 + 0.035, y1 = 0.5 - (0.055*1.8), x2 = 0.5 + 0.035 + 0.035, y2 = 0.5 - (0.055*1.8) + 0.055},
+    }
+
+    return base_positions, box_positions
+end
+
+local hacking_texts = {
+    vehicle = {T"Fill", T"Hijack", T"KFV.", T"Explode", T"Detach", T"Launch", T"Repair", T"Delete"},
+    vehicle_no_pas = {T"Fill", T"Drive", T"NPC", T"Explode", T"Detach", T"Launch", T"Repair", T"Delete"},
+    ped = {T"Delete", T"Veh.", T"Explode", T"Nuke", "", "", "", ""},
+    player = {T"Truck", T"Slasher", T"Explode.", T"Nuke", T"Asteroids", T"Ram", "Kick", T"Clown"},
+}
+
+local function draw_world_hacking_text(positions, entity)
+    local entity_mode
+    for i, position in positions do
+        if is_entity_a_ped(entity) and not is_ped_a_player(entity) then
+            if is_ped_in_any_vehicle(entity, true) then
+                directx.draw_text(position.x, position.y, hacking_texts.vehicle[i], ALIGN_CENTRE, 0.5, {r = 1, g = 1, b = 1, a = 1}, true)
+                entity_mode = "vehicle"
+            else
+                directx.draw_text(position.x, position.y, hacking_texts.ped[i], ALIGN_CENTRE, 0.5, {r = 1, g = 1, b = 1, a = 1}, true)
+                entity_mode = "ped"
+            end
+        end
+        if is_entity_a_ped(entity) and is_ped_a_player(entity) then
+            if is_ped_in_any_vehicle(entity, true) then
+                directx.draw_text(position.x, position.y, hacking_texts.vehicle[i], ALIGN_CENTRE, 0.5, {r = 1, g = 1, b = 1, a = 1}, true)
+                entity_mode = "vehicle"
+            else
+                directx.draw_text(position.x, position.y, hacking_texts.player[i], ALIGN_CENTRE, 0.5, {r = 1, g = 1, b = 1, a = 1}, true)
+                entity_mode = "player"
+            end
+        end
+        if is_entity_a_vehicle(entity, true) then
+            if not is_vehicle_seat_free(entity, -1, false) then
+                local passenger = get_ped_in_vehicle_seat(entity, -1, false)
+                if is_entity_a_ped(passenger) then
+                    directx.draw_text(position.x, position.y, hacking_texts.vehicle[i], ALIGN_CENTRE, 0.5, {r = 1, g = 1, b = 1, a = 1}, true)
+                    entity_mode = "vehicle"
+                end
+            else
+                directx.draw_text(position.x, position.y, hacking_texts.vehicle_no_pas[i], ALIGN_CENTRE, 0.5, {r = 1, g = 1, b = 1, a = 1}, true)
+                entity_mode = "vehicle_no_pas"
+            end
+        end
+    end
+
+    if entity_mode != nil then
+        return entity_mode
+    else
+        return nil
+    end
+end
+
+local cursor_pos = {x = get_disabled_control_normal(2, 239), y = get_disabled_control_normal(2, 240)}
+local function draw_cursor()
+    cursor_pos = {x = get_disabled_control_normal(2, 239), y = get_disabled_control_normal(2, 240)}
+    directx.draw_rect(cursor_pos.x, cursor_pos.y, 0.01, 0.02, {r = 1, g = 1, b = 1, a = 1})
+end
+
+local function is_cursor_in_box(box_positions)
+    if cursor_pos != nil then
+        for i, pos in box_positions do
+            if cursor_pos.x > pos.x1 and cursor_pos.x < pos.x2 and cursor_pos.y > pos.y1 and cursor_pos.y < pos.y2 then
+                box_colors[i] = {r = 105/255, g = 105/255, b = 105/255, a = 177/255}
+                return i
+            else
+                box_colors[i] = {r = 0, g = 0, b = 0, a = 177/255}
+            end
+        end
+    end
+end
+
+local function fill_vehicle_with_peds(vehicle)
+    local vehicle_coords = get_entity_coords(vehicle, true)
+    for i, seat in func.get_free_seats(vehicle) do
+        local ped = create_random_ped(vehicle_coords.x, vehicle_coords.y, vehicle_coords.z)
+        set_ped_into_vehicle(ped, vehicle, seat)
+    end
+end
+
+local function hijack_player_vehicle(selected_vehicle)
+    local ready_to_kick = false
+    local ped = nil
+    local player_ped = get_ped_in_vehicle_seat(selected_vehicle, -1, false)
+    func.control_vehicle(network_get_player_index_from_ped(player_ped), true, function(vehicle)
+        if not is_this_model_a_bike(get_entity_model(vehicle)) then
+            if not is_vehicle_seat_free(vehicle, 0, false) then
+                local ped_in_passenger_seat = get_ped_in_vehicle_seat(vehicle, 0, false)
+                if is_entity_a_ped(ped_in_passenger_seat) and not is_ped_a_player(ped_in_passenger_seat) then
+                    entities.delete_by_handle(ped_in_passenger_seat)
+                    if not does_entity_exist(ped_in_passenger_seat) and is_vehicle_seat_free(vehicle, 0, false) then
+                        ready_to_kick = true
+                    end
+                else
+                    util.toast(T"Passenger seat is being used by a player.")
+                end
+            else
+                ready_to_kick = true
+            end
+            if ready_to_kick then
+                util.yield(350)
+                ped = func.kick_out_of_vehicle(vehicle)
+                for i = -1, get_number_of_vehicle_doors(vehicle) do
+                    set_vehicle_door_shut(vehicle, i, true)
+                end
+            end
+            util.yield(650)
+            if does_entity_exist(ped) and ped != nil then
+                entities.delete_by_handle(ped)
+            end
+            set_ped_into_vehicle(players.user_ped(), vehicle, -1)
+        else
+            util.toast(T"The player is on a motorcycle -> a motorcycle causes issues with the vehicle kick trying additional kick.")
+            local ped = get_player_ped_script_index(pid)
+            clear_ped_tasks_immediately(ped)
+            util.yield(350)
+            set_ped_into_vehicle(players.user_ped(), vehicle, -1)
+        end
+    end)
+end
+
+local function hijack_ped_vehicle(vehicle)
+    local ped = get_ped_in_vehicle_seat(vehicle, -1, false)
+    clear_ped_tasks_immediately(ped)
+    task_leave_vehicle(ped, vehicle, 16)
+    util.yield(350)
+    set_ped_into_vehicle(players.user_ped(), vehicle, -1)
+end
+
+local function check_and_hijack_vehicle(vehicle)
+    if is_ped_a_player(get_ped_in_vehicle_seat(vehicle, -1, false)) then
+        hijack_player_vehicle(vehicle)
+    else
+        hijack_ped_vehicle(vehicle)
+    end
+end
+
+local function check_and_kick_from_vehicle(selected_vehicle)
+    if is_ped_a_player(get_ped_in_vehicle_seat(selected_vehicle, -1, false)) then
+        local ready_to_kick = false
+        local ped = nil
+        local player_ped = get_ped_in_vehicle_seat(selected_vehicle, -1, false)
+        func.control_vehicle(network_get_player_index_from_ped(player_ped), true, function(vehicle)
+            if not is_this_model_a_bike(get_entity_model(vehicle)) then
+                if not is_vehicle_seat_free(vehicle, 0, false) then
+                    local ped_in_passenger_seat = get_ped_in_vehicle_seat(vehicle, 0, false)
+                    if is_entity_a_ped(ped_in_passenger_seat) and not is_ped_a_player(ped_in_passenger_seat) then
+                        entities.delete_by_handle(ped_in_passenger_seat)
+                        if not does_entity_exist(ped_in_passenger_seat) and is_vehicle_seat_free(vehicle, 0, false) then
+                            ready_to_kick = true
+                        end
+                    else
+                        util.toast(T"Passenger seat is being used by a player.")
+                    end
+                else
+                    ready_to_kick = true
+                end
+                if ready_to_kick then
+                    util.yield(350)
+                    ped = func.kick_out_of_vehicle(vehicle)
+                    for i = -1, get_number_of_vehicle_doors(vehicle) do
+                        set_vehicle_door_shut(vehicle, i, true)
+                    end
+                end
+                util.yield(650)
+                if does_entity_exist(ped) and ped != nil then
+                    entities.delete_by_handle(ped)
+                end
+            else
+                util.toast(T"The player is on a motorcycle -> a motorcycle causes issues with the vehicle kick trying additional kick.")
+                local ped = get_player_ped_script_index(pid)
+                clear_ped_tasks_immediately(ped)
+            end
+        end)
+    else
+        local ped = get_ped_in_vehicle_seat(selected_vehicle, -1, false)
+        clear_ped_tasks_immediately(ped)
+        task_leave_vehicle(ped, selected_vehicle, 16)
+    end
+end
+
+-----------------------------------------------
+---------------------LISTS---------------------
+-----------------------------------------------
+local root = menu.my_root()
+local world_main = root:list(T"World")
+local race_list = world_main:list(T"Race")
+local vehicle_escort_list = world_main:list(T"Vehicle Escort")
+local all_vehicles_list = world_main:list(T"All Vehicles")
+local firework_list = world_main:list(T"Firework")
+local bouncy_water_list = world_main:list(T"Bouncy Water")
+local train_controls_list = world_main:list(T"Train Controls")
+
+-----------------------------------------------
+--------------------OPTIONS--------------------
+-----------------------------------------------
+----------------
+--SET WAYPOINT--
+----------------
+local race_waypoints = {}
+local blips = {}
+race_list:action(T"Set Waypoint", {}, "", function()
+    local position = players.get_position(players.user())
+    local distance_from_ground = get_entity_height_above_ground(players.user_ped())
+    local waypoint_coords = v3.new(position.x, position.y, position.z - distance_from_ground)
+    local blip = add_blip_for_coord(waypoint_coords.x, waypoint_coords.y, waypoint_coords.z)
+    table.insert(race_waypoints, waypoint_coords)
+    table.insert(blips, blip)
+end)
+
+-------------------
+--CLEAR WAYPOINTS--
+-------------------
+race_list:action(T"Clear Waypoints", {}, "", function()
+    race_waypoints = {}
+    for i, blip in blips do
+        util.remove_blip(blip)
+    end
+    blips = {}
+end)
+
+------------------
+--VEHICLE AMOUNT--
+------------------
+local vehicle_amount = 3
+race_list:slider(T"Vehicle Amount", {"NRvehicleamount"}, "", 2, 10, 3, 1, function(count)
+    vehicle_amount = count
+end)
+
+-----------
+--VEHICLE--
+-----------
+local race_vehicle = "adder"
+func.make_all_vehicles_list(race_list, function(vehicle)
+    race_vehicle = vehicle
+end)
+
+local driving_styles_names = {T"Avoid Traffic Extremely", T"Sometimes Overtake Traffic", T"Rushed", T"Normal", T"Ignore Lights", T"Avoid Traffic", T"Lazy", T"Precise"}
+local driving_styles = {6, 5, 1074528293, 786603, 2883621, 786468, 1076, 8388614}
+local set_driving_style_race = 786468
+race_list:list_select(T"Driving Style", {}, "", driving_styles_names, 6, function(index)
+    set_driving_style_race = driving_styles[index]
+end)
+
+------------------------
+--JOIN THE RACE URSELF--
+------------------------
+local join_urself = false
+race_list:toggle(T"Join The Race Urself", {}, "", function(on)
+    join_urself = on
+end)
+
+--------------
+--START RACE--
+--------------
+local vehicle_blips = {}
+local spawned_entitys = {}
+local start_race_opt;start_race_opt = race_list:toggle(T"Start Race", {}, "", function(on)
+    if on then
+        if #race_waypoints > 1 then
+            local spawn_coords = race_waypoints[1]
+            local random_vehicle
+            if join_urself then
+                random_vehicle = math.random(1, vehicle_amount)
+            end
+            for i = 1, vehicle_amount do
+                if i > 1 then
+                    spawn_coords = get_offset_from_entity_in_world_coords(spawned_entitys[i - 1].vehicle, 0, -10, 0)
+                end
+
+                local vehicle_hash = util.joaat(race_vehicle)
+                util.request_model(vehicle_hash)
+                local vehicle = entities.create_vehicle(vehicle_hash, spawn_coords, 0)
+
+                local vehicle_coords = get_entity_coords(vehicle, true)
+                local rel = v3.new(race_waypoints[2])
+                rel:sub(vehicle_coords)
+                local rotation = rel:toRot()
+                set_entity_rotation(vehicle, rotation.x, rotation.y, rotation.z, 2, false)
+                local vehicle_blip = add_blip_for_entity(vehicle)
+                table.insert(vehicle_blips, vehicle_blip)
+
+                local ped = create_random_ped(spawn_coords.x, spawn_coords.y, spawn_coords.z)
+                if random_vehicle != nil and random_vehicle == i then
+                    set_ped_into_vehicle(players.user_ped(), vehicle, -1)
+                    entities.delete_by_handle(ped)
+                else
+                    set_ped_into_vehicle(ped, vehicle, -1)
+                end
+                table.insert(spawned_entitys, {vehicle = vehicle, ped = ped, waypoint = 2})
+            end
+            util.yield(2000)
+            for i, entitys in spawned_entitys do
+               task_vehicle_drive_to_coord(entitys.ped, entitys.vehicle, race_waypoints[entitys.waypoint].x, race_waypoints[entitys.waypoint].y, race_waypoints[entitys.waypoint].y, get_vehicle_estimated_max_speed(entitys.vehicle), 1, get_entity_model(entitys.vehicle), set_driving_style_race, 5, 0)
+            end
+
+            local new_checkpoint = false
+            while start_race_opt.value do
+                for j, entitys in spawned_entitys do
+                    if func.get_distance_between(entitys.vehicle, race_waypoints[entitys.waypoint]) <= 25 then
+                        if entitys.waypoint != #race_waypoints then
+                            entitys.waypoint = entitys.waypoint + 1
+                        else
+                            entitys.waypoint = 1
+                        end
+                        task_vehicle_drive_to_coord(entitys.ped, entitys.vehicle, race_waypoints[entitys.waypoint].x, race_waypoints[entitys.waypoint].y, race_waypoints[entitys.waypoint].y, get_vehicle_estimated_max_speed(entitys.vehicle), 1, get_entity_model(entitys.vehicle), set_driving_style_race, 5, 0)
+                    end
+                end
+                util.yield()
+            end
+
+        else
+            util.toast(T"You need to have 2 waypoints set before u can start the race.")
+            start_race_opt.value = false
+        end
+    else
+        for i, entitys in spawned_entitys do
+            entities.delete_by_handle(entitys.vehicle)
+            entities.delete_by_handle(entitys.ped)
+        end
+        spawned_entitys = {}
+        for i, blip in vehicle_blips do
+            util.remove_blip(blip)
+        end
+        vehicle_blips = {}
+    end
+end)
+
+util.on_stop(function()
+    for i, blip in blips do
+        util.remove_blip(blip)
+    end
+    blips = {}
+end)
+
+-----------------
+--DRIVING STYLE--
+-----------------
+local set_driving_style_escort = 786468
+vehicle_escort_list:list_select(T"Driving Style", {}, "", driving_styles_names, 6, function(index)
+    set_driving_style_escort = driving_styles[index]
+end)
+
+------------------
+--VEHICLE ESCORT--
+------------------
+local vehicle_blips_escort = {}
+local spawned_entitys_escort = {}
+local escort_opt;escort_opt = vehicle_escort_list:toggle(T"Vehicle Escort", {}, "", function(on)
+    if on then
+        if get_first_blip_info_id(8) != 0 then
+            local spawn_coords = get_offset_from_entity_in_world_coords(players.user_ped(), 0, 10, 0)
+            for i = 1, 3 do
+                if i > 1 and #spawned_entitys_escort >= (i - 1) then
+                    spawn_coords = get_offset_from_entity_in_world_coords(spawned_entitys_escort[i - 1].vehicle, 0, -10, 0)
+                end
+    
+                local vehicle_hash = util.joaat("superd")
+                util.request_model(vehicle_hash)
+                local vehicle = entities.create_vehicle(vehicle_hash, spawn_coords, 0)
+                local heading = get_entity_heading(players.user_ped())
+                set_entity_heading(vehicle, heading)
+                local vehicle_blip = add_blip_for_entity(vehicle)
+                table.insert(vehicle_blips_escort, vehicle_blip)
+                set_vehicle_engine_on(vehicle, true, true, false)
+
+                local ped_hash = util.joaat("s_m_m_highsec_02")
+                util.request_model(ped_hash)
+                local ped = entities.create_ped(1, ped_hash, get_offset_from_entity_in_world_coords(vehicle, -1, 0, 0), 0)
+                set_entity_load_collision_flag(ped, true, true)
+                set_entity_as_mission_entity(ped, true, true)
+                set_blocking_of_non_temporary_events(ped, true)
+                task_enter_vehicle(ped, vehicle, -1, -1, 1.0, 24, 0)
+                if i == 2 then
+                    set_ped_into_vehicle(players.user_ped(), vehicle, 0)
+                end
+                if i != 1 then
+                    task_vehicle_escort(ped, vehicle, spawned_entitys_escort[i - 1].vehicle, -1, 20, set_driving_style_escort, 0, 0, 100)
+                end
+                    
+                table.insert(spawned_entitys_escort, {vehicle = vehicle, ped = ped})
+
+            end
+            util.yield(5000)
+            local x, y, z, bool = players.get_waypoint(players.user())
+            task_vehicle_drive_to_coord(spawned_entitys_escort[1].ped, spawned_entitys_escort[1].vehicle, x, y, z, 20, 1, get_entity_model(spawned_entitys_escort[1].vehicle), set_driving_style_escort, 5, 0)
+
+            while escort_opt.value do
+                if get_first_blip_info_id(8) == 0 then
+                    util.yield(3000)
+                    for i, entitys in spawned_entitys_escort do
+                        bring_vehicle_to_halt(entitys.vehicle, 0.0, 10)
+                    end
+                    task_leave_vehicle(players.user_ped(), entities.get_user_vehicle_as_handle(false), 0)
+                    util.yield(4000)
+                    escort_opt.value = false
+                end
+                util.yield()
+            end
+        else
+            util.toast(T"No waypoint set.")
+            escort_opt.value = false
+        end
+    else
+        for i, entitys in spawned_entitys_escort do
+            entities.delete_by_handle(entitys.vehicle)
+            entities.delete_by_handle(entitys.ped)
+        end
+        spawned_entitys_escort = {}
+    end
+end)
+
+------------------------
+--EXPLODE ALL VEHICLES--
+------------------------
+all_vehicles_list:toggle_loop(T"Explode All Vehicles", {}, "", function()
+    local vehicles = entities.get_all_vehicles_as_pointers()
+    local user_vehicle = get_vehicle_ped_is_in(players.user_ped(), true)
+    for vehicles as vehicle do
+        local vehicle_handle = entities.pointer_to_handle(vehicle)
+        if vehicle_handle != user_vehicle then
+            local vehicle_pos = get_entity_coords(vehicle_handle, true)
+            add_explosion(vehicle_pos.x, vehicle_pos.y, vehicle_pos.z, 1, 1.0, true, false, 0.0, false)
+        end
+    end
+    util.yield(2000)
+end)
+
+-----------------------
+--FREEZE ALL VEHICLES--
+-----------------------
+all_vehicles_list:toggle_loop(T"Freeze All Vehicles", {}, "", function()
+    local vehicles = entities.get_all_vehicles_as_pointers()
+    local user_vehicle = get_vehicle_ped_is_in(players.user_ped(), true)
+    for vehicles as vehicle do
+        local vehicle_handle = entities.pointer_to_handle(vehicle)
+        if vehicle_handle != user_vehicle then
+            freeze_entity_position(vehicle_handle, true)
+        end
+    end
+end, function()
+    local vehicles = entities.get_all_vehicles_as_pointers()
+    for vehicles as vehicle do
+        local vehicle_handle = entities.pointer_to_handle(vehicle)
+        freeze_entity_position(vehicle_handle, false)
+    end
+end)
+
+-------------------------------------
+--TURN OFF GRAVITY FOR ALL VEHICLES--
+-------------------------------------
+all_vehicles_list:toggle_loop(T"Turn Off Gravity For All Vehicles", {}, "", function()
+    local vehicles = entities.get_all_vehicles_as_pointers()
+    local user_vehicle = get_vehicle_ped_is_in(players.user_ped(), true)
+    for vehicles as vehicle do
+        local vehicle_handle = entities.pointer_to_handle(vehicle)
+        if vehicle_handle != user_vehicle then
+            set_vehicle_gravity(vehicle_handle, false)
+        end
+    end
+end, function()
+    local vehicles = entities.get_all_vehicles_as_pointers()
+    for vehicles as vehicle do
+        local vehicle_handle = entities.pointer_to_handle(vehicle)
+        set_vehicle_gravity(vehicle_handle, true)
+    end
+end)
+
+--------------------
+--JUMPING VEHICLES--
+--------------------
+all_vehicles_list:toggle_loop(T"Jumping Vehicles", {}, "", function()
+    local vehicles = entities.get_all_vehicles_as_pointers()
+    local user_vehicle = get_vehicle_ped_is_in(players.user_ped(), true)
+    for vehicles as vehicle do
+        local vehicle_handle = entities.pointer_to_handle(vehicle)
+        if vehicle_handle != user_vehicle then
+            apply_force_to_entity(vehicle_handle, 3, 0, 0, 10, 0.0, 0.0, 0.0, 0, true, false, true, false, true)
+        end
+    end
+    util.yield(2000)
+end)
+
+-----------------
+--VEHICLE CHAOS--
+-----------------
+all_vehicles_list:toggle_loop(T"Vehicle Chaos", {}, "", function()
+    local vehicles = entities.get_all_vehicles_as_pointers()
+    local user_vehicle = get_vehicle_ped_is_in(players.user_ped(), true)
+    for vehicles as vehicle do
+        local vehicle_handle = entities.pointer_to_handle(vehicle)
+        if vehicle_handle != user_vehicle then
+            apply_force_to_entity(vehicle_handle, 3, math.random(20, 100), math.random(20, 100), math.random(20, 100), math.random(10, 100), math.random(10, 100), math.random(10, 100), 0, true, false, true, false, true)
+        end
+    end
+    util.yield(2000)
+end)
+
+-----------------------------------
+--TURN ALL VEHICLES ON THEIR BACK--
+-----------------------------------
+all_vehicles_list:toggle_loop(T"Turn all Vehicles on Their back", {}, "", function()
+    local vehicles = entities.get_all_vehicles_as_pointers()
+    local user_vehicle = get_vehicle_ped_is_in(players.user_ped(), true)
+    for vehicles as vehicle do
+        local vehicle_handle = entities.pointer_to_handle(vehicle)
+        if vehicle_handle != user_vehicle then
+            set_entity_rotation(vehicle_handle, 0, 180, 0, 1, true)
+        end
+    end
+end, function()
+    local vehicles = entities.get_all_vehicles_as_pointers()
+    local user_vehicle = get_vehicle_ped_is_in(players.user_ped(), true)
+    for vehicles as vehicle do
+        local vehicle_handle = entities.pointer_to_handle(vehicle)
+        if vehicle_handle != user_vehicle then
+            set_entity_rotation(vehicle_handle, 0, 0, 0, 1, true)
+        end
+    end
+end)
+
+------------------------
+--DELETE ALL VEHICLES--
+------------------------
+all_vehicles_list:toggle_loop(T"Delete All Vehicles", {}, "", function()
+    local my_pos = players.get_position(players.user())
+    clear_area_of_vehicles(my_pos.x, my_pos.y, my_pos.z, 10000, false, false, false, false, false, false, false)
+    util.yield(1000)
+end)
+
+--------
+--KIND--
+--------
+local effect_name_kind = "scr_mich4_firework_trailburst"
+local asset_name_kind = "scr_rcpaparazzo1"
+firework_list:slider(T"Kind", {"Nfireworkkind"}, "", 1, 12, 1, 1, function(count)
+    effect_name_kind = effects[count]
+    asset_name_kind = assets[count]
+end)
+
+------------
+--FIREWORK--
+------------
+local firework;firework = firework_list:toggle(T"Firework", {}, "", function(on)
+    if on then
+        local user_pos = get_offset_from_entity_in_world_coords(players.user_ped(), 0.0, 5.0, 0.0)
+        local weap = util.joaat('weapon_firework')
+        request_weapon_asset(weap)
+        while firework.value do
+            shoot_single_bullet_between_coords(user_pos.x, user_pos.y, user_pos.z, user_pos.x, user_pos.y, user_pos.z + 1, 200, 0, weap, 0, false, false, 1000)
+            util.yield(250)
+            func.use_fx_asset(asset_name_kind)
+            local fx = start_particle_fx_looped_at_coord(effect_name_kind, user_pos.x, user_pos.y, user_pos.z+math.random(10, 40), 0.0, 0.0, 0.0, 1.0, false, false, false, false)
+            util.yield(1000)
+            stop_particle_fx_looped(fx, false)
+        end
+    end
+end)
+
+--------
+--TYPE--
+--------
+local firework_names = {T"Fountain", T"Shotburst", T"Trailburst"}
+local firework_type = "ind_prop_firework_04"
+local effect_name = "scr_indep_firework_fountain"
+firework_list:list_select(T"Type", {}, "", firework_names, 1, function(index)
+    switch index do
+        case 1:
+            firework_type = "ind_prop_firework_04"
+            effect_name = "scr_indep_firework_fountain"
+            break
+        case 2:
+            firework_type = "ind_prop_firework_02"
+            effect_name = "scr_indep_firework_shotburst"
+            break
+        case 3:
+            firework_type = "ind_prop_firework_03"
+            effect_name = "scr_indep_firework_trailburst"
+            break
+    end
+end)
+
+---------
+--TIMER--
+---------
+local firework_timer = 10
+firework_list:slider(T"Timer", {"Nfireworktimer"}, "", 1, 20, 10, 1, function(count)
+    firework_timer = count
+end)
+
+---------
+--PLACE--
+---------
+local placed_fireworks = {}
+firework_list:action(T"Place", {}, "", function()
+    local anim_dict = 'anim@mp_fireworks'
+    local anim_name = 'place_firework_3_box'
+    func.load_anim_dict(anim_dict)
+    local position = get_offset_from_entity_in_world_coords(players.user_ped(), 0.0, 0.52, 0.0)
+    freeze_entity_position(players.user_ped(), true)
+    task_play_anim(players.user_ped(), anim_dict, anim_name, 8.0, 8.0, -1, 0, 0.0, false, false, false)
+    util.yield(1500)
+    local firework = entities.create_object(util.joaat(firework_type), position)
+    place_object_on_ground_properly(firework)
+    freeze_entity_position(players.user_ped(), false)
+    util.yield(1000)
+    freeze_entity_position(firework, true)
+    table.insert(placed_fireworks, {object = firework, effect = effect_name})
+end)
+
+--------
+--PLAY--
+--------
+firework_list:action(T"Play", {}, "", function()
+    local ptfx_asset = "scr_indep_fireworks"
+    local time = util.current_time_millis() + (firework_timer * 1000)
+    while time >= util.current_time_millis() do
+        for j, firework in placed_fireworks do
+            func.use_fx_asset(ptfx_asset)
+            start_networked_particle_fx_non_looped_on_entity(firework.effect, firework.object, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, false, false, false)
+        end
+        util.yield(150)
+    end
+    for i, firework in placed_fireworks do 
+        entities.delete_by_handle(firework.object)
+        table.remove(placed_fireworks, i)
+    end
+end)
+
+-----------------
+--BOUNCE HEIGHT--
+-----------------
+local bounce_height = 15
+bouncy_water_list:slider(T"Bounce Height", {"Nbounceheight"}, "", 1, 100, 15, 1, function(count)
+    bounce_height = count
+end)
+
+----------------
+--BOUNCY WATER--
+----------------
+bouncy_water_list:toggle_loop(T"Bouncy Water", {}, "", function()
+    if is_ped_in_any_vehicle(players.user_ped(), false) then
+        if is_entity_in_water(entities.get_user_vehicle_as_handle(false)) then
+            local vel = v3.new(get_entity_velocity(entities.get_user_vehicle_as_handle(false)))
+            set_entity_velocity(entities.get_user_vehicle_as_handle(false), vel.x, vel.y, bounce_height)
+        end
+    else
+        if is_entity_in_water(players.user_ped()) then
+            local vel = v3.new(get_entity_velocity(entities.get_user_vehicle_as_handle(false)))
+            set_entity_velocity(players.user_ped(), vel.x, vel.y, bounce_height)
+        end
+    end
+end)
+
+-----------------------
+--ENTER NEAREST TRAIN--
+-----------------------
+train_controls_list:action(T"Enter Nearest Train", {}, "", function()
+    local vehicles = entities.get_all_vehicles_as_pointers()
+    local user_vehicle = get_vehicle_ped_is_in(players.user_ped(), true)
+    local train_found = false
+    if not is_ped_in_any_train(players.user_ped()) then
+        for vehicles as vehicle do
+            local vehicle_handle = entities.pointer_to_handle(vehicle)
+            if get_entity_model(vehicle_handle) == 1030400667 or get_entity_model(vehicle_handle) == 868868440 then
+                local driver_ped = get_ped_in_vehicle_seat(vehicle_handle, -1, true)
+                if does_entity_exist(driver_ped) and is_ped_a_player(driver_ped) then
+                    entities.delete_by_handle(driver_ped)
+                end
+                set_ped_into_vehicle(players.user_ped(), vehicle_handle, -1)
+                train_found = true
+            end
+        end
+        if not train_found then
+            util.toast(T"No train found.")
+        end
+    end
+end)
+
+---------------------
+--TRAIN KEY CONTROL--
+---------------------
+train_controls_list:toggle_loop(T"Train Key Control", {}, "", function()
+    if is_ped_in_any_train(players.user_ped()) then
+        local train = entities.get_user_vehicle_as_handle(false)
+        local train_max_speed = get_vehicle_estimated_max_speed(train)
+        local control_pressed = false
+        if is_disabled_control_pressed(2, 32) then
+            train_max_speed = train_max_speed + 10
+            control_pressed = true
+        end
+        if is_disabled_control_pressed(2, 33) then
+            train_max_speed = train_max_speed - 20
+            control_pressed = true
+        end
+        if control_pressed then
+            set_train_speed(train, train_max_speed)
+            set_train_cruise_speed(train, train_max_speed)
+        end
+    end
+end)
+
+--------------
+--HALT TRAIN--
+--------------
+train_controls_list:toggle_loop(T"Halt Train", {}, "", function()
+    if is_ped_in_any_train(players.user_ped()) then
+        local train = entities.get_user_vehicle_as_handle(false)
+        set_train_speed(train, 0.0)
+        set_train_cruise_speed(train, 0.0)
+    end
+end, function()
+    local train = entities.get_user_vehicle_as_handle(false)
+    local train_max_speed = get_vehicle_estimated_max_speed(train)
+    set_train_speed(train, train_max_speed)
+    set_train_cruise_speed(train, train_max_speed)
+end)
+
+---------------------
+--FORCE LEAVE TRAIN--
+---------------------
+train_controls_list:action(T"Force Leave Train", {}, "", function()
+    if is_ped_in_any_train(players.user_ped()) then
+        clear_ped_tasks_immediately(players.user_ped())
+    end
+end)
+
+----------
+--DERAIL--
+----------
+train_controls_list:toggle_loop(T"Derail", {}, "", function()
+    if is_ped_in_any_train(players.user_ped()) then
+        local train = entities.get_user_vehicle_as_handle(false)
+        set_render_train_as_derailed(train, true)
+        set_train_speed(train, 0.0)
+        set_train_cruise_speed(train, 0.0)
+    end
+end, function()
+    local train = entities.get_user_vehicle_as_handle(false)
+    local train_max_speed = get_vehicle_estimated_max_speed(train)
+    set_render_train_as_derailed(train, false)
+    set_train_speed(train, train_max_speed)
+    set_train_cruise_speed(train, train_max_speed)
+end)
+
+-------------------
+--AIM INFORMATION--
+-------------------
+world_main:toggle_loop(T"Aim Information", {}, "", function()
+    if is_player_free_aiming(players.user()) then
+        local entity = func.get_entity_player_is_aiming_at(players.user(), true)
+
+        if is_entity_a_ped(entity) and not is_ped_a_player(entity) then
+            local info = {
+                {label = T"Name:", value = util.reverse_joaat(get_entity_model(entity))},
+                {label = T"Hash:", value = get_entity_model(entity)},
+                {label = T"Distance:", value = math.ceil(func.get_distance_between(players.user_ped(), entity)) .. "m"},
+                {label = T"Speed:", value = math.ceil(get_entity_speed(entity) * 2.236936) .. " MPH"},
+                {label = T"Health:", value = get_entity_health(entity) .. "/" .. get_entity_max_health(entity)},
+                {label = T"Relationship group:", value = get_ped_relationship_group_hash(entity)},
+                {label = T"Ped Relationship:", value = relationships[get_relationship_between_peds(entity, players.user_ped())]},
+                {label = T"Coord X:", value = string.format("%.3f", get_entity_coords(entity).x)},
+                {label = T"Coord Y:", value = string.format("%.3f", get_entity_coords(entity).y)},
+                {label = T"Coord Z:", value = string.format("%.3f", get_entity_coords(entity).z)}
+            }
+        
+            draw_rect_with_text(0.52, 0.35, 10, 0.14, {r = 0/255, g = 0/255, b = 0/255, a = 175/255})
+            for i, data in info do
+                draw_info_text(data.label, data.value, 0.52, 0.35 + (i-1) * 0.025, 130, 0.45, 0.44, true)
+            end
+        end
+
+        if is_entity_a_ped(entity) and is_ped_a_player(entity) then
+            local pid = network_get_player_index_from_ped(entity)
+            local info = {
+                info_rect1 = {
+                    {label = T"Name:", value = players.get_name(pid)},
+                    {label = T"RID:", value = players.get_rockstar_id(pid)},
+                    {label = T"IP:", value = dec_to_ipv4(players.get_connect_ip(pid))},
+                    {label = T"Rank:", value = check(players.get_rank(pid))},
+                    {label = T"K/D:", value = round(players.get_kd(pid), 2)},
+                    {label = T"Language:", value = languages[players.get_language(pid)]},
+                    {label = T"Controller:", value = bool(players.is_using_controller(pid))},
+                    {label = T"Host:", value = bool(pid == players.get_host())},
+                    {label = T"Script host:", value = bool(pid == players.get_script_host())},
+                    {label = T"Host queue:", value = queuecheck(players.get_host_queue_position(pid))}
+                },
+                info_rect2 = {
+                    {label = T"Org:", value = org(players.get_org_type(pid))},
+                    {label = T"Distance:", value = math.ceil(func.get_distance_between(players.user_ped(), entity)) .. "m"},
+                    {label = T"Speed:", value = math.ceil(get_entity_speed(entity) * 2.236936) .. " MPH"},
+                    {label = T"Health:", value = get_entity_health(entity) .. "/" .. get_entity_max_health(entity)},
+                    {label = T"Armor:", value = get_ped_armour(entity) .. "/" .. get_player_max_armour(pid)},
+                    {label = T"Godmode:", value = bool(players.is_godmode(pid))},
+                    {label = T"Off the radar:", value = bool(players.is_otr(pid))},
+                    {label = T"Weapon:", value = get_weapon_name_from_hash(get_selected_ped_weapon(entity))},
+                    {label = T"Coord X:", value = string.format("%.3f", get_entity_coords(entity).x)},
+                    {label = T"Coord Y:", value = string.format("%.3f", get_entity_coords(entity).y)},
+                    {label = T"Coord Z:", value = string.format("%.3f", get_entity_coords(entity).z)}
+                },
+                info_rect3 = {
+                    {label = T"Wanted level:", value = get_player_wanted_level(pid) .. "/" .. get_max_wanted_level()},
+                    {label = T"Atk you:", value = bool(players.is_marked_as_attacker(pid))},
+                    {label = T"Mod or Admin:", value = bool(players.is_marked_as_modder_or_admin(pid))},
+                    {label = T"Total:", value = format_money(players.get_money(pid))},
+                    {label = T"Wallet:", value = format_money(players.get_wallet(pid))},
+                    {label = T"Bank:", value = format_money(players.get_bank(pid))},
+                    {label = T"Tags:", value = check(players.get_tags_string(pid))}
+                }
+            }
+            
+            local drawPositions = {
+                {x = 0.52, y = 0.35, width = 10},
+                {x = 0.665, y = 0.35, width = 11},
+                {x = 0.81, y = 0.35, width = 8}
+            }
+
+            for i, position in drawPositions do
+                draw_rect_with_text(position.x, position.y, position.width, 0.14, {r = 0/255, g = 0/255, b = 0/255, a = 175/255})
+            end
+            
+            for j, infoRect in {info.info_rect1, info.info_rect2, info.info_rect3} do
+                for i, data in infoRect do
+                    local rectIndex = j
+                    if j == 3 and i == 7 then
+                        i = 8
+                    end
+                    draw_info_text(data.label, data.value, drawPositions[rectIndex].x, 0.35 + (i-1) * 0.025, 130, 0.45, 0.44, true)
+                end
+            end
+        end
+
+        if is_entity_a_vehicle(entity) then
+            local info = {
+                {label = T"Name:", value = util.reverse_joaat(get_entity_model(entity))},
+                {label = T"Hash:", value = get_entity_model(entity)},
+                {label = T"Speed:", value = math.ceil(get_entity_speed(entity) * 2.236936) .. " MPH"},
+                {label = T"RPM:", value = math.ceil(entities.get_rpm(entities.handle_to_pointer(entity)) * 6000) .. " RPM"},
+                {label = T"Engine health:", value = math.floor((get_vehicle_engine_health(entity) + 4000) / 5000 * 100) .. "%"},
+                {label = T"Body health:", value = math.floor(get_vehicle_body_health(entity) / 1000 * 100) .. "%"},
+                {label = T"Distance:", value = math.ceil(func.get_distance_between(players.user_ped(), entity)) .. "m"},
+                {label = T"Coord X:", value = string.format("%.3f", get_entity_coords(entity).x)},
+                {label = T"Coord Y:", value = string.format("%.3f", get_entity_coords(entity).y)},
+                {label = T"Coord Z:", value = string.format("%.3f", get_entity_coords(entity).z)}
+            }
+            
+            local passengers = func.get_passengers(entity)
+            local passengers_number = #passengers
+            if func.any_passengers(entity) then
+                passengers_number = #passengers + 1
+            end
+            
+            draw_rect_with_text(0.52, 0.35, 10 + passengers_number, 0.14, {r = 0/255, g = 0/255, b = 0/255, a = 175/255})
+            for i, data in info do
+                draw_info_text(data.label, data.value, 0.52, 0.35 + (i-1) * 0.025, 130, 0.45, 0.44, true)
+            end
+            
+            if func.any_passengers(entity) then
+                local pos_y = 0.625
+                for i = 1, passengers_number - 1 do
+                    draw_info_text(T"Seat, Ped:", seat_names[passengers[i].seat] .. ", " .. tostring(passengers[i].ped), 0.52, pos_y, 130, 0.45, 0.44, true)
+                    pos_y = pos_y + 0.025
+                end
+
+                if is_ped_a_player(passengers[1].ped) then
+                    local ped = passengers[1].ped
+                    local pid = network_get_player_index_from_ped(ped)
+                    local info = {
+                        info_rect1 = {
+                            {label = T"Name:", value = players.get_name(pid)},
+                            {label = T"RID:", value = players.get_rockstar_id(pid)},
+                            {label = T"IP:", value = dec_to_ipv4(players.get_connect_ip(pid))},
+                            {label = T"Rank:", value = check(players.get_rank(pid))},
+                            {label = T"K/D:", value = round(players.get_kd(pid), 2)},
+                            {label = T"Language:", value = languages[players.get_language(pid)]},
+                            {label = T"Controller:", value = bool(players.is_using_controller(pid))},
+                            {label = T"Host:", value = bool(pid == players.get_host())},
+                            {label = T"Script host:", value = bool(pid == players.get_script_host())},
+                            {label = T"Host queue:", value = queuecheck(players.get_host_queue_position(pid))}
+                        },
+                        info_rect2 = {
+                            {label = T"Org:", value = org(players.get_org_type(pid))},
+                            {label = T"Distance:", value = math.ceil(func.get_distance_between(players.user_ped(), ped)) .. "m"},
+                            {label = T"Speed:", value = math.ceil(get_entity_speed(ped) * 2.236936) .. " MPH"},
+                            {label = T"Health:", value = get_entity_health(ped) .. "/" .. get_entity_max_health(ped)},
+                            {label = T"Armor:", value = get_ped_armour(ped) .. "/" .. get_player_max_armour(pid)},
+                            {label = T"Godmode:", value = bool(players.is_godmode(pid))},
+                            {label = T"Off the radar:", value = bool(players.is_otr(pid))},
+                            {label = T"Weapon:", value = get_weapon_name_from_hash(get_selected_ped_weapon(ped))},
+                            {label = T"Coord X:", value = string.format("%.3f", get_entity_coords(ped).x)},
+                            {label = T"Coord Y:", value = string.format("%.3f", get_entity_coords(ped).y)},
+                            {label = T"Coord Z:", value = string.format("%.3f", get_entity_coords(ped).z)}
+                        },
+                        info_rect3 = {
+                            {label = T"Wanted level:", value = get_player_wanted_level(pid) .. "/" .. get_max_wanted_level()},
+                            {label = T"Atk you:", value = bool(players.is_marked_as_attacker(pid))},
+                            {label = T"Mod or Admin:", value = bool(players.is_marked_as_modder_or_admin(pid))},
+                            {label = T"Total:", value = format_money(players.get_money(pid))},
+                            {label = T"Wallet:", value = format_money(players.get_wallet(pid))},
+                            {label = T"Bank:", value = format_money(players.get_bank(pid))},
+                            {label = T"Tags:", value = check(players.get_tags_string(pid))}
+                        }
+                    }
+                    
+                    local drawPositions = {
+                        {x = 0.665, y = 0.35, width = 10},
+                        {x = 0.81, y = 0.35, width = 11},
+                        {x = 0.665, y = 0.615, width = 8}
+                    }
+        
+                    for i, position in drawPositions do
+                        draw_rect_with_text(position.x, position.y, position.width, 0.14, {r = 0/255, g = 0/255, b = 0/255, a = 175/255})
+                    end
+                    
+                    for j, infoRect in {info.info_rect1, info.info_rect2, info.info_rect3} do
+                        for i, data in infoRect do
+                            local posY = 0.35
+                            if j == 3 then
+                                if i == 7 then
+                                    i = 8
+                                end
+                                posY = 0.615
+                            end
+                            draw_info_text(data.label, data.value, drawPositions[j].x, posY + (i-1) * 0.025, 130, 0.45, 0.44, true)
+                        end
+                    end
+                end
+            end
+        end
+
+        if is_entity_an_object(entity) then
+            local info = {
+                {label = T"Name:", value = util.reverse_joaat(get_entity_model(entity))},
+                {label = T"Hash:", value = get_entity_model(entity)},
+                {label = T"Pickup:", value = bool(is_object_a_pickup(entity))},
+                {label = T"Coord X:", value = string.format("%.3f", get_entity_coords(entity).x)},
+                {label = T"Coord Y:", value = string.format("%.3f", get_entity_coords(entity).y)},
+                {label = T"Coord Z:", value = string.format("%.3f", get_entity_coords(entity).z)}
+            }
+
+            draw_rect_with_text(0.52, 0.35, 6, 0.14, {r = 0/255, g = 0/255, b = 0/255, a = 175/255})
+            for i, data in info do
+                draw_info_text(data.label, data.value, 0.52, 0.35 + (i-1) * 0.025, 130, 0.45, 0.44, true)
+            end
+        end
+    end
+end)
+
+-----------------
+--WORLD HACKING--
+-----------------
+local point
+local spawned_slashers = {}
+world_main:toggle_loop(T"World Hacking", {}, "", function()
+    local point = create_tracked_point()
+    local entity = get_targeted_ent_of_type(true, true, false)
+    disable_control_action(0, 27, true)
+
+    if does_entity_exist(entity) and entity != players.user_ped() then
+        local entity_pos = get_entity_coords(entity, true)
+        local player_pos = get_entity_coords(players.user_ped(), true)
+        draw_line(entity_pos.x, entity_pos.y, entity_pos.z, player_pos.x, player_pos.y, player_pos.z, 255, 255, 255, 255)
+
+        if is_disabled_control_pressed(0, 27) then
+            local entity_mode
+            local selected_box
+            set_cursor_position(0.5, 0.5)
+            while is_disabled_control_pressed(0, 27) do
+                local base_positions, box_positions = draw_world_hacking_base(entity)
+                entity_mode = draw_world_hacking_text(base_positions, entity)
+                selected_box = is_cursor_in_box(box_positions)
+                draw_cursor()
+                util.yield()
+            end
+
+            if selected_box != nil and entity_mode != nil then
+                switch entity_mode do
+                    case "vehicle":
+                        if is_entity_a_ped(entity) then
+                            entity = func.get_vehicle_from_ped(entity)
+                        end
+                        switch selected_box do
+                            case 1:
+                                fill_vehicle_with_peds(entity)
+                                break
+                            case 2:
+                                check_and_hijack_vehicle(entity)
+                                break
+                            case 3:
+                                check_and_kick_from_vehicle(entity)
+                                break
+                            case 4:
+                                for i = -5, 5 do
+                                    local offset = get_offset_from_entity_in_world_coords(entity, 0.0, i, 1.0)
+                                    add_explosion(offset.x, offset.y, offset.z - 1, 1, 100, true, false, 0, false)
+                                end
+                                break
+                            case 5:
+                                if is_ped_a_player(get_ped_in_vehicle_seat(entity, -1, false)) then
+                                    local player_ped = get_ped_in_vehicle_seat(entity, -1, false)
+                                    func.control_vehicle(network_get_player_index_from_ped(player_ped), true, function(vehicle)
+                                        local door_count = get_number_of_vehicle_doors(vehicle)
+                                        pop_out_vehicle_windscreen(vehicle)
+                                        for i = 1, door_count do
+                                            set_vehicle_door_broken(vehicle, i, false)
+                                        end
+                                        for i, wheel_index in {0, 1, 2, 3, 4, 5, 45, 47} do
+                                            entities.detach_wheel(vehicle, wheel_index)
+                                        end
+                                    end)
+                                else
+                                    local door_count = get_number_of_vehicle_doors(entity)
+                                    pop_out_vehicle_windscreen(entity)
+                                    for i = 1, door_count do
+                                        set_vehicle_door_broken(entity, i, false)
+                                    end
+                                    for i, wheel_index in {0, 1, 2, 3, 4, 5, 45, 47} do
+                                        entities.detach_wheel(entity, wheel_index)
+                                    end
+                                end
+                                break
+                            case 6:
+                                if is_ped_a_player(get_ped_in_vehicle_seat(entity, -1, false)) then
+                                    local player_ped = get_ped_in_vehicle_seat(entity, -1, false)
+                                    func.control_vehicle(network_get_player_index_from_ped(player_ped), true, function(vehicle)
+                                        apply_force_to_entity(vehicle, 3, math.random(20, 100), math.random(20, 100), math.random(20, 100), 0.0, 0.0, 0.0, 0, true, false, true, false, true)
+                                    end)
+                                else
+                                    apply_force_to_entity(entity, 3, math.random(20, 100), math.random(20, 100), math.random(20, 100), 0.0, 0.0, 0.0, 0, true, false, true, false, true)
+                                end
+                                break
+                            case 7:
+                                if is_ped_a_player(get_ped_in_vehicle_seat(entity, -1, false)) then
+                                    local player_ped = get_ped_in_vehicle_seat(entity, -1, false)
+                                    func.control_vehicle(network_get_player_index_from_ped(player_ped), true, function(vehicle)
+                                        set_vehicle_fixed(vehicle)
+                                        set_vehicle_deformation_fixed(vehicle)
+                                        set_vehicle_engine_health(vehicle, 1000)
+                                        set_vehicle_petrol_tank_health(vehicle, 1000)
+                                        set_vehicle_body_health(vehicle, 1000)
+                                    end)
+                                else
+                                    set_vehicle_fixed(entity)
+                                    set_vehicle_deformation_fixed(entity)
+                                    set_vehicle_engine_health(entity, 1000)
+                                    set_vehicle_petrol_tank_health(entity, 1000)
+                                    set_vehicle_body_health(entity, 1000)
+                                end
+                                break
+                            case 8:
+                                entities.delete_by_handle(entity)
+                                break
+                        end
+                        break
+                    case "vehicle_no_pas":
+                        switch selected_box do
+                            case 1:
+                                fill_vehicle_with_peds(entity)
+                                break
+                            case 2:
+                                set_ped_into_vehicle(players.user_ped(), entity, -1)
+                                break
+                            case 3:
+                                do
+                                    local vehicle_coords = get_entity_coords(entity, true)
+                                    local ped = create_random_ped(vehicle_coords.x, vehicle_coords.y, vehicle_coords.z)
+                                    set_ped_into_vehicle(ped, entity, -1)
+                                    util.yield(100)
+                                    task_vehicle_drive_wander(ped, entity, 100, 786468)
+                                end
+                                break
+                            case 4:
+                                for i = -5, 5 do
+                                    local offset = get_offset_from_entity_in_world_coords(entity, 0.0, i, 1.0)
+                                    add_explosion(offset.x, offset.y, offset.z - 1, 1, 100, true, false, 0, false)
+                                end
+                                break
+                            case 5:
+                                do
+                                    local door_count = get_number_of_vehicle_doors(entity)
+                                    pop_out_vehicle_windscreen(entity)
+                                    for i = 1, door_count do
+                                        set_vehicle_door_broken(entity, i, false)
+                                    end
+                                    for i, wheel_index in {0, 1, 2, 3, 4, 5, 45, 47} do
+                                        entities.detach_wheel(entity, wheel_index)
+                                    end
+                                end
+                                break
+                            case 6:
+                                if is_ped_a_player(get_ped_in_vehicle_seat(entity, -1, false)) then
+                                    local player_ped = get_ped_in_vehicle_seat(entity, -1, false)
+                                    func.control_vehicle(network_get_player_index_from_ped(player_ped), true, function(vehicle)
+                                        apply_force_to_entity(vehicle, 3, math.random(20, 100), math.random(20, 100), math.random(20, 100), 0.0, 0.0, 0.0, 0, true, false, true, false, true)
+                                    end)
+                                else
+                                    apply_force_to_entity(entity, 3, math.random(20, 100), math.random(20, 100), math.random(20, 100), 0.0, 0.0, 0.0, 0, true, false, true, false, true)
+                                end
+                                break
+                            case 7:
+                                if is_ped_a_player(get_ped_in_vehicle_seat(entity, -1, false)) then
+                                    local player_ped = get_ped_in_vehicle_seat(entity, -1, false)
+                                    func.control_vehicle(network_get_player_index_from_ped(player_ped), true, function(vehicle)
+                                        set_vehicle_fixed(vehicle)
+                                        set_vehicle_deformation_fixed(vehicle)
+                                        set_vehicle_engine_health(vehicle, 1000)
+                                        set_vehicle_petrol_tank_health(vehicle, 1000)
+                                        set_vehicle_body_health(vehicle, 1000)
+                                    end)
+                                else
+                                    set_vehicle_fixed(entity)
+                                    set_vehicle_deformation_fixed(entity)
+                                    set_vehicle_engine_health(entity, 1000)
+                                    set_vehicle_petrol_tank_health(entity, 1000)
+                                    set_vehicle_body_health(entity, 1000)
+                                end
+                                break
+                            case 8:
+                                entities.delete_by_handle(entity)
+                                break
+                        end
+                        break
+                    case "ped":
+                        switch selected_box do
+                            case 1:
+                                entities.delete_by_handle(entity)
+                                break
+                            case 2:
+                                do
+                                    local ped_coords = get_offset_from_entity_in_world_coords(entity, -3, 0, 0)
+                                    local hash = util.joaat("adder")
+                                    util.request_model(hash)
+                                    local vehicle = entities.create_vehicle(hash, ped_coords, 0)
+                                    set_ped_into_vehicle(entity, vehicle, -1)
+                                    util.yield(100)
+                                    task_vehicle_drive_wander(entity, vehicle, 100, 786468)
+                                end
+                                break
+                            case 3:
+                                do
+                                    local ped_coords = get_entity_coords(entity, true)
+                                    add_explosion(ped_coords.x, ped_coords.y, ped_coords.z - 1, 1, 100, true, false, 0, false)
+                                end
+                                break
+                            case 4:
+                                do
+                                    local ped_coords = get_entity_coords(entity, true)
+                                    func.create_nuke_explosion(ped_coords)
+                                end
+                                break
+                        end
+                        break
+                    case "player":
+                        switch selected_box do
+                            case 1:
+                                do
+                                    local pid = network_get_player_index_from_ped(entity)
+                                    func.gas_truck(pid)
+                                end
+                                break
+                            case 2:
+                                do
+                                    local pid = network_get_player_index_from_ped(entity)
+                                    for i, slasher in spawned_slashers do
+                                        if slasher.ped != nil and does_entity_exist(slasher.ped) then
+                                            entities.delete_by_handle(slasher.ped)
+                                        end
+                                
+                                        if does_blip_exist(slasher.blip) then
+                                            util.remove_blip(slasher.blip)
+                                        end
+                                    end
+                                    local slasher_ped, slasher_blip
+                                    local ped = get_player_ped_script_index(pid)
+                                    if slasher_ped == nil or not does_entity_exist(slasher_ped) then
+                                        local offset = get_offset_from_entity_in_world_coords(entity, math.random(-15, 15), math.random(-15, 15), 0.0)
+                                        slasher_ped = func.create_slasher(entity, offset)
+                                
+                                        if slasher_blip == nil or not does_blip_exist(slasher_blip) then
+                                            if has_entity_been_damaged_by_entity(entity, slasher_ped, true) or has_entity_been_damaged_by_entity(slasher_ped, entity, true) or is_entity_on_screen(slasher_ped) then
+                                                slasher_blip = add_blip_for_entity(slasher_ped)
+                                                task_combat_ped(slasher_ped, entity, 0, 16)
+                                                set_ped_hearing_range(slasher_ped, 100)
+                                                set_ped_seeing_range(slasher_ped, 100)
+                                                set_blip_sprite(slasher_blip, 84)
+                                                set_blip_colour(slasher_blip, 1)
+                                                set_blip_name_from_text_file(slasher_blip, "SERIALKILLBLIP" --[[ GXT: Los Santos Slasher --]])
+                                                stop_ped_speaking(slasher_ped, false)
+                                                set_blip_flashes(slasher_blip, true)
+                                                set_blip_flash_interval(slasher_blip, 250)
+                                                set_blip_flash_timer(slasher_blip, 7000)
+                                            end
+                                        end
+                                
+                                        table.insert(spawned_slashers, {ped = slasher_ped, blip = slasher_blip})
+                                    end
+                                    if slasher_ped != nil and does_entity_exist(slasher_ped) then
+                                        while not is_entity_dead(slasher_ped, false) do
+                                            set_ped_reset_flag(slasher_ped, 394, true)
+                                            set_ped_reset_flag(slasher_ped, 240, true)
+                                            set_ped_as_enemy(slasher_ped, true)
+                                            task_go_to_entity(slasher_ped, player_ped, 20000, 0.5, 2, 2, 0)
+                                            util.yield(50)
+                                        end
+                                
+                                        if is_entity_dead(slasher_ped, false) then
+                                            if does_blip_exist(slasher_blip) then
+                                                util.remove_blip(slasher_blip)
+                                            end
+                                        end
+                                    end
+                                end
+                                break
+                            case 3:
+                                do
+                                    local ped_coords = get_entity_coords(entity, true)
+                                    add_explosion(ped_coords.x, ped_coords.y, ped_coords.z - 1, 1, 100, true, false, 0, false)
+                                end
+                                break
+                            case 4:
+                                do
+                                    local ped_coords = get_entity_coords(entity, true)
+                                    func.create_nuke_explosion(ped_coords)
+                                end
+                                break
+                            case 5:
+                                for i = 1, 25 do
+                                    local random_offset = get_offset_from_entity_in_world_coords(entity, math.random(-80, 80), math.random(-80, 80), math.random(50, 80))
+                                    local hash = util.joaat("prop_asteroid_01")
+                                    util.request_model(hash)
+                                    local asteroid = entities.create_object(hash, random_offset)
+                                    apply_force_to_entity(asteroid, 3, 0.0, 0.0, math.random(-125, 25), 0.0, 0.0, 0.0, 0, true, false, true, false, true)
+                                end
+                                break
+                            case 6:
+                                do
+                                    local player_offset = get_offset_from_entity_in_world_coords(entity, math.random(-10, 10), math.random(-10, 10), math.random(5))
+                                    local vehicle_hash = util.joaat("insurgent2")
+                                    util.request_model(vehicle_hash)
+                                    local vehicle = entities.create_vehicle(vehicle_hash, player_offset, 0)
+                                
+                                    local vehicle_pos = get_entity_coords(vehicle, true)
+                                    local pos2 = get_entity_coords(entity, true)
+                                    local rel = v3.new(pos2)
+                                    rel:sub(vehicle_pos)
+                                    local rot = rel:toRot()
+                                    if func.get_entity_control_onces(vehicle) then
+                                        set_entity_rotation(vehicle, rot.x, rot.y, rot.z, 2, false)
+                                        set_vehicle_forward_speed(vehicle, 100)
+                                        util.toast("yeah1")
+                                    end
+                                end
+                                break
+                            case 7:
+                                menu.trigger_commands("kick" .. players.get_name(network_get_player_index_from_ped(entity)))
+                                break
+                            case 8:
+                                do
+                                    local random_offset = get_offset_from_entity_in_world_coords(entity, math.random(-8, 8), math.random(-8, 8), 0)
+                                    local clown_hash = util.joaat("s_m_y_clown_01")
+                                    util.request_model(clown_hash)
+                                    local clown_ped = entities.create_ped(0, clown_hash, random_offset, 0.0)
+                                    local target_position = get_entity_coords(entity, true)
+                                    set_entity_invincible(clown_ped, true)
+                                    entities.set_can_migrate(clown_ped, false)
+                                    set_blocking_of_non_temporary_events(clown_ped, true)
+                                    task_go_to_coord_any_means(clown_ped, target_position.x, target_position.y, target_position.z, 5.0, 0, false, 0, 0.0)
+                                    set_ped_keep_task(clown_ped, true)
+                                    stop_ped_speaking(clown_ped, true)
+                                
+                                    func.use_fx_asset("scr_rcbarry2")
+                                    start_networked_particle_fx_non_looped_on_entity("scr_clown_appears", clown_ped, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.5, false, false, false)
+                                
+                                    local ped_pos = get_entity_coords(clown_ped, true)
+                                    local rel = v3.new(target_position)
+                                    rel:sub(ped_pos)
+                                    local rot = rel:toRot()
+                                    set_entity_rotation(clown_ped, rot.x, rot.y, rot.z, 2, false)
+                                
+                                    util.create_tick_handler(function()
+                                        local ped_pos = get_entity_coords(clown_ped, true)
+                                        local target_position = get_entity_coords(entity, true)
+                                        if not does_entity_exist(clown_ped) then
+                                            return false
+                                        elseif func.get_distance_between(ped_pos, target_position) > 50 then
+                                            entities.delete_by_handle(clown_ped)
+                                            return false
+                                        elseif func.get_distance_between(ped_pos, target_position) < 3.0 then
+                                            func.use_fx_asset("scr_rcbarry2")
+                                            start_networked_particle_fx_non_looped_at_coord("scr_exp_clown", ped_pos.x, ped_pos.y, ped_pos.z, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
+                                            add_explosion(ped_pos.x, ped_pos.y, ped_pos.z, 1, 1, true, true, 0.5, false)
+                                            entities.delete_by_handle(clown_ped)
+                                            return false
+                                        elseif func.get_distance_between(ped_pos, target_position) > 3.0 then
+                                            if func.get_entity_control_onces(clown_ped) then
+                                                task_go_to_coord_any_means(clown_ped, target_position.x, target_position.y, target_position.z, 5.0, 0, false, 0, 0.0)
+                                                util.yield(100)
+                                            end
+                                        end
+                                    end)
+                                end
+                                break
+                        end
+                    break
+                end
+            end
+        end
+    end
+end, function()
+    destroy_tracked_point(point)
+    enable_control_action(0, 27, true)
+end)
+
+local throwables = {
+    "weapon_grenade",
+    "weapon_bzgas",
+    "weapon_molotov",
+    "weapon_stickybomb",
+    "weapon_proxmine",
+    "weapon_snowball",
+    "weapon_pipebomb",
+    "weapon_ball",
+    "weapon_smokegrenade",
+    "weapon_flare",
+    "weapon_acidpackage",
+}
+local marker_color = {r = 0, g = 255, b = 255, a = 255}
+local projectile_coords = v3.new()
+world_main:toggle_loop(T"Projectile Marker", {}, "", function()
+    for i, weap in throwables do
+        if get_coords_of_projectile_type_within_distance(players.user_ped(), util.joaat(weap), 100, projectile_coords, false) then
+            func.rainbow_colour(marker_color)
+            draw_marker(28, projectile_coords.x, projectile_coords.y, projectile_coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1, 1, 1, marker_color.r, marker_color.g, marker_color.b, marker_color.a, false, false, 0, true, 0, 0, false)
+        end
+    end
+end)
+
+world_main:action(T"Ragdoll All", {}, "", function()
+    for i, ped in entities.get_all_peds_as_pointers() do
+        local ped_handle = entities.pointer_to_handle(ped)
+        if ped_handle != players.user_ped() then
+            for i = 1, 10 do
+                set_ped_to_ragdoll(ped_handle, 2500, 0, 0, false, false, false)
+            end
+        end
+    end
+end)

@@ -1,0 +1,39 @@
+Model: zorrusso
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 81
+Secondary Colour: 41
+Pearl Colour: 28
+Wheel Colour: 158
+Wheel Type: 9
+Spoiler: 5
+Front Bumper: 3
+Exhaust: 4
+Grille: 2
+Hood: 3
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: Yes
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 124
+Livery: 8
+Tyre Smoke Colour: #7d00ff
+Window Tint: 1
+Custom Primary Colour: #3b39e0
+Custom Secondary Colour: #f27d20
+Neon Colour: #0a00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 158
+Dashboard Colour: 158
+Tyres Mode: 1

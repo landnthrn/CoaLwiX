@@ -1,0 +1,36 @@
+Model: cyclone
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 120
+Pearl Colour: 44
+Wheel Colour: 35
+Wheel Type: 8
+Spoiler: 7
+Front Bumper: 1
+Sideskirt: 2
+Engine: 4
+Brakes: 3
+Horns: 41
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 57
+Livery: 0
+Tyre Smoke Colour: #ff0056
+Window Tint: 1
+Custom Primary Colour: #030016
+Custom Secondary Colour: #354158
+Neon Colour: #ff0037
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 149
+Dashboard Colour: 132
+Tyres Mode: 1

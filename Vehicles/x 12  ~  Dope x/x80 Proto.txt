@@ -1,0 +1,38 @@
+Model: prototipo
+Plate Style: 1
+Plate Text:  0 KPH  
+Primary Colour: 34
+Secondary Colour: 0
+Pearl Colour: 5
+Wheel Colour: 0
+Wheel Type: 0
+Spoiler: 0
+Front Bumper: 1
+Sideskirt: 2
+Exhaust: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 17
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 0
+Front Wheels: 1
+Livery: -1
+Tyre Smoke Colour: #141414
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff0101
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 0
+Dashboard Colour: 6
+Tyres Mode: 1

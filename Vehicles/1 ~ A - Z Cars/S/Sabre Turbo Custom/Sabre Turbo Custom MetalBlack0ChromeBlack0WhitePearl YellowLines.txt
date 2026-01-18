@@ -1,0 +1,55 @@
+Model: sabregt2
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 117
+Secondary Colour: 120
+Pearl Colour: 134
+Wheel Colour: 160
+Wheel Type: 9
+Spoiler: 1
+Front Bumper: 4
+Rear Bumper: 1
+Exhaust: 3
+Chassis: 2
+Grille: 2
+Hood: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 2
+Front Wheels: 76
+Back Wheels: 0
+Plate Holder: 5
+Vanity Plates: 0
+Trim: 14
+Ornaments: 19
+Dial: 11
+Steering Wheel: 12
+Shifter Leavers: 15
+Plaques: 19
+Speakers: 2
+Trunk: 5
+Hydraulics: 4
+Engine Block: 7
+Air Filter: 4
+Livery: 2
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #000000
+Neon Colour: #ffffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 132
+Tyres Mode: 1

@@ -1,0 +1,58 @@
+Model: tornado5
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 0
+Wheel Colour: 160
+Wheel Type: 9
+Front Bumper: 2
+Rear Bumper: 3
+Exhaust: 2
+Hood: 1
+Right Fender: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 124
+Back Wheels: 0
+Plate Holder: 0
+Vanity Plates: 0
+Trim: 7
+Ornaments: 43
+Dashboard: 6
+Dial: 8
+Steering Wheel: 10
+Shifter Leavers: 15
+Plaques: 11
+Trunk: 3
+Hydraulics: 6
+Engine Block: 5
+Air Filter: 4
+Arch Cover: 6
+Aerials: 3
+Trim2: 6
+Tank: 3
+Livery: 8
+Tyre Smoke Colour: #b900ff
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: #250642
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 145
+Roof Livery: 3
+Dashboard Colour: 92
+Tyres Mode: 1
+Extra 12: No

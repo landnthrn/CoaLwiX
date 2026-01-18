@@ -1,0 +1,48 @@
+Model: panto
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 136
+Secondary Colour: 136
+Pearl Colour: 0
+Wheel Colour: 136
+Wheel Type: 2
+Spoiler: 1
+Front Bumper: 3
+Rear Bumper: 1
+Sideskirt: 2
+Exhaust: 3
+Chassis: 0
+Grille: 0
+Fender: 0
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 2
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 12
+Front Wheels: 3, Custom
+Livery: 290953428
+Tyre Smoke Colour: #ff00ff
+Window Tint: 1
+Custom Primary Colour: #f00c7b
+Custom Secondary Colour: #1bb8d3
+Neon Colour: #ff00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: Yes
+Extra 3: Yes
+Extra 4: Yes
+Extra 5: Yes

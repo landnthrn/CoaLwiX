@@ -1,0 +1,53 @@
+Model: moonbeam2
+Plate Style: 4
+Plate Text:  DKARME 
+Primary Colour: 33
+Secondary Colour: 107
+Pearl Colour: 0
+Wheel Colour: 33
+Wheel Type: 8
+Spoiler: 1
+Exhaust: 0
+Chassis: 0
+Grille: 2
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 35
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 0
+Front Wheels: 92
+Back Wheels: 4
+Plate Holder: 7
+Vanity Plates: 6
+Trim: 2
+Ornaments: 10
+Dial: 8
+Seats: 3
+Door Speaker: 1
+Steering Wheel: 13
+Shifter Leavers: 5
+Plaques: 8
+Trunk: 3
+Hydraulics: 4
+Engine Block: 3
+Air Filter: 2
+Livery: 4
+Tyre Smoke Colour: #e20606
+Window Tint: 0
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #0f03ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 1
+Dashboard Colour: 132
+Tyres Mode: 1

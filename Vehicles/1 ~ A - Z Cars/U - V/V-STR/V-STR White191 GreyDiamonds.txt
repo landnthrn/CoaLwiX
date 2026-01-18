@@ -1,0 +1,44 @@
+Model: vstr
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 67
+Wheel Colour: 132
+Wheel Type: 8
+Spoiler: 1
+Front Bumper: 0
+Sideskirt: 3
+Exhaust: 2
+Chassis: 2
+Grille: 0
+Hood: 10
+Fender: 0
+Right Fender: 2
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: Yes
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 115
+Livery: 6
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #c1bfff
+Neon Colour: #ffffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

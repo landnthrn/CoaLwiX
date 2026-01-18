@@ -1,0 +1,45 @@
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Stand + CoaLwiX Animated Header is already enabled and inside the Custom Header Folder, you shouldn't want to change it since its the coolest header around no doubt lol
+But we all got our preferances, so if you do here is how to change your Header, 
+Just make sure to save all the image frames of the Stand + CoaLwiX one into a folder nearby so you can still access it one day :)
+
+~~~~~~~~~~~~~~~
+
+HOW TO CHANGE HEADERS :
+just drag the one you want into the Custom Header Folder and move out the one that's already in there (there can only be one header in the folder at once)
+
+~~~~~~~~~~~~~~~
+
+FOR ANIMATED HEADERS:
+They work by image frames so don't drag a Animated Header Folder inside, just drag ALL the image frames into the Custom Header Folder
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+**DISCLAIMER** 
+Make sure you're using the Profile Alteration that is for Headers ON
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

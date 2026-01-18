@@ -1,0 +1,13 @@
+bodyguardcount 1
+bodyguardmodel accormorant
+bodyguardprimary pistol
+bodyguardsecondary pistol
+bodyguardformation none
+bodyguardaggression defensive
+bodyguardsignoreplayers off
+bodyguardsignorefriends off
+bodyguardsignoreauthorities off
+bodyguardsignorecrewmembers off
+bodyguardsignoreorganisationmembers off
+bodyguardimmortality off
+bodyguardsteleportwhenfar off

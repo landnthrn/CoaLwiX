@@ -1,0 +1,45 @@
+Model: driftyosemite
+Plate Style: 2
+Plate Text:  DKARME 
+Primary Colour: 56
+Secondary Colour: 1
+Pearl Colour: 135
+Wheel Colour: 140
+Wheel Type: 9
+Spoiler: 4
+Front Bumper: 11
+Rear Bumper: 0
+Sideskirt: 10
+Exhaust: 1
+Chassis: 3
+Grille: 4
+Hood: 1
+Fender: 1
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 45
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 4
+Front Wheels: 88
+Livery: 2
+Tyre Smoke Colour: #00aeef
+Window Tint: 0
+Custom Primary Colour: #2d00ff
+Custom Secondary Colour: #2d00ff
+Neon Colour: #0353ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 111
+Tyres Mode: 1
+Extra 1: Yes

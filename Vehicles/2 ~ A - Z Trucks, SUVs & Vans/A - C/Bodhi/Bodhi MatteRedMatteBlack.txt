@@ -1,0 +1,44 @@
+Model: bodhi2
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 39
+Secondary Colour: 12
+Pearl Colour: 10
+Wheel Colour: 39
+Wheel Type: 8
+Front Bumper: 0
+Rear Bumper: 2
+Chassis: 2
+Grille: 3
+Hood: 6
+Fender: 4
+Roof: 5
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 147
+Livery: -1
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #cf1f21
+Custom Secondary Colour: #13181f
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 5: Yes
+Extra 10: Yes
+Extra 11: Yes
+Extra 12: Yes

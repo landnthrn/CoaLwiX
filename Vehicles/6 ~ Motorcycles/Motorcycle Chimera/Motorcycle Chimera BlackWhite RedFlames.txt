@@ -1,0 +1,41 @@
+Model: chimera
+Plate Style: 6
+Plate Text:  DKARME 
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 10
+Wheel Colour: 67
+Wheel Type: 4
+Spoiler: 6
+Front Bumper: 4
+Sideskirt: 8
+Exhaust: 6
+Chassis: 3
+Hood: 1
+Fender: 8
+Roof: 7
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 0
+Livery: 13
+Tyre Smoke Colour: #0000ff
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #ffffff
+Neon Colour: #1900ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 111
+Tyres Mode: 1

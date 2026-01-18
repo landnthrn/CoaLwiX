@@ -1,0 +1,100 @@
+----------------------------------------------------------------------------
+-- SCRIPT:  PTFX PET
+-- VERSION: 0.2
+-- AUTHOR:  xM4ddy
+-- DESC:    LiL Smokey Guy
+-- CRED:    ji9sw
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+-- NATIVES
+----------------------------------------------------------------------------
+
+util.require_natives("natives-3095a.g")
+
+----------------------------------------------------------------------------
+-- VARIABLES
+----------------------------------------------------------------------------
+
+local ptfx_asset = "scr_sum2_hal"
+local ptfx_effect = "scr_sum2_hal_rider_weak_blue"
+local AllEffects = { "scr_sum2_hal_rider_weak_blue", "scr_sum2_hal_rider_weak_greyblack", "scr_sum2_hal_rider_weak_green", "scr_sum2_hal_rider_weak_orange"}
+local paused_ittr = 0.0
+local continuous_ittr = 0.0
+local ran = false
+local LoopDelay = 1000
+local CurrentEffect = 1
+local EffectScale = 0.2
+local MoveSpeed = 0.05
+
+----------------------------------------------------------------------------
+-- FUNCTIONS
+----------------------------------------------------------------------------
+
+local function request_ptfx_asset(asset)
+    local request_time = os.time()
+
+    REQUEST_NAMED_PTFX_ASSET(asset)
+
+    while not HAS_NAMED_PTFX_ASSET_LOADED(asset) do
+        if os.time() - request_time >= 10 then
+            fail('Failed To Load PTFX ' .. asset .. ' In Time :(')
+            break
+        end
+
+        util.yield()
+    end
+end
+
+----------------------------------------------------------------------------
+-- MENU OPTIONS
+----------------------------------------------------------------------------
+
+menu.my_root():toggle_loop('PTFX Pet', {"ptfx_pet"}, "", function()
+    if not ran then
+        request_ptfx_asset(ptfx_asset)
+        ran = true
+    end
+    
+    continuous_ittr += 0.05
+
+    pos = players.get_position(players.user()) 
+    rot = GET_ENTITY_ROTATION(players.user_ped(), 0)
+
+    if (not IS_PED_RUNNING(players.user_ped()) and not IS_PED_SPRINTING(players.user_ped())) then
+        paused_ittr += MoveSpeed
+    end
+
+    for i = 0, 4, 1 do
+        USE_PARTICLE_FX_ASSET(ptfx_asset)
+        START_NETWORKED_PARTICLE_FX_NON_LOOPED_AT_COORD(ptfx_effect, pos.x + math.cos(paused_ittr), pos.y + math.sin(paused_ittr), pos.z + 0.5 + math.cos(continuous_ittr * 2) / 3, 0.0, 0.0, 0.0, EffectScale, false, false, false)
+    end
+
+    util.yield(10)
+end)
+
+menu.my_root():list_select("Select Colour", {}, "", {
+    {1, "Blue"},
+    {2, "Gray/Black"},
+    {3, "Green"},
+    {4, "Orange"},
+}, 1, function(Value)
+        CurrentEffect = Value
+        ptfx_effect = AllEffects[Value]
+end)
+
+menu.my_root():toggle_loop("Loop", {}, "", function()
+    ptfx_effect = AllEffects[++CurrentEffect % #AllEffects + 1]
+    util.yield(LoopDelay)
+end)
+
+menu.my_root():click_slider("Loop Delay (MS)", {}, "", 0, 10000, 1000, 100, function(Value)
+    LoopDelay = Value
+end)
+
+menu.my_root():click_slider("Effect Size", {}, "", 1, 20, 2, 1, function(Value)
+    EffectScale = Value / 10
+end)
+
+menu.my_root():click_slider("Movement Speed Multiplier", {}, "", 0, 100, 5, 5, function(Value)
+    MoveSpeed = Value / 100
+end)

@@ -1,0 +1,174 @@
+Tree Compatibility Version: 55
+Self
+	Movement
+		Levitation
+			Movement Speed: 0.50
+			Acceleration: 0.25
+		Walk And Run Speed: 2.00
+		Graceful Landing: On
+		Super Jump: On
+		Swim Speed: 2.60
+		Floppy Mode
+			Movement Speed: 1.40
+	Appearance
+		Animations
+			Automatically Cancel: On
+		PTFX Trails
+			Scale: 0.12
+			Right Foot: Off
+			Left Foot: Off
+		Walk Style: Gangster
+	Weapons
+		Gravity Gun
+			Force Multiplier: 1.04
+		Infinite Ammo: On
+		Total Freedom: On
+		Increased Sticky Limit: On
+		Increased Flare Limit: On
+	Bodyguards
+		Spawn
+			Model: a_f_y_topless_01
+			Primary Weapon: RPG
+		Behaviour
+			Aggression: Friendly
+			Exclude Friends: On
+		Immortality: On
+	Auto Heal: On
+	Gracefulness: On
+	Glued To Seats: On
+	Lock Wanted Level: On
+	Respawn At Place Of Death: On
+Vehicle
+	Spawner
+		Make Spawned Vehicles Indestructible: On
+		Tune Spawned Vehicles: Fully
+		Spawned Vehicles License Plate: Chub Rub
+		Colour Spawned Vehicles
+			Colour Spawned Vehicles: On
+			Primary Colour: 5619FF00
+			Secondary Colour: 00FFE900
+	Los Santos Customs
+		Appearance
+			License Plate
+				Text: CHUBRUB
+	Movement
+		Super Drive
+			Speed: 1.20
+		Drive On Water: On
+		Speed Limit (KMH): 640
+		No Turbulence: On
+		Gravity Multiplier
+			Gravity Multiplier: 0.80
+			Not In Aircraft: On
+		Custom Wings Behaviour
+			Max Position: 10
+	Countermeasures
+		Auto-Deploy: Flares
+	Light Signals
+		Use Brake Lights When Stopped: On
+	Indestructible: On
+	Permanent Mint Condition: On
+	Headlights Intensity: 4.00
+	Stop Vehicles When Exiting: On
+	Leave Engine On When Exiting: On
+	Driveby With All Weapons: On
+	Weapon Wheel In Vehicles: On
+	Set Vehicle Seat: 1
+Online
+	Enhancements
+		Disable Idle/AFK Kick: On
+	Protections
+		Events
+			Crash Event
+				Blacklist Kick: Enabled
+			Kick Event
+				Blacklist Kick: Enabled
+			Modded Event
+				Notification: Disabled
+			Unusual Event
+				Notification: Disabled
+		Detections
+			Classifications
+				Modder
+					Notification: Disabled
+			Modded Health
+				Notification: Disabled
+			Too Much Armour
+				Notification: Disabled
+	Chat
+		Commands
+			Enabled For Me: On
+			For Friends
+				Enabled: On
+				Rude Commands: Off
+				Aggressive Commands: Off
+			For Crew Members
+				Enabled: On
+				Rude Commands: Off
+			For Team Chat
+				Enabled: On
+				Rude Commands: Off
+			For Strangers
+				Enabled: On
+				Rude Commands: Off
+			Reply Visibility: Nobody
+		Bypass Profanity Filter: Enabled
+Players
+	Settings
+		Tags
+			Modder: 
+			Likely Modder: 
+			Host: 
+		Hoisted Tags
+			Friend: On
+			Modder: On
+			Likely Modder: On
+			Host: On
+World
+	Places
+		Teleport To...
+			Auto Teleport To Waypoints: On
+	Watch_Dogs-Like World Hacking
+		Watch_Dogs-Like World Hacking: On
+		When No Target Selected...
+			Show Reticle: Off
+			Show Line: Off
+		Colour: 8800FFFF
+		Hacks
+			Player Actions
+				Kill: On
+				Cage: On
+	Aesthetic Light
+		Range: 10000.00
+		Intensity: 97.00
+Game
+	Disables
+		Straight To Voicemail: On
+		Disable Stunt Jumps: On
+	Custom DLCs
+		Spoof Models
+			Spoof Models: Off
+			Vehicles: Ardent
+Stand
+	Settings
+		Appearance
+			Colours
+				Primary Colour: 6E00FFFB
+			Header
+				Header: Custom
+	Lua Scripts
+		Advanced Chat: On, Disable Internet Access
+			Change the colors
+				Tag color: FF00FFFF
+			Settings
+				Position Y: 0.03
+		anticrash: On, Disable Internet Access
+		Constructor: On, Disable Internet Access
+			Settings
+				Previews
+					Show Previews: Off
+					Preview Display Delay: 200
+				Spawn
+					Focus Menu on Spawned Constructs: Off
+		KTFHO: On, Disable Internet Access
+			Force Headlights On: On

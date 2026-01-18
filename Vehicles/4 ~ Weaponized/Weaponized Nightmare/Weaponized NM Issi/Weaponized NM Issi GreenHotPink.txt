@@ -1,0 +1,52 @@
+Model: issi6
+Plate Style: 5
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 10
+Wheel Colour: 139
+Wheel Type: 10
+Spoiler: 3
+Front Bumper: 3
+Sideskirt: 2
+Exhaust: 4
+Chassis: 3
+Grille: 4
+Hood: 12
+Fender: 3
+Right Fender: 5
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 41
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 12
+Front Wheels: 0
+Vanity Plates: 11
+Ornaments: 4
+Plaques: 8
+Air Filter: 4
+Struts: 3
+Arch Cover: 3
+Aerials: 1
+Tank: 2
+Livery: 1
+Tyre Smoke Colour: #00ff00
+Window Tint: 1
+Custom Primary Colour: #00ff00
+Custom Secondary Colour: #ff00ff
+Neon Colour: #ff00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 129
+Dashboard Colour: 111
+Tyres Mode: 1

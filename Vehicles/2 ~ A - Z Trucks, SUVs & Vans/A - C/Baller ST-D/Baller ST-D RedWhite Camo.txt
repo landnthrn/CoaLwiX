@@ -1,0 +1,46 @@
+Model: baller8
+Plate Style: 6
+Plate Text:  DKARME 
+Primary Colour: 32
+Secondary Colour: 32
+Pearl Colour: 34
+Wheel Colour: 160
+Wheel Type: 9
+Spoiler: 16
+Front Bumper: 3
+Rear Bumper: 3
+Sideskirt: 1
+Exhaust: 7
+Chassis: 4
+Grille: 4
+Hood: 7
+Fender: 7
+Right Fender: 3
+Roof: 4
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 42
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 124
+Trim2: 2
+Livery: 10
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #2d00ff
+Custom Secondary Colour: #2d00ff
+Neon Colour: #0a00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 99
+Dashboard Colour: 6
+Tyres Mode: 1

@@ -1,0 +1,39 @@
+Model: vagner
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 51
+Secondary Colour: 32
+Pearl Colour: 5
+Wheel Colour: 0
+Wheel Type: 0
+Spoiler: 1
+Front Bumper: 1
+Exhaust: 0
+Hood: 3
+Roof: 5
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 0
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 1
+Livery: -1
+Tyre Smoke Colour: #141414
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #000000
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 112
+Dashboard Colour: 54
+Tyres Mode: 1

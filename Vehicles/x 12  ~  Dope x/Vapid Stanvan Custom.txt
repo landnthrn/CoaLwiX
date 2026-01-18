@@ -1,0 +1,56 @@
+Model: slamvan3
+Plate Style: 5
+Plate Text:  0 KPH  
+Primary Colour: 117
+Secondary Colour: 23
+Pearl Colour: 20
+Wheel Colour: 156
+Wheel Type: 8
+Spoiler: 1
+Front Bumper: 1
+Exhaust: 0
+Grille: 3
+Hood: 1
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 42
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: No
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 5
+Front Wheels: 111
+Back Wheels: 0
+Plate Holder: 5
+Vanity Plates: 1
+Trim: 2
+Ornaments: 0
+Dashboard: 0
+Dial: 0
+Door Speaker: 0
+Steering Wheel: 9
+Shifter Leavers: 0
+Plaques: 0
+Hydraulics: 0
+Engine Block: 4
+Air Filter: 4
+Tank: 0
+Left Door: 0
+Livery: 4
+Tyre Smoke Colour: #000000
+Window Tint: 1
+Custom Primary Colour: #032a2d
+Custom Secondary Colour: 
+Neon Colour: #0353ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 132
+Tyres Mode: 1

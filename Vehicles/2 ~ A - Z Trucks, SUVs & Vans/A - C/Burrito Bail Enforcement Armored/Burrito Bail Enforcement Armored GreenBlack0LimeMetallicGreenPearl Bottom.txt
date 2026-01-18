@@ -1,0 +1,37 @@
+Model: policet3
+Plate Style: 12
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 120
+Pearl Colour: 92
+Wheel Colour: 134
+Wheel Type: 1
+Chassis: 3
+Engine: 0
+Brakes: 0
+Transmission: 0
+Horns: 41
+Suspension: 4
+Armor: 0
+Nitrous: No
+Turbo: No
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 6
+Front Wheels: 0
+Arch Cover: 7
+Aerials: 7
+Livery: 1
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #091900
+Custom Secondary Colour: #000000
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

@@ -1,0 +1,45 @@
+Model: brigham
+Plate Style: 12
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 10
+Wheel Colour: 139
+Wheel Type: 9
+Spoiler: 5
+Front Bumper: 5
+Rear Bumper: 8
+Sideskirt: 2
+Exhaust: 6
+Chassis: 2
+Grille: 11
+Hood: 14
+Fender: 2
+Right Fender: 8
+Roof: 12
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 123
+Livery: 11
+Tyre Smoke Colour: #00ff00
+Window Tint: 1
+Custom Primary Colour: #00ff00
+Custom Secondary Colour: #ffff00
+Neon Colour: #00ff00
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 22
+Dashboard Colour: 156
+Tyres Mode: 1

@@ -1,0 +1,45 @@
+Model: weevil
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 10
+Wheel Colour: 134
+Wheel Type: 8
+Spoiler: 3
+Front Bumper: 7
+Rear Bumper: 1
+Sideskirt: 3
+Exhaust: 11
+Chassis: 7
+Grille: 0
+Hood: 4
+Fender: 2
+Right Fender: 1
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 12
+Front Wheels: 120
+Livery: 13
+Tyre Smoke Colour: #ff00ff
+Window Tint: 1
+Custom Primary Colour: #ffffff
+Custom Secondary Colour: #ffffff
+Neon Colour: #ff03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 72
+Dashboard Colour: 132
+Tyres Mode: 1

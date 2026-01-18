@@ -1,0 +1,48 @@
+Model: zr380
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 140
+Wheel Colour: 5
+Wheel Type: 8
+Spoiler: 4
+Front Bumper: 0
+Rear Bumper: 0
+Exhaust: 2
+Chassis: 0
+Hood: 0
+Fender: 0
+Right Fender: 5
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 115
+Ornaments: 3
+Air Filter: 4
+Struts: 3
+Arch Cover: 0
+Aerials: 0
+Trim2: 0
+Tank: 0
+Livery: 0
+Tyre Smoke Colour: #3c00ff
+Window Tint: 1
+Custom Primary Colour: #0f003c
+Custom Secondary Colour: #5870a1
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 83
+Dashboard Colour: 83
+Tyres Mode: 1

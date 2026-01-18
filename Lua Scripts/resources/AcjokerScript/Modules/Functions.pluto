@@ -1,0 +1,930 @@
+local Globals = require 'resources/AcjokerScript/Modules/Globals'
+local Tables = require 'resources/AcjokerScript/ACJSTables'
+local veh_weap = {sel = 'WEAPON_SPECIALCARBINE_MK2'}
+local func = {}
+local weapons_menus = {}
+local SEC = SET_ENTITY_COORDS  
+
+func.set = {alert = true, scale = true}
+
+
+function func.ACutil(text)
+   return util.toast(text)
+end
+
+function func.ReturnPV()-- credits to Mr Robot
+    local g = memory.script_global(2359296 + 1 + (0 * 5568) + 681 + 2)
+    local gi = memory.script_global(1586488 + 1 + (memory.read_int(g) * 142) + 103)
+    memory.write_int(gi, memory.read_int(gi) & ~(1 << 0))
+    func.ACutil(Str_trans('Personal Vehicle returned to storage'))
+end
+
+function func.RequestPV(slot)
+  local pv_slot = memory.script_global(2359296 + 1 + (0 * 5568) + 681 + 2)
+  local data = memory.script_global(1586488 + 1 + (slot * 142) + 103)
+
+  memory.write_int(pv_slot, slot)
+  memory.write_int(data, memory.read_int(data) | (1 << 0))
+end
+
+function func.FindVeh(veh)
+    for slot = 0, 415 do
+        local g = memory.script_global(1586488 + 1 + (slot * 142))
+        local hash = memory.read_int(g + (66 * 8))
+        local vspawn = util.joaat(veh)
+        if hash == vspawn then
+            menu.trigger_commands('pv'..slot..'call')
+            func.ACutil(Str_trans('Personal Vehicle'))
+            return
+        end
+    end
+    menu.trigger_commands(veh)
+    func.ACutil(Str_trans('Not a Personal Vehicle'))
+end
+
+function func.Draw_esp(ped, rgb) --credits to Totaw Annihiwation
+    local screenX = memory.alloc(4)
+    local screenY = memory.alloc(4)
+    local pos = GET_ENTITY_COORDS(ped)
+    GET_SCREEN_COORD_FROM_WORLD_COORD(pos.x, pos.y, pos.z, screenX, screenY)
+    directx.draw_line(0.5, 0.5, memory.read_float(screenX), memory.read_float(screenY), rgb.color) 
+end
+
+
+function func.GetControl(vic, spec, pid)
+    if not players.exists(pid) then
+        util.stop_thread()
+    end
+    if pid == players.user() then
+        return
+    end    
+    local tick = 0
+    NETWORK_REQUEST_CONTROL_OF_ENTITY(vic)
+    while not NETWORK_HAS_CONTROL_OF_ENTITY(vic) do
+        NETWORK_REQUEST_CONTROL_OF_ENTITY(vic)
+        util.yield()
+        tick =  tick + 1
+        if tick > 20 then
+            if not NETWORK_HAS_CONTROL_OF_ENTITY(vic) then
+                if func.set.alert then
+                    func.ACutil(Str_trans('Could not gain control'))
+                end
+                if not spec then
+                    func.Specoff(pid)
+                end
+                util.stop_thread()
+            end
+        
+        end
+    end
+    return NETWORK_REQUEST_CONTROL_OF_ENTITY(vic)
+
+end
+
+function func.Stopsound()
+    for i = 0, 99 do
+        STOP_SOUND(i)
+    end
+end
+
+function func.Disbet(targets)
+    local tar1 = GET_ENTITY_COORDS(targets, true)
+    local play = GET_ENTITY_COORDS(players.user_ped(), true)
+    local disbet = VDIST2(play.x, play.y, play.z, tar1.x, tar1.y, tar1.z)
+    return disbet
+end
+
+function func.Pedspawn(pedhash, tar1)
+    local pedS = 0
+    func.Streament(pedhash)
+    pedS = entities.create_ped(1, pedhash, tar1, 0)
+    SET_ENTITY_INVINCIBLE(pedS, true)
+    FREEZE_ENTITY_POSITION(pedS, true)
+    SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(pedS, true)
+    SET_PED_CAN_LOSE_PROPS_ON_DAMAGE(pedS, false, 0)
+    if pedhash == util.joaat('ig_lestercrest') then
+        SET_PED_PROP_INDEX(pedS, 1)
+    end
+
+    return pedS
+end
+
+function func.add_victim(name)
+    local new_victim = {name=name}
+    local kill_list = func.Load_settings(Kill_List)
+    for kill_list as victim do
+        if victim.name == new_victim.name then
+            return true
+        end
+    end
+    table.insert(kill_list, new_victim)
+    func.Save_settings(Kill_List, kill_list)
+    return true
+end
+
+function func.remove_victim(name)
+    local kill_list = func.Load_settings(Kill_List)
+    for index, victim in kill_list do
+        if victim.name == name then
+            kill_list[index] = nil
+            func.Save_settings(Kill_List, kill_list)
+            return true
+        end
+    end
+    return false
+end
+
+function func.SetEntCoor(tar1, ent)
+    SEC(ent[1], tar1.x, tar1.y - 0.5, tar1.z - 1.0, false, true, true, false)
+    SEC(ent[2], tar1.x - 0.5, tar1.y - 0.5, tar1.z - 1.0, false, true, true, false)
+    SEC(ent[3], tar1.x - 0.5, tar1.y, tar1.z - 1.0, false, true, true, false)
+    SEC(ent[4], tar1.x - 0.5, tar1.y + 0.5, tar1.z - 1.0, false, true, true, false)
+    SEC(ent[5], tar1.x, tar1.y + 0.5, tar1.z - 1.0, false, true, true, false)
+    SEC(ent[6], tar1.x + 0.5, tar1.y + 0.5, tar1.z - 1.0, false, true, true, false)
+    SEC(ent[7], tar1.x + 0.5, tar1.y, tar1.z - 1.0, false, true, true, false)
+    SEC(ent[8], tar1.x + 0.5, tar1.y - 0.5, tar1.z - 1.0, false, true, true, false)
+    return ent
+end
+
+
+function func.DelEnt(ped_tab)
+    for ped_tab as Pedm do
+        NETWORK_REQUEST_CONTROL_OF_ENTITY(Pedm)
+        SET_ENTITY_AS_MISSION_ENTITY(Pedm)
+        entities.delete_by_handle(Pedm)
+    end
+end
+
+function func.Friend_player(pid)-- shadowcat
+    local hndl = memory.alloc(13 * 8)
+    NETWORK_HANDLE_FROM_PLAYER(pid, hndl, 13)
+    return NETWORK_IS_FRIEND(hndl)
+end
+
+function func.GetSpec(pid)
+    if players.exists(pid) then
+        local spec = menu.player_root(pid):refByRelPath("Spectate>Nuts Method").value
+        return spec
+    else
+        return
+    end
+end
+
+function func.Specon(pid)
+    menu.trigger_commands("spectate".. players.get_name(pid).. ' on')
+    util.yield(3000)
+end
+
+function func.Specoff(pid)
+    menu.trigger_commands("spectate".. players.get_name(pid).. ' off')
+end
+
+function func.Player_moving(ped)
+    if IS_PED_WALKING(ped) or IS_PED_RUNNING(ped) or IS_PED_SPRINTING(ped) then
+        return true
+    end
+end
+
+function func.Save_settings(files, settings)
+    local file = io.open(files, "wb")
+    if file == nil then func.ACutil(Str_trans("Error opening file for writing: ")..files, TOAST_ALL) return end
+    file:write(soup.json.encode(settings))
+    file:close()
+end
+
+function func.Load_settings(files)
+    local file = io.open(files)
+    if file then
+        local version = file:read()
+        file:close()
+        local status, list = pcall(soup.json.decode, version)
+        if not status then
+            error("Could not decode list file")
+        end
+        return list
+    else
+        return {}
+    end
+end
+
+function func.PFP(pedm, playerm)--Ped Facing Player adapted from PhoenixScript
+        local ppos = GET_ENTITY_COORDS(playerm)
+        local pmpos = GET_ENTITY_COORDS(pedm)
+        local hx = ppos.x - pmpos.x
+        local hy = ppos.y - pmpos.y
+        local head = GET_HEADING_FROM_VECTOR_2D(hx, hy)
+    return SET_ENTITY_HEADING(pedm, head)
+end
+
+function func.Streament(hash) 
+    REQUEST_MODEL(hash)
+    while not HAS_MODEL_LOADED(hash) do
+        util.yield()
+    end
+end
+
+function func.Streamptfx(lib)
+    REQUEST_NAMED_PTFX_ASSET(lib)
+    while not HAS_NAMED_PTFX_ASSET_LOADED(lib) do
+        util.yield()
+    end
+    USE_PARTICLE_FX_ASSET(lib)
+end
+
+function func.Streamanim(anim)
+    REQUEST_ANIM_DICT(anim)
+    while not HAS_ANIM_DICT_LOADED(anim) do
+        REQUEST_ANIM_DICT(anim)
+        util.yield()
+    end
+end
+
+function func.Runanim(ent, animdict, anim)
+    TASK_PLAY_ANIM(ent, animdict, anim, 1.0, 1.0, -1, 3, 0.5, false, false, false)
+    while not IS_ENTITY_PLAYING_ANIM(ent, animdict, anim, 3) do
+        TASK_PLAY_ANIM(ent, animdict, anim, 1.0, 1.0, -1, 3, 0.5, false, false, false)
+        util.yield()
+    end
+end
+
+function func.Streamscale(scale)
+    local scaleform = REQUEST_SCALEFORM_MOVIE(scale)
+    while not HAS_SCALEFORM_MOVIE_LOADED(scale) do
+       scaleform = REQUEST_SCALEFORM_MOVIE(scale)
+        util.yield()
+        return scaleform
+    end
+end
+
+local read_global = {
+    byte = function(global)
+        local address = memory.script_global(global)
+        return memory.read_byte(address)
+    end,
+    int = function(global)
+        local address = memory.script_global(global)
+        return memory.read_int(address)
+    end,
+    float = function(global)
+        local address = memory.script_global(global)
+        return memory.read_float(address)
+    end,
+    string = function(global)
+        local address = memory.script_global(global)
+        return memory.read_string(address)
+    end
+}
+
+function func.Is_player_pointing()
+    return read_global.int(Globals.PlayerPoint) == 3
+end
+
+local function rotation_to_direction(rotation)
+        local adjusted_rotation =
+        {
+            x = (math.pi / 180) * rotation.x,
+            y = (math.pi / 180) * rotation.y,
+            z = (math.pi / 180) * rotation.z
+        }
+        local direction =
+        {
+            x = -math.sin(adjusted_rotation.z) * math.abs(math.cos(adjusted_rotation.x)),
+            y =  math.cos(adjusted_rotation.z) * math.abs(math.cos(adjusted_rotation.x)),
+            z =  math.sin(adjusted_rotation.x)
+        }
+        return direction
+    end
+function func.Get_offset_from_camera(distance)
+        local cam_rot = GET_FINAL_RENDERED_CAM_ROT(2)
+        local cam_pos = GET_FINAL_RENDERED_CAM_COORD()
+        local direction = rotation_to_direction(cam_rot)
+        local destination =
+        {
+            x = cam_pos.x + direction.x * distance,
+            y = cam_pos.y + direction.y * distance,
+            z = cam_pos.z + direction.z * distance
+        }
+        return destination
+    end
+
+function func.Get_raycast_result(dist, flag)
+    local result = {}
+    flag = flag or 4294967295
+    local didHit = memory.alloc(1)
+    local endCoords = v3.new()
+    local normal = v3.new()
+    local hitEntity = memory.alloc_int()
+    local camPos = GET_FINAL_RENDERED_CAM_COORD()
+    local offset = func.Get_offset_from_camera(dist)
+
+    local handle = START_EXPENSIVE_SYNCHRONOUS_SHAPE_TEST_LOS_PROBE(
+        camPos.x, camPos.y, camPos.z,
+        offset.x, offset.y, offset.z,
+        flag,
+        players.user_ped(), 7
+    )
+    GET_SHAPE_TEST_RESULT(handle, didHit, endCoords, normal, hitEntity)
+
+    result.didHit = memory.read_byte(didHit) ~= 0
+    result.endCoords = endCoords
+    result.surfaceNormal = normal
+    result.hitEntity = memory.read_int(hitEntity)
+    return result
+end
+
+function func.get_input_from_screen_keyboard(windowName, maxInput, defaultText)
+    DISPLAY_ONSCREEN_KEYBOARD(0, windowName, "", defaultText, "", "", "", maxInput);
+    while UPDATE_ONSCREEN_KEYBOARD() == 0 do
+        util.yield_once()
+    end
+    if UPDATE_ONSCREEN_KEYBOARD() == 1 then
+        return GET_ONSCREEN_KEYBOARD_RESULT()
+    end
+    return ""
+end
+
+local current_preview = nil
+function func.add_preview(vehicle)
+    func.Streament(vehicle)
+    local handle = entities.create_vehicle(vehicle, {x=0, y=0, z=0}, 0)
+    if handle then
+        SET_ENTITY_COMPLETELY_DISABLE_COLLISION(handle , false, true)
+        SET_ENTITY_INVINCIBLE(handle, true)
+        SET_ENTITY_ALPHA(handle , 206, false)
+        FREEZE_ENTITY_POSITION(handle, true)
+        current_preview = {handle = handle, position={x=0,y=0,z=0}, rotation={x=0,y=0,z=0}, camera_distance=5}
+    end
+end
+
+function func.remove_preview()
+    if current_preview != nil then
+        if current_preview.handle != nil then
+            entities.delete_by_handle(current_preview.handle)
+        end
+    end
+end
+
+util.create_tick_handler(function ()
+if current_preview != nil then
+    if menu.is_open() then
+        func.Update_preview_tick(current_preview)
+    else
+        func.remove_preview()
+  
+    end
+end
+
+end)
+
+
+function func.Update_preview_tick(current_preview)
+    if current_preview != nil then
+        current_preview.position = func.Get_offset_from_camera(current_preview.camera_distance)
+        current_preview.rotation.z = current_preview.rotation.z + 2
+        SET_ENTITY_COORDS_NO_OFFSET(
+                current_preview.handle,
+                current_preview.position.x,
+                current_preview.position.y,
+                current_preview.position.z,
+                true, false, false
+        )
+        SET_ENTITY_ROTATION(
+                current_preview.handle,
+                current_preview.rotation.x,
+                current_preview.rotation.y,
+                current_preview.rotation.z,
+                2, true
+        )
+        SET_ENTITY_COMPLETELY_DISABLE_COLLISION(current_preview.handle,  false, true)
+        SET_ENTITY_ALPHA(current_preview.handle, 206, false)
+        FREEZE_ENTITY_POSITION(current_preview.handle, true)
+        SET_ENTITY_INVINCIBLE(current_preview.handle, true)
+    end
+    end
+
+
+function func.PedList(menusel, action_function)
+	local ped_hash =  {Tables.SPC, Tables.AMC, Tables.AfC, Tables.CSP, Tables.GM, Tables.Mpp, Tables.MSF, 
+	Tables.MCM, Tables.SMC, Tables.Ssf, Tables.Ssm, Tables.Dlcp}
+	local ped_names = {Tables.SPClist, Tables.AMClist, Tables.AfClist, Tables.Csplist, Tables.GM, Tables.Mpplist, 
+	Tables.MSFlist, Tables.MCMlist, Tables.SMClist, Tables.Ssflist, Tables.Ssmlist, Tables.Dlcplist}
+    for i, description in Tables.Pedlistname do
+        menusel:list_action(description[1], {}, description[2], ped_names[i], function(pedsel)
+            action_function(ped_hash[i][pedsel], ped_names[i][pedsel])
+        end)
+    end
+end
+
+function func.TitleCase( first, rest ) --stackoverflow
+   return first:upper()..rest:lower()
+end
+
+function func.getallvehicles(root, value, ped)--credits to Shadowcat
+    local vehicles = util.get_vehicles()
+    table.sort(vehicles, function(a, b)
+        if a.class ~= b.class then
+            return lang.get_string(a.class) < lang.get_string(b.class)
+        end
+        return a.name < b.name
+    end)
+    local cur_class
+    local cur_list
+    for vehicles as vehicle do
+        if cur_class ~= vehicle.class then
+            cur_class = vehicle.class
+            cur_list = root:list(vehicle.class)
+        end
+        local vehname = util.get_label_text(vehicle.name)
+        vehtitle = string.gsub(vehname, "(%a)([%w_']*)", func.TitleCase)
+        if vehname == "NULL" then
+            continue
+        end
+        for value as v do
+            switch v do 
+                case 1: do
+                    local veh_sound = cur_list:action(vehtitle or "Unknown", {}, vehname or "", function()
+                    menu.set_menu_name(menus.curvtog, T('Current Sound ')..vehname)
+                        FORCE_USE_AUDIO_GAME_OBJECT(entities.get_user_vehicle_as_handle(),  vehname)
+                        if func.set.alert then
+                            func.ACutil(Str_trans('Vehicle Sound changed to '..vehname))
+                        end
+                        if vehname != "" then
+                            local vehicles_list = func.Load_settings(Fav_Vehicles)
+                            for vehicles_list as vehicle do
+                                if vehicle.name == vehname then
+                                    remove_vehicle(vehname)
+                                    if func.set.alert then
+                                        func.ACutil(vehname..Str_trans(' removed'))
+                                    end
+                                    return true
+                                end
+                            end
+                            if IS_MODEL_A_VEHICLE(util.joaat(vehname)) then
+                                add_vehicle(vehname)  
+                                if func.set.alert then
+                                    func.ACutil(vehname..Str_trans(' added'))  
+                                end   
+                            else
+                                if func.set.alert then
+                                    func.ACutil(Str_trans('Improper Vehicle Name (check the spelling)'))
+                                end
+                            end
+                            return true
+                        end
+                    end)
+                    veh_sound:onFocus(function(direction) if direction != 0 then func.add_preview(util.joaat(vehicle.name)) end end)
+                    veh_sound:onBlur(function(direction) if direction != 0 then func.remove_preview() end end)
+                end break
+                case 2: do
+                    local otplveh = cur_list:action(vehtitle or "Unknown", {}, vehname or "", function()
+                        local tar1 = GET_ENTITY_COORDS(ped, true)
+                        local vspawn
+                        func.Vspawn(util.joaat(vehicle.name), tar1, ped, 'Acjoker')
+                    end)
+                    otplveh:onFocus(function(direction) if direction != 0 then func.add_preview(util.joaat(vehicle.name)) end end)
+                    otplveh:onBlur(function(direction) if direction != 0 then func.remove_preview() end end)
+                end break
+                case 3: do
+                    local flyveh = cur_list:action(vehtitle or "Unknown", {}, vehname or "", function()
+                        Tables.flyingcarset.car = vehicle.name
+                        func.ACutil(Str_trans('Vehicle Selected'))
+                    end)
+                    flyveh:onFocus(function(direction) if direction != 0 then func.add_preview(util.joaat(vehicle.name)) end end)
+                    flyveh:onBlur(function(direction) if direction != 0 then func.remove_preview() end end)
+                end break
+            end
+        end
+    end 
+end
+
+function func.Create_ped_weapon_menu(root, value, ped, ...)
+    local weapons = util.get_weapons()
+    local cur_category
+    local cur_list
+    local a = {}
+    for weapons as weapon do
+        if cur_category ~= weapon.category then
+            cur_category = weapon.category
+            cur_list = root:list(cur_category)
+            table.insert(weapons_menus, cur_list)
+        end
+        local weapcat = util.get_label_text(weapon.label_key)
+        vehtitle = string.gsub(weapcat, "(%a)([%w_']*)", func.TitleCase)
+        if vehname == "NULL" then
+            continue
+        end
+            cur_list:action(weapcat, {}, "", function()
+                sel = weapon.hash
+                for value as v do 
+                    local weaphash
+                    switch v do
+                    case 1:
+                        Tables.Weapon_selections.bg_weap = sel
+                        WEAPON.REMOVE_ALL_PED_WEAPONS(ped)
+                        weaphash = util.joaat(Tables.Weapon_selections.bg_weap)
+                        WEAPON.GIVE_WEAPON_TO_PED(ped, weaphash, 9999, true, true)
+                        if func.set.alert then
+                            func.ACutil(Str_trans('Gun changed to ')..Tables.Weapon_selections.bg_weap)
+                        end
+                        break
+                    case 2:
+                        Tables.Weapon_selections.bg_weap2 = sel
+                        WEAPON.REMOVE_ALL_PED_WEAPONS(ped)
+                        weaphash = util.joaat(Tables.Weapon_selections.bg_weap2)
+                        WEAPON.GIVE_WEAPON_TO_PED(ped, weaphash, 9999, true, true)
+                        if func.set.alert then
+                            func.ACutil(Str_trans('Gun changed to ')..Tables.Weapon_selections.bg_weap2)
+                        end
+                        break
+                    case 3:
+                        if not Tables.Aimbotsetting.curweap then
+                            Tables.Weapon_selections.aimbot = util.reverse_joaat(sel) 
+                        end
+                        break
+                    case 4:
+                        Tables.Weapon_selections.veh_weap = sel
+                        break
+                    case 5:
+                        Tables.Weapon_selections.atkset = sel
+                        break
+                    case 6:
+                        Tables.Weapon_selections.platkset = sel
+                        break
+                    case 7:
+                        Tables.Weapon_selections.heliatkset = sel
+                        break
+                    case 8:
+                        Tables.Weapon_selections.vehatkset = sel
+                        break
+                    case 9:
+                        Tables.Weapon_selections.lazergun = sel
+                        break
+                    case 10:
+                        Tables.Weapon_selections.clone_gun_set = sel
+                        break
+                    end 
+                end
+            end)
+    end
+    return weapons_menus
+end
+
+
+function func.Dlc(veh)
+    for i = 0, GET_NUM_DLC_VEHICLES() - 1 do--credits to SoulReaper
+        if GET_DLC_VEHICLE_MODEL(i) == veh then
+            return true
+        end
+    end
+    return false
+end
+
+function func.Vextras(vmod)
+    for i = 1, 14 do
+        if DOES_EXTRA_EXIST(vmod, i) then
+            SET_VEHICLE_EXTRA(vmod, i, false)
+        end
+    end
+end
+
+function func.Vmod(vmod, plate, max, top)
+    SET_VEHICLE_FIXED(vmod)
+    for Tables.Vehopts as v do
+    local maxmods = GET_NUM_VEHICLE_MODS(vmod, v[1] - 1)
+        if maxmods > 0 then
+            SET_VEHICLE_MOD(vmod, v[1] - 1, maxmods - 1 , false)
+        end
+    end
+    for Tables.Vehtogs as v do
+    local maxmods = GET_NUM_VEHICLE_MODS(vmod, v[1])
+        if maxmods > 0 then
+            TOGGLE_VEHICLE_MOD(vmod, v[1] - 1, on)
+        end
+    end
+    if func.Dlc(GET_ENTITY_MODEL(vmod)) then
+        for Tables.Bennysopts as v do
+            local maxmods = GET_NUM_VEHICLE_MODS(vmod, v[1] - 1)
+            if maxmods > 0 then
+                SET_VEHICLE_MOD(vmod, v[1] - 1, maxmods - 1, false)
+            end
+        end
+    end
+    func.Vextras(vmod)
+    SET_VEHICLE_NUMBER_PLATE_TEXT(vmod, plate)
+    SET_VEHICLE_MOD(vmod, 14, 0)
+    SET_VEHICLE_TYRE_SMOKE_COLOR(vmod, 0, 0, 0)
+    SET_VEHICLE_MAX_SPEED(vmod, max)
+    MODIFY_VEHICLE_TOP_SPEED(vmod, top)
+    SET_VEHICLE_BURNOUT(vmod, false)
+
+end
+
+function func.Vspawn(mod, pCoor, pedSi, plate)
+    
+    func.Streament(mod)
+    local vmod = CREATE_VEHICLE(mod, pCoor.x, pCoor.y, pCoor.z, 0, true, true, false)
+    SET_PED_INTO_VEHICLE(pedSi, vmod, -1)
+    SET_VEHICLE_COLOURS(vmod, math.random(0, 160), math.random(0, 160))
+    func.Vmod(vmod, plate, 100, 40)
+    local CV = GET_GAMEPLAY_CAM_RELATIVE_HEADING()
+    SET_ENTITY_HEADING(vmod, CV)
+    return vmod
+end
+
+function func.Delcar(vic, spec, pid)
+    if IS_PED_IN_ANY_VEHICLE(vic) then
+        local tarcar = GET_VEHICLE_PED_IS_IN(vic, true)
+        func.GetControl(tarcar, spec, pid)
+        SET_ENTITY_AS_MISSION_ENTITY(tarcar)
+        entities.delete_by_handle(tarcar)
+    end
+end
+
+
+function func.Nuke (expcoor)
+local nukeha = util.joaat('w_arena_airmissile_01a')
+func.Streament(nukeha)
+    for i = 0, 30, 1 do
+        func.Streamptfx("scr_xm_orbital")
+        ADD_EXPLOSION(expcoor.x + i, expcoor.y + i, expcoor.z + i, 59, 1, true, true, 0, false)
+        ADD_EXPLOSION(expcoor.x + i, expcoor.y + i, expcoor.z + i, 59, 1, true, true, 0, false)
+        ADD_EXPLOSION(expcoor.x, expcoor.y, expcoor.z, 8, 1, true, true, 0, false)
+        ADD_EXPLOSION(expcoor.x, expcoor.y, expcoor.z, 59, 1, true, true, 0, false)
+        ADD_EXPLOSION(expcoor.x, expcoor.y, expcoor.z, 81, 1, true, true, 0, false)
+        START_NETWORKED_PARTICLE_FX_NON_LOOPED_AT_COORD('scr_xm_orbital_blast', expcoor.x, expcoor.y, expcoor.z + 50 + i, 0, 0, 0, 10, true, true, true)
+    end
+    for e = 0, 60, 1 do
+        func.Streamptfx("scr_xm_orbital")
+        ADD_EXPLOSION(expcoor.x + e, expcoor.y + e, expcoor.z + e, 59, 1, true, true, 0, false)
+        ADD_EXPLOSION(expcoor.x + e, expcoor.y + e, expcoor.z + e, 59, 1, true, true, 0, false)
+        ADD_EXPLOSION(expcoor.x, expcoor.y, expcoor.z, 8, 1, true, true, 0, false)
+        ADD_EXPLOSION(expcoor.x, expcoor.y, expcoor.z, 59, 1, true, true, 0, false)
+        ADD_EXPLOSION(expcoor.x, expcoor.y, expcoor.z, 81, 1, true, true, 0, false)
+        START_NETWORKED_PARTICLE_FX_NON_LOOPED_AT_COORD('scr_xm_orbital_blast', expcoor.x, expcoor.y, expcoor.z + e, 0, 0, 0, 1, true, true, true)
+    end
+        for b = 0, 100, 1 do
+        func.Streamptfx("scr_xm_orbital")
+        ADD_EXPLOSION(expcoor.x + b, expcoor.y + b, expcoor.z + b, 59, 1, true, true, 0, false)
+        ADD_EXPLOSION(expcoor.x + b, expcoor.y + b, expcoor.z + b, 59, 1, true, true, 0, false)
+        ADD_EXPLOSION(expcoor.x, expcoor.y, expcoor.z, 8, 1, true, true, 0, false)
+        ADD_EXPLOSION(expcoor.x, expcoor.y, expcoor.z, 59, 1, true, true, 0, false)
+        ADD_EXPLOSION(expcoor.x, expcoor.y, expcoor.z, 81, 1, true, true, 0, false)
+        START_NETWORKED_PARTICLE_FX_NON_LOOPED_AT_COORD('scr_xm_orbital_blast', expcoor.x, expcoor.y, expcoor.z + b, 0, 0, 0, 1.5, true, true, true)
+    end
+end
+
+
+function func.Cama()
+            -- credits to jinxscript
+    local inst = v3.new()
+    local cama = {}
+    v3.set(inst,GET_FINAL_RENDERED_CAM_ROT(2))
+    local tmp = v3.toDir(inst)
+    v3.set(inst, v3.get(tmp))
+    v3.mul(inst, 1000)
+    v3.set(tmp, GET_FINAL_RENDERED_CAM_COORD())
+    v3.add(inst, tmp)
+    cama.x, cama.y, cama.z = v3.get(inst)
+    return cama.x, cama.y, cama.z
+end
+
+-- wiri functions --
+function func.AddBlip(entity, blipSprite, colour)
+    local blip = ADD_BLIP_FOR_ENTITY(entity)
+    SET_BLIP_SPRITE(blip, blipSprite)
+    SET_BLIP_COLOUR(blip, colour)
+    SHOW_HEIGHT_ON_BLIP(blip, false)
+
+    util.create_tick_handler(function ()
+        if not DOES_ENTITY_EXIST(entity)or IS_ENTITY_DEAD(entity, false) then
+            util.remove_blip(blip)
+            return false
+        elseif not DOES_BLIP_EXIST(blip) then
+            return false
+        else
+            local heading = GET_ENTITY_HEADING(entity)
+            SET_BLIP_ROTATION(blip, math.ceil(heading))
+        end
+    end)
+
+    return blip
+end
+
+function GetPlayerOrgBoss(player)
+    if player ~= -1 then
+        local address = memory.script_global(1895156 + (player * 609 + 1) + 10)
+        if address ~= 0 then return memory.read_int(address) end
+    end
+    return -1
+end
+
+
+function func.ArePlayersInTheSameOrg(player, target)
+    local boss = GetPlayerOrgBoss(player)
+    return boss ~= -1 and boss == GetPlayerOrgBoss(target)
+end
+
+function func.ArePlayersInTheSameCrew(player, target)
+    if NETWORK_CLAN_SERVICE_IS_VALID() then
+        local targetHandle = GetHandleFromPlayer(target)
+        local handle = GetHandleFromPlayer(player)
+
+        if NETWORK_CLAN_PLAYER_IS_ACTIVE(handle) and NETWORK_CLAN_PLAYER_IS_ACTIVE(targetHandle) then
+            local targetClanDesc = memory.alloc(280)
+            local clanDesc = memory.alloc(280)
+
+            NETWORK_CLAN_PLAYER_GET_DESC(clanDesc, 35, handle)
+            NETWORK_CLAN_PLAYER_GET_DESC(targetClanDesc, 35, targetHandle)
+            return memory.read_int(clanDesc + 0x0) == memory.read_int(targetClanDesc + 0x0)
+        end
+    end
+    return false
+end
+------------------
+
+function func.Rolladown(pid)
+    local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+    local vmod = GET_VEHICLE_PED_IS_IN(pedm, false)
+    local spec = func.GetSpec(pid)
+    func.GetControl(pedm, spec, pid)
+    ROLL_DOWN_WINDOWS(vmod)
+end
+
+function func.Rollaup(pid)
+    local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+    local vmod = GET_VEHICLE_PED_IS_IN(pedm, false)
+    local spec = func.GetSpec(pid)
+    func.GetControl(pedm, spec, pid)
+    for i = 0, 7 do
+        ROLL_UP_WINDOW(vmod, i)
+    end
+end
+
+
+function func.Changemod(pid, modtype, mod)
+    local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+    local spec = func.GetSpec(pid)
+    if not players.exists(pid) then
+        util.stop_thread()
+    end
+    if IS_PED_IN_ANY_VEHICLE(pedm) ==true then
+        local vmod = GET_VEHICLE_PED_IS_IN(pedm, true)
+        func.GetControl(vmod, spec, pid)
+        GET_NUM_MOD_KITS(vmod)
+        GET_VEHICLE_MOD_KIT(vmod)
+        SET_VEHICLE_MOD_KIT(vmod, 0)
+        SET_VEHICLE_MOD(vmod, modtype, mod, false)
+    end
+end
+
+function func.Changedashcolor(pid, color)
+    local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+    local vmod = GET_VEHICLE_PED_IS_IN(pedm, true)
+    local spec = func.GetSpec(pid)
+    if not players.exists(pid) then
+        util.stop_thread()
+    end
+    func.GetControl(vmod, spec, pid)
+    SET_VEHICLE_FIXED(vmod)
+    SET_VEHICLE_EXTRA_COLOUR_6(vmod, color)
+end
+
+function func.Changeintcolor(pid, color)
+    local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+    local vmod = GET_VEHICLE_PED_IS_IN(pedm, true)
+    local spec = func.GetSpec(pid)
+    if not players.exists(pid) then
+        util.stop_thread()
+    end
+    func.GetControl(vmod, spec, pid)
+    SET_VEHICLE_FIXED(vmod)
+    SET_VEHICLE_EXTRA_COLOUR_5(vmod, color)
+end
+
+function func.Changewhepercolor(pid, color)
+    local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+    local vmod = GET_VEHICLE_PED_IS_IN(pedm, true)
+    local spec = func.GetSpec(pid)
+    if not players.exists(pid) then
+        util.stop_thread()
+    end
+    func.GetControl(vmod, spec, pid)
+    SET_VEHICLE_FIXED(vmod)
+    SET_VEHICLE_EXTRA_COLOURS(vmod, color.per, color.whe)
+end
+
+function func.Changecolor(pid, color)
+    local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+    local vmod = GET_VEHICLE_PED_IS_IN(pedm, true)
+    local spec = func.GetSpec(pid)
+    CLEAR_VEHICLE_CUSTOM_PRIMARY_COLOUR(vmod)
+    CLEAR_VEHICLE_CUSTOM_SECONDARY_COLOUR(vmod)
+    if not players.exists(pid) then
+        util.stop_thread()
+    end
+    func.GetControl(vmod, spec, pid)
+    SET_VEHICLE_FIXED(vmod)
+    SET_VEHICLE_COLOURS(vmod, color.prim, color.sec)
+end
+
+
+function func.Getent(vic)
+    local tick = 0
+    NETWORK_REQUEST_CONTROL_OF_ENTITY(vic)
+    while not NETWORK_HAS_CONTROL_OF_ENTITY(vic) do
+        NETWORK_REQUEST_CONTROL_OF_ENTITY(vic)
+        local netId = NETWORK_GET_NETWORK_ID_FROM_ENTITY(entity)
+        SET_NETWORK_ID_CAN_MIGRATE(netId, true)
+        util.yield()
+        tick =  tick + 1
+        if tick > 20 then
+            if not NETWORK_HAS_CONTROL_OF_ENTITY(vic) then
+                if func.set.alert then
+                    func.ACutil(Str_trans('Could not gain control'))
+                end
+                return vic
+            end
+        
+        end
+    end
+    return NETWORK_REQUEST_CONTROL_OF_ENTITY(vic)
+end
+
+function func.Changetint(pid, tint)
+    local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+    local vmod = GET_VEHICLE_PED_IS_IN(pedm, true)
+    local spec = func.GetSpec(pid)
+    if not players.exists(pid) then
+        util.stop_thread()
+    end
+    func.GetControl(vmod, spec, pid)
+    SET_VEHICLE_FIXED(vmod)
+    SET_VEHICLE_WINDOW_TINT(vmod, tint)
+end
+
+function func.Changeneon(pid, color)
+    local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+    local vmod = GET_VEHICLE_PED_IS_IN(pedm, true)
+    local spec = func.GetSpec(pid)
+    if not players.exists(pid) then
+        util.stop_thread()
+    end
+    func.GetControl(vmod, spec, pid)
+    func.RGBNeonKit(pedm)
+    SET_VEHICLE_NEON_INDEX_COLOUR(vmod, color)
+end
+
+function func.Changehead(pid, color)
+    local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+    local vmod = GET_VEHICLE_PED_IS_IN(pedm, true)
+    local spec = func.GetSpec(pid)
+    if not players.exists(pid) then
+        util.stop_thread()
+    end
+    func.GetControl(vmod, spec, pid)
+    TOGGLE_VEHICLE_MOD(vmod, 22, true)
+    SET_VEHICLE_XENON_LIGHT_COLOR_INDEX(vmod, color)
+end
+
+function func.RGBNeonKit(pedm)
+    local vmod = GET_VEHICLE_PED_IS_IN(pedm, false)
+    for i = 0, 3 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, true)
+    end
+end
+
+function func.Rpaint(pid)
+    local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+    local spec = func.GetSpec(pid)
+    local vmod = GET_VEHICLE_PED_IS_IN(pedm, false)
+    CLEAR_VEHICLE_CUSTOM_PRIMARY_COLOUR(vmod)
+    CLEAR_VEHICLE_CUSTOM_SECONDARY_COLOUR(vmod)
+    func.GetControl(vmod, spec, pid)
+    SET_VEHICLE_FIXED(vmod)
+    SET_VEHICLE_COLOURS(vmod, math.random(0, 160), math.random(0, 160))
+    if func.set.alert then
+        func.ACutil(Str_trans('Vehicle Painted'))
+    end
+end
+
+function func.Changewheel(pid, wtype, wheel)
+    local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+    local vmod = GET_VEHICLE_PED_IS_IN(pedm, true)
+    local vhash = GET_ENTITY_MODEL(vmod)
+    local spec = func.GetSpec(pid)
+    if not players.exists(pid) then
+        util.stop_thread()
+    end
+        func.GetControl(vmod, spec, pid)
+    if IS_THIS_MODEL_A_BIKE(vhash) then
+        SET_VEHICLE_WHEEL_TYPE(vmod, wtype)
+        SET_VEHICLE_MOD(vmod, 23, wheel)
+        SET_VEHICLE_MOD(vmod, 24, wheel)
+    else
+        SET_VEHICLE_WHEEL_TYPE(vmod, wtype)
+        SET_VEHICLE_MOD(vmod, 23, wheel)
+    end
+end
+
+
+return func

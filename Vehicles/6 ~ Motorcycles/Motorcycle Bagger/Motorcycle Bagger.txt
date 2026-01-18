@@ -1,0 +1,29 @@
+Model: bagger
+Plate Style: 0
+Plate Text:  DKARME 
+Primary Colour: 5
+Secondary Colour: 0
+Pearl Colour: 111
+Wheel Colour: 156
+Wheel Type: 6
+Nitrous: No
+Turbo: No
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 0
+Front Wheels: 0
+Back Wheels: 0
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #00ffff
+Neon Front: No
+Neon Back: No
+Neon Left: Yes
+Neon Right: No
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

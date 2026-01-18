@@ -1,0 +1,59 @@
+Model: driftfuto
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 161
+Pearl Colour: 0
+Wheel Colour: 27
+Wheel Type: 8
+Spoiler: 2
+Front Bumper: 1
+Rear Bumper: 2
+Sideskirt: 2
+Exhaust: 11
+Chassis: 5
+Grille: 1
+Hood: 0
+Fender: 0
+Right Fender: 2
+Roof: 1
+Engine: 0
+Brakes: 0
+Transmission: 0
+Horns: 0
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: No
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 128
+Plate Holder: 3
+Vanity Plates: 1
+Trim: 1
+Dashboard: 4
+Door Speaker: 14
+Steering Wheel: 16
+Engine Block: 0
+Air Filter: 0
+Struts: 0
+Arch Cover: 0
+Trim2: 2
+Tank: 2
+Left Door: 2
+Right Door: 0
+Livery: 16
+Tyre Smoke Colour: #ff0000
+Window Tint: 0
+Custom Primary Colour: #ffffff
+Custom Secondary Colour: #6b0000
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 137
+Dashboard Colour: 38
+Tyres Mode: 1

@@ -1,0 +1,41 @@
+Model: schafter6
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 39
+Wheel Colour: 67
+Wheel Type: 9
+Spoiler: 2
+Front Bumper: 0
+Rear Bumper: 0
+Sideskirt: 0
+Exhaust: 4
+Hood: 1
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 115
+Livery: -1
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #aa0505
+Custom Secondary Colour: #000000
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 48
+Dashboard Colour: 156
+Tyres Mode: 1

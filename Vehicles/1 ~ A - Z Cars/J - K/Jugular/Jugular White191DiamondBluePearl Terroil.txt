@@ -1,0 +1,44 @@
+Model: jugular
+Plate Style: 7
+Plate Text:  DKARME 
+Primary Colour: 73
+Secondary Colour: 0
+Pearl Colour: 67
+Wheel Colour: 67
+Wheel Type: 9
+Spoiler: 6
+Front Bumper: 3
+Rear Bumper: 2
+Sideskirt: 4
+Exhaust: 2
+Grille: 3
+Hood: 6
+Fender: 2
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 115
+Livery: 3
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #c1bfff
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 67
+Dashboard Colour: 67
+Tyres Mode: 1
+Extra 1: No

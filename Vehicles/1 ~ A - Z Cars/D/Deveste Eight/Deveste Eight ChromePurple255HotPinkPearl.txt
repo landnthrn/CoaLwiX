@@ -1,0 +1,39 @@
+Model: deveste
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 120
+Secondary Colour: 120
+Pearl Colour: 135
+Wheel Colour: 134
+Wheel Type: 8
+Spoiler: 9
+Front Bumper: 4
+Rear Bumper: 5
+Exhaust: 8
+Chassis: 4
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 1
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 13
+Front Wheels: 86
+Livery: 0
+Tyre Smoke Colour: #7800ff
+Window Tint: 1
+Custom Primary Colour: #7403ff
+Custom Secondary Colour: #5870a1
+Neon Colour: #3c00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 148
+Dashboard Colour: 0
+Tyres Mode: 1

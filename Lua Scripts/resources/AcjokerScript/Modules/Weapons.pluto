@@ -1,0 +1,1646 @@
+local menus = require 'resources/AcjokerScript/Modules/Self'
+local Tables = require 'resources/AcjokerScript/ACJSTables'
+local func = require 'resources/AcjokerScript/Modules/Functions'
+local CONFIG_DIR = filesystem.resources_dir() .. 'AcjokerScript\\'
+local SettingsDir = filesystem.store_dir() .. 'AcjokerScript\\Settings\\'
+if filesystem.is_regular_file(CONFIG_DIR .. "Kill_List.json") then
+    os.rename(CONFIG_DIR .. "Kill_List.json", SettingsDir.."Kill_List.json")
+else
+    Kill_List = SettingsDir.. "Kill_List.json"
+end
+local Nuke_Gun_Setting = SettingsDir .. "Nuke_gun_set.txt"
+local God_Gun_Setting = SettingsDir .. "God_gun_set.txt"
+local Superman_Setting = SettingsDir .. "Superman.txt"
+local SEC = SET_ENTITY_COORDS
+local weaproot = menu.my_root():list(T('Weapons'), {}, '')
+
+local max_int = 2147483647
+local min_int = -2147483648
+local weapons_menus = {}
+local aimbot = {esp = true, box = true, bone = 31086, weapon = 'WEAPON_TACTICALRIFLE', damage = 200, targetveh = true, fov = 3, keeplineson = false, nobullets = false,
+tarplayers = true, tarnpcs = true, tarfriends = false, owner = players.user_ped(), stw = false, kill_list = false, alert = true, bullets = false, movement = false}
+local ESPrgb = {color= {r= 0, g = 1, b = 0, a = 1}}
+local ESPcolor = {
+    r = math.floor(ESPrgb.color.r * 255),
+    g = math.floor(ESPrgb.color.g * 255),
+    b = math.floor(ESPrgb.color.b * 255),
+    a = math.floor(ESPrgb.color.a * 255)
+}
+
+local function Player_rotate()
+        local CV = GET_GAMEPLAY_CAM_COORD()
+        local rot = GET_GAMEPLAY_CAM_ROT(0)
+        local he = GET_HEADING_FROM_VECTOR_2D(CV.x, CV.y)
+        SET_ENTITY_HEADING(players.user_ped(), he)
+        SET_ENTITY_ROTATION(players.user_ped(), rot.x, rot.y, rot.z, 0, true)
+end
+
+local function Supereyes(lazer, impact, camrot, weap)
+        local reye, leye
+        if lazer.exp then
+            if GET_PED_LAST_WEAPON_IMPACT_COORD(players.user_ped(), memory.addrof(impact)) then
+                ADD_EXPLOSION(impact.x, impact.y, impact.z, 81, 5000, true, false, 0.0, false)
+            end
+        end
+        func.Streamptfx('weap_xs_weapons')
+        
+        camrot.x += 90
+        camrot.y += 180
+
+        if util.is_session_started() then
+            reye = GET_WORLD_POSITION_OF_ENTITY_BONE(players.user_ped(), GET_PED_BONE_INDEX(players.user_ped(), 0x6b52))
+            leye = GET_WORLD_POSITION_OF_ENTITY_BONE(players.user_ped(), GET_PED_BONE_INDEX(players.user_ped(), 0x62ac))
+        else
+            reye = GET_WORLD_POSITION_OF_ENTITY_BONE(players.user_ped(), GET_PED_BONE_INDEX(players.user_ped(), 6468))
+            leye = GET_WORLD_POSITION_OF_ENTITY_BONE(players.user_ped(), GET_PED_BONE_INDEX(players.user_ped(), 5956))
+        end
+        local cama = {}
+        cama.x, cama.y, cama.z = func.Cama()
+        START_NETWORKED_PARTICLE_FX_NON_LOOPED_AT_COORD('bullet_tracer_xs_sr', reye.x, reye.y, reye.z, camrot.x, camrot.y,  camrot.z, 1, true)
+        func.Streamptfx('weap_xs_weapons')
+        START_NETWORKED_PARTICLE_FX_NON_LOOPED_AT_COORD('bullet_tracer_xs_sr', leye.x, leye.y, leye.z, camrot.x, camrot.y,  camrot.z, 1, true)
+        SHOOT_SINGLE_BULLET_BETWEEN_COORDS_IGNORE_ENTITY(reye.x, reye.y, reye.z, cama.x, cama.y,  cama.z, 200, 0, weap, players.user_ped(), true, false, 1000, players.user_ped())
+        SHOOT_SINGLE_BULLET_BETWEEN_COORDS_IGNORE_ENTITY(leye.x, leye.y, leye.z, cama.x, cama.y,  cama.z, 200, 0, weap, players.user_ped(), true, false, 1000, players.user_ped())
+        Player_rotate()
+    end
+
+local function Super_Breath(superman)
+    Player_rotate()
+    local offset = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(players.user_ped(), 0, 5, 0)
+    local offset2 = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(players.user_ped(), 0, 10, 0)
+    for i = 0, superman.breath do
+        ADD_EXPLOSION(offset.x, offset.y, offset.z, 81, 5000, false, true, 0.0, superman.nodam)
+        ADD_EXPLOSION(offset2.x, offset2.y, offset2.z, 81, 5000, false, true, 0.0, superman.nodam)
+    end
+end
+
+
+
+
+
+local function Leyes(lazer, impact, camrot, weap)
+        local reye, leye
+        Player_rotate()
+        if util.is_session_started() then
+            reye = GET_WORLD_POSITION_OF_ENTITY_BONE(players.user_ped(), GET_PED_BONE_INDEX(players.user_ped(), 0x6b52))
+            leye = GET_WORLD_POSITION_OF_ENTITY_BONE(players.user_ped(), GET_PED_BONE_INDEX(players.user_ped(), 0x62ac))
+        else
+            reye = GET_WORLD_POSITION_OF_ENTITY_BONE(players.user_ped(), GET_PED_BONE_INDEX(players.user_ped(), 6468))
+            leye = GET_WORLD_POSITION_OF_ENTITY_BONE(players.user_ped(), GET_PED_BONE_INDEX(players.user_ped(), 5956))
+        end
+        local cama = {}
+        cama.x, cama.y, cama.z = func.Cama()
+        if lazer.exp then
+            if GET_PED_LAST_WEAPON_IMPACT_COORD(players.user_ped(), memory.addrof(impact)) then
+                ADD_EXPLOSION(impact.x, impact.y, impact.z, 81, 5000, true, false, 0.0, false)
+            end
+        end
+        func.Streamptfx('weap_xs_weapons')
+        camrot.x += 90
+        camrot.y += 180
+        START_NETWORKED_PARTICLE_FX_NON_LOOPED_AT_COORD('bullet_tracer_xs_sr', reye.x, reye.y, reye.z, camrot.x, camrot.y,  camrot.z, 1, true)
+        func.Streamptfx('weap_xs_weapons')
+        START_NETWORKED_PARTICLE_FX_NON_LOOPED_AT_COORD('bullet_tracer_xs_sr', leye.x, leye.y, leye.z, camrot.x, camrot.y,  camrot.z, 1, true)
+        SHOOT_SINGLE_BULLET_BETWEEN_COORDS_IGNORE_ENTITY(reye.x, reye.y, reye.z, cama.x, cama.y,  cama.z , 200, 0, weap, players.user_ped(), true, false, 1000, players.user_ped())
+        SHOOT_SINGLE_BULLET_BETWEEN_COORDS_IGNORE_ENTITY(leye.x, leye.y, leye.z, cama.x, cama.y,  cama.z, 200, 0, weap, players.user_ped(), true, false, 1000, players.user_ped())
+    end
+
+local attach_objs = {}
+local attachgunset = {hash = 'prop_barrel_03d', x = 0, y = 0, z = 0, invis = false}
+local function Create_attach(attach_obj_hash, impact, target)
+    local offset = GET_OFFSET_FROM_ENTITY_GIVEN_WORLD_COORDS(target, impact.x, impact.y, impact.z)
+    if IS_MODEL_A_PED(attach_obj_hash) then
+        local ped = entities.create_ped(1, attach_obj_hash, {x = impact.x, y = impact.y + 10, z = impact.z}, 0)
+        SET_ENTITY_INVINCIBLE(ped, true)
+        table.insert(attach_objs, ped)
+        ATTACH_ENTITY_TO_ENTITY(ped, target, 0, offset.x, offset.y, offset.z, 0.0, 0.0, 0.0, false, true, true, false, 0, true)
+    elseif IS_MODEL_A_VEHICLE(attach_obj_hash) then
+        local veh = entities.create_vehicle(attach_obj_hash, {x = impact.x, y = impact.y + 10, z = impact.z}, 0)
+        table.insert(attach_objs, veh)
+        ATTACH_ENTITY_TO_ENTITY(veh, target, 0, offset.x, offset.y, offset.z, 0.0, 0.0, 0.0, false, true, true, false, 0, true)
+    elseif IS_MODEL_VALID(attach_obj_hash) then
+        local object = entities.create_object(attach_obj_hash, {x = impact.x, y = impact.y + 10, z = impact.z})
+        table.insert(attach_objs, object)
+        ATTACH_ENTITY_TO_ENTITY(object, target, 0, offset.x, offset.y, offset.z, 0.0, 0.0, 0.0, false, true, true, false, 0, true)
+    end
+end
+
+local attach_ptfx = {}
+local function Create_ptfx_spot (attach_ptfx_hash, impact, target)
+    local object = entities.create_object(attach_ptfx_hash, {x = impact.x, y = impact.y + 2, z = impact.z})
+    SET_ENTITY_VISIBLE(object, false)
+    table.insert(attach_ptfx, object)
+    local offset = GET_OFFSET_FROM_ENTITY_GIVEN_WORLD_COORDS(target, impact.x, impact.y, impact.z)
+    ATTACH_ENTITY_TO_ENTITY(object, target, 0, offset.x, offset.y, offset.z, 0.0, 0.0, 0.0, false, true, true, false, 0, true)
+end
+
+local function Attach_ptfx_spot (attach_ptfx_hash, impact, target)
+    if IS_MODEL_A_PED(GET_ENTITY_MODEL(target)) then
+        target = GET_VEHICLE_PED_IS_IN(target, true)
+        Create_ptfx_spot (attach_ptfx_hash, impact, target)
+        func.ACutil(Str_trans('PTFX Attached to Vehicle Ped was in'))
+    elseif IS_MODEL_A_VEHICLE(GET_ENTITY_MODEL(target)) then
+        Create_ptfx_spot (attach_ptfx_hash, impact, target)
+        func.ACutil(Str_trans('PTFX Attached to Vehicle'))
+    elseif IS_MODEL_VALID(GET_ENTITY_MODEL(target)) then
+        Create_ptfx_spot (attach_ptfx_hash, impact, target)
+        func.ACutil(Str_trans('PTFX Attached to Object'))
+    end
+end
+
+local function Attach_ent(attachgunset, impact, target)
+    local attach_obj_hash = util.joaat(attachgunset.hash)
+    func.Streament(attach_obj_hash)
+    if IS_PED_A_PLAYER(memory.read_int(target)) and not IS_PED_IN_ANY_VEHICLE(memory.read_int(target), true) then return func.ACutil('Can not attach to players directly') end
+    if IS_MODEL_A_PED(GET_ENTITY_MODEL(memory.read_int(target))) then
+        target = GET_VEHICLE_PED_IS_IN(memory.read_int(target), true)
+        Create_attach(attach_obj_hash, impact, target)
+        func.ACutil(Str_trans('Object Attached to Vehicle Ped was in'))
+    elseif IS_MODEL_A_VEHICLE(GET_ENTITY_MODEL(memory.read_int(target))) then
+        target = memory.read_int(target)
+        Create_attach(attach_obj_hash, impact, target)
+        func.ACutil(Str_trans('Object Attached to Vehicle'))
+    elseif IS_MODEL_VALID(GET_ENTITY_MODEL(memory.read_int(target))) then
+        target = memory.read_int(target)
+        Create_attach(attach_obj_hash, impact, target)
+        func.ACutil(Str_trans('Object Attached to Object'))
+    end
+end
+
+local function Draw_esp(ped, rgb) --credits to Totaw Annihiwation
+    local screenX = memory.alloc(4)
+    local screenY = memory.alloc(4)
+    local pos = GET_ENTITY_COORDS(ped)
+    GET_SCREEN_COORD_FROM_WORLD_COORD(pos.x, pos.y, pos.z, screenX, screenY)
+    directx.draw_line(0.5, 0.5, memory.read_float(screenX), memory.read_float(screenY), rgb.color) 
+end
+
+local function ShootPed(ped, weap)
+    local bone_coor2 = GET_PED_BONE_COORDS(ped, aimbot.bone, -0.1, 0, 0)
+    local bone_coor3 = GET_PED_BONE_COORDS(ped, aimbot.bone, 0.1, 0, 0)
+    SHOOT_SINGLE_BULLET_BETWEEN_COORDS(bone_coor2.x, bone_coor2.y, bone_coor2.z, bone_coor3.x, bone_coor3.y, bone_coor3.z, aimbot.damage, 0, weap, players.user_ped(), false, false, 1000)
+end
+
+local function AnnihilatePed(ped, weap)
+    local bone_coor = GET_PED_BONE_COORDS(ped, aimbot.bone, 0, 0, 0)
+    local bone_coor2 = GET_PED_BONE_COORDS(ped, aimbot.bone, -0.1, 0, 0)
+    local bone_coor3 = GET_PED_BONE_COORDS(ped, aimbot.bone, 0.1, 0, 0)
+    for i = 1, 3 do
+        SHOOT_SINGLE_BULLET_BETWEEN_COORDS(bone_coor2.x, bone_coor2.y, bone_coor2.z, bone_coor3.x, bone_coor3.y, bone_coor3.z, aimbot.damage, 100, weap, players.user_ped(), false, false, 1000)
+        SHOOT_SINGLE_BULLET_BETWEEN_COORDS(bone_coor.x, bone_coor.y, bone_coor.z + 1 , bone_coor.x, bone_coor.y, bone_coor.z - 1, aimbot.damage, 100, weap, players.user_ped(), false, false, 1000)
+        SHOOT_SINGLE_BULLET_BETWEEN_COORDS(bone_coor.x, bone_coor.y, bone_coor.z - 1 , bone_coor.x, bone_coor.y, bone_coor.z + 1, aimbot.damage, 100, weap, players.user_ped(), false, false, 1000)
+    end
+end
+
+
+local aim_target
+local target = true
+local aimbotcam = 0
+local function AimbotTarget(aimbot, aim_target, rgb, lowerbullets)
+    if IS_PED_A_PLAYER(aim_target) then
+        local pid = NETWORK_GET_PLAYER_INDEX_FROM_PED(aim_target)
+        local pname = players.get_name(pid)
+        if aimbot.alert then
+            func.ACutil(Str_trans('Target is ')..pname)
+        end
+    end
+
+    if aimbot.esp then
+        Draw_esp(aim_target, ESPrgb)
+    end
+    if aimbot.box then
+        local color = {
+            r = rgb.color.r * 255,
+            g = rgb.color.g * 255,
+            b = rgb.color.b * 255,
+            a = rgb.color.a * 255
+        }
+        draw_bounding_box(aim_target, color)
+    end
+    if lowerbullets and not aimbot.nobullets then
+        if Tables.Aimbotsetting.curweap and IS_PED_SHOOTING(players.user_ped()) then
+            aimbot.weapon = GET_SELECTED_PED_WEAPON(players.user_ped())
+            ShootPed(aim_target, aimbot.weapon)
+        elseif not Tables.Aimbotsetting.curweap and IS_PED_SHOOTING(players.user_ped()) then
+            ShootPed(aim_target, util.joaat(Tables.Weapon_selections.aimbot))
+        end
+    elseif not lowerbullets and not aimbot.nobullets then
+        if Tables.Aimbotsetting.curweap and IS_PED_SHOOTING(players.user_ped()) then
+            aimbot.weapon = GET_SELECTED_PED_WEAPON(players.user_ped())
+            AnnihilatePed(aim_target, aimbot.weapon)
+        elseif not Tables.Aimbotsetting.curweap and IS_PED_SHOOTING(players.user_ped()) then
+            AnnihilatePed(aim_target, util.joaat(Tables.Weapon_selections.aimbot))
+        end
+    end
+end
+
+
+
+
+
+
+
+local function Bone_Esp (aim_target, rgb)
+    hxcoor,hycoor,nxcoor,nycoor,lexcoor,leycoor,rexcoor,reycoor,lhxcoor,lhycoor,
+    rhxcoor,rhycoor,pxcoor,pycoor,lkxcoor,lkycoor,rkxcoor,rkycoor,lfxcoor,lfycoor,rfxcoor,rfycoor = 
+    memory.alloc(4),memory.alloc(4),memory.alloc(4),memory.alloc(4),memory.alloc(4),memory.alloc(4),memory.alloc(4),memory.alloc(4),memory.alloc(4),memory.alloc(4),memory.alloc(4),
+    memory.alloc(4),memory.alloc(4),memory.alloc(4),memory.alloc(4),memory.alloc(4),memory.alloc(4),memory.alloc(4),memory.alloc(4),memory.alloc(4),memory.alloc(4),memory.alloc(4)
+
+        local head = GET_WORLD_POSITION_OF_ENTITY_BONE(aim_target, GET_PED_BONE_INDEX(aim_target, 0x796E))
+        local neck = GET_WORLD_POSITION_OF_ENTITY_BONE(aim_target, GET_PED_BONE_INDEX(aim_target, 0x9995))
+        local left_elbow = GET_WORLD_POSITION_OF_ENTITY_BONE(aim_target, GET_PED_BONE_INDEX(aim_target, 0x58b7))
+        local right_elbow = GET_WORLD_POSITION_OF_ENTITY_BONE(aim_target, GET_PED_BONE_INDEX(aim_target, 0xbb0))
+        local left_hand = GET_WORLD_POSITION_OF_ENTITY_BONE(aim_target, GET_PED_BONE_INDEX(aim_target, 0x49d9))
+        local right_hand = GET_WORLD_POSITION_OF_ENTITY_BONE(aim_target, GET_PED_BONE_INDEX(aim_target, 0xdead))
+        local pelvis = GET_WORLD_POSITION_OF_ENTITY_BONE(aim_target, GET_PED_BONE_INDEX(aim_target, 0x60F0))
+        local left_knee = GET_WORLD_POSITION_OF_ENTITY_BONE(aim_target, GET_PED_BONE_INDEX(aim_target, 0xb3fe))
+        local right_knee = GET_WORLD_POSITION_OF_ENTITY_BONE(aim_target, GET_PED_BONE_INDEX(aim_target, 0x3fcf))
+        local left_foot = GET_WORLD_POSITION_OF_ENTITY_BONE(aim_target, GET_PED_BONE_INDEX(aim_target, 0x3779))
+        local right_foot = GET_WORLD_POSITION_OF_ENTITY_BONE(aim_target, GET_PED_BONE_INDEX(aim_target, 0xcc4d))
+
+        GET_SCREEN_COORD_FROM_WORLD_COORD(head.x, head.y, head.z, hxcoor, hycoor)
+        GET_SCREEN_COORD_FROM_WORLD_COORD(neck.x, neck.y, neck.z, nxcoor, nycoor)
+        GET_SCREEN_COORD_FROM_WORLD_COORD(left_elbow.x, left_elbow.y, left_elbow.z, lexcoor, leycoor)
+        GET_SCREEN_COORD_FROM_WORLD_COORD(right_elbow.x, right_elbow.y, right_elbow.z, rexcoor, reycoor)
+        GET_SCREEN_COORD_FROM_WORLD_COORD(left_hand.x, left_hand.y, left_hand.z, lhxcoor, lhycoor)
+        GET_SCREEN_COORD_FROM_WORLD_COORD(right_hand.x, right_hand.y, right_hand.z, rhxcoor, rhycoor)
+        GET_SCREEN_COORD_FROM_WORLD_COORD(pelvis.x, pelvis.y, pelvis.z, pxcoor, pycoor)
+        GET_SCREEN_COORD_FROM_WORLD_COORD(left_knee.x, left_knee.y, left_knee.z, lkxcoor, lkycoor)
+        GET_SCREEN_COORD_FROM_WORLD_COORD(right_knee.x, right_knee.y, right_knee.z, rkxcoor, rkycoor)
+        GET_SCREEN_COORD_FROM_WORLD_COORD(left_foot.x, left_foot.y, left_foot.z, lfxcoor, lfycoor)
+        GET_SCREEN_COORD_FROM_WORLD_COORD(right_foot.x, right_foot.y, right_foot.z, rfxcoor, rfycoor)
+
+        directx.draw_line(memory.read_float(hxcoor), memory.read_float(hycoor), memory.read_float(nxcoor), memory.read_float(nycoor), rgb.color)
+        directx.draw_line(memory.read_float(lexcoor), memory.read_float(leycoor), memory.read_float(nxcoor), memory.read_float(nycoor), rgb.color)
+        directx.draw_line(memory.read_float(rexcoor), memory.read_float(reycoor), memory.read_float(nxcoor), memory.read_float(nycoor), rgb.color)
+        directx.draw_line(memory.read_float(lexcoor), memory.read_float(leycoor), memory.read_float(lhxcoor), memory.read_float(lhycoor), rgb.color)
+        directx.draw_line(memory.read_float(rexcoor), memory.read_float(reycoor), memory.read_float(rhxcoor), memory.read_float(rhycoor), rgb.color)
+        directx.draw_line(memory.read_float(nxcoor), memory.read_float(nycoor),  memory.read_float(pxcoor), memory.read_float(pycoor), rgb.color) 
+        directx.draw_line(memory.read_float(lkxcoor), memory.read_float(lkycoor),  memory.read_float(pxcoor), memory.read_float(pycoor), rgb.color)
+        directx.draw_line(memory.read_float(rkxcoor), memory.read_float(rkycoor),  memory.read_float(pxcoor), memory.read_float(pycoor), rgb.color)
+        directx.draw_line(memory.read_float(lkxcoor), memory.read_float(lkycoor),  memory.read_float(lfxcoor), memory.read_float(lfycoor), rgb.color)
+        directx.draw_line(memory.read_float(rkxcoor), memory.read_float(rkycoor),  memory.read_float(rfxcoor), memory.read_float(rfycoor), rgb.color)
+end
+
+local function lerp(startt, endt, delay)
+    return startt + (endt - startt) * delay
+end
+
+
+local bonecoords
+local function Ped_aim_pool(fov)
+    local ped_handles = entities.get_all_peds_as_handles()
+    for ped_handles as ped do
+        if players.user_ped() != ped and not IS_PED_DEAD_OR_DYING(ped, 1) and DOES_ENTITY_EXIST(ped) then
+            local ped_coor = GET_ENTITY_COORDS(ped, true)
+            local player_coor = GET_ENTITY_COORDS(players.user_ped(), true)
+            local disbet = VDIST2(ped_coor.x, ped_coor.y, ped_coor.z, player_coor.x, player_coor.y, player_coor.z)
+            local too_far = 600000
+                
+            if not IS_PED_FACING_PED(players.user_ped(), ped, fov) then
+                target = false
+            else
+                target = true
+            end
+
+            if disbet >= too_far then
+                target = false
+            end
+
+            if IS_PED_A_PLAYER(ped) and not aimbot.tarplayers or aimbot.kill_list then
+                target = false
+            end
+
+            if not IS_PED_A_PLAYER(ped) and not aimbot.tarnpcs or aimbot.kill_list then
+                target = false
+            end
+
+            if IS_PED_IN_ANY_VEHICLE(ped, true) and not aimbot.targetveh then
+                target = false
+            end
+
+            if not HAS_ENTITY_CLEAR_LOS_TO_ENTITY(players.user_ped(), ped, 17) and not aimbot.stw then
+                target = false
+            end
+
+            if IS_PED_A_PLAYER(ped) and aimbot.tarplayers and not aimbot.tarfriends then
+                local pid = NETWORK_GET_PLAYER_INDEX_FROM_PED(ped)
+                if func.Friend_player(pid) then
+                    target = false
+                end
+            end
+            if IS_PED_A_PLAYER(ped) and aimbot.kill_list then
+                local pid = NETWORK_GET_PLAYER_INDEX_FROM_PED(ped)
+                local pname = players.get_name(pid)
+                for func.Load_settings(Kill_List) as Names do
+                    for Names as name do
+                        if name == pname then
+                            target = true
+                        end
+                    end
+                end       
+            end
+
+            if target then
+                aim_target = ped
+                local x, y, z
+                bonecoords = GET_WORLD_POSITION_OF_ENTITY_BONE(aim_target, GET_PED_BONE_INDEX(aim_target, aimbot.bone))
+                local coords = GET_CAM_COORD(aimbotcam)
+                for i = 0, 100 do
+                    x = lerp(coords.x, bonecoords.x, i * 0.1)
+                    y = lerp(coords.y, bonecoords.y, i * 0.1)
+                    z = lerp(coords.z, bonecoords.z, i * 0.1)
+                    POINT_CAM_AT_COORD(aimbotcam, x, y, z)
+                end
+               
+                local move_lr, move_ud = GET_CONTROL_NORMAL(2, 1), GET_CONTROL_NORMAL(2, 2)
+                if move_lr != 0 or move_ud != 0 then
+                    STOP_CAM_POINTING(aimbotcam)
+                end
+                AimbotTarget(aimbot, aim_target, ESPrgb, aimbot.bullets)
+                if aim_target > 1 then
+                    break
+                end
+            end
+        end
+    end
+    return aim_target
+end
+local SuperESPrgb = {color= {r= 0, g = 1, b = 0, a = 1}}
+local SuperESPcolor = {
+    r = math.floor(ESPrgb.color.r * 255),
+    g = math.floor(ESPrgb.color.g * 255),
+    b = math.floor(ESPrgb.color.b * 255),
+    a = math.floor(ESPrgb.color.a * 255)
+}
+
+local function Xraytarget(xray, aim_target, rgb)
+    if xray.espline then
+        Draw_esp(aim_target, rgb)
+    end
+    if xray.espbox then
+        local color = {
+            r = rgb.color.r * 255,
+            g = rgb.color.g * 255,
+            b = rgb.color.b * 255,
+            a = rgb.color.a * 255
+        }
+        draw_bounding_box(aim_target, color)
+    end
+    if xray.espbones then
+        Bone_Esp(aim_target, SuperESPrgb)  
+    end
+end
+
+local xray_target
+local xrtarget = true
+local function Xrayvision(xray)
+    local ped_hndles = entities.get_all_peds_as_handles()
+    for ped_hndles as ped do
+        if players.user_ped() != ped and not IS_PED_DEAD_OR_DYING(ped, 1) and DOES_ENTITY_EXIST(ped) then
+            local ped_coor = GET_ENTITY_COORDS(ped, true)
+            local player_coor = GET_ENTITY_COORDS(players.user_ped(), true)
+            local disbet = VDIST2(ped_coor.x, ped_coor.y, ped_coor.z, player_coor.x, player_coor.y, player_coor.z)
+            local too_far = 6000
+                
+            if not IS_PED_FACING_PED(players.user_ped(), ped, xray.fov) then
+                xrtarget = false
+            else
+                xrtarget = true
+            end
+
+            if disbet >= too_far then
+                xrtarget = false
+            end
+
+            if IS_PED_A_PLAYER(ped) and not xray.players then
+                xrtarget = false
+            end
+
+            if not IS_PED_A_PLAYER(ped) and not xray.npcs then
+                xrtarget = false
+            end
+
+            if IS_PED_IN_ANY_VEHICLE(ped, true) and not xray.targetveh then
+                xrtarget = false
+            end
+
+            if IS_PED_A_PLAYER(ped) and xray.players and not xray.friends then
+                local pid = NETWORK_GET_PLAYER_INDEX_FROM_PED(ped)
+                if func.Friend_player(pid) then
+                    xrtarget = false
+                end
+            end
+            if xrtarget and IS_CONTROL_PRESSED(0, 119) then
+                xray_target = ped
+                Xraytarget(xray, xray_target, SuperESPrgb)
+            else 
+                xray_target = 0
+            end
+        end
+    end
+    return xray_target
+end
+
+
+
+
+local kill_list_menus = {}
+
+local function regen_kill_list(root)
+    local kload = func.Load_settings(Kill_List)
+    for kill_list_menus as kill_list_menu do
+        if kill_list_menu:isValid() then kill_list_menu:delete() end
+    end
+    kill_list_menus = {}
+    for kload as kill_list_load do
+        for kill_list_load as v do
+            local kill_list_menu = root:list(v, {}, v)
+            kill_list_menu:action(Str_trans('Remove from Kill List'), {}, Str_trans('Remove Player from Kill List'), function ()
+                func.remove_victim(v)
+                if func.set.alert then
+                    func.ACutil(v..Str_trans(' Removed from Kill List'))
+                end
+                return true
+            end)
+            table.insert(kill_list_menus, kill_list_menu)
+        end
+    end
+end
+
+local players_list_menus = {}
+local function rebuild_player_list()
+    local players_list = players.list(false, true, true)
+    for players_list_menus as players_list_menu do
+        if players_list_menu:isValid() then players_list_menu:delete() end
+    end
+    for players_list as pid do
+        local pname = players.get_name(pid)
+        local players_list_menu = menus.aimbotkilla:action(pname, {}, Str_trans('Add or Remove Player to the Kill List'), function ()
+            for func.Load_settings(Kill_List) as name do
+                if name.name == pname then
+                    func.remove_victim(pname)
+                    if func.set.alert then
+                        func.ACutil(pname..Str_trans(' Removed from Kill List'))
+                    end
+                    return true
+                end
+            end
+            func.add_victim(pname)
+            if func.set.alert then
+                func.ACutil(pname..Str_trans(' Added to Kill List'))
+            end
+            return true
+        end)
+        table.insert(players_list_menus, players_list_menu)
+   end
+end
+
+local function objams(obj_hash, obj, camcoords)
+    local CV = GET_GAMEPLAY_CAM_RELATIVE_HEADING()
+    if IS_MODEL_A_VEHICLE(obj_hash) then
+        obj.prev = CREATE_VEHICLE(obj_hash, camcoords.x, camcoords.y, camcoords.z, CV, true, true, false)
+        SET_ENTITY_NO_COLLISION_ENTITY(obj.prev, players.user_ped(), false)
+    elseif IS_MODEL_A_PED(obj_hash) then
+        obj.prev = entities.create_ped(1, obj_hash, camcoords, CV)
+        SET_ENTITY_NO_COLLISION_ENTITY(obj.prev, players.user_ped(), false)
+    elseif IS_MODEL_VALID(obj_hash) then
+        obj.prev = CREATE_OBJECT(obj_hash, camcoords.x, camcoords.y, camcoords.z, true, true, true)
+        SET_ENTITY_NO_COLLISION_ENTITY(obj.prev, players.user_ped(), false)
+    end
+    if obj.prev then
+        SET_ENTITY_COMPLETELY_DISABLE_COLLISION(obj.prev , false, true)
+        SET_ENTITY_ALPHA(obj.prev , 206, false)
+        FREEZE_ENTITY_POSITION(obj.prev, true)
+        SET_ENTITY_INVINCIBLE(obj.prev, true)
+        SEC(obj.prev, camcoords.x, camcoords.y, camcoords.z, false, true, true, false)
+    end
+end
+
+local objtab = {}
+local vsh
+local psh
+local obj_shot
+local function vshot(hash, camcoords, CV, rot)
+    if not DOES_ENTITY_EXIST(vsh) then
+        vsh = entities.create_vehicle(hash, camcoords, CV)
+        SET_ENTITY_ROTATION(vsh, rot.x, rot.y, rot.z, 0, true)
+        SET_VEHICLE_FORWARD_SPEED(vsh, 1000)
+        SET_VEHICLE_DOORS_LOCKED_FOR_ALL_PLAYERS(vsh, true)
+        SET_VEHICLE_DOORS_LOCKED_FOR_NON_SCRIPT_PLAYERS(vsh, true)
+        table.insert(objtab, vsh)
+    else
+        local veh_sec = entities.create_vehicle(hash, camcoords, CV)
+        SET_ENTITY_ROTATION(veh_sec, rot.x, rot.y, rot.z, 0, true)
+        SET_VEHICLE_FORWARD_SPEED(veh_sec, 1000)
+        SET_VEHICLE_DOORS_LOCKED_FOR_ALL_PLAYERS(vsh, true)
+        SET_VEHICLE_DOORS_LOCKED_FOR_NON_SCRIPT_PLAYERS(vsh, true)
+        table.insert(objtab, veh_sec)
+    end
+end
+
+local function pshot(hash, camcoords, CV, rot)
+    if not DOES_ENTITY_EXIST(psh) then
+        psh = entities.create_ped(1, hash, camcoords, CV)
+        SET_ENTITY_INVINCIBLE(psh, true)
+        util.yield(30)
+        SET_ENTITY_ROTATION(psh, rot.x, rot.y, rot.z, 0, true)
+        APPLY_FORCE_TO_ENTITY_CENTER_OF_MASS(psh, 1, 0, 5000, 0, 0, true, true, true, true)
+        table.insert(objtab, psh)
+    else
+        local sped = entities.create_ped(1, hash, camcoords, CV)
+        SET_ENTITY_INVINCIBLE(sped, true)
+        util.yield(30)
+        SET_ENTITY_ROTATION(sped, rot.x, rot.y, rot.z, 0, true)
+        APPLY_FORCE_TO_ENTITY_CENTER_OF_MASS(sped, 1, 0, 5000, 0, 0, true, true, true, true)
+        table.insert(objtab, sped)
+    end
+end
+
+local function oshot(hash, camcoords, rot)
+    local obj_shot = 0
+    if not DOES_ENTITY_EXIST(obj_shot) then
+        local objs = CREATE_OBJECT(hash, camcoords.x, camcoords.y, camcoords.z, true, true, true)
+        SET_ENTITY_NO_COLLISION_ENTITY(objs, players.user_ped(), false)
+        util.yield(20)
+        SET_ENTITY_ROTATION(objs, rot.x, rot.y, rot.z, 0, true)
+        APPLY_FORCE_TO_ENTITY(objs, 2, camcoords.x ,  150000, camcoords.z , 0, 0, 0, 0,  true, false, true, false, true)
+        table.insert(objtab, objs)
+    else
+        local sobjs = CREATE_OBJECT(hash, camcoords.x, camcoords.y, camcoords.z, true, true, true)
+        SET_ENTITY_NO_COLLISION_ENTITY(sobjs, players.user_ped(), false)
+        util.yield(20)
+        SET_ENTITY_ROTATION(sobjs, rot.x, rot.y, rot.z, 0, true)
+        APPLY_FORCE_TO_ENTITY(sobjs, 2, camcoords.x ,  150000, camcoords.z , 0, 0, 0, 0,  true, false, true, false, true)
+        table.insert(objtab, sobjs)
+    end
+end
+
+
+local function objshots(hash, obj, camcoords)
+    local CV = GET_GAMEPLAY_CAM_RELATIVE_HEADING()
+    local rot = GET_GAMEPLAY_CAM_ROT(0)
+    if IS_MODEL_A_VEHICLE(hash) then
+        vshot(hash, camcoords, CV, rot)
+        for i, car in objtab do
+            if obj.expl then
+                if HAS_ENTITY_COLLIDED_WITH_ANYTHING(car) then
+                    local expcoor = GET_ENTITY_COORDS(car)
+                    ADD_EXPLOSION(expcoor.x, expcoor.y, expcoor.z, 81, 5000, true, false, 0.0, false)
+                    entities.delete_by_handle(car)
+                end
+
+
+            end
+            if i >= 150 then
+                for index, vehs in objtab do
+                    entities.delete_by_handle(vehs)
+                    objtab ={}
+                end
+            end
+            local carc = GET_ENTITY_COORDS(car)
+            local tar2 = GET_ENTITY_COORDS(players.user_ped())
+            local disbet = VDIST2(tar2.x, tar2.y, tar2.z, carc.x, carc.y, carc.z)
+            if disbet > 15000 then
+                entities.delete_by_handle(car)
+            end
+        end
+    elseif IS_MODEL_A_PED(hash) then
+       pshot(hash, camcoords, CV, rot)
+        for i, psho in objtab do
+            if obj.expl then
+                if HAS_ENTITY_COLLIDED_WITH_ANYTHING(psho) then
+                    local expcoor = GET_ENTITY_COORDS(psho)
+                    ADD_EXPLOSION(expcoor.x, expcoor.y, expcoor.z, 81, 5000, true, false, 0.0, false)
+                    entities.delete_by_handle(psho)
+                end
+                    
+                local pedc = GET_ENTITY_COORDS(psh)
+                local tar2 = GET_ENTITY_COORDS(players.user_ped())
+                local disbet = VDIST2(tar2.x, tar2.y, tar2.z, pedc.x, pedc.y, pedc.z)
+                if disbet > 15000 then
+                    entities.delete_by_handle(psh)
+                end
+            end
+            if i >= 40 then
+                for objtab as p_shot do
+                    entities.delete_by_handle(p_shot)
+                    objtab = {}
+                end
+            end
+        end
+    elseif IS_MODEL_VALID(hash) then
+       oshot(hash, camcoords, rot)
+        for i, objs in objtab do
+           if obj.expl then
+                if HAS_ENTITY_COLLIDED_WITH_ANYTHING(objs) then
+                    local expcoor = GET_ENTITY_COORDS(objs)
+                    ADD_EXPLOSION(expcoor.x, expcoor.y, expcoor.z, 81, 5000, true, false, 0.0, false)
+                    entities.delete_by_handle(objs)
+                end
+
+                    local objc = GET_ENTITY_COORDS(objs)
+                    local tar2 = GET_ENTITY_COORDS(players.user_ped())
+                    local disbet = VDIST2(tar2.x, tar2.y, tar2.z, objc.x, objc.y, objc.z)
+
+                if disbet > 15000 then
+                    entities.delete_by_handle(objs)
+                end
+            end
+                if i >= 40 then
+                    for objtab as p_shot do
+                        entities.delete_by_handle(p_shot)
+                        objtab ={}
+                    end
+                end
+            end
+        end
+    end
+
+
+
+
+
+------------------------------------------------------------------------------------
+menus.aimbot = weaproot:list(T('Aimbot'), {}, '')
+local aimtarget = 0
+local xcoor = memory.alloc(4)
+local ycoor = memory.alloc(4) 
+
+menus.aimbot:toggle_loop(T('Activate Aimbot'), {'aimbotact'}, T('Activates Aimbot with your settings'), function ()
+    if IS_PLAYER_FREE_AIMING(players.user()) then
+        aim_target = Ped_aim_pool(aimbot.fov)
+    end
+    if aimbot.keeplineson and DOES_ENTITY_EXIST(aim_target) and not IS_PED_DEAD_OR_DYING(aim_target, 1) then
+        if aimbot.esp then
+            Draw_esp(aim_target, ESPrgb)
+        end
+        if aimbot.box then
+            local color = {
+                r = ESPrgb.color.r * 255,
+                g = ESPrgb.color.g * 255,
+                b = ESPrgb.color.b * 255,
+                a = ESPrgb.color.a * 255
+            }
+            draw_bounding_box(aim_target, color)
+        end
+    end
+
+    if aim_target and IS_PLAYER_FREE_AIMING(players.user()) and DOES_ENTITY_EXIST(aim_target) and not IS_PED_DEAD_OR_DYING(aim_target, 1) then
+        if aimbot.movement then
+            local fov = GET_GAMEPLAY_CAM_FOV()
+            local rot = GET_GAMEPLAY_CAM_ROT(2)
+            local coords = GET_GAMEPLAY_CAM_COORD()
+            if aimbotcam == 0 then
+                aimbotcam = CREATE_CAM_WITH_PARAMS('DEFAULT_SCRIPTED_CAMERA', coords.x, coords.y, coords.z, rot.x, rot.y, rot.z, fov, false, 2)
+            end
+            SET_CAM_ACTIVE(aimbotcam, true)
+            RENDER_SCRIPT_CAMS(true, true, 1000, true, true, 0)
+            SET_CAM_COORD(aimbotcam, coords.x, coords.y, coords.z)
+            SET_CAM_FOV(aimbotcam, fov)
+            DISPLAY_SNIPER_SCOPE_THIS_FRAME()
+            SET_CAM_ROT(aimbotcam, rot.x, rot.y, rot.z, 2)
+        end
+    elseif aimbotcam != 0 then
+        SET_CAM_ACTIVE(aimbotcam, false)
+        DESTROY_CAM(aimbotcam, true)
+        DESTROY_ALL_CAMS(true)
+        RENDER_SCRIPT_CAMS(false, false, 1000, true, false, 0)
+        aimbotcam = 0
+    end
+end)
+
+menus.aimbot:toggle(T('Turn off Target Vehicles'), {}, T('Turns off targeting peds in vehicles with Aimbot'), function (on)
+    aimbot.targetveh = not on
+end)
+
+menus.aimbot:toggle(T('Turn off Target Players'), {}, T('Turns off targeting Players with Aimbot'), function (on)
+    aimbot.tarplayers = not on
+end)
+
+menus.aimbot:toggle(T('Turn off Target NPCs'), {}, T('Turns off targeting NPCs with Aimbot'), function (on)
+    aimbot.tarnpcs = not on
+end)
+
+menus.aimbot:toggle(T('Turn on Target Friends'), {}, T('Turns on targeting Friends with Aimbot'), function (on)
+    aimbot.tarfriends = on
+end)
+
+menus.aimbot:toggle(T('Turn on Shoot Through Walls'), {}, T('Turns on Shoot Through Walls with Aimbot'), function (on)
+    aimbot.stw = on
+end)
+
+
+menus.aimbot:slider_float(T('Field of View'), {}, T('Adjust the amount of your Field of View is with Aimbot'), 100, 36000, 300, 100, function (s)
+    aimbot.fov = s*.01
+end)
+
+
+menus.aimbotkillist = menus.aimbot:list(T('Kill List'), {}, '')
+
+menus.aimbotkillist:toggle(T('Turn on Kill List'), {}, T('Turns on Kill List only targeting players on the list with Aimbot'), function (on)
+    aimbot.kill_list = on
+end)
+
+menus.aimbotvic = menus.aimbotkillist:list(T('Your Kill List'), {}, '')
+
+Kill_tab = menus.aimbotvic:list(T('Your Kill List'), {}, T('A list of the people on your kill list'), function ()
+    regen_kill_list(Kill_tab)
+end)
+
+
+menus.aimbotkilla =  menus.aimbotvic:list(T('Add Player from Player List'), {}, T('Add a name to the Kill List from the Player List'), function ()
+    rebuild_player_list()
+end)
+
+menus.aimbotkillist:toggle_loop(T('Add Strangers to Kill List'), {}, T('Add Strangers that kill you to Kill List'), function (on)
+    if IS_PED_DEAD_OR_DYING(players.user_ped()) then
+        local killer = GET_PED_SOURCE_OF_DEATH(players.user_ped())
+        if killer == players.user_ped() then return end
+        local pid = NETWORK_GET_PLAYER_INDEX_FROM_PED(killer)
+        if not func.Friend_player(pid) then
+            local pname = players.get_name(pid)
+            for func.Load_settings(Kill_List) as name do
+                if name.name == pname then
+                    return
+                end
+            end
+            func.add_victim(pname)
+            if func.set.alert then
+                func.ACutil(pname..Str_trans(' Added to Kill List'))
+            end
+        end
+    end
+end)
+
+
+menus.aimbotweap = menus.aimbot:list(Str_trans('Weapon Settings'), {}, '')
+
+menus.aimbotweap:toggle(T('Lower Bullets'), {}, T('Lowers the amount of bullets shot to one'), function (on)
+    aimbot.bullets = on
+end)
+
+menus.aimbotweap:toggle(T('No Bullets'), {}, T('Uses the bullet shot from the gun for aimbot'), function (on)
+    aimbot.nobullets = on
+end)
+
+menus.aimbotweap:toggle(T('Turn off Current Weapon Bullets'), {'Curweapoff'}, T('Does not use the current weapons bullets and uses your selected weapon in Aimbot instead'), function (on)
+    if on then
+        Tables.Aimbotsetting.curweap = false
+    else
+        Tables.Aimbotsetting.curweap = true
+    end
+end)
+
+menus.aimbotchw = menus.aimbotweap:list(T('Change Weapons'), {''}, T('Choose the weapon for Aimbot'), function (weapsel)
+    for weapons_menus as weapons_menu do
+        if weapons_menu:isValid() then weapons_menu:delete() end
+    end
+    local weapons = util.get_weapons()
+    table.sort(weapons, function(a, b)
+        if a.category_id ~= b.category_id then
+            return a.category < b.category
+        end
+        return a.label_key < b.label_key
+    end)
+    local cur_category
+    local cur_list
+    local a = {}
+    for weapons as weapon do
+        if cur_category ~= weapon.category then
+            cur_category = weapon.category
+            if cur_category == 'Throwables' or cur_category == 'Melee Weapons' then
+                continue
+            end
+            cur_list = menus.aimbotchw:list(cur_category)
+            table.insert(weapons_menus, cur_list)
+        end
+
+            local weapcat = util.get_label_text(weapon.label_key)
+
+            cur_list:action(weapcat, {}, "", function()
+                Tables.Weapon_selections.aimbot = util.reverse_joaat(weapon.hash)
+            end)
+            table.insert(weapons_menus, cur_list)
+   
+        
+    end
+end)
+
+menus.shot_coords = menus.aimbotweap:list(T('Shot Coordinates'), {}, T('Choose where to shoot the target'))
+    for Tables.BoneIds as bone do
+        menus.shot_coords:action(bone[1], {}, '', function(pedsel)
+        aimbot.bone = bone[2]
+        if func.set.alert then
+            func.ACutil(Str_trans('Now aiming at ')..bone[1])
+        end
+    end)
+end
+
+
+menus.ESP_Box = menus.aimbot:list(Str_trans('ESP and Box settings'), {}, '')
+
+menus.aimbot:toggle(T('Turn off Player Target notify'), {}, T('Turns off notifying you of current Player target with Aimbot'), function (on)
+    aimbot.alert = not on
+end)
+
+    
+menus.ESP_Box:toggle(T('ESP Deactivate'), {}, T('Turns off ESP used in Aimbot'), function (on)
+    aimbot.esp = not on
+end)
+
+menus.ESP_Box:toggle(T('Box Deactivate'), {}, T('Turns off the box that surrounds them used in Aimbot'), function (on)
+    aimbot.box = not on
+end)
+
+
+menus.ESP_Box:colour(T('Box and ESP Color'), {}, T('Choose the Box and ESP color to be changed to'), ESPrgb.color, false, function(bcolor)
+    ESPrgb.color = bcolor
+end)
+
+
+menus.ESP_Box:toggle(T('Keep Lines On'), {}, T('Keep the box and/or the line esp on even while not aiming'), function (on)
+    aimbot.keeplineson = on
+end)
+
+menus.aimbot:toggle(T('Cam Movement'), {}, T('Turn on Cam Movement while aiming'), function (on)
+    aimbot.movement = on
+end)
+
+
+
+
+
+local godgunset = {amount = 100, godmode = nil}
+local gguntar = nil
+local dist = 10
+local godgunrgb = {color = {r = 0, g = 1, b = 0, a = 1}}
+
+menus.godgun = weaproot:list(Str_trans('God Gun'), {}, Str_trans('Become a god with a gun and move stuff around')) --credits to Nowiry on their god finger
+menus.godgun:toggle_loop(T('God Gun'), {'godgun'}, T('Become a god with a gun move stuff around and yeet it (not all objects can be yeeted)'), function ()
+    DISABLE_PLAYER_FIRING(players.user(), true)
+    local invinc_ref = menu.ref_by_path('Self>Immortality')
+    if godgunset.godmode == nil then
+        godgunset.godmode = invinc_ref.value
+    end
+
+    Current_settings = {
+        ['Immortality'] = godgunset.godmode,
+    }
+
+    if not filesystem.is_regular_file(God_Gun_Setting) then
+        util.write_colons_file(God_Gun_Setting, Current_settings)
+    end
+    invinc_ref.value = true
+    local targetEnt = memory.alloc()
+    if GET_ENTITY_PLAYER_IS_FREE_AIMING_AT(players.user(), targetEnt) then
+        gguntar = memory.read_int(targetEnt)
+    end
+    if IS_CONTROL_PRESSED(0, 25) then 
+        while gguntar != nil do 
+            gguntar = nil 
+            util.yield()
+        end
+    else
+        SF.SFgodgun()
+    end
+
+    if DOES_ENTITY_EXIST(gguntar) and func.Disbet(gguntar) < 1000000 and gguntar != nil then
+        
+        DISABLE_CONTROL_ACTION(2, 16, true)
+        DISABLE_CONTROL_ACTION(2, 17, true)
+        
+
+        local myPos = players.get_position(players.user())
+        local entityPos = GET_ENTITY_COORDS(gguntar, true)
+        local camDir = GET_GAMEPLAY_CAM_ROT(0):toDir()
+        local distance = myPos:distance(entityPos)
+        if distance > 30.0 then distance = 10.0
+        elseif distance < 10.0 then distance = 10.0 end
+        if IS_DISABLED_CONTROL_JUST_PRESSED(2, 241) then
+            distance = distance + godgunset.amount
+        elseif IS_DISABLED_CONTROL_JUST_PRESSED(2, 242) then
+            distance = distance - godgunset.amount
+        end
+        local targetPos = v3.new(camDir)
+        targetPos:mul(distance)
+        targetPos:add(myPos)
+        local direction = v3.new(targetPos)
+        direction:sub(entityPos)
+        direction:normalise()
+        local hash = GET_ENTITY_MODEL(gguntar)
+        local color = {
+            r = godgunrgb.color.r * 255,
+            g = godgunrgb.color.g * 255,
+            b = godgunrgb.color.b * 255,
+            a = godgunrgb.color.a * 255
+        }
+        if IS_MODEL_A_VEHICLE(hash) then
+            func.Getent(gguntar)
+            local vel = v3.new(direction)
+            local magnitude = entityPos:distance(targetPos)
+            vel:mul(magnitude)
+            draw_bounding_box(gguntar, color)
+            SET_ENTITY_VELOCITY(gguntar, vel.x, vel.y, vel.z)
+            if IS_DISABLED_CONTROL_JUST_PRESSED(2, 24) then
+                SET_ENTITY_VELOCITY(gguntar, math.random(min_int, max_int), math.random(min_int, max_int), math.random(1, max_int), false, false, false, false)
+                gguntar = nil
+            end
+        elseif IS_PED_A_PLAYER(gguntar) then
+            direction:mul(5.0)
+            local explosionPos = v3.new(entityPos)
+            explosionPos:sub(direction)
+            draw_bounding_box(gguntar, color)
+            ADD_EXPLOSION(explosionPos.x, explosionPos.y, explosionPos.z, 29, 1.0, false, true, 0.0, true)
+            if IS_DISABLED_CONTROL_JUST_PRESSED(2, 24) then
+                ADD_EXPLOSION(explosionPos.x, explosionPos.y, explosionPos.z * 1000, 29, 4000, false, true, 0.0, false)
+                gguntar = nil
+            end
+        else
+            func.Getent(gguntar)
+            draw_bounding_box(gguntar, color)
+            if IS_DISABLED_CONTROL_JUST_PRESSED(2, 241) then
+                dist = dist + godgunset.amount/100
+                local coords = func.Get_offset_from_camera(dist)
+                SEC(gguntar, coords.x, coords.y, coords.z, false, false, false, false)
+            elseif IS_DISABLED_CONTROL_JUST_PRESSED(2, 242) then
+                dist = dist - godgunset.amount/100
+                local coords = func.Get_offset_from_camera(dist)
+                SEC(gguntar, coords.x, coords.y, coords.z, false, false, false, false)
+            elseif IS_DISABLED_CONTROL_JUST_PRESSED(2, 24) then
+                APPLY_FORCE_TO_ENTITY_CENTER_OF_MASS(gguntar, 1, math.random(min_int, max_int), math.random(min_int, max_int), math.random(min_int, max_int), true, true, true, true)
+                gguntar = nil
+            end
+            local coords = func.Get_offset_from_camera(dist)
+            SEC(gguntar, coords.x, coords.y, coords.z, false, false, false, false)
+        end
+
+    end
+end, function ()
+    DISABLE_PLAYER_FIRING(players.user(), false)
+    local settings = util.read_colons_and_tabs_file(God_Gun_Setting)
+    for I, V in settings do
+        switch I do
+            case 'Immortality' :
+                menu.trigger_command(menu.ref_by_command_name('god'), V)
+            break
+        end
+    end
+    util.yield(250)
+    io.remove(God_Gun_Setting)
+    godgunset.godmode = nil 
+end)
+
+menus.godgun:slider(T('Push/Pull Distance'), {}, T('Adjust the amount you push away and '), 0, 4000, 100, 100, function (p)
+    godgunset.amount = p
+end)
+
+menus.godgun:colour(T('Box Color'), {}, T('Choose the Box color to be changed to'), godgunrgb.color, false, function(bcolor)
+    godgunrgb.color = bcolor
+end)  
+
+
+
+Current_settings = {}
+local superman = {multi = nil, running = nil, friction = nil, fspeed = 3.0, height = 0.6, crosshair = true,
+exp = false, bull = 'WEAPON_TACTICALRIFLE', godmode = nil, breath = 1, nodam = true, vehicle = true}
+local xray = {npcs = true, players = true, fov = 3, targetveh = true, espline = true, espbox = false,
+espbones = true}
+local super = weaproot:list(T('Superman Mode'), {}, T('Turn yourself into Superman'))
+local fricref = menu.ref_by_path('Self>Movement>Increased Friction')
+local runref = menu.ref_by_path('Self>Movement>Walk And Run Speed')
+local multiref = menu.ref_by_path('Self>Weapons>Damage Multiplier')
+local immorref = menu.ref_by_path('Self>Immortality')
+super:toggle_loop(T('Superman Mode'), {'superman'}, T('Turn on Superman Mode with Super Strength, Super Speed, Super Breath, X-Ray Vision, Lazer Eyes, Flight, and Invulnerability'), function (on)
+    if superman.multi == nil  then
+        superman.multi = multiref.value
+    else
+    end
+    if superman.running == nil then
+        superman.running = runref.value
+    else
+    end
+    if superman.friction == nil then
+        superman.friction = fricref.value
+    else
+    end
+    if superman.godmode == nil then
+        superman.godmode = immorref.value
+    else
+    end
+
+    Current_settings = {
+        ['Immortality'] = superman.godmode,
+        ['Damage Multiplier'] = superman.multi,
+        ['Walk And Run Speed'] = superman.running,
+        ['Increased Friction'] = superman.friction,
+    }
+
+    if not filesystem.is_regular_file(Superman_Setting) then
+        util.write_colons_file(Superman_Setting, Current_settings)
+    end
+
+    if func.set.scale then
+        SF.SFsuper()
+    end
+    multiref.value = 10000000
+    runref.value = Runspeedref.value
+    fricref.value = true
+    immorref.value = true
+    if IS_CONTROL_PRESSED(0, 22) or IS_CONTROL_JUST_PRESSED(0, 21) then
+        SET_PED_CAN_RAGDOLL(players.user_ped(), false)
+        APPLY_FORCE_TO_ENTITY_CENTER_OF_MASS(players.user_ped(), 1, 0.0, 0.6, superman.height, true, true, true, true)
+        if IS_ENTITY_IN_AIR(players.user_ped()) then
+            APPLY_FORCE_TO_ENTITY_CENTER_OF_MASS(players.user_ped(), 1, 0.0, 0.6, superman.height, true, true, true, true)
+        end
+    end
+    if IS_ENTITY_IN_AIR(players.user_ped()) and IS_CONTROL_PRESSED(0, 22) then
+        if IS_CONTROL_PRESSED(0, 32) then
+            APPLY_FORCE_TO_ENTITY_CENTER_OF_MASS(players.user_ped(), 1, 0.0, superman.fspeed, superman.height, true, true, true, true)
+        elseif IS_CONTROL_PRESSED(0, 33) then
+            APPLY_FORCE_TO_ENTITY_CENTER_OF_MASS(players.user_ped(), 1, 0.0, superman.fspeed, 0.0, true, true, true, true)
+        end
+    end
+
+    if IS_ENTITY_IN_AIR(players.user_ped()) and IS_CONTROL_PRESSED(0, 44) then
+        local groundz = memory.alloc(4)
+        local flycoor = GET_ENTITY_COORDS(players.user_ped())
+        GET_GROUND_Z_FOR_3D_COORD(flycoor.x, flycoor.y, flycoor.z, groundz, 0, 0)
+        if memory.read_float(groundz) != 0 then
+            SEC(players.user_ped(), flycoor.x, flycoor.y, memory.read_float(groundz), false, true, true, false)
+            CLEAR_PED_TASKS(players.user_ped())
+        else
+            if func.set.alert then
+                func.ACutil(Str_trans('Too high go lower to land'))
+            end
+        end
+
+
+
+    end
+
+    if superman.crosshair then
+        DISPLAY_SNIPER_SCOPE_THIS_FRAME()
+    end
+    
+    local weap = util.joaat(superman.bull)
+    local camrot = GET_FINAL_RENDERED_CAM_ROT(2)
+    REQUEST_WEAPON_ASSET(weap)
+    if IS_PED_IN_ANY_VEHICLE(players.user_ped()) and IS_CONTROL_PRESSED(0, 68) and IS_CONTROL_PRESSED(0, 69) and superman.vehicle then
+        Super_Breath(superman)
+        SET_ENTITY_ROTATION(entities.get_user_vehicle_as_handle(), 0, 0, camrot.z, 2, true)
+    elseif not IS_PED_IN_ANY_VEHICLE(players.user_ped()) and IS_CONTROL_PRESSED(0, 73) then
+        if IS_ENTITY_IN_AIR(players.user_ped()) and IS_CONTROL_PRESSED(0, 73) then
+            CLEAR_PED_TASKS(players.user_ped())
+            while not HAS_ENTITY_ANIM_FINISHED(players.user_ped(), 'rcmme_amanda1', "stand_loop_cop", 3) and IS_CONTROL_PRESSED(0, 73) do
+                FREEZE_ENTITY_POSITION(players.user_ped(), true)
+                camrot = GET_FINAL_RENDERED_CAM_ROT(2)
+                local impact = v3.new()
+                Super_Breath(superman)
+                func.Streamanim('rcmme_amanda1')
+                func.Runanim(players.user_ped(), 'rcmme_amanda1', "stand_loop_cop")
+                util.yield()
+            end
+        else
+            CLEAR_PED_TASKS(players.user_ped())
+            FREEZE_ENTITY_POSITION(players.user_ped(), false)
+            Super_Breath(superman)
+        end
+
+
+    elseif IS_PED_IN_ANY_VEHICLE(players.user_ped()) and IS_CONTROL_PRESSED(0, 68) and superman.vehicle then
+        local impact = v3.new()
+        Leyes(superman, impact, camrot, weap)
+        SET_ENTITY_ROTATION(entities.get_user_vehicle_as_handle(), 0, 0, camrot.z, 2, true)
+    elseif not IS_PED_IN_ANY_VEHICLE(players.user_ped()) and IS_CONTROL_PRESSED(0, 25) then
+        if IS_ENTITY_IN_AIR(players.user_ped()) and IS_CONTROL_PRESSED(0, 25) then
+            CLEAR_PED_TASKS(players.user_ped())
+            while not HAS_ENTITY_ANIM_FINISHED(players.user_ped(), 'rcmme_amanda1', "stand_loop_cop", 3) and IS_CONTROL_PRESSED(0, 25) do
+                FREEZE_ENTITY_POSITION(players.user_ped(), true)
+                camrot = GET_FINAL_RENDERED_CAM_ROT(2)
+                local impact = v3.new()
+                Supereyes(superman, impact, camrot, weap)
+                func.Streamanim('rcmme_amanda1')
+                func.Runanim(players.user_ped(), 'rcmme_amanda1', "stand_loop_cop")
+                util.yield()
+            end
+        else
+            CLEAR_PED_TASKS(players.user_ped())
+            FREEZE_ENTITY_POSITION(players.user_ped(), false)
+            Leyes(superman, impact, camrot, weap)
+        end
+
+    else
+        FREEZE_ENTITY_POSITION(players.user_ped(), false)
+    end
+    if IS_CONTROL_PRESSED(0, 119) then
+        Xrayvision(xray)
+    end
+
+    
+    return superman.multi, superman.running
+end, function ()
+    CLEAR_PED_TASKS(players.user_ped())
+    local settings = util.read_colons_and_tabs_file(Superman_Setting)
+    for I, V in settings do
+        switch I do
+            case 'Damage Multiplier' :
+                multiref.value = V
+            break
+            case 'Walk And Run Speed' :
+                runref.value = V
+            break
+            case 'Increased Friction' :
+                menu.trigger_command(menu.ref_by_command_name('friction'), V)
+            break
+            case 'Immortality' :
+                menu.trigger_command(menu.ref_by_command_name('god'), V)
+            break
+        end
+    end
+    util.yield(250)
+    io.remove(Superman_Setting)
+    superman.multi = nil
+    superman.running = nil
+    superman.friction = nil
+    superman.godmode = nil 
+end)
+
+local super_xray = super:list(T('X-Ray Settings'), {}, '')
+
+
+super_xray:toggle(T('Do not include NPCs'), {}, T('Turn off including NPCs with X-Ray Vision'), function (on)
+    xray.npcs = not on
+end)
+
+super_xray:toggle(T('Do not include Players'), {}, T('Turn off including Players with X-Ray Vision'), function (on)
+    xray.players = not on
+end)
+
+super_xray:toggle(T('Do not include Vehicles'), {}, T('Turn off including Players or NPCS in vehicles with X-Ray Vision'), function (on)
+    xray.targetveh = not on
+end)
+
+super_xray:toggle(T('Turn off Line ESP'), {}, T('Turn off Line ESP used with X-Ray Vision'), function (on)
+    xray.espline = not on
+end)
+
+super_xray:toggle(T('Turn on Box ESP'), {}, T('Turn on Box ESP used with X-Ray Vision'), function (on)
+    xray.espbox = on
+end)
+
+super_xray:colour(T('Box and ESP Color'), {}, T('Choose the Box and ESP color to be changed to'), SuperESPrgb.color, false, function(bcolor)
+    SuperESPrgb.color = bcolor
+end)
+
+super_xray:slider_float(T('Field of View'), {}, T('Adjust the amount of your Field of View is with X-Ray Vision'), 100, 36000, 1000, 100, function (s)
+    xray.fov = s*0.01
+end)
+
+Runspeedref = super:slider_float(T('Run Speed'), {}, T('Adjust the speed you run with Superman'), 100, 1000000, 500, 100, function (a)
+    superman.running = a
+end)
+
+super:slider(T('Fly Speed'), {'superfly'}, T('Adjust the speed you fly with Superman'), 6, 100, 6, 1, function (a)
+    superman.fspeed = a*0.1
+end)
+
+super:slider(T('Jump Height'), {}, T('Adjust the amount you move upwards by'), 6, 100, 6, 1, function (a)
+    superman.height = a*0.1
+end)
+
+super:slider(T('Super Breath Intensity'), {}, T('Adjust the amount your Super Breath blows people away'), 1, 1000, 1, 1, function (a)
+    superman.breath = a
+end)
+
+super:toggle(T('Super Breath Damage'), {'superexp'}, T('Turn on damage with Super Breath'), function (on)
+    superman.nodam = not on
+end)
+
+super:toggle(T('No Crosshair'), {}, T('Turn off crosshair with Lazer Eyes'), function (on)
+    superman.crosshair = not on
+end)
+
+super:toggle(T('Explosions'), {'superexp'}, T('Turn on Explosions with Lazer Eyes'), function (on)
+    superman.exp = on
+end)
+
+super:list_select(T('Change Bullets'), {'superbullets'}, T('Change the Bullets used for Lazer eyes'), Tables.Leyen, 1, function (bulsel)
+    superman.bull = Leyel[bulsel] 
+end)
+
+super:toggle(T('Turn off Vehicle use'), {}, T('Turn off Superman Mode when in a vehicle'), function (on)
+    superman.vehicle = not on
+end)
+
+
+
+local lsrmenu = weaproot:list(T('Lazer Eyes'), {}, '')
+
+
+Lazer = {buttons = {68, 25}}
+Lazer_buttons = {Str_trans('Aim'), Str_trans('Pickup/Horn')}
+local lazer = {exp = false, bull = 'WEAPON_TACTICALRIFLE', crosshair = true, vehicle = true}
+lsrmenu:toggle_loop(T('Lazer Eyes'), {'Leyeson'}, T('Shoot lazers out of your eyes also works in vehicles'), function (on)
+
+    if lazer.crosshair then
+        DISPLAY_SNIPER_SCOPE_THIS_FRAME()
+    end
+    
+    local weap = util.joaat(lazer.bull)
+    local camrot = GET_FINAL_RENDERED_CAM_ROT(2)
+    REQUEST_WEAPON_ASSET(weap)
+    if IS_PED_IN_ANY_VEHICLE(players.user_ped()) then
+        if Lazer.buttons[1] == 68 then
+            if func.set.scale then
+                SF.SFlevaim()
+            end
+        else
+            if func.set.scale then
+                SF.SFlevhorn()
+            end
+        end
+    else
+        if Lazer.buttons[1] == 38 then
+            if func.set.scale then
+                SF.SFlepickup()
+            end
+        else
+            if func.set.scale then
+                SF.SFleaim()
+            end
+        end
+    end
+    local impact = v3.new()
+    if IS_PED_IN_ANY_VEHICLE(players.user_ped()) and IS_CONTROL_PRESSED(0, Lazer.buttons[1]) and lazer.vehicle then
+        Leyes(lazer, impact, camrot, weap)
+        SET_ENTITY_ROTATION(entities.get_user_vehicle_as_handle(), 0, 0, camrot.z, 2, true)
+    elseif not IS_PED_IN_ANY_VEHICLE(players.user_ped()) and IS_CONTROL_PRESSED(0, Lazer.buttons[2]) then
+        Leyes(lazer, impact, camrot, weap)
+    end
+end)
+
+lsrmenu:toggle(T('Explosions'), {'leexp'}, T('Turn on Explosions with Lazer Eyes'), function (on)
+    lazer.exp = on
+end)
+
+
+lsrmenu:list_select(T('Change Bullets'), {'lebullets'}, T('Change the Bullets used for Lazer eyes'), Tables.Leyen, 1, function (bulsel)
+    lazer.bull = Tables.Leyel[bulsel] 
+end)
+
+lsrmenu:toggle(T('No Crosshair'), {}, T('Turn off crosshair with Lazer Eyes'), function (on)
+    lazer.crosshair = not on
+end)
+
+lsrmenu:toggle(T('Turn off Vehicle use'), {}, T('Turn off Lazer Eyes when in a vehicle'), function (on)
+    lazer.vehicle = not on
+end)
+
+
+
+lsrmenu:list_select(T('Change Buttons'), {'lebutton'}, T('Change the Button used for Lazer eyes'), Lazer_buttons, 1, function (index, value)
+    switch value do
+        case 'Aim': Lazer.buttons =  {68, 25}
+        break
+        case 'Pickup/Horn': Lazer.buttons = {38, 38}
+        break
+    end
+end)
+
+local obj_hash = 'vigilante'
+local objgun = weaproot:list(T('Custom Object Gun'), {}, '')
+local obj = {expl = false}
+OBJgun = objgun:toggle_loop(T('Custom Object Gun'), {'objgun'}, T('Fires the object you have selected'), function ()
+    local hash = util.joaat(obj_hash)
+    func.Streament(hash)
+    if IS_PLAYER_FREE_AIMING(players.user()) and not IS_PED_IN_ANY_VEHICLE(players.user_ped()) then
+        local rot = GET_GAMEPLAY_CAM_ROT(0)
+        local camcoords = func.Get_offset_from_camera(10)
+        if not DOES_ENTITY_EXIST(obj.prev) then
+            objams(hash, obj, camcoords)
+        else
+            SEC(obj.prev, camcoords.x, camcoords.y, camcoords.z, false, true, true, false)
+        end
+        SET_ENTITY_ROTATION(obj.prev, rot.x, rot.y, rot.z, 0, true)
+        
+    elseif DOES_ENTITY_EXIST(obj.prev) and not IS_PLAYER_FREE_AIMING(players.user()) then
+        entities.delete_by_handle(obj.prev)
+    end
+    if IS_PED_SHOOTING(players.user_ped()) and not IS_PED_IN_ANY_VEHICLE(players.user_ped()) then
+        local camcoords = func.Get_offset_from_camera(15)
+        objshots(hash, obj, camcoords)
+        entities.delete_by_handle(obj.prev)
+        util.yield(20)
+    end
+end)
+
+objgun:list_select(T('Object to Shoot'), {}, T('Change the object that you shoot'), Tables.Objn, 1, function (sel)
+    obj_hash = Tables.Objl[sel]
+end)
+
+objgun:toggle(T('Make Objects Explosive'), {}, T('Makes the objects you shoot explosive when hitting something'), function (on)
+    obj.expl =  on
+end)
+
+
+objgun:text_input(T('Custom Object'), {'cusobj'}, T('Enter the model name of an object to change the object you shoot example "prop_keg_01"'), function(cusobj)
+    if IS_MODEL_A_VEHICLE(util.joaat(cusobj)) then
+        obj_hash = cusobj
+    elseif IS_MODEL_A_PED(util.joaat(cusobj)) then
+        obj_hash = cusobj
+    elseif IS_MODEL_VALID(util.joaat(cusobj)) then
+        obj_hash = cusobj
+    else
+       if func.set.alert then
+           func.ACutil(Str_trans('Improper Object Name (check the spelling)'))
+       end
+    end
+end, 'toreador')
+
+
+
+
+local nukegun = {godmode = nil}
+local invinc_tog = nil
+ weaproot:toggle_loop(T('Nuke Guns'), {'nukeguns'}, T('Turn your shooting weapons into Nuclear Weapon'), function ()
+    local invinc_ref = menu.ref_by_path('Self>Immortality')
+        Current_settings = {
+        ['Immortality'] = invinc_ref.value,
+    }
+    local nukeha = util.joaat('w_arena_airmissile_01a')
+	func.Streament(nukeha)
+    if not filesystem.is_regular_file(Nuke_Gun_Setting) then
+        util.write_colons_file(Nuke_Gun_Setting, Current_settings)
+    end
+    if nukegun.godmode == nil then
+        nukegun.godmode = invinc_ref.value
+        invinc_ref.value = true
+        func.ACutil(Str_trans('Turning on Godmode just in case'))
+    end
+
+    if IS_PED_SHOOTING(players.user_ped()) then
+        local camcoords = func.Get_offset_from_camera(10)
+        local rot = GET_GAMEPLAY_CAM_ROT(0)
+        oshot(nukeha, camcoords, rot)
+    end
+        for i, objs in objtab do
+            local expcoor = GET_ENTITY_COORDS(objs)
+            local vel = GET_ENTITY_VELOCITY(objs)
+            if HAS_ENTITY_COLLIDED_WITH_ANYTHING(objs) then
+                expcoor = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(objs, 0, 0, 0)
+                func.Nuke(expcoor)
+                entities.delete_by_handle(objs)
+            end
+            local objc = GET_ENTITY_COORDS(objs)
+            local tar2 = GET_ENTITY_COORDS(players.user_ped())
+            local disbet = VDIST2(tar2.x, tar2.y, tar2.z, objc.x, objc.y, objc.z)
+            if not HAS_ENTITY_COLLIDED_WITH_ANYTHING(objs) and expcoor.z == 0 then
+                entities.delete_by_handle(objs)
+            end
+            if disbet > 15000 then
+                entities.delete_by_handle(objs)
+            end
+            if i >= 40 then
+                for objtab as p_shot do
+                    entities.delete_by_handle(p_shot)
+                    objtab ={}
+                end
+            end
+        end
+        
+end, function ()
+    local settings = util.read_colons_and_tabs_file(Nuke_Gun_Setting)
+    for I, V in settings do
+        switch I do
+            case 'Immortality' :
+                menu.trigger_command(menu.ref_by_command_name('god'), V)
+            break
+        end
+    end
+    io.remove(Nuke_Gun_Setting)
+    nukegun.godmode = nil 
+end)
+
+menus.lazergun = weaproot:list(T('Lazer Gun'), {}, T('Change your weapon to a lazer also allows you to choose any bullet'))
+
+menus.lazergun:toggle_loop(T('Lazer Gun'), {}, T('Change your weapon to a lazer that shoots just by aiming'), function ()
+    local weap = util.joaat(Tables.Weapon_selections.lazergun)
+    local cama = {}
+    cama.x, cama.y, cama.z = func.Cama()
+    local curweap = GET_CURRENT_PED_WEAPON_ENTITY_INDEX(players.user_ped(), false)
+    REQUEST_WEAPON_ASSET(weap)
+    local pos = GET_ENTITY_BONE_POSTION(curweap, GET_ENTITY_BONE_INDEX_BY_NAME(curweap, 'gun_muzzle'))
+    camrot = GET_FINAL_RENDERED_CAM_ROT(2)
+    func.Streamptfx('weap_xs_weapons')
+    camrot.x += 90
+    camrot.y += 180
+    if IS_PLAYER_FREE_AIMING(players.user()) then
+        START_NETWORKED_PARTICLE_FX_NON_LOOPED_AT_COORD('bullet_tracer_xs_sr', pos.x, pos.y, pos.z, camrot.x, camrot.y,  camrot.z, 1, true)
+        SHOOT_SINGLE_BULLET_BETWEEN_COORDS_IGNORE_ENTITY(pos.x, pos.y, pos.z, cama.x, cama.y,  cama.z , 200, 0, weap, players.user_ped(), true, false, 1000, players.user_ped())
+    end
+end)
+
+menus.lazweap = menus.lazergun:list(Str_trans('Change Lazer Weapon'), {}, Str_trans('Change the weapon used with the lazer'), function (sel)
+        for weapons_menus as weapons_menu do
+            if weapons_menu:isValid() then weapons_menu:delete() end
+        end
+        weapons_menus = func.Create_ped_weapon_menu(menus.lazweap, {9})
+end)
+
+
+menus.clonegun = weaproot:list(T('Clone Gun'), {}, T('Clone players by aiming at them'))
+menus.clonegun:toggle_loop(T('Clone Gun'), {}, T('Clone players by aiming at them'), function ()
+    if IS_PLAYER_FREE_AIMING(players.user()) and playerclone == nil then
+        if not menus.clonemenu.value then
+            menus.clonemenu.value = true
+            func.ACutil(Str_trans('No Revert Clone has been made making one now (will show as friend on the map)'))
+        end
+        local tarclone = memory.alloc(8)
+        if GET_ENTITY_PLAYER_IS_FREE_AIMING_AT(players.user(), tarclone) then
+            if IS_PED_A_PLAYER(memory.read_int(tarclone)) then
+                local hash = util.reverse_joaat(GET_ENTITY_MODEL(memory.read_int(tarclone)))
+                if hash == 'mp_f_freemode_01' then
+                    menu.trigger_commands('mpfemale')
+                elseif hash == 'mp_m_freemode_01' then
+                    menu.trigger_commands('mpmale')
+                end
+                util.yield(250)
+                CLONE_PED_TO_TARGET(memory.read_int(tarclone), players.user_ped())
+                func.ACutil(Str_trans('Player Cloned'))
+                targetEntity = nil
+            end
+        end
+    end
+end)
+
+local clone_attack_gun = {}
+menus.clonegun:toggle_loop(T('Clone Attackers'), {}, T('Clone player by aiming at them that turn into attackers'), function ()
+    local tarclone = memory.alloc(8)
+    if GET_ENTITY_PLAYER_IS_FREE_AIMING_AT(players.user(), tarclone) then
+        local targets = memory.read_int(tarclone)
+        if IS_PED_A_PLAYER(targets) then
+        func.ACutil('fuckoff')
+            local hash = util.reverse_joaat(GET_ENTITY_MODEL(targets))
+            local offset = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(targets, math.random(-1, 1), math.random(-1, 1), -1)
+            local pid = NETWORK_GET_PLAYER_INDEX_FROM_PED(targets)
+            spawned_ped = Atkrspawn(true, false, pid, hash)
+            CLONE_PED_TO_TARGET(targets, spawned_ped)
+            table.insert(clone_attack_gun,  spawned_ped)
+            util.yield(250)
+            func.ACutil(Str_trans('Player Cloned'))
+            targetEntity = nil
+            Atk(clone_attack_gun, targets, Tables.Weapon_selections.clone_gun_set)
+            if IS_PED_DEAD_OR_DYING(targets, 1) then
+                func.DelEnt(clone_attack_gun)
+                clone_attack_gun = {}
+            end
+        end
+    end     
+end, function ()
+    for clone_attack_gun as clone do
+        if DOES_ENTITY_EXIST(clone) then
+            func.DelEnt(clone_attack_gun)
+        end
+    end
+end)
+
+
+menus.clone_weap = menus.clonegun:list(T('Change Weapons'), {''}, T('Choose the weapon for the Clones'), function (weapsel)
+    for weapons_menus as weapons_menu do
+        if weapons_menu:isValid() then weapons_menu:delete() end
+    end
+    weapons_menus = func.Create_ped_weapon_menu(menus.clone_weap, {10})
+end)
+
+menus.clonegun:action(T('Delete Attackers'), {}, T('Delete the attackers you have spawned'), function ()
+    for clone_attack_gun as clone do
+        if DOES_ENTITY_EXIST(clone) then
+            func.DelEnt(clone_attack_gun)
+        end
+    end
+end)
+
+
+menus.attachgun = weaproot:list(Str_trans('Attach Entity Gun'), {}, Str_trans('Attach Entity to another Entity'))
+
+menus.attachgun:toggle_loop(Str_trans('Attach Entity Gun'), {'attachgun'}, Str_trans('Attach Entity to another Entity'), function ()
+    local impact = v3.new()
+    local target = memory.alloc(8)
+    if GET_PED_LAST_WEAPON_IMPACT_COORD(players.user_ped(), memory.addrof(impact)) then
+        if GET_ENTITY_PLAYER_IS_FREE_AIMING_AT(players.user(), target) then
+            Attach_ent(attachgunset, impact, target)
+        end
+    end
+    for attach_objs as objs do
+        if attachgunset.invis then
+            SET_ENTITY_VISIBLE(objs, false)
+        else
+            SET_ENTITY_VISIBLE(objs, true)
+        end
+    end
+    if #attach_objs > 100 then
+        func.DelEnt(attach_objs)
+        attach_objs = {}
+    end
+end)
+
+menus.attachgun:list_action(T('Change the Object'), {}, T('Change the Object that you shoot and attach'), Tables.Objn, function (sel)
+    attachgunset.hash = Tables.Objl[sel]
+end)
+
+
+menus.attachgun:toggle(T('Invisible objects'), {}, T('Make the objects invisible'), function (on)
+    if on then
+        attachgunset.invis = true
+    else
+        attachgunset.invis = false
+    end
+end)
+
+
+menus.attachgun:text_input(T('Custom Object'), {'custattach'}, T('Enter the model name of an object to change the object you shoot example "prop_keg_01"'), function(cusobj)
+    if IS_MODEL_A_VEHICLE(util.joaat(cusobj)) then
+        attachgunset.hash = cusobj
+    elseif IS_MODEL_A_PED(util.joaat(cusobj)) then
+        attachgunset.hash = cusobj
+    elseif IS_MODEL_VALID(util.joaat(cusobj)) then
+        attachgunset.hash = cusobj
+    else
+        if func.set.alert then
+           func.ACutil(Str_trans('Improper Object Name (check the spelling)'))
+        end
+    end
+end, 'toreador')
+
+
+
+menus.attachptfx = weaproot:list(Str_trans('Attach PTFX'), {}, Str_trans('Attach PTFX to another Entity'))
+local attachptfxset = {sel = 'blood_stab', scale = 10}
+menus.attachptfx:toggle_loop(Str_trans('Attach PTFX'), {}, Str_trans('Attach PTFX to another Entity'), function ()
+    local impact = v3.new()
+    local target = memory.alloc(8)
+    if GET_PED_LAST_WEAPON_IMPACT_COORD(players.user_ped(), memory.addrof(impact)) then
+        if GET_ENTITY_PLAYER_IS_FREE_AIMING_AT(players.user(), target) then
+            if IS_PED_A_PLAYER(memory.read_int(target)) and not IS_PED_IN_ANY_VEHICLE(memory.read_int(target), true) then return func.ACutil('Can not attach to players directly') end
+            local attach_ptfx_hash = 3758003654
+            func.Streament(attach_ptfx_hash)
+            target = memory.read_int(target)
+            Attach_ptfx_spot (attach_ptfx_hash, impact, target)
+        end
+    end
+    for attach_ptfx as objs do
+    func.Streamptfx('core')
+    local coords = GET_ENTITY_COORDS(objs)
+        START_NETWORKED_PARTICLE_FX_NON_LOOPED_AT_COORD(attachptfxset.sel, coords.x, coords.y, coords.z, 90, 0, 0, attachptfxset.scale, true, true, true)
+    end
+    if #attach_ptfx > 100 then
+        func.DelEnt(attach_ptfx)
+        attach_ptfx = {}
+    end
+
+
+end)
+
+menus.attachptfx:list_action(Str_trans('Ptfx List'), {}, Str_trans('Choose a PTFX from the list'), Tables.Fxcorelist, function(fxsel)
+    attachptfxset.sel = Tables.Fxha[fxsel]
+end)
+
+menus.attachptfx:slider(Str_trans('Scale'), {}, Str_trans('Choose the scale of the PTFX'), 1, 1000, 10, 1, function(s)
+    attachptfxset.scale = s
+end)
+
+local Clone_object = {}
+weaproot:toggle_loop(T('Clone any Object'), {'Objgun'}, T('Clone yourself to an object'), function ()
+    local targetEntity = memory.alloc()
+    if GET_ENTITY_PLAYER_IS_FREE_AIMING_AT(players.user(), targetEntity) then
+        if IS_ENTITY_AN_OBJECT(memory.read_int(targetEntity)) then
+            local obj_hash = GET_ENTITY_MODEL(memory.read_int(targetEntity))
+            if IS_MODEL_VALID(obj_hash) then
+                func.Streament(obj_hash)
+                menu.ref_by_path("Self>Appearance>Invisibility>Enabled"):trigger()
+                local pos = GET_ENTITY_COORDS(players.user_ped())
+                local object = entities.create_object(obj_hash, pos)
+                table.insert(Clone_object, object)
+            end
+            for Clone_object as object do
+                while DOES_ENTITY_EXIST(object) do
+                    local pos2 = GET_ENTITY_COORDS(players.user_ped())
+                    local player_rot = GET_ENTITY_ROTATION(players.user_ped(), 5)
+                    SET_ENTITY_INVINCIBLE(object, true)
+                    SET_ENTITY_ROTATION(object, player_rot.x, player_rot.y, player_rot.z - 180, 2, true)
+                    SET_ENTITY_NO_COLLISION_ENTITY(players.user_ped(), object, false)
+                    SEC(object, pos2.x, pos2.y, pos2.z - 1, false, true, true, false)
+                    util.yield()
+                end
+                targetEntity = nil
+            end
+        end
+    end
+end)
+
+weaproot:action(T('Delete Prop'), {'delprop'}, T('Delete the current prop and revert back to yourself'), function ()
+    func.DelEnt(Clone_object)
+    menu.ref_by_path('Self>Appearance>Invisibility>Disabled'):trigger()
+end)
+

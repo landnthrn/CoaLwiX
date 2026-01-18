@@ -1,0 +1,45 @@
+Model: barrage
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 128
+Secondary Colour: 154
+Pearl Colour: 0
+Wheel Colour: 160
+Wheel Type: 9
+Spoiler: 1
+Front Bumper: 9
+Rear Bumper: 9
+Sideskirt: 4
+Exhaust: 20
+Chassis: 28
+Grille: 8
+Hood: 19
+Fender: 7
+Right Fender: 9
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 124
+Vanity Plates: 0
+Livery: 35
+Tyre Smoke Colour: #005a00
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 132
+Tyres Mode: 1

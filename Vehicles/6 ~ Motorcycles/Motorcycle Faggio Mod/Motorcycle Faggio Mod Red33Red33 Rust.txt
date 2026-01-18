@@ -1,0 +1,44 @@
+Model: faggio3
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 0
+Wheel Colour: 47
+Wheel Type: 6
+Spoiler: 0
+Front Bumper: 2
+Rear Bumper: 2
+Sideskirt: 1
+Chassis: 9
+Grille: 9
+Hood: 1
+Fender: 20
+Right Fender: 5
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 9
+Front Wheels: 45
+Back Wheels: 45
+Livery: 12
+Tyre Smoke Colour: #7e0000
+Window Tint: 1
+Custom Primary Colour: #210000
+Custom Secondary Colour: #210000
+Neon Colour: #210000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 111
+Tyres Mode: 1

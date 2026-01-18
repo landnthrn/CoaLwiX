@@ -1,0 +1,86 @@
+Model: deathbike2
+Plate Style: 0
+Plate Text:  WS VEH 
+Primary Colour: 107
+Secondary Colour: 0
+Pearl Colour: 107
+Wheel Colour: 41
+Wheel Type: 9
+Spoiler: 0
+Front Bumper: 0
+Rear Bumper: 0
+Sideskirt: 0
+Exhaust: 0
+Chassis: 6
+Grille: 0
+Hood: 0
+Fender: 0
+Right Fender: 0
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 35
+Suspension: 0
+Armor: 0
+Unk17: No
+Turbo: Yes
+Unk19: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 9
+Front Wheels: 82
+Back Wheels: 4
+Plate Holder: 0
+Vanity Plates: 0
+Trim: 0
+Ornaments: 0
+Dashboard: 0
+Dial: 0
+Seats: 0
+Door Speaker: 0
+Steering Wheel: 0
+Shifter Leavers: 0
+Plaques: 0
+Speakers: 0
+Trunk: 0
+Hydraulics: 0
+Engine Block: 0
+Air Filter: 3
+Struts: 3
+Arch Cover: 0
+Aerials: 1
+Trim2: 1
+Tank: 1
+Windows: 0
+Unk47: 0
+Livery: 14
+Unk49: 2
+Tyre Smoke Colour: #ff4500
+Window Tint: 0
+Custom Primary Colour: #ff4500
+Custom Secondary Colour: 
+Neon Colour: #ff4500
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Roof Livery: 0
+Dashboard Colour: 132
+Tyres Mode: 1
+Extra 1: No
+Extra 2: No
+Extra 3: No
+Extra 4: No
+Extra 5: No
+Extra 6: No
+Extra 7: No
+Extra 8: No
+Extra 9: No
+Extra 10: No
+Extra 11: No
+Extra 12: No
+Extra 13: Yes
+Extra 14: Yes
+Extra 15: Yes

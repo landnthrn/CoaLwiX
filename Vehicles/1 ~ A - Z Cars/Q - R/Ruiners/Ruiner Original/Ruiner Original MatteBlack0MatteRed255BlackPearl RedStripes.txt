@@ -1,0 +1,43 @@
+Model: ruiner
+Plate Style: 3
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 0
+Wheel Colour: 28
+Wheel Type: 8
+Spoiler: 1
+Front Bumper: 0
+Exhaust: 4
+Hood: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 119
+Livery: 3
+Tyre Smoke Colour: #ff0000
+Window Tint: 6
+Custom Primary Colour: #000000
+Custom Secondary Colour: #ff0000
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 2: Yes
+Extra 3: No
+Extra 7: No
+Extra 10: Yes
+Extra 11: Yes

@@ -1,0 +1,57 @@
+Model: primo2
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 117
+Secondary Colour: 120
+Pearl Colour: 134
+Wheel Colour: 9
+Wheel Type: 9
+Spoiler: 2
+Front Bumper: 4
+Rear Bumper: 1
+Sideskirt: 1
+Exhaust: 4
+Grille: 5
+Hood: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 2
+Front Wheels: 62
+Back Wheels: 0
+Plate Holder: 1
+Vanity Plates: 2
+Trim: 4
+Ornaments: 15
+Dial: 7
+Steering Wheel: 9
+Shifter Leavers: 15
+Plaques: 22
+Speakers: 4
+Trunk: 7
+Hydraulics: 4
+Engine Block: 6
+Air Filter: 5
+Aerials: 4
+Trim2: 3
+Tank: 3
+Livery: 2
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #000000
+Custom Secondary Colour: #000000
+Neon Colour: #ffffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 111
+Tyres Mode: 1

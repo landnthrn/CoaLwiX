@@ -1,0 +1,41 @@
+Model: italigtb
+Plate Style: 1
+Plate Text:  0 MPH  
+Primary Colour: 120
+Secondary Colour: 118
+Pearl Colour: 135
+Wheel Colour: 142
+Wheel Type: 8
+Spoiler: 6
+Front Bumper: 6
+Rear Bumper: 7
+Sideskirt: 2
+Exhaust: 4
+Hood: 9
+Fender: 0
+Roof: 4
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 107
+Livery: -1
+Tyre Smoke Colour: #8446e2
+Window Tint: 1
+Custom Primary Colour: #7403ff
+Custom Secondary Colour: #7403ff
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 0
+Tyres Mode: 1

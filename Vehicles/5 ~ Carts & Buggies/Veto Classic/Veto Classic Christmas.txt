@@ -1,0 +1,39 @@
+Model: veto
+Plate Style: 0
+Plate Text:  0 MPH  
+Primary Colour: 29
+Secondary Colour: 53
+Pearl Colour: 28
+Wheel Colour: 156
+Wheel Type: 0
+Spoiler: 2
+Front Bumper: 4
+Exhaust: 11
+Chassis: 1
+Grille: 10
+Right Fender: 0
+Engine: 4
+Brakes: 3
+Transmission: 0
+Horns: 0
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 0
+Front Wheels: 0
+Livery: 0
+Tyre Smoke Colour: #72cc72
+Window Tint: 0
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 53
+Dashboard Colour: 0
+Tyres Mode: 1

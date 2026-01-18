@@ -1,0 +1,48 @@
+Model: bruiser2
+Plate Style: 0
+Plate Text:  DKARME 
+Primary Colour: 0
+Secondary Colour: 27
+Pearl Colour: 10
+Wheel Colour: 156
+Wheel Type: 0
+Spoiler: 2
+Front Bumper: 1
+Rear Bumper: 1
+Exhaust: 4
+Chassis: 3
+Grille: 3
+Hood: 7
+Right Fender: 3
+Roof: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 0
+Suspension: 0
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 2
+Front Wheels: 0
+Air Filter: 4
+Struts: 3
+Arch Cover: 6
+Aerials: 1
+Tank: 2
+Livery: 14
+Tyre Smoke Colour: #e20606
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #dedeff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 111
+Tyres Mode: 1

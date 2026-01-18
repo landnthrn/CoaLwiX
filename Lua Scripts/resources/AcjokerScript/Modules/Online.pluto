@@ -1,0 +1,341 @@
+local Tables = require 'resources/AcjokerScript/ACJSTables'
+local Globals = require 'resources/AcjokerScript/Modules/Globals'
+local func = require 'resources/AcjokerScript/Modules/Functions'
+local CONFIG_DIR = filesystem.resources_dir() .. 'AcjokerScript\\'
+local CusSongsDir = filesystem.store_dir() .. 'AcjokerScript\\Songs\\'
+local Songfile = filesystem.stand_dir()..'Song.lrc'
+local SettingsDir = filesystem.store_dir() .. 'AcjokerScript\\Settings\\'
+if filesystem.is_regular_file(CONFIG_DIR.. "Current Song Name.txt") then
+    os.rename(CONFIG_DIR.. "Current Song Name.txt", SettingsDir..'Current Song Name.txt')
+else
+    Songs_Settings = SettingsDir.. "Current Song Name.txt"
+end
+
+
+
+local onlineroot = menu.my_root():list(T('Online'), {}, '')
+
+local menus = {}
+local max_int = 2147483647
+local SEC = SET_ENTITY_COORDS
+local song_file_menus = {}
+
+local function Songslist(root)
+    for filesystem.list_files(CusSongsDir) as path do
+        if filesystem.is_regular_file(path) then
+            local _, dirname = string.match(path,  "(.-)([^\\/]-%.?)$")
+           song_file_menu = root:action(dirname, {}, '', function()
+                if filesystem.is_regular_file(path) then
+                    if filesystem.exists(Songs_Settings) then
+                        for util.read_colons_and_tabs_file(Songs_Settings) as songname do
+                            io.rename(Songfile, CusSongsDir..songname)
+                            util.yield(250)
+                            io.rename(path, Songfile)
+                        end
+                        io.remove(Songs_Settings)
+                        onlineroot:focus()
+                        if not filesystem.is_regular_file(Songs_Settings) then
+                            util.write_colons_file(Songs_Settings, {dirname})
+                        end
+                    elseif not filesystem.exists(Songs_Settings) then
+                        if not filesystem.is_regular_file(Songs_Settings) then
+                            util.write_colons_file(Songs_Settings, {dirname})
+                        end
+                        util.yield(250)
+                        io.rename(Songfile, CusSongsDir..'Song.lrc')
+                        util.yield(250)
+                        io.rename(path, Songfile)
+                        onlineroot:focus()
+                    end
+                end
+            end)
+            table.insert(song_file_menus, song_file_menu)
+            
+        end
+    end
+end
+
+local function rebuild_song_menu()
+    for song_file_menus as song_file_menu do
+        if song_file_menu:isValid() then
+            song_file_menu:delete()
+        end
+    end
+
+end 
+
+--memory stuff skidded from heist control ---
+
+
+local function SET_INT_LOCAL(script, script_local, value)
+        if memory.script_local(script, script_local) != 0 then
+            memory.write_int(memory.script_local(script, script_local), value)
+        end
+    end
+
+local function GET_INT_LOCAL(script, script_local)
+        if memory.script_local(script, script_local) != 0 then
+            local ReadLocal = memory.read_int(memory.script_local(script, script_local))
+            if ReadLocal != nil then
+                return ReadLocal
+            end
+        end
+    end
+
+ -------------------------------
+
+
+
+menus.singinchat = onlineroot:list(T('Change Sing in Chat song'), {}, '')
+
+menus.songs_list = menus.singinchat:list(Str_trans('List of Songs'), {'songlist'}, Str_trans('List of Songs in your directory'), function (name)
+    rebuild_song_menu()
+    Songslist(menus.songs_list)
+end)
+
+menus.singinchat:action(T('Open Songs Folder'), {'songsfolder'},  T('Opens the folder containing your lrc songs'), function ()
+    util.open_folder(CusSongsDir)
+end)
+
+menus.speedruns = onlineroot:list(T('Speed Run'), {}, '')
+
+
+
+menus.speedruns:toggle_loop(T('Instant Finish Criminal Damage'), {'instacrimdam'}, T('Instantly win Criminal Damage Session Event'), function ()
+    if GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(util.joaat("am_criminal_damage")) != 0 then
+        SET_INT_LOCAL('am_criminal_damage', 106,  max_int) --iLocal_106 = (iLocal_106 + iVar27) build 2944
+        util.yield(3000)
+        SET_INT_LOCAL('am_criminal_damage', 111 + 39, 0) --switch (Local_111.f_37) case 3 build 2944
+    end
+end)
+
+menus.speedruns:toggle_loop(T('Instant Finish Checkpoint Collection'), {'instacheck'}, T('Instantly win Checkpoint Collection Session Event'), function ()
+    if GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(util.joaat("am_cp_collection")) != 0 then
+        SET_INT_LOCAL('am_cp_collection', 3457 + (PARTICIPANT_ID_TO_INT() + 5) + 4, 120) -- AMCH_WIN
+        local int = GET_INT_LOCAL('am_cp_collection', 3457 + (PARTICIPANT_ID_TO_INT() + 5) + 4 )
+        util.yield(10000)
+        SET_INT_LOCAL('am_cp_collection', 816 + 708, 0)-- func_22 build 2944
+        SET_INT_LOCAL('am_cp_collection', 816 + 661, 0)--switch (Local_816.f_8) case 3 build 2944
+    end
+end)
+
+
+menus.taxi = onlineroot:list(T('Taxi Service'), {}, '')
+
+menus.taxi:action(T('Go to Pegasus Taxi'), {'taxipeg'}, T('Teleports you to the Pegasus Taxi and starts the auto teleport (taxi must be called in already)'), function ()
+    local taxi_blip = GET_NEXT_BLIP_INFO_ID(198)
+    local taxi_ent = GET_BLIP_INFO_ID_ENTITY_INDEX(taxi_blip)
+    local taxi = GET_BLIP_COORDS(taxi_blip)
+    local pcoor = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(players.user_ped(), 0, 3, 0)
+    if taxi.x != 0 and taxi.y != 0 and taxi.z != 0 then
+        SEC(players.user_ped(), taxi.x, taxi.y, taxi.z, false, true, true, false)
+        util.yield(150)
+    else 
+        if func.set.alert then
+            func.ACutil(Str_trans('No Taxi Found'))
+        end 
+    end
+
+    while not IS_PED_IN_VEHICLE(players.user_ped(), taxi_ent, true) do
+         taxi_blip = GET_NEXT_BLIP_INFO_ID(198)
+         taxi_ent = GET_BLIP_INFO_ID_ENTITY_INDEX(taxi_blip)
+        SET_PED_INTO_VEHICLE(players.user_ped(), taxi_ent, -1)
+        util.yield()
+    end
+
+    
+    if DOES_BLIP_EXIST(taxi_blip) and IS_PED_IN_VEHICLE(players.user_ped(), taxi_ent, true) then
+
+        if taxi.x != 0 and taxi.y != 0 and taxi.z != 0 then
+            SEC(taxi_ent, pcoor.x, pcoor.y, pcoor.z, false, true, true, false)
+            
+        else
+            if func.set.alert then
+                func.ACutil(Str_trans('No Taxi Found'))
+            end
+        end
+    end
+    menu.trigger_commands('tptaxi')
+end)
+
+local curcoords = {}
+menus.taxitog = menus.taxi:toggle_loop(T('Auto TP to Taxi Pickup'), {'tptaxi'}, T('Auto teleports to the Taxi Pickup Person, picks them up and drops them off until you are not in a taxi anymore'), function ()
+    if curcoords.x == nil then
+        curcoords = GET_ENTITY_COORDS(players.user_ped())
+    return curcoords
+    end
+        local play_car = GET_VEHICLE_PED_IS_IN(players.user_ped(), false)
+        local vhash = GET_ENTITY_MODEL(play_car)
+        if play_car == 0 or util.reverse_joaat(vhash) != 'taxi' then
+            SEC(players.user_ped(), 895.1739, -179.2708, 74.70049, false, true, true, false)
+            util.yield(2500)
+            SET_CONTROL_VALUE_NEXT_FRAME(0, 51, 1)
+            util.yield(10000)
+        elseif play_car != 0 and util.reverse_joaat(vhash) == 'taxi' then
+            while not DOES_BLIP_EXIST(GET_CLOSEST_BLIP_INFO_ID(280)) do
+                SET_CONTROL_VALUE_NEXT_FRAME(0, 29, 1)
+                util.yield(1000)
+                return
+            end
+        end
+        local taxi_blip = GET_CLOSEST_BLIP_INFO_ID(280)
+        local taxi_ent = GET_BLIP_INFO_ID_ENTITY_INDEX(taxi_blip)
+        local taxi = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(taxi_ent, 0, 6, 0)
+        if DOES_BLIP_EXIST(GET_CLOSEST_BLIP_INFO_ID(280)) then
+            if taxi.x != 0 and taxi.y != 0 and taxi.z != 0 then
+                util.yield(500)
+                SET_PED_COORDS_KEEP_VEHICLE(players.user_ped(), taxi.x, taxi.y, taxi.z, false, false, false, false)
+                util.yield(1000)
+                SET_CONTROL_VALUE_NEXT_FRAME(0, 86, 1)
+                while DOES_BLIP_EXIST(GET_CLOSEST_BLIP_INFO_ID(280)) do
+                    util.yield()
+                end
+                util.yield(500)
+                menu.trigger_commands('tpobjective')
+                
+            else
+                if func.set.alert then
+                    func.ACutil(Str_trans('No Person Found'))
+                end
+            end
+            else
+                util.yield()
+        end
+end, function ()
+        SEC(players.user_ped(), curcoords.x, curcoords.y, curcoords.z, false, true, true, false)
+        if func.set.alert then
+            func.ACutil(Str_trans('Not in a taxi turning off auto teleport'))
+        end
+        curcoords = {}
+end)
+
+    NPC = {'ig_lestercrest'}
+    Npc_spawned = {}
+    menus.NPC_spawn = onlineroot:list(T('NPC Spawner'), {}, '')
+    menus.NPC_change = menus.NPC_spawn:list(T('Change NPC'), {}, '')
+    func.PedList(menus.NPC_change , function(model)
+        NPC[1] = model
+    end)
+    menus.NPC_change:list_action(T('Animals'), {}, T('Change NPC to an animal'), Tables.Animalslist, function(petsel)
+        NPC[1] = Animalsn[petsel]
+    end)
+
+    menus.NPC_spawn:action(T('Spawn Ped/Animal'), {}, 'Spawn selected ped/animal', function ()
+        local hash = util.joaat(NPC[1])
+        func.Streament(hash)
+        local tar1 = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(players.user_ped(), 0, 1, -1)
+        local pedS = entities.create_ped(1, hash, tar1, 0)
+        table.insert(Npc_spawned, pedS)
+        if func.set.alert then
+            func.ACutil(Str_trans('NPC Spawned'))
+        end
+    end)
+
+    menus.NPC_spawn:action(T('Delete Ped/Animal'), {}, 'Delete spawned ped/animal', function ()
+        func.DelEnt(Npc_spawned)
+        if func.set.alert then
+            func.ACutil(Str_trans('NPC Deleted'))
+        end
+    end)
+
+
+onlineroot:action(T('Stop Spectating'), {'sspect'}, T('Stop Spectating anyone in the lobby'), function ()
+    func.Specon(players.user())
+    func.Specoff(players.user())
+end)
+
+onlineroot:toggle_loop(T('Stop Sounds'), {'ssound'}, T('Stop all sounds incase they are going off constantly'), function ()
+    func.Stopsound()
+end)
+
+onlineroot:action(T('Snowball Fight'), {}, T('Gives everyone in the lobby Snowballs and notifies them via text'), function ()
+    local plist = players.list()
+    local snowballs = util.joaat('WEAPON_SNOWBALL')
+    for i = 1, #plist do
+        local plyr = GET_PLAYER_PED_SCRIPT_INDEX(plist[i])
+        GIVE_DELAYED_WEAPON_TO_PED(plyr, snowballs, 20, true)
+        SET_PED_AMMO(plyr, snowballs, 20)
+        chat.send_message(Str_trans('Snowball Fight! You now have snowballs'), false, true, true)
+        util.yield()
+    end
+end)
+
+
+onlineroot:action(T('Murica'), {}, T('Gives everyone in the lobby Firework Launchers and notifies them via text'), function ()
+    local plist = players.list()
+    local fireworks = util.joaat('weapon_firework')
+    for i = 1, #plist do
+        local plyr = GET_PLAYER_PED_SCRIPT_INDEX(plist[i])
+        GIVE_DELAYED_WEAPON_TO_PED(plyr, fireworks, 20, true)
+        SET_PED_AMMO(plyr, fireworks, 20)
+        chat.send_message(Str_trans('Murica f*** ya! You now have Fireworks'), false, true, true)
+        util.yield()
+    end
+end)
+
+
+
+onlineroot:toggle_loop(T('Increase Kosatka Missile Range'), {'krange'}, T('You can use it anywhere in the map now'), function ()
+    if util.is_session_started() then
+        memory.write_float(memory.script_global(Globals.KosMisRange), 200000.0) -- Global_262145.f_30383 build 2944
+    end
+end)
+
+onlineroot:toggle_loop(T('Set Missile Cooldown To One'), {''}, T('Set the Cooldown to 1'), function ()
+    if util.is_session_started() then
+        memory.write_uint(memory.script_global(Globals.KosMisCool), 2000.0) -- Global_262145.f_30394 build 2944 
+    end
+end)--credits to Chr0my
+
+
+onlineroot:toggle_loop(T('See who is using Voice chat'), {'seevoicec'}, T('Lets you see who is using Voice chat with a notification'), function ()
+    for players.list() as pid do
+        if NETWORK_IS_PLAYER_TALKING(pid) then
+            func.ACutil(players.get_name(pid)..Str_trans(' is using voice chat'))
+        end
+    end
+end)
+
+
+onlineroot:toggle_loop(T('Traffic Party Lights'), {'trafficpartylights'}, T('Turn all traffics lights different colors'), function ()
+    local objs = entities.get_all_objects_as_handles()
+    for objs as light do 
+        if light == 1043035044 or 862871082 or 3639322914 then
+            SET_ENTITY_TRAFFICLIGHT_OVERRIDE(light, math.random(0, 2))
+        end
+    end
+end, function ()
+    local objs = entities.get_all_objects_as_handles()
+    for objs as light do 
+        if light == 1043035044 or 862871082 or 3639322914 then
+            SET_ENTITY_TRAFFICLIGHT_OVERRIDE(light, 3)
+        end
+    end
+end)
+
+
+local traffic = {colorprim = 92, colorsec = 145, plate = 'Acjoker'}
+menus.trafficcolor = onlineroot:list(Str_trans('Change traffic color and plates'), {}, Str_trans('Change traffic to another color and their plates to custom text'))
+
+menus.trafficcolor:toggle_loop(T('Change traffic color'), {}, T('Change traffic to another color'), function (on) 
+    local all_cars = entities.get_all_vehicles_as_handles()
+    for all_cars as vmod do
+        if vmod != entities.get_user_vehicle_as_handle() or vmod != entities.get_user_personal_vehicle_as_handle() then
+            SET_VEHICLE_COLOURS(vmod, traffic.colorprim, traffic.colorsec)
+            SET_VEHICLE_NUMBER_PLATE_TEXT(vmod, traffic.plate)
+        end
+    end
+end)
+
+menus.trafficcolor:list_action(T('Change the Primary color'), {}, T('Change to another color used for Primary'), Tables.Mainc,  function (c)
+    traffic.colorprim = c -1
+end)
+
+menus.trafficcolor:list_action(T('Change the Secondary color'), {}, T('Change to another color used for Secondary'), Tables.Mainc,  function (c)
+    traffic.colorsec = c -1
+end)
+
+menus.trafficcolor:text_input(T('Change their license plate'), {'tlplate'}, T('Change the license plate to a custom text'), function (cusplate)
+    traffic.plate = cusplate
+end)
+ 

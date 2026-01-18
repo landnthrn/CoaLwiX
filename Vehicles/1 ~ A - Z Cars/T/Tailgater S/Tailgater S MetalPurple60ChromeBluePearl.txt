@@ -1,0 +1,62 @@
+Model: tailgater2
+Plate Style: 10
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 140
+Wheel Colour: 79
+Wheel Type: 8
+Spoiler: 27
+Front Bumper: 14
+Rear Bumper: 10
+Sideskirt: 19
+Exhaust: 7
+Chassis: 6
+Grille: 1
+Hood: 21
+Fender: 2
+Right Fender: 0
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 119
+Plate Holder: 0
+Vanity Plates: 2
+Trim: 2
+Dashboard: 1
+Seats: 1
+Door Speaker: 14
+Steering Wheel: 16
+Engine Block: 5
+Air Filter: 9
+Struts: 12
+Arch Cover: 2
+Aerials: 2
+Trim2: 11
+Tank: 3
+Right Door: 1
+Livery: 0
+Tyre Smoke Colour: #3c00ff
+Window Tint: 1
+Custom Primary Colour: #0f003c
+Custom Secondary Colour: #5870a1
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 75
+Dashboard Colour: 82
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: Yes

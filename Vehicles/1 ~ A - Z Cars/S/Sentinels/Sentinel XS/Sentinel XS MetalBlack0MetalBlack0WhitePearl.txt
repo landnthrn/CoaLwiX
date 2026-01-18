@@ -1,0 +1,45 @@
+Model: sentinel
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 117
+Secondary Colour: 117
+Pearl Colour: 134
+Wheel Colour: 7
+Wheel Type: 8
+Spoiler: 30
+Front Bumper: 12
+Rear Bumper: 8
+Sideskirt: 10
+Exhaust: 6
+Chassis: 8
+Hood: 2
+Fender: 0
+Right Fender: 2
+Roof: 7
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 2
+Front Wheels: 119
+Livery: 0
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #000000
+Neon Colour: #ffffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 7
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 10: Yes

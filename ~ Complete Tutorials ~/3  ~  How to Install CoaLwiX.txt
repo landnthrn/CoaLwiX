@@ -1,0 +1,76 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+YOUTUBE VIDEO TUTORIAL: https://www.youtube.com/watch?v=yIvCCmym0Ow
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+IMPORTANT INFO:
+The Quick TP Places may have a initial install bug where you can't use some of them by the command line, there's an easy fix :
+
+— Open Stand Menu navigate to World > Places > Teleport To > Saved Places
+
+— Simply scroll fast through all of them till your back at the top 
+  If that doesn't work then spam teleport through the list of the Saved Places 
+
+From then on out that weird initial install bug shouldn't occur again
+
+~~~~~~~~~~~~
+
+CONSTRUCTOR POSSIBLE BUG INFO:
+If you've spawned many items with Constructor at once, espeically heavy duty ones you will run into bugs at some point with too many things spawned at once. 
+It's very helpful to use the Delete All Loaded Constructs button if you're Construct spawn count it above around 25-35 ish of regular sized spawns, 
+also use the command `Clean Up` after deleting all for a more thorough removal
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can ask questions and get support on CoaLwiX Discord:
+
+https://discord.gg/J6jWpru9nS
+
+If the link is expired add @landn.thrn on Discord 
+						
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Find more of my creations on Github:
+https://github.com/landnthrn?tab=repositories
+
+Support me on Buy Me a Coffee
+https://buymeacoffee.com/landn.thrn
+
+Paypal Donation:
+https://www.paypal.com/donate/?hosted_button_id=K4PLHFVBH7X8C
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

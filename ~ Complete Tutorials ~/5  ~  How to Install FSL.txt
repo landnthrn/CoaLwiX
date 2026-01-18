@@ -1,0 +1,230 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**FSL IS IN NO WAY REQUIRED TO RUN STAND + COALWIX, FSL was great for running modded sessions since your lobby would be practically undetectable, 
+but its absoluetly pointless if you're trying to mod out your account (s)**
+
+**IMPORTANT TO LOOK AND ASK AROUND ABOUT THE CURRENT WORKING STATUS OF FSL BEFORE USING IT**
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+YOUTUBE VIDEO IN DEPTH TUTORIAL: https://www.youtube.com/watch?v=KOIclqjP79E
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+What is FSL ?
+
+A tool that allows you to store your online save data locally, gain infinite money, and much more!  
+All the money, properties, cars, and such you make while using FSL are kinda faked, they dont save on your Rockstar account saves but to your local computer saves instead. So say if you load up without FSL injected then all the money and cars and things you made with FSL won't be there, its only there when you launch with FSL injected.
+
+While using it don't join sessions, players invites, with FSL you have to stay within Los Santos in session that you created.
+
+BATTLEYE HAS TO BE TURNED OFF FOR FSL
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HOW TO INSTALL FSL:  (SAME PROCESS FOR BOTH LEGACY & ENHANCED)
+
+— Start by temporaily turning Real Time Protection off in your Windows Security settings
+
+— This is because of something called False Positives, you can do more research on it to feel more comfortable if you'd like
+  Stand doesn't release anything that would harm your computer
+
+— Windows Search > Windows Security > Virus & Threat Protection > Manage Settings > Disable Real Time Protection 
+
+— Minimize Windows Security 
+
+~~~~~~~~~~~~
+
+— Make a central folder for all Gta Mod Files so everything can be in one place.
+
+~~~~~~~~~~~~
+
+— Download the latest FSL File from the offical page:
+  https://www.unknowncheats.me/forum/grand-theft-auto-v/616977-fsl-local-gtao-saves.html
+
+— Open your GTA Game Files Folder, which can be done 3 different ways depending on what Launcher you use GTA V on
+
+— For Rockstar Launcher ~ go to settings > Grand Theft Auto 5 at bottom left > View Installion Folder
+
+— For Steam ~ Select GTA V in your games, click the gear icon > Manage > Browse Local Files 
+
+— For Epic Games Launcher ~ Select the 3 Dots icon beside the game > Manage > The folder icon to the left of the Uninstall button is the Game Files Folder
+
+— Drag the .dll ( FSL ) into that folder. 
+
+SUGGESTION:
+— Create a shortcut to the GTA V Game Files Folder and put the shortcut in your central GTA Mod Files Folder so it's easily accessable
+
+~~~~~~~~~~~~
+
+— Open up Windows Security again ( Windows Search > Windows Security > Virus & Threat Protection > Manage Settings ) 
+
+— Scroll down and click on Add or Remove Exclusions
+
+**Make sure your central GTA Mod Files Folder is somewhere your always gonna keep it cause if you move any Excluded files or folders it'll ruin the set located path for the Exclusion**
+
+— Add a File Exclusion to the .dll now located in your GTA Game Files (if you made the previously suggested shortcut it'll be easy to get to with that)
+
+— IF YOU HAVEN'T ALREADY WHEN INSTALLING STAND MENU:
+
+— Add a File Exclusion to the Stand Launchpad
+
+— Add a Folder Exclusion to Stand Folder (if not done already)
+  In the File Explorer Path Address Bar delete whats there and type "%appdata% and hit enter
+  you will find the Stand Folder located in there so Add a Exclusion to it 
+
+— Play it safe and Add another Folder Exclusion your central GTA Mod Files Folder
+
+~~~~~~~~~~~~
+
+— You can now turn Real Time Protection back on
+
+~~~~~~~~~~~~
+
+— Open Rockstar Launcher > Settings > Turn BattlEye OFF ( For FSL BattlEye OFF Always ) 
+
+~~~~~~~~~~~~
+
+— Restart PC to reset cache ( Optional )
+
+~~~~~~~~~~~~
+
+**If you want to use a VPN turn it on now**
+
+— Open the Stand Launchpad
+
+— Click Launch on the Launchpad, and wait for GTA to load
+
+— Go to StoryMode first always
+
+~~~~~~~~~~~~
+
+GETTING ONLINE: (If you have a paid activated Stand account)
+
+— In the Stand Menu, Go to Online > New Session > Create a Public or Invite Only Session 
+
+— DO NOT Join any invites to anything, FSL is Host Only, 
+  you must create the Public or Invite-Only Session 
+
+— FSL despite being great, safer, and less buggy, it only allows for you to stay within Los Santos in sessions you created so don't join anything 
+
+— For Public Sessions use the Player Magnet Feature to flood players in quick ( speed is based off wifi speed )
+  In Stand Menu,  Online > Session > scroll to bottom make sure Player Magnet is checked on 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+FSL MONEY:
+
+— Give yourself a quick 5m, 10m, 50m, 100m, 1b, or 10b, Press the ' ~ ' key and type ' 10b ' for example
+
+— There's also a FSL Money Lua Script in this package that you'll have in the Lua Scripts menu section once you've installed CoaLwiX, which you can use to get $ Quintillions easily
+  Or you can use the FSL Save files stored in the z Extras z Folder of this package for a $ Quintillion, 
+
+— Just drag the FSL Save files into your FSL Folder > Located in   %appdata%   (if you don't see it there just create a Folder and title it FSL)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+EERROR SOLUTIONS :
+
+Stand Discord Channel Links:
+https://discord.com/channels/956618713157763072/1328378183329910895
+https://discord.com/channels/956618713157763072/956618713396822038/1345145198187118673
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+See the Helpful Links text document in this package if you need more help or info
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+KEEP UP TO DATE WITH MENU STATUS:
+
+You can check Stand Menu Working Status in their Discord Server channels : 
+— Annoucements channel
+— Support and Help channel
+— Share Discussions
+
+Things don't change too often but it's especially important to check menu status when Rockstar updates GTA or Rockstar Launcher 
+
+~~~~~~~~~~~~
+
+If you have any questions ask the people in the Stand Discord Server 
+
+— Support and Help Channel 
+			
+— Share Discussions Channel
+
+Keep in mind that the Stand Discord Moderators are complete assholes and ban you over petty shit so try to be on topic in the right channels 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+JOIN COALWIX DISCORD SERVER (Central Hub for GTA Modders)
+
+Share Files Together • Mod Support • Keep Up to Date
+Get loaded with Menu Addons, Lua scripts, Vehicles, Outfits, All in One Packs, & more
+
+https://discord.gg/J6jWpru9nS
+			
+~~~~~~~~~~~~
+				
+JOIN OUR DISCORD GAMING COMMUNITY:
+https://discord.gg/GZUnX6UHyT
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Find more of my creations on Github:
+https://github.com/landnthrn?tab=repositories
+
+Support me on Buy Me a Coffee
+https://buymeacoffee.com/landn.thrn
+
+Paypal Donation:
+https://www.paypal.com/donate/?hosted_button_id=K4PLHFVBH7X8C
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							
+
+
+
+

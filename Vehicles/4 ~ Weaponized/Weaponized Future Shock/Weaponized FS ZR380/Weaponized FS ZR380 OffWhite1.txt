@@ -1,0 +1,50 @@
+Model: zr3802
+Plate Style: 1
+Plate Text: 29PAW772
+Primary Colour: 5
+Secondary Colour: 67
+Pearl Colour: 111
+Wheel Colour: 122
+Wheel Type: 3
+Spoiler: 7
+Front Bumper: 0
+Rear Bumper: 1
+Exhaust: 3
+Chassis: 3
+Grille: 3
+Hood: 3
+Fender: 4
+Right Fender: 2
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 43
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 11
+Front Wheels: 10
+Ornaments: 3
+Air Filter: 3
+Struts: 3
+Arch Cover: 4
+Aerials: 1
+Trim2: 1
+Tank: 2
+Livery: 1
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff3264
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 135
+Tyres Mode: 1

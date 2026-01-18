@@ -1,0 +1,46 @@
+Model: aleutian
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 0
+Pearl Colour: 28
+Wheel Colour: 31
+Wheel Type: 8
+Spoiler: 1
+Front Bumper: 6
+Rear Bumper: 4
+Sideskirt: 6
+Exhaust: 7
+Chassis: 1
+Grille: 6
+Hood: 8
+Fender: 1
+Right Fender: 1
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 52
+Trim2: 2
+Livery: 7
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #370000
+Custom Secondary Colour: #370000
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 0
+Tyres Mode: 1

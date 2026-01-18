@@ -1,0 +1,791 @@
+require("NovaScript.NovaScript_natives")
+local tables = require("NovaScript.tables")
+local T = require("NovaScript.NovaS_translations")
+local func = require("NovaScript.functions")
+
+-----------------------------------------------
+-------------------FUNCTIONS-------------------
+-----------------------------------------------
+--thank you JayMontana for helping me with this--
+local function get_raycast_from_entity(entity, flag)
+    local hit = memory.alloc(1)
+    local endCoords = v3.new()
+    local surfaceNormal = v3.new()
+    local entityHit = memory.alloc_int()
+    local shape_test_result = {}
+    local entity_position = get_entity_coords(entity, true)
+    local last_hit = get_collision_normal_of_last_hit_for_entity(entity)
+    last_hit:mul(2.0)
+    local offset = get_offset_from_entity_in_world_coords(entity, last_hit.x, last_hit.y, last_hit.z)
+    if get_shape_test_result(start_expensive_synchronous_shape_test_los_probe(entity_position.x, entity_position.y, entity_position.z, offset.x, offset.y, offset.z, flag, entity, 7), hit, endCoords, surfaceNormal, entityHit) then
+        shape_test_result.hit = memory.read_byte(hit) != 0
+        shape_test_result.endCoords = endCoords
+        shape_test_result.surfaceNormal = surfaceNormal
+        shape_test_result.entityHit = memory.read_int(entityHit)
+    end
+    clear_entity_last_damage_entity(entity)
+    return shape_test_result
+end
+
+local function create_cam(left_right, back_left, height, fov)
+    local cam = create_cam_with_params("DEFAULT_SCRIPTED_CAMERA", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, fov, false, false)
+    set_cam_active(cam, true)
+    render_script_cams(true, true, 0, true, true, 0)
+    attach_cam_to_entity(cam, players.user_ped(), left_right, back_left, height, false)
+    return cam
+end
+
+local function delete_cam(camera)
+    set_cam_active(camera, false)
+	render_script_cams(false, false, 0, false, false, false)
+	destroy_cam(camera, false)
+end
+
+local function get_closest_ped_aimbot(position)
+	local closest_dist = 999999999999
+	local closest_ped = nil
+    for entities.get_all_peds_as_pointers() as ped do
+        local ped_handle = entities.pointer_to_handle(ped)
+        if not is_entity_dead(ped_handle) and ped_handle != players.user_ped() then
+	        local ped_pos = get_entity_coords(ped_handle)
+	        local dist = func.get_distance_between(position, ped_pos)
+	        if dist < closest_dist and dist <= 25 then
+	    	    closest_dist = dist
+	    	    closest_ped = ped_handle
+	        end
+        end
+    end
+    if closest_ped != nil then
+        return closest_ped
+    end
+end
+
+local function aimbot_esp(entity, colour)
+    local distance = func.get_distance_between(players.user_ped(), entity)
+    if distance < 200 then
+        if is_ped_in_any_vehicle(entity) then
+            local vehicle = func.get_vehicle_from_ped(entity)
+            if is_vehicle_seat_free(vehicle, -1, false) then
+                func.draw_box_esp(entity, colour, true)
+            else
+                local driver = get_ped_in_vehicle_seat(vehicle, -1, false)
+                if driver != players.user_ped() then
+                    func.draw_box_esp(driver, colour, true)
+                end
+            end
+        else
+            func.draw_box_esp(entity, colour, false)
+        end
+    end
+    local user_pos = players.get_position(players.user())
+    local target_pos = get_entity_coords(entity)
+    draw_line(user_pos.x, user_pos.y, user_pos.z, target_pos.x, target_pos.y, target_pos.z, colour.r, colour.g, colour.b, colour.a)
+end
+
+local function on_shooting(entity, exl1, exl2, exl3, bone, oneshot)
+    if is_ped_shooting(players.user_ped()) then
+        if not exl1 then
+            if is_ped_a_player(entity) then
+                func.shoot_ped(entity, bone, oneshot)
+            end
+        end
+        if not exl2 then
+            if is_ped_in_any_vehicle(entity) then
+                func.shoot_ped(entity, bone, oneshot)
+            end
+        end
+        if not exl3 then
+            if not is_ped_in_any_vehicle(entity) and not is_ped_a_player(entity) then
+                func.shoot_ped(entity, bone, oneshot)
+            end
+        end
+    end
+end
+
+-----------------------------------------------
+---------------------LISTS---------------------
+-----------------------------------------------
+local root = menu.my_root()
+local weapon_main = root:list(T"Weapon")
+local aimbot_list = weapon_main:list(T"Aimbot")
+local object_attacher_list = weapon_main:list(T"Object Attacher")
+local boosters_list = weapon_main:list(T"Boosters")
+local vehicle_gun_list = weapon_main:list(T"Vehicle Gun")
+local bullet_reactions_list = weapon_main:list(T"Bullet Reactions")
+local size_multiplier_list = weapon_main:list(T"Size Multiplier")
+local explosion_impact_gun = weapon_main:list(T"Explosion Impact Gun")
+local custom_c4_list = weapon_main:list(T"Custom c4")
+
+-----------------------------------------------
+--------------------OPTIONS--------------------
+-----------------------------------------------
+local aimbot = {
+    cam = nil,
+    nospread_ref = menu.ref_by_command_name("nospread"),
+    nospread_value = false,
+    cam_movement = true,
+    exclude_players = false,
+    exclude_vehicles = false,
+    exclude_npcs = false,
+    cam_x = -0.1,
+    cam_y = 0.1,
+    cam_z = 0.6,
+    fov = 50,
+    esp_colour = {r = 255, g = 0, b = 255, a = 255},
+    bone = 0x796e,
+    oneshot = true
+}
+
+local position_change = false
+aimbot_list:toggle_loop(T"Aimbot", {}, "", function()
+    if not aimbot.nospread_ref.value then
+        aimbot.nospread_ref.value = true
+        aimbot.nospread_value = true
+    end
+    
+    if is_player_free_aiming(players.user()) then
+        if aimbot.cam_movement then
+            local was_vehicle = false
+            local entity_vehicle = nil
+            local entity = func.get_entity_player_is_aiming_at(players.user(), false)
+
+            if entity and is_entity_a_ped(entity) and not is_entity_dead(entity, true) then
+                if is_ped_in_any_vehicle(entity) then
+                    entity_vehicle = get_vehicle_ped_is_in(entity, false)
+                    local passengers = func.get_passengers(entity_vehicle)
+                    for i, passenger in passengers do
+                        if not is_entity_dead(passenger) then
+                            entity = passengers[i].ped
+                            continue
+                        end
+                    end
+                    was_vehicle = true
+                end
+
+                local user_pos = players.get_position(players.user())
+                local target_pos = get_entity_coords(entity)
+                draw_line(user_pos.x, user_pos.y, user_pos.z, target_pos.x, target_pos.y, target_pos.z, 255, 255, 0, 255)
+
+                if was_vehicle and entity and not aimbot.exclude_vehicles then
+                    while is_player_free_aiming(players.user()) and entity and is_entity_a_ped(entity) and not is_entity_dead(entity, true) do
+                        aimbot_esp(entity, aimbot.esp_colour)
+                        local position = get_world_position_of_entity_bone(entity, get_ped_bone_index(entity, aimbot.bone))
+                        local rel = v3.new(position)
+                        rel:sub(get_cam_coord(aimbot.cam))
+                        local rot1 = rel:toRot()
+                        if aimbot.cam == nil then
+                            aimbot.cam = create_cam(aimbot.cam_x, aimbot.cam_y, aimbot.cam_z, aimbot.fov)
+                        end
+                        if position_change then
+                            delete_cam(aimbot.cam)
+                            aimbot.cam = nil
+                            util.yield(100)
+                            aimbot.cam = create_cam(aimbot.cam_x, aimbot.cam_y, aimbot.cam_z, aimbot.fov)
+                            position_change = false
+                        end
+                        set_cam_rot(aimbot.cam, rot1.x - 0.65, rot1.y, rot1.z, 2)
+                        on_shooting(entity, aimbot.exclude_players, aimbot.exclude_vehicles, aimbot.exclude_npcs, aimbot.bone, aimbot.oneshot)
+                        util.yield()
+                    end
+                end
+
+                if not was_vehicle and entity and not is_ped_a_player(entity) and not aimbot.exclude_npcs then
+                    while is_player_free_aiming(players.user()) and entity and is_entity_a_ped(entity) and not is_entity_dead(entity, true) do
+                        aimbot_esp(entity, aimbot.esp_colour)
+                        local position = get_world_position_of_entity_bone(entity, get_ped_bone_index(entity, aimbot.bone))
+                        local rel = v3.new(position)
+                        rel:sub(get_cam_coord(aimbot.cam))
+                        local rot1 = rel:toRot()
+                        if aimbot.cam == nil then
+                            aimbot.cam = create_cam(aimbot.cam_x, aimbot.cam_y, aimbot.cam_z, aimbot.fov)
+                        end
+                        if position_change then
+                            delete_cam(aimbot.cam)
+                            aimbot.cam = nil
+                            util.yield(100)
+                            aimbot.cam = create_cam(aimbot.cam_x, aimbot.cam_y, aimbot.cam_z, aimbot.fov)
+                            position_change = false
+                        end
+                        set_cam_rot(aimbot.cam, rot1.x - 0.65, rot1.y, rot1.z, 2)
+                        on_shooting(entity, aimbot.exclude_players, aimbot.exclude_vehicles, aimbot.exclude_npcs, aimbot.bone, aimbot.oneshot)
+                        util.yield()
+                    end
+                end
+
+                if not was_vehicle and entity and is_ped_a_player(entity) and not aimbot.exclude_players then
+                    while is_player_free_aiming(players.user()) and entity and is_entity_a_ped(entity) and not is_entity_dead(entity, true) do
+                        aimbot_esp(entity, aimbot.esp_colour)
+                        local position = get_world_position_of_entity_bone(entity, get_ped_bone_index(entity, aimbot.bone))
+                        local rel = v3.new(position)
+                        rel:sub(get_cam_coord(aimbot.cam))
+                        local rot1 = rel:toRot()
+                        if aimbot.cam == nil then
+                            aimbot.cam = create_cam(aimbot.cam_x, aimbot.cam_y, aimbot.cam_z, aimbot.fov)
+                        end
+                        if position_change then
+                            delete_cam(aimbot.cam)
+                            aimbot.cam = nil
+                            util.yield(100)
+                            aimbot.cam = create_cam(aimbot.cam_x, aimbot.cam_y, aimbot.cam_z, aimbot.fov)
+                            position_change = false
+                        end
+                        set_cam_rot(aimbot.cam, rot1.x - 0.65, rot1.y, rot1.z, 2)
+                        on_shooting(entity, aimbot.exclude_players, aimbot.exclude_vehicles, aimbot.exclude_npcs, aimbot.bone, aimbot.oneshot)
+                        util.yield()
+                    end
+                end
+            else
+                if aimbot.cam != nil and not func.get_entity_player_is_aiming_at(players.user(), false) then
+                    delete_cam(aimbot.cam)
+                    aimbot.cam = nil
+                end
+            end
+        else
+            if is_player_free_aiming(players.user()) then
+                local entity = func.get_entity_player_is_aiming_at(players.user(), false)
+                if entity then
+                    aimbot_esp(entity, aimbot.esp_colour)
+                end
+            end
+
+            local hit_coords = v3.new()
+	        if get_ped_last_weapon_impact_coord(players.user_ped(), hit_coords) then
+                local closest_ped = get_closest_ped_aimbot(hit_coords)
+                if closest_ped != nil then
+                    on_shooting(closest_ped, aimbot.exclude_players, aimbot.exclude_vehicles, aimbot.exclude_npcs, aimbot.bone, aimbot.oneshot)
+                end
+	        end
+        end
+    else
+        if aimbot.cam_movement then
+            if aimbot.cam != nil then
+                delete_cam(aimbot.cam)
+                aimbot.cam = nil
+            end
+        end
+    end
+end, function()
+    if aimbot.cam != nil then
+        delete_cam(aimbot.cam)
+        aimbot.cam = nil
+    end
+    if aimbot.nospread_value then
+        aimbot.nospread_ref.value = false
+        aimbot.nospread_value = false
+    end
+end)
+
+-------------------
+--CAMERA MOVEMENT--
+-------------------
+aimbot_list:toggle(T"Camera Movement", {}, "", function(on)
+    aimbot.cam_movement = on
+end, true)
+
+------------
+--ONE SHOT--
+------------
+aimbot_list:toggle(T"One Shot", {}, "", function(on)
+    aimbot.oneshot = on
+end, true)
+
+--------------
+--ESP Colour--
+--------------
+func.colour_list(aimbot_list, T"ESP Colour", aimbot.esp_colour, 1)
+
+----------------
+--CAM OFFSET X--
+----------------
+aimbot_list:slider_float(T"Cam Offset X", {"Ncamoffsetx"}, "", -5000, 5000, -1, 10, function(count)
+    aimbot.cam_x = count/10
+    position_change = true
+end)
+
+----------------
+--CAM OFFSET Y--
+----------------
+aimbot_list:slider_float(T"Cam Offset Y", {"Ncamoffsety"}, "", -5000, 5000, 1, 10, function(count)
+    aimbot.cam_y = count/10
+    position_change = true
+end)
+
+----------------
+--CAM OFFSET Z--
+----------------
+aimbot_list:slider_float(T"Cam Offset Z", {"Ncamoffsetz"}, "", -5000, 5000, 6, 10, function(count)
+    aimbot.cam_z = count/10
+    position_change = true
+end)
+
+-----------
+--CAM FOV--
+-----------
+aimbot_list:slider(T"Cam FOV", {"Ncamfov"}, "", 1, 130, 50, 1, function(count)
+    aimbot.fov = count
+    position_change = true
+end)
+
+----------------
+--LOCKING BONE--
+----------------
+aimbot_list:list_select(T"Locking Bone", {}, "", tables.all_bones_names, 73, function(index)
+    aimbot.bone = tables.all_boneids[index]
+end)
+
+-------------
+--SET ALPHA--
+-------------
+aimbot_list:slider(T"Set Alpha", {"Nset_alphabot"}, "", 0, 100, 100, 20, function(count)
+    set_entity_alpha(players.user_ped(), (count/100) * 255, false)
+end)
+
+-------------------
+--EXCLUDE PLAYERS--
+-------------------
+aimbot_list:toggle(T"Exclude Players", {}, "", function(on)
+    aimbot.exclude_players = on
+end)
+
+--------------------
+--EXCLUDE VEHICLES--
+--------------------
+aimbot_list:toggle(T"Exclude Vehicles", {}, "", function(on)
+    aimbot.exclude_vehicles = on
+end)
+
+----------------
+--EXCLUDE NPCS--
+----------------
+aimbot_list:toggle(T"Exclude NPCs", {}, "", function(on)
+    aimbot.exclude_npcs = on
+end)
+
+----------
+--CUSTOM--
+----------
+local custom_object = ""
+object_attacher_list:action(T"Custom", {"Ncustomobj"}, "", function()
+    menu.show_command_box("Ncustomobj ")
+end, function(object)
+    custom_object = object
+end)
+
+-----------
+--OBJECTS--
+-----------
+local object_hash = util.joaat("p_ld_soc_ball_01")
+local object_hashes = {util.joaat("p_ld_soc_ball_01"), util.joaat("prop_paints_can07"), util.joaat("prop_money_bag_01"), util.joaat("prop_tool_blowtorch"), util.joaat(custom_object)}
+local object_options = {"p_ld_soc_ball_01", "prop_paints_can07", "prop_money_bag_01", "prop_tool_blowtorch", T"Custom"}
+object_attacher_list:list_action(T"Objects", {}, "", object_options, function(index)
+    object_hash = object_hashes[index]
+end)
+
+-------------------
+--OBJECT ATTACHER--
+-------------------
+local shot_objects = {}
+local attached_objects = {}
+local object_attacher;object_attacher = object_attacher_list:toggle_loop(T"Object Attacher", {}, "", function()
+	if is_ped_shooting(players.user_ped()) then
+		local hash = object_hash
+		util.request_model(hash)
+		local player_pos = get_offset_from_entity_in_world_coords(players.user_ped(), 0.28, 1.5, 0.5)
+		local dir = {}
+		local c2 = {}
+		c2 = func.get_offset_from_gameplay_camera(100)
+		dir.x = (c2.x - player_pos.x) * 75
+		dir.y = (c2.y - player_pos.y) * 75
+		dir.z = (c2.z - player_pos.z) * 75
+		local object = entities.create_object(hash, player_pos)
+		set_entity_no_collision_entity(object, players.user_ped(), false)
+		apply_force_to_entity(object, 0, dir.x, dir.y, dir.z, 0.0, 0.0, 0.0, 0, false, false, true, false, false)
+		set_entity_has_gravity(object, true)
+		table.insert(shot_objects, object)
+	end
+end)
+
+------------------
+--DELETE OBJECTS--
+------------------
+object_attacher_list:action(T"Delete Objects", {}, "", function()
+    for i, object in attached_objects do
+        entities.delete_by_handle(object)
+    end
+end)
+
+------------
+--BOOSTERS--
+------------
+local boosters_table = {shot_fireworks = {}, attached_fire_works = {}, boosters_time = 10000}
+local boosters;boosters = boosters_list:toggle_loop(T"Booster", {}, "", function()
+	if is_ped_shooting(players.user_ped()) then
+        if #boosters_table.attached_fire_works < 4 then
+		    local hash = util.joaat("w_lr_firework_rocket")
+		    util.request_model(hash)
+		    local player_pos = get_offset_from_entity_in_world_coords(players.user_ped(), 0.28, 1.5, 0.5)
+		    local dir = {}
+		    local c2 = {}
+		    c2 = func.get_offset_from_gameplay_camera(100)
+		    dir.x = (c2.x - player_pos.x) * 75
+		    dir.y = (c2.y - player_pos.y) * 75
+		    dir.z = (c2.z - player_pos.z) * 75
+		    local object = entities.create_object(hash, player_pos)
+		    set_entity_no_collision_entity(object, players.user_ped(), false)
+		    apply_force_to_entity(object, 0, dir.x, dir.y, dir.z, 0.0, 0.0, 0.0, 0, false, false, true, false, false)
+		    set_entity_has_gravity(object, true)
+		    table.insert(boosters_table.shot_fireworks, object)
+        else
+            util.toast(T"Maximum boosters (4) reached remove 1 or wait till they are finished.")
+        end
+	end
+end)
+
+---------
+--TIME---
+---------
+boosters_list:slider(T"Booster Time", {"Nboostertime"}, "", 1, 120, 10, 1, function(count)
+    boosters_table.boosters_time = count * 1000
+end)
+
+---------------------
+--REMOVE A BOOSTER---
+---------------------
+boosters_list:action(T"Remove A Booster", {}, "", function(count)
+    for i, object in boosters_table.attached_fire_works do
+        if i == 1 then
+            entities.delete_by_handle(object.obj)
+        end
+    end
+    table.remove(boosters_table.attached_fire_works, 1)
+end)
+
+-----------
+--VEHICLE--
+-----------
+local veh_hash = "adder"
+func.make_all_vehicles_list(vehicle_gun_list, function(vehicle)
+    veh_hash = vehicle
+end)
+
+---------------
+--VEHICLE GUN--
+---------------
+local vehicle_gun = {speed = 200, set_in_vehicle = false, no_gravity = false}
+vehicle_gun_list:toggle_loop(T"Vehicle Gun", {}, "", function()
+    if is_ped_shooting(players.user_ped()) and not is_ped_in_any_vehicle(players.user_ped(), false) then
+        local hash = util.joaat(veh_hash)
+        util.request_model(hash)
+        local offset_coords = get_offset_from_entity_in_world_coords(players.user_ped(), 0.0, 5.0, 3.0)
+        local vehicle = entities.create_vehicle(hash, offset_coords, 0)
+        local cam_rot = get_gameplay_cam_rot(0)
+        set_entity_rotation(vehicle, cam_rot.x, cam_rot.y, cam_rot.z, 0, true)
+        set_entity_no_collision_entity(vehicle, players.user_ped(), true)
+        
+        set_vehicle_custom_primary_colour(vehicle, math.random(0, 255), math.random(0, 255), math.random(0, 255))
+        set_vehicle_custom_secondary_colour(vehicle, math.random(0, 255), math.random(0, 255), math.random(0, 255))
+        if vehicle_gun.set_in_vehicle then
+            set_ped_into_vehicle(players.user_ped(), vehicle, -1)
+        end
+        if vehicle_gun.no_gravity then
+            set_vehicle_gravity(vehicle, false)
+        end
+        set_vehicle_forward_speed(vehicle, vehicle_gun.speed)
+    end
+end)
+
+---------
+--SPEED--
+---------
+vehicle_gun_list:slider(T"Speed", {"Nvehiclegunspeed"}, "", 10, 400, 200, 1, function(count)
+    vehicle_gun.speed = count
+end)
+
+------------------
+--SET IN VEHICLE--
+------------------
+vehicle_gun_list:toggle(T"Set In Vehicle", {}, "", function(on)
+    vehicle_gun.set_in_vehicle = on
+end)
+
+--------------
+--NO GRAVITY--
+--------------
+vehicle_gun_list:toggle(T"No Gravity", {}, "", function(on)
+    vehicle_gun.no_gravity = on
+end)
+
+-----------------
+--BOOST VEHICLE--
+-----------------
+bullet_reactions_list:toggle_loop(T"Boost Vehicle", {}, "", function()
+    if is_ped_shooting(players.user_ped()) then
+        local entity = func.get_entity_player_is_aiming_at(players.user(), true)
+        if entity then
+            if is_entity_a_vehicle(entity) then
+                set_vehicle_forward_speed(entity, 100)
+            end
+        end
+    end
+end)
+
+------------------
+--EXPLODE ENTITY--
+------------------
+bullet_reactions_list:toggle_loop(T"Explode Entity", {}, "", function()
+    if is_ped_shooting(players.user_ped()) then
+        local entity = func.get_entity_player_is_aiming_at(players.user(), true)
+        if entity then
+            local position = get_entity_coords(entity, false)
+            add_explosion(position.x, position.y, position.z-1, 1, 1.0, true, false, 1.0, false)
+        end
+    end
+end)
+
+-----------------
+--FREEZE ENTITY--
+-----------------
+bullet_reactions_list:toggle_loop(T"Freeze Entity", {}, "", function()
+    if is_ped_shooting(players.user_ped()) then
+        local entity = func.get_entity_player_is_aiming_at(players.user(), true)
+        if entity then
+            freeze_entity_position(entity, true)
+        end
+    end
+end)
+
+---------------------------
+--TURN ENTITY GRAVITY OFF--
+---------------------------
+bullet_reactions_list:toggle_loop(T"Turn Entity Gravity Off", {}, "", function()
+    if is_ped_shooting(players.user_ped()) then
+        local entity = func.get_entity_player_is_aiming_at(players.user(), true)
+        if entity then
+            if is_entity_a_vehicle(entity) then
+                set_vehicle_gravity(entity, false)
+            else
+                set_entity_has_gravity(entity, false)
+            end
+        end
+    end
+end)
+
+---------------------
+--MULTIPLIER AMOUNT--
+---------------------
+local size_multiplier = 10
+size_multiplier_list:slider(T"Multiplier Amount", {"Nmultiplieramd"} , T"10 means default size", 10, 200, 10, 5, function(count)
+	size_multiplier = count
+end)
+
+-------------------
+--SIZE MULTIPLIER--
+-------------------
+size_multiplier_list:toggle_loop(T"Size Multiplier", {}, "", function()
+    local weapon = get_selected_ped_weapon(players.user_ped())
+	set_weapon_aoe_modifier(weapon, size_multiplier / 10)
+	util.yield(10)
+end, function()
+    local weapon = get_selected_ped_weapon(players.user_ped())
+	set_weapon_aoe_modifier(weapon, 1.0)
+end)
+
+local impact_gun_settings = explosion_impact_gun:list(T"Settings")
+local impact_gun = {explosion_type = 0, damage_scale = 1, is_audible = true, is_invisible = false, camera_shake = 0}
+------------------
+--EXPLOSION TYPE--
+------------------
+impact_gun_settings:list_action(T"Explosion Type", {}, T"All explosion types in the game.", tables.explosion_types_name, function(index)
+    impact_gun.explosion_type = index - 1
+end)
+
+----------------
+--DAMAGE SCALE--
+----------------
+impact_gun_settings:slider(T"Damage Scale", {"Ndamagescale"}, "", 1, 100, 1, 1, function(count)
+	impact_gun.damage_scale = count
+end)
+
+--------------
+--IS AUDIBLE--
+--------------
+impact_gun_settings:toggle(T"Is Audible", {}, "", function(on)
+    impact_gun.is_audible = on
+end, true)
+
+----------------
+--IS INVISIBLE--
+----------------
+impact_gun_settings:toggle(T"Is Invisible", {}, "", function(on)
+    impact_gun.is_invisible = on
+end)
+
+----------------
+--CAMERA SHAKE--
+----------------
+impact_gun_settings:slider(T"Camera Shake", {"Ncamshake"}, "", 0, 100, 0, 10, function(count)
+	impact_gun.camera_shake = count
+end)
+
+------------------------
+--EXPLOSION IMPACT GUN--
+------------------------
+explosion_impact_gun:toggle_loop(T"Explosion Impact Gun", {}, "", function()
+	local hit_coords = v3.new()
+	if get_ped_last_weapon_impact_coord(players.user_ped(), hit_coords) then
+	    add_explosion(hit_coords.x, hit_coords.y, hit_coords.z, impact_gun.explosion_type, impact_gun.damage_scale, impact_gun.is_audible, impact_gun.is_invisible, impact_gun.camera_shake, false)
+    end
+end)
+
+-----------------
+--CUSTOM C4 GUN--
+-----------------
+local c4_object = nil
+custom_c4_list:toggle_loop(T"Custom c4 Gun", {}, "", function()
+	if is_ped_shooting(players.user_ped()) and not does_entity_exist(c4_object) then
+		local hash = util.joaat("prop_bomb_01_s")
+		util.request_model(hash)
+        local offset_coords = get_offset_from_entity_in_world_coords(players.user_ped(), 0.0, 0.5, 0.5)
+		local dir = {}
+		local c2 = func.get_offset_from_gameplay_camera(50)
+		dir.x = (c2.x - offset_coords.x) * 50
+		dir.y = (c2.y - offset_coords.y) * 50
+		dir.z = (c2.z - offset_coords.z) * 50
+
+        c4_object = entities.create_object(hash, offset_coords)
+		set_entity_no_collision_entity(c4_object, players.user_ped(), false)
+		apply_force_to_entity(c4_object, 0, dir.x, dir.y, dir.z, 0.0, 0.0, 0.0, 0, true, false, true, false, true)
+		set_entity_has_gravity(c4_object, true)
+	end
+end)
+
+--------------
+--EXECUTE C4--
+--------------
+local custom_c4_explosions = {T"Orbital Explosion", T"Nuke Explosion"}
+custom_c4_list:textslider(T"Execute c4", {}, "", custom_c4_explosions, function(index, name)
+    if does_entity_exist(c4_object) then
+        local c4_position = get_entity_coords(c4_object, true)
+        entities.delete_by_handle(c4_object)
+        switch index do
+            case 1:
+                func.use_fx_asset("scr_xm_orbital")
+                add_explosion(c4_position.x, c4_position.y, c4_position.z, 59, 1, true, false, 1.0, false)
+                start_networked_particle_fx_non_looped_at_coord("scr_xm_orbital_blast", c4_position.x, c4_position.y, c4_position.z, 0, 180, 0, 1.0, true, true, true)
+                for i = 1, 4 do
+                    play_sound_from_entity(-1, "DLC_XM_Explosions_Orbital_Cannon", players.user_ped(), 0, true, false)
+                end
+                break
+            case 2:
+	    	    func.create_nuke_explosion(c4_position)
+                break
+        end
+    end
+end)
+
+----------------------
+--ORBITAL STRIKE GUN--
+----------------------
+weapon_main:toggle_loop(T"Orbital Strike Gun", {}, "", function()
+	local hit_coords = v3.new()
+	if get_ped_last_weapon_impact_coord(players.user_ped(), hit_coords) then
+        func.use_fx_asset("scr_xm_orbital")
+        add_explosion(hit_coords.x, hit_coords.y, hit_coords.z, 59, 1, true, false, 1.0, false)
+        start_networked_particle_fx_non_looped_at_coord("scr_xm_orbital_blast", hit_coords.x, hit_coords.y, hit_coords.z, 0, 180, 0, 1.0, true, true, true)
+        for i = 1, 4 do
+            play_sound_from_entity(-1, "DLC_XM_Explosions_Orbital_Cannon", players.user_ped(), 0, true, false)
+        end
+	end
+end)
+
+------------
+--NUKE GUN--
+------------
+weapon_main:toggle_loop(T"Nuke Gun", {}, "", function()
+	if is_ped_shooting(players.user_ped()) and not is_ped_in_any_vehicle(players.user_ped(), false) then
+		local hash = util.joaat("prop_military_pickup_01")
+		util.request_model(hash)
+		local player_pos = get_offset_from_entity_in_world_coords(players.user_ped(), 0.0, 5.0, 3.0)
+		local dir = {}
+		local c2 = {}
+		c2 = func.get_offset_from_gameplay_camera(1500)
+		dir.x = (c2.x - player_pos.x) * 1500
+		dir.y = (c2.y - player_pos.y) * 1500
+		dir.z = (c2.z - player_pos.z) * 1500
+
+		local nuke = entities.create_object(hash, player_pos)
+		set_entity_no_collision_entity(nuke, players.user_ped(), false)
+		apply_force_to_entity(nuke, 0, dir.x, dir.y, dir.z, 0.0, 0.0, 0.0, 0, true, false, true, false, true)
+		set_entity_has_gravity(nuke, true)
+
+		while not has_entity_collided_with_anything(nuke) do
+			util.yield(0)
+		end
+		local nuke_position = get_entity_coords(nuke, true)
+		entities.delete_by_handle(nuke)
+        func.create_nuke_explosion(nuke_position)
+	end
+end)
+
+util.create_tick_handler(function()
+
+    while object_attacher.value do
+        for i, object in shot_objects do
+    		if has_entity_collided_with_anything(object) then
+    			local raycast = get_raycast_from_entity(object, 30)
+    			if does_entity_exist(raycast.entityHit) then
+    				local object_coords = get_entity_coords(object, false)
+    				local offset = get_offset_from_entity_given_world_coords(raycast.entityHit, object_coords.x, object_coords.y, object_coords.z)
+    				local rotation = get_entity_rotation(object, 2)
+    				attach_entity_to_entity(object, raycast.entityHit, 0, offset.x, offset.y, offset.z, rotation.x, rotation.y, rotation.z, true, false, false, false, 0, true)
+                    table.insert(attached_objects, object)
+    			else
+    				entities.delete_by_handle(object)
+    			end
+                table.remove(shot_objects, i)
+    		end
+    	end
+        util.yield()
+    end
+
+    while boosters.value do
+        for i, object in boosters_table.shot_fireworks do
+    		if has_entity_collided_with_anything(object) then
+    			local raycast = get_raycast_from_entity(object, 14)
+    			if does_entity_exist(raycast.entityHit) then
+    				local object_coords = get_entity_coords(object, false)
+    				local offset = get_offset_from_entity_given_world_coords(raycast.entityHit, object_coords.x, object_coords.y, object_coords.z)
+                    local rel = v3.new(object_coords)
+                    rel:sub(get_entity_coords(raycast.entityHit))
+                    local rotation = rel:toRot()
+    				attach_entity_to_entity(object, raycast.entityHit, 0, offset.x, offset.y, offset.z, -rotation.x, -rotation.y, -rotation.z, true, false, false, false, 0, true)
+                    table.insert(boosters_table.attached_fire_works, {obj = object, ent = raycast.entityHit, time = util.current_time_millis() + boosters_table.boosters_time})
+    			else
+    				entities.delete_by_handle(object)
+    			end
+                table.remove(boosters_table.shot_fireworks, i)
+    		end
+    	end
+
+        if next(boosters_table.attached_fire_works) != nil then
+            for i, object in boosters_table.attached_fire_works do
+                local rel = v3.new(get_entity_coords(object.ent, false))
+                rel:sub(get_entity_coords(object.obj))
+                rel:normalise()
+                if is_entity_a_ped(object.ent) then
+                    set_ped_to_ragdoll(object.ent, 2500, 0, 0, false, false, false)
+                end
+                apply_force_to_entity(object.ent, 3, rel.x, rel.y, rel.z, 0.0, 0.0, 1.0, 0, false, false, true, false, false)
+                func.use_fx_asset("scr_agencyheist")
+                start_networked_particle_fx_non_looped_on_entity("sp_fire_trail", object.obj, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, false, false, false)
+                if object.time <= util.current_time_millis() then
+                    entities.delete_by_handle(object.obj)
+                    remove_named_ptfx_asset("scr_agencyheist")
+                    table.remove(boosters_table.attached_fire_works, i)
+                end
+            end
+        end
+        util.yield()
+    end
+
+end)

@@ -1,0 +1,45 @@
+Model: cerberus2
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 28
+Pearl Colour: 28
+Wheel Colour: 28
+Wheel Type: 9
+Rear Bumper: 3
+Exhaust: 7
+Chassis: 3
+Grille: 7
+Hood: 5
+Right Fender: 5
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 113
+Plaques: 4
+Air Filter: 4
+Struts: 3
+Arch Cover: 6
+Aerials: 1
+Livery: 14
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #da1918
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 150
+Dashboard Colour: 35
+Tyres Mode: 1

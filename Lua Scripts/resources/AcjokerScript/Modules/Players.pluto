@@ -1,0 +1,2582 @@
+local func = require 'resources/AcjokerScript/Modules/Functions'
+local Tables = require 'resources/AcjokerScript/ACJSTables'
+local pil_dri = {'S_M_M_Pilot_01'}
+local gunners = {'s_m_y_blackops_01', 's_m_y_blackops_02', 's_m_y_blackops_03'}
+local plneatkr = {}
+local heliatkr = {}
+local vehatkr = {}
+local plneveh = {}
+local heliveh = {}
+local atkveh = {}
+local atkset = {model = 'a_m_y_methhead_01', invis = false, invinc = true, weap = 'weapon_railgun', atkrdelete = false, p = 0, 
+count = 1, delveh = false, clone = false}
+local platkset = {invis = false, invinc = true, plane = 'lazer', p = 0, plcount = 1, plnedelete = false, weapon = 'weapon_railgun',
+ disbetplne = nil, delveh = false}
+local heliatkset = {invis = false, invinc = true, helicopter = 'buzzard', h = 0, hlcount = 1, helidelete = false, weapon = 'weapon_railgun',
+disbetheli = nil, delveh = false}
+local vehatkset = {invis = false, invinc = true, attkrveh = 'minitank', atkv = 0, vlcount = 1, vehdelete = false, weapon = 'weapon_railgun',
+disbetveh = nil, delveh = false}
+local spawatk = {}
+local weapons_menus = {}
+local menus = {}
+
+
+----------------------------------------Functions---------------------------------------------------------
+local function is_own_pid(pid)
+	if players.user() == pid then
+		return true
+	else
+		return false
+	end
+end
+
+
+local function Disbet_player(pid)
+	local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+	local tar1 = GET_ENTITY_COORDS(targets, true)
+	local play = GET_ENTITY_COORDS(players.user_ped(), true)
+	local disbet = VDIST2(play.x, play.y, play.z, tar1.x, tar1.y, tar1.z)
+	return disbet
+end
+
+local function GetPlayVeh(pid, opt)
+
+	local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+	if not players.exists(pid) then
+		util.stop_thread()
+	end
+	local spec = func.GetSpec(pid)
+	if func.set.alert then
+		func.ACutil(Str_trans('Getting control of vehicle'))
+	end
+	if Disbet_player(pid) > 750000 then
+		func.Specon(pid)
+		if IS_PED_IN_ANY_VEHICLE(pedm, true) then
+			opt()
+			if not spec then
+				func.Specoff(pid)
+			end
+			return
+		else
+			if func.set.alert then
+			func.ACutil(Str_trans('Player not in vehicle'))
+			end
+			func.Specoff(pid)
+		end
+	elseif Disbet_player(pid) < 750000 then
+		if IS_PED_IN_ANY_VEHICLE(pedm, true) then
+			opt()
+			if not spec then
+				func.Specoff(pid)
+			end
+		return
+		end
+	else
+		if func.set.alert then
+			func.ACutil(Str_trans('Player not in vehicle'))
+		end
+	end
+end
+
+local function Atk(tab, targets, weapon, pilot)
+	for tab as atkr do
+		local playerRelGroup = GET_PED_RELATIONSHIP_GROUP_HASH(targets)
+		SET_RELATIONSHIP_BETWEEN_GROUPS(5, util.joaat("ARMY"), playerRelGroup)
+		SET_RELATIONSHIP_BETWEEN_GROUPS(5, playerRelGroup, util.joaat("ARMY"))
+		SET_RELATIONSHIP_BETWEEN_GROUPS(0, util.joaat("ARMY"), util.joaat("ARMY"))
+		GIVE_WEAPON_TO_PED(atkr, util.joaat(weapon), -1, false, true)
+		
+		SET_PED_COMBAT_ATTRIBUTES(atkr, 20, true)
+
+		SET_PED_MAX_HEALTH(atkr, 500)
+		SET_ENTITY_HEALTH(atkr, 500, 0)
+		SET_ENTITY_INVINCIBLE(atkr, true)
+		SET_PED_SHOOT_RATE(atkr, 1000)
+		SET_PED_RELATIONSHIP_GROUP_HASH(atkr, util.joaat("ARMY"))
+		TASK_COMBAT_HATED_TARGETS_AROUND_PED(atkr, 200.0, 0)
+		TASK_COMBAT_PED(atkr , targets, 0, 16)
+		CONTROL_MOUNTED_WEAPON(atkr)
+		SET_PED_KEEP_TASK(pilot, true)
+		SET_PED_ACCURACY(atkr , 100.0)
+		SET_PED_COMBAT_ABILITY(atkr , 2)
+	end
+end
+
+local function Plneatkr(invinc, invis, pid, hash)
+	local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+	local tar1 = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(targets, 1.0, 0.0, 500.0)
+	local pilhs = util.joaat(pil_dri[1])
+	local plne = util.joaat(hash)
+	func.Streament(plne)
+	func.Streament(pilhs)
+	for gunners as gunner do
+		local gunh = util.joaat(gunner)
+		func.Streament(gunh)
+	end
+
+	for i= 1 , 100 do
+		tar1.x = tar1.x + i * 2
+		tar1.y = tar1.y + i * 2
+   
+		local atkplne = CREATE_VEHICLE(plne, tar1.x, tar1.y, tar1.z, 0.0, true, true, false)
+		func.Vmod(atkplne, 'fuckoff', 100, 40)
+		entities.set_can_migrate(entities.handle_to_pointer(atkplne), false)
+		if invinc then
+			SET_ENTITY_INVINCIBLE(atkplne, true)
+		end
+		if invis then
+			SET_ENTITY_VISIBLE(atkplne, false, 0)
+		end
+
+		local plpilot = entities.create_ped(1, pilhs, tar1, 0)
+		entities.set_can_migrate(entities.handle_to_pointer(plpilot), false)
+		SET_PED_INTO_VEHICLE(plpilot , atkplne, -1)
+		table.insert(plneatkr, plpilot)
+		local seatnum = GET_VEHICLE_MODEL_NUMBER_OF_SEATS(plne) - 1
+		for j = 1, seatnum do
+			if DOES_ENTITY_EXIST(atkplne) then
+				util.yield(10)
+					local gunner = entities.create_ped(1, util.joaat(gunners[j]), tar1, 0) 
+					SET_PED_INTO_VEHICLE(gunner , atkplne, -2)
+					table.insert(plneatkr, gunner)
+			end
+		end
+
+		Atk(plneatkr, targets, platkset.weapon, plpilot)
+		SET_VEHICLE_FORWARD_SPEED(atkplne, 80)
+		CONTROL_LANDING_GEAR(atkplne, 3)
+		TASK_PLANE_MISSION(plpilot , atkplne, 0, targets, 0, 0, 0, 6, 0.0, 0, 0.0, 50.0, 40.0)
+		TASK_COMBAT_PED(plpilot , targets, 0, 16)
+		SET_PED_ACCURACY(plpilot , 100.0)
+		SET_PED_COMBAT_ABILITY(plpilot , 2)
+		CONTROL_MOUNTED_WEAPON(plpilot)
+		SET_PED_KEEP_TASK(plpilot, true)
+		func.AddBlip(atkplne, 424, 1)
+		util.yield()
+		return atkplne, plpilot
+	end
+end
+
+local function Heliatkr(invinc, invis, pid, hash)
+	local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+	local tar1 = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(targets, 1.0, 0.0, 100.0)
+	local pilhs = util.joaat(pil_dri[1])
+	for gunners as gunner do
+		local gunh = util.joaat(gunner)
+		func.Streament(gunh)
+	end
+
+	local heli = util.joaat(hash)
+	func.Streament(heli)
+	func.Streament(pilhs)
+
+
+	for i= 1 , 100 do
+		tar1.x = tar1.x + i * 2
+		tar1.y = tar1.y + i * 2
+   
+		local atkheli = CREATE_VEHICLE(heli, tar1.x, tar1.y, tar1.z, 0.0, true, true, false)
+		func.Vmod(atkheli, 'fuckoff', 100, 40)
+		entities.set_can_migrate(entities.handle_to_pointer(atkheli), false)
+		if invinc then
+			SET_ENTITY_INVINCIBLE(atkheli, true)
+		end
+		if invis then
+			SET_ENTITY_VISIBLE(atkheli, false, 0)
+		end
+		local pilot = entities.create_ped(1, pilhs, tar1, 0)
+		SET_PED_INTO_VEHICLE(pilot , atkheli, -1)
+		table.insert(heliatkr, pilot)
+		local seatnum = GET_VEHICLE_MODEL_NUMBER_OF_SEATS(heli) - 1
+		for j = 1, seatnum do
+			if DOES_ENTITY_EXIST(atkheli) then
+				util.yield(10)
+					local gunner = entities.create_ped(1, util.joaat(gunners[j]), tar1, 0) 
+					SET_PED_INTO_VEHICLE(gunner , atkheli, -2)
+					table.insert(heliatkr, gunner)
+			end
+		end
+		SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(pilot, true)
+		
+		TASK_HELI_MISSION(pilot, heli, 0, targets, 0.0, 0.0, 0.0, 6, 150.0, 40.0, -1.0, 0, 10, -1.0, 16)
+		CONTROL_MOUNTED_WEAPON(pilot)
+		
+		
+		Atk(heliatkr, targets, heliatkset.weapon, pilot)
+		if hash == 'akula' or 'annihilator2' then
+			SET_DEPLOY_FOLDING_WINGS(atkheli, true, true)
+		end
+		SET_HELI_BLADES_FULL_SPEED(atkheli)
+		SET_VEHICLE_FORWARD_SPEED(atkheli, 80)
+		CONTROL_LANDING_GEAR(atkheli, 3)
+		func.AddBlip(atkheli, 422, 1)
+		util.yield()
+	return atkheli, pilot
+	end
+end
+
+local function Vehatkr(invinc, invis, pid, hash)
+	local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+	local tar1 = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(targets, math.random(-1, 1), math.random(-1, 1), 0.0)
+	local drihs = util.joaat(pil_dri[1])
+	for gunners as gunner do
+		local gunh = util.joaat(gunner)
+		func.Streament(gunh)
+	end
+
+	local vhash = util.joaat(hash)
+	func.Streament(vhash)
+	func.Streament(drihs)
+
+	for i= 1 , 100 do
+		tar1.x = tar1.x + i * 2
+		tar1.y = tar1.y + i * 2
+   
+		local vatkr = CREATE_VEHICLE(vhash, tar1.x, tar1.y, tar1.z, 0.0, true, true, false)
+		func.Vmod(vatkr, 'fuckoff', 100, 40)
+		MODIFY_VEHICLE_TOP_SPEED(vatkr, 150)
+		entities.set_can_migrate(entities.handle_to_pointer(vatkr), false)
+		if invinc then
+			SET_ENTITY_INVINCIBLE(vatkr, true)
+		end
+		if invis then
+			SET_ENTITY_VISIBLE(vatkr, false, 0)
+		end
+		local driver = entities.create_ped(1, drihs, tar1, 0)
+		SET_PED_INTO_VEHICLE(driver , vatkr, -1)
+		table.insert(vehatkr, driver)
+		local seatnum = GET_VEHICLE_MODEL_NUMBER_OF_SEATS(vhash) - 1
+		for j = 1, seatnum do
+			if DOES_ENTITY_EXIST(vatkr) then
+				util.yield(10)
+				local gunner = entities.create_ped(1, util.joaat(gunners[j]), tar1, 0) 
+				SET_PED_INTO_VEHICLE(gunner , vatkr, -2)
+				CONTROL_MOUNTED_WEAPON(gunner)
+				table.insert(vehatkr, gunner)
+			end
+		end
+		SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(driver, true)
+		TASK_COMBAT_PED(driver , targets, 0, 16)
+		TASK_VEHICLE_MISSION(driver, vatkr, 0, targets, 9, 150.0, 40.0, -1.0, 0, 10, -1.0, 16)
+		CONTROL_MOUNTED_WEAPON(driver)
+		Atk(vehatkr, targets, vehatkset.weapon, driver)
+		SET_PED_KEEP_TASK(driver, true)
+		SET_VEHICLE_FORWARD_SPEED(vatkr, 20)
+		if hash == 'minitank' then
+			func.AddBlip(vatkr, 742, 1)
+		elseif hash == 'ruiner2' then
+			func.AddBlip(vatkr, 530, 1)
+		else
+			func.AddBlip(vatkr, 421, 1)
+		end
+		
+		util.yield()
+	return vatkr, driver
+	end
+end
+
+local function Atkrspawn(invinc, invis, pid, hash)
+	local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+	local tar1 = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(targets, 1, 0, 0)
+	local mdl = util.joaat(hash)
+	func.Streament(mdl)
+	local attacker = entities.create_ped(1, mdl, tar1, 0)
+	if invinc then
+		SET_ENTITY_INVINCIBLE(attacker, true)
+	end
+	SET_PED_COMBAT_ABILITY(attacker, 2)
+	SET_PED_RANDOM_PROPS(attacker)
+	SET_PED_COMBAT_ATTRIBUTES(attacker, 0, false)--can use cover
+	SET_PED_COMBAT_ATTRIBUTES(attacker, 5, true)--always fight
+	SET_PED_COMBAT_ATTRIBUTES(attacker, 13, true)--aggressive
+	SET_PED_COMBAT_ATTRIBUTES(attacker, 21, true)--can chase
+	SET_PED_COMBAT_ATTRIBUTES(attacker, 27, true)--perf acc
+	SET_PED_COMBAT_ATTRIBUTES(attacker, 27, true)--dis bull react
+	SET_PED_COMBAT_ATTRIBUTES(attacker, 58, true)--disable flee
+	SET_PED_COMBAT_ATTRIBUTES(attacker, 63, false)-- flee from invinc off
+	SET_PED_COMBAT_ATTRIBUTES(attacker, 71, true)--allow charge beyond defense area
+	SET_PED_COMBAT_ATTRIBUTES(attacker, 54, true)-- best weapon
+	TASK_COMBAT_HATED_TARGETS_AROUND_PED(attacker, 300.0, 0)
+	GIVE_WEAPON_TO_PED(attacker, Tables.Weapon_selections.atkset, 9999, true, true)
+	if invis then
+		SET_ENTITY_VISIBLE(attacker, false, 0)
+	end
+	SET_PED_INFINITE_AMMO_CLIP(attacker, true)
+	TASK_COMBAT_PED(attacker, targets, 0, 16)
+
+	SET_PED_KEEP_TASK(attacker, true)
+	SET_PED_AS_COP(attacker, true)
+	SET_PED_RELATIONSHIP_GROUP_HASH(attacker, util.joaat('rgfm_aihateplyrlikecops'))
+	SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(attacker, true)
+	func.AddBlip(attacker, 1, 1)
+	if not players.exists(pid) then
+		util.stop_thread()
+	end
+	return attacker
+end
+
+local function Atkrrefresh(pid)
+		if not players.exists(pid) or atkset.atkrdelete then
+			util.stop_thread()
+		end
+	local pname = players.get_name(pid)
+		if func.set.alert then
+			func.ACutil(Str_trans('Attackers sent after ')..pname)
+		end
+	for spawatk as atk do
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		local tar1 = GET_ENTITY_COORDS(atk)
+		local tar2 = GET_ENTITY_COORDS(targets)
+		local disbet = VDIST2(tar2.x, tar2.y, tar2.z, tar1.x, tar1.y, tar1.z)
+		local spec = func.GetSpec(pid)
+		if IS_PED_SITTING_IN_ANY_VEHICLE(targets) then
+			if atkset.delveh then
+				func.Delcar(targets, spec, pid)
+			end
+		end
+		if IS_PED_DEAD_OR_DYING(targets, 1) or disbet >= 10000 then
+			if func.set.alert then
+				func.ACutil(pname..Str_trans(' died or moved reseting attackers'))
+			end
+			func.DelEnt(spawatk)
+			atkset.p = 0
+			spawatk = {}
+			util.yield(8000)
+			while atkset.p < atkset.count and players.exists(pid) do
+				local atkr = Atkrspawn(atkset.invinc, atkset.invis, pid , atkset.model)
+				if atkset.clone then
+					CLONE_PED_TO_TARGET(targets, atkr)
+				end
+				SET_NETWORK_ID_EXISTS_ON_ALL_MACHINES(PED_TO_NET(atkr), true)
+				SET_NETWORK_ID_ALWAYS_EXISTS_FOR_PLAYER(PED_TO_NET(atkr), players.user(), true)
+				table.insert(spawatk, atkr)
+				atkset.p = atkset.p + 1
+				if #spawatk == atkset.count then
+					return
+				end
+			end
+		end
+	end
+end 
+
+local function Refreshplnes(pid)
+	if not players.exists(pid) or platkset.plnedelete then
+		util.stop_thread()
+	end
+	local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+	local pname = players.get_name(pid)
+	if func.set.alert then
+		func.ACutil(Str_trans('Planes sent after ')..pname)
+	end
+	for plneveh as plne do
+		local tarv = GET_ENTITY_COORDS(plne)
+		local tar2 = GET_ENTITY_COORDS(targets)
+		platkset.disbetplne = VDIST2(tar2.x, tar2.y, tar2.z, tarv.x, tarv.y, tarv.z)
+		local spec = func.GetSpec(pid)
+		if IS_PED_SITTING_IN_ANY_VEHICLE(targets) then
+			if platkset.delveh then
+				func.Delcar(targets, spec, pid)
+			end
+		end
+		if  IS_PED_DEAD_OR_DYING(targets, 1) or platkset.disbetplne >= 1000000 then
+			if not players.exists(pid) then
+				break
+			end
+			if func.set.alert then
+				func.ACutil(pname..Str_trans(' died or moved reseting planes'))
+			end
+			func.DelEnt(plneveh)
+			func.DelEnt(plneatkr)
+			plneveh = {}
+			plneatkr = {}
+			platkset.p = 0
+			util.yield(8000)
+			while platkset.p < platkset.plcount and players.exists(pid)  do
+				local veh, pil = Plneatkr(platkset.invinc, platkset.invis, pid, platkset.plane)
+				SET_NETWORK_ID_EXISTS_ON_ALL_MACHINES(VEH_TO_NET(veh), true)
+				SET_NETWORK_ID_ALWAYS_EXISTS_FOR_PLAYER(VEH_TO_NET(veh), players.user(), true)
+				table.insert(plneveh, veh)
+				table.insert(plneatkr, pil)
+				util.yield(150)
+				platkset.p = platkset.p + 1
+				if #plneveh == platkset.plcount then
+					return
+				end
+			end
+		else
+			break
+		end  
+	end
+end
+
+local function RefreshHeli(pid)
+	if not players.exists(pid) or heliatkset.helidelete then
+		util.stop_thread()
+	end
+	local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+	local pname = players.get_name(pid)
+	if func.set.alert then
+		func.ACutil(Str_trans('Helicopters sent after ')..pname)
+	end
+	for heliveh as heli do
+		local tarv = GET_ENTITY_COORDS(heli)
+		local tar2 = GET_ENTITY_COORDS(targets)
+		heliatkset.disbetheli = VDIST2(tar2.x, tar2.y, tar2.z, tarv.x, tarv.y, tarv.z)
+		local spec = func.GetSpec(pid)
+		if IS_PED_SITTING_IN_ANY_VEHICLE(targets) then
+			if heliatkset.delveh then
+				func.Delcar(targets, spec, pid)
+			end
+		end
+
+		if  IS_PED_DEAD_OR_DYING(targets, 1) or heliatkset.disbetheli >= 1000000 then
+			if not players.exists(pid) then
+				break
+			end
+			if func.set.alert then
+				func.ACutil(pname..Str_trans(' died or moved reseting helicopters'))
+			end
+			func.DelEnt(heliatkr)
+			func.DelEnt(heliveh)
+		
+			heliatkr = {}
+			heliveh = {}
+			heliatkset.h = 0
+			util.yield(8000)
+			while heliatkset.h < heliatkset.hlcount and players.exists(pid) do
+				local atk, pil = Heliatkr(heliatkset.invinc, heliatkset.invis, pid, heliatkset.helicopter)
+				SET_NETWORK_ID_EXISTS_ON_ALL_MACHINES(VEH_TO_NET(atk), true)
+				SET_NETWORK_ID_ALWAYS_EXISTS_FOR_PLAYER(VEH_TO_NET(atk), players.user(), true)
+				table.insert(heliveh, atk)
+				table.insert(heliatkr, pil)
+				util.yield(250)
+				heliatkset.h = heliatkset.h + 1
+				if #heliveh == heliatkset.hlcount then
+					return
+				end
+			end
+		end
+	end
+end
+
+local function Refreshveh(pid)
+	
+	if not players.exists(pid) or vehatkset.vehdelete then
+		util.stop_thread()
+	end
+	local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+	local pname = players.get_name(pid)
+	if func.set.alert then
+		func.ACutil(Str_trans('Attack vehicles sent after ')..pname)
+	end
+	for atkveh as veh do
+		local tarv = GET_ENTITY_COORDS(veh)
+		local tar2 = GET_ENTITY_COORDS(targets)
+		vehatkset.disbetveh = VDIST2(tar2.x, tar2.y, tar2.z, tarv.x, tarv.y, tarv.z)
+		local spec = func.GetSpec(pid)
+		if IS_PED_SITTING_IN_ANY_VEHICLE(targets) then
+			if vehatkset.delveh then
+				func.Delcar(targets, spec, pid)
+			end
+		end
+
+		if  IS_PED_DEAD_OR_DYING(targets, 1) or vehatkset.disbetveh >= 1000000 then
+			if not players.exists(pid) then
+				break
+			end
+			if func.set.alert then
+				func.ACutil(pname..Str_trans(' died or moved reseting attack vehicles'))
+			end
+			func.DelEnt(vehatkr)
+			func.DelEnt(atkveh)
+		
+			vehatkr = {}
+			atkveh = {}
+			vehatkset.atkv = 0
+			util.yield(8000)
+			while vehatkset.atkv < vehatkset.vlcount and players.exists(pid) do
+				local v, dri = Vehatkr(vehatkset.invinc, vehatkset.invis, pid, vehatkset.attkrveh)
+				SET_NETWORK_ID_EXISTS_ON_ALL_MACHINES(VEH_TO_NET(v), true)
+				SET_NETWORK_ID_ALWAYS_EXISTS_FOR_PLAYER(VEH_TO_NET(v), players.user(), true)
+				table.insert(atkveh, v)
+				table.insert(vehatkr, dri)
+				util.yield(250)
+				vehatkset.atkv = vehatkset.atkv + 1
+				if #atkveh == vehatkset.vlcount then
+					return
+				end
+			end
+		end 
+	end
+end
+
+
+
+local function Teabagtime(p1, p2, p3, p4, p5, p6, p7, p8)
+	util.create_tick_handler (function ()
+		PLAY_PED_AMBIENT_SPEECH_WITH_VOICE_NATIVE(p1, 'LES1A_DHAC', 'LESTER', 'SPEECH_PARAMS_FORCE_SHOUTED', 1)
+		PLAY_PED_AMBIENT_SPEECH_WITH_VOICE_NATIVE(p2, 'TUSCO_AHAD', 'LESTER', 'SPEECH_PARAMS_FORCE_SHOUTED', 1)
+		PLAY_PED_AMBIENT_SPEECH_WITH_VOICE_NATIVE(p3, 'LES1A_DHAC', 'LESTER', 'SPEECH_PARAMS_FORCE_SHOUTED', 1)
+		PLAY_PED_AMBIENT_SPEECH_WITH_VOICE_NATIVE(p4, 'TUSCO_AHAD', 'LESTER', 'SPEECH_PARAMS_FORCE_SHOUTED', 1)
+		PLAY_PED_AMBIENT_SPEECH_WITH_VOICE_NATIVE(p5, 'LES1A_DHAC', 'LESTER', 'SPEECH_PARAMS_FORCE_SHOUTED', 1)
+		PLAY_PED_AMBIENT_SPEECH_WITH_VOICE_NATIVE(p6, 'TUSCO_AHAD', 'LESTER', 'SPEECH_PARAMS_FORCE_SHOUTED', 1)
+		PLAY_PED_AMBIENT_SPEECH_WITH_VOICE_NATIVE(p7, 'LES1A_DHAC', 'LESTER', 'SPEECH_PARAMS_FORCE_SHOUTED', 1)
+		PLAY_PED_AMBIENT_SPEECH_WITH_VOICE_NATIVE(p8, 'TUSCO_AHAD', 'LESTER', 'SPEECH_PARAMS_FORCE_SHOUTED', 1)
+		--PLAY_PED_AMBIENT_SPEECH_WITH_VOICE_NATIVE(p1, 'HS3LE_ANAB', 'LESTER', 'SPEECH_PARAMS_FORCE_SHOUTED', 1)
+		util.yield(100)
+	end)
+end
+
+local function Daxfuckyou(ped_tab)
+	util.create_tick_handler (function ()
+		for ped_tab as pi do
+			PLAY_PED_AMBIENT_SPEECH_WITH_VOICE_NATIVE(pi, 'GENERIC_INSULT_HIGH', 'XM3_DAX', 'SPEECH_PARAMS_FORCE', 1)
+			util.yield(250)
+		end
+	end)
+end
+
+local function Lamarstupid(ped_tab)
+	util.create_tick_handler (function ()
+		for ped_tab as pi do
+			PLAY_PED_AMBIENT_SPEECH_WITH_VOICE_NATIVE(pi, 'GENERIC_INSULT_HIGH', 'FIX_LAMAR', 'SPEECH_PARAMS_FORCE', 1)
+			util.yield(250)
+		end
+	end)
+end
+
+local function Jesuslovesyou(ped_tab)
+	util.create_tick_handler (function ()
+		for ped_tab as pi do
+			PLAY_PED_AMBIENT_SPEECH_WITH_VOICE_NATIVE(pi, 'BUMP', 'JESSE', 'SPEECH_PARAMS_FORCE', 1)
+			util.yield(250)
+		end
+	end)
+end
+
+local function Trevortime(ped_tab)
+	util.create_tick_handler (function ()
+		for ped_tab as pi do
+			PLAY_PED_AMBIENT_SPEECH_WITH_VOICE_NATIVE(pi, 'TR2_ABAJ', 'TREVOR', 'SPEECH_PARAMS_FORCE', 1)
+			util.yield(100)
+		end
+	end)
+end
+
+local function Fuckyou(ped_tab)
+	util.create_tick_handler (function ()
+		for ped_tab as pi do
+			PLAY_PED_AMBIENT_SPEECH_NATIVE(pi, 'GENERIC_FUCK_YOU', 'SPEECH_PARAMS_FORCE', 1)
+			util.yield(100)
+		end
+	end)
+end
+
+local function Insulthigh(ped_tab)
+	util.create_tick_handler (function ()
+		for ped_tab as pi do
+			PLAY_PED_AMBIENT_SPEECH_NATIVE(pi, 'Generic_Insult_High', 'SPEECH_PARAMS_FORCE', 1)
+			util.yield(100)
+		end
+	end)
+end
+
+local function Warcry(ped_tab)
+	util.create_tick_handler (function ()
+		for ped_tab as pi do
+			PLAY_PED_AMBIENT_SPEECH_NATIVE(pi, 'GENERIC_WAR_CRY', 'SPEECH_PARAMS_FORCE', 1)
+			util.yield(100)
+		end
+
+	end)
+end
+
+local function Provoke(ped_tab)
+	util.create_tick_handler (function ()
+		for ped_tab as pi do
+			PLAY_PED_AMBIENT_SPEECH_NATIVE(pi, 'Provoke_Trespass', 'Speech_Params_Force_Shouted_Critical', 1)
+			util.yield(100)
+		end
+	end)
+end
+
+local function Combinetab(result, ...)
+	for {...} as t do
+		for t as v do
+			table.insert(result, v)
+		end
+	end
+end
+
+local function IPM(targets, tar1, pname, cage_table, pid)
+	local tar2 = GET_ENTITY_COORDS(targets)
+	local disbet = VDIST2(tar2.x, tar2.y, tar2.z, tar1.x, tar1.y, tar1.z)
+	if disbet <= 0.5 then
+		if func.set.alert then
+			func.ACutil(pname..Str_trans(' Caged'))
+		end
+		util.yield(800)
+
+	elseif disbet >= 0.5 then
+		util.yield(800)
+		if func.set.alert then
+			func.ACutil(pname..Str_trans(' Broke Free'))
+		end
+		if cage_table[pid] then
+			func.DelEnt(cage_table[pid])
+		end
+		cage_table[pid] = false
+		func.Stopsound()
+	end
+end
+
+local function ObjFrezSpawn(hsel, tar1)
+	local objHash = hsel
+	local objfS =  CREATE_OBJECT(objHash, tar1.x, tar1.y, tar1.z, true, true, true)
+	FREEZE_ENTITY_POSITION(objfS, true)
+  return objfS
+end
+
+local function SmashCar(Veh_h, tar1,  invis_aveh, rate)
+	local  CC = CREATE_VEHICLE(Veh_h, tar1.x, tar1.y, tar1.z + 5.0, 0, true, true, false)
+		if invis_aveh then
+			SET_ENTITY_VISIBLE(CC, false, 0)
+		end
+		SET_ENTITY_INVINCIBLE(CC, true)
+		SET_ENTITY_VELOCITY(CC, 0, 0, -1000)
+		SET_VEHICLE_DOORS_LOCKED_FOR_ALL_PLAYERS(CC, true)
+		SET_VEHICLE_DOORS_LOCKED_FOR_NON_SCRIPT_PLAYERS(CC, true)
+		util.yield(rate)
+		SET_ENTITY_AS_MISSION_ENTITY(CC)
+		entities.delete_by_handle(CC)
+end
+
+local function RamCar(Veh_h, tar1x, tar1y, tar1z, invis_aveh, targets, rate)
+	local RC = CREATE_VEHICLE(Veh_h, tar1x, tar1y, tar1z, 0, true, true, false)
+		if invis_aveh then
+			SET_ENTITY_VISIBLE(RC, false, 0)
+		end
+		func.PFP(RC, targets)
+		SET_ENTITY_INVINCIBLE(RC, true)
+		SET_VEHICLE_FORWARD_SPEED(RC, 1000)
+		SET_VEHICLE_DOORS_LOCKED_FOR_ALL_PLAYERS(RC, true)
+		SET_VEHICLE_DOORS_LOCKED_FOR_NON_SCRIPT_PLAYERS(RC, true)
+		util.yield(rate)
+		SET_ENTITY_AS_MISSION_ENTITY(RC)
+		entities.delete_by_handle(RC)
+end
+
+local function JuggleCar(Vehj_h, tar1,  invisjugc, jugr)
+	local  CC = CREATE_VEHICLE(Vehj_h, tar1.x, tar1.y, tar1.z - 10.0, 0, true, true, false)
+		if invisjugc then
+			SET_ENTITY_VISIBLE(CC, false, 0)
+		end
+			SET_ENTITY_INVINCIBLE(CC, true)
+			SET_ENTITY_VELOCITY(CC, 0, 0, 1000)
+			SET_VEHICLE_DOORS_LOCKED_FOR_ALL_PLAYERS(CC, true)
+			SET_VEHICLE_DOORS_LOCKED_FOR_NON_SCRIPT_PLAYERS(CC, true)
+			util.yield(jugr)
+			SET_ENTITY_AS_MISSION_ENTITY(CC)
+			entities.delete_by_handle(CC)
+end
+
+local function Stopveh(pid)
+	local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+	local spec = func.GetSpec(pid)
+	local vmod = GET_VEHICLE_PED_IS_IN(pedm, false)
+	func.GetControl(vmod, spec, pid)
+	SET_VEHICLE_FORWARD_SPEED(vmod, -1000)
+	SET_ENTITY_VELOCITY(vmod, 0, 0, 0)
+	SET_VEHICLE_ENGINE_ON(vmod, false, false, false)
+	if func.set.alert then
+		func.ACutil(Str_trans('Slowing down Vehicle'))
+	end
+end
+
+local function Topspeedveh(speed, pid)
+	local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+	local spec = func.GetSpec(pid)
+	local vmod = GET_VEHICLE_PED_IS_IN(pedm, false)
+	func.GetControl(vmod, spec, pid)
+	SET_VEHICLE_MAX_SPEED(vmod, 100000)
+	MODIFY_VEHICLE_TOP_SPEED(vmod, speed)
+	if func.set.alert then
+		func.ACutil(Str_trans('Vehicles Max Speed Modified'))
+	end
+end
+
+local function Accelveh( speed, pid)
+	local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+	local spec = func.GetSpec(pid)
+	local vmod = GET_VEHICLE_PED_IS_IN(pedm, false)
+	func.GetControl(vmod, spec, pid)
+	SET_VEHICLE_FORWARD_SPEED(vmod, speed)
+	if func.set.alert then
+		func.ACutil(Str_trans('Vehicle Accelerated'))
+	end
+end
+
+local function Fixveh(pid)
+	local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+	local spec = func.GetSpec(pid)
+	local vmod = GET_VEHICLE_PED_IS_IN(pedm, false)
+	func.GetControl(vmod, spec, pid)
+	SET_VEHICLE_FIXED(vmod)
+	SET_VEHICLE_ENGINE_HEALTH(vmod, 1000)
+	SET_ENTITY_INVINCIBLE(vmod, true)
+	SET_VEHICLE_IS_CONSIDERED_BY_PLAYER(vmod, true)
+	SET_ENTITY_HEALTH(vmod, 200)
+	if func.set.alert then
+		func.ACutil(Str_trans('Vehicle Repaired'))
+	end
+end
+
+local function Platechange(cusplate, pid)
+	local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+	local spec = func.GetSpec(pid)
+	local vmod = GET_VEHICLE_PED_IS_IN(pedm, false)
+	func.GetControl(vmod, spec, pid)
+	SET_VEHICLE_NUMBER_PLATE_TEXT(vmod, cusplate)
+	if func.set.alert then
+		func.ACutil(Str_trans('Vehicle plate changed'))
+	end
+end
+
+local function Maxoutcar(pid)
+	local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+	local spec = func.GetSpec(pid)
+	local vmod = GET_VEHICLE_PED_IS_IN(pedm, false)
+	func.GetControl(vmod, spec, pid)
+	 func.Vmod(vmod, 'URWLCUM', 100, 40)
+	 SET_VEHICLE_WHEEL_TYPE(vmod, math.random(0, 7))
+	 SET_VEHICLE_MOD(vmod, 23, math.random(-1, 50))
+	 SET_ENTITY_INVINCIBLE(vmod, true)
+	if func.set.alert then
+		func.ACutil(Str_trans('Vehicle Maxed out'))
+	end
+end
+
+local function Rolldindivid(pid, win)
+		local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		local vmod = GET_VEHICLE_PED_IS_IN(pedm, false)
+		local spec = func.GetSpec(pid)
+		func.GetControl(pedm, spec, pid)
+		ROLL_DOWN_WINDOW(vmod, win)
+	end
+
+local function Rolluindivid(pid, win)
+		local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		local vmod = GET_VEHICLE_PED_IS_IN(pedm, false)
+		local spec = func.GetSpec(pid)
+		func.GetControl(pedm, spec, pid)
+		ROLL_UP_WINDOW(vmod, win)
+	end
+
+
+
+
+
+----------------------------------------end functions-------------------------------------------------------------
+
+players.add_command_hook(function(pid, root)
+
+	root:divider(T('AcjokerScript'))
+	local frienm = root:list(T('Friendly'), {}, '')
+	local pvehmenu = frienm:list(T('Vehicles'), {}, T('If you are too far away from them it will spectate them to complete task'))
+	local plamenu = frienm:list(T('Player Menu'), {}, '')
+
+	local function RGBpaintplayer(pid, oprgb, osprgb)
+		GetPlayVeh(pid, function ()
+			if not players.exists(pid) then
+				util.stop_thread()
+				return
+			end
+			local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+			local vmod = GET_VEHICLE_PED_IS_IN(pedm, true)
+			local spec = func.GetSpec(pid)
+				func.GetControl(vmod, spec, pid)
+			SET_VEHICLE_FIXED(vmod)
+			local red = math.floor(oprgb.color.r * 255)
+			local green = math.floor(oprgb.color.g * 255)
+			local blue = math.floor(oprgb.color.b * 255)
+			SET_VEHICLE_CUSTOM_PRIMARY_COLOUR(vmod, red, green, blue)
+			local sred = math.floor(osprgb.color.r * 255)
+			local sgreen = math.floor(osprgb.color.g * 255)
+			local sblue = math.floor(osprgb.color.b * 255)
+			SET_VEHICLE_CUSTOM_SECONDARY_COLOUR(vmod, sred, sgreen, sblue)
+		end)
+	end
+
+
+
+
+
+
+	local firw = {speed = 1000}
+	frienm:toggle_loop(T('Fireworks Show'), {'firew'}, T('Start a fireworks show at the players location'), function ()
+		if not players.exists(pid) then
+			util.stop_thread()
+			return
+		end
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		local tar1 = GET_ENTITY_COORDS(targets, true)
+		local weap = util.joaat('weapon_firework')
+		REQUEST_WEAPON_ASSET(weap)
+		for y = 0, 1 do
+			SHOOT_SINGLE_BULLET_BETWEEN_COORDS(tar1.x, tar1.y, tar1.z + 4.0, tar1.x - math.random(-100, 100), tar1.y - math.random(-100, 100), tar1.z + math.random(10, 15), 200, 0, weap, 0, false, false, firw.speed)
+			SHOOT_SINGLE_BULLET_BETWEEN_COORDS(tar1.x, tar1.y, tar1.z + 4.0, tar1.x + math.random(-100, 100), tar1.y + math.random(-100, 100), tar1.z + math.random(10, 15), 200, 0, weap, 0, false, false, firw.speed)
+			ADD_EXPLOSION(tar1.x + math.random(-100, 100), tar1.y + math.random(-100, 100), tar1.z + math.random(50, 75), 38, 1, false, false, 0, false)
+			ADD_EXPLOSION(tar1.x - math.random(-100, 100), tar1.y - math.random(-100, 100), tar1.z + math.random(50, 75), 38, 1, false, false, 0, false) 
+		end
+	end)
+
+	frienm:toggle_loop(T('Fake Money Rain'), {}, T('Rains Fake Money on the Player'), function ()
+		if not players.exists(pid) then
+			util.stop_thread()
+			return
+		end
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		local tar1 = GET_ENTITY_COORDS(targets, true)
+		func.Streamptfx('core')
+		START_NETWORKED_PARTICLE_FX_NON_LOOPED_AT_COORD( 'ent_brk_banknotes', tar1.x, tar1.y, tar1.z + 1, 0, 0, 0, 3.0, true, true, true)
+	end)
+
+	plamenu:action(T('Max Protect Player'), {'max'}, T('Turns on Auto Heal, All Weapons, and Never wanted commands all at once'), function ()
+		local pname = players.get_name(pid)
+		menu.trigger_commands("bail".. pname)
+		menu.trigger_commands("autoheal".. pname)
+		menu.trigger_commands("arm".. pname)
+		menu.trigger_commands("givevehgodmode".. pname)
+	end, nil, nil, COMMANDPERM_FRIENDLY)
+
+	plamenu:action(T('TP Player to Waypoint'), {'tele'}, T('Teleports Player to the waypoint the player sets on their map(stand users must be in a vehicle) can be used by others and will reset your waypoint if one is set'), function ()
+	   local x, y, z, b = players.get_waypoint(pid)
+	   local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+	   local pname = players.get_name(pid)
+		if IS_WAYPOINT_ACTIVE() then
+			local curway = GET_BLIP_INFO_ID_COORD(GET_FIRST_BLIP_INFO_ID(8))
+			SET_WAYPOINT_OFF()
+			SET_NEW_WAYPOINT(x, y)
+			menu.trigger_commands("WPTP".. pname)
+			if IS_PED_IN_ANY_VEHICLE(targets) then
+				local car = GET_VEHICLE_PED_IS_IN(targets)
+				NETWORK_REQUEST_CONTROL_OF_ENTITY(car)
+				SET_VEHICLE_ON_GROUND_PROPERLY(car, 5.0)
+			end
+			
+			util.yield(1500)
+			SET_NEW_WAYPOINT(curway.x, curway.y)
+		else
+			SET_NEW_WAYPOINT(x, y)
+			menu.trigger_commands("WPTP".. pname)
+			if IS_PED_IN_ANY_VEHICLE(targets) then
+				local car = GET_VEHICLE_PED_IS_IN(targets)
+				NETWORK_REQUEST_CONTROL_OF_ENTITY(car)
+				SET_VEHICLE_ON_GROUND_PROPERLY(car, 5.0)
+			end
+			SET_WAYPOINT_OFF()
+		end
+	end, nil, nil, COMMANDPERM_FRIENDLY)
+
+
+
+
+	local winmenu = pvehmenu:list(T('Windows Menu'), {}, T('Works better/faster if you are near them'))
+
+	winmenu:action(T('Roll Up All Windows'), {'rolluwin'}, T('Rolls up all windows at once'), function ()
+		GetPlayVeh(pid, function ()
+			func.Rollaup(pid)
+		end)
+	end, nil, nil, COMMANDPERM_FRIENDLY)
+
+	winmenu:action(T('Roll Down All Windows'), {'rolldwin'}, T('Rolls up all windows at once'), function ()
+		GetPlayVeh(pid, function ()
+			func.Rolladown(pid)
+		end)
+	end, nil, nil, COMMANDPERM_FRIENDLY)
+
+	winmenu:list_action(T('Roll Up Individual Windows'), {}, T('Roll Up Individual Windows'), Tables.Windows, function(index)
+		local win = index - 1
+		GetPlayVeh(pid, function ()
+			Rolluindivid(pid, win)
+		end)
+	end)
+
+	winmenu:list_action(T('Roll Down Individual Windows'), {}, T('Roll Down Individual Windows'), Tables.Windows, function(index)
+		local win = index - 1
+		GetPlayVeh(pid, function ()
+			Rolldindivid(pid, win)
+		end)
+	end)
+
+	local lscm = pvehmenu:list(T('Los Santos Customs'), {}, T('Works better/faster if you are near them'))
+
+	local bodym = lscm:list(T('Body Modifications'), {}, T('Only shows what is available to be changed. If they get in a new vehicle back out of Body Modifications to refresh options'))
+
+	local lighm = lscm:list(T('Lights'), {}, '')
+
+	local colm  = lscm:list(T('Vehicle Colors'), {}, '')
+
+	local wmenu = lscm:list(T('Wheels'), {}, '')
+
+
+
+	local vehmenus = {}
+
+
+	bodym:onFocus(function ()
+		for vehmenus as m do
+			m:delete()
+		end
+		vehmenus = {}
+		if not players.exists(pid) then
+			util.stop_thread()
+		end
+		GetPlayVeh(pid, function ()
+			local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+			local vmod = GET_VEHICLE_PED_IS_IN(pedm, false)
+			if IS_PED_IN_ANY_VEHICLE(pedm, false) then    
+				for Tables.Vehopts as v do
+					local current = GET_VEHICLE_MOD(vmod, v[1] -1)
+					local maxmods = GET_NUM_VEHICLE_MODS(vmod, v[1] - 1)
+					if maxmods > 0 then
+						local modnames = v[2]
+						local s = bodym:slider(modnames , {}, '',  -1, maxmods  , current, 1, function (mod)
+							GetPlayVeh(pid, function ()
+								func.Changemod(pid, v[1] -1, mod)
+							end)
+						end)
+						table.insert(vehmenus, s)
+					end
+				end
+
+				for Tables.Vehtogs as v do
+					local current = IS_TOGGLE_MOD_ON(vmod, v[1] -1)
+					local tognames = v[2]
+					local t = bodym:toggle(tognames, {}, '', function (on)
+						TOGGLE_VEHICLE_MOD(vmod, v[1] - 1, on)
+					  end, current)         
+					table.insert(vehmenus, t)
+				end
+
+				for i = 1, 14 do
+					if DOES_EXTRA_EXIST(vmod, i) then
+						local current = IS_VEHICLE_EXTRA_TURNED_ON(vmod, i)
+						local e = bodym:toggle(Str_trans('Vehicle Extra Number: ')..i, {}, '', function (tog)
+							if current then
+								SET_VEHICLE_EXTRA(vmod, i, not tog)
+							else
+								SET_VEHICLE_EXTRA(vmod, i, tog)
+							end
+						end, current)
+						table.insert(vehmenus, e)
+					end
+				end
+
+				if func.Dlc(GET_ENTITY_MODEL(vmod)) then
+					for Tables.Bennysopts as v do
+						local current = GET_VEHICLE_MOD(vmod, v[1] -1)
+						local maxmods = GET_NUM_VEHICLE_MODS(vmod, v[1] - 1)
+						if maxmods > 0 then
+							local modnames = v[2]
+							local s = bodym:slider(modnames , {}, '',  -1, maxmods  , current, 1, function (mod)
+								GetPlayVeh(pid, function ()
+									func.Changemod(pid, v[1] -1, mod)
+								end)
+							end)
+							table.insert(vehmenus, s)
+						end
+					end
+				end
+			end
+		end)
+	end)
+		   
+
+	local color = {}
+
+	local oprgb = {color= {r= 0, g = 0, b = 1, a = 1}}
+	colm:colour(T('Primary Color RGB'), {}, T('Changes the Primary Color on their Vehicle to RGB'), oprgb.color, false, function(oprbgc)
+		oprgb.color = oprbgc
+	end)
+
+	local opsrgb = {color= {r= 0, g = 1, b = 0, a = 1}}
+	colm:colour(T('Secondary Color RGB'), {}, T('Changes the Secondary Color on their Vehicle to RGB'), opsrgb.color, false, function(prbgsc)
+		opsrgb.color = prbgsc
+	end)
+	
+	colm:action(T('Apply Paint Selection'), {}, T('Paints their vehicle the color you have selected above'), function ()
+		RGBpaintplayer(pid, oprgb, opsrgb)
+	end)
+
+
+	colm:list_select(T('Primary Color'), {}, T('Changes the Primary Color on the Vehicle'), Tables.Mainc, 1, function (t)
+		color.prim = t - 1
+		GetPlayVeh(pid, function ()
+			func.Changecolor(pid, color)
+		end)
+	end)
+
+	colm:list_select(T('Secondary Color'), {}, T('Changes the Secondary Color on the Vehicle'), Tables.Mainc, 1, function (t)
+		color.sec = t - 1
+		GetPlayVeh(pid, function ()
+			func.Changecolor(pid, color)
+		end)
+	end)
+
+	colm:list_select(T('Pearlescent Color'), {}, T('Changes the Pearlescent Color on the Vehicle'), Tables.Mainc, 1, function (t)
+		color.per = t - 1
+		GetPlayVeh(pid, function ()
+			func.Changewhepercolor(pid, color)
+		end)
+	end)
+   
+	colm:list_select(T('Wheel Color'), {}, T('Changes the Wheel Color on the Vehicle'), Tables.Mainc, 1, function (t)
+		color.whe = t - 1
+		GetPlayVeh(pid, function ()
+			func.Changewhepercolor(pid, color)
+		end)
+	end)
+
+	colm:list_select(T('Interior Color'), {}, T('Changes the Interior Color on the Vehicle'), Tables.Mainc, 1, function (t)
+		color.int = t - 1
+		GetPlayVeh(pid, function ()
+			func.Changeintcolor(pid, color.int)
+		end)
+	end)
+
+	colm:list_select(T('Dashboard Color'), {}, T('Changes the Dashboard Color on the Vehicle'), Tables.Mainc, 1, function (t)
+		color.das = t - 1
+		GetPlayVeh(pid, function ()
+			func.Changedashcolor(pid, color.das)
+		end)
+	end)
+
+	
+	lighm:list_select(T('Neons'), {}, T('Changes the Neons to different colors'), Tables.Mainc, 1, function(c)
+		local ncolor = c - 1
+		GetPlayVeh(pid, function ()
+			func.Changeneon(pid, ncolor)
+		end)
+	end)
+
+
+	lscm:list_select(T('Window Tints'), {}, T('Changes the Tint on the Vehicle'), Tables.Til, 1, function (t)
+		local tint = t - 1
+		GetPlayVeh(pid, function ()
+			func.Changetint(pid, tint)
+		end)
+	end)
+
+
+	lighm:list_select(T('Headlights'), {}, T('Changes the Headlights to different colors'), Tables.Lighc, 1, function(c)
+		local hcolor = c - 1
+		GetPlayVeh(pid, function ()
+			func.Changehead(pid, hcolor)
+		end)
+	end)
+
+
+	
+	local nrgb = {color= {r= 0, g = 1, b = 0, a = 1}}
+
+	lighm:action(T('Change RGB Neons'), {}, T('Change the Color for the Neons to RGB of your choice'), function ()
+
+		GetPlayVeh(pid, function ()
+			local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+			local spec = func.GetSpec(pid)
+			local vmod = GET_VEHICLE_PED_IS_IN(pedm, false)
+			func.GetControl(vmod, spec, pid)
+			func.RGBNeonKit(pedm)
+			local red = math.floor(nrgb.color.r * 255)
+			local green = math.floor(nrgb.color.g * 255)
+			local blue = math.floor(nrgb.color.b * 255)
+			SET_VEHICLE_NEON_COLOUR(vmod, red, green, blue)
+			if not spec then
+				func.Specoff(pid)
+			end
+		end)
+	end)
+
+
+	lighm:colour(T('RGB Neon Color'), {'rgbsc'}, T('Choose the Color for the Neons be changed to '), nrgb.color, false, function(ncolor)
+		nrgb.color = ncolor
+	end)
+
+
+	wmenu:list_select(T('Bennys Bespoke'), {}, T('Changes the wheels to Bennys Bespoke wheels'), Tables.Bbw, 1, function(w)
+		local wheel = w - 1
+		GetPlayVeh(pid, function ()
+			func.Changewheel(pid, 9, wheel)
+		end)
+	end)
+
+
+	wmenu:list_select(T('Bennys Originals'), {}, T('Changes the wheels to Bennys Originals wheels'), Tables.Bow, 1, function(w)
+		local wheel = w - 1
+		GetPlayVeh(pid, function ()
+			func.Changewheel(pid, 8, wheel)
+		end)
+		
+	end)
+
+
+	wmenu:list_select(T('Bike'), {}, T('Changes the wheels to Bike(motorcycle) wheels'), Tables.Bw, 1, function(w)
+		local wheel = w - 1
+		GetPlayVeh(pid, function ()
+			func.Changewheel(pid, 6, wheel)
+		end)
+	end)
+
+
+	wmenu:list_select(T('High End'), {}, T('Changes the wheels to High End wheels'), Tables.Hew, 1, function(w)
+		local wheel = w - 1
+		GetPlayVeh(pid,  function ()
+			func.Changewheel(pid, 7, wheel)
+		end)
+	end)
+
+
+	wmenu:list_select(T('Lowrider'), {}, T('Changes the wheels to Lowrider wheels'), Tables.Lw, 1, function(w)
+		local wheel = w - 1
+		GetPlayVeh(pid, function ()
+			func.Changewheel(pid, 2, wheel)
+		end)
+	end)
+
+	wmenu:list_select(T('Muscle'), {}, T('Changes the wheels to Muscle wheels'), Tables.Mw, 1, function(w)
+		local wheel = w - 1
+		GetPlayVeh(pid, function ()
+			func.Changewheel(pid, 1, wheel)
+		end)
+	end)
+
+
+	wmenu:list_select(T('Offroad'), {}, T('Changes the wheels to Offroad wheels'), Tables.Orw, 1, function(w)
+		local wheel = w - 1
+		GetPlayVeh(pid, function ()
+			func.Changewheel(pid, 4, wheel)
+		end)
+	end)
+
+
+	wmenu:list_select(T('Racing(Formula 1 Wheels)'), {}, T('Changes the wheels to Racing(Formula 1 Wheels) wheels'), Tables.Rw, 1, function(w)
+		local wheel = w - 1
+		GetPlayVeh(pid,  function ()
+			func.Changewheel(pid, 10, wheel)
+		end)
+	end)
+
+
+	wmenu:list_select(T('Sport'), {}, T('Changes the wheels to Sport wheels'), Tables.Spw, 1, function(w)
+		local wheel = w - 1
+		GetPlayVeh(pid,  function ()
+			func.Changewheel(pid, 0, wheel)
+		end)
+	end)
+	
+
+	wmenu:list_select(T('Street'), {}, T('Changes the wheels to Street wheels'), Tables.Stw, 1, function(w)
+		local wheel = w - 1
+		GetPlayVeh(pid, function ()
+			func.Changewheel(pid, 11, wheel)
+		end)
+	end)
+
+
+	wmenu:list_select(T('SUV'), {}, T('Changes the wheels to SUV wheels'), Tables.Suw, 1, function(w)
+		local wheel = w - 1
+		GetPlayVeh(pid,  function ()
+			func.Changewheel(pid, 3, wheel)
+		end)
+	end)
+
+	wmenu:list_select(T('Tracks'), {}, T('Changes the wheels to Track wheels'), Tables.Trw, 1, function(w)
+		local wheel = w - 1
+		GetPlayVeh(pid,  function ()
+			func.Changewheel(pid, 12, wheel)
+		end)
+	end)
+
+
+	wmenu:list_select(T('Tuner'), {}, T('Changes the wheels to Tuner wheels'), Tables.Tuw, 1, function(w)
+		local wheel = w - 1
+		GetPlayVeh(pid, function ()
+			func.Changewheel(pid, 5, wheel)
+		end)
+	end)
+
+	pvehmenu:click_slider(T('Change Vehicle Speed'), {'vspeed'}, T('Increases the Vehicles top speed'), 0, 100000, 40, 10, function (s)
+		local  speed = s
+		GetPlayVeh(pid, function ()
+			Topspeedveh( speed, pid)
+			util.yield(1000)
+		end)
+	 end)
+
+
+
+	pvehmenu:action(T('Max out their Vehicle'), {'maxv'}, T('Max out their Vehicle with an increased top speed (will put random wheels on the Vehicle each time you press it)'), function ()
+		GetPlayVeh(pid,  function ()
+			Maxoutcar(pid)
+		end)
+	 end, nil, nil, COMMANDPERM_FRIENDLY)
+
+
+	pvehmenu:text_input(T('Change their license plate'), {'lplate'}, T('Change the license plate to a custom text'), function (cusplate)
+		GetPlayVeh(pid,  function ()
+		   Platechange(cusplate, pid)
+		end)
+	end)
+
+
+	pvehmenu:action(T('Repair Vehicle'), {'repv'}, T('Repair their vehicle'), function ()
+		GetPlayVeh(pid,  function ()
+			Fixveh(pid)
+		end)
+	end, nil, nil, COMMANDPERM_FRIENDLY)
+
+	 
+	pvehmenu:click_slider(T('Accelerate Vehicle'), {'accel'}, T('Accelerate Vehicle Forward by your set amount (actual speed is roughly double the number in MPH)'), 10, 150, 40, 10, function (s)
+	   local  speed = s
+		GetPlayVeh(pid, function ()
+		   Accelveh( speed, pid)
+		   util.yield(1000)
+		end)
+	end)
+
+	pvehmenu:toggle_loop(T('Slow Vehicle Down'), {'slowv'}, T('Does not freeze them just slows down the vehicles velocity'), function ()
+		local spec = func.GetSpec(pid)
+		func.Specon(pid)
+		GetPlayVeh(pid, function ()
+			Stopveh(pid)
+		end)
+		return spec
+	end, function ()
+		local spec = func.GetSpec(pid)
+		if not spec then
+			func.Specoff(pid)
+		end
+	end)
+
+	local cvmenu = pvehmenu:list( T('Give Them a Vehicle'), {}, '')
+
+	menus.vehlist = cvmenu:list(Str_trans("From Vehicle List"), {},Str_trans("Change Vehicle you spawn from a list of vehicles"), function()
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		func.getallvehicles(menus.vehlist, {2}, targets)
+	end)
+
+	local cus = {veh = util.joaat('toreador')}
+	cvmenu:action(T('Spawn Vehicle'), {'spv'}, T('Spawn them a custom vehicle the default is toreador'), function ()
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		local tar1 = GET_ENTITY_COORDS(targets, true)
+		func.Vspawn(cus.veh, tar1, targets, 'custveh')
+	end, nil, nil, COMMANDPERM_FRIENDLY)
+
+	cvmenu:text_input(T('Enter Custom Vehicle Hash'), {'cussmash'}, T('Enter Vehicle Hash to change Vehicle given to player'), function(cusveh)
+		if not players.exists(pid) then
+			util.stop_thread()
+			return
+		end
+		if IS_MODEL_A_VEHICLE(util.joaat(cusveh)) then
+		   cus.veh = util.joaat(cusveh)
+		else
+			if func.set.alert then
+				func.ACutil(Str_trans('Improper Vehicle Name (check the spelling)'))
+			end
+		end
+	end, 'toreador')
+
+	pvehmenu:action(T('Randomize Paint'), {'rpaint'}, T('Randomize the Paint of their vehicle'), function ()
+		GetPlayVeh(pid, function ()
+			func.Rpaint(pid)
+		end)
+	end, nil, nil, COMMANDPERM_FRIENDLY)
+
+	pvehmenu:action(T('Spectate Player'), {'spec'}, T('Turn on/off spectating of player'), function ()
+		menu.trigger_commands("spectate".. players.get_name(pid))
+	end)
+
+	
+
+ ------------------------------------------------------------------------------------------------------------------
+
+
+	local trollm = root:list(T('Trolling'), {}, '' )
+
+	trollm:action(T('Hijack Vehicle'), {'lojack'}, T('Steal their vehicle'), function ()
+		local spec = func.GetSpec(pid)
+		if not spec then
+			func.Specon(pid)
+		end
+		local pname = players.get_name(pid)
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		if IS_PED_IN_ANY_VEHICLE(targets, true) then
+			local vehicle = GET_VEHICLE_PED_IS_IN(targets, true)
+			menu.trigger_commands('vehkick'..pname)
+			util.yield(1000)
+			SET_PED_INTO_VEHICLE(players.user_ped(), vehicle, -1)
+			util.yield(1000)
+			menu.trigger_commands('sspect')
+		else
+			if func.set.alert then
+				func.ACutil(Str_trans('Player not in vehicle'))
+			end
+		end
+
+	end)
+
+
+	trollm:action(T('Drop a Nuke'), {'nukem'}, T('Drop a nuke on the player it will spectate them to work better'), function ()
+		local nukeha = util.joaat('w_arena_airmissile_01a')
+		func.Streament(nukeha)
+		local spec = func.GetSpec(pid)
+		if not spec then
+			func.Specon(pid)
+		end
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		local tar1 = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(targets, 0, 0, 10)
+		local nuke = CREATE_OBJECT(nukeha, tar1.x, tar1.y, tar1.z, true, true, true)
+		SET_ENTITY_VELOCITY(nuke, 0, 0, -1000)
+		util.yield(100)
+		expcoor = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(nuke, 0, 0, 0)
+		local height = GET_ENTITY_HEIGHT_ABOVE_GROUND(nuke)
+		if HAS_ENTITY_COLLIDED_WITH_ANYTHING(nuke) or height >= 0 then
+			entities.delete_by_handle(nuke)
+			func.Nuke(expcoor)
+		end
+	end)
+
+
+
+
+	trollm:action(T('Add or Remove from Kill List'), {}, T('Add or Remove Player to the Kill List'), function ()
+		local pname = players.get_name(pid)
+		for func.Load_settings(Kill_List) as name do
+			if name.name == pname then
+				func.remove_victim(pname)
+				if func.set.alert then
+					func.ACutil(pname..Str_trans(' Removed from Kill List'))
+				end
+				return
+			end
+		end
+		func.add_victim(pname)
+		if func.set.alert then
+			func.ACutil(pname..Str_trans(' Added to Kill List'))
+		end
+	end)
+
+	local atkmenu = trollm:list(T('Attackers'), {}, '')
+	local vatkmenu = trollm:list(T('Vehicle Attackers'), {}, '')
+	local pcagem = trollm:list(T('Cages'), {}, '')
+	local cplaym = trollm:list(T('Vehicular Assault'), {}, '')
+	local jplaym = trollm:list(T('Juggle Player'), {}, '')
+	local mrplaym = trollm:list(T('Make it Rain'), {}, '')
+	local eplaym = trollm:list(T('Explode Player'), {}, '')
+	local metmenu = trollm:list(T('Big Object Shower'), {}, '')
+	local ptfxmenu = trollm:list(T('PTFX Spam'), {}, '')
+
+	local mir = {weap = 'WEAPON_SNOWBALL', speed = 1000}
+	trollm:action(T('The Full Monty'), {}, T('Activate ped cage, object cage, explode loop, PTFX Spam, Make it Rain Rockets, Juggle Player, and Vehicular Assualt at the same time'), function ()
+		local pname = players.get_name(pid)
+		if is_own_pid(pid) then return func.ACutil(Str_trans('Best to not Full Monty yourself')) end
+		menu.trigger_commands("EXPL".. pname)
+		menu.trigger_commands("PCAGE".. pname)
+		menu.trigger_commands("ObjCage".. pname)
+		menu.trigger_commands("CloneCAGE".. pname)
+		menu.trigger_commands("RandomCAGE".. pname)
+		menu.trigger_commands("ptfxloop".. pname)
+		menu.trigger_commands("ptfxloop2".. pname..' on')
+		menu.trigger_commands("ptfxloop3".. pname..' on')
+		menu.trigger_commands("ptfxloop4".. pname..' on')
+		mir.weap = 'WEAPON_RPG'
+		mir.speed = 100
+		menu.trigger_commands("rain".. pname)
+		menu.trigger_commands("SmashPla".. pname)
+		menus.assaultrate.value = 100
+		menu.trigger_commands("JuggleC".. pname)
+		menus.jugglerate.value = 100
+		func.set.alert = false
+	end)
+
+ 
+	local mirloop =  mrplaym:toggle_loop(T('Make it Rain'), {'rain'}, T('Make it Rain your choice of weapon in all directions'), function ()
+		if not players.exists(pid) then
+			if func.set.alert then
+				func.ACutil(Str_trans('You made them rage quit'))
+			end
+			util.stop_thread()
+			return
+		end
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		local tar1 = GET_ENTITY_COORDS(targets, true)
+		local weap = util.joaat(mir.weap)
+		local spec = func.GetSpec(pid)
+		func.Delcar(targets, spec, pid)
+		REQUEST_WEAPON_ASSET(weap)
+		SHOOT_SINGLE_BULLET_BETWEEN_COORDS(tar1.x, tar1.y, tar1.z, tar1.x , tar1.y, tar1.z - 2.0, 200, 0, weap, 0, true, false, mir.speed)
+		SHOOT_SINGLE_BULLET_BETWEEN_COORDS(tar1.x, tar1.y, tar1.z + 1.0, tar1.x , tar1.y, tar1.z, 200, 0, weap, 0, true, false, mir.speed)
+		SHOOT_SINGLE_BULLET_BETWEEN_COORDS(tar1.x, tar1.y + 1.0, tar1.z, tar1.x , tar1.y, tar1.z, 200, 0, weap, 0, true, false, mir.speed)
+		SHOOT_SINGLE_BULLET_BETWEEN_COORDS(tar1.x + 1.0, tar1.y , tar1.z, tar1.x , tar1.y, tar1.z, 200, 0, weap, 0, true, false, mir.speed)
+		SHOOT_SINGLE_BULLET_BETWEEN_COORDS(tar1.x + 1.0, tar1.y + 1.0, tar1.z, tar1.x , tar1.y, tar1.z, 200, 0, weap, 0, true, false, mir.speed)
+		SHOOT_SINGLE_BULLET_BETWEEN_COORDS(tar1.x - 1.0, tar1.y, tar1.z, tar1.x , tar1.y, tar1.z, 200, 0, weap, 0, true, false, mir.speed)
+		SHOOT_SINGLE_BULLET_BETWEEN_COORDS(tar1.x, tar1.y - 1.0, tar1.z, tar1.x , tar1.y, tar1.z, 200, 0, weap, 0, true, false, mir.speed)
+		SHOOT_SINGLE_BULLET_BETWEEN_COORDS(tar1.x - 1.0, tar1.y - 1.0, tar1.z, tar1.x , tar1.y, tar1.z, 200, 0, weap, 0, true, false, mir.speed)
+	end)
+	
+	mrplaym:list_select(T('Weapon Choices'), {}, T('Changes the weapon that rains down on them'), Tables.Weaplist, 1, function(weapsel)
+		mir.weap = Tables.Weap[weapsel]
+	end)
+
+   local weaspeed = mrplaym:slider(T('Weapon Speed'), {}, T('Adjust the speed of the Weapons'), 100, 6000, 1000, 100, function (s)
+		mir.speed = s
+	end)
+		
+	trollm:action(T('Katy Perry'), {}, T('Turn them into a Firework by hitting them up in the air with Juggle and activating Make it Rain Fireworks'), function ()
+		local pname = players.get_name(pid)
+		weaspeed.value = 100
+		mir.weap = 'weapon_firework'
+		menu.trigger_commands("rain".. pname)
+		menu.trigger_commands("JuggleC".. pname)
+	end)
+
+	trollm:action(T('Stop the Madness'), {'stopthemadness'}, T('Turn off The Full Monty and Katy Perry and stop them from being targeted'), function ()
+		local pname = players.get_name(pid)
+		menu.trigger_commands("FreePedcage".. pname)
+		menu.trigger_commands("FreeObjcage".. pname)
+		menu.trigger_commands("FreeRPedcage".. pname)
+		menu.trigger_commands("FreeCPedcage".. pname)
+		menu.trigger_commands("EXPL".. pname..' off')
+		menu.trigger_commands("rain".. pname..' off')
+		mir.weap = 'WEAPON_SNOWBALL'
+		menu.trigger_commands("JuggleC".. pname..' off')
+		menu.trigger_commands("ptfxloop".. pname..' off')
+		menu.trigger_commands("ptfxloop2".. pname..' off')
+		menu.trigger_commands("ptfxloop3".. pname..' off')
+		menu.trigger_commands("ptfxloop4".. pname..' off')
+		menu.trigger_commands("SmashPla".. pname..' off')
+		menus.assaultrate.value = 1000
+		menus.jugglerate.value = 1000
+		func.set.alert = true
+	end)
+
+
+	trollm:toggle_loop(T('Delete Players Vehicle'), {'delv'}, T('Delete the Players Vehicle and every vehicle around them you must be spectacting'), function ()
+		if not players.exists(pid) then
+			util.stop_thread()
+			return
+		end
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		func.Specon(pid)
+		local surcars = {}
+		local hndl = entities.get_all_vehicles_as_handles()
+		for hndl as value do
+			for i = 1, 5 do
+			   table.insert(surcars, value)
+			   func.DelEnt(surcars)
+			end
+		end
+
+		if IS_PED_IN_ANY_VEHICLE(targets, true) then
+			while IS_PED_IN_ANY_VEHICLE(targets, true) do
+				local spec = func.GetSpec(pid)
+				func.Delcar(targets, spec, pid)
+				util.yield(100)
+			end
+		else
+			util.yield(100)
+		end
+	end, function ()
+		if not spec then
+			func.Specoff(pid)
+		end
+	end)
+
+	menus.detach_wheel = trollm:list(Str_trans('Detach Wheels'), {}, Str_trans('Detach Wheel from vehicle'))
+	menus.detach_wheel:action(Str_trans('Detach All Wheels'), {'detach'}, Str_trans('Detach all wheels from vehicle'), function()
+		GetPlayVeh(pid, function ()
+			local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+			local vmod = GET_VEHICLE_PED_IS_IN(pedm, false)
+			for i = 0, 5 do
+				entities.detach_wheel(entities.handle_to_pointer(vmod), i)
+			end
+		end)
+	end)
+
+
+	menus.detach_ind_wheel = menus.detach_wheel:list(Str_trans('Detach Individual Wheels'), {}, Str_trans('Detach Wheel from vehicle'))
+	for Tables.Wheel_indexs as wheels do
+		menus.detach_ind_wheel:action(wheels.name, {}, Str_trans('Detach Wheel from vehicle'), function()
+			GetPlayVeh(pid, function ()
+				local pedm = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+				local vmod = GET_VEHICLE_PED_IS_IN(pedm, false)
+				entities.detach_wheel(entities.handle_to_pointer(vmod), wheels.index)
+			end)
+		end)
+	end
+
+
+
+	local bigolist = {} 
+	local bigobjset  = {obj= util.joaat('prop_asteroid_01'), ptfx = false, exp = false, speed = 1000}
+	metmenu:toggle_loop(T('Big Object Shower'), {'Oshower'}, T('Make Objects rain down from the sky'), function ()
+		if not players.exists(pid) then
+			util.stop_thread()
+			return
+		end
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		local oha = bigobjset.obj --credits to lance for the coords
+		local r1 = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS( targets, math.random(-500, 500), math.random(-500, 500), 300.0)
+		local r2 = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS( targets, math.random(-500, 500), math.random(-500, 500), 0)
+		local diff = {}
+		diff.x = (r2.x - r1.x)*500
+		diff.y = (r2.y - r1.y)*500
+		diff.z = (r2.z - r1.z)*500
+		func.Streament(oha)
+		local bigobj = CREATE_OBJECT(oha, r1.x, r1.y, r1.z, true, true, true)
+		SET_ENTITY_HAS_GRAVITY(bigobj, true)
+		APPLY_FORCE_TO_ENTITY(bigobj, 2, diff.x, diff.y, diff.z, 0, 0, 0, 0, true, false, true, false, true)
+		SET_OBJECT_PHYSICS_PARAMS(bigobj, 100000, 5, 1, 0, 0, .5, 0, 0, 0, 0, 0)
+		util.yield(100)
+
+		bigolist[#bigolist + 1] = bigobj
+		for bigolist as met do
+			local mcoor = GET_ENTITY_COORDS(met)
+		if GET_ENTITY_HEIGHT_ABOVE_GROUND(bigolist) < 0.5 then
+			func.Streamptfx("scr_xm_orbital")
+			if bigobjset.exp then
+				ADD_EXPLOSION(mcoor.x, mcoor.y, mcoor.z, 8, 100, true, bigobjset.ptfx, 1, false)
+				ADD_EXPLOSION(mcoor.x, mcoor.y, mcoor.z, 59, 100, true, bigobjset.ptfx, 1, false)
+				START_NETWORKED_PARTICLE_FX_NON_LOOPED_AT_COORD('scr_xm_orbital_blast', mcoor.x, mcoor.y, mcoor.z + 10, 0, 180, 0, 10.0, true, true, true)
+			end
+		end
+	end
+	if #bigolist > 175 then
+		func.DelEnt(bigolist)
+		bigolist= {}
+	end
+		util.yield(bigobjset.speed)
+
+	end)
+
+	metmenu:toggle(T('Orbital Cannon Explosions'), {}, T('Turn on Orbital Cannon Explosions'), function (on)
+		bigobjset.exp = on
+	end)
+
+	metmenu:slider(T('Object Speed'), {}, T('Adjust the rate objects spawn'), 0, 3000, 1000, 100, function (s)
+		bigobjset.speed = s
+	end)
+
+	metmenu:list_action(T('Object List'), {}, T('Changes Objects used for Big Object Shower'), Tables.Bigobjlist, function(objsel)
+		bigobjset.obj = util.joaat(Tables.Bigobj[objsel])
+	end)
+
+
+
+
+	local ptfx = {lib = 'scr_rcbarry2', sel = 'scr_clown_appears', number = 1}
+	local ptfx_names = {{name = Str_trans('PTFX Spam'), command =  'ptfxloop', sel = 'scr_clown_appears', lib = 'scr_rcbarry2', scale = 10, scalename = Str_trans('Ptfx Spam Scale')},
+	 {name = Str_trans('PTFX Spam 2'), command = 'ptfxloop2', sel = 'exp_extinguisher', lib = 'core', scale = 10, scalename = Str_trans('Ptfx Spam 2 Scale')},
+	  {name = Str_trans('PTFX Spam 3'), command = 'ptfxloop3', sel = 'veh_respray_smoke', lib = 'core', scale = 10, scalename = Str_trans('Ptfx Spam 3 Scale')}, 
+	  {name = Str_trans('PTFX Spam 4'), command = 'ptfxloop4', sel = 'blood_stab', lib = 'core', scale = 10, scalename = Str_trans('Ptfx Spam 4 Scale')}}
+	for ptfx_names as ptfxs do
+		menus.ptfxspams = ptfxmenu:list(ptfxs.name, {}, '') 
+		menus.ptfxspams:toggle_loop(ptfxs.name, {ptfxs.command}, Str_trans('Spam your selection of Particle Effects'), function ()
+			if not players.exists(pid) then
+				util.stop_thread()
+				return
+			end
+			local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+			local tar1 = GET_ENTITY_COORDS(targets, true)
+			func.Streamptfx(ptfxs.lib)
+			START_NETWORKED_PARTICLE_FX_NON_LOOPED_AT_COORD(ptfxs.sel, tar1.x, tar1.y, tar1.z + 1, 0, 0, 0, ptfxs.scale, true, true, true)
+		end)
+		menus.ptfxspams:list_action(Str_trans('Ptfx List'), {}, Str_trans('Choose a PTFX from the list'), Tables.Fxcorelist, function(fxsel)
+			ptfxs.sel = Tables.Fxha[fxsel]
+			ptfx.lib = 'core'
+		end)
+		menus.ptfxspams:slider(Str_trans('Scale'), {}, Str_trans('Choose the scale of the PTFX'), 1, 1000, 10, 1, function(s)
+			ptfxs.scale = s
+		end)
+	end
+
+
+
+
+
+ -------------------------------------
+	local exset = {exsel = 0, scale = 1000, isaud = true, invis = false, shake = 0, damage = false, delay = 1}
+	local exloop = eplaym:toggle_loop(T('Explode Player Loop'), {'EXPL'}, T('Explode Player in a continous loop'), function ()
+		if not players.exists(pid) then
+			if func.set.alert then
+				func.ACutil(Str_trans('You made them rage quit'))
+			end
+			util.stop_thread()
+			return
+		end
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		local tar1 = GET_ENTITY_COORDS(targets, true)
+
+		for i = -1.5, 1.5, 0.5 do
+			ADD_EXPLOSION(tar1.x, tar1.y, tar1.z + i, exset.exsel, exset.scale, exset.isaud, exset.invis, exset.shake, exset.damage)
+		end
+		util.yield(exset.delay)
+	end)
+
+   
+	eplaym:list_select(T('Change Explosion Type'), {}, T('Changes Explosion used for exploding the player'), Tables.Exlist, 1, function(index)
+		exset.exsel = index - 1
+	end)
+
+	eplaym:slider(T('Explosion Damage Scale'), {}, T('Adjust the Damage Scale of the Explosions'), 100, 6000, 1000, 100, function (s)
+		exset.scale = s
+	 end)
+
+	 eplaym:toggle(T('Invisible Explosions'), {}, T('Change the Explosions to invisible'), function (on)
+		exset.invis = on
+	end)
+
+	eplaym:toggle(T('Inaudible Explosions'), {}, T('Change the Explosions so that you can no longer hear them'), function (on)
+		exset.isaud = not on
+	end)
+
+	eplaym:slider(T('Explosion Shake'), {}, T('Adjust the Camera Shake caused by the Explosions'), 0, 100, 0, 10, function (sh)
+		exset.shake = sh
+	 end)
+
+	eplaym:toggle(T('Damage Off'), {}, T('Change the Explosions to not cause Damage'), function (on)
+		exset.damage = on
+	end)
+
+	eplaym:slider(T('Explosion Delay'), {}, T('Adjust the Delay in between Explosions'), 0, 1000, 100, 10, function (de)
+		exset.delay = de
+	 end)
+
+  -------------------------------------------------
+
+
+
+
+
+
+	local vehaset = {invis_aveh = false, vehasel = util.joaat('speedo2') , vehra = 1000}
+	local vehaloop =  cplaym:toggle_loop(T('Vehicular Assault'), {'SmashPla'}, T('Will Smash or Run the Player over every time they try and stand up'), function ()
+		if not players.exists(pid) then
+			if func.set.alert then
+				func.ACutil(Str_trans('You made them rage quit'))
+			end
+			util.stop_thread()
+			return
+		end
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		local tar1 = GET_ENTITY_COORDS(targets, true)
+		local pname = players.get_name(pid)
+		local UV = GET_ENTITY_UPRIGHT_VALUE(targets)
+		local spec = func.GetSpec(pid)
+		func.Delcar(targets, spec, pid)
+		func.Streament(vehaset.vehasel)
+
+		if IS_ENTITY_UPRIGHT(targets, UV) then
+			SmashCar(vehaset.vehasel, tar1, vehaset.invis_aveh, vehaset.vehra)
+			if not IS_ENTITY_UPRIGHT(targets, UV) then
+				if func.set.alert then
+					func.ACutil(pname.. Str_trans(' has been smashed'))
+				end
+			elseif IS_ENTITY_UPRIGHT(targets, UV) then
+				RamCar(vehaset.vehasel, tar1.x + 15, tar1.y, tar1.z, vehaset.invis_aveh, targets, vehaset.vehra)
+				if not IS_ENTITY_UPRIGHT(targets, UV) then
+					if func.set.alert then
+						func.ACutil(pname.. Str_trans(' has been run over'))
+					end
+				elseif IS_ENTITY_UPRIGHT(targets, UV) then
+				RamCar(vehaset.vehasel, tar1.x - 15, tar1.y, tar1.z, vehaset.invis_aveh, targets, vehaset.vehra)
+					if not IS_ENTITY_UPRIGHT(targets, UV) then
+						if func.set.alert then
+							func.ACutil(pname.. Str_trans(' has been run over'))
+						end
+					elseif IS_ENTITY_UPRIGHT(targets, UV) then
+					RamCar(vehaset.vehasel, tar1.x, tar1.y + 15, tar1.z, vehaset.invis_aveh, targets, vehaset.vehra)
+						if not IS_ENTITY_UPRIGHT(targets, UV) then
+							if func.set.alert then
+								func.ACutil(pname.. Str_trans(' has been run over'))
+							end
+						elseif IS_ENTITY_UPRIGHT(targets, UV) then
+						RamCar(vehaset.vehasel, tar1.x, tar1.y - 15, tar1.z, vehaset.invis_aveh, targets, vehaset.vehra)
+							if not IS_ENTITY_UPRIGHT(targets, UV) then
+								if func.set.alert then
+									func.ACutil(pname.. Str_trans(' has been run over'))
+								end
+							elseif IS_ENTITY_UPRIGHT(targets, UV) then
+							RamCar(vehaset.vehasel, tar1.x - 15, tar1.y - 15, tar1.z, vehaset.invis_aveh, targets, vehaset.vehra)
+								if not IS_ENTITY_UPRIGHT(targets, UV) then
+									if func.set.alert then
+										func.ACutil(pname.. Str_trans(' has been run over'))
+									end
+								elseif IS_ENTITY_UPRIGHT(targets, UV) then
+								RamCar(vehaset.vehasel, tar1.x + 15, tar1.y + 15, tar1.z, vehaset.invis_aveh, targets, vehaset.vehra)
+									if not IS_ENTITY_UPRIGHT(targets, UV) then
+										if func.set.alert then
+											func.ACutil(pname.. Str_trans(' has been run over'))
+										end
+									elseif IS_ENTITY_UPRIGHT(targets, UV) then
+										RamCar(vehaset.vehasel, tar1.x + 15, tar1.y - 15, tar1.z, vehaset.invis_aveh, targets, vehaset.vehra)
+										if not IS_ENTITY_UPRIGHT(targets, UV) then
+											if func.set.alert then
+												func.ACutil(pname.. Str_trans(' has been run over'))
+											end
+										elseif IS_ENTITY_UPRIGHT(targets, UV) then
+											RamCar(vehaset.vehasel, tar1.x - 15, tar1.y + 15, tar1.z, vehaset.invis_aveh, targets, vehaset.vehra)
+											if not IS_ENTITY_UPRIGHT(targets, UV) then
+												if func.set.alert then
+													func.ACutil(pname.. Str_trans(' has been run over'))
+												end
+											else
+												if func.set.alert then
+													func.ACutil(Str_trans('Could not reach ') ..pname)
+												end
+											end
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end)
+
+
+
+	cplaym:toggle(T('Invisible Vehicles'), {}, T('Change the assault vehicles to invisible'), function (on)
+		vehaset.invis_aveh = on
+	end)
+	local cclist = cplaym:list(T('Change Vehicle used for Vehicular Assault'), {}, '')
+	cclist:list_action(T('Vehicle List'), {}, T('Changes Vehicles used for Vehicular Assault'), Tables.Vehlist, function(vehsel)
+		vehaset.vehasel = util.joaat(Tables.Vehha[vehsel])
+	end)
+
+	menus.assaultrate =  cplaym:slider(T('Assault Rate'), {'assaultrate'}, T('Adjust rate at which vehicles attack'), 50, 4000, 1000, 50, function (ar)
+		vehaset.vehra = ar
+	end)
+
+
+	cclist:text_input(T('Enter Custom Vehicle Hash'), {'cussmash'}, T('Enter Vehicle Hash to change Vehicular Assault Vehicle'), function(cussma)
+		if not players.exists(pid) then
+			util.stop_thread()
+			return
+		end
+		 if IS_MODEL_A_VEHICLE(util.joaat(cussma)) then
+			vehaset.vehasel = util.joaat(cussma)
+		 else
+			if func.set.alert then
+				func.ACutil(Str_trans('Improper Vehicle Name (check the spelling)'))
+			end
+		 end
+	end, 'toreador')
+
+	local juglset = {invisjugc = false, jugsel = util.joaat('speedo2') , jugr = 1000}
+
+
+	local jugloop = jplaym:toggle_loop(T('Juggle Player with Vehicles'), {'JuggleC'}, T('Juggles Player by hitting them upwards repeatedly'), function ()
+		if not players.exists(pid) then
+			if func.set.alert then
+				func.ACutil(Str_trans('You made them rage quit'))
+			end
+			util.stop_thread()
+			return
+		end
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		local tar1 = GET_ENTITY_COORDS(targets, true)
+		local pname = players.get_name(pid)
+
+		local spec = func.GetSpec(pid)
+		func.Delcar(targets, spec, pid)
+			func.Streament(juglset.jugsel)
+
+		if not IS_PED_RAGDOLL(targets) then
+			JuggleCar(juglset.jugsel, tar1, juglset.invisjugc, juglset.jugr)
+		else
+			if func.set.alert then
+				func.ACutil(pname..Str_trans(' is being juggled'))
+			end
+		end
+	end)
+
+	jplaym:toggle(T('Invisible Vehicles'), {}, T('Change the Juggle vehicles to invisible'), function (on)
+		juglset.invisjugc = on
+	end)
+
+	local jclist = jplaym:list(T('Change Vehicle used for Juggling'), {}, '')
+	jclist:list_action(T('Vehicle List'), {}, T('Changes Vehicles used for Juggling'), Tables.Vehlist, function(jugsel)
+		juglset.jugsel = util.joaat(Tables.Vehha[jugsel])
+	end)
+
+	menus.jugglerate = jplaym:slider(T('Juggle Rate'), {'jugglerate'}, T('Adjust rate at which vehicles shoot upwards'), 0, 4000, 1000, 50, function (jr)
+		juglset.jugr = jr
+	end)
+
+	jclist:text_input(T('Enter Custom Vehicle Hash'), {'cusjug'}, T('Enter Vehicle Hash to change Juggle Vehicle'), function(cusveh)
+		if IS_MODEL_A_VEHICLE(util.joaat(cusveh)) then
+			juglset.jugsel = util.joaat(cusveh)
+		else
+			if func.set.alert then
+				func.ACutil(Str_trans('Improper Vehicle Name (check the spelling)'))
+			end
+		end
+	end, 'toreador')
+
+
+
+
+	atkmenu:action(T('Spawn Attacker'), {'spatkr'}, T('Spawn attacker on the person'), function ()
+		if not players.exists(pid) then
+			util.stop_thread()
+			return
+		end
+		local spec = func.GetSpec(pid)
+		atkset.atkrdelete = false
+		if not spec then
+			func.Specon(pid)
+		end
+		
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		if IS_PED_SITTING_IN_ANY_VEHICLE(targets) then
+			if atkset.delveh then
+				func.Delcar(targets, spec, pid)
+			end
+		end
+		spawatk = {}
+		while atkset.p < atkset.count and players.exists(pid) do
+			local atkr = Atkrspawn(atkset.invinc, atkset.invis, pid , atkset.model)
+			if atkset.clone then
+				CLONE_PED_TO_TARGET(targets, atkr)
+			end
+			table.insert(spawatk, atkr)
+			atkset.p = atkset.p + 1
+			if #spawatk == atkset.count then
+				break
+			end
+		end
+		util.create_tick_handler(function ()
+			Atkrrefresh(pid)
+		end)
+	end)
+
+
+	menus.atkrch = atkmenu:list(T('Change Attacker'), {}, T('Change the Attackers you send'))
+
+	func.PedList(menus.atkrch, function(model)
+		atkset.model = model
+	end)
+
+	atkmenu:toggle(T('Clone Attackers'), {}, T('Make the Attackers Clones of the Player'), function (on)
+		atkset.clone = on
+		if on then
+			local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+			local hash
+			if not IS_PED_MALE(targets) then
+				hash = 'mp_f_freemode_01'
+			else
+				hash = 'mp_m_freemode_01'
+			end
+			atkset.model = hash
+		end
+	end)
+
+
+	atkmenu:slider(T('Number of Attackers'), {}, T('Number of attackers to send'), 1, 20, 1, 1, function (s)
+		atkset.count = s
+	end)
+
+	atkmenu:toggle(T('Invincible Attackers Off'), {}, T('Make the Attackers not Invincible anymore'), function (on)
+		atkset.invinc = not on
+	end)
+
+	atkmenu:toggle(T('Invisible Attackers'), {}, T('Make the Attackers Invisible'), function (on)
+		atkset.invis = on
+	end)
+
+	menus.atkweap = atkmenu:list(T('Attacker Weapon'), {}, T('Change the Weapon of the Attackers'), function ()
+		for weapons_menus as weapons_menu do
+			if weapons_menu:isValid() then weapons_menu:delete() end
+		end
+		weapons_menus = func.Create_ped_weapon_menu(menus.atkweap, {5})
+	end)
+
+	atkmenu:toggle(T('Delete Players Vehicle'), {}, T('Delete Players Vehicle'), function (on)
+		atkset.delveh = on
+	end)
+
+	atkmenu:action(T('Delete Attackers'), {'delatkr'}, T('Delete Attackers'), function ()
+		atkset.p = 0
+		func.DelEnt(spawatk)
+		atkset.atkrdelete = true
+	end)
+
+   
+	local plnemenu = vatkmenu:list(T('Plane Attackers'), {}, '')
+
+	plnemenu:list_action(T('Spawn Plane Attacker'), {'spplatkr'}, T('Spawn plane attacker on the person'), Tables.Planel,  function (planesel)
+		if not players.exists(pid) then
+			util.stop_thread()
+			return
+		end
+		local spec = func.GetSpec(pid)
+		platkset.plnedelete = false
+		if not spec then
+			func.Specon(pid)
+		end
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		
+		if IS_PED_SITTING_IN_ANY_VEHICLE(targets) then
+			if platkset.delveh then
+				func.Delcar(targets, spec, pid)
+			end
+		end
+
+		platkset.plane = Tables.Planeh[planesel]
+
+		while platkset.p < platkset.plcount and players.exists(pid) do
+			local plne, pil = Plneatkr(platkset.invinc, platkset.invis, pid, platkset.plane)
+			table.insert(plneveh, plne)
+			table.insert(plneatkr, pil)
+			util.yield(150)
+			
+			platkset.p = platkset.p + 1
+			if #plneveh == platkset.plcount then
+				break
+			end
+		end
+		util.create_tick_handler(function ()
+			Refreshplnes(pid)
+		end)
+	end) 
+
+	plnemenu:slider(T('Number of Plane Attackers'), {}, T('Number of plane attackers to send'), 1, 10, 1, 1, function (s)
+		platkset.plcount = s
+	end)
+
+	plnemenu:toggle(T('Invincible Attackers Off'), {}, T('Make the Plane Attackers not Invincible anymore'), function (on)
+		platkset.invinc = not on
+	end)
+
+	plnemenu:toggle(T('Invisible Attackers'), {}, T('Make the Plane Attackers Invisible'), function (on)
+		platkset.invis = on
+	end)
+
+	menus.planeatkweap = plnemenu:list(T('Change Weapons'), {'patkweap'}, T('Change the Weapons used by the gunners'), function (weapsel)
+		for weapons_menus as weapons_menu do
+			if weapons_menu:isValid() then weapons_menu:delete() end
+		end
+		weapons_menus = func.Create_ped_weapon_menu(menus.planeatkweap, {6})
+	end)
+
+	plnemenu:toggle(T('Delete Players Vehicle'), {}, T('Delete the Players Vehicle'), function (on)
+		platkset.delveh = on
+	end)
+
+	plnemenu:action(T('Delete Plane Attackers'), {'delplatkr'}, T('Delete Plane Attackers'), function ()
+		util.yield(100)
+		platkset.p = 0
+		platkset.plnedelete = true
+		func.DelEnt(plneveh)
+		func.DelEnt(plneatkr)
+	end)
+
+	local helimenu = vatkmenu:list(T('Helicopter Attackers'), {}, '')
+
+
+
+	helimenu:list_action(T('Spawn Helicopter Attacker'), {'sphelatkr'}, T('Spawn Helicopter attackers on the person'), Tables.Helil,  function (heliesel)
+		local spec = func.GetSpec(pid)
+		heliatkset.helidelete = false
+		if not players.exists(pid) then
+			util.stop_thread()
+			return
+		end
+		if not spec then
+			func.Specon(pid)
+		end
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		heliatkset.helicopter = Tables.Helih[heliesel]
+		if IS_PED_SITTING_IN_ANY_VEHICLE(targets) then
+			if heliatkset.delveh then
+				func.Delcar(targets, spec, pid)
+			end
+		end
+		while heliatkset.h < heliatkset.hlcount and players.exists(pid) do
+			local atk, pil = Heliatkr(heliatkset.invinc, heliatkset.invis, pid, heliatkset.helicopter)
+			table.insert(heliveh, atk)
+			table.insert(heliatkr, pil)
+			util.yield(250)
+			heliatkset.h = heliatkset.h + 1
+			if #heliveh == heliatkset.hlcount then
+				break
+			end
+		end
+	 
+		util.create_tick_handler(function ()
+			RefreshHeli(pid)
+		end)
+	end)
+
+
+	helimenu:slider(T('Number of Helicopter Attackers'), {}, T('Number of Helicopter attackers to send'), 1, 10, 1, 1, function (s)
+		heliatkset.hlcount = s
+	end)
+
+	helimenu:toggle(T('Invincible Attackers Off'), {}, T('Make the Helicopter Attackers not Invincible anymore'), function (on)
+		heliatkset.invinc = not on
+	end)
+
+	helimenu:toggle(T('Invisible Attackers'), {}, T('Make the Helicopter Attackers Invisible'), function (on)
+		heliatkset.invis = on
+	end)
+
+	menus.heliatkweap = helimenu:list(T('Change Weapons'), {'hatkweap'}, T('Change the Weapons used by the gunners'), function (weapsel)
+		for weapons_menus as weapons_menu do
+			if weapons_menu:isValid() then weapons_menu:delete() end
+		end
+		weapons_menus = func.Create_ped_weapon_menu(menus.heliatkweap, {7})
+	end)
+
+	helimenu:toggle(T('Delete Players Vehicle'), {}, T('Delete the Players Vehicle'), function (on)
+		heliatkset.delveh = on
+	end)
+
+	helimenu:action(T('Delete Helicopter Attackers'), {'delhlatkr'}, T('Delete Helicopter Attackers'), function ()
+		util.yield(100)
+		heliatkset.h = 0
+		heliatkset.helidelete = true
+		func.DelEnt(heliatkr)
+		func.DelEnt(heliveh)
+	end)
+
+
+
+
+	local vehatkrmenu = vatkmenu:list(T('Vehicle Attackers'), {}, '')
+
+	vehatkrmenu:list_action(T('Spawn Vehicle Attacker'), {'spvehatkr'}, T('Spawn Vehicle attackers on the person'), Tables.Vehatkl,  function (vehsel)
+		local spec = func.GetSpec(pid)
+		vehatkset.vehdelete = false
+		if not players.exists(pid) then
+			util.stop_thread()
+			return
+		end
+		if not spec then
+			func.Specon(pid)
+		end
+		
+		vehatkset.attkrveh = Tables.Vehatkh[vehsel]
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)     
+		if IS_PED_SITTING_IN_ANY_VEHICLE(targets) then
+			if heliatkset.delveh then
+				func.Delcar(targets, spec, pid)
+			end
+		end
+		while vehatkset.atkv < vehatkset.vlcount and players.exists(pid) do
+			local atk, dri = Vehatkr(vehatkset.invinc, vehatkset.invis, pid, vehatkset.attkrveh)
+			SET_NETWORK_ID_EXISTS_ON_ALL_MACHINES(VEH_TO_NET(atk), true)
+			SET_NETWORK_ID_ALWAYS_EXISTS_FOR_PLAYER(VEH_TO_NET(atk), players.user(), true)
+			table.insert(atkveh, atk)
+			table.insert(vehatkr, dri)
+			util.yield(250)
+			vehatkset.atkv = vehatkset.atkv + 1
+			if #atkveh == vehatkset.vlcount then
+				break
+			end
+		end
+
+		util.create_tick_handler(function ()
+			Refreshveh(pid)
+		end)
+	end)
+
+	vehatkrmenu:text_input(T('Custom Vehicle'), {'cusvatk'}, T('Change the attackers vehicle to a custom one not listed, use the string of the vehicle example rhino'), function (cusveh)
+		local spec = func.GetSpec(pid)
+		vehatkset.vehdelete = false
+		if IS_MODEL_A_VEHICLE(util.joaat(cusveh)) then
+			vehatkset.attkrveh = cusveh
+		else
+			if func.set.alert then
+				func.ACutil(Str_trans('Improper Vehicle Name (check the spelling)'))
+			end
+		end
+		if not players.exists(pid) then
+			util.stop_thread()
+			return
+		end
+		if not spec then
+			func.Specon(pid)
+		end
+		
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+
+		if IS_PED_SITTING_IN_ANY_VEHICLE(targets) then
+			if vehatkset.delveh then
+				func.Delcar(targets, spec, pid)
+			end
+		end
+		while vehatkset.atkv < vehatkset.vlcount and players.exists(pid) do
+			local atk, dri = Vehatkr(vehatkset.invinc, vehatkset.invis, pid, vehatkset.attkrveh)
+			SET_NETWORK_ID_EXISTS_ON_ALL_MACHINES(VEH_TO_NET(atk), true)
+			SET_NETWORK_ID_ALWAYS_EXISTS_FOR_PLAYER(VEH_TO_NET(atk), players.user(), true)
+			table.insert(atkveh, atk)
+			table.insert(vehatkr, dri)
+			util.yield(250)
+			vehatkset.atkv = vehatkset.atkv + 1
+			if #atkveh == vehatkset.vlcount then
+				break
+			end
+		end
+		
+		util.create_tick_handler(function ()
+			Refreshveh(pid)
+		end)
+	end, '')
+
+	vehatkrmenu:slider(T('Number of Vehicle Attackers'), {}, T('Number of Vehicle attackers to send'), 1, 10, 1, 1, function (s)
+		vehatkset.vlcount = s
+	end)
+
+	vehatkrmenu:toggle(T('Invincible Vehicle Off'), {}, T('Make the Vehicle Attackers not Invincible anymore'), function (on)
+		vehatkset.invinc = not on
+	end)
+
+	vehatkrmenu:toggle(T('Invisible Attackers'), {}, T('Make the Vehicle Attackers Invisible'), function (on)
+		vehatkset.invis = on
+	end)
+
+	menus.vehatkweap = vehatkrmenu:list(T('Change Weapons'), {'vatkweap'}, T('Change the Weapons used by the gunners'), function ()
+		for weapons_menus as weapons_menu do
+			if weapons_menu:isValid() then weapons_menu:delete() end
+		end
+		weapons_menus = func.Create_ped_weapon_menu(menus.vehatkweap, {8})
+	end)
+
+	vehatkrmenu:toggle(T('Delete Players Vehicle'), {}, T('Delete the Players Vehicle'), function (on)
+		vehatkset.delveh = on
+	end)
+
+
+	vehatkrmenu:action(T('Delete Vehicle Attackers'), {'delvehatkr'}, T('Delete Vehicle Attackers'), function ()
+		func.DelEnt(vehatkr)
+		func.DelEnt(atkveh)
+		vehatkset.atkv = 0
+		vehatkset.vehdelete = true
+	 end)
+
+	
+
+
+	menus.atkr_selmenu = vatkmenu:list(T('Change Pilot/Driver and Gunners'), {}, '')
+
+	menus.atkr_pildri = menus.atkr_selmenu:list(T('Change Pilot/Driver'), {}, '')
+	func.PedList(menus.atkr_pildri, function(model)
+		pil_dri[1] = model
+	end)
+
+	menus.atkr_gun1 = menus.atkr_selmenu:list(T('Change Gunner 1'), {}, '')
+	func.PedList(menus.atkr_gun1 , function(model)
+		gunners[1] = model
+	end)
+
+	menus.atkr_gun2 = menus.atkr_selmenu:list(T('Change Gunner 2'), {}, '')
+	func.PedList(menus.atkr_gun2 , function(model)
+		gunners[2] = model
+	end)
+	menus.atkr_gun3 = menus.atkr_selmenu:list(T('Change Gunner 3'), {}, '')
+	func.PedList(menus.atkr_gun3 , function(model)
+		gunners[3] = model
+	end)
+
+	local wall = {invis = false}
+	local cage_table = {}
+	local pedset = {mdl = 'IG_Dax'}
+	local pedca =  pcagem:toggle_loop(T('Ped Cage'), {'PCAGE'}, T('Traps Player in a Cage of Peds'), function ()
+		if not players.exists(pid) then
+			if func.set.alert then
+				func.ACutil(Str_trans('You made them rage quit'))
+			end
+			util.stop_thread()
+			cage_table[pid] = nil
+			return
+		end
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		local tar1 = GET_ENTITY_COORDS(targets, true)
+		local pname = players.get_name(pid)
+		if not cage_table[pid] then
+			local peds = {}
+			local pedhash = util.joaat(pedset.mdl)
+			local spec = func.GetSpec(pid)
+			func.Delcar(targets, spec, pid)
+
+			local ped_tab = {'p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8'}
+			for ped_tab as spawned_ped do
+				spawned_ped = func.Pedspawn(pedhash, tar1)
+				table.insert(peds,  spawned_ped)
+			end
+
+			func.SetEntCoor(tar1, peds)
+
+			if wall.invis then
+				for peds as ent do
+					SET_ENTITY_VISIBLE(ent, false, 0)
+				end
+			end
+
+			---------Audio--------------
+			if pedhash == util.joaat('IG_LesterCrest') then
+				Teabagtime(peds[1], peds[2], peds[3], peds[4], peds[5], peds[6], peds[7], peds[8])
+			elseif pedhash == util.joaat('player_two') then
+				Trevortime(peds)
+			elseif pedhash == util.joaat('u_m_m_jesus_01') then
+				Jesuslovesyou(peds)
+			elseif pedhash == util.joaat('IG_LamarDavis_02') then
+				Lamarstupid(peds)    
+			elseif pedhash == util.joaat('IG_Dax') then 
+				Daxfuckyou(peds)   
+			elseif pedhash != util.joaat('IG_LesterCrest') or util.joaat('player_two') then
+			if DOES_CONTEXT_EXIST_FOR_THIS_PED(peds[1], 'GENERIC_FUCK_YOU') ==true then
+			Fuckyou(peds)
+			elseif DOES_CONTEXT_EXIST_FOR_THIS_PED(peds[1], 'Provoke_Trespass') then
+			Provoke(peds)
+			elseif DOES_CONTEXT_EXIST_FOR_THIS_PED(peds[1], 'Generic_Insult_High') then
+			Insulthigh(peds)
+			elseif DOES_CONTEXT_EXIST_FOR_THIS_PED(peds[1], 'GENERIC_WAR_CRY') then
+			Warcry(peds)
+			else
+			end
+			end
+
+			  -----------Anim-------------------------
+			func.Streamanim('rcmpaparazzo_2')
+			func.Streamanim('mp_player_int_upperfinger')
+			func.Streamanim('misscarsteal2peeing')
+			func.Streamanim('mp_player_int_upperpeace_sign')
+			local ped_anim = {peds[2], peds[3], peds[4], peds[5], peds[6], peds[7], peds[8]}
+			for ped_anim as Pedanim do
+				if pedhash == util.joaat('player_two') then
+					func.Runanim(Pedanim, 'misscarsteal2peeing','peeing_loop')
+				   local tre = GET_PED_BONE_INDEX(Pedanim, 0x2e28)
+					func.Streamptfx('core')
+				   --credits to saltyscript for gfx part
+				   START_NETWORKED_PARTICLE_FX_LOOPED_ON_ENTITY_BONE("ent_amb_peeing", Pedanim, 0, 0, 0, -90, 0, 0, tre, 2, false, false, false)
+				elseif pedhash == util.joaat('u_m_m_jesus_01') then
+					func.Runanim(peds[1], 'mp_player_int_upperpeace_sign', 'mp_player_int_peace_sign')
+					func.Runanim(Pedanim, 'mp_player_int_upperpeace_sign', 'mp_player_int_peace_sign')
+				else
+					func.Runanim(Pedanim, 'mp_player_int_upperfinger', 'mp_player_int_finger_02_fp')
+					func.Runanim(peds[1], 'rcmpaparazzo_2', 'shag_loop_a')
+				end
+
+			end
+
+			for peds as Pedm do
+				func.PFP(Pedm, targets) 
+			end
+
+			cage_table[pid] = peds
+		end --if not cage_table[pid] end
+
+	   while cage_table[pid] do
+		IPM(targets, tar1, pname, cage_table, pid)
+	   end
+	end)
+
+	menus.pedclist = pcagem:list(T('Change Ped for Cage'), {}, T('Will Change the Ped if they move or if you delete current ped'))
+	func.PedList(menus.pedclist, function(model)
+		pedset.mdl = model
+	end)
+
+	pcagem:action(T('Free from Ped Cage'), {'FreePedcage'}, T('Free Player from Ped Cage'), function ()
+		if cage_table[pid] then
+			func.DelEnt(cage_table[pid])
+			pedca.value = false
+			cage_table[pid] = false
+		else
+			 if func.set.alert then
+				func.ACutil(Str_trans('No Ped Cage Found'))
+			 end
+		end
+	end)
+
+
+	local atkhash = {}
+	local rcage_table = {}
+	local rpedca =  pcagem:toggle_loop(T('Random Ped Cage'), {'RandomCAGE'}, T('Traps Player in a Cage of Random Peds'), function ()
+		if not players.exists(pid) then
+			if func.set.alert then
+				func.ACutil(Str_trans('You made them rage quit'))
+			end
+			util.stop_thread()
+			rcage_table[pid] = nil
+			return
+		end
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		local tar1 = GET_ENTITY_COORDS(targets, true)
+		local pname = players.get_name(pid)
+		if not rcage_table[pid] then
+			Combinetab(atkhash, Tables.AMC, Tables.AfC, Tables.CSP, Tables.GM, Tables.Mpp, Tables.MSF, Tables.MCM, Tables.SMC, 
+				Tables.Ssf, Tables.Ssm, Tables.Dlcp)
+			local rpeds = {}
+			local rpedind = math.random(1, #atkhash)
+			local rpedset = atkhash[rpedind]
+			local pedhash = util.joaat(rpedset)
+			local spec = func.GetSpec(pid)
+			func.Delcar(targets, spec, pid)
+
+			local ped_tab = {'p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8'}
+			for ped_tab as spawned_ped do
+				spawned_ped = func.Pedspawn(pedhash, tar1)
+				table.insert(rpeds,  spawned_ped)
+			end
+
+			func.SetEntCoor(tar1, rpeds)
+
+			if wall.invis then
+				for rpeds as ent do
+					SET_ENTITY_VISIBLE(ent, false, 0)
+				end
+			end
+
+			---------Audio--------------
+			if pedhash != util.joaat('IG_LesterCrest') or util.joaat('player_two') then
+			
+				if DOES_CONTEXT_EXIST_FOR_THIS_PED(rpeds[1], 'GENERIC_FUCK_YOU') ==true then 
+					Fuckyou(rpeds)
+				elseif DOES_CONTEXT_EXIST_FOR_THIS_PED(rpeds[1], 'Provoke_Trespass') then
+					Provoke(rpeds)
+				elseif DOES_CONTEXT_EXIST_FOR_THIS_PED(rpeds[1], 'Generic_Insult_High') then
+					Insulthigh(rpeds)
+				elseif DOES_CONTEXT_EXIST_FOR_THIS_PED(rpeds[1], 'GENERIC_WAR_CRY') then
+					Warcry(rpeds)
+				else
+				end
+			end
+
+				-----------Anim-------------------------
+			  func.Streamanim('rcmpaparazzo_2')
+			  func.Streamanim('mp_player_int_upperfinger')
+			  func.Streamanim('misscarsteal2peeing')
+			  func.Streamanim('mp_player_int_upperpeace_sign')
+			local ped_anim = {rpeds[2], rpeds[3], rpeds[4], rpeds[5], rpeds[6], rpeds[7], rpeds[8]}
+			for ped_anim as Pedanim do
+				if pedhash == util.joaat('player_two') then
+					func.Runanim(Pedanim, 'misscarsteal2peeing','peeing_loop')
+					local tre = GET_PED_BONE_INDEX(Pedanim, 0x2e28)
+					func.Streamptfx('core') --credits to saltyscript for gfx part
+					START_NETWORKED_PARTICLE_FX_LOOPED_ON_ENTITY_BONE("ent_amb_peeing", Pedanim, 0, 0, 0, -90, 0, 0, tre, 2, false, false, false)
+				elseif pedhash == util.joaat('u_m_m_jesus_01') then
+					func.Runanim(rpeds[1], 'mp_player_int_upperpeace_sign', 'mp_player_int_peace_sign')
+					func.Runanim(Pedanim, 'mp_player_int_upperpeace_sign', 'mp_player_int_peace_sign')
+				else
+					func.Runanim(Pedanim, 'mp_player_int_upperfinger', 'mp_player_int_finger_02_fp')
+					func.Runanim(rpeds[1], 'rcmpaparazzo_2', 'shag_loop_a')
+				end
+			end
+
+
+			for rpeds as Pedm do
+			  func.PFP(Pedm, targets) 
+			end
+
+
+			rcage_table[pid] = rpeds
+		end --if not cage_table[pid] end
+
+		while rcage_table[pid] do
+			IPM(targets, tar1, pname, rcage_table, pid)
+		end
+
+		
+	end)
+  
+	
+	pcagem:action(T('Free from Random Ped Cage'), {'FreeRPedcage'}, T('Free Player from Random Ped Cage'), function ()
+		if rcage_table[pid] then
+			func.DelEnt(rcage_table[pid])
+			rpedca.value = false
+			rcage_table[pid] = false
+		else
+			if func.set.alert then
+				func.ACutil(Str_trans('No Ped Cage Found'))
+			end
+		end
+	end)
+
+	local ccage_table = {}
+	local cpedca =  pcagem:toggle_loop(T('Clone Ped Cage'), {'CloneCAGE'}, T('Traps Player in a Cage of Cloned Peds'), function ()
+		if not players.exists(pid) then
+			if func.set.alert then
+			  func.ACutil(Str_trans('You made them rage quit'))
+			end
+			util.stop_thread()
+			ccage_table[pid] = nil
+			return
+		end
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		local tar1 = GET_ENTITY_COORDS(targets, true)
+		local pname = players.get_name(pid)
+		local target_ped
+		local hash = util.reverse_joaat(GET_ENTITY_MODEL(targets))
+		if hash == 'mp_f_freemode_01' then
+			target_ped = 2627665880
+		elseif hash == 'mp_m_freemode_01' then
+			target_ped = 1885233650
+		end
+		func.Streament(target_ped)
+		if not ccage_table[pid] then
+			local cpeds = {}
+			local pedhash = target_ped
+			
+			local spec = func.GetSpec(pid)
+			func.Delcar(targets, spec, pid)
+	
+			local ped_tab = {'p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8'}
+			for ped_tab as spawned_ped do
+			  spawned_ped = func.Pedspawn(pedhash, tar1)
+			  CLONE_PED_TO_TARGET(targets, spawned_ped)
+			  table.insert(cpeds,  spawned_ped)
+			end
+
+			func.SetEntCoor(tar1, cpeds)
+	
+			if wall.invis then
+				for cpeds as ent do
+					SET_ENTITY_VISIBLE(ent, false, 0)
+				end
+			end
+  
+			func.Streamanim('rcmpaparazzo_2')
+			func.Streamanim('mp_player_int_upperfinger')
+			func.Streamanim('misscarsteal2peeing')
+			func.Streamanim('mp_player_int_upperpeace_sign')
+			local ped_anim = {cpeds[2], cpeds[3], cpeds[4], cpeds[5], cpeds[6], cpeds[7], cpeds[8]}
+			for ped_anim as Pedanim do
+				func.Runanim(Pedanim, 'mp_player_int_upperfinger', 'mp_player_int_finger_02_fp')
+				func.Runanim(cpeds[1], 'rcmpaparazzo_2', 'shag_loop_a')
+			end
+  
+	
+			for cpeds as Pedm do
+				func.PFP(Pedm, targets) 
+			end
+	
+	
+			ccage_table[pid] = cpeds
+		end --if not cage_table[pid] end
+	
+		while ccage_table[pid] do
+			IPM(targets, tar1, pname, ccage_table, pid)
+		end
+	end)
+	
+	  
+	pcagem:action(T('Free from Clone Ped Cage'), {'FreeCPedcage'}, T('Free Player from Clone Ped Cage'), function ()
+		if ccage_table[pid] then
+			func.DelEnt(ccage_table[pid])
+			cpedca.value = false
+			ccage_table[pid] = false
+		else
+			if func.set.alert then
+				func.ACutil(Str_trans('No Ped Cage Found'))
+			end
+		end
+	end) 
+
+	local obj_table = {}
+	local objset = {mdl = 'prop_mineshaft_door', invis = false}
+	local objca = pcagem:toggle_loop(T('Object Cage'), {'ObjCage'}, T('Traps Player in a Cage of Objects'), function ()
+		if not players.exists(pid) then
+			if func.set.alert then
+				func.ACutil(Str_trans('You made them rage quit'))
+			end
+			util.stop_thread()
+			obj_table[pid] = nil
+			return
+		end
+		local targets = GET_PLAYER_PED_SCRIPT_INDEX(pid)
+		local tar1 = GET_ENTITY_COORDS(targets, true)
+		local pname = players.get_name(pid)
+
+		if not obj_table[pid] then
+			local objs = {}
+
+			local spec = func.GetSpec(pid)
+			func.Delcar(targets, spec, pid)
+			
+			local hsel = util.joaat(objset.mdl)
+			func.Streament(hsel)
+			local obj_tab = {'o1', 'o2', 'o3', 'o4', 'o5', 'o6', 'o7', 'o8'}
+			for obj_tab as spawned_obj do
+				spawned_obj =  ObjFrezSpawn(hsel, tar1)
+				table.insert(objs,  spawned_obj)
+			end
+			obj_table[pid] = objs
+
+			func.SetEntCoor(tar1, objs)
+			local rot_tab = {180, 135, 90, 45, 0, 315, 270, 225}
+			for i = 1, #rot_tab do
+					SET_ENTITY_ROTATION(objs[i], 0, 0, rot_tab[i], 1, true)
+			end
+
+			if wall.invis then
+				for objs as ent do
+					SET_ENTITY_VISIBLE(ent, false, 0)
+				end
+			end
+
+			for objs as alarm do
+				PLAY_SOUND_FROM_ENTITY(-1, 'Alarm_Interior', alarm, 'DLC_H3_FM_FIB_Raid_Sounds', 0, 0)
+			end
+		end
+		
+		while obj_table[pid] do
+		IPM(targets, tar1, pname, obj_table, pid)
+		end
+
+	end)
+
+	local ObjSlist = pcagem:list(T('Change Object for Cage'), {}, T('Will Change the Object if they move or if you delete current object'))
+
+	 pcagem:action(T('Free from Object Cage'), {'FreeObjcage'}, T('Free Player from Object Cage'), function ()
+		if obj_table[pid] then
+			func.DelEnt(obj_table[pid])
+			objca.value = false
+			func.Stopsound()
+			obj_table[pid] = false
+		else
+			if func.set.alert then
+				func.ACutil(Str_trans('No Obj Cage Found'))
+			end
+		end
+
+	end)
+
+	pcagem:toggle(T('Invisible Walls'), {}, T('Will turn the Ped Cage, Object Cage and Random Ped Cage Invisible'), function (on)
+		wall.invis = on
+	end)
+
+	 ObjSlist:list_action(T('Street Signs'), {}, T('Changes Objects to Street Signs'), Tables.Siglist, function(objsel)
+		objset.mdl = Tables.Sigha[objsel]
+	end)
+
+	 ObjSlist:list_action(T('Doors'), {}, T('Changes Objects to Doors'), Tables.Dolist, function(objsel)
+		objset.mdl = Tables.Doha[objsel]
+	end)
+
+	 ObjSlist:list_action(T('Interior'), {}, T('Changes Objects to Interior Props'), Tables.Interlist, function(objsel)
+		objset.mdl = Tables.Intob[objsel]
+	end)
+
+	 ObjSlist:list_action(T('Exterior'), {}, T('Changes Objects to Exterior Props'), Tables.Extlist, function(objsel)
+		objset.mdl = Tables.Extob[objsel]
+	end)
+
+  -------------------------------Player Join End-----------------------------------------------------------------------------
+
+end)

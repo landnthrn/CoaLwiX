@@ -1,0 +1,39 @@
+Model: hermes
+Plate Style: 0
+Plate Text:  DKARME 
+Primary Colour: 84
+Secondary Colour: 120
+Pearl Colour: 0
+Wheel Colour: 30
+Wheel Type: 1
+Front Bumper: 3
+Rear Bumper: 2
+Sideskirt: 0
+Exhaust: 1
+Fender: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 1
+Suspension: 0
+Armor: 0
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 0
+Front Wheels: 16, Custom
+Livery: 9
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 1
+Dashboard Colour: 0
+Tyres Mode: 1

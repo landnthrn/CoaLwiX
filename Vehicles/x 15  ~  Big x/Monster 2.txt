@@ -1,0 +1,43 @@
+Model: monster4
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 120
+Secondary Colour: 158
+Pearl Colour: 160
+Wheel Colour: 158
+Wheel Type: 0
+Front Bumper: 3
+Rear Bumper: 2
+Exhaust: 2
+Chassis: 3
+Hood: 3
+Right Fender: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 35
+Armor: 0
+Nitrous: No
+Turbo: No
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 2
+Front Wheels: 1
+Air Filter: 3
+Struts: 0
+Arch Cover: 2
+Tank: 0
+Livery: 6
+Tyre Smoke Colour: #000000
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #000000
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 27
+Dashboard Colour: 111
+Tyres Mode: 1

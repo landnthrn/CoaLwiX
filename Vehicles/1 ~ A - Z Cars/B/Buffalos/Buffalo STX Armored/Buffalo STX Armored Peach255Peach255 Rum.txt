@@ -1,0 +1,48 @@
+Model: buffalo4
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 10
+Wheel Colour: 160
+Wheel Type: 8
+Spoiler: 12
+Front Bumper: 8
+Rear Bumper: 2
+Sideskirt: 4
+Exhaust: 8
+Chassis: 1
+Grille: 4
+Hood: 4
+Fender: 0
+Right Fender: 1
+Roof: 13
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 9
+Front Wheels: 87
+Ornaments: 6
+Trim2: 2
+Tank: 1
+Livery: 9
+Tyre Smoke Colour: #ff643c
+Window Tint: 1
+Custom Primary Colour: #ff643c
+Custom Secondary Colour: #ff643c
+Neon Colour: #ff6d38
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 130
+Dashboard Colour: 0
+Tyres Mode: 1

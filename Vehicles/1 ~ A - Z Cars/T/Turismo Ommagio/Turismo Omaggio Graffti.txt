@@ -1,0 +1,46 @@
+Model: turismo3
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 72
+Secondary Colour: 0
+Pearl Colour: 8
+Wheel Colour: 134
+Wheel Type: 8
+Spoiler: 7
+Front Bumper: 4
+Rear Bumper: 2
+Sideskirt: 6
+Exhaust: 2
+Chassis: 4
+Grille: 6
+Hood: 5
+Fender: 0
+Right Fender: 6
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: Yes
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 123
+Trim2: 2
+Livery: 20
+Tyre Smoke Colour: #ff00ff
+Window Tint: 1
+Custom Primary Colour: #dc0097
+Custom Secondary Colour: #ff91a7
+Neon Colour: #ff00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 72
+Tyres Mode: 1

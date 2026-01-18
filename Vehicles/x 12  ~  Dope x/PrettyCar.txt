@@ -1,0 +1,52 @@
+Model: weevil2
+Plate Style: 1
+Plate Text: POLLY PO
+Primary Colour: 34
+Secondary Colour: 34
+Pearl Colour: 35
+Wheel Colour: 0
+Wheel Type: 11
+Spoiler: 5
+Front Bumper: 5
+Rear Bumper: 0
+Sideskirt: 5
+Exhaust: 2
+Chassis: 4
+Grille: 2
+Hood: 0
+Fender: 4
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 0
+Suspension: 4
+Armor: 0
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 1
+Front Wheels: 5
+Trim: 5
+Door Speaker: 0
+Steering Wheel: 9
+Shifter Leavers: 12
+Arch Cover: 3
+Aerials: 7
+Left Door: 4
+Right Door: 0
+Livery: 0
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff0101
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 111
+Tyres Mode: 1

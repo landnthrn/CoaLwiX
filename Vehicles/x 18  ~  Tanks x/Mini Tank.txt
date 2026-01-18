@@ -1,0 +1,46 @@
+Model: scarab2
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 160
+Wheel Colour: 158
+Wheel Type: 0
+Front Bumper: 10
+Rear Bumper: 0
+Sideskirt: 12
+Exhaust: 3
+Chassis: 3
+Grille: 4
+Right Fender: 0
+Roof: 2
+Engine: 4
+Brakes: 3
+Horns: 18
+Armor: 5
+Nitrous: No
+Turbo: No
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 2
+Front Wheels: 2
+Ornaments: 0
+Air Filter: 0
+Struts: 0
+Arch Cover: 3
+Aerials: 2
+Tank: 0
+Livery: 14
+Tyre Smoke Colour: #000000
+Window Tint: 1
+Custom Primary Colour: #32ffff
+Custom Secondary Colour: #32ffff
+Neon Colour: #32ffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 160
+Dashboard Colour: 160
+Tyres Mode: 1

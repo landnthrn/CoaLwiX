@@ -1,0 +1,51 @@
+Model: faction2
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 120
+Pearl Colour: 140
+Wheel Colour: 127
+Wheel Type: 8
+Exhaust: 2
+Hood: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 4
+Front Wheels: 117
+Back Wheels: 0
+Plate Holder: 13
+Vanity Plates: 0
+Trim: 2
+Ornaments: 44
+Dial: 14
+Steering Wheel: 16
+Shifter Leavers: 15
+Plaques: 22
+Speakers: 2
+Trunk: 3
+Hydraulics: 4
+Engine Block: 4
+Air Filter: 5
+Livery: 5
+Tyre Smoke Colour: #00e1ff
+Window Tint: 1
+Custom Primary Colour: #00334f
+Custom Secondary Colour: #00c8ff
+Neon Colour: #00c8ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 157
+Dashboard Colour: 156
+Tyres Mode: 1
+Extra 2: No
+Extra 3: No

@@ -1,0 +1,42 @@
+Model: tampa
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 50
+Secondary Colour: 0
+Pearl Colour: 135
+Wheel Colour: 137
+Wheel Type: 10
+Spoiler: 0
+Front Bumper: 1
+Rear Bumper: 2
+Exhaust: 1
+Chassis: 1
+Grille: 1
+Hood: 2
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 65
+Livery: 258462496
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #204178
+Custom Secondary Colour: #c05ddb
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 67
+Dashboard Colour: 158
+Tyres Mode: 1

@@ -1,0 +1,43 @@
+Model: hellion
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 28
+Pearl Colour: 10
+Wheel Colour: 122
+Wheel Type: 8
+Spoiler: 2
+Front Bumper: 4
+Rear Bumper: 10
+Sideskirt: 8
+Exhaust: 7
+Chassis: 4
+Grille: 8
+Fender: 3
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 41
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 108
+Livery: 6
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #ffffff
+Custom Secondary Colour: 
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 132
+Tyres Mode: 1

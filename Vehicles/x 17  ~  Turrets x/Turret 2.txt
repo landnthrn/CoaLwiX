@@ -1,0 +1,36 @@
+Model: halftrack
+Plate Style: 0
+Plate Text: CHUB RUB
+Primary Colour: 154
+Secondary Colour: 154
+Pearl Colour: 3
+Wheel Colour: 154
+Wheel Type: 4
+Chassis: 3
+Right Fender: 1
+Roof: 1
+Engine: 4
+Brakes: 3
+Horns: 58
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 35
+Livery: 40
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: No

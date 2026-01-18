@@ -1,0 +1,42 @@
+Model: sm722
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 38
+Wheel Colour: 36
+Wheel Type: 8
+Spoiler: 18
+Front Bumper: 2
+Rear Bumper: 7
+Sideskirt: 5
+Exhaust: 5
+Chassis: 0
+Grille: 8
+Hood: 5
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 2
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 9
+Front Wheels: 122
+Livery: 0
+Tyre Smoke Colour: #ff5500
+Window Tint: 1
+Custom Primary Colour: #1e001e
+Custom Secondary Colour: #1e001e
+Neon Colour: #ff3700
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 3
+Dashboard Colour: 156
+Tyres Mode: 1

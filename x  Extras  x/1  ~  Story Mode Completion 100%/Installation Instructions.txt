@@ -1,0 +1,45 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HOW TO INSTALL 100% COMPLETED STORY MODE 
+ 
+*You don't even need mods for this, Rockstar doesn't give a fuck if you mod storymode*
+ 
+Open Documents > Rockstar Games > GTA V or GTA V Enhanced > Profiles 
+
+Each Folder you see with random letters and numbers represents an account.
+(if you have multiple try checking the dates to figure out what ones are what)
+
+Drag the SGTA50015 & SGTA50015.bak into the account(s) folder you want
+
+When you launch GTA 5 you will get a prompt saying to select a save, select the one that says " June 8 2023 12:41:37 "
+
+Press Review and then Confirm, game will launch
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

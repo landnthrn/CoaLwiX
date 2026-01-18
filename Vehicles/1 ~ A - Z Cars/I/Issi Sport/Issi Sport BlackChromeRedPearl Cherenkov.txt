@@ -1,0 +1,45 @@
+Model: issi7
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 120
+Pearl Colour: 28
+Wheel Colour: 134
+Wheel Type: 8
+Spoiler: 0
+Front Bumper: 6
+Rear Bumper: 2
+Sideskirt: 3
+Exhaust: 2
+Grille: 3
+Hood: 7
+Fender: 4
+Right Fender: 0
+Roof: 5
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 122
+Livery: 5
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #0d1116
+Custom Secondary Colour: #ff0000
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 132
+Tyres Mode: 1
+Extra 1: Yes

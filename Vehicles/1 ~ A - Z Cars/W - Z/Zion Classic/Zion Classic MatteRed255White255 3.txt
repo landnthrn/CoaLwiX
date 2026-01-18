@@ -1,0 +1,45 @@
+Model: zion3
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 134
+Pearl Colour: 10
+Wheel Colour: 28
+Wheel Type: 8
+Spoiler: 8
+Front Bumper: 7
+Rear Bumper: 3
+Sideskirt: 10
+Exhaust: 5
+Chassis: 3
+Grille: 2
+Hood: 4
+Fender: 3
+Right Fender: 2
+Roof: 5
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 119
+Livery: 3
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #ff0000
+Custom Secondary Colour: #ffffff
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 13
+Dashboard Colour: 111
+Tyres Mode: 1

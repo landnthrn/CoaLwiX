@@ -1,0 +1,39 @@
+Model: shinobi
+Plate Style: 7
+Plate Text:  DKARME 
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 10
+Wheel Colour: 67
+Wheel Type: 6
+Front Bumper: 3
+Sideskirt: 3
+Exhaust: 4
+Chassis: 3
+Hood: 3
+Engine: 5
+Brakes: 4
+Transmission: 4
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 44
+Back Wheels: 44
+Livery: 4
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #ffffff
+Custom Secondary Colour: #ffffff
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

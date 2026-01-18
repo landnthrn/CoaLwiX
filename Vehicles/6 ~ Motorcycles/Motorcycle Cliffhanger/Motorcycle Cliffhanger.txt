@@ -1,0 +1,34 @@
+Model: cliffhanger
+Plate Style: 0
+Plate Text: 89FOK000
+Primary Colour: 147
+Secondary Colour: 120
+Pearl Colour: 136
+Wheel Colour: 156
+Wheel Type: 6
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 0
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 0
+Front Wheels: 0
+Back Wheels: 0
+Livery: 0
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 1
+Dashboard Colour: 0
+Tyres Mode: 1

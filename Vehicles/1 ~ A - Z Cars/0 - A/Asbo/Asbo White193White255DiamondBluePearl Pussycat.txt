@@ -1,0 +1,44 @@
+Model: asbo
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 67
+Wheel Colour: 136
+Wheel Type: 8
+Spoiler: 13
+Front Bumper: 6
+Sideskirt: 10
+Exhaust: 8
+Chassis: 3
+Grille: 2
+Hood: 8
+Fender: 2
+Right Fender: 4
+Roof: 6
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 11
+Front Wheels: 103
+Livery: 4
+Tyre Smoke Colour: #ff97a8
+Window Tint: 0
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #ffffff
+Neon Colour: #ff99a4
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 136
+Dashboard Colour: 135
+Tyres Mode: 1

@@ -1,0 +1,40 @@
+Model: emerus
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 36
+Secondary Colour: 0
+Pearl Colour: 42
+Wheel Colour: 38
+Wheel Type: 8
+Spoiler: 21
+Sideskirt: 8
+Exhaust: 4
+Grille: 6
+Fender: 1
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: Yes
+Headlights: 8
+Front Wheels: 112
+Livery: 7
+Tyre Smoke Colour: #ffb923
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: #ffffff
+Neon Colour: #ff9605
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 131
+Tyres Mode: 1
+Extra 1: No

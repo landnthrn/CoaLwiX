@@ -1,0 +1,47 @@
+Model: deity
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 126
+Wheel Colour: 158
+Wheel Type: 8
+Spoiler: 11
+Front Bumper: 7
+Rear Bumper: 1
+Sideskirt: 11
+Exhaust: 11
+Chassis: 1
+Grille: 2
+Hood: 12
+Fender: 2
+Right Fender: 0
+Roof: 8
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 8
+Front Wheels: 102
+Trim2: 2
+Tank: 1
+Livery: 7
+Tyre Smoke Colour: #ffb923
+Window Tint: 1
+Custom Primary Colour: #47391b
+Custom Secondary Colour: #5870a1
+Neon Colour: #ff9605
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 98
+Dashboard Colour: 158
+Tyres Mode: 1

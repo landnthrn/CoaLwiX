@@ -1,0 +1,35 @@
+Model: shotaro
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 81
+Wheel Colour: 73
+Wheel Type: 6
+Front Bumper: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 45
+Back Wheels: 45
+Livery: -1
+Tyre Smoke Colour: #3c03ff
+Window Tint: 1
+Custom Primary Colour: #000014
+Custom Secondary Colour: #00001e
+Neon Colour: #ffffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 148
+Dashboard Colour: 0
+Tyres Mode: 1

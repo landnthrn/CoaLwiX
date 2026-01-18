@@ -1,0 +1,56 @@
+Model: euros
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 140
+Wheel Colour: 83
+Wheel Type: 8
+Spoiler: 16
+Front Bumper: 0
+Rear Bumper: 3
+Sideskirt: 12
+Exhaust: 6
+Chassis: 8
+Hood: 20
+Fender: 6
+Roof: 9
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 108
+Vanity Plates: 4
+Trim: 1
+Dashboard: 3
+Seats: 8
+Door Speaker: 15
+Steering Wheel: 16
+Engine Block: 4
+Air Filter: 10
+Struts: 20
+Arch Cover: 6
+Aerials: 4
+Trim2: 14
+Right Door: 1
+Livery: 0
+Tyre Smoke Colour: #3c00ff
+Window Tint: 1
+Custom Primary Colour: #0f003c
+Custom Secondary Colour: #5870a1
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 32
+Dashboard Colour: 156
+Tyres Mode: 1

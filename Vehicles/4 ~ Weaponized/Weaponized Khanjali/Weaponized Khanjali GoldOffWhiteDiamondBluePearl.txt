@@ -1,0 +1,36 @@
+Model: khanjali
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 158
+Secondary Colour: 0
+Pearl Colour: 67
+Wheel Colour: 158
+Wheel Type: 10
+Chassis: 1
+Right Fender: 1
+Roof: 1
+Engine: 4
+Brakes: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 85
+Vanity Plates: 0
+Livery: 0
+Tyre Smoke Colour: #e6e1ff
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: #c1bfff
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 158
+Dashboard Colour: 158
+Tyres Mode: 1

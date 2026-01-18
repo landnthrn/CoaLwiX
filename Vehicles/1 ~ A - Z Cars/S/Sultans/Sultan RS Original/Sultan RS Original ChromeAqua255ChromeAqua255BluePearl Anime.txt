@@ -1,0 +1,58 @@
+Model: sultanrs
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 120
+Secondary Colour: 120
+Pearl Colour: 140
+Wheel Colour: 119
+Wheel Type: 9
+Spoiler: 13
+Front Bumper: 9
+Rear Bumper: 7
+Sideskirt: 2
+Exhaust: 0
+Chassis: 4
+Grille: 3
+Hood: 10
+Fender: 4
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 57
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 0
+Front Wheels: 38
+Trim: 1
+Ornaments: 14
+Dashboard: 2
+Dial: 5
+Seats: 7
+Door Speaker: 11
+Steering Wheel: 12
+Engine Block: 2
+Air Filter: 6
+Struts: 4
+Arch Cover: 0
+Aerials: 0
+Trim2: 1
+Left Door: 1
+Livery: 8
+Tyre Smoke Colour: #00ffff
+Window Tint: 1
+Custom Primary Colour: #00ffff
+Custom Secondary Colour: #00ffff
+Neon Colour: #00ffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 112
+Tyres Mode: 1

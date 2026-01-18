@@ -1,0 +1,46 @@
+Model: zhaba
+Plate Style: 0
+Plate Text:  0 MPH  
+Primary Colour: 39
+Secondary Colour: 12
+Pearl Colour: 28
+Wheel Colour: 28
+Wheel Type: 0
+Spoiler: 1
+Front Bumper: 3
+Rear Bumper: 3
+Sideskirt: 8
+Exhaust: 8
+Chassis: 0
+Grille: 6
+Fender: 2
+Right Fender: 2
+Roof: 5
+Engine: 4
+Brakes: 3
+Transmission: 2
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 0
+Livery: 27
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #ff0000
+Custom Secondary Colour: #13181f
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: No
+Extra 3: No

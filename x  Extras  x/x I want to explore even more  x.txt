@@ -1,0 +1,65 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+CoaLwiX intentionally leaves out many files for multiple reasons (mainly constructor search related reasons) but if you want to explore even more here are some links! :)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+An Ungodly Amount of Vehicles ( Same package as below ↓↓↓ but removed the duplicates and .XML's )
+https://drive.google.com/file/d/1qI63N3uNNYYBM3Qrgo42kkzZNP90nS-M/view?usp=sharing
+
+Modded Vehicles + .XML's (Same package as above ^^^ but with duplicates :/ and .XML's )
+https://drive.google.com/file/d/1WbeAMhCmNZqXAAsZ-BA52Uu-X6QcLfm7/view?usp=sharing
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Constructs & Lua Script DISCLAIMERS**
+
+**There will be a hand full of files that are outdated / broken**
+
+**All the best of these files are likely already included the CoaLwiX Pack, plus many files that fell broken over people's copies have been fixed by CoaLwiX**
+
+**Having other multiple packs in your Construct folder can make using the search feature a hassle due to duplicates**
+so its recomended to add new files you like to the CoaLwiX Constructor Pack and remove the others packs after
+
+~~~~~~~~~~~~~~
+
+More Constructor Constructs: (Curated for Constructor)
+https://github.com/hexarobi/stand-curated-constructs
+
+~~~~~~~~~~~~~~
+
+Even More Constructor Constructs:
+https://drive.google.com/file/d/1ckZwN98gTaIVwThWMLrpLTRe7s8PJf4v/view?usp=sharing
+
+~~~~~~~~~~~~~~
+
+More Stand Lua Scripts:
+https://drive.google.com/file/d/19gIdPMz9VrmeT35zVg2JFOcQPpEjNeCp/view?usp=sharing
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

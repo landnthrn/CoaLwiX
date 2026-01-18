@@ -1,0 +1,39 @@
+Model: kuruma2
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 89
+Wheel Colour: 130
+Wheel Type: 8
+Spoiler: 0
+Front Bumper: 2
+Sideskirt: 4
+Exhaust: 3
+Chassis: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 9
+Front Wheels: 122
+Livery: 9
+Tyre Smoke Colour: #ffb905
+Window Tint: 1
+Custom Primary Colour: #0e0d33
+Custom Secondary Colour: #1e0000
+Neon Colour: #ff7d03
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 0
+Tyres Mode: 1

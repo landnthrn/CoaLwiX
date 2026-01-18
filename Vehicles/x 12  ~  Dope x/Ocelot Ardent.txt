@@ -1,0 +1,41 @@
+Model: ardent
+Plate Style: 5
+Plate Text:  0 KPH  
+Primary Colour: 117
+Secondary Colour: 117
+Pearl Colour: 87
+Wheel Colour: 112
+Wheel Type: 8
+Spoiler: 3
+Front Bumper: 5
+Rear Bumper: 1
+Exhaust: 1
+Hood: 6
+Fender: 2
+Roof: 6
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 58
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 0
+Front Wheels: 110
+Livery: 26
+Tyre Smoke Colour: #000000
+Window Tint: 0
+Custom Primary Colour: #3b00ff
+Custom Secondary Colour: #3b00ff
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 93
+Dashboard Colour: 93
+Tyres Mode: 1

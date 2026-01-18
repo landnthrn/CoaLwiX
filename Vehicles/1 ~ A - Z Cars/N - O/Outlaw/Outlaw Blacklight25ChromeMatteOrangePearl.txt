@@ -1,0 +1,33 @@
+Model: outlaw
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 120
+Pearl Colour: 41
+Wheel Colour: 134
+Wheel Type: 8
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 9
+Front Wheels: 110
+Livery: 0
+Tyre Smoke Colour: #ff6900
+Window Tint: 1
+Custom Primary Colour: #020019
+Custom Secondary Colour: #5870a1
+Neon Colour: #ff3700
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

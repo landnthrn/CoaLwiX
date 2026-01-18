@@ -1,0 +1,17 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Essentially is an Unlock All Lua Script, 
+
+*only Levels up to Rank 140 I believe, incase you didn't want any further for now*
+
+If you want to use it, use it once and then delete or move it out of your Stand Lua Scripts folder when your intial boosting is finished.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Installion:
+Open Stand Launchpad > Open Stand Folder
+
+Drag the Brand New Unlocks.lua into the Lua Scripts folder
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

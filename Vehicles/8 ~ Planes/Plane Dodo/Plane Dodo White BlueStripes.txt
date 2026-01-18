@@ -1,0 +1,28 @@
+Model: dodo
+Plate Style: 4
+Plate Text:  DKARME 
+Primary Colour: 132
+Secondary Colour: 0
+Pearl Colour: 122
+Wheel Colour: 156
+Wheel Type: 0
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 0
+Front Wheels: 0
+Livery: 3
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #00ffff
+Neon Front: Yes
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

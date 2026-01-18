@@ -1,0 +1,33 @@
+Model: pyro
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 139
+Wheel Colour: 55
+Wheel Type: 8
+Front Bumper: 2
+Roof: 1
+Engine: 4
+Brakes: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 122
+Livery: 9
+Tyre Smoke Colour: #00ff00
+Window Tint: 1
+Custom Primary Colour: #001900
+Custom Secondary Colour: #5870a1
+Neon Colour: #00ff00
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 0
+Tyres Mode: 1

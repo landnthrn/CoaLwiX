@@ -1,0 +1,39 @@
+Model: t20
+Plate Style: 12
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 140
+Wheel Colour: 54
+Wheel Type: 8
+Front Bumper: 1
+Rear Bumper: 2
+Sideskirt: 0
+Exhaust: 3
+Hood: 0
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 5
+Front Wheels: 57
+Livery: -1
+Tyre Smoke Colour: #00ffb9
+Window Tint: 1
+Custom Primary Colour: #001900
+Custom Secondary Colour: #001900
+Neon Colour: #00ffaa
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 155
+Dashboard Colour: 154
+Tyres Mode: 1

@@ -1,0 +1,59 @@
+Model: previon
+Plate Style: 10
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 0
+Pearl Colour: 0
+Wheel Colour: 145
+Wheel Type: 10
+Spoiler: 10
+Front Bumper: 4
+Rear Bumper: 2
+Sideskirt: 5
+Exhaust: 7
+Chassis: 5
+Grille: 5
+Hood: 12
+Fender: 2
+Right Fender: 2
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: Yes
+Headlights: 13
+Front Wheels: 20
+Vanity Plates: 8
+Trim: 8
+Dashboard: 4
+Dial: 4
+Seats: 8
+Door Speaker: 14
+Steering Wheel: 16
+Engine Block: 4
+Air Filter: 25
+Struts: 20
+Arch Cover: 9
+Aerials: 6
+Left Door: 5
+Right Door: 2
+Livery: 13
+Tyre Smoke Colour: #7800ff
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #000000
+Neon Colour: #5a00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

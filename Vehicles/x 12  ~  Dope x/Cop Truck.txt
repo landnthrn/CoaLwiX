@@ -1,0 +1,49 @@
+Model: polcaracara
+Plate Style: 4
+Plate Text:  0 KPH  
+Primary Colour: 0
+Secondary Colour: 111
+Pearl Colour: 0
+Wheel Colour: 0
+Wheel Type: 3
+Spoiler: 4
+Front Bumper: 7
+Rear Bumper: 5
+Exhaust: 2
+Grille: 3
+Hood: 8
+Fender: 3
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 58
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 38
+Arch Cover: 5
+Aerials: 7
+Trim2: 6
+Livery: 27
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 2
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: No
+Extra 2: Yes
+Extra 3: No
+Extra 4: No

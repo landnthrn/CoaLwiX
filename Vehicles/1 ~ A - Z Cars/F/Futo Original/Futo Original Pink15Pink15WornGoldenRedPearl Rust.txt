@@ -1,0 +1,44 @@
+Model: futo
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 47
+Wheel Colour: 47
+Wheel Type: 8
+Spoiler: 2
+Front Bumper: 3
+Rear Bumper: 3
+Sideskirt: 1
+Exhaust: 3
+Chassis: 0
+Grille: 1
+Hood: 0
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 9
+Front Wheels: 28
+Livery: 3
+Tyre Smoke Colour: #550000
+Window Tint: 1
+Custom Primary Colour: #0f000c
+Custom Secondary Colour: #0f000c
+Neon Colour: #32090b
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: No

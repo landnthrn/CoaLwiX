@@ -1,0 +1,45 @@
+Model: penumbra2
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 120
+Pearl Colour: 135
+Wheel Colour: 135
+Wheel Type: 8
+Spoiler: 17
+Front Bumper: 10
+Rear Bumper: 8
+Sideskirt: 0
+Exhaust: 5
+Chassis: 12
+Grille: 0
+Hood: 10
+Fender: 2
+Right Fender: 2
+Roof: 6
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 11
+Front Wheels: 117
+Livery: 1
+Tyre Smoke Colour: #ff006e
+Window Tint: 1
+Custom Primary Colour: #ff204f
+Custom Secondary Colour: #5870a1
+Neon Colour: #ff003c
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 137
+Dashboard Colour: 158
+Tyres Mode: 1

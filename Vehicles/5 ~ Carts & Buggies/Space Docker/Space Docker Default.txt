@@ -1,0 +1,28 @@
+Model: dune2
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 132
+Secondary Colour: 132
+Pearl Colour: 0
+Wheel Colour: 0
+Wheel Type: 4
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 0
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #c1bfff
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

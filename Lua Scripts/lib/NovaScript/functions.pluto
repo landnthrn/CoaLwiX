@@ -1,0 +1,964 @@
+pluto_use "0.5.0"
+
+require("NovaScript.NovaScript_natives")
+local tables = require("NovaScript.tables")
+local T = require("NovaScript.NovaS_translations")
+
+local func = {}
+
+--gets the distance between 2 pos or 2 entitys--
+function func.get_distance_between(pos1, pos2)
+	if math.type(pos1) == "integer" then
+		pos1 = get_entity_coords(pos1)
+	end
+	if math.type(pos2) == "integer" then 
+		pos2 = get_entity_coords(pos2)
+	end
+	return pos1:distance(pos2)
+end
+
+--draws a rect based of the text amound in height the width the height is calculated with the text_amound--
+function func.draw_rect_with_text(x, y, text_amound, width, colour, change_size, distance)
+    local total_text_height = 0
+    local one_text_height = 0.01874 + 0.007
+    
+    for i = 1, text_amound do
+        total_text_height = total_text_height + one_text_height
+    end
+    if change_size and distance != nil then
+        local scale_factor = 1 - ((distance - 301) / (500 - 300))
+        local rect_size = (1000 + (1500 - 300) * scale_factor) / 8000
+        width = width + rect_size
+        scale_factor = scale_factor + rect_size
+    end
+    local draw_rect = directx.draw_rect(x - 0.0045, y - 0.0045, width, total_text_height, colour)
+    return draw_rect
+end
+
+--draws text on the left and text on the right with a distance between them--
+function func.draw_info_text(text, infotext, posX, posY, distance, size1, size2, text_colour1, text_colour2, bool)
+    local draw_text = directx.draw_text(posX, posY, text, ALIGN_TOP_LEFT, size1, text_colour1, true)
+
+    local first_text_width, first_text_height = directx.get_text_size(text, size1)
+    
+    local posX2, alignment
+    local posY2 = posY + (first_text_height/1.9)
+    if bool then
+        posX2 = posX - (-distance/1000)
+        alignment = ALIGN_CENTRE_RIGHT
+    else
+        posX2 = posX + first_text_width + (distance/1000)
+        alignment = ALIGN_CENTRE_LEFT
+    end
+    
+    local draw_infotext = directx.draw_text(posX2, posY2, infotext, alignment, size2, text_colour2, true)
+    
+    return draw_text, draw_infotext
+end
+
+--get control of an entity with loop--
+function func.get_entity_control(entity)
+    if entity > 0 then
+        if network_has_control_of_entity(entity) and util.is_session_started() then
+            return entity
+        end
+        local network_id = network_get_network_id_from_entity(entity)
+        local has_control = false
+        set_network_id_can_migrate(network_id, true)
+
+        local loops = 15
+        while not has_control do
+            has_control = network_request_control_of_entity(entity)
+            loops = loops - 1
+            util.yield(15)
+            if loops <= 0 then
+                break
+            end
+        end
+    end
+    return entity
+end
+
+
+function func.get_entity_control_onces(entity)
+    if entity > 0 then
+        if network_has_control_of_entity(entity) and util.is_session_started() then
+            return entity
+        end
+        local network_id = network_get_network_id_from_entity(entity)
+        set_network_id_can_migrate(network_id, true)
+        local has_control = network_request_control_of_entity(entity)
+        if has_control then 
+            return entity
+        end
+    end
+    return false
+end
+
+--gets the vehicle a ped is currently in--
+function func.get_vehicle_from_ped(ped)
+	if is_ped_in_any_vehicle(ped, false) then
+		return get_vehicle_ped_is_in(ped, false)
+    else
+        return 0
+	end
+end
+
+--get the players vehicle in control--
+function func.get_player_vehicle_in_control(pid, options)
+    local target_ped = get_player_ped_script_index(pid)
+    local dist = func.get_distance_between(players.user_ped(), target_ped)
+    
+    local is_spectating = menu.ref_by_command_name("spectate" .. players.get_name(pid):lower()).value
+
+    local vehicle = func.get_vehicle_from_ped(target_ped)
+    if options and vehicle == 0 then
+        return 0
+    end
+    if vehicle == 0 and target_ped != players.user_ped() and dist > 1000 and not is_spectating then
+        util.toast(T"Spectating")
+        local player_name = players.get_name(pid)
+        menu.ref_by_command_name($"spectate{player_name}").value = true
+
+        local delay = util.current_time_millis() + 3000
+        while vehicle == 0 and util.current_time_millis() <= delay do
+            vehicle = func.get_vehicle_from_ped(target_ped)
+            util.yield(100)
+        end
+    end
+
+    func.get_entity_control(vehicle)
+
+    if not is_spectating then
+        local player_name = players.get_name(pid)
+        menu.ref_by_command_name($"spectate{player_name}").value = false
+    end
+
+    return vehicle
+end
+
+--does the same as the function above but only request control ones and doesnt do the spectating--
+function func.get_player_vehicle_in_control_ones(pid, options)
+    local target_ped = get_player_ped_script_index(pid)
+    local vehicle = func.get_vehicle_from_ped(target_ped)
+    
+    if options and vehicle == 0 then
+        return 0
+    end
+    if vehicle == 0 and target_ped != players.user_ped() then
+        local loop = 30
+        while vehicle == 0 and loop > 0 do
+            util.yield(100)
+            vehicle = func.get_vehicle_from_ped(target_ped)
+            loop = loop - 1
+        end
+    end
+
+    func.get_entity_control_onces(vehicle)
+    return vehicle
+end
+
+function func.control_vehicle(pid, output_toast, callback, opts)
+    local vehicle = func.get_player_vehicle_in_control(pid, opts)
+    if vehicle != 0 then
+        callback(vehicle)
+        return true
+    else
+        if output_toast then
+            util.toast(T"Player is not in a vehicle.")
+        end
+        return false
+    end
+end
+
+function func.control_vehicle_ones(pid, output_toast, callback, opts)
+    local vehicle = func.get_player_vehicle_in_control_ones(pid, opts)
+    if vehicle != 0 then
+        callback(vehicle)
+        return true
+    else
+        if output_toast then
+            util.toast(T"Player is not in a vehicle.")
+        end
+        return false
+    end
+end
+
+--gets the model dimensions of the model hash--
+function func.get_model_dimensions_from_hash(model_hash)
+    local minimum = memory.alloc(24)
+    local maximum = memory.alloc(24)
+    local min = {}
+    local max = {}
+    get_model_dimensions(model_hash, minimum, maximum)
+    min.x, min.y, min.z = v3.get(minimum)
+    max.x, max.y, max.z = v3.get(maximum)
+    local size = {}
+    size.x = max.x - min.x
+    size.y = max.y - min.y
+    size.z = max.z - min.z
+    return size
+end
+
+--requests an ptfx assest and uses it at the same time so i dont have to put that native in each time--
+function func.use_fx_asset(asset)
+    while not has_named_ptfx_asset_loaded(asset) do
+		request_named_ptfx_asset(asset)
+		util.yield()
+	end
+    use_particle_fx_asset(asset)
+end
+
+
+function func.load_anim_dict(dict)
+    while not has_anim_dict_loaded(dict) do
+        request_anim_dict(dict)
+        util.yield()
+    end
+end
+
+function func.any_passengers(vehicle)
+    for seatindex = -1, (get_vehicle_model_number_of_seats(get_entity_model(vehicle)) - 2) do
+        if not is_vehicle_seat_free(vehicle, seatindex, false) then
+            return true
+        end
+    end
+    return false
+end
+
+function func.get_passengers(vehicle)
+    local pedtable = {}
+    for seatindex = -1, (get_vehicle_model_number_of_seats(get_entity_model(vehicle)) -2) do
+        if not is_vehicle_seat_free(vehicle, seatindex, false) then
+            local ped = get_ped_in_vehicle_seat(vehicle, seatindex, false)
+            local passenger = {seat = seatindex, ped = ped}
+            table.insert(pedtable, passenger)
+        end
+    end
+    return pedtable
+end
+
+function func.get_free_seats(vehicle)
+    local free_seats = {}
+    for seatindex = -1, (get_vehicle_model_number_of_seats(get_entity_model(vehicle)) - 2) do
+        if is_vehicle_seat_free(vehicle, seatindex, false) then
+            table.insert(free_seats, seatindex)
+        end
+    end
+    return free_seats
+end
+
+function func.get_closet_free_seat_near_driver(vehicle)
+    for seatindex = -1, (get_vehicle_model_number_of_seats(get_entity_model(vehicle)) - 2) do
+        if is_vehicle_seat_free(vehicle, seatindex, false) then
+            return seatindex
+        end
+    end
+    return false
+end
+
+function func.get_entity_player_is_aiming_at(pid, bool)
+	if not is_player_free_aiming(pid) then
+		return false
+	end
+	local entity = false
+    local aimed_entity = memory.alloc_int()
+	if get_entity_player_is_free_aiming_at(pid, aimed_entity) then
+		entity = memory.read_int(aimed_entity)
+    else
+        return false
+	end
+    if bool then
+	    if entity != false and is_entity_a_ped(entity) and is_ped_in_any_vehicle(entity, false) then
+	    	entity = get_vehicle_ped_is_in(entity, false)
+	    end
+    end
+	return entity
+end
+
+--credits to lance--
+function func.get_offset_from_gameplay_camera(distance)
+	local cam_rot = get_gameplay_cam_rot(0)
+	local cam_pos = get_gameplay_cam_coord()
+	local direction = v3.toDir(cam_rot)
+	local destination = {
+        x = cam_pos.x + direction.x * distance,
+        y = cam_pos.y + direction.y * distance,
+        z = cam_pos.z + direction.z * distance
+	}
+	return destination
+end
+
+--gets the closest vehicle to yourself--
+function func.get_closest_vehicle(position, current_vehicle)
+	local closest_dist = 999999999999
+	local closest_vehicle = nil
+    local user_vehicle = 0
+    if current_vehicle == nil then
+        current_vehicle = entities.get_user_vehicle_as_pointer(false)
+    else
+        user_vehicle = entities.get_user_vehicle_as_pointer(false)
+    end
+    for entities.get_all_vehicles_as_pointers() as vehicle do
+	    local vehicle_pos = entities.get_position(vehicle)
+        local dist = func.get_distance_between(position, vehicle_pos)
+	    if (dist < closest_dist) and vehicle != current_vehicle and vehicle != user_vehicle and get_vehicle_engine_health(entities.pointer_to_handle(vehicle)) >= 0 then
+		    closest_dist = dist
+		    closest_vehicle = vehicle
+	    end
+    end
+    if closest_vehicle != nil then
+        return entities.pointer_to_handle(closest_vehicle)
+    end
+end
+
+local function nuke_expl1(position)
+    local offsets = {
+        {10, 0, 0}, {0, 10, 0}, {10, 10, 0}, {-10, 0, 0}, {0, -10, 0}, {-10, -10, 0}, {10, -10, 0}, {-10, 10, 0},
+        {20, 0, 0}, {0, 20, 0}, {20, 20, 0}, {-20, 0, 0}, {0, -20, 0}, {-20, -20, 0}, {20, -20, 0}, {-20, 10, 0},
+        {30, 0, 0}, {0, 30, 0}, {30, 30, 0}, {-30, 0, 0}, {0, -30, 0}, {-30, -30, 0}, {30, -30, 0}, {-30, 10, 0},
+        {10, 30, 0}, {30, 10, 0}, {-30, -10, 0}, {-10, -30, 0}, {-10, 30, 0}, {-30, 10, 0}, {30, -10, 0}, {10, -30, 0},
+        {0, 0, 10}, {0, 0, -10}, {0, 0, 20}, {0, 0, -20}
+    }
+    for i, offset in offsets do
+        add_explosion(position.x + offset[1], position.y + offset[2], position.z + offset[3], 59, 1.0, true, false, 1.0, false)
+    end
+end
+
+local function nuke_expl2(position)
+    local offsets = {{0,0,-10}, {10,0,-10}, {0,10,-10}, {10,10,-10}, {-10,0,-10}, {0,-10,-10}, {-10,-10,-10}, {10,-10,-10}, {-10,10,-10}}
+    for i, offset in offsets do
+        add_explosion(position.x + offset[1], position.y + offset[2], position.z + offset[3], 59, 1.0, true, false, 1.0, false)
+    end
+end
+
+local function nuke_expl3(position)
+    local offsets = {{10,0,0}, {0,10,0}, {10,10,0}, {-10,0,0}, {0,-10,0}, {-10,-10,0}, {10,-10,0}, {-10,10,0}, {0,0,0}}
+    for i, offset in offsets do
+        add_explosion(position.x + offset[1], position.y + offset[2], position.z + offset[3], 59, 1.0, true, false, 1.0, false)
+    end
+end
+
+function func.create_nuke_explosion(position)
+    for count = 1, 17 do
+        if count == 1 then
+	        add_explosion(position.x, position.y, position.z, 59, 1, true, false, 5.0, false)
+        elseif count == 2 then
+            add_explosion(position.x, position.y, position.z, 59, 1, true, false, 1.0, false)
+        end
+		func.use_fx_asset("scr_xm_orbital")
+	    start_networked_particle_fx_non_looped_at_coord("scr_xm_orbital_blast", position.x, position.y, position.z, 0, 180, 0, 4.5, true, true, true)
+    end
+
+    nuke_expl1(position)
+
+	for i = 1, 4 do
+		play_sound_from_entity(-1, "DLC_XM_Explosions_Orbital_Cannon", players.user_ped(), 0, true, false)
+	end
+
+    for count = 1, 2 do
+        if count == 1 then
+	        add_explosion(position.x, position.y, position.z-10, 59, 1, true, false, 5.0, false)
+        end
+		func.use_fx_asset("scr_xm_orbital")
+	    start_networked_particle_fx_non_looped_at_coord("scr_xm_orbital_blast", position.x, position.y, position.z-10, 0, 180, 0, 4.5, true, true, true)
+    end
+
+    nuke_expl2(position)
+
+    local size = 1.5
+    local positions_z = {1, 3, 5, 7, 10, 12, 15, 17, 20, 22, 25, 27, 30, 32, 35, 37, 40, 42, 45, 47, 50, 52, 55, 57, 59, 61, 63, 65, 70, 75, 75, 75, 75, 80, 80}
+    for i, pos in positions_z do
+        if i == 3 or i == 5 or i == 7 or i == 9 or i == 11 or i == 13 or i == 15 or i == 17 or i == 19 or i == 21 or i == 23 or i == 25 or i == 29 or i == 30 then
+        add_explosion(position.x, position.y, position.z+pos, 59, 1.0, true, false, 1.0, false)
+        end
+        func.use_fx_asset("scr_xm_orbital")
+	    start_networked_particle_fx_non_looped_at_coord("scr_xm_orbital_blast", position.x, position.y, position.z+pos, 0, 180, 0, size, true, true, true)
+
+        if i >= 30 and i <= 33 then size = 3.5
+        elseif i >= 34 and i <= 35 then size = 3.0
+        else size = 1.5 end
+        util.yield(10)
+    end
+
+    nuke_expl3(position)
+       
+    for players.list(false, true, true) as pid do
+        local distance = func.get_distance_between(players.get_position(pid), position)
+		if distance < 200 then
+			local pid_pos = players.get_position(pid)
+			add_explosion(pid_pos.x, pid_pos.y, pid_pos.z, 59, 1.0, true, false, 1.0, false)
+		end
+	end
+
+	local peds = entities.get_all_peds_as_handles()
+    for peds as ped do
+		if func.get_distance_between(ped, position) > 200 and func.get_distance_between(ped, position) < 550 and ped != players.user_ped() then
+			local ped_pos = get_entity_coords(ped)
+			add_explosion(ped_pos.x, ped_pos.y, ped_pos.z, 1, 100, true, true, 0.1, false)
+		end
+	end
+    
+	local vehicles = entities.get_all_vehicles_as_handles()
+    for vehicles as vehicle do
+		if func.get_distance_between(vehicle, position) < 550 then
+            local vehicle_pos = get_entity_coords(vehicle)
+			add_explosion(vehicle_pos.x, vehicle_pos.y, vehicle_pos.z, 1, 100, true, true, 0.1, false)
+		end
+	end
+end
+
+function func.shoot_ped(ped, bone, bool)
+    if bool then
+        for i = 1, 4 do
+            local ped_head_coords = get_world_position_of_entity_bone(ped, get_ped_bone_index(ped, bone))
+            local weapon = get_selected_ped_weapon(players.user_ped())
+            shoot_single_bullet_between_coords(ped_head_coords.x, ped_head_coords.y, ped_head_coords.z - 0.5, ped_head_coords.x, ped_head_coords.y, ped_head_coords.z + 0.5, 100, true, weapon, players.user_ped(), false, false, 100)
+        end
+    else
+        local ped_head_coords = get_world_position_of_entity_bone(ped, get_ped_bone_index(ped, bone))
+        local weapon = get_selected_ped_weapon(players.user_ped())
+        shoot_single_bullet_between_coords(ped_head_coords.x, ped_head_coords.y, ped_head_coords.z - 0.5, ped_head_coords.x, ped_head_coords.y, ped_head_coords.z + 0.5, 1, true, weapon, players.user_ped(), false, false, 1)
+    end
+end
+
+function func.kick_out_of_vehicle(vehicle)
+    local free_seat = 0
+    local ped_hash = util.joaat("a_m_y_acult_02")
+
+    util.request_model(ped_hash)
+    local vehicle_coords = get_entity_coords(vehicle, true)
+    local ped = entities.create_ped(1, ped_hash, vehicle_coords, 0)
+
+    entities.set_can_migrate(ped, false)
+    set_entity_load_collision_flag(ped, true, true)
+    set_entity_as_mission_entity(ped, true, true)
+    set_entity_invincible(ped, true)
+
+    set_ped_combat_attributes(ped, 3, true)
+    set_ped_combat_attributes(ped, 1, true)
+
+    set_blocking_of_non_temporary_events(ped, true)
+    set_ped_can_be_knocked_off_vehicle(ped, 1)
+    task_warp_ped_into_vehicle(ped, vehicle, free_seat)
+    
+    util.yield(500)
+    local did_ped_shuffle = false
+    for i = 1, 5 do
+        if get_ped_in_vehicle_seat(vehicle, -1, false) != ped then
+            task_shuffle_to_next_vehicle_seat(ped, vehicle, true)
+        else
+            did_ped_shuffle = true
+        end
+
+        if did_ped_shuffle then
+            continue
+        end
+
+        if i == 5 then
+            entities.delete_by_handle(ped)
+        end
+        util.yield(2000)
+    end
+
+    if does_entity_exist(ped) then
+        return ped
+    end
+end
+
+function func.gas_truck(pid)
+    local ped = get_player_ped_script_index(pid)
+    if is_ped_in_any_vehicle(ped, false) then
+        func.control_vehicle(pid, true, function(vehicle)
+            clear_ped_tasks_immediately(ped)
+            set_vehicle_forward_speed(vehicle, 400)
+            entities.delete_by_handle(vehicle)
+            util.yield(100)
+        end)
+    end
+    local player_offset = get_offset_from_entity_in_world_coords(ped, 0.0, 1.8, 0.0)
+
+    local truck_hash = util.joaat("boxville3")
+    util.request_model(truck_hash)
+    local truck = entities.create_vehicle(truck_hash, player_offset, get_entity_heading(ped))
+    freeze_entity_position(truck, true)
+     
+
+    while not is_entity_dead(ped, true) and func.get_distance_between(ped, truck) < 10 do
+        local player_position = players.get_position(pid)
+        start_networked_particle_fx_non_looped_on_entity("exp_grd_grenade_smoke", ped, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10, false, false, false)
+        add_explosion(player_position.x, player_position.y, player_position.z, 20, 100, true, false, 0, true)
+        add_explosion(player_position.x, player_position.y, player_position.z, 20, 100, true, false, 0, false)
+        util.yield(10000)
+    end
+
+    entities.delete_by_handle(truck)
+    if is_entity_dead(ped, true) then
+        util.toast(T"Player died from the gas truck.")
+    else
+        util.toast(T"Player escaped the gas truck.")
+    end
+end
+
+function func.create_slasher(player_ped, coords)
+    local ped_hash = util.joaat("a_m_y_salton_01")
+    util.request_model(ped_hash)
+    local ped = entities.create_ped(1, ped_hash, coords, 0)
+
+    give_weapon_to_ped(ped, util.joaat("gadget_parachute"), 0, false, false)
+	set_ped_default_component_variation(ped)
+	set_ped_component_variation(ped, 0, 0, 1, 0)
+	set_ped_component_variation(ped, 2, 1, 0, 0)
+	set_ped_component_variation(ped, 3, 0, 0, 0)
+	set_ped_component_variation(ped, 4, 0, 0, 0)
+	set_ped_highly_perceptive(ped, true)
+	set_ped_combat_attributes(ped, 46, true)
+	set_entity_only_damaged_by_player(ped, true)
+	set_entity_health(ped, 600, 0)
+	set_ragdoll_blocking_flags(ped, 8209)
+	set_ped_as_enemy(ped, true)
+	set_entity_only_damaged_by_player(ped, true)
+	set_ped_seeing_range(ped, 200)
+	set_ped_hearing_range(ped, 200)
+	set_entity_max_health(ped, 600)
+	set_ped_config_flag(ped, 281, true)
+	set_ped_config_flag(ped, 434, true)
+	set_ped_dies_when_injured(ped, false)
+	set_ped_flee_attributes(ped, 512, true)
+	set_ped_combat_attributes(ped, 43, true)
+	set_ped_target_loss_response(ped, 1)
+	set_ped_helmet(ped, false)
+	set_ped_suffers_critical_hits(ped, true)
+	give_weapon_to_ped(ped, util.joaat("weapon_machete"), 20, true, true)
+	task_go_to_entity(ped, player_ped, 20000, 0.5, 2, 2, 0)
+	stop_ped_speaking(ped, true)
+
+    return ped
+end
+
+local created_vehicles_check = {}
+local function vehicle_preview(vehicle, is_focused, exists, created)
+    if is_focused then
+        if not exists and created == nil then
+            for i, vehicle in created_vehicles_check do
+                entities.delete_by_handle(vehicle)
+            end
+            created_vehicles_check = {}
+            local hash = util.joaat(vehicle)
+            util.request_model(hash)
+            local created = entities.create_vehicle(hash, {x = 0, y = 0, z = 0}, 0)
+            table.insert(created_vehicles_check, created)
+            freeze_entity_position(created, true)
+            return true, created
+        end
+    else
+        for i, vehicle in created_vehicles_check do
+            entities.delete_by_handle(vehicle)
+        end
+        if exists and created != nil then
+            entities.delete_by_handle(created)
+            return false, nil
+        end
+    end
+end
+
+local created_peds_check = {}
+local function ped_preview(ped, is_focused, exists, created)
+    if is_focused then
+        if not exists and created == nil then
+            for i, ped in created_peds_check do
+                entities.delete_by_handle(ped)
+            end
+            created_peds_check = {}
+            local hash = util.joaat(ped)
+            util.request_model(hash)
+            local created = entities.create_ped(1, hash, {x = 0, y = 0, z = 0}, 0)
+            table.insert(created_peds_check, created)
+            set_entity_load_collision_flag(created, true, true)
+            set_entity_as_mission_entity(created, true, true)
+            set_blocking_of_non_temporary_events(created, true)
+            freeze_entity_position(created, true)
+            return true, created
+        end
+    else
+        for i, ped in created_peds_check do
+            entities.delete_by_handle(ped)
+        end
+        if exists and created != nil then
+            entities.delete_by_handle(created)
+            return false, nil
+        end
+    end
+end
+
+local is_focused_on_veh, does_vehicle_preview_exist, created_vehicle = false, false, nil
+function func.make_all_vehicles_list(root, callback)
+    local general_list = root:list("Vehicles: Adder")
+    local all_vehicles = util.get_vehicles()
+
+    local vehicles = util.get_vehicles()
+    table.sort(all_vehicles, function(a, b)
+        if a.class != b.class then
+            return lang.get_string(a.class) < lang.get_string(b.class)
+        end
+        return a.name < b.name
+    end)
+    
+    local current_class
+    local current_class_list
+    for all_vehicles as vehicle do
+        if current_class != vehicle.class then
+            current_class = vehicle.class
+            current_class_list = general_list:list(vehicle.class)
+        end
+
+        local vehicle_name = util.get_label_text(vehicle.name)
+        if vehicle_name == "NULL" then
+            continue
+        end
+
+        local action = current_class_list:action(util.get_label_text(vehicle.name), {}, "", function()
+            menu.set_menu_name(general_list, "Vehicle" .. ": " .. util.get_label_text(vehicle.name))
+            general_list:focus()
+	        callback(vehicle.name)
+        end)
+
+        menu.on_focus(action, function()
+            is_focused_on_veh = true
+            does_vehicle_preview_exist, created_vehicle = vehicle_preview(vehicle.name, is_focused_on_veh, does_vehicle_preview_exist, created_vehicle)
+        end)
+    
+        menu.on_blur(action, function()
+            is_focused_on_veh = false
+            does_vehicle_preview_exist, created_vehicle = vehicle_preview(vehicle.name, is_focused_on_veh, does_vehicle_preview_exist, created_vehicle)
+        end)
+    end
+end
+
+function func.vehicle_spawn_list(root, callback)
+    local general_list = root:list("Spawn Vehicle")
+    local all_vehicles = util.get_vehicles()
+
+    local vehicles = util.get_vehicles()
+    table.sort(all_vehicles, function(a, b)
+        if a.class != b.class then
+            return lang.get_string(a.class) < lang.get_string(b.class)
+        end
+        return a.name < b.name
+    end)
+    
+    local current_class
+    local current_class_list
+    for all_vehicles as vehicle do
+        if current_class != vehicle.class then
+            current_class = vehicle.class
+            current_class_list = general_list:list(vehicle.class)
+        end
+
+        local vehicle_name = util.get_label_text(vehicle.name)
+        if vehicle_name == "NULL" then
+            continue
+        end
+
+        local action = current_class_list:action(util.get_label_text(vehicle.name), {}, "", function()
+            general_list:focus()
+	        callback(vehicle.name)
+        end)
+
+        menu.on_focus(action, function()
+            is_focused_on_veh = true
+            does_vehicle_preview_exist, created_vehicle = vehicle_preview(vehicle.name, is_focused_on_veh, does_vehicle_preview_exist, created_vehicle)
+        end)
+    
+        menu.on_blur(action, function()
+            is_focused_on_veh = false
+            does_vehicle_preview_exist, created_vehicle = vehicle_preview(vehicle.name, is_focused_on_veh, does_vehicle_preview_exist, created_vehicle)
+        end)
+    end
+end
+
+local ped_classes = {
+    animals = "Animals",
+    pets = "Pets",
+    special = "Special",
+    ambient_female_npcs = "Ambient Female NPCs",
+    ambient_male_npcs = "Ambient Male NPCs",
+    cutscene = "Cutscene",
+    gang_members = "Gang Members",
+    multiplayer = "Multiplayer",
+    mp_scenario_females = "Mp Scenario Females",
+    mp_scenario_males = "Mp Scenario Males",
+    story_mode = "Story Mode",
+    story_scenario_females = "Story Scenario Females",
+    story_scenario_males = "Story Scenario Males",
+    dlc = "DLC",
+}
+
+
+local is_focused_on_ped, does_ped_preview_exist, created_ped = false, false, nil
+function func.make_all_peds_list(root, callback)
+    local general_list = root:list("NPC: Beach Bikini")
+    local classes = {}
+    local class_lists = {}
+    for class, i in tables.all_peds_list do
+        table.insert(classes, class)
+    end
+    table.sort(classes)
+    for i, class in classes do
+        class_lists[class] = general_list:list(ped_classes[class])
+    end
+
+    for class, i in tables.all_peds_list do
+        for k, ped in tables.all_peds_list[class] do
+            local action = class_lists[class]:action(ped.name, {}, ped.model, function()
+                menu.set_menu_name(general_list, "Ped" .. ": " .. ped.name)
+                general_list:focus()
+                callback(ped.model)
+            end)
+
+            menu.on_focus(action, function()
+                is_focused_on_ped = true
+                does_ped_preview_exist, created_ped = ped_preview(ped.model, is_focused_on_ped, does_ped_preview_exist, created_ped)
+            end)
+
+            menu.on_blur(action, function()
+                is_focused_on_ped = false
+                does_ped_preview_exist, created_ped = ped_preview(ped.model, is_focused_on_ped, does_ped_preview_exist, created_ped)
+            end)
+        end
+    end
+end
+
+local preview_vehicle_rotation, preview_ped_rotation = 0, 0
+util.create_tick_handler(function()
+    if is_focused_on_veh then
+        local offset = func.get_offset_from_gameplay_camera(6)
+        set_entity_coords_no_offset(created_vehicle, offset.x, offset.y, offset.z, true, false, false)
+        set_entity_rotation(created_vehicle, 0, 0, preview_vehicle_rotation, 0, true)
+        set_entity_completely_disable_collision(created_vehicle, false, true)
+        freeze_entity_position(created_vehicle, true)
+        set_entity_alpha(created_vehicle, 200, true)
+        preview_vehicle_rotation = preview_vehicle_rotation + 1
+    end
+
+    if is_focused_on_ped then
+        local offset = func.get_offset_from_gameplay_camera(6)
+        set_entity_coords_no_offset(created_ped, offset.x, offset.y, offset.z, true, false, false)
+        set_entity_rotation(created_ped, 0, 0, preview_ped_rotation, 0, true)
+        set_entity_completely_disable_collision(created_ped, false, true)
+        freeze_entity_position(created_ped, true)
+        preview_ped_rotation = preview_ped_rotation + 1
+    end
+end)
+
+function func.get_closest_player(position)
+    local closest_dist = 999999999999
+    local closest_player = nil
+    local user_vehicle = entities.get_user_vehicle_as_handle(false)
+    if user_vehicle == 0 then user_vehicle = 1 end
+    for players.list(false, true, true) as pid do
+		local ped = get_player_ped_script_index(pid)
+		if not is_entity_dead(ped) then
+            local player_pos = players.get_position(pid)
+            local dist = func.get_distance_between(position, player_pos)
+            local player_vehicle = func.get_vehicle_from_ped(ped)
+            if (dist < closest_dist) and (player_vehicle != user_vehicle) and not players.is_in_interior(pid) then
+                closest_dist = dist
+                closest_player = pid
+            end
+		end
+    end
+    if closest_player != nil and closest_player != players.user() then
+        return closest_player
+    end
+end
+
+function func.rainbow_colour(colour)
+	if colour.r > 0 and colour.b == 0 then
+		colour.r = colour.r - 1
+		colour.g = colour.g + 1
+	end
+
+	if colour.g > 0 and colour.r == 0 then
+		colour.g = colour.g - 1
+		colour.b = colour.b + 1
+	end
+
+	if colour.b > 0 and colour.g == 0 then
+		colour.r = colour.r + 1
+		colour.b = colour.b - 1
+	end
+end
+
+function func.from_euler(x, y, z)
+    local deg2rad = math.pi / 180
+    x = x * deg2rad * 0.5
+    y = y * deg2rad * 0.5
+    z = z * deg2rad * 0.5
+
+    local cr = math.cos(x)
+    local sr = math.sin(x)
+    local cp = math.cos(y)
+    local sp = math.sin(y)
+    local cy = math.cos(z)
+    local sy = math.sin(z)
+
+    local q = {x = 1, y = 0, z = 0, w = 0}
+
+    q.w = cr * cp * cy + sr * sp * sy;
+    q.x = sr * cp * cy - cr * sp * sy;
+    q.y = cr * sp * cy + sr * cp * sy;
+    q.z = cr * cp * sy - sr * sp * cy;
+
+    return q
+end
+
+function func.slerp(q1, q2, t)
+    local cosTheta = q1.x * q2.x + q1.y * q2.y + q1.z * q2.z + q1.w * q2.w
+    local startInterp, finishInterp
+
+    if cosTheta < 0.0 then
+        cosTheta = -cosTheta
+        q2.x = -q2.x
+        q2.y = -q2.y
+        q2.z = -q2.z
+        q2.w = -q2.w
+    end
+
+    if (1.0 - cosTheta) > 0.0001 then
+        local theta = math.acos(cosTheta)
+        local sinTheta = math.sin(theta)
+        startInterp = math.sin((1.0 - t) * theta) / sinTheta
+        finishInterp = math.sin(t * theta) / sinTheta
+    else
+        startInterp = 1.0 - t
+        finishInterp = t
+    end
+
+    local x = startInterp * q1.x + finishInterp * q2.x
+    local y = startInterp * q1.y + finishInterp * q2.y
+    local z = startInterp * q1.z + finishInterp * q2.z
+    local w = startInterp * q1.w + finishInterp * q2.w
+
+    return {x = x, y = y, z = z, w = w}
+end
+
+local function draw_box_front(pos1, pos2, neck, offset, colour)
+    draw_line(pos1.x, pos1.y, neck.z + 0.25, pos2.x, pos2.y, neck.z + 0.25, colour.r, colour.g, colour.b, colour.a)
+    draw_line(pos1.x, pos1.y, offset.z, pos2.x, pos2.y, offset.z, colour.r, colour.g, colour.b, colour.a)
+    draw_line(pos1.x, pos1.y, neck.z + 0.25, pos1.x, pos1.y, offset.z, colour.r, colour.g, colour.b, colour.a)
+    draw_line(pos2.x, pos2.y, neck.z + 0.25, pos2.x, pos2.y, offset.z, colour.r, colour.g, colour.b, colour.a)
+end
+
+local function draw_box_back(pos1, pos2, neck, offset, colour)
+    draw_line(pos1.x, pos1.y, neck.z + 0.25, pos2.x, pos2.y, neck.z + 0.25, colour.r, colour.g, colour.b, colour.a)
+    draw_line(pos1.x, pos1.y, offset.z, pos2.x, pos2.y, offset.z, colour.r, colour.g, colour.b, colour.a)
+    draw_line(pos1.x, pos1.y, neck.z + 0.25, pos1.x, pos1.y, offset.z, colour.r, colour.g, colour.b, colour.a)
+    draw_line(pos2.x, pos2.y, neck.z + 0.25, pos2.x, pos2.y, offset.z, colour.r, colour.g, colour.b, colour.a)
+end
+local function draw_box_connecting_lines(pos1, pos2, pos3, pos4, neck, offset, colour)
+    draw_line(pos1.x, pos1.y, neck.z + 0.25, pos3.x, pos3.y, neck.z + 0.25, colour.r, colour.g, colour.b, colour.a)
+    draw_line(pos2.x, pos2.y, neck.z + 0.25, pos4.x, pos4.y, neck.z + 0.25, colour.r, colour.g, colour.b, colour.a)
+    draw_line(pos1.x, pos1.y, offset.z, pos3.x, pos3.y, offset.z, colour.r, colour.g, colour.b, colour.a)
+    draw_line(pos2.x, pos2.y, offset.z, pos4.x, pos4.y, offset.z, colour.r, colour.g, colour.b, colour.a)
+end
+
+
+function func.draw_box_esp(ped, colour, inveh)
+    local mul_colour = colour
+    if not inveh then
+        local dimensions = func.get_model_dimensions_from_hash(get_entity_model(ped))
+        local neck = get_world_position_of_entity_bone(ped, get_ped_bone_index(ped, 0x796e))
+        local elbow1 = get_world_position_of_entity_bone(ped, get_ped_bone_index(ped, 0xbb0))
+        local elbow2 = get_world_position_of_entity_bone(ped, get_ped_bone_index(ped, 0x58b7))
+        local elbow_based_width = elbow1:distance(elbow2)
+        local offset = get_offset_from_entity_in_world_coords(ped, 0, 0, -dimensions.z/2.2)
+    
+        local pos1 = get_entity_coords(ped)
+        local rot = get_entity_rotation(ped, 2)
+        local dir = rot:toDir()
+        local scale = 0.3
+        local width = elbow_based_width * 0.6
+    
+        dir:mul(scale)
+        pos1:add(dir)
+        neck:add(dir)
+    
+        rot.z = rot.z + 90.0
+        dir = rot:toDir()
+        dir:mul(width)
+    
+        local pos2 = v3.new(pos1)
+        pos1:add(dir)
+        pos2:sub(dir)
+    
+        draw_box_front(pos1, pos2, neck, offset, mul_colour)
+    
+        local back_pos1 = get_entity_coords(ped)
+        local rot2 = get_entity_rotation(ped, 2)
+        local dir2 = rot2:toDir()
+    
+        dir2:mul(-scale)
+        back_pos1:add(dir2)
+    
+        rot2.z = rot2.z + 90.0
+        dir2 = rot2:toDir()
+        dir2:mul(width)
+    
+        local back_pos2 = v3.new(back_pos1)
+        back_pos1:add(dir2)
+        back_pos2:sub(dir2)
+    
+        draw_box_back(back_pos1, back_pos2, neck, offset, mul_colour)
+        draw_box_connecting_lines(pos1, pos2, back_pos1, back_pos2, neck, offset, mul_colour)
+    else
+        local vehicle = func.get_vehicle_from_ped(ped)
+        local dimensions = func.get_model_dimensions_from_hash(get_entity_model(vehicle))
+        local right_line_front_bottom = get_offset_from_entity_in_world_coords(ped, dimensions.x/1.5, dimensions.y/1.7, dimensions.z-(dimensions.z*1.5))
+        local right_line_front_top = get_offset_from_entity_in_world_coords(ped, dimensions.x/1.5, dimensions.y/1.7, dimensions.z/1.5)
+        local left_line_front_bottom = get_offset_from_entity_in_world_coords(ped, -dimensions.x/3.5, dimensions.y/1.7, dimensions.z-(dimensions.z*1.5))
+        local left_line_front_top = get_offset_from_entity_in_world_coords(ped, -dimensions.x/3.5, dimensions.y/1.7, dimensions.z/1.5)
+
+        local right_line_back_bottom = get_offset_from_entity_in_world_coords(ped, dimensions.x/1.5, -dimensions.y/2, dimensions.z-(dimensions.z*1.5))
+        local right_line_back_top = get_offset_from_entity_in_world_coords(ped, dimensions.x/1.5, -dimensions.y/2, dimensions.z/1.5)
+        local left_line_back_bottom = get_offset_from_entity_in_world_coords(ped, -dimensions.x/3.5, -dimensions.y/2, dimensions.z-(dimensions.z*1.5))
+        local left_line_back_top = get_offset_from_entity_in_world_coords(ped, -dimensions.x/3.5, -dimensions.y/2, dimensions.z/1.5)
+
+        local lines = {
+            {right_line_front_bottom, right_line_front_top},
+            {left_line_front_bottom, left_line_front_top},
+            {right_line_front_bottom, left_line_front_bottom},
+            {right_line_front_top, left_line_front_top},
+            {right_line_back_bottom, right_line_back_top},
+            {left_line_back_bottom, left_line_back_top},
+            {right_line_back_bottom, left_line_back_bottom},
+            {right_line_back_top, left_line_back_top},
+            {right_line_back_bottom, right_line_back_bottom},
+            {right_line_front_bottom, right_line_back_bottom},
+            {right_line_front_top, right_line_back_top},
+            {left_line_front_bottom, left_line_back_bottom},
+            {left_line_front_top, left_line_back_top}
+        }
+
+        for _, line in ipairs(lines) do
+            draw_line(line[1].x, line[1].y, line[1].z, line[2].x, line[2].y, line[2].z, mul_colour.r, mul_colour.g, mul_colour.b, mul_colour.a)
+        end
+
+    end
+end
+
+function func.colour_list(root, name, colour, num)
+    local list = root:list(name)
+    list:slider("R", {num .. name .. " R"}, "", 0, 255, colour.r, 1, function(count)
+	    colour.r = count
+    end)
+    list:slider("G", {num .. name .. " G"}, "", 0, 255, colour.g, 1, function(count)
+	    colour.g = count
+    end)
+    list:slider("B", {num .. name .. " B"}, "", 0, 255, colour.b, 1, function(count)
+	    colour.b = count
+    end)
+end
+
+
+return func

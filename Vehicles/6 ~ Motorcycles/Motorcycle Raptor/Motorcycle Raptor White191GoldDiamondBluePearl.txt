@@ -1,0 +1,34 @@
+Model: raptor
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 158
+Pearl Colour: 67
+Wheel Colour: 159
+Wheel Type: 9
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 124
+Livery: -1
+Tyre Smoke Colour: #b4b4ff
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #7a6440
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 158
+Dashboard Colour: 65
+Tyres Mode: 1

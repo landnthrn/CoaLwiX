@@ -1,0 +1,183 @@
+pluto_export function init()
+    local scaleform = require("ScaleformLib")
+    sf = scaleform("instructional_buttons")
+end
+
+SF = {}
+function Hudhide()
+	HIDE_HUD_COMPONENT_THIS_FRAME(6)
+	HIDE_HUD_COMPONENT_THIS_FRAME(7)
+	HIDE_HUD_COMPONENT_THIS_FRAME(8)
+	HIDE_HUD_COMPONENT_THIS_FRAME(9)
+---@diagnostic disable-next-line: param-type-mismatch
+	memory.write_int(memory.script_global(1645739+1121), 1)
+	sf.CLEAR_ALL()
+	sf.TOGGLE_MOUSE_BUTTONS(false)
+end
+function SF.SF() --Scaleform Full credits to aaron
+	Hudhide()
+	sf.SET_DATA_SLOT(0,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 86, true), Str_trans('Push Away or Blow up'))
+	sf.addButton(GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 76, true))
+	sf.SET_DATA_SLOT(2,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 88, true) , Str_trans("Yeet"))
+	sf.DRAW_INSTRUCTIONAL_BUTTONS()
+	sf:draw_fullscreen()
+end
+
+function SF.SFgizmo() 
+	Hudhide()
+	sf.SET_DATA_SLOT(1,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 238, true), Str_trans('Select Attachment'))
+	sf.SET_DATA_SLOT(0,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 237, true), Str_trans('Rotate Camera'))
+	sf.DRAW_INSTRUCTIONAL_BUTTONS()
+	sf:draw_fullscreen()
+end
+
+function SF.SFlsd() 
+	Hudhide()
+	sf.SET_DATA_SLOT(0,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 86, true), Str_trans('Lazers'))
+	sf.DRAW_INSTRUCTIONAL_BUTTONS()
+	sf:draw_fullscreen()
+end
+
+function SF.SFdrift() 
+	Hudhide()
+	sf.SET_DATA_SLOT(0,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 21, true), Str_trans('Drift'))
+	sf.DRAW_INSTRUCTIONAL_BUTTONS()
+	sf:draw_fullscreen()
+end
+
+function SF.SFfly()
+	Hudhide()
+	sf.SET_DATA_SLOT(2,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 76, true), Str_trans('Fly forward or backward twice as fast'))
+	sf.SET_DATA_SLOT(1,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 88, true), Str_trans('Backward'))
+	sf.SET_DATA_SLOT(0,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 87, true), Str_trans('Forward'))
+	sf.DRAW_INSTRUCTIONAL_BUTTONS()
+	sf:draw_fullscreen()
+end
+
+function SF.SFfly2()
+	Hudhide()
+	sf.SET_DATA_SLOT(6,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 62, true), Str_trans('Down'))
+	sf.SET_DATA_SLOT(5,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 61, true), Str_trans('Up'))
+	sf.SET_DATA_SLOT(4,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 34, true), Str_trans('Left'))
+	sf.SET_DATA_SLOT(3,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 35, true), Str_trans('Right'))
+	sf.SET_DATA_SLOT(2,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 76, true), Str_trans('Fly forward or backward twice as fast'))
+	sf.SET_DATA_SLOT(1,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 88, true), Str_trans('Backward'))
+	sf.SET_DATA_SLOT(0,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 87, true), Str_trans('Forward'))
+	sf.DRAW_INSTRUCTIONAL_BUTTONS()
+	sf:draw_fullscreen()
+end
+
+
+function SF.SFgodgun() 
+	Hudhide()
+	sf.SET_DATA_SLOT(3,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 24, true), Str_trans('Yeet'))
+	sf.SET_DATA_SLOT(2,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 241, true), Str_trans('Push Target Away'))
+	sf.SET_DATA_SLOT(1,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 242, true), Str_trans('Bring Target Closer'))
+	sf.SET_DATA_SLOT(0,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 25, true), Str_trans('Select/Deselect Target'))
+	sf.DRAW_INSTRUCTIONAL_BUTTONS()
+	sf:draw_fullscreen()
+end
+
+
+
+function SF.funcSFleaim() 
+	Hudhide()
+	sf.SET_DATA_SLOT(0,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 25, true), Str_trans('Lazer Eyes'))
+	sf.DRAW_INSTRUCTIONAL_BUTTONS()
+	sf:draw_fullscreen()
+end
+
+function SF.SFlepickup() 
+	Hudhide()
+	sf.SET_DATA_SLOT(0,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 46, true), Str_trans('Lazer Eyes'))
+	sf.DRAW_INSTRUCTIONAL_BUTTONS()
+	sf:draw_fullscreen()
+end
+
+function SF.SFlevaim() 
+	Hudhide()
+	sf.SET_DATA_SLOT(0,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 68, true), Str_trans('Lazer Eyes'))
+	sf.DRAW_INSTRUCTIONAL_BUTTONS()
+	sf:draw_fullscreen()
+end
+
+function SF.SFlevhorn() 
+	Hudhide()
+	sf.SET_DATA_SLOT(0,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 86, true), Str_trans('Lazer Eyes'))
+	sf.DRAW_INSTRUCTIONAL_BUTTONS()
+	sf:draw_fullscreen()
+end
+
+
+function SF.SFsuper()
+	Hudhide()
+	sf.SET_DATA_SLOT(0,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 22, true), Str_trans('Fly Upwards'))
+	sf.SET_DATA_SLOT(1,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 25, true), Str_trans('Lazer Eyes'))
+	sf.addButton(GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 22, true))
+	sf.SET_DATA_SLOT(3,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 32, true), Str_trans('Fly Downwards'))
+	sf.addButton(GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 22, true))
+	sf.SET_DATA_SLOT(5,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 33, true), Str_trans('Fly faster'))
+	sf.SET_DATA_SLOT(6,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 44, true), Str_trans('Land'))
+	sf.SET_DATA_SLOT(7,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 73, true), Str_trans('Super Breath'))
+	sf.SET_DATA_SLOT(8,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 119, true), Str_trans('X-Ray Vision'))
+	sf.DRAW_INSTRUCTIONAL_BUTTONS()
+	sf:draw_fullscreen()
+end
+
+
+function SF.SFgodgun() 
+	Hudhide()
+	sf.SET_DATA_SLOT(3,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 24, true), Str_trans('Yeet'))
+	sf.SET_DATA_SLOT(2,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 241, true), Str_trans('Push Target Away'))
+	sf.SET_DATA_SLOT(1,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 242, true), Str_trans('Bring Target Closer'))
+	sf.SET_DATA_SLOT(0,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 25, true), Str_trans('Select/Deselect Target'))
+	sf.DRAW_INSTRUCTIONAL_BUTTONS()
+	sf:draw_fullscreen()
+end
+
+
+
+function SF.SFleaim() 
+	Hudhide()
+	sf.SET_DATA_SLOT(0,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 25, true), Str_trans('Lazer Eyes'))
+	sf.DRAW_INSTRUCTIONAL_BUTTONS()
+	sf:draw_fullscreen()
+end
+
+function SF.SFlepickup() 
+	Hudhide()
+	sf.SET_DATA_SLOT(0,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 46, true), Str_trans('Lazer Eyes'))
+	sf.DRAW_INSTRUCTIONAL_BUTTONS()
+	sf:draw_fullscreen()
+end
+
+function SF.SFlevaim() 
+	Hudhide()
+	sf.SET_DATA_SLOT(0,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 68, true), Str_trans('Lazer Eyes'))
+	sf.DRAW_INSTRUCTIONAL_BUTTONS()
+	sf:draw_fullscreen()
+end
+
+function SF.SFlevhorn() 
+	Hudhide()
+	sf.SET_DATA_SLOT(0,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 86, true), Str_trans('Lazer Eyes'))
+	sf.DRAW_INSTRUCTIONAL_BUTTONS()
+	sf:draw_fullscreen()
+end
+
+
+function SF.SFsuper()
+	Hudhide()
+	sf.SET_DATA_SLOT(0,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 22, true), Str_trans('Fly Upwards'))
+	sf.SET_DATA_SLOT(1,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 25, true), Str_trans('Lazer Eyes'))
+	sf.addButton(GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 22, true))
+	sf.SET_DATA_SLOT(3,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 32, true), Str_trans('Fly Downwards'))
+	sf.addButton(GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 22, true))
+	sf.SET_DATA_SLOT(5,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 33, true), Str_trans('Fly faster'))
+	sf.SET_DATA_SLOT(6,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 44, true), Str_trans('Land'))
+	sf.SET_DATA_SLOT(7,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 73, true), Str_trans('Super Breath'))
+	sf.SET_DATA_SLOT(8,GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 119, true), Str_trans('X-Ray Vision'))
+	sf.DRAW_INSTRUCTIONAL_BUTTONS()
+	sf:draw_fullscreen()
+end
+

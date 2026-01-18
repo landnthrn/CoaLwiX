@@ -1,0 +1,40 @@
+Model: pariah
+Plate Style: 10
+Plate Text:  DKARME 
+Primary Colour: 120
+Secondary Colour: 64
+Pearl Colour: 28
+Wheel Colour: 67
+Wheel Type: 9
+Spoiler: 9
+Front Bumper: 6
+Rear Bumper: 2
+Sideskirt: 2
+Hood: 9
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 115
+Livery: 9
+Tyre Smoke Colour: #8466e2
+Window Tint: 1
+Custom Primary Colour: #5f03ff
+Custom Secondary Colour: #5f03ff
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 0
+Tyres Mode: 1

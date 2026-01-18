@@ -1,0 +1,34 @@
+Model: stingergt
+Plate Style: 10
+Plate Text:  0 MPH  
+Primary Colour: 120
+Secondary Colour: 145
+Pearl Colour: 28
+Wheel Colour: 148
+Wheel Type: 10
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 13
+Front Wheels: 25
+Livery: -1
+Tyre Smoke Colour: #7800ff
+Window Tint: 1
+Custom Primary Colour: #7403ff
+Custom Secondary Colour: #7403ff
+Neon Colour: #3c03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

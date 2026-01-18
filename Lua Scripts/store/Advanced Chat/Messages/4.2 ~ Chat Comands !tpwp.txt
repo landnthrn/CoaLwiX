@@ -1,0 +1,1 @@
+4.2 ~ Chat Comands !tpwp: You can teleport places by setting a waypoint and then sending ' !tpwp ' in chat. to people with ' !tptoTHEIRUSERNAME ' (try not to overuse these pls)

@@ -1,0 +1,47 @@
+Model: virtue
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 67
+Wheel Colour: 157
+Wheel Type: 8
+Spoiler: 2
+Front Bumper: 3
+Rear Bumper: 2
+Sideskirt: 4
+Chassis: 1
+Grille: 3
+Hood: 1
+Fender: 3
+Right Fender: 0
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 0
+Horns: 41
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: No
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 2
+Front Wheels: 119
+Trim: 0
+Aerials: 3
+Trim2: 2
+Livery: 0
+Tyre Smoke Colour: #b3b9db
+Window Tint: 1
+Custom Primary Colour: #95b2db
+Custom Secondary Colour: #b3b9c9
+Neon Colour: #b3b9db
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 157
+Dashboard Colour: 0
+Tyres Mode: 1

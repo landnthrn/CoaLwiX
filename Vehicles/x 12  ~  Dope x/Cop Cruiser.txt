@@ -1,0 +1,48 @@
+Model: poldorado
+Plate Style: 4
+Plate Text:  0 KPH  
+Primary Colour: 0
+Secondary Colour: 111
+Pearl Colour: 0
+Wheel Colour: 0
+Wheel Type: 3
+Spoiler: 13
+Front Bumper: 10
+Rear Bumper: 10
+Sideskirt: 17
+Exhaust: 4
+Chassis: 8
+Grille: 9
+Hood: 17
+Fender: 2
+Right Fender: 7
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 58
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 38
+Trim2: 6
+Livery: 9
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 3
+Dashboard Colour: 156
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: No
+Extra 3: No

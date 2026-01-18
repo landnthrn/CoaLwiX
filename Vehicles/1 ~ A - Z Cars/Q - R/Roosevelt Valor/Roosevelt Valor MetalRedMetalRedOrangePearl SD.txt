@@ -1,0 +1,48 @@
+Model: btype3
+Plate Style: 5
+Plate Text:  0 MPH  
+Primary Colour: 117
+Secondary Colour: 117
+Pearl Colour: 89
+Wheel Colour: 40
+Wheel Type: 10
+Spoiler: 1
+Front Bumper: 2
+Rear Bumper: 2
+Sideskirt: 0
+Chassis: 3
+Grille: 2
+Hood: 1
+Fender: 2
+Right Fender: 0
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 58
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 11
+Arch Cover: 1
+Aerials: 1
+Trim2: 3
+Left Door: 1
+Livery: 1035723024
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #a30000
+Custom Secondary Colour: #a81e00
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 26
+Dashboard Colour: 0
+Tyres Mode: 1

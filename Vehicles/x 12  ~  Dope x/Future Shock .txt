@@ -1,0 +1,46 @@
+Model: imperator2
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 114
+Secondary Colour: 3
+Pearl Colour: 160
+Wheel Colour: 158
+Wheel Type: 3
+Exhaust: 4
+Chassis: 3
+Hood: 3
+Right Fender: 5
+Roof: 0
+Engine: 1
+Brakes: 2
+Transmission: 3
+Horns: 34
+Suspension: 4
+Armor: 5
+Nitrous: Yes
+Turbo: Yes
+Subwoofer: Yes
+Tiresmoke: Yes
+Unk21: Yes
+Headlights: 0
+Front Wheels: 22
+Ornaments: 2
+Air Filter: 1
+Struts: 3
+Arch Cover: 2
+Aerials: 0
+Trim2: 0
+Tank: 2
+Livery: 5
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #2dd263
+Custom Secondary Colour: #cf2b3c
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 160
+Dashboard Colour: 140
+Tyres Mode: 1

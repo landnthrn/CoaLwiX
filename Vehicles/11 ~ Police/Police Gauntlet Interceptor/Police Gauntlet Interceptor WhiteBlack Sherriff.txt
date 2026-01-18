@@ -1,0 +1,52 @@
+Model: polgauntlet
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 111
+Secondary Colour: 12
+Pearl Colour: 11
+Wheel Colour: 134
+Wheel Type: 8
+Spoiler: 10
+Front Bumper: 5
+Rear Bumper: 0
+Sideskirt: 2
+Exhaust: 3
+Chassis: 6
+Grille: 1
+Hood: 4
+Fender: 2
+Right Fender: 2
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 109
+Arch Cover: 7
+Aerials: 7
+Trim2: 6
+Livery: 5
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 132
+Tyres Mode: 2
+Extra 1: No
+Extra 2: No
+Extra 3: No
+Extra 4: Yes

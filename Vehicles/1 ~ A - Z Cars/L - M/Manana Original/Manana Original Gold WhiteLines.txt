@@ -1,0 +1,56 @@
+Model: manana2
+Plate Style: 1
+Plate Text:  0 MPH  
+Primary Colour: 158
+Secondary Colour: 158
+Pearl Colour: 160
+Wheel Colour: 136
+Wheel Type: 9
+Front Bumper: 3
+Exhaust: 1
+Grille: 1
+Fender: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 0
+Armor: 0
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 124
+Back Wheels: 0
+Plate Holder: 3
+Vanity Plates: 3
+Trim: 12
+Ornaments: 1
+Dial: 14
+Steering Wheel: 13
+Shifter Leavers: 9
+Plaques: 2
+Trunk: 5
+Hydraulics: 5
+Engine Block: 4
+Air Filter: 3
+Arch Cover: 1
+Tank: 2
+Livery: 1
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff9605
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 145
+Dashboard Colour: 104
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: No
+Extra 3: No
+Extra 4: No

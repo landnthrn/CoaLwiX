@@ -1,0 +1,45 @@
+Model: dominator9
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 118
+Pearl Colour: 81
+Wheel Colour: 80
+Wheel Type: 8
+Spoiler: 20
+Front Bumper: 9
+Rear Bumper: 6
+Sideskirt: 1
+Exhaust: 5
+Chassis: 1
+Grille: 11
+Hood: 22
+Fender: 1
+Right Fender: 1
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 119
+Livery: 10
+Tyre Smoke Colour: #3c00ff
+Window Tint: 1
+Custom Primary Colour: #354158
+Custom Secondary Colour: #354158
+Neon Colour: #0000ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 82
+Dashboard Colour: 140
+Tyres Mode: 1

@@ -1,0 +1,40 @@
+Model: coquette2
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 120
+Secondary Colour: 7
+Pearl Colour: 0
+Wheel Colour: 134
+Wheel Type: 8
+Front Bumper: 1
+Rear Bumper: 1
+Exhaust: 1
+Chassis: 0
+Hood: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 37
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: Yes
+Tiresmoke: Yes
+Unk21: Yes
+Headlights: 4
+Front Wheels: 114
+Livery: 7
+Tyre Smoke Colour: #00a0ff
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: 
+Neon Colour: #00a0ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: No

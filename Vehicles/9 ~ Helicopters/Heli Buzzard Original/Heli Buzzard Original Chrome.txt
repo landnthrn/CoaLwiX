@@ -1,0 +1,31 @@
+Model: buzzard2
+Plate Style: 4
+Plate Text:  DKARME 
+Primary Colour: 120
+Secondary Colour: 120
+Pearl Colour: 0
+Wheel Colour: 156
+Wheel Type: 0
+Nitrous: No
+Turbo: No
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 0
+Front Wheels: 0
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: Yes
+Extra 7: Yes

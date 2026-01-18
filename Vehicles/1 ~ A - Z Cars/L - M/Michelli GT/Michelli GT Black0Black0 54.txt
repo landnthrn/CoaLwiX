@@ -1,0 +1,44 @@
+Model: michelli
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 161
+Wheel Colour: 29
+Wheel Type: 10
+Spoiler: 4
+Front Bumper: 3
+Rear Bumper: 1
+Sideskirt: 3
+Exhaust: 6
+Chassis: 2
+Grille: 2
+Hood: 0
+Fender: 3
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 85
+Livery: 10
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #000000
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 147
+Dashboard Colour: 148
+Tyres Mode: 1

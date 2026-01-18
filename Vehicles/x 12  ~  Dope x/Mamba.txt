@@ -1,0 +1,39 @@
+Model: mamba
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 71
+Wheel Colour: 122
+Wheel Type: 2
+Exhaust: 1
+Hood: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 45
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 13
+Front Wheels: 2, Custom
+Livery: 1
+Tyre Smoke Colour: #141414
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #dedeff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: No
+Extra 3: No

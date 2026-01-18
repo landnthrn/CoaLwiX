@@ -1,0 +1,46 @@
+Model: impaler3
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 120
+Pearl Colour: 88
+Wheel Colour: 88
+Wheel Type: 8
+Spoiler: 3
+Front Bumper: 3
+Rear Bumper: 1
+Chassis: 3
+Hood: 3
+Right Fender: 0
+Roof: 3
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 41
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 9
+Front Wheels: 108
+Air Filter: 4
+Struts: 3
+Arch Cover: 3
+Aerials: 0
+Tank: 0
+Livery: 0
+Tyre Smoke Colour: #ffb800
+Window Tint: 1
+Custom Primary Colour: #1e001e
+Custom Secondary Colour: #5870a1
+Neon Colour: #ff5900
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 160
+Dashboard Colour: 160
+Tyres Mode: 1

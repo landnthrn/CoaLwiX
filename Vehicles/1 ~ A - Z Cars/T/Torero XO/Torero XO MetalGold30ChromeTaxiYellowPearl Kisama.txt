@@ -1,0 +1,44 @@
+Model: torero2
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 117
+Secondary Colour: 120
+Pearl Colour: 42
+Wheel Colour: 96
+Wheel Type: 8
+Spoiler: 19
+Front Bumper: 15
+Rear Bumper: 12
+Sideskirt: 17
+Exhaust: 14
+Chassis: 9
+Grille: 11
+Hood: 16
+Fender: 3
+Roof: 15
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 8
+Front Wheels: 79
+Livery: 8
+Tyre Smoke Colour: #ffc800
+Window Tint: 1
+Custom Primary Colour: #1e180b
+Custom Secondary Colour: #5870a1
+Neon Colour: #ffff00
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 88
+Dashboard Colour: 134
+Tyres Mode: 1

@@ -1,0 +1,40 @@
+Model: ruffian
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 117
+Secondary Colour: 117
+Pearl Colour: 140
+Wheel Colour: 0
+Wheel Type: 6
+Front Bumper: 1
+Rear Bumper: 1
+Exhaust: 2
+Chassis: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 2
+Front Wheels: 67
+Back Wheels: 67
+Livery: -1
+Tyre Smoke Colour: #0000ff
+Window Tint: 1
+Custom Primary Colour: #0000ff
+Custom Secondary Colour: #0000ff
+Neon Colour: #0000ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 4: Yes
+Extra 5: No

@@ -1,0 +1,34 @@
+Model: rrocket
+Plate Style: 0
+Plate Text: CHUB RUB
+Primary Colour: 113
+Secondary Colour: 113
+Pearl Colour: 111
+Wheel Colour: 111
+Wheel Type: 4
+Chassis: 4
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 57
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 13
+Front Wheels: 35
+Livery: 10
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #ff1d00
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 111
+Tyres Mode: 1

@@ -1,0 +1,44 @@
+Model: comet4
+Plate Style: 7
+Plate Text:  DKARME 
+Primary Colour: 0
+Secondary Colour: 89
+Pearl Colour: 88
+Wheel Colour: 89
+Wheel Type: 9
+Spoiler: 2
+Front Bumper: 18
+Rear Bumper: 2
+Sideskirt: 6
+Exhaust: 15
+Chassis: 5
+Grille: 3
+Hood: 8
+Fender: 3
+Right Fender: 2
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 2
+Front Wheels: 119
+Livery: 7
+Tyre Smoke Colour: #fcee00
+Window Tint: 1
+Custom Primary Colour: #00ff00
+Custom Secondary Colour: 
+Neon Colour: #dedeff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

@@ -1,0 +1,33 @@
+Model: dune5
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 0
+Pearl Colour: 161
+Wheel Colour: 156
+Wheel Type: 8
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 4
+Front Wheels: 100
+Livery: -1
+Tyre Smoke Colour: #00ffff
+Window Tint: 1
+Custom Primary Colour: #07dede
+Custom Secondary Colour: #07dede
+Neon Colour: #00ffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

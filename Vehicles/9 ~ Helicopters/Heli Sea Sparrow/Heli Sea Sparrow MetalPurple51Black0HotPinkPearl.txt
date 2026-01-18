@@ -1,0 +1,38 @@
+Model: seasparrow
+Plate Style: 0
+Plate Text:  3 MPH  
+Primary Colour: 118
+Secondary Colour: 0
+Pearl Colour: 135
+Wheel Colour: 134
+Wheel Type: 0
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 12
+Front Wheels: 50
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #0e0d33
+Custom Secondary Colour: #000000
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: Yes
+Extra 7: Yes

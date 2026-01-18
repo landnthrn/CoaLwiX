@@ -1,0 +1,55 @@
+Model: sabregt2
+Plate Style: 0
+Plate Text: CHUB RUB
+Primary Colour: 142
+Secondary Colour: 25
+Pearl Colour: 81
+Wheel Colour: 88
+Wheel Type: 1
+Spoiler: 1
+Front Bumper: 4
+Rear Bumper: 1
+Exhaust: 3
+Chassis: 2
+Grille: 2
+Hood: 5
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 58
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 36
+Back Wheels: 4
+Plate Holder: 13
+Vanity Plates: 16
+Trim: 14
+Ornaments: 45
+Dial: 14
+Steering Wheel: 16
+Shifter Leavers: 15
+Plaques: 22
+Speakers: 2
+Trunk: 5
+Hydraulics: 4
+Engine Block: 7
+Air Filter: 4
+Livery: 9
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

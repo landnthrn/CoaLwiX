@@ -1,0 +1,45 @@
+Model: sentinel
+Plate Style: 12
+Plate Text:  DKARME 
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 140
+Wheel Colour: 54
+Wheel Type: 8
+Spoiler: 30
+Front Bumper: 11
+Rear Bumper: 8
+Sideskirt: 11
+Exhaust: 3
+Chassis: 8
+Hood: 21
+Fender: 0
+Right Fender: 2
+Roof: 7
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 5
+Front Wheels: 119
+Livery: 0
+Tyre Smoke Colour: #00ffb4
+Window Tint: 1
+Custom Primary Colour: #000f00
+Custom Secondary Colour: #000f00
+Neon Colour: #00ff8a
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 10: No

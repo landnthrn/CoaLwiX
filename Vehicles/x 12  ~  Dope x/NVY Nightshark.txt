@@ -1,0 +1,41 @@
+Model: nightshark
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 6
+Wheel Colour: 1
+Wheel Type: 8
+Front Bumper: 0
+Rear Bumper: 0
+Exhaust: 0
+Chassis: 0
+Grille: 0
+Hood: 0
+Fender: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 0
+Suspension: 0
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 118
+Livery: 26
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #3f00ff
+Custom Secondary Colour: #3f00ff
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

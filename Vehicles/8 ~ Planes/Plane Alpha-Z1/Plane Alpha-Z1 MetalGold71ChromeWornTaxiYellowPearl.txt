@@ -1,0 +1,32 @@
+Model: alphaz1
+Plate Style: 0
+Plate Text: 207 MPH 
+Primary Colour: 118
+Secondary Colour: 0
+Pearl Colour: 126
+Wheel Colour: 158
+Wheel Type: 9
+Front Bumper: 2
+Engine: 4
+Brakes: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 8
+Front Wheels: 97
+Livery: 0
+Tyre Smoke Colour: #6e00ff
+Window Tint: 1
+Custom Primary Colour: #47391b
+Custom Secondary Colour: #47391b
+Neon Colour: #0a00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 0
+Tyres Mode: 1

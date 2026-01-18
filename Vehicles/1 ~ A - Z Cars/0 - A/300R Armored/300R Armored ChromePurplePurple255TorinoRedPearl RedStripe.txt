@@ -1,0 +1,48 @@
+Model: r300
+Plate Style: 10
+Plate Text:  0 MPH  
+Primary Colour: 120
+Secondary Colour: 118
+Pearl Colour: 28
+Wheel Colour: 148
+Wheel Type: 10
+Spoiler: 14
+Front Bumper: 12
+Rear Bumper: 2
+Sideskirt: 6
+Exhaust: 8
+Chassis: 1
+Hood: 6
+Fender: 6
+Right Fender: 1
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 13
+Front Wheels: 6
+Engine Block: 12
+Air Filter: 15
+Trim2: 2
+Left Door: 5
+Livery: 9
+Tyre Smoke Colour: #a000ff
+Window Tint: 1
+Custom Primary Colour: #7403ff
+Custom Secondary Colour: #7403ff
+Neon Colour: #3c00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 148
+Dashboard Colour: 145
+Tyres Mode: 1

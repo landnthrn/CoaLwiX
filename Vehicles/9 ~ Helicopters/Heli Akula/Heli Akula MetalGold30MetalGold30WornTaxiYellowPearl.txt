@@ -1,0 +1,37 @@
+Model: akula
+Plate Style: 0
+Plate Text:  1 MPH  
+Primary Colour: 118
+Secondary Colour: 117
+Pearl Colour: 126
+Wheel Colour: 158
+Wheel Type: 9
+Chassis: 2
+Right Fender: 4
+Roof: 1
+Engine: 4
+Brakes: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 8
+Front Wheels: 76
+Livery: 0
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #1e180b
+Custom Secondary Colour: #1e180b
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: Yes
+Extra 7: Yes

@@ -1,0 +1,39 @@
+Model: tulip
+Plate Style: 10
+Plate Text:  0 MPH  
+Primary Colour: 117
+Secondary Colour: 120
+Pearl Colour: 135
+Wheel Colour: 145
+Wheel Type: 10
+Spoiler: 4
+Front Bumper: 3
+Rear Bumper: 0
+Exhaust: 2
+Hood: 2
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 41
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 13
+Front Wheels: 5
+Livery: 0
+Tyre Smoke Colour: #7800ff
+Window Tint: 1
+Custom Primary Colour: #3f00ff
+Custom Secondary Colour: #000000
+Neon Colour: #3c03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 8
+Dashboard Colour: 158
+Tyres Mode: 1

@@ -1,0 +1,40 @@
+Model: reever
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 44
+Wheel Colour: 134
+Wheel Type: 6
+Spoiler: 3
+Front Bumper: 8
+Rear Bumper: 6
+Exhaust: 4
+Chassis: 5
+Grille: 12
+Engine: 5
+Brakes: 4
+Transmission: 4
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 39, Custom
+Back Wheels: 39
+Livery: 0
+Tyre Smoke Colour: #ff002f
+Window Tint: 1
+Custom Primary Colour: #1e0028
+Custom Secondary Colour: #1e0028
+Neon Colour: #0000ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 0
+Tyres Mode: 1

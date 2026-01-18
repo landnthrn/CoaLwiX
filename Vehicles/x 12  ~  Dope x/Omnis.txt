@@ -1,0 +1,37 @@
+Model: omnis
+Plate Style: 1
+Plate Text:  0 KPH  
+Primary Colour: 32
+Secondary Colour: 3
+Pearl Colour: 36
+Wheel Colour: 111
+Wheel Type: 10
+Spoiler: 2
+Exhaust: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 0
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 0
+Front Wheels: 21
+Livery: 1
+Tyre Smoke Colour: #e20606
+Window Tint: 0
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #dedeff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 111
+Dashboard Colour: 111
+Tyres Mode: 1
+Extra 1: No

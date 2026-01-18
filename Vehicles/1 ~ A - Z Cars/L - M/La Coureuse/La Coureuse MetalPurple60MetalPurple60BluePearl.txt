@@ -1,0 +1,46 @@
+Model: coureur
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 117
+Pearl Colour: 140
+Wheel Colour: 79
+Wheel Type: 8
+Spoiler: 1
+Front Bumper: 6
+Rear Bumper: 1
+Sideskirt: 17
+Chassis: 0
+Grille: 3
+Hood: 20
+Fender: 7
+Right Fender: 7
+Roof: 16
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 117
+Trim2: 2
+Livery: 0
+Tyre Smoke Colour: #3c00ff
+Window Tint: 1
+Custom Primary Colour: #0f003c
+Custom Secondary Colour: #0f003c
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 93
+Dashboard Colour: 134
+Tyres Mode: 1
+Extra 1: No

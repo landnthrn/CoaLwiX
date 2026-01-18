@@ -1,0 +1,46 @@
+Model: imorgon
+Plate Style: 12
+Plate Text:  0 KPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 55
+Wheel Colour: 139
+Wheel Type: 9
+Spoiler: 1
+Front Bumper: 8
+Rear Bumper: 20
+Sideskirt: 2
+Exhaust: 5
+Chassis: 24
+Grille: 2
+Hood: 6
+Fender: 18
+Right Fender: 2
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 6
+Front Wheels: 115
+Livery: 11
+Tyre Smoke Colour: #00ff00
+Window Tint: 1
+Custom Primary Colour: #00ff00
+Custom Secondary Colour: #00ff00
+Neon Colour: #5eff01
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 55
+Dashboard Colour: 55
+Tyres Mode: 1
+Extra 1: No

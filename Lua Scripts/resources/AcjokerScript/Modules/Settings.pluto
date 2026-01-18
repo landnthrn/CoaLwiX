@@ -1,0 +1,49 @@
+require 'resources/AcjokerScript/Modules/Functions'
+func = require 'resources/AcjokerScript/Modules/Functions'
+local setroot = menu.my_root():list(T('Settings'), {}, '')
+
+
+setroot:toggle(T('Alerts Off'), {'ACAlert'}, T('Turn off the alerts you get from AcjokerScript'), function (on)
+	func.set.alert = not on
+end)
+
+setroot:toggle(T('Instructional Buttons Off'), {'ACButtons'}, T('Turn off the Instructional Buttons used in some of the features'), function (on)
+	func.set.scale = not on
+end)
+
+setroot:readonly(T('Version Number'), tostring(Script.Version)..'/'..tostring(Lang.Version)..'/'..tostring(Table.Version))
+
+setroot:hyperlink(T('Join the Discord'), 'https://discord.gg/fn4uBbFNnA', T('Join the AcjokerScript Discord if you have any problems, want to suggest features, or want to help with translations'))
+setroot:hyperlink(T("Buy Me a Coffee"), "https://bmc.link/acjoker8818", T('If you like the features in AcjokerScript consider buying me a coffee'))
+Credroot = setroot:list(T('Credits'), {}, '')
+Credroot:action(T('hexarobi'), {}, T('For all the help with the script they are always a big help'), function ()
+end)
+Credroot:action(T('Jerry123'), {}, T('For major help with multiple portions of the script and his LangLib for translations'), function ()
+end)
+Credroot:action(T('Keramis'), {}, T('For the tutorial I would have had a harder time without it'), function ()
+end)
+Credroot:action(T('aaron'), {}, T('For the ScaleformLib script and help with executing it'), function ()
+end)
+Credroot:action(T('Nowiry'), {}, T('For their script it was a heavy influence on the Charger weapon'), function ()
+end)
+Credroot:action(T('=)'), {}, T('For the peeing animation for Trevor'), function ()
+end)
+Credroot:action(T('ICYPhoenix'), {}, T('For the Ped Facing Ped function used in Ped Cage'), function ()
+end)
+Credroot:action(T('Nova_Plays'), {}, T('For helping decrease load times with the module loader'), function ()
+end)
+Credroot:action(T('Mr Robot'), {}, T('For helping decrease load times and general help all around'), function ()
+end)
+Troot = Credroot:list(T('Translators'), {}, '')
+Troot:action(T('lu_zi'), {}, T('For the Chinese translations'), function ()
+end)
+Troot:action(T('akaitawa'), {}, T('For the Portuguese translations'), function ()
+end)
+Troot:action(T('- THEKING -'), {}, T('For the German translations'), function ()
+end)
+Troot:action(T('Laavi'), {}, T('For the Dutch translations'), function ()
+end)
+Troot:action(T('akatozi and BloodyStall_'), {}, T('For the French translations'), function ()
+end)
+
+return set

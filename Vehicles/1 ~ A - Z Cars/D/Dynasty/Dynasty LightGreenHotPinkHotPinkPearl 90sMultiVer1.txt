@@ -1,0 +1,44 @@
+Model: dynasty
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 61
+Secondary Colour: 0
+Pearl Colour: 135
+Wheel Colour: 135
+Wheel Type: 8
+Spoiler: 2
+Front Bumper: 5
+Rear Bumper: 5
+Sideskirt: 8
+Exhaust: 4
+Grille: 5
+Hood: 1
+Fender: 1
+Right Fender: 5
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 12
+Front Wheels: 122
+Livery: 7
+Tyre Smoke Colour: #ff00ff
+Window Tint: 1
+Custom Primary Colour: #72fd6b
+Custom Secondary Colour: #d61da0
+Neon Colour: #ff00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 13
+Dashboard Colour: 111
+Tyres Mode: 1

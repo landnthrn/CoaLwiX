@@ -1,0 +1,548 @@
+local Tables = require 'resources/AcjokerScript/ACJSTables'
+local json = require 'pretty.json'
+local func = require 'resources/AcjokerScript/Modules/Functions'
+local menus = {}
+local bg_lis = {}
+local bodyguards = {}
+local savedbodyguards = {}
+local bodyguard_list_menus = {}
+local weapons_menus = {}
+local BodyguardsDir = filesystem.store_dir()..'AcjokerScript\\Bodyguards\\'
+
+
+local function Getoutfit(ped)
+    local tbl = {components = {}, props = {}}
+
+    for componentId, component in Tables.Ped_Component_Id do
+        tbl.components[componentId - 1] =
+        {drawableId = GET_PED_DRAWABLE_VARIATION(ped, componentId - 1), textureId = GET_PED_TEXTURE_VARIATION(ped, componentId - 1)}
+    end
+
+    for Tables.Ped_Prop_Id as props do
+        tbl.props[props[1]] =
+        {drawableId = GET_PED_PROP_INDEX(ped, props[1]), textureId = GET_PED_PROP_TEXTURE_INDEX(ped, props[1])}
+    end
+
+    return tbl
+end
+
+local function type_match (value, e)
+    local t = type(value)
+    for w in e:gmatch('[^|]+') do
+        if t == w then return true end
+    end
+    local msg = "must be %s, got %s"
+    return false, msg:format(e:gsub('|', " or "), t)
+end
+
+
+local function Setoutfit(obj, handle, hash)
+    if hash == 1885233650 or hash == 2627665880 then
+        CLONE_PED_TO_TARGET(players.user_ped(), handle)
+    end
+    local types =
+    {
+        components = "table",
+        props = "table"
+    }
+    for k, v in types do
+        local ok, errmsg = type_match(obj[k], v)
+        if not ok then return false, "field " .. k .. ' ' .. errmsg end
+    end
+
+    for componentId, tbl in obj.components do
+        if math.tointeger(componentId) and type(tbl.drawableId) == "number" and
+        type(tbl.textureId) == "number"  then
+            SET_PED_COMPONENT_VARIATION(handle, math.tointeger(componentId), tbl.drawableId, tbl.textureId, 2)
+        end
+    end
+
+    for propId, tbl in obj.props do
+        if math.tointeger(propId) and type(tbl.drawableId) == "number" and
+        type(tbl.textureId) == "number" then
+            SET_PED_PROP_INDEX(handle, math.tointeger(propId), tbl.drawableId, tbl.textureId, true)
+        end
+    end
+
+    return true
+end
+
+local function GetInfo(handle)
+    local tbl = {
+        WeaponHash = GET_SELECTED_PED_WEAPON(handle),
+        Outfit = Getoutfit(handle),
+        ModelHash = GET_ENTITY_MODEL(handle),
+        Handle = handle
+    }
+    return tbl
+end
+local function Bgsavenotext(handle, name)
+
+    local path = BodyguardsDir..name..'.json'
+    local file, errmsg = io.open(path, "w")
+    if not file then
+        return false, errmsg
+    end
+    file:write(json.stringify(GetInfo(handle), nil, 0, false))
+    file:close()
+    return true
+end
+
+local function Bgsave(handle, name)
+    local input = ""
+    local label = 'Enter Bodyguard Name'
+    while true do
+        input = func.get_input_from_screen_keyboard(label, 31, name or "")
+        if input == "" then
+            return func.ACutil(Str_trans('No text entered save canceled'))
+        end
+
+        if not input:find '[^%w_%.%-]' then break end
+        label = func.ACutil(Str_trans('Invalid Character'))
+        util.yield(250)
+    end
+    local path = BodyguardsDir..input..'.json'
+    local file, errmsg = io.open(path, "w")
+    if not file then
+        return false, errmsg
+    end
+    file:write(json.stringify(GetInfo(handle), nil, 0, false))
+    file:close()
+    return input, true
+end
+
+local function Bodyguard(hash, tar1)
+    func.Streament(hash)
+    local bodyG = entities.create_ped(1, hash, tar1, 0)
+    SET_ENTITY_INVINCIBLE(bodyG, true)
+    SET_ENTITY_PROOFS(bodyG, true, true, true, true, true, true, true, true)
+    SET_PED_COMBAT_ABILITY(bodyG, 2)
+    SET_PED_COMBAT_ATTRIBUTES(bodyG, 5, true)--always fight
+    SET_PED_COMBAT_ATTRIBUTES(bodyG, 13, true)--aggressive
+    SET_PED_COMBAT_ATTRIBUTES(bodyG, 21, true)--can chase
+    SET_PED_COMBAT_ATTRIBUTES(bodyG, 27, true)--perf acc
+    SET_PED_COMBAT_ATTRIBUTES(bodyG, 27, true)--dis bull react
+    SET_PED_COMBAT_ATTRIBUTES(bodyG, 58, true)--disable flee
+    SET_PED_COMBAT_ATTRIBUTES(bodyG, 71, true)--allow charge beyond defense area
+    SET_PED_CONFIG_FLAG(bodyG, 13, true)--never leave group
+    SET_PED_CONFIG_FLAG(bodyG, 42, true)--dont influence wanted
+    SET_PED_CONFIG_FLAG(bodyG, 140, false)--can atk friendly
+    SET_PED_CONFIG_FLAG(bodyG, 273, true)--climb shift fence
+    SET_PED_CONFIG_FLAG(bodyG, 281, true)--no Writhe
+    SET_PED_CONFIG_FLAG(bodyG, 294, true)--disable shock
+    SET_PED_CONFIG_FLAG(bodyG, 220, true)--disable enter vehicle
+    TASK_COMBAT_HATED_TARGETS_AROUND_PED(bodyG, 300.0, 0)
+    local pos = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(players.user_ped(), 0, 1, 0)
+    SET_PED_KEEP_TASK(bodyG, true)
+    if GET_SELECTED_PED_WEAPON(bodyG) == -1569615261 then
+        GIVE_WEAPON_TO_PED(bodyG, util.joaat('WEAPON_SPECIALCARBINE_MK2'), 9999, true, true)
+    end
+    table.insert(bg_lis, bodyG)
+    return bodyG
+end
+
+local function SUVfollow()
+    for bg_lis as spawned_bg do
+        if IS_PED_IN_ANY_VEHICLE(players.user_ped(), true) then
+            if not DOES_ENTITY_EXIST(SUV) and DOES_ENTITY_EXIST(spawned_bg) then
+                local hash = util.joaat('insurgent3')
+                func.Streament(hash)
+                local coor = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(players.user_ped(), 0, -5, 0)
+                SUV = entities.create_vehicle(hash, coor, 0)
+                SET_ENTITY_INVINCIBLE(SUV, true)
+                func.Vmod(SUV, 'fuckoff', 100, 40)
+                SET_PED_INTO_VEHICLE(spawned_bg, SUV, -1)
+            else
+                SET_PED_INTO_VEHICLE(spawned_bg, SUV, -1)
+                SET_PED_INTO_VEHICLE(spawned_bg, SUV, 7)
+                CONTROL_MOUNTED_WEAPON(spawned_bg)
+            end
+            if not IS_PED_IN_ANY_VEHICLE(spawned_bg) then
+                SET_PED_INTO_VEHICLE(spawned_bg, SUV, -2)
+            end
+        else
+            if DOES_ENTITY_EXIST(SUV) then
+                entities.delete_by_handle(SUV)
+            end
+        end
+    end
+    if SUV != nil and IS_PED_IN_ANY_VEHICLE(players.user_ped(), true) and DOES_ENTITY_EXIST(GET_PED_IN_VEHICLE_SEAT(SUV, -1)) then
+        local coor = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(SUV, 0, 0, 0)
+        local coor2 = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(players.user_ped(), 0, 2, 0)
+        local disbet = VDIST2(coor.x, coor.y, coor.z, coor2.x, coor2.y, coor2.z)
+        while disbet >= 250 and DOES_ENTITY_EXIST(SUV) do
+        local targets = GET_PLAYER_PED_SCRIPT_INDEX(players.user())
+            local driver = GET_PED_IN_VEHICLE_SEAT(SUV, -1)
+            TASK_VEHICLE_DRIVE_TO_COORD_LONGRANGE(driver, SUV, coor2.x, coor2.y, coor2.z, 150.0, 1074528292, 0.0)
+            util.yield()
+            if disbet > 150000 then
+                entities.delete_by_handle(SUV)
+            end
+            return
+        end
+    else
+        local driver = GET_PED_IN_VEHICLE_SEAT(SUV, -1)
+        CLEAR_PED_TASKS(driver)
+    end
+end
+
+local function BodyguardFollow()
+    local bgg = GET_PED_GROUP_INDEX(GET_PLAYER_PED_SCRIPT_INDEX(players.user()))
+    for bg_lis as spawned_bg do
+        SET_PED_AS_GROUP_MEMBER(spawned_bg, bgg)
+        SET_ENTITY_INVINCIBLE(spawned_bg, true)
+        SET_ENTITY_PROOFS(bodyG, true, true, true, true, true, true, true, true)
+        SET_PED_AS_GROUP_LEADER(players.user_ped(), bgg)
+        SET_PED_CAN_BE_TARGETTED_BY_TEAM(spawned_bg, bgg, false)
+        SET_ENTITY_CAN_BE_DAMAGED_BY_RELATIONSHIP_GROUP(players.user_ped(), false, bgg)
+        SET_ENTITY_CAN_BE_DAMAGED_BY_RELATIONSHIP_GROUP(spawned_bg, false, bgg)
+        SET_PED_INFINITE_AMMO_CLIP(spawned_bg, true)
+        func.AddBlip(spawned_bg, 1, 3)
+        SET_CAN_ATTACK_FRIENDLY(spawned_bg, false, false)
+        SET_PED_RELATIONSHIP_GROUP_HASH(spawned_bg, util.joaat("rgFM_HateEveryOne"))
+        SET_GROUP_SEPARATION_RANGE(bgg, 9999.0)
+        SET_GROUP_FORMATION_SPACING(bgg, 1.0, -1.0, -1.0)
+        SET_GROUP_FORMATION(bgg, Bodyg_formation)
+        entities.set_can_migrate(entities.handle_to_pointer(spawned_bg), false)
+    end
+    util.create_tick_handler(function ()
+    SUVfollow()
+    if not IS_PED_IN_ANY_VEHICLE(players.user_ped()) then
+        return false
+    end
+end)
+end
+
+
+
+
+
+bodyguard_list_menus = {}
+
+local function regen_bodyguard_list(root)
+    for bodyguard_list_menus as bodyguard_list_menu do
+        if bodyguard_list_menu:isValid() then bodyguard_list_menu:delete() end
+    end
+    for bodyguards as b do
+        if DOES_ENTITY_EXIST(b) then
+        local name = util.reverse_joaat(GET_ENTITY_MODEL(b))
+        local bodyguard_list_menu = root:list(name, {}, name)
+                bodyguard_list_menu:action(Str_trans('Remove from Current Bodyguard List'), {}, Str_trans('Remove Bodyguard from Bodyguard List'), function ()
+                    entities.delete_by_handle(b)
+                    if func.set.alert then
+                        func.ACutil(name..Str_trans(' Removed from Bodyguard List'))
+                    end
+                    return true
+                end)
+
+            menus.bgweap = bodyguard_list_menu:list(Str_trans('Change Ped Weapon'), {}, Str_trans('Change the weapon the ped has'), function (sel)
+                    for weapons_menus as weapons_menu do
+                        if weapons_menu:isValid() then weapons_menu:delete() end
+                    end
+                    func.Create_ped_weapon_menu(menus.bgweap, Ped_weapons, {1}, b,  Tables.Weapon_selections.bg_weap)
+            end)
+    
+                
+
+                bodyguard_list_menu:action(Str_trans('Bring to you'), {}, Str_trans('Bring Bodyguard to you'), function ()
+                    local coords = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(players.user_ped(), 0, 1, 0)
+                    SET_ENTITY_COORDS(b, coords.x, coords.y, coords.z, false, true, true, false)
+                    if func.set.alert then
+                        func.ACutil(name..Str_trans(' Bodyguard brought back'))
+                    end
+                    return true
+                end)
+
+                menus.bgapear = bodyguard_list_menu:list(Str_trans('Ped Appearance'), {}, Str_trans('Change Ped Appearance'))
+                    for i, names in Tables.Ped_Component_Id do
+                        local pedvar = GET_NUMBER_OF_PED_DRAWABLE_VARIATIONS(b, i - 1)
+                        local textid = GET_PED_TEXTURE_VARIATION(b, i- 1)
+                        if GET_NUMBER_OF_PED_DRAWABLE_VARIATIONS(b, i- 1) < 1 then
+                            continue
+                        end
+                        menus.bgapear:slider(names, {}, names, -1, pedvar, pedvar, 1, function (s)
+                            SET_PED_COMPONENT_VARIATION(b, i -1, s, textid, 2)
+                        end)
+                    end
+                    for Tables.Ped_Prop_Id as props do
+                        local drawvar = GET_NUMBER_OF_PED_PROP_DRAWABLE_VARIATIONS(b, props[1])
+                        local pedvar = GET_NUMBER_OF_PED_PROP_TEXTURE_VARIATIONS(b, props[1], drawvar)
+                        
+                        local textid = GET_PED_PROP_TEXTURE_INDEX(b, props[1])
+                        if GET_NUMBER_OF_PED_PROP_DRAWABLE_VARIATIONS(b, props[1]) < 1 then
+                            continue
+                        end
+                        menus.bgapear:slider(props[2], {}, props[2], -1, drawvar, drawvar, 1, function (s)
+                            if s == -1 then CLEAR_PED_PROP(b, props[1])
+                            else SET_PED_PROP_INDEX(b, props[1], s, pedvar, true)
+                            end
+                        end)
+                    end
+
+                    bodyguard_list_menu:action(Str_trans('Save Bodyguard'), {}, Str_trans('Save current Bodyguard'), function ()
+                    local name = Bgsave(b)
+                    table.remove(bodyguards, i)
+                    if func.set.alert then
+                        func.ACutil(name..Str_trans(' Bodyguard saved bodylist'))
+                    end
+                end)
+
+                table.insert(bodyguard_list_menus, bodyguard_list_menu)
+        end
+    end
+
+
+    for filesystem.list_files(BodyguardsDir) as path do
+
+        local file = io.open(path)
+        util.yield(250)
+        local fileread = file:read('*a')
+        file:close()
+        local ok, result = pcall(soup.json.decode, fileread)
+        if not ok then func.ACutil('fail') return end
+        local _, dirname = string.match(path,  "(.-)([^\\/]-%.?)$")
+        dirname = dirname:gsub('.json', '')
+        if DOES_ENTITY_EXIST(result.Handle) then
+            name = dirname
+            local bodyguard_list_menu = root:list(name, {}, name)
+            bodyguard_list_menu:action(Str_trans('Remove from Current Bodyguard List'), {}, Str_trans('Remove Bodyguard from Bodyguard List'), function ()
+                entities.delete_by_handle(result.Handle)
+                if func.set.alert then
+                    func.ACutil(name..Str_trans(' Removed from Bodyguard List'))
+                end
+                return true
+            end)
+            menus.bgweap2 = bodyguard_list_menu:list(Str_trans('Change Ped Weapon'), {}, Str_trans('Change the weapon the ped has'),  function (sel)
+                for weapons_menus as weapons_menu do
+                    if weapons_menu:isValid() then weapons_menu:delete() end
+                end
+                func.Create_ped_weapon_menu(menus.bgweap2, Ped_weapons, {2}, result.Handle, Tables.Weapon_selections.bg_weap2)
+            end)
+
+            bodyguard_list_menu:action(Str_trans('Bring to you'), {}, Str_trans('Bring Bodyguard to you'), function ()
+                local coords = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(players.user_ped(), 0, 1, 0)
+                SET_ENTITY_COORDS(bodyguard, coords.x, coords.y, coords.z, false, true, true, false)
+                if func.set.alert then
+                    func.ACutil(dirname..Str_trans(' Bodyguard brought back'))
+                end
+                return true
+            end)
+
+            menus.bgapear = bodyguard_list_menu:list(Str_trans('Ped Appearance'), {}, Str_trans('Change Ped Appearance'))
+            for i, names in Tables.Ped_Component_Id do
+                local pedvar = GET_NUMBER_OF_PED_DRAWABLE_VARIATIONS(bodyguard, i - 1)
+                local textid = GET_PED_TEXTURE_VARIATION(bodyguard, i- 1)
+                if GET_NUMBER_OF_PED_DRAWABLE_VARIATIONS(bodyguard, i- 1) < 1 then
+                    continue
+                end
+                menus.bgapear:slider(names, {}, names, -1, pedvar, pedvar, 1, function (s)
+                    SET_PED_COMPONENT_VARIATION(bodyguard, i -1, s, textid, 2)
+                end)
+            end
+            for Tables.Ped_Prop_Id as props do
+                local drawvar = GET_NUMBER_OF_PED_PROP_DRAWABLE_VARIATIONS(bodyguard, props[1])
+                local pedvar = GET_NUMBER_OF_PED_PROP_TEXTURE_VARIATIONS(bodyguard, props[1], drawvar)
+                
+                local textid = GET_PED_PROP_TEXTURE_INDEX(bodyguard, props[1])
+                if GET_NUMBER_OF_PED_PROP_DRAWABLE_VARIATIONS(bodyguard, props[1]) < 1 then
+                    continue
+                end
+                menus.bgapear:slider(props[2], {}, props[2], -1, drawvar, drawvar, 1, function (s)
+                    if s == -1 then CLEAR_PED_PROP(bodyguard, props[1])
+                    else SET_PED_PROP_INDEX(bodyguard, props[1], s, pedvar, true)
+                    end
+                end)
+            end
+
+                bodyguard_list_menu:action(Str_trans('Save Bodyguard'), {}, Str_trans('Save current Bodyguard'), function ()
+                local name = Bgsave(bodyguard, dirname)
+                if func.set.alert then
+                    func.ACutil(dirname..Str_trans(' Bodyguard saved bodylist'))
+                end
+            end)
+
+            table.insert(bodyguard_list_menus, bodyguard_list_menu)
+        end 
+    end
+
+end
+local bodyguard_saved_menus = {}
+local function regen_saved_list(root)
+    for bodyguard_saved_menus as bodyguard_saved_menu do
+        if bodyguard_saved_menu:isValid() then bodyguard_saved_menu:delete() end
+    end
+    bodyguard_saved_menus = {}
+    for filesystem.list_files(BodyguardsDir) as path do
+        local file = io.open(path)
+        local read = file:read('*a')
+        file:close()
+        local ok, result = pcall(soup.json.decode, read)
+        if not ok then func.ACutil('fail') return end
+        local _, dirname = string.match(path,  "(.-)([^\\/]-%.?)$")
+        dirname = dirname:gsub('.json', '')
+        local bodyguard_saved_menu = root:list(dirname, {}, dirname)
+            bodyguard_saved_menu:action(Str_trans('Spawn Bodyguard'), {}, Str_trans('Spawn saved Bodyguard'), function ()
+            if #bodyguards + #savedbodyguards >= 7 then func.ACutil(Str_trans('Too many bodyguards')) return end
+            local coor = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(players.user_ped(), math.random(-2, 2), math.random(-2, 2), 0)
+            local spawned_bg = Bodyguard(result.ModelHash, coor)
+            Setoutfit(result.Outfit, spawned_bg, result.ModelHash)
+            BodyguardFollow()
+            result.Handle = spawned_bg
+            result.WeaponHash = GET_SELECTED_PED_WEAPON(result.Handle)
+            table.insert(savedbodyguards, result.Handle)
+            Bgsavenotext(result.Handle, dirname)
+            if func.set.alert then
+                func.ACutil(dirname..Str_trans(' Bodyguard spawned'))
+            end
+            return true
+
+        end)
+
+            bodyguard_saved_menu:action(Str_trans('Delete Bodyguard File'), {}, Str_trans('Delete Bodyguard file from your saved bodyguards'), function ()
+            io.remove(path)
+
+            if func.set.alert then
+                func.ACutil(dirname..Str_trans(' Bodyguard file removed'))
+            end
+            return true
+
+        end)
+         table.insert(bodyguard_saved_menus, bodyguard_saved_menu)
+    end
+end
+
+
+ ----------------------Bodyguards-----------------------------
+
+
+menus.bg = menu.my_root():list(Str_trans('Bodyguards Menu'), {}, '')
+
+menus.group = menus.bg:list(Str_trans('Bodyguard Group'), {}, '')
+local spbglist = menus.bg:list(T('Spawn Bodyguard'), {}, 'Spawn a bodyguard from a list of peds')
+    if #bodyguards + #savedbodyguards <= 7 then
+        func.PedList(spbglist , function(model, name)
+            local pos = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(players.user_ped(), 0, 1, 0)
+            local hash = util.joaat(model)
+            if #bodyguards + #savedbodyguards >= 7 then func.ACutil(Str_trans('Too many bodyguards')) return end
+            local bodyguard = Bodyguard(hash, pos)
+            entities.set_can_migrate(entities.handle_to_pointer(bodyguard), false)
+            table.insert(bodyguards, bodyguard)
+            BodyguardFollow()
+        end)
+    end
+
+Bglist = menus.group:list(T('List of Current Bodyguards'), {}, T('A list of your current bodyguards'), function ()
+    regen_bodyguard_list(Bglist)
+end)
+
+
+SvBglist = menus.bg:list(T('Saved Bodyguards'), {}, T('A list of your saved bodyguards'), function ()
+    regen_saved_list(SvBglist)
+end)
+
+
+menus.group:list_action(T('Bodyguard Formations'), {}, 'A list of your bodyguards formations', Tables.Bgformationlist, function (index)
+    Bodyg_formation = index - 1
+    local bgg = GET_PED_GROUP_INDEX(GET_PLAYER_PED_SCRIPT_INDEX(players.user()))
+    SET_GROUP_FORMATION(bgg, Bodyg_formation)
+end)
+
+local bodyspawn = {}
+menus.group:action(T('Bring all Bodyguards'), {'bringallbgs'}, T('Bring all Bodyguards back to you'), function ()
+    for bg_lis as bodyguard do
+        local coor = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(players.user_ped(), math.random(-2, 2), math.random(-2, 2), 0)
+        SET_ENTITY_COORDS(bodyguard, coor.x, coor.y, coor.z, false, true, true, false)
+    end
+end)
+
+menus.group:toggle(T('Spawn 7 Saved Bodyguards'), {'respawnbgs'}, T('Spawn 7 Bodyguards from your saved list'), function (on)
+    if on then
+        if #bodyguards + #savedbodyguards >= 7 then func.ACutil(Str_trans('Too many bodyguards')) return end
+        for filesystem.list_files(BodyguardsDir) as path do
+            if #bodyguards + #savedbodyguards >= 7 then func.ACutil(Str_trans('Too many bodyguards')) return end
+            local file = io.open(path)
+            util.yield(250)
+            local fileread = file:read('*a')
+            file:close()
+            local ok, result = pcall(soup.json.decode, fileread)
+            if not ok then func.ACutil('fail') return end
+            local _, dirname = string.match(path,  "(.-)([^\\/]-%.?)$")
+            dirname = dirname:gsub('.json', '')
+            local coor = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(players.user_ped(), math.random(-2, 2), math.random(-2, 2), 0)
+            local spawned_bg = Bodyguard(result.ModelHash, coor)
+            Setoutfit(result.Outfit, spawned_bg, result.ModelHash)
+            result.Handle = spawned_bg
+            GIVE_WEAPON_TO_PED(result.Handle, result.WeaponHash, 9999, true, true)
+            entities.set_can_migrate(entities.handle_to_pointer(result.Handle), false)
+            table.insert(savedbodyguards, result.Handle)
+            Bgsavenotext(result.Handle, dirname)
+            BodyguardFollow()
+        end
+    else
+        func.DelEnt(savedbodyguards)
+        savedbodyguards = {}
+    end
+end)
+
+menus.group:action(T('Spawn Clone of yourself'), {'clonebg'}, T('Spawn a clone of yourself as a bodyguard'), function ()
+    if #bodyguards + #savedbodyguards >= 7 then func.ACutil(Str_trans('Too many bodyguards')) return end
+    local player = players.user_ped()
+    local hash
+    if GET_PACKED_STAT_INT_CODE(386, util.get_char_slot()) == 1 then
+        hash = 'mp_f_freemode_01'
+    elseif GET_PACKED_STAT_INT_CODE(386, util.get_char_slot()) == 0 then
+        hash = 'mp_m_freemode_01'
+    end
+    local loc = GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(player, 1, 1, -1)
+    local pedhash = util.joaat(hash)
+    func.Streament(pedhash)
+    local clone_ped = func.Pedspawn(pedhash, loc)
+    entities.set_can_migrate(entities.handle_to_pointer(clone_ped), false)
+    CLONE_PED_TO_TARGET(player, clone_ped)
+    Bgsave(clone_ped)
+    BodyguardFollow()
+
+end)
+
+menus.group:list_select(T('Change Relationship Group'), {"rsgroup"}, T('Change the relationshiop group of your bodyguards'), Tables.Pedgroupnames, 7, function(value)
+        local bgg = GET_PED_GROUP_INDEX(GET_PLAYER_PED_SCRIPT_INDEX(players.user()))
+        switch value do
+        case 1:
+            bgg = util.joaat("rgFM_AiLike")
+            break
+        case 2:
+            bgg = util.joaat("rgFM_AiDislike")
+            break
+        case 3:
+            bgg = util.joaat("rgFM_AiHate")
+            break
+        case 4:
+            bgg = util.joaat("rgFM_AiLike_HateAiHate")
+            break
+        case 5:
+            bgg = util.joaat("rgFM_AiDislikePlyrLikeCops")
+            break
+        case 6:
+            bgg = util.joaat("rgFM_AiHatePlyrLikeCops")
+            break
+        case 7:
+            bgg = util.joaat("rgFM_HateEveryOne")
+            break
+        end
+        for filesystem.list_files(BodyguardsDir) as path do
+            local file = io.open(path)
+            util.yield(250)
+            local fileread = file:read('*a')
+            file:close()
+            local ok, result = pcall(soup.json.decode, fileread)
+            SET_PED_RELATIONSHIP_GROUP_HASH(result.Handle, bgg)
+        end
+    end)
+
+
+menus.bg:action(T('Delete the Bodyguards'), {'delbgs'}, T('Delete all the Bodyguards you have spawned'), function ()
+    func.DelEnt(bodyguards)
+    bodyguards = {}
+    func.DelEnt(savedbodyguards)
+    savedbodyguards = {}
+end)

@@ -1,0 +1,43 @@
+Model: neo
+Plate Style: 12
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 91
+Wheel Colour: 139
+Wheel Type: 10
+Spoiler: 7
+Front Bumper: 7
+Rear Bumper: 2
+Sideskirt: 2
+Exhaust: 12
+Chassis: 8
+Grille: 11
+Hood: 9
+Fender: 2
+Roof: 6
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 6
+Front Wheels: 5
+Livery: 0
+Tyre Smoke Colour: #b4ff3c
+Window Tint: 1
+Custom Primary Colour: #78ff00
+Custom Secondary Colour: #78ff00
+Neon Colour: #5aff00
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 139
+Dashboard Colour: 8
+Tyres Mode: 1

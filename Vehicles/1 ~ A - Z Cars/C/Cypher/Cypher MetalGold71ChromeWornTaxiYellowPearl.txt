@@ -1,0 +1,59 @@
+Model: cypher
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 126
+Wheel Colour: 158
+Wheel Type: 8
+Spoiler: 12
+Front Bumper: 11
+Rear Bumper: 4
+Sideskirt: 9
+Exhaust: 8
+Chassis: 9
+Grille: 4
+Hood: 14
+Fender: 1
+Right Fender: 4
+Roof: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 8
+Front Wheels: 119
+Vanity Plates: 1
+Trim: 2
+Ornaments: 2
+Dashboard: 4
+Dial: 1
+Seats: 0
+Door Speaker: 11
+Steering Wheel: 16
+Engine Block: 12
+Struts: 17
+Arch Cover: 9
+Aerials: 8
+Trim2: 2
+Tank: 3
+Livery: 0
+Tyre Smoke Colour: #ffb923
+Window Tint: 1
+Custom Primary Colour: #47391b
+Custom Secondary Colour: #5870a1
+Neon Colour: #ff9605
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 98
+Dashboard Colour: 79
+Tyres Mode: 1

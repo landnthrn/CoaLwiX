@@ -1,0 +1,48 @@
+Model: patriot3
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 140
+Wheel Colour: 79
+Wheel Type: 8
+Spoiler: 3
+Front Bumper: 4
+Rear Bumper: 0
+Sideskirt: 6
+Exhaust: 6
+Chassis: 1
+Grille: 15
+Hood: 5
+Fender: 7
+Right Fender: 1
+Roof: 9
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 119
+Ornaments: 7
+Trim2: 2
+Tank: 1
+Livery: 1
+Tyre Smoke Colour: #3c00ff
+Window Tint: 1
+Custom Primary Colour: #0f003c
+Custom Secondary Colour: #5870a1
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 158
+Dashboard Colour: 0
+Tyres Mode: 1

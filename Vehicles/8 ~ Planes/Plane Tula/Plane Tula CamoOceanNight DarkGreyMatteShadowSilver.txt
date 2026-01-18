@@ -1,0 +1,35 @@
+Model: tula
+Plate Style: 0
+Plate Text: 108 MPH 
+Primary Colour: 0
+Secondary Colour: 12
+Pearl Colour: 0
+Wheel Colour: 156
+Wheel Type: 0
+Front Bumper: 0
+Exhaust: 1
+Right Fender: 4
+Roof: 2
+Engine: 4
+Brakes: 3
+Armor: 5
+Nitrous: No
+Turbo: No
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 0
+Front Wheels: 0
+Livery: 0
+Tyre Smoke Colour: #5000ff
+Window Tint: 0
+Custom Primary Colour: #0d141a
+Custom Secondary Colour: #323b47
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 111
+Dashboard Colour: 0
+Tyres Mode: 1

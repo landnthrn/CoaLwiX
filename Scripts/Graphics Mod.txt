@@ -1,0 +1,4 @@
+Description: Some rendering changes to make the game look... different
+
+shader intnofog
+lodscale 3.00

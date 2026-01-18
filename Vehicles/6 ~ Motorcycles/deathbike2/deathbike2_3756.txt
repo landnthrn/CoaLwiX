@@ -1,0 +1,86 @@
+Model: deathbike2
+Plate Style: 0
+Plate Text: 0K15VJ7P
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 0
+Wheel Colour: 156
+Wheel Type: 6
+Spoiler: 0
+Front Bumper: 0
+Rear Bumper: 0
+Sideskirt: 0
+Exhaust: 0
+Chassis: 5
+Grille: 0
+Hood: 0
+Fender: 0
+Right Fender: 0
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 43
+Suspension: 0
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 1
+Front Wheels: 72
+Back Wheels: 72
+Plate Holder: 0
+Vanity Plates: 0
+Trim: 0
+Ornaments: 0
+Dashboard: 0
+Dial: 0
+Seats: 0
+Door Speaker: 0
+Steering Wheel: 0
+Shifter Leavers: 0
+Plaques: 0
+Speakers: 0
+Trunk: 0
+Hydraulics: 0
+Engine Block: 0
+Air Filter: 3
+Struts: 3
+Arch Cover: 0
+Aerials: 0
+Trim2: 0
+Tank: 0
+Left Door: 0
+Right Door: 0
+Livery: 0
+Lightbar: 2
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff0101
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 27
+Roof Livery: 0
+Dashboard Colour: 27
+Tyres Mode: 1
+Extra 1: No
+Extra 2: No
+Extra 3: No
+Extra 4: No
+Extra 5: No
+Extra 6: No
+Extra 7: No
+Extra 8: No
+Extra 9: No
+Extra 10: No
+Extra 11: No
+Extra 12: No
+Extra 13: Yes
+Extra 14: Yes
+Extra 15: Yes

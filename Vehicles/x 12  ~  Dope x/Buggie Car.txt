@@ -1,0 +1,39 @@
+Model: brioso
+Plate Style: 9
+Plate Text:  0 KPH  
+Primary Colour: 0
+Secondary Colour: 89
+Pearl Colour: 10
+Wheel Colour: 156
+Wheel Type: 10
+Spoiler: 0
+Front Bumper: 0
+Rear Bumper: 1
+Hood: 1
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 24
+Suspension: 0
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 0
+Front Wheels: 5
+Livery: 0
+Tyre Smoke Colour: #141414
+Window Tint: 0
+Custom Primary Colour: #d80e00
+Custom Secondary Colour: 
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 106
+Dashboard Colour: 111
+Tyres Mode: 1

@@ -1,0 +1,45 @@
+Model: cavalcade3
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 10
+Wheel Colour: 92
+Wheel Type: 8
+Spoiler: 1
+Front Bumper: 10
+Rear Bumper: 4
+Sideskirt: 19
+Exhaust: 7
+Chassis: 2
+Grille: 16
+Hood: 13
+Fender: 3
+Right Fender: 1
+Roof: 5
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 112
+Livery: 9
+Tyre Smoke Colour: #8466e2
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #3200ff
+Neon Colour: #2800ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 0
+Tyres Mode: 1

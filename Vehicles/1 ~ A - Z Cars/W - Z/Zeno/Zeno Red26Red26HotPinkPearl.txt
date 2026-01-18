@@ -1,0 +1,42 @@
+Model: zeno
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 135
+Wheel Colour: 134
+Wheel Type: 8
+Spoiler: 6
+Front Bumper: 15
+Rear Bumper: 15
+Sideskirt: 21
+Exhaust: 20
+Hood: 12
+Fender: 3
+Roof: 8
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 43
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 50
+Livery: 0
+Tyre Smoke Colour: #ff0064
+Window Tint: 1
+Custom Primary Colour: #1a0000
+Custom Secondary Colour: #1a0000
+Neon Colour: #ff0032
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 43
+Dashboard Colour: 0
+Tyres Mode: 1

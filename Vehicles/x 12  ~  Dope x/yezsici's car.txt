@@ -1,0 +1,39 @@
+Model: osiris
+Plate Style: 1
+Plate Text:  0 KPH  
+Primary Colour: 146
+Secondary Colour: 72
+Pearl Colour: 137
+Wheel Colour: 35
+Wheel Type: 12
+Spoiler: 1
+Front Bumper: 4
+Rear Bumper: 1
+Sideskirt: 3
+Exhaust: 1
+Fender: 0
+Engine: 4
+Brakes: 2
+Transmission: 3
+Horns: 0
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 1
+Front Wheels: 18
+Livery: -1
+Tyre Smoke Colour: #8466e2
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff05be
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 0
+Tyres Mode: 1

@@ -1,0 +1,45 @@
+Model: castigator
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 117
+Secondary Colour: 161
+Pearl Colour: 126
+Wheel Colour: 158
+Wheel Type: 8
+Spoiler: 2
+Front Bumper: 5
+Rear Bumper: 5
+Sideskirt: 3
+Exhaust: 0
+Chassis: 1
+Grille: 0
+Hood: 11
+Fender: 3
+Right Fender: 1
+Roof: 13
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 0
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 8
+Front Wheels: 122
+Livery: 0
+Tyre Smoke Colour: #a07f3e
+Window Tint: 1
+Custom Primary Colour: #47391b
+Custom Secondary Colour: #47391b
+Neon Colour: #a07f3e
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 158
+Dashboard Colour: 3
+Tyres Mode: 1

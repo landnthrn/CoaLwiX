@@ -1,0 +1,52 @@
+Model: minivan2
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 5
+Secondary Colour: 67
+Pearl Colour: 111
+Wheel Colour: 156
+Wheel Type: 8
+Spoiler: 1
+Exhaust: 0
+Grille: 1
+Roof: 2
+Engine: 4
+Brakes: 2
+Transmission: 3
+Horns: 45
+Armor: 3
+Nitrous: No
+Turbo: No
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 0
+Front Wheels: 16
+Back Wheels: 0
+Plate Holder: 12
+Vanity Plates: 0
+Trim: 0
+Ornaments: 21
+Dial: 12
+Seats: 5
+Door Speaker: 1
+Steering Wheel: 14
+Shifter Leavers: 0
+Plaques: 0
+Trunk: 1
+Hydraulics: 1
+Engine Block: 0
+Air Filter: 0
+Livery: 3
+Tyre Smoke Colour: #ffffff
+Window Tint: 2
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 5
+Dashboard Colour: 111
+Tyres Mode: 1

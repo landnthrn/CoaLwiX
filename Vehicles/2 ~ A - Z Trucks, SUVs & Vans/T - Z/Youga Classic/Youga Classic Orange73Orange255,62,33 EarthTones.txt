@@ -1,0 +1,39 @@
+Model: youga2
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 161
+Wheel Colour: 45
+Wheel Type: 10
+Spoiler: 1
+Sideskirt: 1
+Exhaust: 1
+Chassis: 1
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 9
+Front Wheels: 5
+Livery: 2
+Tyre Smoke Colour: #d8571b
+Window Tint: 1
+Custom Primary Colour: #491209
+Custom Secondary Colour: #ff3e21
+Neon Colour: #bc5d19
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 156
+Dashboard Colour: 0
+Tyres Mode: 1

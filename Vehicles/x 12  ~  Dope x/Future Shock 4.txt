@@ -1,0 +1,48 @@
+Model: brutus2
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 107
+Secondary Colour: 159
+Pearl Colour: 160
+Wheel Colour: 158
+Wheel Type: 3
+Front Bumper: 1
+Rear Bumper: 2
+Sideskirt: 2
+Exhaust: 1
+Chassis: 3
+Grille: 1
+Hood: 2
+Fender: 1
+Right Fender: 5
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 58
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 38
+Air Filter: 4
+Struts: 3
+Arch Cover: 7
+Trim2: 1
+Tank: 2
+Livery: 18
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 160
+Dashboard Colour: 160
+Tyres Mode: 1

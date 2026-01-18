@@ -1,0 +1,36 @@
+Model: halftrack
+Plate Style: 0
+Plate Text:  DKARME 
+Primary Colour: 151
+Secondary Colour: 151
+Pearl Colour: 0
+Wheel Colour: 154
+Wheel Type: 0
+Chassis: 2
+Right Fender: 0
+Roof: 1
+Engine: 4
+Brakes: 3
+Horns: 0
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 0
+Front Wheels: 0
+Livery: 1
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 132
+Tyres Mode: 1
+Extra 1: Yes

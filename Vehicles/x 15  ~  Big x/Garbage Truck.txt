@@ -1,0 +1,40 @@
+Model: brickade2
+Plate Style: 0
+Plate Text: CHUB RUB
+Primary Colour: 154
+Secondary Colour: 14
+Pearl Colour: 1
+Wheel Colour: 0
+Wheel Type: 0
+Chassis: 1
+Right Fender: 5
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 58
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 50
+Arch Cover: 4
+Livery: 10
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: No
+Extra 2: Yes
+Extra 3: No

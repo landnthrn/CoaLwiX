@@ -1,0 +1,114 @@
+{
+	"children": [{
+		"rotation": {
+			"z": -60,
+			"y": 30,
+			"x": -90
+		},
+		"blip_color": 2,
+		"world_rotation": {
+			"z": 0,
+			"y": 0,
+			"x": 0
+		},
+		"num_bones": 0,
+		"model": "prop_boxing_glove_01",
+		"hash": 335898267,
+		"position": {
+			"z": 0,
+			"y": 0,
+			"x": 0
+		},
+		"name": "prop_boxing_glove_01",
+		"blip_icon": 1,
+		"offset": {
+			"z": 0.03,
+			"y": 0.0,
+			"x": -0.11
+		},
+		"options": {
+			"is_mission_entity": true,
+			"alpha": 255,
+			"is_melee_proof": false,
+			"has_collision": false,
+			"is_light_on": true,
+			"is_invincible": false,
+			"has_gravity": true,
+			"is_dynamic": true,
+			"is_visible": true,
+			"is_explosion_proof": false,
+			"is_networked": true,
+			"use_soft_pinning": true,
+			"is_attached": true,
+			"is_fire_proof": false,
+			"is_bullet_proof": false,
+			"bone_index": 62,
+			"lod_distance": 16960
+		},
+		"children": {},
+		"type": "OBJECT",
+		"target_version": "3.21.10b5"
+	}, {
+		"rotation": {
+			"z": -75,
+			"y": 165,
+			"x": 90
+		},
+		"blip_color": 2,
+		"world_rotation": {
+			"z": 0,
+			"y": 0,
+			"x": 0
+		},
+		"num_bones": 0,
+		"model": "prop_boxing_glove_01",
+		"offset": {
+			"z": -0.04,
+			"y": 0.0,
+			"x": -0.11
+		},
+		"position": {
+			"z": 0,
+			"y": 0,
+			"x": 0
+		},
+		"name": "prop_boxing_glove_01",
+		"blip_icon": 1,
+		"hash": 335898267,
+		"options": {
+			"is_mission_entity": true,
+			"alpha": 255,
+			"is_melee_proof": false,
+			"has_collision": false,
+			"is_light_on": true,
+			"is_bullet_proof": false,
+			"has_gravity": true,
+			"is_dynamic": true,
+			"is_visible": true,
+			"is_explosion_proof": false,
+			"is_networked": true,
+			"lod_distance": 16960,
+			"is_attached": true,
+			"use_soft_pinning": true,
+			"is_invincible": false,
+			"bone_index": 91,
+			"is_fire_proof": false
+		},
+		"children": {},
+		"type": "OBJECT",
+		"target_version": "3.21.10b5"
+	}],
+	"type": "PED",
+	"author": "hexarobo",
+	"created": "2022-10-30T21:45:41Z",
+	"name": "boxing-gloves",
+	"version": "Constructor 0.25b9 / 3.21.10b5 / 0.8.4b3",
+	"is_player": false,
+	"blip_icon": 1,
+	"offset": {
+		"z": 0,
+		"y": 0,
+		"x": 0
+	},
+	"target_version": "3.21.10b5"
+}

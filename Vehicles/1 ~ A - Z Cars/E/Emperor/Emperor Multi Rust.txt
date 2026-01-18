@@ -1,0 +1,37 @@
+Model: emperor2
+Plate Style: 1
+Plate Text:  0 MPH  
+Primary Colour: 92
+Secondary Colour: 89
+Pearl Colour: 70
+Wheel Colour: 140
+Wheel Type: 8
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 45
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 12
+Front Wheels: 123
+Livery: -1
+Tyre Smoke Colour: #00aeef
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff05be
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 10: Yes
+Extra 11: No
+Extra 12: No

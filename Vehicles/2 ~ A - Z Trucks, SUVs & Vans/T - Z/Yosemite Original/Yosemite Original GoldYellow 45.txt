@@ -1,0 +1,42 @@
+Model: yosemite
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 34
+Secondary Colour: 1
+Pearl Colour: 134
+Wheel Colour: 42
+Wheel Type: 8
+Spoiler: 1
+Front Bumper: 5
+Rear Bumper: 1
+Sideskirt: 7
+Chassis: 3
+Grille: 4
+Hood: 6
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: Yes
+Turbo: Yes
+Subwoofer: Yes
+Tiresmoke: Yes
+Unk21: Yes
+Headlights: 8
+Front Wheels: 119
+Livery: 4
+Tyre Smoke Colour: #ffb900
+Window Tint: 1
+Custom Primary Colour: #7e6b29
+Custom Secondary Colour: #ff970e
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 13
+Dashboard Colour: 111
+Tyres Mode: 1

@@ -1,0 +1,288 @@
+local Tables = require 'resources/AcjokerScript/ACJSTables'
+local func = require 'resources/AcjokerScript/Modules/Functions'
+local menus = require 'resources/AcjokerScript/Modules/Vehicles'
+
+
+
+local function circle_rgb(delay, red, green, blue)
+    local vmod = entities.get_user_vehicle_as_handle()
+    SET_VEHICLE_NEON_COLOUR(vmod, red, green, blue)
+    SET_VEHICLE_NEON_ENABLED(vmod, 2, true)
+    for i = 0, 1 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    SET_VEHICLE_NEON_ENABLED(vmod, 3, false)
+    util.yield(delay)
+    SET_VEHICLE_NEON_ENABLED(vmod, 0, true)
+    for i = 1, 3 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    util.yield(delay)
+    for i = 0, 2 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    SET_VEHICLE_NEON_ENABLED(vmod, 3, true)
+    util.yield(delay)
+    for i = 2, 3 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    SET_VEHICLE_NEON_ENABLED(vmod, 0, false)
+    SET_VEHICLE_NEON_ENABLED(vmod, 1, true)
+    util.yield(delay)
+end
+
+local function custom_circle_rgb(delay, red, green, blue)
+    local vmod = entities.get_user_vehicle_as_handle()
+    SET_VEHICLE_NEON_COLOUR(vmod, red, green, blue)
+    SET_VEHICLE_NEON_ENABLED(vmod, 2, true)
+    for i = 0, 1 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    SET_VEHICLE_NEON_ENABLED(vmod, 3, false)
+    util.yield(delay)
+    SET_VEHICLE_NEON_ENABLED(vmod, 0, true)
+    for i = 1, 3 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    util.yield(delay)
+    for i = 0, 2 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    SET_VEHICLE_NEON_ENABLED(vmod, 3, true)
+    util.yield(delay)
+    for i = 2, 3 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    SET_VEHICLE_NEON_ENABLED(vmod, 0, false)
+    SET_VEHICLE_NEON_ENABLED(vmod, 1, true)
+    util.yield(delay)
+end
+
+local function reverse_circle_rgb(delay, red, green, blue)
+    local vmod = entities.get_user_vehicle_as_handle()
+    SET_VEHICLE_NEON_COLOUR(vmod, red, green, blue)
+    SET_VEHICLE_NEON_ENABLED(vmod, 2, true)
+    for i = 0, 1 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    SET_VEHICLE_NEON_ENABLED(vmod, 3, false)
+    util.yield(delay)
+    for i = 2, 3 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    SET_VEHICLE_NEON_ENABLED(vmod, 0, false)
+    SET_VEHICLE_NEON_ENABLED(vmod, 1, true)
+    util.yield(delay)
+    for i = 0, 2 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    SET_VEHICLE_NEON_ENABLED(vmod, 3, true)
+    util.yield(delay)
+    SET_VEHICLE_NEON_ENABLED(vmod, 0, true)
+    for i = 1, 3 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    util.yield(delay)
+
+end
+
+local function police_circle_rgb(delay, red, green, blue, lights)
+    local vmod = entities.get_user_vehicle_as_handle()
+    SET_VEHICLE_NEON_COLOUR(vmod, red, green, blue)
+    SET_VEHICLE_NEON_ENABLED(vmod, 2, true)
+    SET_VEHICLE_XENON_LIGHT_COLOR_INDEX(vmod, lights)
+    for i = 0, 1 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    SET_VEHICLE_NEON_ENABLED(vmod, 3, false)
+    util.yield(delay)
+    SET_VEHICLE_NEON_ENABLED(vmod, 0, true)
+    for i = 1, 3 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    util.yield(delay)
+    for i = 0, 2 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    SET_VEHICLE_NEON_ENABLED(vmod, 3, true)
+    util.yield(delay)
+    for i = 2, 3 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    SET_VEHICLE_NEON_ENABLED(vmod, 0, false)
+    SET_VEHICLE_NEON_ENABLED(vmod, 1, true)
+    util.yield(delay)
+end
+
+
+
+local function pulsate_neon(delay, red, green, blue)
+    local vmod = entities.get_user_vehicle_as_handle()
+    SET_VEHICLE_NEON_COLOUR(vmod, red, green, blue)
+    SET_VEHICLE_NEON_ENABLED(vmod, 2, true)
+    for i = 0, 3 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, true)
+    end
+    util.yield(delay)
+    for i = 0, 3 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+end
+
+local function back_forth_neon(delay, red, green, blue)
+    local vmod = entities.get_user_vehicle_as_handle()
+    SET_VEHICLE_NEON_COLOUR(vmod, red, green, blue)
+    SET_VEHICLE_NEON_ENABLED(vmod, 2, true)
+    for i = 0, 1 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    SET_VEHICLE_NEON_ENABLED(vmod, 3, false)
+    util.yield(delay)
+    SET_VEHICLE_NEON_ENABLED(vmod, 0, true)
+    for i = 1, 3 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    util.yield(delay)
+    for i = 0, 2 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    SET_VEHICLE_NEON_ENABLED(vmod, 3, true)
+    util.yield(delay)
+    for i = 2, 3 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    SET_VEHICLE_NEON_ENABLED(vmod, 0, false)
+    SET_VEHICLE_NEON_ENABLED(vmod, 1, true)
+    util.yield(delay)
+    SET_VEHICLE_NEON_ENABLED(vmod, 2, true)
+    for i = 0, 1 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    SET_VEHICLE_NEON_ENABLED(vmod, 3, false)
+    util.yield(delay)
+    for i = 2, 3 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    SET_VEHICLE_NEON_ENABLED(vmod, 0, false)
+    SET_VEHICLE_NEON_ENABLED(vmod, 1, true)
+    util.yield(delay)
+    for i = 0, 2 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    SET_VEHICLE_NEON_ENABLED(vmod, 3, true)
+    util.yield(delay)
+    SET_VEHICLE_NEON_ENABLED(vmod, 0, true)
+    for i = 1, 3 do
+        SET_VEHICLE_NEON_ENABLED(vmod, i, false)
+    end
+    util.yield(delay)
+end
+
+
+
+
+
+
+local cusneon = menus.vehroot:list(T('Custom Neons'), {}, '')
+
+menus.cnrgb = cusneon:list(T('RGB Neons Circle'), {}, T('Make the Neons go in a circle around the car'))
+
+local cirneons = {delay = 100}
+local cnrgb = {color= {r= 0, g = 1, b = 0, a = 1}}
+menus.cnrgb:toggle_loop(T('RGB Neons Circle'), {'circlergb'}, T('Make the Neons go in a circle around the car'), function ()
+    local red = math.floor(cnrgb.color.r * 255)
+    local green = math.floor(cnrgb.color.g * 255)
+    local blue = math.floor(cnrgb.color.b * 255)
+    circle_rgb(cirneons.delay, red, green, blue)
+end)
+
+menus.cnrgb:slider(T('Adjust Speed of Neons'), {}, T('Adjust Speed of the Neons moving around the car'), 0, 1000, 100, 10, function (s)
+    cirneons.delay = s
+end)
+
+
+menus.cnrgb:colour(T('RGB Neon Color'), {'rgbsc'}, T('Choose the Color for the Neons be changed to '), cnrgb.color, false, function(ncolor)
+    cnrgb.color = ncolor
+end)
+
+menus.rcnrgb = cusneon:list(T('RGB Neons Reverse Circle'), {}, T('Make the Neons go in a reverse circle around the car'))
+
+local rcirneons = {delay = 100}
+local rcnrgb = {color= {r= 0, g = 1, b = 0, a = 1}}
+menus.rcnrgb:toggle_loop(T('RGB Neons Circle'), {'circlergb'}, T('Make the Neons go in a circle around the car'), function ()
+    local red = math.floor(rcnrgb.color.r * 255)
+    local green = math.floor(rcnrgb.color.g * 255)
+    local blue = math.floor(rcnrgb.color.b * 255)
+    reverse_circle_rgb(rcirneons.delay, red, green, blue)
+end)
+
+menus.rcnrgb:slider(T('Adjust Speed of Neons'), {}, T('Adjust Speed of the Neons moving around the car'), 0, 1000, 100, 10, function (s)
+    rcirneons.delay = s
+end)
+
+
+menus.rcnrgb:colour(T('RGB Neon Color'), {'rgbsc'}, T('Choose the Color for the Neons be changed to '), rcnrgb.color, false, function(ncolor)
+    rcnrgb.color = ncolor
+end)
+
+menus.plnrgb = cusneon:list(T('Police RGB'), {}, T('Make the neons police colors'))
+
+local plneons = {delay = 100}
+menus.plnrgb:toggle_loop(T('RGB Neons Circle'), {'circlergb'}, T('Make the Neons go in a circle around the car'), function ()
+    local red = 0
+    local green = 0
+    local blue = 255
+    local lights = 1
+    police_circle_rgb(plneons.delay, red, green, blue, lights)
+    util.yield(plneons.delay)
+    red = 255
+    green = 0
+    blue = 0
+    lights = 8
+    police_circle_rgb(plneons.delay, red, green, blue, lights)
+end)
+
+menus.plnrgb:slider(T('Adjust Speed of Neons'), {}, T('Adjust Speed of the Neons moving around the car'), 0, 1000, 100, 10, function (s)
+    plneons.delay = s
+end)
+
+
+
+menus.pulsrgb = cusneon:list(T('Neon Pulsate'), {}, T('Make the neons pulsate'))
+
+local puls = {delay = 100}
+local pulnrgb = {color= {r= 0, g = 1, b = 0, a = 1}}
+menus.pulsrgb:toggle_loop(T('Neon Pulsate'), {'pulsateneons'}, T('Make the neons pulsate'), function ()
+    local red = math.floor(pulnrgb.color.r * 255)
+    local green = math.floor(pulnrgb.color.g * 255)
+    local blue = math.floor(pulnrgb.color.b * 255)
+    pulsate_neon(puls.delay, red, green, blue)
+end)
+
+menus.pulsrgb:slider(T('Adjust Speed of Neons'), {}, T('Adjust Speed of the Neons Pulsating'), 0, 1000, 100, 10, function (s)
+    puls.delay = s
+end)
+
+menus.pulsrgb:colour(T('RGB Neon Color'), {'rgbsc'}, T('Choose the Color for the Neons be changed to '), pulnrgb.color, false, function(ncolor)
+    pulnrgb.color = ncolor
+end)
+
+
+menus.bafrgb = cusneon:list(T('Neon Back and Forth'), {}, T('Make the neons go back and forth'))
+
+local baf = {delay = 200}
+local bafrgb = {color= {r= 0, g = 1, b = 0, a = 1}}
+menus.bafrgb:toggle_loop(T('Neon Back and Forth'), {'bafneons'}, T('Make the neons go back and forth'), function ()
+    local red = math.floor(bafrgb.color.r * 255)
+    local green = math.floor(bafrgb.color.g * 255)
+    local blue = math.floor(bafrgb.color.b * 255)
+    back_forth_neon(baf.delay, red, green, blue)
+end)
+
+menus.bafrgb:slider(T('Adjust Speed of Neons'), {}, T('Adjust Speed of the Neons Pulsating'), 0, 1000, 200, 10, function (s)
+    baf.delay = s
+end)
+
+menus.bafrgb:colour(T('RGB Neon Color'), {'rgbsc'}, T('Choose the Color for the Neons be changed to '), bafrgb.color, false, function(ncolor)
+    bafrgb.color = ncolor
+end)

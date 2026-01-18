@@ -1,0 +1,47 @@
+Model: driftvorschlag
+Plate Style: 11
+Plate Text:   ChubRub  
+Primary Colour: 111
+Secondary Colour: 111
+Pearl Colour: 0
+Wheel Colour: 112
+Wheel Type: 2
+Spoiler: 8
+Front Bumper: 1
+Rear Bumper: 6
+Sideskirt: 4
+Exhaust: 9
+Chassis: 7
+Grille: 3
+Hood: 2
+Fender: 2
+Right Fender: 4
+Roof: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 13
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 8
+Front Wheels: 9
+Trim: 0
+Livery: 6
+Tyre Smoke Colour: #ffffff
+Window Tint: 2
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 70
+Dashboard Colour: 156
+Tyres Mode: 1
+//car made by discord: passwordgenerator

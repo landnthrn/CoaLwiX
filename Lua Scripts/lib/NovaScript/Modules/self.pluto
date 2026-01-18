@@ -1,0 +1,1173 @@
+require("NovaScript.NovaScript_natives")
+local tables = require("NovaScript.tables")
+local T = require("NovaScript.NovaS_translations")
+local func = require("NovaScript.functions")
+
+-----------------------------------------------
+-------------------FUNCTIONS-------------------
+-----------------------------------------------
+local function hulk_buttons()
+    sf.SET_DATA_SLOT(3, get_control_instructional_buttons_string(0, 22, true), T"Jump")
+    sf.SET_DATA_SLOT(2, get_control_instructional_buttons_string(0, 24, true), T"Smash")
+    sf.SET_DATA_SLOT(1, get_control_instructional_buttons_string(0, 38, true), T"Throw Vehicle")
+    sf.SET_DATA_SLOT(0, get_control_instructional_buttons_string(0, 45, true), T"Throw Ped")
+    sf.DRAW_INSTRUCTIONAL_BUTTONS()
+    sf:draw_fullscreen()
+end
+
+local function get_random_vehicle()
+    local vehicles = entities.get_all_vehicles_as_pointers()
+    local random_vehicle = vehicles[math.random(1, #vehicles)]
+    return entities.pointer_to_handle(random_vehicle)
+end
+
+--gets the closest ped to yourself
+local function get_closest_ped(position)
+	local closest_dist = 999999999999
+	local closest_ped = nil
+    for entities.get_all_peds_as_pointers() as ped do
+        local ped_handle = entities.pointer_to_handle(ped)
+        if not is_entity_dead(ped_handle) and not is_ped_in_any_vehicle(ped_handle) and ped_handle != players.user_ped() then
+	        local ped_pos = entities.get_position(ped)
+	        local dist = func.get_distance_between(position, ped_pos)
+	        if (dist < closest_dist) then
+	    	    closest_dist = dist
+	    	    closest_ped = ped_handle
+	        end
+        end
+    end
+    if closest_ped != nil then
+        return closest_ped
+    end
+end
+
+local function get_water_height_incl_rivers(pos_x, pos_y) --function from aaronlink127#0127
+    local outHeight = memory.alloc(4)
+    if test_vertical_probe_against_all_water(pos_x, pos_y, 200.0, 0, outHeight) != 0 then
+        return memory.read_float(outHeight)
+    end
+end
+
+-----------------------------------------------
+---------------------LISTS---------------------
+-----------------------------------------------
+local root = menu.my_root()
+local self_main = root:list(T"Self")
+local appearance_list = self_main:list(T"Appearance")
+local movement_list = self_main:list(T"Movement")
+local hulk_mode_list = self_main:list(T"Hulk Mode")
+local aura_list = self_main:list(T"Aura's")
+local ptfx_trails_self_list = self_main:list(T"PTFX Trails")
+local auto_heal_list = self_main:list(T"Auto Heal")
+local instant_respawn = self_main:list(T"Instant Respawn")
+
+-----------------------------------------------
+--------------------OPTIONS--------------------
+-----------------------------------------------
+-------------
+--SET ALPHA--
+-------------
+appearance_list:slider(T"Set Alpha", {"Nset_alpha"}, "", 0, 100, 100, 20, function(count)
+    set_entity_alpha(players.user_ped(), (count/100) * 255, false)
+end)
+
+-------------------------------
+--OPEN AVATAR INFO TXT FOLDER--
+-------------------------------
+appearance_list:action(T"Open 'avatar_info.txt' folder", {}, "", function()
+    local scripts_dir = filesystem.scripts_dir()
+    local folder_path = $"{scripts_dir}/lib/NovaScript"
+    util.open_folder(folder_path)
+end)
+
+-------------------
+--GET AVATAR INFO--
+-------------------
+
+local avatar_info_text = {eye_color_text, components = {}, props = {}, head_blend_data = {}}
+appearance_list:action(T"Get Avatar Info", {}, T"Writes lots of specific info to the 'avatar_info.txt' file.", function()
+    local color_id = get_head_blend_eye_color(players.user_ped())
+    if color_id == -1 then
+        avatar_info_text.eye_color_text = "Eye colour: Failed to get eye color."
+    else
+        avatar_info_text.eye_color_text = "Eye colour: " .. tables.avatar_info.eye_colors[color_id]
+    end
+
+    for comp_id, comp_name in tables.avatar_info.clothes.components_names do
+        avatar_info_text.components[comp_id] = {
+            name = comp_name,
+            component = get_ped_drawable_variation(players.user_ped(), comp_id)
+        }
+    end
+    for i = 0, 7 do
+        if i == 3 or i == 4 or i == 5 then
+            continue
+        end
+        avatar_info_text.props[#avatar_info_text.props+1] = {
+            name = tables.avatar_info.clothes.props_names[i],
+            prop = get_ped_prop_index(players.user_ped(), i)
+        }
+    end
+
+    local head_blend_data_addr = memory.alloc(10 * 8)
+    get_ped_head_blend_data(players.user_ped(), head_blend_data_addr)
+
+    avatar_info_text.head_blend_data = {
+        memory.read_int(head_blend_data_addr),
+        memory.read_int(head_blend_data_addr + 8),
+        memory.read_int(head_blend_data_addr + 16),
+        memory.read_int(head_blend_data_addr + 24),
+        memory.read_int(head_blend_data_addr + 32),
+        memory.read_int(head_blend_data_addr + 40),
+        memory.read_float(head_blend_data_addr + 48),
+        memory.read_float(head_blend_data_addr + 56),
+        memory.read_float(head_blend_data_addr + 64),
+        memory.read_ubyte(head_blend_data_addr + 72) == 1
+    }
+    local text = avatar_info_text.eye_color_text .. "\n\nCLOTHES\n"
+    for i, v in avatar_info_text.components do
+        local comp = avatar_info_text.components[i].component
+        if comp == -1 then
+            comp = "N/A"
+        end
+        text = text .. avatar_info_text.components[i].name .. ": " .. comp .. tables.avatar_info.clothes.components_links[i] .. "\n"
+    end
+    for i, v in avatar_info_text.props do
+        local prop = avatar_info_text.props[i].prop
+        if prop == -1 then
+            prop = "N/A"
+        end
+        text = text .. avatar_info_text.props[i].name .. ": " .. prop .. tables.avatar_info.clothes.props_links[i] .. "\n"
+    end
+
+    text = text .. "\nHEAD BLEND DATA\n"
+    for i, name in tables.avatar_info.head_blend_data_names do
+        text = text .. name .. ": " .. avatar_info_text.head_blend_data[i] .. "\n"
+    end
+
+    local scripts_dir = filesystem.scripts_dir()
+    local file = io.open($"{scripts_dir}/lib/NovaScript/avatar_info.txt", "w")
+    file:write(text)
+    file:close()
+end)
+
+--------------
+--ROCKET MAN--
+--------------
+local rocket_man_bool = false
+movement_list:action(T"Rocket Man", {}, "", function()
+    if not is_ped_in_any_vehicle(players.user_ped(), true) then
+        if not rocket_man_bool then
+            rocket_man_bool = true
+            local position = nil
+            set_ped_to_ragdoll(players.user_ped(), 2500, 0, 0, false, false, false)
+            local forces = {10, 15, 20, 20, 20, 10, 10, 10, 10, 10, 10}
+            local delays = {1000, 900, 800, 700, 600, 500, 400, 300, 200, 175, 125}
+            
+            for i = 1, #forces do
+                apply_force_to_entity(players.user_ped(), 3, 0.0, 0.0, forces[i], 0.0, 0.0, 0.0, 0, false, false, true, false, false)
+                position = get_entity_coords(players.user_ped())
+                func.use_fx_asset("cut_xm3")
+                start_networked_particle_fx_non_looped_at_coord("cut_xm3_rpg_explosion", position.x, position.y, position.z-0.5, 0, 0, 0, 1.0, true, true, true)
+                play_sound_from_entity(-1, "Bomb_Countdown_Beep", players.user_ped(), "DLC_MPSUM2_ULP2_Rogue_Drones", true, false)
+                util.yield(delays[i])
+            end
+        
+            for i=1,2 do
+                local delay = util.current_time_millis() + 500
+                repeat
+                    apply_force_to_entity(players.user_ped(), 3, 0.0, 0.0, 10, 0.0, 0.0, 0.0, 0, false, false, true, false, false)
+                    position = get_entity_coords(players.user_ped())
+                    func.use_fx_asset("cut_xm3")
+                    start_networked_particle_fx_non_looped_at_coord("cut_xm3_rpg_explosion", position.x, position.y, position.z-0.5, 0, 0, 0, 1.0, true, true, true)
+                    play_sound_from_entity(-1, "Bomb_Countdown_Beep", players.user_ped(), "DLC_MPSUM2_ULP2_Rogue_Drones", true, false)
+                    util.yield(i == 1 and 100 or 10)
+                until delay <= util.current_time_millis()
+            end
+        
+            play_sound_from_entity(-1, "Bomb_Detonate", players.user_ped(), "DLC_MPSUM2_ULP2_Rogue_Drones", true, false)
+            position = get_entity_coords(players.user_ped())
+            func.use_fx_asset("scr_xm_orbital")
+            start_networked_particle_fx_non_looped_at_coord("scr_xm_orbital_blast", position.x, position.y, position.z, 0, 180, 0, 1.0, true, true, true)
+        
+            remove_named_ptfx_asset("cut_xm3")
+            remove_named_ptfx_asset("scr_xm_orbital")
+            rocket_man_bool = false
+        end
+    else
+        util.toast(T"You need to be on foot for this option.")
+    end
+end)
+
+----------------
+--FORWARD ROLL--
+----------------
+local roll_degree = 360
+local forward_roll;forward_roll = movement_list:toggle_loop(T"Forward Roll", {}, "", function()
+    if not is_ped_in_any_vehicle(players.user_ped(), true) then
+        func.load_anim_dict("misschinese2_crystalmaze")
+        task_play_anim(players.user_ped(), "misschinese2_crystalmaze", "2int_loop_a_taotranslator", 8.0, 8.0, -1, 0, 0.0, 0, 0, 0)
+        local cam_rot = get_gameplay_cam_rot(0)
+        local user_rot = get_entity_rotation(players.user_ped(), 0)
+        local fwd_vect = get_entity_forward_vector(players.user_ped())
+        local speed = get_entity_speed(players.user_ped()) * 2.236936
+        set_ped_can_ragdoll(players.user_ped(), false)
+        set_entity_rotation(players.user_ped(), roll_degree, user_rot.y, cam_rot.z, 2, true)
+        if speed <= 70 then
+            apply_force_to_entity(players.user_ped(), 3, fwd_vect.x, fwd_vect.y, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, true, false, false)
+        end
+        if roll_degree <= 0 then roll_degree = 360 else roll_degree = roll_degree - 6 end
+    else
+        util.toast(T"You need to be on foot for this option.")
+        forward_roll.value = false
+    end
+end, function()
+    util.yield(100)
+    set_ped_can_ragdoll(players.user_ped(), true)
+    stop_anim_task(players.user_ped(), "misschinese2_crystalmaze", "2int_loop_a_taotranslator", 1)
+end)
+
+---------------
+--BREAK DANCE--
+---------------
+local break_dance_rotation = 0
+local loop_count = 0
+local dict, name
+local auto_off = false
+local break_dance;break_dance = movement_list:toggle_loop(T"Break Dance", {}, "", function()
+    if not is_ped_in_any_vehicle(players.user_ped(), true) then
+        if loop_count <= 200 then
+            dict = "missfbi5ig_20b"
+            name = "hands_up_scientist"
+        elseif loop_count <= 400 then
+            dict = "nm@hands"
+            name = "hands_up"
+        elseif loop_count <= 600 then
+            dict = "missheist_agency2ahands_up"
+            name = "handsup_anxious"
+        elseif loop_count <= 800 then
+            dict = "missheist_agency2ahands_up"
+            name = "handsup_loop"
+        end
+    
+        set_entity_rotation(players.user_ped(), 180, 0, break_dance_rotation, 2, true)
+        func.load_anim_dict(dict)
+        task_play_anim(players.user_ped(), dict, name, 8.0, 0, -1, 0, 0.0, 0, 0, 0)
+    
+        break_dance_rotation = break_dance_rotation + 5
+        if loop_count < 1000 then
+            loop_count = loop_count + 1
+        else
+            loop_count = 0
+        end
+    else
+        util.toast(T"You need to be on foot for this option.")
+        break_dance.value = false
+        auto_off = true
+    end
+end, function()
+    if not auto_off then
+        clear_ped_tasks_immediately(players.user_ped())
+    end
+    auto_off = false
+end)
+
+--------------
+--SUPER JUMP--
+--------------
+local super_jump;super_jump = movement_list:toggle_loop(T"Super Jump", {}, "", function()
+    if not is_ped_in_any_vehicle(players.user_ped(), true) then
+        set_ped_can_ragdoll(players.user_ped(), false)
+        if is_control_pressed(0, 22) then
+            local fwd_vect = get_entity_forward_vector(players.user_ped())
+            fwd_vect:mul(2)
+            apply_force_to_entity(players.user_ped(), 3, fwd_vect.x, fwd_vect.y, 1, 0.0, 0.0, 0.0, 0.0, false, false, true, false, false)
+        end
+    else
+        util.toast(T"You need to be on foot for this option.")
+        super_jump.value = false
+    end
+end, function()
+    set_ped_can_ragdoll(players.user_ped(), true)
+end)
+
+--------------
+--SUPER DASH--
+--------------
+local super_dash;super_dash = movement_list:toggle_loop(T"Super Dash", {}, "", function()
+    if not is_ped_in_any_vehicle(players.user_ped(), true) then
+        set_ped_can_ragdoll(players.user_ped(), false)
+        if is_control_pressed(0, 24) then
+            local cam_rot = get_gameplay_cam_rot(0)
+            local user_rot = get_entity_rotation(players.user_ped(), 0)
+            local fwd_vect = get_entity_forward_vector(players.user_ped())
+            fwd_vect:mul(80)
+            set_ped_can_ragdoll(players.user_ped(), false)
+            set_entity_rotation(players.user_ped(), user_rot.x, user_rot.y, cam_rot.z, 2, true)
+            apply_force_to_entity(players.user_ped(), 3, fwd_vect.x, fwd_vect.y, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, true, false, false)
+        end
+    else
+        util.toast(T"You need to be on foot for this option.")
+        super_dash.value = false
+    end
+end, function()
+    set_ped_can_ragdoll(players.user_ped(), true)
+end)
+
+------------
+--BEYBLADE--
+------------
+local beyblade_rotation = 0
+local beyblade;beyblade = movement_list:toggle_loop(T"Beyblade", {}, "", function()
+    if not is_ped_in_any_vehicle(players.user_ped(), true) then
+        func.load_anim_dict("mph_nar_fin_ext-32")
+        task_play_anim(players.user_ped(), "mph_nar_fin_ext-32", "mp_m_freemode_01_dual-32", 8.0, 8.0, -1, 0, 0.0, 0, 0, 0)
+        local cam_rot = get_gameplay_cam_rot(0)
+        local yaw = math.rad(cam_rot.z)
+        local directionsX = -math.sin(yaw)
+        local directionsY = math.cos(yaw)
+        local user_rot = get_entity_rotation(players.user_ped(), 0)
+        local speed = get_entity_speed(players.user_ped()) * 2.236936
+        set_ped_can_ragdoll(players.user_ped(), false)
+        set_entity_rotation(players.user_ped(), user_rot.x, user_rot.y, beyblade_rotation, 2, true)
+        if speed <= 40 then
+            apply_force_to_entity(players.user_ped(), 3, directionsX, directionsY, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, true, false, false)
+        end
+        beyblade_rotation = beyblade_rotation + 15
+    else
+        util.toast(T"You need to be on foot for this option.")
+        beyblade.value = false
+    end
+end, function()
+    util.yield(100)
+    set_ped_can_ragdoll(players.user_ped(), true)
+    stop_anim_task(players.user_ped(), "mph_nar_fin_ext-32", "mp_m_freemode_01_dual-32", 1)
+end)
+
+----------------------
+--EXPLOSIVE BEYBLADE--
+----------------------
+local expl_beyblade_rotation = 0
+local expl_beyblade;expl_beyblade = movement_list:toggle_loop(T"Explosive Beyblade", {}, "", function()
+    if not is_ped_in_any_vehicle(players.user_ped(), true) then
+        func.load_anim_dict("mph_nar_fin_ext-32")
+        task_play_anim(players.user_ped(), "mph_nar_fin_ext-32", "mp_m_freemode_01_dual-32", 8.0, 8.0, -1, 0, 0.0, 0, 0, 0)
+    
+        local cam_rot = get_gameplay_cam_rot(0)
+        local yaw = math.rad(cam_rot.z)
+        local directionsX = -math.sin(yaw)
+        local directionsY = math.cos(yaw)
+        local user_rot = get_entity_rotation(players.user_ped(), 0)
+        local speed = get_entity_speed(players.user_ped()) * 2.236936
+        
+        local offset = {}
+        offset[1] = get_offset_from_entity_in_world_coords(players.user_ped(), 0.0, 10, 0.0)
+        offset[2] = get_offset_from_entity_in_world_coords(players.user_ped(), 0.0, -10, 0.0)
+    
+        set_ped_can_ragdoll(players.user_ped(), false)
+        set_entity_rotation(players.user_ped(), user_rot.x, user_rot.y, expl_beyblade_rotation, 2, true)
+        for i = 1, 2 do
+            add_explosion(offset[i].x, offset[i].y, offset[i].z, 18, 1, false, false, 0.0, false)
+        end
+        if speed <= 40 then
+            apply_force_to_entity(players.user_ped(), 3, directionsX, directionsY, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, true, false, false)
+        end
+        expl_beyblade_rotation = expl_beyblade_rotation + 15
+    else
+        util.toast(T"You need to be on foot for this option.")
+        expl_beyblade.value = false
+    end
+end, function()
+    util.yield(100)
+    set_ped_can_ragdoll(players.user_ped(), true)
+    stop_anim_task(players.user_ped(), "mph_nar_fin_ext-32", "mp_m_freemode_01_dual-32", 1)
+end)
+
+---------------------
+--GRACEFUL LANDING--
+---------------------
+local is_falling = false
+local graceful_landing;graceful_landing = movement_list:toggle_loop(T"Graceful Landing", {}, "", function()
+    if not is_ped_in_any_vehicle(players.user_ped(), true) then
+        local height_above_ground = get_entity_height_above_ground(players.user_ped())
+        if height_above_ground >= 8 and is_ped_falling(players.user_ped()) and not is_falling then
+            is_falling = true
+        end
+        if is_falling and height_above_ground >= 2 and height_above_ground <= 4 then
+            freeze_entity_position(players.user_ped(), true)
+            util.yield(10)
+            freeze_entity_position(players.user_ped(), false)
+            is_falling = false
+        end
+    else
+    	util.toast(T"You need to be on foot for this option.")
+        graceful_landing.value = false
+    end
+end)
+
+-------------
+--HULK MODE--
+-------------
+local hulk_values = {
+    godmode_value = nil,
+    jump_bool = false,
+    smash_bool = false,
+    attached_vehicle = nil,
+    hands_up_vehicle = false,
+    attached_ped = nil,
+    hands_up_ped = false,
+    show_hulk_controls = true,
+    jump_distance = 100,
+    jump_height = 60,
+    downward_force = 200,
+    smash_radius = 10,
+    throw_vehicle_speed = 100,
+    throw_ped_speed = 500,
+}
+
+local hulk_mode_toggle;hulk_mode_toggle = hulk_mode_list:toggle(T"Hulk Mode", {}, T"Lets you use abilities that the hulk has super jump, smash (will only work when you're in the air), explosive punch and throw vehicles/peds.\nThis will also enable godmode.", function(on)
+    if on then
+        if not is_ped_in_any_vehicle(players.user_ped(), true) then
+            hulk_values.godmode_value = menu.ref_by_command_name("godmode").value
+            if not hulk_values.godmode_value then
+                menu.ref_by_command_name("godmode").value = true
+            end
+            disable_control_action(0, 22)
+            disable_control_action(0, 24)
+            disable_control_action(0, 38)
+            disable_control_action(0, 45)
+            while hulk_mode_toggle.value do
+                --buttons--
+                if hulk_values.show_hulk_controls then
+                    hulk_buttons()
+                end
+                set_ped_can_ragdoll(players.user_ped(), false)
+                local height_above_ground = get_entity_height_above_ground(players.user_ped())
+                --jump--
+                if is_disabled_control_pressed(0, 22) and not is_entity_in_air(players.user_ped()) and height_above_ground <= 5 then
+                    local fwd_vect = get_entity_forward_vector(players.user_ped())
+                    fwd_vect:mul(hulk_values.jump_distance)
+                    apply_force_to_entity(players.user_ped(), 3, fwd_vect.x, fwd_vect.y, hulk_values.jump_height, 0.0, 0.0, 0.0, 0.0, false, false, true, false, false)
+                    hulk_values.jump_bool = true
+                end
+                --smash--
+                if is_disabled_control_pressed(0, 24) and height_above_ground >= 10 then
+                    apply_force_to_entity(players.user_ped(), 3, 0.0, 0.0, -hulk_values.downward_force, 0.0, 0.0, 0.0, 0.0, false, false, true, false, false)
+                    hulk_values.smash_bool = true
+                end
+                --smash effect when on ground--
+                if hulk_values.jump_bool and height_above_ground <= 1 then
+                    clear_ped_tasks_immediately(players.user_ped())
+                    hulk_values.jump_bool = false
+                    if hulk_values.smash_bool then
+                        func.use_fx_asset("core")
+                        local smoke_landing = start_networked_particle_fx_looped_on_entity("proj_grenade_smoke", players.user_ped(), 0.0, 0.0, -2, 0.0, 0.0, 0.0, 10, false, false, false, 0, 0, 0, 0)
+                        --vehicles--
+                        local vehicles = entities.get_all_vehicles_as_pointers()
+                        for vehicles as vehicle do
+                            local vehicle_handle = entities.pointer_to_handle(vehicle)
+                            if func.get_distance_between(vehicle_handle, players.user_ped()) <= hulk_values.smash_radius then
+                                local vehicle_pos = get_entity_coords(vehicle_handle)
+                                add_explosion(vehicle_pos.x, vehicle_pos.y, vehicle_pos.z, 1, 1, false, true, 0.0, false)
+                                local rel = v3.new(vehicle_pos)
+                                --subtract your pos from rel--
+                                rel:sub(players.get_position(players.user()))
+                                --scales the v3 to have a length of 1--
+                                rel:normalise()
+                                rel:mul(100)
+                                apply_force_to_entity(vehicle_handle, 3, rel.x, rel.y, rel.z, 0.0, 0.0, 10, 0, false, false, true, false, false)
+                            end
+                        end
+                        --peds--
+                        local peds = entities.get_all_peds_as_pointers()
+                        for _, ped in pairs(peds) do
+                            local ped_handle = entities.pointer_to_handle(ped)
+                            if func.get_distance_between(ped_handle, players.user_ped()) <= hulk_values.smash_radius then
+                                local ped_pos = get_entity_coords(ped_handle)
+                                add_explosion(ped_pos.x, ped_pos.y, ped_pos.z, 1, 1, false, true, 0.0, false)
+                                local rel = v3.new(ped_pos)
+                                --subtract your pos from rel--
+                                rel:sub(players.get_position(players.user()))
+                                --scales the v3 to have a length of 1--
+                                rel:normalise()
+                                rel:mul(1000)
+                                set_ped_to_ragdoll(ped_handle, 2500, 0, 0, false, false, false)
+                                apply_force_to_entity(ped_handle, 3, rel.x, rel.y, rel.z, 0.0, 0.0, 10, 0, false, false, true, false, false)
+                            end
+                        end
+                        util.yield(1000)
+                        stop_particle_fx_looped(smoke_landing, false)
+                        hulk_values.smash_bool = false
+                    end
+                end
+                --explosive punch--
+                local hit_coords = v3.new()
+                if get_ped_last_weapon_impact_coord(players.user_ped(), hit_coords) and get_selected_ped_weapon(players.user_ped()) == -1569615261 then
+                	add_explosion(hit_coords.x, hit_coords.y, hit_coords.z, 1, 1, true, true, 0.0, false)
+                end
+                --vehicle throw--
+                if is_disabled_control_just_released(0, 38) and not is_ped_in_any_vehicle(players.user_ped(), true) and hulk_values.hands_up_ped == false then
+                    if hulk_values.hands_up_vehicle == false then
+                        if hulk_values.attached_vehicle == nil then
+                            if is_ped_on_foot(players.user_ped()) and not is_ped_ragdoll(players.user_ped()) then
+                                local closest_vehicle = func.get_closest_vehicle(players.get_position(players.user()), nil)
+                                if closest_vehicle != nil then
+                                    local dist = func.get_distance_between(closest_vehicle, players.user_ped())
+                                    if dist <= 5 then 
+                                        func.load_anim_dict("missminuteman_1ig_2")
+                                        task_play_anim(players.user_ped(), "missminuteman_1ig_2", "handsup_enter", 8.0, 0.0, -1, 50, 0, false, false, false)
+                                        util.yield(500)
+                                        set_entity_collision(closest_vehicle, false, true)
+                                        local height = func.get_model_dimensions_from_hash(get_entity_model(closest_vehicle))
+                                        attach_entity_to_entity(closest_vehicle, players.user_ped(), 0, 0.0, 0.0, height.z, 180, 180, -180, true, false, true, false, 0, true)
+                                        hulk_values.attached_vehicle = closest_vehicle
+                                        hulk_values.hands_up_vehicle = true
+                                    end
+                                end
+                            end
+                        else
+                            clear_ped_tasks_immediately(players.user_ped())
+                            hulk_values.hands_up_vehicle = false
+                        end
+                    else
+                        detach_entity(hulk_values.attached_vehicle)
+                        set_vehicle_forward_speed(hulk_values.attached_vehicle, hulk_values.throw_vehicle_speed)
+                        set_entity_no_collision_entity(hulk_values.attached_vehicle, players.user_ped(), false)
+                        clear_ped_tasks_immediately(players.user_ped())
+                        func.load_anim_dict("melee@unarmed@streamed_core")
+                        task_play_anim(players.user_ped(), "melee@unarmed@streamed_core", "heavy_punch_a", 8.0, 8.0, -1, 0, 0.3, false, false, false)
+                        hulk_values.attached_vehicle = nil
+                        hulk_values.hands_up_vehicle = false
+                    end
+                end           
+                if is_disabled_control_just_released(0, 45) and not is_ped_in_any_vehicle(players.user_ped(), true) and hulk_values.hands_up_vehicle == false then
+                    if hulk_values.hands_up_ped == false then
+                        if hulk_values.attached_ped == nil then
+                            if is_ped_on_foot(players.user_ped()) and not is_ped_ragdoll(players.user_ped()) then
+                                local closest_ped = get_closest_ped(players.get_position(players.user()))
+                                if closest_ped != nil then
+                                    clear_ped_tasks_immediately(players.user_ped())
+                                    local dist = func.get_distance_between(closest_ped, players.user_ped())
+                                    if dist <= 5 then 
+                                        func.load_anim_dict("missminuteman_1ig_2")
+                                        task_play_anim(players.user_ped(), "missminuteman_1ig_2", "handsup_enter", 8.0, 0.0, -1, 50, 0, false, false, false)
+                                        util.yield(500)
+                                        set_entity_collision(closest_ped, false, true)
+                                        local height = func.get_model_dimensions_from_hash(get_entity_model(closest_ped))
+                                        attach_entity_to_entity(closest_ped, players.user_ped(), 0, 0.0, 0.0, height.z, 180, 180, -180, true, false, true, false, 0, true)
+                                        hulk_values.attached_ped = closest_ped
+                                        hulk_values.hands_up_ped = true
+                                    end
+                                end
+                            end
+                        else
+                            clear_ped_tasks_immediately(players.user_ped())
+                            hulk_values.hands_up_ped = false
+                        end
+                    else
+                        detach_entity(hulk_values.attached_ped)
+                        set_ped_to_ragdoll(hulk_values.attached_ped, 2500, 0, 0, false, false, false)
+                        local fwd_vect = get_entity_forward_vector(players.user_ped())
+                        fwd_vect:mul(hulk_values.throw_ped_speed)
+                        apply_force_to_entity(hulk_values.attached_ped, 3, fwd_vect.x, fwd_vect.y, fwd_vect.z, 0.0, 0.0, 1.0, 0, false, false, true, false, false)
+                        set_entity_no_collision_entity(hulk_values.attached_ped, players.user_ped(), false)
+                        clear_ped_tasks_immediately(players.user_ped())
+                        func.load_anim_dict("melee@unarmed@streamed_core")
+                        task_play_anim(players.user_ped(), "melee@unarmed@streamed_core", "heavy_punch_a", 8.0, 8.0, -1, 0, 0.3, false, false, false)
+                        hulk_values.attached_ped = nil
+                        hulk_values.hands_up_ped = false
+                    end
+                end
+                util.yield()
+            end
+        else
+        	util.toast(T"You need to be on foot for this option.")
+            hulk_mode_toggle.value = false
+        end
+    else
+        set_ped_can_ragdoll(players.user_ped(), true)
+        if not hulk_values.godmode_value then
+            menu.ref_by_command_name("godmode").value = false
+        end
+        enable_control_action(0, 22)
+        enable_control_action(0, 24)
+        enable_control_action(0, 38)
+        enable_control_action(0, 45)
+    end
+end)
+
+hulk_mode_list:toggle(T"Show Controls", {}, "", function(on)
+    if on then
+        hulk_values.show_hulk_controls = true
+    else
+        hulk_values.show_hulk_controls = false
+    end
+end, true)
+
+hulk_mode_list:slider(T"Jump Distance", {"Njump_dist"}, "", 20, 300, 100, 5, function(count)
+    hulk_values.jump_distance = count
+end)
+
+hulk_mode_list:slider(T"Jump Height", {"Njump_height"}, "", 10, 150, 60, 5, function(count)
+    hulk_values.jump_height = count
+end)
+
+hulk_mode_list:slider(T"Downward Force", {"Ndown_force"}, "", 50, 350, 200, 5, function(count)
+    hulk_values.downward_force = count
+end)
+
+hulk_mode_list:slider(T"Smash Radius", {"Nsmash_rad"}, "", 10, 50, 10, 1, function(count)
+    hulk_values.smash_radius = count
+end)
+
+hulk_mode_list:slider(T"Throw Vehicle Speed", {"Nthrow_veh_speed"}, "", 50, 400, 100, 5, function(count)
+    hulk_values.throw_vehicle_speed = count
+end)
+
+hulk_mode_list:slider(T"Throw Ped Speed", {"Nthrow_ped_speed"}, "", 100, 1000, 500, 5, function(count)
+    hulk_values.throw_ped_speed = count
+end)
+
+---------
+--AURAS--
+---------
+local aura_radius = 10
+aura_list:slider(T"Aura Radius", {"Naura_rad"}, "", 5, 50, 10, 1, function(count)
+    aura_radius = count
+end)
+
+--explosion aura--
+aura_list:toggle_loop(T"Explosive Aura", {}, "", function()
+    local vehicles = entities.get_all_vehicles_as_pointers()
+    local user_vehicle = entities.get_user_vehicle_as_handle(true)
+    for vehicles as vehicle do
+        local vehicle_handle = entities.pointer_to_handle(vehicle)
+        if vehicle_handle != user_vehicle then
+            local vehicle_pos = get_entity_coords(vehicle_handle)
+            if func.get_distance_between(players.user_ped(), vehicle_pos) <= aura_radius then
+                if get_vehicle_engine_health(vehicle_handle) >= 0 then
+                    add_explosion(vehicle_pos.x, vehicle_pos.y, vehicle_pos.z, 1, 1, false, true, 0.0, false)
+                end
+            end
+        end
+    end
+    local peds = entities.get_all_peds_as_pointers()
+    for peds as ped do
+        local ped_handle = entities.pointer_to_handle(ped)
+        if ped_handle != players.user_ped() then
+            local ped_pos = get_entity_coords(ped_handle, false)
+		    if func.get_distance_between(players.user_ped(), ped_pos) <= aura_radius then
+                if not is_entity_dead(ped_handle, true) then
+		    	    add_explosion(ped_pos.x, ped_pos.y, ped_pos.z, 1, 1, false, true, 0.0, false)
+                end
+		    end
+        end
+	end
+end)
+
+--push aura--
+aura_list:toggle_loop(T"Push Aura", {}, "", function()
+    local vehicles = entities.get_all_vehicles_as_pointers()
+    local user_vehicle = entities.get_user_vehicle_as_handle(true)
+    for vehicles as vehicle do
+        local vehicle_handle = entities.pointer_to_handle(vehicle)
+        if vehicle_handle != user_vehicle then
+            local vehicle_pos = get_entity_coords(vehicle_handle)
+            if func.get_distance_between(players.user_ped(), vehicle_pos) <= aura_radius then
+                local rel = v3.new(vehicle_pos)
+                rel:sub(players.get_position(players.user()))
+                rel:normalise()
+                apply_force_to_entity(vehicle_handle, 3, rel.x, rel.y, rel.z, 0.0, 0.0, 1.0, 0, false, false, true, false, false)
+            end
+        end
+    end
+    local peds = entities.get_all_peds_as_pointers()
+	for peds as ped do
+        local ped_handle = entities.pointer_to_handle(ped)
+        if ped_handle != players.user_ped() then
+            local ped_pos = get_entity_coords(ped_handle, false)
+		    if func.get_distance_between(players.user_ped(), ped_pos) <= aura_radius then
+                local rel = v3.new(ped_pos)
+                rel:sub(players.get_position(players.user()))
+                rel:normalise()
+                set_ped_to_ragdoll(ped_handle, 2500, 0, 0, false, false, false)
+		    	apply_force_to_entity(ped_handle, 3, rel.x, rel.y, rel.z, 0.0, 0.0, 1.0, 0, false, false, true, false, false)
+		    end
+        end
+	end
+end)
+
+--pull aura--
+aura_list:toggle_loop(T"Pull Aura", {}, "", function()
+    local vehicles = entities.get_all_vehicles_as_pointers()
+    local user_vehicle = entities.get_user_vehicle_as_handle(true)
+    for vehicles as vehicle do
+        local vehicle_handle = entities.pointer_to_handle(vehicle)
+        if vehicle_handle != user_vehicle then
+            local vehicle_pos = get_entity_coords(vehicle_handle)
+            if func.get_distance_between(players.user_ped(), vehicle_pos) <= aura_radius then
+                local rel = v3.new(vehicle_pos)
+                rel:sub(players.get_position(players.user()))
+                rel:normalise()
+                apply_force_to_entity(vehicle_handle, 3, -rel.x, -rel.y, -rel.z, 0.0, 0.0, 1.0, 0, false, false, true, false, false)
+            end
+        end
+    end
+    local peds = entities.get_all_peds_as_pointers()
+	for peds as ped do
+        local ped_handle = entities.pointer_to_handle(ped)
+        if ped_handle != players.user_ped() then
+            local ped_pos = get_entity_coords(ped_handle, false)
+		    if func.get_distance_between(players.user_ped(), ped_pos) <= aura_radius then
+                local rel = v3.new(ped_pos)
+                rel:sub(players.get_position(players.user()))
+                rel:normalise()
+                set_ped_to_ragdoll(ped_handle, 2500, 0, 0, false, false, false)
+		    	apply_force_to_entity(ped_handle, 3, -rel.x, -rel.y, -rel.z, 0.0, 0.0, 1.0, 0, false, false, true, false, false)
+		    end
+        end
+	end
+end)
+
+--freeze aura--
+aura_list:toggle_loop(T"Freeze Aura", {}, "", function()
+    local vehicles = entities.get_all_vehicles_as_pointers()
+    local user_vehicle = entities.get_user_vehicle_as_handle(true)
+    for vehicles as vehicle do
+        local vehicle_handle = entities.pointer_to_handle(vehicle)
+        if vehicle_handle != user_vehicle then
+            local vehicle_pos = get_entity_coords(vehicle_handle)
+            if func.get_distance_between(players.user_ped(), vehicle_pos) <= aura_radius then
+                freeze_entity_position(vehicle_handle, true)
+            else
+                freeze_entity_position(vehicle_handle, false)
+            end
+        end
+    end
+    local peds = entities.get_all_peds_as_pointers()
+	for peds as ped do
+        local ped_handle = entities.pointer_to_handle(ped)
+        if ped_handle != players.user_ped() then
+            local ped_pos = get_entity_coords(ped_handle, false)
+		    if func.get_distance_between(players.user_ped(), ped_pos) <= aura_radius then
+                if not is_ped_in_any_vehicle(ped_handle, false) then
+                    clear_ped_tasks_immediately(ped_handle)
+                end
+                freeze_entity_position(ped_handle, true)
+            else
+                freeze_entity_position(ped_handle, false)
+            end
+        end
+	end
+end)
+
+--boost aura--
+aura_list:toggle_loop(T"Boost Aura", {}, "", function()
+    local vehicles = entities.get_all_vehicles_as_pointers()
+    local user_vehicle = entities.get_user_vehicle_as_handle(true)
+    for vehicles as vehicle do
+        local vehicle_handle = entities.pointer_to_handle(vehicle)
+        if vehicle_handle != user_vehicle then
+            local vehicle_pos = get_entity_coords(vehicle_handle)
+            if func.get_distance_between(players.user_ped(), vehicle_pos) <= aura_radius then
+                local rel = v3.new(vehicle_pos)
+                rel:sub(players.get_position(players.user()))
+                local rot = rel:toRot()
+                set_entity_rotation(vehicle_handle, rot.x, rot.y, rot.z, 2, false)
+                set_vehicle_forward_speed(vehicle_handle, 100)
+            end
+        end
+    end
+    local peds = entities.get_all_peds_as_pointers()
+	for peds as ped do
+        local ped_handle = entities.pointer_to_handle(ped)
+        if ped_handle != players.user_ped() then
+            local ped_pos = get_entity_coords(ped_handle, false)
+		    if func.get_distance_between(players.user_ped(), ped_pos) <= aura_radius then
+                local rel = v3.new(ped_pos)
+                rel:sub(players.get_position(players.user()))
+                rel:mul(100)
+                set_ped_to_ragdoll(ped_handle, 2500, 0, 0, false, false, false)
+		    	apply_force_to_entity(ped_handle, 3, rel.x, rel.y, rel.z, 0, 0, 1.0, 0, false, false, true, false, false)
+            end
+        end
+	end
+end)
+
+-------------------
+--PTFX TRAIL SELF--
+-------------------
+local particle_fx = {}
+local time_delay = 0
+local PTFX_trail_self_colour = {r = 129/255, g = 130/255, b = 211/255, a = 1.0}
+local PTFX_trails_self = {
+    {name = "scr_mich4_firework_trail_spawn", asset = "scr_rcpaparazzo1", particle = "scr_mich4_firework_trail_spawn"},
+    {name = "scr_mich4_firework_sparkle_spawn", asset = "scr_rcpaparazzo1", particle = "scr_mich4_firework_sparkle_spawn"},
+    {name = "proj_flare_trail", asset = "core", particle = "proj_flare_trail"},
+    {name = "trail_splash_oil", asset = "core", particle = "trail_splash_oil"},
+    {name = "veh_trailer_petrol_spray", asset = "core", particle = "veh_trailer_petrol_spray"},
+    {name = "trail_splash_blood", asset = "core", particle = "trail_splash_blood"},
+    {name = "sp_fbi_fire_drip_trails", asset = "core", particle = "sp_fbi_fire_drip_trails"},
+    {name = "trail_splash_water", asset = "core", particle = "trail_splash_water"},
+    {name = "proj_rpg_trail", asset = "core", particle = "proj_rpg_trail"},
+}
+
+local PTFX_trail_self_colour_option = ptfx_trails_self_list:colour(T"Trail Colour", {}, "", PTFX_trail_self_colour, false, function(colour)
+    PTFX_trail_self_colour = colour 
+end)
+menu.rainbow(PTFX_trail_self_colour_option)
+
+local ptfx_trails_self = {}
+for i, data in PTFX_trails_self do
+    ptfx_trails_self[i] = ptfx_trails_self_list:toggle_loop(data.name, {}, "", function()
+        if not is_ped_in_any_vehicle(players.user_ped(), false) then
+            for {0x49D9, 0xDEAD, 0x3779, 0xCC4D} as bone_id do
+                local bone = get_ped_bone_index(players.user_ped(), bone_id)
+                func.use_fx_asset(data.asset)
+                local fx = start_networked_particle_fx_looped_on_entity_bone(data.particle, players.user_ped(), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, bone, 0.6, false, false, false, 0, 0, 0, 0)
+                set_particle_fx_looped_colour(fx, PTFX_trail_self_colour.r, PTFX_trail_self_colour.g, PTFX_trail_self_colour.b, false)
+                table.insert(particle_fx, fx)
+            end
+            if time_delay >= 40 then
+                for i, fx in particle_fx do
+	    	        stop_particle_fx_looped(fx, false)
+	    	        remove_particle_fx(fx, false)
+	            end
+                time_delay = 0
+            end
+            time_delay = time_delay + 1
+        else
+            for j = 1, #ptfx_trails_self do
+                if ptfx_trails_self[j] == ptfx_trails_self[i] then
+                    ptfx_trails_self[j].value = false
+                end
+            end
+        end
+    end, function()
+        remove_named_ptfx_asset(data.asset)
+	    for i, fx in particle_fx do
+	    	stop_particle_fx_looped(fx, false)
+	    	remove_particle_fx(fx, false)
+	    end
+    end)
+end
+
+-------------
+--AUTO HEAL--
+-------------
+local auto_heal = {adding_number = 5, delay_number = 15}
+auto_heal_list:toggle_loop(T"Auto Heal", {}, T"Fixes the demi-godmode that Stand has.", function()
+    local max_armour = get_player_max_armour(players.user())
+    local current_armour = get_ped_armour(players.user_ped())
+
+    if current_armour < max_armour then
+        local adding_armour = current_armour + auto_heal.adding_number
+        if (max_armour - current_armour) <= auto_heal.adding_number then
+            adding_armour = current_armour + (max_armour - current_armour)
+        end
+        set_ped_armour(players.user_ped(), adding_armour)
+    end
+
+    local current_health = get_entity_health(players.user_ped())
+    local max_health = get_entity_max_health(players.user_ped())
+
+    if current_health < max_health then
+        local adding_health = current_health + auto_heal.adding_number
+        if (max_health - current_armour) <= auto_heal.adding_number then
+            adding_health = current_health + (max_health - current_armour)
+        end
+        set_entity_health(players.user_ped(), adding_health)
+    end
+    util.yield(auto_heal.delay_number)
+end)
+
+auto_heal_list:slider(T"Adding Number", {"Naddingnum"}, "", 5, 20, 5, 1, function(count)
+    auto_heal.adding_number = count
+end)
+
+auto_heal_list:slider(T"Delay Number", {"Ndelaynum"}, "", 0, 25, 15, 1, function(count)
+    auto_heal.delay_number = count
+end)
+
+-----------
+--HEADING--
+-----------
+instant_respawn:toggle_loop(T"Heading", {}, "", function()
+	if is_entity_dead(players.user_ped()) then
+		local position = players.get_position(players.user())
+		local forward_vect = get_entity_forward_vector(players.user_ped())
+        local spawn_coords = v3.new()
+		find_spawn_point_in_direction(position.x, position.y, position.z, forward_vect.x, forward_vect.y, forward_vect.z, math.random(200.0, 400.0), spawn_coords)
+		if spawn_coords != nil then
+			network_resurrect_local_player(spawn_coords.x, spawn_coords.y, spawn_coords.z, get_entity_heading(players.user_ped()), false, false, 0, 0, 0)
+		end
+	end
+end)
+
+--------------------
+--CURRENT LOCATION--
+--------------------
+instant_respawn:toggle_loop(T"Current Location", {}, "", function()
+	if is_entity_dead(players.user_ped()) then
+		local position = players.get_position(players.user())
+		network_resurrect_local_player(position.x, position.y, position.z, get_entity_heading(players.user_ped()), false, false, 0, 0, 0)
+	end
+end)
+
+-------------
+--HOSPITAL)--
+-------------
+instant_respawn:toggle_loop(T"Hospital", {}, "", function()
+	if is_entity_dead(players.user_ped()) then
+        local position = players.get_position(players.user())
+        local closest_dist = 999999999999
+	    local respawn_coords = nil
+        for i, location in tables.hospital_locations  do
+	        local dist = func.get_distance_between(position, location)
+	        if (dist < closest_dist) then
+	            closest_dist = dist
+	            respawn_coords = location
+	        end
+        end
+		network_resurrect_local_player(respawn_coords.x, respawn_coords.y, respawn_coords.z, get_entity_heading(players.user_ped()), false, false, 0, 0, 0)
+	end
+end)
+
+--------------------
+--PERSONAL VEHICLE--
+--------------------
+instant_respawn:toggle_loop(T"Personal Vehicle", {}, "", function()
+	if is_entity_dead(players.user_ped()) then
+        local personal_vehicle = entities.get_user_personal_vehicle_as_handle()
+        if personal_vehicle != -1 and does_entity_exist(personal_vehicle) then
+            local dimensions = func.get_model_dimensions_from_hash(get_entity_model(personal_vehicle))
+            local respawn_coords = get_offset_from_entity_in_world_coords(personal_vehicle, -dimensions.x, 0.0, 0.0)
+		    network_resurrect_local_player(respawn_coords.x, respawn_coords.y, respawn_coords.z, get_entity_heading(players.user_ped()), false, false, 0, 0, 0)
+        else
+            util.toast(T"Did not find any vehicle, respawning at current coords.")
+            local respawn_coords = players.get_position(players.user())
+		    network_resurrect_local_player(respawn_coords.x, respawn_coords.y, respawn_coords.z, get_entity_heading(players.user_ped()), false, false, 0, 0, 0)
+        end
+	end
+end)
+
+----------------
+--LAST VEHICLE--
+----------------
+instant_respawn:toggle_loop(T"Last Vehicle", {}, "", function()
+	if is_entity_dead(players.user_ped()) then
+        local last_vehicle = entities.get_user_vehicle_as_handle()
+        if last_vehicle != -1 and does_entity_exist(last_vehicle) then
+            local dimensions = func.get_model_dimensions_from_hash(get_entity_model(last_vehicle))
+            local respawn_coords = get_offset_from_entity_in_world_coords(last_vehicle, -dimensions.x, 0.0, 0.0)
+		    network_resurrect_local_player(respawn_coords.x, respawn_coords.y, respawn_coords.z, get_entity_heading(players.user_ped()), false, false, 0, 0, 0)
+        else
+            util.toast(T"Did not find any vehicle, respawning at current coords.")
+            local respawn_coords = players.get_position(players.user())
+		    network_resurrect_local_player(respawn_coords.x, respawn_coords.y, respawn_coords.z, get_entity_heading(players.user_ped()), false, false, 0, 0, 0)
+        end
+	end
+end)
+
+-------------------
+--CLOSEST VEHICLE--
+-------------------
+instant_respawn:toggle_loop(T"Closest Vehicle", {}, "", function()
+	if is_entity_dead(players.user_ped()) then
+        local position = players.get_position(players.user())
+        local closest_vehicle = func.get_closest_vehicle(position, nil)
+        if closest_vehicle != nil and does_entity_exist(closest_vehicle) then
+            local dimensions = func.get_model_dimensions_from_hash(get_entity_model(closest_vehicle))
+            local respawn_coords = get_offset_from_entity_in_world_coords(closest_vehicle, -dimensions.x, 0.0, 0.0)
+		    network_resurrect_local_player(respawn_coords.x, respawn_coords.y, respawn_coords.z, get_entity_heading(players.user_ped()), false, false, 0, 0, 0)
+        else
+            util.toast(T"Did not find any vehicle, respawning at current coords.")
+            local respawn_coords = players.get_position(players.user())
+		    network_resurrect_local_player(respawn_coords.x, respawn_coords.y, respawn_coords.z, get_entity_heading(players.user_ped()), false, false, 0, 0, 0)
+        end
+	end
+end)
+
+------------------
+--CLOSEST PLAYER--
+------------------
+instant_respawn:toggle_loop(T"Closest Player", {}, "", function()
+	if is_entity_dead(players.user_ped()) then
+        local position = players.get_position(players.user())
+        local closest_player = func.get_closest_player(position)
+        if closest_player != nil then
+            local respawn_coords = players.get_position(closest_player)
+		    network_resurrect_local_player(respawn_coords.x, respawn_coords.y, respawn_coords.z, get_entity_heading(players.user_ped()), false, false, 0, 0, 0)
+        end
+	end
+end)
+
+-------------------------
+--WALK & DRIVE ON WATER--
+-------------------------
+local object_rotation = nil
+local ground, heights_found, ground_object = false, false, nil
+self_main:toggle_loop(T"Walk & Drive On Water", {}, "", function()
+    if not ground then
+        if not heights_found then
+            local vehicle = entities.get_user_vehicle_as_handle(false)
+            local position = is_ped_in_any_vehicle(players.user_ped(), false) and get_entity_coords(vehicle) or players.get_position(players.user())
+            local offset_coords1 = get_offset_from_entity_in_world_coords(players.user_ped(), 0, 3, 0)
+            local offset_coords2 = get_offset_from_entity_in_world_coords(players.user_ped(), 0, -3, 0)
+            local z1 = get_water_height_incl_rivers(offset_coords1.x, offset_coords1.y)
+            local z2 = get_water_height_incl_rivers(offset_coords2.x, offset_coords2.y)
+            if z1 != nil and z2 != nil then
+                heights_found = true
+                local entity_underwater = is_ped_in_any_vehicle(players.user_ped(), false) and vehicle or players.user_ped()
+                local sub_level = get_entity_submerged_level(entity_underwater)
+                if sub_level != 0.0 then
+                    set_entity_coords(entity_underwater, position.x, position.y, z2+1, false, false, false, false)
+                end
+                local ground_hash = util.joaat("sr_prop_special_bblock_mdm3")
+                util.request_model(ground_hash)
+                ground_object = entities.create_object(ground_hash, v3.new(position.x, position.y, z2))
+                ground = true
+                set_entity_alpha(ground_object, 0)
+                set_entity_visible(ground_object, false, 0)
+            else
+                heights_found = false
+            end
+        end
+    end
+
+    while ground and heights_found do
+        local offset_coords1 = get_offset_from_entity_in_world_coords(players.user_ped(), 0, 3, 0)
+        local offset_coords2 = get_offset_from_entity_in_world_coords(players.user_ped(), 0, -3, 0)
+        local z1 = get_water_height_incl_rivers(offset_coords1.x, offset_coords1.y)
+        local z2 = get_water_height_incl_rivers(offset_coords2.x, offset_coords2.y)
+        --for the roll--
+        local offset_coords3 = get_offset_from_entity_in_world_coords(players.user_ped(), 1.5, 0, 0)
+        local offset_coords4 = get_offset_from_entity_in_world_coords(players.user_ped(), -1.5, 0, 0)
+        local z3 = get_water_height_incl_rivers(offset_coords3.x, offset_coords3.y)
+        local z4 = get_water_height_incl_rivers(offset_coords4.x, offset_coords4.y)
+        if z1 != nil and z2 != nil then
+            local vehicle = entities.get_user_vehicle_as_handle(false)
+            local position = is_ped_in_any_vehicle(players.user_ped(), false) and get_entity_coords(vehicle) or players.get_position(players.user())
+            local entity_underwater = is_ped_in_any_vehicle(players.user_ped(), false) and vehicle or players.user_ped()
+            local sub_level = get_entity_submerged_level(entity_underwater)
+            if sub_level == 1.0 then
+                set_entity_coords(entity_underwater, position.x, position.y, z2+1, false, false, false, false)
+            end
+            local user_rotation = is_ped_in_any_vehicle(players.user_ped(), false) and get_entity_rotation(vehicle) or get_entity_rotation(players.user_ped())
+            local pitch = (z1 - z2) / 0.1
+            local roll = (z3 - z4) / 0.1
+
+            local desired_rotation = func.from_euler(pitch, roll, user_rotation.z)
+            if object_rotation == nil then
+                object_rotation = desired_rotation
+            else
+                object_rotation = func.slerp(object_rotation, desired_rotation, 50/1000)
+                set_entity_quaternion(ground_object, object_rotation.x, object_rotation.y, object_rotation.z, object_rotation.w)
+            end
+            set_entity_coords(ground_object, position.x, position.y, z2, false, false, false, false)
+        else
+            entities.delete_by_handle(ground_object)
+            ground = false
+            heights_found = false
+        end
+        util.yield()
+    end
+end, function()
+    if ground then
+        entities.delete_by_handle(ground_object)
+        ground = false
+    end
+    heights_found = false
+    ground_object = nil
+    object_rotation = nil
+end)
+
+-------------------------
+--ENTER NEAREST VEHICLE--
+-------------------------
+self_main:action(T"Enter Nearest Vehicle", {}, "", function()
+	if not is_ped_in_any_vehicle(players.user_ped(), false) then
+		local player_pos = players.get_position(players.user())
+		local vehicle = func.get_closest_vehicle(player_pos, nil)
+		local ped = get_ped_in_vehicle_seat(vehicle, -1, true)
+		if is_ped_a_player(ped) then
+			util.toast(T"A player is in the nearest vehicle.")
+		else
+		    entities.delete_by_handle(ped)
+			set_ped_into_vehicle(players.user_ped(), vehicle, -1)
+		end
+	end
+end)
+
+-------------------------
+--ENTER RANDOM VEHICLE--
+-------------------------
+self_main:action(T"Enter Random Vehicle", {}, "", function()
+	if not is_ped_in_any_vehicle(players.user_ped(), false) then
+		local player_pos = players.get_position(players.user())
+		local vehicle = get_random_vehicle()
+		local ped = get_ped_in_vehicle_seat(vehicle, -1, true)
+		if is_ped_a_player(ped) then
+			util.toast(T"A player is in the randomly selected vehicle.")
+		else
+		    entities.delete_by_handle(ped)
+			set_ped_into_vehicle(players.user_ped(), vehicle, -1)
+		end
+	end
+end)
+
+------------------------
+--GO TO NEAREST PLAYER--
+------------------------
+self_main:action(T"Go To Nearest Player", {}, "", function()
+    if util.is_session_started() then
+	    local user_pos = players.get_position(players.user())
+	    local player = func.get_closest_player(user_pos)
+        if player != nil then
+            if not is_ped_in_any_vehicle(players.user_ped(), false) then
+                local player_pos = players.get_position(player)
+                set_entity_coords(players.user_ped(), player_pos.x, player_pos.y, player_pos.z, false, false, false, false)
+            else
+                local player_pos = players.get_position(player)
+                local user_vehicle = entities.get_user_vehicle_as_handle(false)
+                if user_vehicle != 0 then
+                    set_entity_coords(user_vehicle, player_pos.x, player_pos.y, player_pos.z, false, false, false, false)
+                end
+            end
+        end
+    else
+        util.toast(T"Only available in online.")
+    end
+end)
+
+---------------------------------
+--HIJACK RANDOM PLAYERS VEHICLE--
+---------------------------------
+self_main:action(T"Hijack Random Players Vehicle", {}, "", function()
+    if util.is_session_started() then
+        local players_list = players.list(false, true, true)
+        local player = nil
+        for i = 1, #players_list do
+            local ped = get_player_ped_script_index(i)
+            if is_ped_in_any_vehicle(ped, true) then
+                player = i
+            end
+            if player != nil then
+                continue
+            end
+        end
+
+        if player != nil then
+            func.control_vehicle(player, true, function(vehicle)
+                local player_ped = get_player_ped_script_index(player)
+                clear_ped_tasks_immediately(player_ped)
+                local vehicle_coords = get_entity_coords(vehicle, true)
+                set_entity_coords(players.user_ped(), vehicle_coords.x, vehicle_coords.y, vehicle_coords.z, false, false, false, false)
+                util.yield(500)
+                task_warp_ped_into_vehicle(players.user_ped(), vehicle, -1)
+            end)
+        end
+    else
+        util.toast(T"Only available in online.")
+    end
+end)

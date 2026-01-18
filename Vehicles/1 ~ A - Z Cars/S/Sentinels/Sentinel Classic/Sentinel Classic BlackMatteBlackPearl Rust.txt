@@ -1,0 +1,44 @@
+Model: sentinel3
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 0
+Wheel Colour: 0
+Wheel Type: 10
+Spoiler: 14
+Front Bumper: 9
+Rear Bumper: 2
+Sideskirt: 1
+Exhaust: 4
+Chassis: 5
+Grille: 4
+Hood: 15
+Fender: 0
+Roof: 8
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 25
+Livery: 2
+Tyre Smoke Colour: #905e3d
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #832913
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 104
+Dashboard Colour: 134
+Tyres Mode: 1

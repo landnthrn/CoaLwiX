@@ -1,0 +1,41 @@
+Model: sanctus
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 26
+Pearl Colour: 27
+Wheel Colour: 136
+Wheel Type: 6
+Spoiler: 12
+Front Bumper: 2
+Rear Bumper: 2
+Sideskirt: 8
+Exhaust: 2
+Chassis: 2
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 36
+Back Wheels: 36
+Livery: 16
+Tyre Smoke Colour: #ff00ff
+Window Tint: 1
+Custom Primary Colour: #8eccef
+Custom Secondary Colour: #fa909a
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 111
+Tyres Mode: 1

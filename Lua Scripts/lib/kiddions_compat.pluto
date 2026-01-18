@@ -1,0 +1,181 @@
+pluto_use "0.8.0"
+
+util.require_natives("3095a")
+
+local stand = menu
+
+localplayer = {
+	function get_position()
+		return players.get_pos(players.user())
+	end,
+	function set_position(...args)
+		if #args == 3 then
+			players.teleport_3d(players.user(), args[1], args[2], args[3])
+		else
+			local pos = args[1]
+			players.teleport_3d(players.user(), pos.x, pos.y, pos.z)
+		end
+	end,
+	function set_wanted_level(wl)
+		players.set_wanted_level(players.user(), wl)
+	end,
+}
+
+local Submenu
+class Submenu
+	function __construct(public __ref)
+	end
+
+	function add_submenu(name)
+		return new Submenu(self.__ref:list(name))
+	end
+
+	function add_action(name, callback)
+		self.__ref:action(name, {}, "", callback)
+	end
+
+	function add_toggle(name, getter, setter)
+		self.__ref:toggle(name, {}, "", function(value)
+			setter(value)
+		end)
+	end
+
+	function add_int_range(name, step_size, min, max, getter, setter)
+		-- This should be a click_slider, but that wouldn't work with the onTickInViewport.
+		local n = self.__ref:slider(name, {}, "", min, max, 0, step_size, function(value, prev_value, click_type)
+			if (click_type & CLICK_FLAG_AUTO) == 0 then
+				setter(value)
+			end
+		end)
+		n:onTickInViewport(function()
+			n.value = getter()
+		end)
+	end
+
+	function add_float_range(name, step_size, min, max, getter, setter)
+		-- This should be a click_slider_float, but that wouldn't work with the onTickInViewport.
+		local n = self.__ref:slider_float(name, {}, "", math.round(min * 100), math.round(max * 100), 0, math.round(step_size * 100), function(value, prev_value, click_type)
+			if (click_type & CLICK_FLAG_AUTO) == 0 then
+				setter(value / 100)
+			end
+		end)
+		n:onTickInViewport(function()
+			n.value = math.round(getter() * 100)
+		end)
+
+	end
+
+	function add_array_item(name, items, getter, setter)
+		self.__ref:list_action(name, {}, "", items, setter)
+	end
+
+	function add_bare_item(name, getter)
+		local n = self.__ref:readonly_name(name)
+		n:onTickInViewport(function()
+			n.menu_name = getter()
+		end)
+	end
+end
+
+menu = {
+	add_submenu = function(name)
+		return new Submenu(stand.my_root():list(name))
+	end,
+	add_action = function(...)
+		return new Submenu(stand.my_root()):add_action(...)
+	end,
+	add_toggle = function(...)
+		return new Submenu(stand.my_root()):add_toggle(...)
+	end,
+	add_int_range = function(...)
+		return new Submenu(stand.my_root()):add_int_range(...)
+	end,
+	add_float_range = function(...)
+		return new Submenu(stand.my_root()):add_float_range(...)
+	end,
+	add_array_item = function(...)
+		return new Submenu(stand.my_root()):add_array_item(...)
+	end,
+	add_bare_item = function(...)
+		return new Submenu(stand.my_root()):add_bare_item(...)
+	end,
+
+	suicide_player = function()
+		stand.trigger_commands("ewo")
+	end
+}
+
+joaat = util.joaat
+sleep = |seconds| -> util.yield(seconds * 1000)
+
+local class ScriptInst
+function __construct(public name)
+	self.name_hash = util.joaat(name)
+end
+
+function is_active()
+	return SCRIPT.GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(self.name_hash) ~= 0
+end
+
+function get_int(offset)
+	return memory.read_int(memory.script_local(self.name_hash, offset))
+end
+
+function set_int(offset, value)
+	memory.write_int(memory.script_local(self.name_hash, offset), value)
+end
+end
+
+script = function(name)
+	return new ScriptInst(name)
+end
+
+globals = {
+	get_int = function(offset)
+		return memory.read_int(memory.script_global(offset))
+	end,
+	set_int = function(offset, value)
+		memory.write_int(memory.script_global(offset), value)
+	end,
+	get_float = function(offset)
+		return memory.read_float(memory.script_global(offset))
+	end,
+	set_float = function(offset, value)
+		memory.write_float(memory.script_global(offset), value)
+	end,
+	get_boolean = function(offset)
+		return memory.read_ubyte(memory.script_global(offset)) ~= 0
+	end,
+	set_boolean = function(offset, value)
+		memory.write_ubyte(memory.script_global(offset), value ? 1 : 0)
+	end,
+}
+
+stats = {
+	get_int = function(name)
+		local val = memory.alloc_int()
+		STATS.STAT_GET_INT(joaat(name), val, -1)
+		return memory.read_int(val)
+	end,
+	set_int = function(name, value)
+		STATS.STAT_SET_INT(joaat(name), value, true)
+	end,
+	get_float = function(name)
+		local val = memory.alloc_float()
+		STATS.STAT_GET_FLOAT(joaat(name), val, -1)
+		return memory.read_float(val)
+	end,
+	set_float = function(name, value)
+		STATS.STAT_SET_FLOAT(joaat(name), value, true)
+	end,
+	get_bool = function(name)
+		local val = memory.alloc_int()
+		STATS.STAT_GET_BOOL(joaat(name), val, -1)
+		return memory.read_int(val) ~= 0
+	end,
+	set_bool = function(name, value)
+		STATS.STAT_SET_BOOL(joaat(name), value, true)
+	end,
+}
+
+vector3 = v3

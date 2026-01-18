@@ -1,0 +1,42 @@
+Model: landstalker2
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 39
+Pearl Colour: 0
+Wheel Colour: 28
+Wheel Type: 8
+Front Bumper: 0
+Rear Bumper: 3
+Sideskirt: 0
+Exhaust: 7
+Grille: 3
+Hood: 7
+Right Fender: 0
+Roof: 6
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 147
+Livery: 7
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #cf1f21
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 158
+Dashboard Colour: 158
+Tyres Mode: 1

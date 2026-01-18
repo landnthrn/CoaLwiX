@@ -1,0 +1,41 @@
+Model: jester
+Plate Style: 0
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 126
+Wheel Colour: 158
+Wheel Type: 8
+Spoiler: 2
+Front Bumper: 0
+Rear Bumper: 0
+Sideskirt: 0
+Exhaust: 0
+Chassis: 0
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 0
+Suspension: 0
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 0
+Front Wheels: 108
+Livery: -1
+Tyre Smoke Colour: #ffb423
+Window Tint: 0
+Custom Primary Colour: #47391b
+Custom Secondary Colour: #5870a1
+Neon Colour: #ff9605
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 158
+Dashboard Colour: 0
+Tyres Mode: 1

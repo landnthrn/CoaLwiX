@@ -1,0 +1,45 @@
+Model: weevil
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 68
+Secondary Colour: 68
+Pearl Colour: 42
+Wheel Colour: 41
+Wheel Type: 12
+Spoiler: 5
+Front Bumper: 16
+Rear Bumper: 8
+Sideskirt: 6
+Exhaust: 11
+Chassis: 7
+Grille: 1
+Hood: 5
+Fender: 9
+Right Fender: 6
+Roof: 16
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 58
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: No
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 3
+Front Wheels: 210
+Livery: 11
+Tyre Smoke Colour: #c8e04b
+Window Tint: 0
+Custom Primary Colour: #fd8cc1
+Custom Secondary Colour: #f0f7b3
+Neon Colour: #ca6f2d
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 3
+Dashboard Colour: 156
+Tyres Mode: 1

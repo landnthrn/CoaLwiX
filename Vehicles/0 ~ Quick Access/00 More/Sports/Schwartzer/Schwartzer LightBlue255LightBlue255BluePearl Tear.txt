@@ -1,0 +1,46 @@
+Model: schwarzer
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 140
+Wheel Colour: 139
+Wheel Type: 3
+Spoiler: 13
+Front Bumper: 12
+Rear Bumper: 1
+Sideskirt: 14
+Exhaust: 12
+Chassis: 3
+Grille: 6
+Hood: 6
+Right Fender: 2
+Roof: 4
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 2
+Front Wheels: 0
+Livery: 9
+Tyre Smoke Colour: #00e6ff
+Window Tint: 1
+Custom Primary Colour: #00a6ff
+Custom Secondary Colour: #00bbff
+Neon Colour: #00c8ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 10: Yes
+Extra 12: No

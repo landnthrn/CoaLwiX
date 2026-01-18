@@ -1,0 +1,42 @@
+Model: hustler
+Plate Style: 12
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 120
+Pearl Colour: 55
+Wheel Colour: 134
+Wheel Type: 8
+Front Bumper: 0
+Rear Bumper: 0
+Sideskirt: 1
+Exhaust: 3
+Grille: 2
+Hood: 0
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 6
+Front Wheels: 110
+Livery: 4
+Tyre Smoke Colour: #00ff00
+Window Tint: 1
+Custom Primary Colour: #000a00
+Custom Secondary Colour: #5870a1
+Neon Colour: #00ff00
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 158
+Dashboard Colour: 158
+Tyres Mode: 1
+Extra 1: Yes

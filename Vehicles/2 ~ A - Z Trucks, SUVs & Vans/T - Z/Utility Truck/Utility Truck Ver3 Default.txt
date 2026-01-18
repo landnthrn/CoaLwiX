@@ -1,0 +1,30 @@
+Model: utillitruck3
+Plate Style: 0
+Plate Text:  0 MPH  
+Primary Colour: 111
+Secondary Colour: 111
+Pearl Colour: 0
+Wheel Colour: 156
+Wheel Type: 0
+Nitrous: No
+Turbo: No
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 0
+Front Wheels: 0
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #3100ff
+Neon Front: No
+Neon Back: No
+Neon Left: Yes
+Neon Right: No
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: No

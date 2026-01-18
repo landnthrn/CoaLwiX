@@ -1,0 +1,39 @@
+Model: vagner
+Plate Style: 6
+Plate Text: 78WWG125
+Primary Colour: 64
+Secondary Colour: 8
+Pearl Colour: 0
+Wheel Colour: 64
+Wheel Type: 10
+Spoiler: 3
+Front Bumper: 3
+Exhaust: 1
+Hood: 1
+Roof: 5
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 17
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 3
+Front Wheels: 3
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: #000000
+Neon Colour: #0215ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 73
+Dashboard Colour: 30
+Tyres Mode: 1

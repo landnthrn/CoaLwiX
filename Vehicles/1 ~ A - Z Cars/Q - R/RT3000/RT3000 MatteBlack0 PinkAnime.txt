@@ -1,0 +1,55 @@
+Model: rt3000
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 0
+Wheel Colour: 0
+Wheel Type: 5
+Spoiler: 3
+Front Bumper: 1
+Rear Bumper: 1
+Exhaust: 0
+Grille: 0
+Hood: 1
+Fender: 1
+Right Fender: 1
+Roof: 4
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: Yes
+Turbo: Yes
+Subwoofer: Yes
+Tiresmoke: Yes
+Unk21: Yes
+Headlights: 12
+Front Wheels: 12
+Vanity Plates: 0
+Trim: 1
+Dashboard: 4
+Seats: 6
+Door Speaker: 14
+Steering Wheel: 15
+Engine Block: 4
+Air Filter: 7
+Struts: 0
+Arch Cover: 3
+Left Door: 1
+Right Door: 0
+Livery: 10
+Tyre Smoke Colour: #ff00ff
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #13181f
+Neon Colour: #ff00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 8
+Dashboard Colour: 0
+Tyres Mode: 1

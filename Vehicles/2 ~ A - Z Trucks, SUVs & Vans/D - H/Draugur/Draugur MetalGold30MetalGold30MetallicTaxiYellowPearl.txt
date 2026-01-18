@@ -1,0 +1,44 @@
+Model: draugur
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 117
+Secondary Colour: 117
+Pearl Colour: 88
+Wheel Colour: 158
+Wheel Type: 8
+Spoiler: 3
+Front Bumper: 18
+Rear Bumper: 2
+Sideskirt: 8
+Exhaust: 9
+Chassis: 1
+Grille: 6
+Fender: 5
+Right Fender: 6
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 9
+Front Wheels: 119
+Livery: 0
+Tyre Smoke Colour: #876b34
+Window Tint: 1
+Custom Primary Colour: #1e180b
+Custom Secondary Colour: #1e180b
+Neon Colour: #634f26
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 8
+Dashboard Colour: 8
+Tyres Mode: 1

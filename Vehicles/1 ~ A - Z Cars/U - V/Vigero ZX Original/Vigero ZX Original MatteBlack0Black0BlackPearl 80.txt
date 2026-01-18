@@ -1,0 +1,45 @@
+Model: vigero2
+Plate Style: 10
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 0
+Pearl Colour: 0
+Wheel Colour: 148
+Wheel Type: 8
+Spoiler: 11
+Front Bumper: 14
+Rear Bumper: 11
+Sideskirt: 14
+Exhaust: 6
+Chassis: 2
+Grille: 8
+Hood: 26
+Fender: 12
+Right Fender: 5
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 122
+Livery: 8
+Tyre Smoke Colour: #8466e2
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #000000
+Neon Colour: #2301ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 0
+Tyres Mode: 1

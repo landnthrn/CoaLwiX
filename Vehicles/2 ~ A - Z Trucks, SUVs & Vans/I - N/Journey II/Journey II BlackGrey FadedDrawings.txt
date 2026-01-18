@@ -1,0 +1,36 @@
+Model: journey2
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 3
+Secondary Colour: 0
+Pearl Colour: 145
+Wheel Colour: 145
+Wheel Type: 8
+Engine: 5
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 117
+Livery: 10
+Tyre Smoke Colour: #4600ff
+Window Tint: 1
+Custom Primary Colour: #454b4f
+Custom Secondary Colour: #0d1116
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 71
+Dashboard Colour: 150
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: Yes
+Extra 3: No

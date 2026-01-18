@@ -1,0 +1,47 @@
+Model: buffalo5
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 10
+Wheel Colour: 89
+Wheel Type: 8
+Spoiler: 6
+Front Bumper: 12
+Rear Bumper: 3
+Sideskirt: 12
+Chassis: 1
+Grille: 2
+Hood: 3
+Fender: 8
+Right Fender: 1
+Roof: 13
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 7
+Front Wheels: 117
+Ornaments: 6
+Trim2: 2
+Right Door: 6
+Livery: 5
+Tyre Smoke Colour: #ffff00
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #000000
+Neon Colour: #ffff00
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

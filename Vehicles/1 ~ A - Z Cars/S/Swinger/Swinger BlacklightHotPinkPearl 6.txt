@@ -1,0 +1,41 @@
+Model: swinger
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 158
+Pearl Colour: 44
+Wheel Colour: 81
+Wheel Type: 10
+Front Bumper: 2
+Sideskirt: 3
+Exhaust: 4
+Chassis: 10
+Grille: 4
+Hood: 7
+Roof: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 20
+Livery: 6
+Tyre Smoke Colour: #6800ff
+Window Tint: 1
+Custom Primary Colour: #3200ff
+Custom Secondary Colour: #7a6440
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 159
+Dashboard Colour: 159
+Tyres Mode: 1

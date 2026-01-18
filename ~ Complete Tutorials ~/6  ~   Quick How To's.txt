@@ -1,0 +1,234 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**CoaLwiX Discord has a FAQ channel you can use as well**
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Some of these features may not work anymore for modding GTA V Online with Stand,
+as modding Online with Stand has been fairly comprimised**
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+CONSTRUCTOR BUGS :
+When you spawn lots of complicated Constructs after enough time bugs tend to happen, maybe you can't spawn anymore, maybe other players can't see what you spawned, so on.
+
+Once you have around 25 Loaded Constructs or so, utilize Deleting all spawned Constructs and then pressing ' U ' and type Clean Up, Do this often anyway to prevent bugs
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TO GIVE YOURSELF FAKE MONEY WITH FSL : 
+
+Press the `~ Key under the Esc key 
+
+Type 10m, 100m, 1b, or 10b then press enter 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HOW TO HEIST:
+Stand Discord Server Link ~ https://discord.com/channels/956618713157763072/1346107238510628966
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HOW TO RIG CASINO :
+In the Stand Menu go to Online > Quick Progress > Casino > Check Always Win Slot Box Machines On, > Check Blackjack On, > and Set the Number to 1 
+
+Hit a Slot Machine twice Max Bet and get off Slot Machine after two spins (No slot machines can't be rigged for other players, just yourself)
+Don't bet anymore until 48 Real Time Minutes have gone by or more (2 Los Santos Days) I would suggest not doing this more than 3 times in one day
+
+If some players don't have VIP and can't bet then invite them into your Securo Serv Organiztion, 
+
+if your organization is full then ask someone else with VIP to invite those that don't have it so they can bet
+
+*NOTE*  Rigging Podium Vehicle only works for you not other players
+
+~~~~~~~~~~~~
+
+ROULETTE : 
+Purple VIP tables win most, these work for you and other players
+Winning bet is ~ 1st 12 and Red 1 MAX BETS 
+
+DO NOT do the win some loose some thing which you may hear about around, what this does is bypasses the Casino win limit of 4.2 Million, 
+which once you or especially other players go past it starts to get risky, Below 5 million is no risk, bypassing the Casino win limit of upwards of 8+ million is quite risky 
+so suggest you and other players just stay away from it. 
+
+The Casino Win Limit resets after 48 Real Time Minutes (2 Los Santos Days) 
+but there are other limits on cashing out chips day 
+
+~~~~~~~~~~~~
+
+CASINO BUG SUGGESTIONS :
+If you run into bugs while rigging casino for people it's likely due to their being too many players in casino, I find bugs tend to happen when it 
+gets up to 12 - 14 players in Casino at once. 
+
+Recommend doing rigs for people in Invite-Only sessions as there tends to be less bugs. 
+
+IF PEOPLE GET STUCK:
+Teleport them out of Casino, best way to do this is teleport them to a player thats outside Casino or Teleport them to a apartment
+If you teleport them to a apartment and they try to bet again the bug will likely repeat.
+If nothing else is working to get them out of Casino/unstuck then they'll have to restart game
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HOW TO SAVE VEHICLES :
+Go outside Los Santo Customs 
+
+Spawn the car you want to save (Some higher end cars can't be saved, Arena War Cars can't be saved)
+
+Go in the Stand Menu Online > Enchancements > Disable LSC Restrictions 
+
+Drive the car into Los Santos Customs 
+
+Purchase the Insurance for the car and drive it out, and the vehicle is now yours 
+
+You can park it in any garage you want
+
+~~~~~~~~~~~~
+
+SELLING VEHICLES DISCLAIMER :
+You should keep within the safe limits when selling vehicles:
+
+No more than 2 sales per 2 real-world hours.
+
+No more than 7 sales per 30 real-world hours.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HOW TO ADD F1 or BENNY'S WHEELS:
+**This won't work on some cars"
+(cars like the tailgater, ruiner, and more cars that can be found on the street)
+
+1.  Spawn any car u can store in your garage
+Note: If u want to Tune a car that u already own please spawn the car first as clone and delete the Car from your Personal Vehicle via Stand
+Vehicle > Personal Vehicle > [vehiclename] > Delete
+2.  Tune the car the way u want it with stand
+Put any Benny's Wheels on (category 7 or 8)
+3.  If u want F1 tires use Category 9 and front wheel 0 - 3
+4.  Enable Disable LSC Restrictions
+(If you are using the "Forge Model" option, turn it off as it can interfere with this method.)
+5.  Drive into Benny's Shop or LSC
+6.  Buy Full Coverage + Tracker
+7.  Then buy any Tire Design u want (only works for Benny's Wheels not F1)
+8.  Store it anywhere u want or just get out of the car and spawn the next one if u want to get more cars
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HOW TO GIVE YOURSELF LEVELS :
+In the Stand Menu go to Players > Select *your player name* > Friendly > Give Collectibles > All 
+
+Press All as many times as you want to level yourself up, (No this doesn't work on other players currently got patched, just yourself)
+
+If a title screen comes up after a lot of Collectibles just spam enter, dont worry about it
+
+Recomend not going too crazy all in sitting, stick to maybe 300 levels a day 
+
+I find you only really need 120+ levels anyway because thats when you unlock all cars unlocks 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HOW TO GET ALL UNLOCKS :
+In the Stand Menu go to Online > Enhancements > Unlocks > All Unlocks
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HOW TO USE COMMANDS :
+This is such a useful tool, Press the letter ' U ' on keyboard, and type the name of the command 
+Examples ~ All guns, Rapidfire, Superdrive, tpairport
+
+~~~~~~~~~~~~
+
+COALWIX EASY TELEPORTING :
+You can use the commands to teleport places fast and easy with CoaLwiX saved places feature:
+
+Press ' U ' on keyboard 
+Type tpairport  ,  tpmazebank  , tphighway     There's plenty for you to choose from all over the map :)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+LOBBY CHAT COMMANDS :
+Yep that's right, everyone in the lobby can do commands! 
+(chat commands are enabled for everyone already in the CoaLwiX Profiles, plus the settings are set so players can't do aggressive commands like kick people) 
+
+For other players to use the commands:
+
+They have to type '  !  ' Followed by the correct spelling of any vehicle name and send it in game chat, or teamchat, and it will spawn for them. 
+
+Examples  ~  !scram    ~    !bati    ~    !drifttampa  ~    !oppressor2
+
+In the Stand Menu > Stand > Lua Scripts > Advanced Chat > Saved Messages > CoaLwiX has a pre typed instruction Message you can send players easily
+
+~~~~~~~~~~~~
+
+There's more than just Vehicle Commands they can use though!
+
+If they set a waypoint somewhere and send !tpwp in chat they'll be teleported there 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ENJOY :)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+IF YOU HAVE ANY QUESTIONS :
+
+in the Stand Discord Server 
+
+— Support and Help Channel 
+
+— Share Discussions Channel 
+
+Keep in mind that the Stand Discord Moderators are complete assholes and ban you over petty shit so try to be on topic in the right channels
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+JOIN COALWIX DISCORD SERVER (Central Hub for GTA Modders)
+
+Share Files Together • Mod Support • Keep Up to Date
+Get loaded with Menu Addons, Lua scripts, Vehicles, Outfits, All in One Packs, & more
+
+https://discord.gg/J6jWpru9nS
+			
+~~~~~~~~~~~~
+				
+JOIN OUR DISCORD GAMING COMMUNITY:
+https://discord.gg/GZUnX6UHyT
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Find more of my creations on Github:
+https://github.com/landnthrn?tab=repositories
+
+Support me on Buy Me a Coffee
+https://buymeacoffee.com/landn.thrn
+
+Paypal Donation:
+https://www.paypal.com/donate/?hosted_button_id=K4PLHFVBH7X8C
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

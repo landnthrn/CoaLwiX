@@ -1,0 +1,40 @@
+Model: deathbike2
+Plate Style: 0
+Plate Text:  WS VEH 
+Primary Colour: 120
+Secondary Colour: 0
+Pearl Colour: 135
+Wheel Colour: 41
+Wheel Type: 6
+Chassis: 6
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 35
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 1
+Front Wheels: 0
+Back Wheels: 0
+Air Filter: 3
+Struts: 3
+Aerials: 1
+Trim2: 1
+Tank: 1
+Livery: 14
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #8c00ff
+Custom Secondary Colour: #160016
+Neon Colour: #ff05be
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 36
+Dashboard Colour: 135
+Tyres Mode: 1

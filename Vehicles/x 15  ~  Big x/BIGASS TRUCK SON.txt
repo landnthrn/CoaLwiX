@@ -1,0 +1,34 @@
+Model: phantom2
+Plate Style: 0
+Plate Text: CHUB RUB
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 18
+Wheel Colour: 156
+Wheel Type: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 57
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 13
+Front Wheels: 50
+Livery: -1
+Tyre Smoke Colour: #010101
+Window Tint: 2
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #c700ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

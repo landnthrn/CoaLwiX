@@ -1,0 +1,157 @@
+   --credits to Hexarobi for more help with the script than anyone they are always helping me and let me use their Language library
+   --credits to Jerry123 for major help with multiple portions of the script and his LangLib for the template maker
+   --credits to Sapphire for the help in programming they are the real MVP for helping everyone
+   --credits to Vsus and ghozt for pointing me in the right direction
+   --credits to Nowiry for their script it was a heavy influence on the Charger and Lazer Space Docker weapons
+   --credits to aaronlink127#0127 for the ScaleformLib script and help with executing it
+   --Script made by acjoker8818
+   -------------------------------------------------------------------------
+
+local LOADING_START = util.current_time_millis()
+Script = {}
+Script.Version = "0.38.0"
+
+
+util.ensure_package_is_installed("lua/natives-2944a")
+util.ensure_package_is_installed("lua/quaternionLib")
+quaternion = require('quaternionLib')
+
+local requirements = {
+    modules = {
+        "natives-2944a.g",
+        "resources.AcjokerScript.translations",
+        "resources.AcjokerScript.gizmoUtils",
+        "resources.AcjokerScript.Modules.Weapons",
+        "resources.AcjokerScript.Modules.Advanced Homing Missiles",
+        "resources.AcjokerScript.Modules.Vehicle Neons",
+        "resources.AcjokerScript.Modules.Vehicle Spawning",
+        "resources.AcjokerScript.Modules.Online",
+        "resources.AcjokerScript.Modules.Bodyguards",
+        "resources.AcjokerScript.Modules.Players",
+        "resources.AcjokerScript.Modules.Scaleform",
+        "resources.AcjokerScript.Modules.Settings",
+    }
+}
+
+local CONFIG_DIR = filesystem.resources_dir() .. 'AcjokerScript\\'
+local SettingsDirmove = CONFIG_DIR..'Settings\\'
+local SettingsDir = filesystem.store_dir()..'AcjokerScript\\Settings\\'
+if filesystem.is_dir(SettingsDirmove) then
+    filesystem.mkdirs(SettingsDir)
+    for filesystem.list_files(SettingsDirmove) as message do
+        local _, dirname = string.match(message,  "(.-)([^\\/]-%.?)$")
+        os.rename(message, SettingsDir..dirname)
+    end
+    os.remove(filesystem.resources_dir() .. 'AcjokerScript\\Settings\\')
+else
+    filesystem.mkdirs(SettingsDir)
+end
+
+local FlyingVehiclesDirmove = CONFIG_DIR..'Flying Vehicles\\'
+local FlyingVehiclesDir = filesystem.store_dir()..'AcjokerScript\\Flying Vehicles\\'
+if filesystem.is_dir(FlyingVehiclesDirmove) then
+    filesystem.mkdirs(FlyingVehiclesDir)
+    for filesystem.list_files(FlyingVehiclesDirmove) as message do
+        local _, dirname = string.match(message,  "(.-)([^\\/]-%.?)$")
+        os.rename(message, FlyingVehiclesDir..dirname)
+    end
+    os.remove(filesystem.resources_dir() .. 'AcjokerScript\\Flying Vehicles')
+else
+    filesystem.mkdirs(FlyingVehiclesDir)
+end
+
+local BodyguardsDirmove = CONFIG_DIR..'Bodyguards\\'
+local BodyguardsDir = filesystem.store_dir()..'AcjokerScript\\Bodyguards\\'
+if filesystem.is_dir(BodyguardsDirmove) then
+    filesystem.mkdirs(BodyguardsDir)
+    for filesystem.list_files(BodyguardsDirmove) as message do
+        local _, dirname = string.match(message,  "(.-)([^\\/]-%.?)$")
+        os.rename(message, BodyguardsDir..dirname)
+    end
+    os.remove(filesystem.resources_dir() .. 'AcjokerScript\\Bodyguards\\')
+else
+    filesystem.mkdirs(BodyguardsDir)
+end
+
+local SongsDirmove = CONFIG_DIR..'Songs\\'
+local SongsDir = filesystem.store_dir()..'AcjokerScript\\Songs\\'
+if filesystem.is_dir(SongsDirmove) then
+    filesystem.mkdirs(SongsDir)
+    for filesystem.list_files(SongsDirmove) as message do
+        local _, dirname = string.match(message,  "(.-)([^\\/]-%.?)$")
+        os.rename(message, SongsDir..dirname)
+    end
+    os.remove(filesystem.resources_dir() .. 'AcjokerScript\\Songs\\')
+else
+    filesystem.mkdirs(SongsDir)
+end
+
+local VehiclesDirmove = CONFIG_DIR..'Vehicles\\'
+local VehiclesDir = filesystem.store_dir()..'AcjokerScript\\Vehicles\\'
+if filesystem.is_dir(VehiclesDirmove) then
+    filesystem.mkdirs(VehiclesDir)
+    for filesystem.list_files(VehiclesDirmove) as message do
+        local _, dirname = string.match(message,  "(.-)([^\\/]-%.?)$")
+        os.rename(message, VehiclesDir..dirname)
+    end
+    os.remove(filesystem.resources_dir() .. 'AcjokerScript\\Vehicles\\')
+else
+    filesystem.mkdirs(VehiclesDir)
+end
+util.execute_in_os_thread(function()
+    for requirements.modules as mod do
+        package.loaded[mod] = nil
+        local state, err = pcall(require, mod)
+        if not state then
+            util.toast($"Failed to load {mod}. Check the log for more info")
+            print($"[AcjokerScript] {err}")
+        end
+    end
+end)
+
+util.ensure_package_is_installed("lua/ScaleformLib")
+local yieldlib = require "resources.AcjokerScript.Modules.Scaleform"
+yieldlib.init()
+
+
+menu.my_root():action(T('Player Options'), {}, T('Redirects you to the Player list in Stand for the Trolling and Friendly options'), function ()
+    menu.ref_by_path("Players"):trigger()
+end)
+
+util.create_thread(function () 
+    if SCRIPT_MANUAL_START and not SCRIPT_SILENT_START then--credits to Hexarobi
+        local logo_path = filesystem.resources_dir() .. 'AcjokerScript\\' ..'intrologo.png'
+        local logo_status, logo = pcall(directx.create_texture, logo_path)
+        if not logo_status then
+            print("Failed to load AcjokerScript logo "..tostring(logo))
+            return
+        end
+        local rgb = {color= {r= 0, g = 1, b = 0, a = 1}}
+        local fade_steps = 50
+        for i = 0, fade_steps do
+            directx.draw_texture(logo, 0.2, 0.2, 0.5, 0.5, 0.5, 0.55, 0, 1, 1, 1, i/fade_steps)
+            directx.draw_text(0.5, 0.8, Script.Version, ALIGN_CENTRE, 2.0, rgb.color.r, rgb.color.g, rgb.color.b, rgb.color.a/fade_steps/2)
+            util.yield()
+        end
+        for i = 0, 100 do
+            directx.draw_texture(logo, 0.2, 0.2, 0.5, 0.5, 0.5, 0.55, 0, 1, 1, 1, 1)
+            directx.draw_text(0.5, 0.8, Script.Version, ALIGN_CENTRE, 2.0, rgb.color)
+            util.yield()
+        end
+        for i = fade_steps,0,-1 do
+            directx.draw_text(0.5, 0.8, Script.Version, ALIGN_CENTRE, 2.0, rgb.color.r, rgb.color.g, rgb.color.b, rgb.color.a/fade_steps)
+            directx.draw_texture(logo, 0.2, 0.2, 0.5, 0.5, 0.5, 0.55, 0, 1, 1, 1, i/fade_steps/2)
+            util.yield()
+        end
+    end
+    util.stop_thread()
+end)
+
+LOADING_SCRIPT = false
+if Template and not LOADING_SCRIPT then
+    EndTranslate()
+end
+
+print('Loaded AcjokerScript in '.. util.current_time_millis() - LOADING_START ..' ms.')
+
+

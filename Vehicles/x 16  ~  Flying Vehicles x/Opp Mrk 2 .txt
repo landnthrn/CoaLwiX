@@ -1,0 +1,35 @@
+Model: oppressor2
+Plate Style: 0
+Plate Text:  1 KPH  
+Primary Colour: 88
+Secondary Colour: 0
+Pearl Colour: 87
+Wheel Colour: 112
+Wheel Type: 6
+Chassis: 1
+Grille: 2
+Roof: 2
+Engine: 4
+Brakes: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 72
+Back Wheels: 72
+Livery: 30
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 93
+Dashboard Colour: 93
+Tyres Mode: 1

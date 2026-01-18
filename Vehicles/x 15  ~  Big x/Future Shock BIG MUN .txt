@@ -1,0 +1,45 @@
+Model: cerberus2
+Plate Style: 0
+Plate Text: CHUB RUB
+Primary Colour: 107
+Secondary Colour: 159
+Pearl Colour: 160
+Wheel Colour: 158
+Wheel Type: 0
+Rear Bumper: 3
+Exhaust: 7
+Chassis: 3
+Grille: 7
+Hood: 5
+Right Fender: 5
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 58
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 50
+Plaques: 4
+Air Filter: 4
+Struts: 3
+Arch Cover: 6
+Aerials: 1
+Livery: 18
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 160
+Dashboard Colour: 160
+Tyres Mode: 1

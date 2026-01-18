@@ -1,0 +1,59 @@
+Model: gauntlet5
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 117
+Secondary Colour: 117
+Pearl Colour: 140
+Wheel Colour: 157
+Wheel Type: 8
+Spoiler: 6
+Front Bumper: 2
+Rear Bumper: 3
+Sideskirt: 5
+Exhaust: 10
+Chassis: 2
+Grille: 0
+Hood: 7
+Fender: 5
+Right Fender: 0
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 79
+Vanity Plates: 0
+Trim: 0
+Ornaments: 6
+Dashboard: 0
+Dial: 0
+Seats: 0
+Door Speaker: 0
+Steering Wheel: 0
+Plaques: 6
+Engine Block: 0
+Arch Cover: 5
+Aerials: 2
+Trim2: 0
+Tank: 0
+Livery: 1
+Tyre Smoke Colour: #3c00ff
+Window Tint: 1
+Custom Primary Colour: #0f003c
+Custom Secondary Colour: #0f003c
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 76
+Dashboard Colour: 157
+Tyres Mode: 1

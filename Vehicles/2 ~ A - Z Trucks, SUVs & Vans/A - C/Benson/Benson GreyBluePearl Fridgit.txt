@@ -1,0 +1,38 @@
+Model: benson
+Plate Style: 7
+Plate Text:  DKARME 
+Primary Colour: 18
+Secondary Colour: 122
+Pearl Colour: 70
+Wheel Colour: 67
+Wheel Type: 9
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 0
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: No
+Extra 2: No
+Extra 3: No
+Extra 4: Yes
+Extra 5: No
+Extra 6: No
+Extra 7: No
+Extra 10: No
+Extra 11: No
+Extra 12: Yes

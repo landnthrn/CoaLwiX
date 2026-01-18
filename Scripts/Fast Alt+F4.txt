@@ -1,0 +1,4 @@
+Description: Makes Alt+F4 close the game instantly
+
+addhotkey yeet Alt+F4
+hotkeysskipwarnings on

@@ -1,0 +1,34 @@
+Model: rrocket
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 113
+Secondary Colour: 113
+Pearl Colour: 111
+Wheel Colour: 27
+Wheel Type: 4
+Chassis: 4
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 5
+Livery: 9
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #ff0000
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 111
+Tyres Mode: 1

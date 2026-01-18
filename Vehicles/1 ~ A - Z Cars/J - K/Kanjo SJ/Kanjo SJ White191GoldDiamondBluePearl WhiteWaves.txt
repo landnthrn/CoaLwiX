@@ -1,0 +1,57 @@
+Model: kanjosj
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 158
+Pearl Colour: 67
+Wheel Colour: 158
+Wheel Type: 9
+Spoiler: 18
+Front Bumper: 7
+Rear Bumper: 6
+Sideskirt: 2
+Exhaust: 7
+Chassis: 6
+Grille: 15
+Hood: 16
+Fender: 4
+Right Fender: 2
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 124
+Trim: 2
+Dashboard: 5
+Seats: 8
+Door Speaker: 15
+Steering Wheel: 16
+Engine Block: 6
+Air Filter: 4
+Struts: 20
+Aerials: 6
+Trim2: 7
+Right Door: 4
+Livery: 6
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #7a6440
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 158
+Dashboard Colour: 158
+Tyres Mode: 1
+Extra 3: Yes

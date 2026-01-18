@@ -1,0 +1,35 @@
+Model: minitank
+Plate Style: 0
+Plate Text:  1 KPH  
+Primary Colour: 144
+Secondary Colour: 144
+Pearl Colour: 0
+Wheel Colour: 144
+Wheel Type: 0
+Roof: 3
+Engine: 4
+Brakes: 4
+Horns: 58
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 50
+Livery: 10
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 8
+Dashboard Colour: 156
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: Yes

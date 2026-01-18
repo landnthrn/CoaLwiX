@@ -1,0 +1,47 @@
+Model: eurosX32
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 120
+Secondary Colour: 117
+Pearl Colour: 134
+Wheel Colour: 7
+Wheel Type: 8
+Spoiler: 8
+Front Bumper: 2
+Rear Bumper: 5
+Sideskirt: 10
+Exhaust: 8
+Chassis: 3
+Grille: 3
+Hood: 10
+Right Fender: 3
+Roof: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 2
+Front Wheels: 119
+Shifter Leavers: 0
+Speakers: 0
+Tank: 12
+Livery: 0
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #000000
+Neon Colour: #ffffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 93
+Dashboard Colour: 134
+Tyres Mode: 1

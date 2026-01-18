@@ -1,0 +1,44 @@
+Model: monster3
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 7
+Wheel Colour: 0
+Wheel Type: 10
+Front Bumper: 3
+Rear Bumper: 1
+Exhaust: 0
+Chassis: 3
+Hood: 3
+Right Fender: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 58
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 13
+Front Wheels: 2
+Plaques: 0
+Air Filter: 4
+Struts: 2
+Arch Cover: 2
+Tank: 0
+Livery: 1
+Tyre Smoke Colour: #000000
+Window Tint: 0
+Custom Primary Colour: #0240f4
+Custom Secondary Colour: #df7f7c
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 2
+Dashboard Colour: 156
+Tyres Mode: 1

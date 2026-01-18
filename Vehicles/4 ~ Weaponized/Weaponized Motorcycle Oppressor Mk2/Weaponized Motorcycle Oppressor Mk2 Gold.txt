@@ -1,0 +1,35 @@
+Model: oppressor2
+Plate Style: 0
+Plate Text:  DKARME 
+Primary Colour: 158
+Secondary Colour: 159
+Pearl Colour: 160
+Wheel Colour: 156
+Wheel Type: 6
+Chassis: 0
+Grille: 2
+Roof: 2
+Engine: 4
+Brakes: 0
+Armor: 0
+Nitrous: No
+Turbo: No
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 0
+Front Wheels: 0
+Back Wheels: 0
+Livery: 0
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #00ffff
+Neon Front: No
+Neon Back: No
+Neon Left: Yes
+Neon Right: No
+Interior Colour: 1
+Dashboard Colour: 132
+Tyres Mode: 1

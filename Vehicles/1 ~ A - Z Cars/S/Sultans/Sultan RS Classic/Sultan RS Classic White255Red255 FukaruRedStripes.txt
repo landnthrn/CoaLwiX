@@ -1,0 +1,55 @@
+Model: sultan3
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 161
+Wheel Colour: 35
+Wheel Type: 8
+Spoiler: 15
+Front Bumper: 3
+Rear Bumper: 2
+Sideskirt: 2
+Exhaust: 8
+Chassis: 3
+Grille: 3
+Hood: 5
+Fender: 1
+Right Fender: 6
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 119
+Trim: 2
+Dashboard: 5
+Dial: 15
+Seats: 7
+Engine Block: 3
+Air Filter: 7
+Struts: 12
+Arch Cover: 5
+Aerials: 6
+Trim2: 6
+Livery: 4
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #e5ecff
+Custom Secondary Colour: #ff0b00
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 5
+Dashboard Colour: 28
+Tyres Mode: 1

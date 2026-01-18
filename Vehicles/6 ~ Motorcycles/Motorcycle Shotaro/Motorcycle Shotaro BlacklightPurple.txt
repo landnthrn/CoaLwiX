@@ -1,0 +1,35 @@
+Model: shotaro
+Plate Style: 0
+Plate Text:  DKARME 
+Primary Colour: 5
+Secondary Colour: 38
+Pearl Colour: 135
+Wheel Colour: 36
+Wheel Type: 6
+Front Bumper: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 0
+Back Wheels: 0
+Livery: -1
+Tyre Smoke Colour: #4600ff
+Window Tint: 0
+Custom Primary Colour: #2800ff
+Custom Secondary Colour: #2800ff
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 111
+Tyres Mode: 1

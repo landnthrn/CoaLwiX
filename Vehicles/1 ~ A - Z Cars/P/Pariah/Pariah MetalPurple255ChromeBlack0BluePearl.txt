@@ -1,0 +1,40 @@
+Model: pariah
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 140
+Wheel Colour: 83
+Wheel Type: 8
+Spoiler: 8
+Front Bumper: 6
+Rear Bumper: 2
+Sideskirt: 2
+Hood: 6
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 117
+Livery: 0
+Tyre Smoke Colour: #3c5cff
+Window Tint: 1
+Custom Primary Colour: #2300ff
+Custom Secondary Colour: #000000
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 157
+Dashboard Colour: 157
+Tyres Mode: 1

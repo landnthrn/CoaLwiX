@@ -1,0 +1,45 @@
+Model: drafter
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 117
+Secondary Colour: 117
+Pearl Colour: 88
+Wheel Colour: 134
+Wheel Type: 8
+Spoiler: 8
+Front Bumper: 2
+Rear Bumper: 2
+Sideskirt: 2
+Exhaust: 6
+Chassis: 2
+Grille: 2
+Hood: 4
+Fender: 0
+Right Fender: 2
+Roof: 5
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 41
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 8
+Front Wheels: 119
+Livery: 2
+Tyre Smoke Colour: #a08151
+Window Tint: 1
+Custom Primary Colour: #050401
+Custom Secondary Colour: #050401
+Neon Colour: #a57e38
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 44
+Dashboard Colour: 157
+Tyres Mode: 1

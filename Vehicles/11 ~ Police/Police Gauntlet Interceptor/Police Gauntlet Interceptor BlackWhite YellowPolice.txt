@@ -1,0 +1,52 @@
+Model: polgauntlet
+Plate Style: 4
+Plate Text:  DKARME 
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 0
+Wheel Colour: 122
+Wheel Type: 8
+Spoiler: 9
+Front Bumper: 3
+Rear Bumper: 0
+Sideskirt: 2
+Exhaust: 3
+Chassis: 6
+Grille: 6
+Hood: 4
+Fender: 3
+Right Fender: 1
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 0
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 114
+Arch Cover: 5
+Aerials: 7
+Trim2: 6
+Livery: 2
+Tyre Smoke Colour: #141414
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: #ffffff
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 2
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: No
+Extra 2: No
+Extra 3: No
+Extra 4: Yes

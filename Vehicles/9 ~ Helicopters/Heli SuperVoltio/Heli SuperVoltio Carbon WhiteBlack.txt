@@ -1,0 +1,31 @@
+Model: supervolito2
+Plate Style: 4
+Plate Text:  DKARME 
+Primary Colour: 111
+Secondary Colour: 111
+Pearl Colour: 7
+Wheel Colour: 111
+Wheel Type: 0
+Nitrous: No
+Turbo: No
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 0
+Front Wheels: 0
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff00ff
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 111
+Dashboard Colour: 111
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: Yes
+Extra 7: Yes

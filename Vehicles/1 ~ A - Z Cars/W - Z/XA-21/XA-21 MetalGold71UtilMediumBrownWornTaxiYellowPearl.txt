@@ -1,0 +1,44 @@
+Model: xa21
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 109
+Pearl Colour: 126
+Wheel Colour: 158
+Wheel Type: 9
+Spoiler: 8
+Front Bumper: 1
+Rear Bumper: 6
+Sideskirt: 3
+Exhaust: 9
+Chassis: 3
+Grille: 14
+Hood: 3
+Fender: 4
+Roof: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 8
+Front Wheels: 124
+Livery: 176826117
+Tyre Smoke Colour: #ffb923
+Window Tint: 1
+Custom Primary Colour: #47391b
+Custom Secondary Colour: #785f33
+Neon Colour: #ff9605
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 158
+Dashboard Colour: 0
+Tyres Mode: 1

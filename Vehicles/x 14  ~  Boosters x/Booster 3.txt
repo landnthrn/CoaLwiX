@@ -1,0 +1,33 @@
+Model: scramjet
+Plate Style: 0
+Plate Text: CHUB RUB
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 3
+Wheel Colour: 158
+Wheel Type: 7
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 57
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 13
+Front Wheels: 40
+Livery: 10
+Tyre Smoke Colour: #aa00ff
+Window Tint: 0
+Custom Primary Colour: #3f19ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #7f00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 158
+Dashboard Colour: 134
+Tyres Mode: 1

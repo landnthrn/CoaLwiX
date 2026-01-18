@@ -1,0 +1,46 @@
+Model: baller8
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 39
+Pearl Colour: 10
+Wheel Colour: 27
+Wheel Type: 8
+Spoiler: 12
+Front Bumper: 3
+Rear Bumper: 1
+Sideskirt: 1
+Exhaust: 2
+Chassis: 2
+Grille: 2
+Hood: 7
+Fender: 5
+Right Fender: 3
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 123
+Trim2: 2
+Livery: 0
+Tyre Smoke Colour: #e20606
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #cf1f21
+Neon Colour: #ff0101
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 0
+Tyres Mode: 1

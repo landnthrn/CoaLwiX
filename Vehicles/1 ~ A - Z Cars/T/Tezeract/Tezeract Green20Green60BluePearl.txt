@@ -1,0 +1,36 @@
+Model: tezeract
+Plate Style: 12
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 140
+Wheel Colour: 51
+Wheel Type: 7
+Spoiler: 6
+Front Bumper: 5
+Rear Bumper: 4
+Chassis: 4
+Engine: 4
+Brakes: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 5
+Front Wheels: 0
+Livery: 0
+Tyre Smoke Colour: #00ffb9
+Window Tint: 1
+Custom Primary Colour: #001400
+Custom Secondary Colour: #003c20
+Neon Colour: #00ffaa
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 54
+Dashboard Colour: 148
+Tyres Mode: 1

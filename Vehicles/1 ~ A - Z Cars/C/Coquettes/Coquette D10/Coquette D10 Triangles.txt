@@ -1,0 +1,44 @@
+Model: coquette4
+Plate Style: 0
+Plate Text:  DKARME 
+Primary Colour: 0
+Secondary Colour: 111
+Pearl Colour: 10
+Wheel Colour: 160
+Wheel Type: 9
+Spoiler: 8
+Front Bumper: 5
+Rear Bumper: 4
+Sideskirt: 3
+Exhaust: 6
+Chassis: 3
+Grille: 3
+Hood: 6
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 4
+Front Wheels: 119
+Livery: 8
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #0005ff
+Custom Secondary Colour: #2d00ff
+Neon Colour: #005eff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 38
+Dashboard Colour: 111
+Tyres Mode: 1
+Extra 1: No

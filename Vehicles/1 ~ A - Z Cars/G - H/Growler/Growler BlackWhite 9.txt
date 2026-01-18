@@ -1,0 +1,57 @@
+Model: growler
+Plate Style: 7
+Plate Text:  DKARME 
+Primary Colour: 0
+Secondary Colour: 37
+Pearl Colour: 10
+Wheel Colour: 0
+Wheel Type: 9
+Spoiler: 1
+Front Bumper: 0
+Rear Bumper: 0
+Sideskirt: 7
+Exhaust: 6
+Chassis: 1
+Grille: 5
+Hood: 15
+Fender: 0
+Right Fender: 1
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 30
+Plate Holder: 6
+Vanity Plates: 5
+Trim: 8
+Dashboard: 1
+Dial: 2
+Seats: 0
+Door Speaker: 3
+Steering Wheel: 2
+Struts: 15
+Aerials: 7
+Left Door: 3
+Right Door: 3
+Livery: 12
+Tyre Smoke Colour: #fcee00
+Window Tint: 1
+Custom Primary Colour: #ffffff
+Custom Secondary Colour: 
+Neon Colour: #0a00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 38
+Tyres Mode: 1

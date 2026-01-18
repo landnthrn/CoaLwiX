@@ -1,0 +1,43 @@
+Model: blazer4
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 44
+Wheel Colour: 40
+Wheel Type: 8
+Spoiler: 0
+Front Bumper: 2
+Rear Bumper: 1
+Sideskirt: 4
+Exhaust: 4
+Chassis: 2
+Grille: 0
+Fender: 3
+Right Fender: 2
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 141
+Livery: -1
+Tyre Smoke Colour: #ff0000
+Window Tint: 1
+Custom Primary Colour: #120000
+Custom Secondary Colour: #120000
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

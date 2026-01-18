@@ -1,0 +1,41 @@
+Model: pbus2
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 5
+Wheel Colour: 111
+Wheel Type: 0
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 58
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 50
+Livery: 10
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: Yes
+Extra 3: Yes
+Extra 4: Yes
+Extra 5: Yes
+Extra 6: Yes
+Extra 7: Yes

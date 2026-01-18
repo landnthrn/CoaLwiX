@@ -1,0 +1,39 @@
+Model: turismo2
+Plate Style: 0
+Plate Text:  0 MPH  
+Primary Colour: 38
+Secondary Colour: 88
+Pearl Colour: 89
+Wheel Colour: 41
+Wheel Type: 8
+Spoiler: 2
+Front Bumper: 1
+Sideskirt: 0
+Exhaust: 1
+Hood: 4
+Fender: 2
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 9
+Front Wheels: 113
+Tyre Smoke Colour: #ffb923
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff9603
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 123
+Dashboard Colour: 132
+Tyres Mode: 1

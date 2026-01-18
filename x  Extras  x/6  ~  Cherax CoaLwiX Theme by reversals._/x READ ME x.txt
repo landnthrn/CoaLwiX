@@ -1,0 +1,42 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+CREDIT:
+Theme Created by    reversals._   on Discord :)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HOW TO ADD COALWIX THEME TO CHERAX :
+Open you're Cherax Menu Folder
+
+Put the coalwix folder inside your Cherax Theme Folder
+
+Put the Startup.lua inside your Cherax Lua Scripts Folder and replace it for the one that's in there
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you're a coder and have your own Startup.lua customizations then as you would know, add the specifics from the Startup.lua to your own
+That way you don't lose your own customizations
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

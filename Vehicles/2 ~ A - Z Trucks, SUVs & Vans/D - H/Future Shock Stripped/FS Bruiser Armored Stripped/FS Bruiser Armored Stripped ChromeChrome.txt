@@ -1,0 +1,48 @@
+Model: bruiser2
+Plate Style: 0
+Plate Text:  0 MPH  
+Primary Colour: 120
+Secondary Colour: 120
+Pearl Colour: 0
+Wheel Colour: 156
+Wheel Type: 12
+Spoiler: 1
+Front Bumper: 1
+Rear Bumper: 0
+Exhaust: 1
+Chassis: 3
+Grille: 3
+Hood: 0
+Right Fender: 0
+Roof: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 17
+Suspension: 0
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 0
+Front Wheels: 0
+Air Filter: 3
+Struts: 3
+Arch Cover: 4
+Aerials: 0
+Tank: 0
+Livery: 1
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 111
+Tyres Mode: 1

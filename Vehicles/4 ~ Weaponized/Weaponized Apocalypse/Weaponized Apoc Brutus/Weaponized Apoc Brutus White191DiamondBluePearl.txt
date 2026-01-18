@@ -1,0 +1,50 @@
+Model: brutus
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 67
+Wheel Colour: 67
+Wheel Type: 9
+Front Bumper: 3
+Rear Bumper: 3
+Sideskirt: 2
+Exhaust: 5
+Chassis: 3
+Grille: 3
+Hood: 3
+Fender: 2
+Right Fender: 5
+Roof: 4
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 124
+Plaques: 2
+Air Filter: 4
+Struts: 3
+Arch Cover: 7
+Trim2: 1
+Tank: 2
+Livery: 4
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #c1bfff
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1

@@ -1,0 +1,44 @@
+Model: kamacho
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 152
+Pearl Colour: 0
+Wheel Colour: 152
+Wheel Type: 10
+Spoiler: 9
+Front Bumper: 7
+Rear Bumper: 8
+Sideskirt: 4
+Exhaust: 4
+Chassis: 5
+Grille: 3
+Hood: 8
+Fender: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 6
+Front Wheels: 6
+Livery: 8
+Tyre Smoke Colour: #006400
+Window Tint: 1
+Custom Primary Colour: #323325
+Custom Secondary Colour: 
+Neon Colour: #005d00
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 93
+Dashboard Colour: 65
+Tyres Mode: 1
+Extra 1: No

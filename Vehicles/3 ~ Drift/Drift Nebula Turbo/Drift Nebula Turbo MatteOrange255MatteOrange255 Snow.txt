@@ -1,0 +1,45 @@
+Model: driftnebula
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 0
+Wheel Colour: 42
+Wheel Type: 8
+Spoiler: 7
+Front Bumper: 8
+Rear Bumper: 1
+Sideskirt: 1
+Exhaust: 3
+Chassis: 1
+Grille: 3
+Hood: 5
+Fender: 0
+Right Fender: 2
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 8
+Front Wheels: 119
+Livery: 8
+Tyre Smoke Colour: #ffb500
+Window Tint: 1
+Custom Primary Colour: #ff9600
+Custom Secondary Colour: #ff9600
+Neon Colour: #ff9700
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 160
+Dashboard Colour: 160
+Tyres Mode: 1

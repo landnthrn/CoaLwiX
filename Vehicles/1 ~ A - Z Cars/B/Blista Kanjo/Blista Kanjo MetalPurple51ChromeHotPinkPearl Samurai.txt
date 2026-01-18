@@ -1,0 +1,49 @@
+Model: kanjo
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 135
+Wheel Colour: 134
+Wheel Type: 8
+Spoiler: 18
+Front Bumper: 8
+Rear Bumper: 8
+Sideskirt: 6
+Exhaust: 11
+Chassis: 5
+Grille: 3
+Hood: 15
+Fender: 8
+Right Fender: 0
+Roof: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 45
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 12
+Front Wheels: 114
+Trim: 2
+Arch Cover: 5
+Left Door: 3
+Livery: 13
+Tyre Smoke Colour: #ff00ff
+Window Tint: 0
+Custom Primary Colour: #0e0d33
+Custom Secondary Colour: #5870a1
+Neon Colour: #ff00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 43
+Dashboard Colour: 44
+Tyres Mode: 1
+Extra 1: Yes

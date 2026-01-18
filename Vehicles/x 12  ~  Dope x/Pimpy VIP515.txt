@@ -1,0 +1,58 @@
+Model: buccaneer2
+Plate Style: 0
+Plate Text: 61OLI344
+Primary Colour: 120
+Secondary Colour: 120
+Pearl Colour: 88
+Wheel Colour: 156
+Wheel Type: 9
+Front Bumper: 0
+Rear Bumper: 0
+Exhaust: 1
+Grille: 0
+Hood: 2
+Fender: 1
+Engine: 4
+Brakes: 0
+Transmission: 3
+Horns: 0
+Armor: 0
+Unk17: No
+Turbo: Yes
+Unk19: No
+Tiresmoke: No
+Unk21: No
+Headlights: 13
+Front Wheels: 54
+Back Wheels: 0
+Plate Holder: 0
+Vanity Plates: 0
+Trim: 5
+Ornaments: 3
+Dial: 7
+Steering Wheel: 9
+Shifter Leavers: 2
+Plaques: 18
+Speakers: 3
+Trunk: 7
+Hydraulics: 4
+Engine Block: 5
+Air Filter: 4
+Tank: 1
+Livery: 4
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #4203ff
+Custom Secondary Colour: #4203ff
+Neon Colour: #4203ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 132
+Tyres Mode: 1
+Extra 1: No
+Extra 2: No
+Extra 3: No
+Extra 4: No

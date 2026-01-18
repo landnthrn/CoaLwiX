@@ -1,0 +1,544 @@
+--credits to lance this is rewritten from chitchat to be improved upon by acjoker8818
+util.require_natives('natives-1681379138.g')
+local my = menu.my_root()
+local player_is_muted = {}
+local all_chats = {}
+local message_cooldown = {}
+local Script = {Version = '0.2.4'}
+local chatbox_x_pos = 0.69
+local chatbox_y_pos = 0.50
+local chatbox_y_scale = 0.0
+local chatbox
+local max_text_len = 254
+local max_messages = 10
+local showtime_secs = 10
+local letter_scale = 0.5
+local size_of_tag = 0.3
+local cooldown = 2000
+local wake_when_typing = true
+local show_typers = true
+local uwuify = false
+local timestamp = false
+local last_messasge = os.time()
+local MessageDirMove = filesystem.resources_dir() .. 'Advanced Chat\\Messages\\'
+local MessageDir = filesystem.store_dir() .. 'Advanced Chat\\Messages\\'
+if filesystem.is_dir(MessageDirMove) then
+    filesystem.mkdirs(MessageDir)
+    for filesystem.list_files(MessageDirMove) as message do
+        local _, dirname = string.match(message,  "(.-)([^\\/]-%.?)$")
+        os.rename(message, MessageDir..dirname)
+    end
+    os.remove(filesystem.resources_dir() .. 'Advanced Chat\\Messages\\')
+    os.remove(filesystem.resources_dir() .. 'Advanced Chat\\')
+else
+    filesystem.mkdirs(MessageDir)
+end
+
+function is_phone_open() --credits to nowiry
+    if GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(util.joaat("cellphone_flashhand")) > 0 then
+        return true
+    end
+    return false
+end
+
+
+-- source code at https://github.com/cummodore69/uwuifier/blob/main/uwuifier/uwuifier.lua
+local function uwu(text)
+    text = string.lower(text):gsub("l", "w"):gsub("r", "w"):gsub("v", "f"):gsub("i", "i-i"):gsub("d", "d-d"):gsub("n", "n-n")
+    local random = math.random(6)
+    switch random do 
+        case 1:
+            text = text .. " uwu"
+            break 
+        case 3:
+            text = text .. " nya.."
+            break
+        case 5:
+            text = text .. " >~<"
+            break
+    end
+    return text
+end
+
+local function Isplayertyping()
+    local curtyper = {}
+    for players.list() as pid do
+        if players.is_typing(pid) then
+            curtyper[#curtyper + 1] = players.get_name(pid)
+        end
+    end
+    if #curtyper == 0 then return '' end
+    local curstring = ''
+    if #curtyper > 1 then
+        curstring = table.concat(curtyper, ', ')
+        local play1, play2 = string.partition(curstring, ',', true)
+        curstring = play1..' and '..play2..' are typing'
+    elseif #curtyper == 3 then
+        curstring = table.concat(curtyper, ', ')
+        local play1, play2, play3 = string.partition(curstring, ',', true)
+        curstring = play1..' and '..play2..' and '..play3..' are typing'
+    elseif #curtyper >= 4 then
+        curstring =  'Several people are typing'
+    else
+        curstring = table.concat(curtyper, '') .. ' is typing...'
+    end
+    return curstring
+end
+
+handle_ptr = memory.alloc(13*8)
+local function pid_to_handle(pid)
+    NETWORK_HANDLE_FROM_PLAYER(pid, handle_ptr, 13)
+    return handle_ptr
+end
+
+local function chat_message(pid, name, color, tag, time, text)
+    return {
+        pid = pid,
+        name = name,
+        color = color,
+        tag = tag,
+        text = text,
+        time = os.date('%m-%d-%Y %H:%M:%S')
+    }
+end
+
+local function PID(pid, root)
+    root:divider('Chat Advanced') 
+    root:toggle('Mute Player', {'mute'}, 'Mute Player from the chat', function(on)
+        if on then 
+            player_is_muted[pid] = true
+        else
+            player_is_muted[pid] = nil
+        end
+    end)
+end
+
+local function cut_strings(t, length) --stackoverflow Egor Skriptunoff
+    local lines = {}
+    local line
+    t:gsub('(%s*)(%S+)', 
+      function(spc, word) 
+         if not line or #line + #spc + #word > length then
+            table.insert(lines, line)
+            line = word
+         else
+            line = line..spc..word
+         end
+      end
+    )
+    table.insert(lines, line)
+    return lines
+end
+
+local function get_input_from_screen_keyboard(windowName, maxInput, defaultText)
+    DISPLAY_ONSCREEN_KEYBOARD(0, util.register_label(windowName), "", defaultText, "", "", "", maxInput);
+    while UPDATE_ONSCREEN_KEYBOARD() == 0 do
+        util.yield_once()
+    end
+    if UPDATE_ONSCREEN_KEYBOARD() == 1 then
+        return GET_ONSCREEN_KEYBOARD_RESULT()
+    end
+    return ""
+end
+function string.starts(String,Start) --hexarobi function
+    return string.sub(String,1,string.len(Start))==Start
+end
+function string.starts6(String,Start) --hexarobi function
+    return string.sub(String,6,string.len(Start))==Start
+end
+message_list_menus = {}
+
+local function regen_message_list(root)
+    for message_list_menus as message_list_menu do
+        if message_list_menu:isValid() then message_list_menu:delete() end
+    end
+    for filesystem.list_files(MessageDir) as name do
+        local _, dirname = string.match(name,  "(.-)([^\\/]-%.?)$")
+        dirname = dirname:gsub('.txt', '')
+        local message_list_menu = root:list(dirname, {}, dirname)
+        local settings = util.read_colons_and_tabs_file(name)
+        for i, v in settings do
+            message_list_menu:action(i, {i}, v, function()
+                menu.show_command_box('chat '..v)
+            end)        
+        end
+        table.insert(message_list_menus, message_list_menu)
+    end
+end
+
+local saved_root = my:list('Saved Messages', {}, 'Your Saved Messages')
+local color_root = my:list('Change the colors', {}, 'Change the colors of everything')
+local optional_color_root = color_root:list('Change the optional colors', {}, 'Change the colors of the chat names')
+local tag_root = my:list('Tags', {}, 'Change the tags next to a persons name')
+local set_root = my:list('Settings', {}, 'Change postion of the box among other things')
+
+
+saved_root:action('Save Message', {}, 'Save a message for use later', function ()
+    local name = ""
+    local label = 'Enter Message Name'
+    while name == "" do
+        name = get_input_from_screen_keyboard(label, 31, name or "")
+        if name == "" then
+            return util.toast('No name entered')
+        end
+        util.yield(250)
+    end
+    util.yield(1000)
+    local message = ""
+    local label1 = 'Enter Message'
+    while message == "" do
+        message = get_input_from_screen_keyboard(label1, 254, message or "")
+        if message == "" then
+            return util.toast('No text entered save canceled')
+        end
+        util.yield(250)
+    end
+    local current_message = {
+        [name] = message
+    }
+
+    if not filesystem.is_regular_file(MessageDir..name) then
+        util.write_colons_file(MessageDir..name..'.txt', current_message)
+    end
+
+end)
+
+Svmsglist = saved_root:list('Saved Messages', {}, 'A list of your saved messages', function ()
+    regen_message_list(Svmsglist)
+end)
+
+background = {r = 0, g = 0, b = 0, a = 0.7}
+color_root:colour('Background color', {'bgcolor'}, 'Change the color of the background', background, true, function(sel)
+    background = sel 
+end)
+
+message_color = {r = 1, g = 1, b = 1, a = 1}
+color_root:colour('Change Message Color', {'messagecolor'}, 'Change the color of the messages', message_color, true, function(sel)
+    message_color = sel 
+end)
+
+tag_color = {r = 0, g = 1, b = 0, a = 1}
+color_root:colour('Tag color', {'tagcolor'}, 'Change the color of the tags', tag_color, true, function(sel)
+    tag_color = sel 
+end)
+
+typers_color = {r = 1, g = 1, b = 1, a = 0.8}
+color_root:colour('Typers color', {'typerscolor'}, 'Change the color of the typers', typers_color, true, function(sel)
+    typers_color = sel 
+end)
+
+optional_color_root:toggle('Optional Coloring', {'optionalcoloring'}, 'Add optional coloring to the names', function(on)
+    if on then
+        optional_coloring = true
+    else
+        optional_coloring = false
+    end
+end)
+
+my_color = {r = 0, g = 1, b = 0, a = 1}
+optional_color_root:colour('Yourself', {'yourselfcolor'}, 'The color for yourself', my_color, true, function(sel)
+    my_color = sel 
+end)
+
+friends_color = {r = 0, g = 0, b = 1, a = 1}
+optional_color_root:colour('Friends', {'friendscolor'}, 'The color for your friends', friends_color, true, function(sel)
+    friends_color = sel 
+end)
+
+strangers_color = {r = 1, g = 0, b = 1, a = 1}
+optional_color_root:colour('Strangers', {'strangerscolor'}, 'The color for strangers', strangers_color, true, function(sel)
+    strangers_color = sel 
+end)
+
+modders_color = {r = 1, g = 0, b = 0, a = 1}
+optional_color_root:colour('Modders', {'modderscolor'}, 'The color for modders', modders_color, true, function(sel)
+    modders_color = sel 
+end)
+
+custom_tag = 'DUMBASS'
+tag_mode = 1
+tag_root:list_select('Tag mode', {'tagmode'}, 'Select what tags should be shown', {'GTA V Default', 'Stand tags', 'Custom tags', 'No tags'}, 1, function(v)
+    tag_mode = v
+end)
+
+tag_root:text_input('Custom tag', {'customtag'}, 'Must select Custom Tags', function(v)
+    custom_tag = v
+end, 'DUMBASS')
+
+set_root:slider('Max text length', {'maxtextlen'}, 'Text over this amount will be cut down but does not apply to you', 1, 254, 254, 1, function(s)
+    max_text_len = s
+end)
+
+set_root:slider('Max Messages', {'maxmessages'}, 'Max amount of messages that will be shown the rest get deleted', 1, 20, 10, 1, function(s)
+    max_messages = s
+end)
+
+set_root:slider('Length to Show Chat', {'timetoshowchat'}, 'The length of time to show chat in seconds', 1, 1000, 10, 1, function(s)
+    showtime_secs = s
+end)
+
+local chatbox_x_slider = set_root:slider_float('Position X', {'posx'}, 'Left and Right', 0, 100, 69, 1, function(s)
+    chatbox_x_pos = s*0.01
+end)
+
+chatbox_x_slider:onFocus(function()
+    chatbox = true
+end)
+
+chatbox_x_slider:onBlur(function()
+    chatbox = false
+end)
+
+local chatbox_y_slider = set_root:slider_float('Position Y', {'posy'}, 'Up and Down', 0, 100, 50, 1, function(s)
+    chatbox_y_pos = s*0.01
+end)
+
+chatbox_y_slider:onFocus(function()
+    chatbox = true
+end)
+
+chatbox_y_slider:onBlur(function()
+    chatbox = false
+end)
+
+txt_scale = set_root:slider_float('Size of message text', {'sizeoftext'}, 'Change the size of the message text', 0, 200, 50, 1, function(s)
+    letter_scale = s*0.01
+end)
+
+txt_scale:onFocus(function()
+    chatbox = true
+end)
+
+txt_scale:onBlur(function()
+    chatbox = false
+end)
+
+tag_slider = set_root:slider_float('Size of Tag', {'sizeoftag'}, 'Change the size of the tags next to their names', 0, 1000, 40, 1, function(s)
+    size_of_tag = s*0.01
+end)
+
+tag_slider:onFocus(function()
+    chatbox = true
+end)
+
+tag_slider:onBlur(function()
+    chatbox = false
+end)
+
+set_root:slider('Cooldown for Chat', {'cooldown'}, 'Change the amount of time in milliseconds for message cooldown. Ones that go over the cooldown will not be shown', 0, 10000, 2000, 100, function(v)
+    cooldown = v
+end)
+
+set_root:toggle('Turn on Chat box', {'showchatbox'}, 'Turn on the chat box and leave it on', function(on)
+    if on then 
+        alltime = true
+    else
+        alltime = false
+    end
+end)
+
+set_root:toggle('Turn on Timestamp', {''}, 'Turn on timestamp with messages', function(on)
+    if on then 
+        timestamp = true
+    else
+        timestamp = false
+    end
+end)
+
+set_root:toggle('Turn on Alt Key', {''}, 'Use Z button for teamchat instead of Y', function(on)
+    if on then 
+        altkey = true
+    else
+        altkey = false
+    end
+end)
+
+set_root:toggle('Turn off Show Typing', {'showtyping'}, 'Turn off showing when people are typing', function(on)
+    show_typers = not on
+end)
+
+set_root:toggle('Turn off wake when typing', {'waketypingoff'}, 'Turns off opening the chatbox when someone is typing', function(on)
+    wake_when_typing = not on
+end)
+
+set_root:toggle('UwU', {'uwuify'}, 'UwUify your messages', function(on)
+    uwuify = on
+end)
+
+set_root:readonly('Version Number', tostring(Script.Version))
+
+set_root:hyperlink('Join the Discord', 'https://discord.gg/fn4uBbFNnA', 'Join the AcjokerScript Discord if you have any problems or want to suggest features')
+
+chat.on_message(function (sender, reserved, text, team_chat, networked, is_auto)
+    if player_is_muted[sender] then return end
+
+    if message_cooldown[sender] and sender ~= players.user() then
+        util.toast(players.get_name(sender).. ' Exceeded the chat cooldown messages not shown')
+        return
+    end
+
+    local tag = team_chat ? 'TEAM' : 'ALL'
+    if tag_mode == 2 then 
+        tag = players.get_tags_string(sender)
+    elseif tag_mode == 3 then
+        tag = custom_tag
+    elseif tag_mode == 4 then
+        tag = ''
+    end
+
+
+    local color
+    if optional_coloring then
+        local hdl = pid_to_handle(sender)
+        if sender == players.user() then 
+            color = my_color
+        elseif NETWORK_IS_FRIEND(hdl) then
+            color = friends_color
+        elseif players.is_marked_as_modder(sender) then 
+            color = modders_color
+        else
+            color = strangers_color
+        end
+    else
+        color = message_color
+    end
+
+    if uwuify then 
+        text = uwu(text)
+    end
+
+    all_chats[#all_chats+1] = chat_message(sender, players.get_name(sender), color, tag, time, text:sub(1, 254))
+    last_messasge = os.time()
+    message_cooldown[sender] = true 
+    util.yield(cooldown)
+    message_cooldown[sender] = nil
+
+    if #all_chats > max_messages then
+        table.remove(all_chats, 1)
+    end
+end)
+
+players.add_command_hook(function(pid, root)
+    PID(pid, root)
+end)
+
+local chatact = my:action('', {'chat'}, '', function()
+end, function(input)
+    if string.starts(input, '!') then
+        chat.send_message(input, false, true, true)
+        input = input:gsub('!', '')
+        menu.trigger_commands(input)
+    elseif string.starts6(input, '!spawn') then
+        chat.send_message(input, false, true, true)
+        input = input:gsub('!spawn', '')
+        menu.trigger_commands(input)
+    else
+       chat.send_message(input, false, true, true) 
+    end
+end)    
+menu.set_visible(chatact, false)
+
+local team_chat = my:action('', {'teamchat'}, '', function()
+end, function(input)
+    if string.starts(input, '!') then
+        chat.send_message(input, true, true, true)
+        input = input:gsub('!', '')
+        menu.trigger_commands(input)
+    elseif string.starts6(input, '!spawn') then
+        chat.send_message(input, true, true, true)
+        input = input:gsub('!spawn', '')
+        menu.trigger_commands(input)
+    else
+       chat.send_message(input, true, true, true) 
+    end
+end)    
+
+menu.set_visible(team_chat, false)
+
+util.create_tick_handler(function()
+    local min_box_width = 0.3
+    local chatbox_x = chatbox_x_pos
+    local chatbox_y = chatbox_y_pos
+    local max_chat_x = min_box_width - 0.005
+    if IS_CONTROL_JUST_RELEASED(0, 245) and not menu.command_box_is_open() and not IS_SYSTEM_UI_BEING_DISPLAYED() and not is_phone_open() then
+        util.yield(10) 
+        menu.show_command_box('chat ')
+    elseif IS_CONTROL_JUST_RELEASED(0, 246) and not menu.command_box_is_open() and not altkey and not IS_SYSTEM_UI_BEING_DISPLAYED() and not is_phone_open() then 
+        util.yield(10)
+        menu.show_command_box('teamchat ')
+    elseif IS_CONTROL_JUST_RELEASED(0, 20) and not menu.command_box_is_open() and altkey and not IS_SYSTEM_UI_BEING_DISPLAYED() and not is_phone_open() then 
+        util.yield(10)
+        menu.show_command_box('teamchat ')
+    end
+    if menu.command_box_is_open() then 
+        last_messasge = os.time()
+    end
+
+    if show_typers then
+        local typing = Isplayertyping()
+        if typing ~= '' then 
+            if wake_when_typing then 
+                last_messasge = os.time()
+            end
+        end
+        if #all_chats > 0 then
+            directx.draw_text(chatbox_x + (max_chat_x / 2), chatbox_y - 0.01, typing, 5, letter_scale, typers_color, true)
+        end
+    end
+
+    if #all_chats > 0 then
+        if os.time() - last_messasge < showtime_secs or chatbox or alltime then
+            directx.draw_rect(chatbox_x, chatbox_y, min_box_width, chatbox_y_scale, background)
+            local offset = 0.0
+            for all_chats as v do
+                local text
+                if timestamp then 
+                    text = v.time..': '..v.text:gsub('\n', '')
+                else
+                    text = ': '..v.text:gsub('\n', '')
+                end
+                local tag = ' ['..v.tag..']'
+                local name =  ''..v.name
+                local name_x, name_y = directx.get_text_size(name, letter_scale)
+                local tag_x, tag_y = directx.get_text_size(tag, size_of_tag)
+                local text_x, text_y = directx.get_text_size(text, letter_scale)
+                local total_width = (name_x + tag_x + text_x)
+                if total_width > min_box_width then 
+                    min_box_width = total_width
+                end
+                if total_width > max_chat_x then
+                    local message_limit = 150
+                    for i=1, 254 do
+                        local textscale = directx.get_text_size(text:sub(1, i), letter_scale)
+                        total_width = (name_x + tag_x + textscale)
+                        if total_width <= max_chat_x then
+                            message_limit = i 
+                        else 
+                            break
+                        end
+                    end
+                    local cut_strings = cut_strings(text, message_limit)
+                    text = table.concat(cut_strings, '\n')
+                end
+                local _, total_height = directx.get_text_size(text, letter_scale)
+                directx.draw_text(chatbox_x, chatbox_y + offset, name, 3, letter_scale, v.color)
+                if v.tag ~= '' then
+                    directx.draw_text(chatbox_x + name_x, chatbox_y + offset + (tag_y/10), tag, 3, size_of_tag, tag_color)
+                    directx.draw_text(chatbox_x + name_x + tag_x, chatbox_y + offset, text, 3, letter_scale, message_color, true)
+                else 
+                    directx.draw_text(chatbox_x + name_x, chatbox_y + offset, text, 3, letter_scale, message_color, true)
+                end
+                offset += total_height + 0.001
+                chatbox_y_scale = offset
+            end
+        end
+    end
+end)
+util.create_tick_handler(function ()
+    MP_TEXT_CHAT_DISABLE(true)
+end)
+
+util.on_stop(function()
+    MP_TEXT_CHAT_DISABLE(false)
+end)
+

@@ -1,0 +1,39 @@
+Model: vagner
+Plate Style: 1
+Plate Text: CHUBRUB 
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 3
+Wheel Colour: 0
+Wheel Type: 7
+Spoiler: 9
+Front Bumper: 3
+Exhaust: 2
+Hood: 3
+Roof: 5
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 57
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 13
+Front Wheels: 40
+Livery: -1
+Tyre Smoke Colour: #ff00f6
+Window Tint: 1
+Custom Primary Colour: #19ffeb
+Custom Secondary Colour: #ff00a5
+Neon Colour: #ffffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 7
+Dashboard Colour: 89
+Tyres Mode: 1

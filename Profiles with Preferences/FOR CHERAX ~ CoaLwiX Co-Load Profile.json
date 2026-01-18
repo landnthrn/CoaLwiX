@@ -1,0 +1,5758 @@
+{
+    "1079343186": {
+        "Name": "Load Translation",
+        "Hotkeys": []
+    },
+    "1675650873": {
+        "Name": "Dump Translation File",
+        "Hotkeys": []
+    },
+    "4102347627": {
+        "Name": "Open Folder",
+        "Hotkeys": []
+    },
+    "138018692": {
+        "Name": "Pool Size Multiplier",
+        "Values": {
+            "Float": 1.0
+        },
+        "Hotkeys": []
+    },
+    "3840665448": {
+        "Name": "Game Memory Allocated",
+        "Values": {
+            "Int": 650
+        },
+        "Hotkeys": []
+    },
+    "730040574": {
+        "Name": "Run Script",
+        "Hotkeys": []
+    },
+    "3475253480": {
+        "Name": "Stop Script",
+        "Hotkeys": []
+    },
+    "3699393737": {
+        "Name": "Stop All Scripts",
+        "Hotkeys": []
+    },
+    "1062172656": {
+        "Name": "Scripts",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3214028402": {
+        "Name": "Refresh Scripts",
+        "Hotkeys": []
+    },
+    "2147727917": {
+        "Name": "Refresh Scripts",
+        "Hotkeys": []
+    },
+    "2423908032": {
+        "Name": "Run Script",
+        "Hotkeys": []
+    },
+    "2425713991": {
+        "Name": "Stop Script",
+        "Hotkeys": []
+    },
+    "3331055146": {
+        "Name": "Subscribed Scripts",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2164133144": {
+        "Name": "Stream-proof Rendering",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3300215089": {
+        "Name": "Streamer Mode",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "726878929": {
+        "Name": "Load Settings",
+        "Hotkeys": []
+    },
+    "2088221069": {
+        "Name": "Settings Name",
+        "Values": {
+            "String": "CoaLwiX Co Load Profile"
+        },
+        "Hotkeys": []
+    },
+    "2345192180": {
+        "Name": "Save Settings",
+        "Hotkeys": []
+    },
+    "2330242662": {
+        "Name": "Reset Settings",
+        "Hotkeys": []
+    },
+    "990606503": {
+        "Name": "Open Folder",
+        "Hotkeys": []
+    },
+    "3961882332": {
+        "Name": "Unload Cherax",
+        "Hotkeys": []
+    },
+    "3195275854": {
+        "Name": "God Mode",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2625384197": {
+        "Name": "Hulk Mode",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3915547699": {
+        "Name": "Walk Through Vehicles",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "351919697": {
+        "Name": "Walk Through Props",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2552839059": {
+        "Name": "Walk Through Peds",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4233024295": {
+        "Name": "Walk Through Walls",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1643470065": {
+        "Name": "Semi God Mode",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3821371158": {
+        "Name": "Disable Death Barrier",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1468764566": {
+        "Name": "Invisible Weapon",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3930068845": {
+        "Name": "Force Field Damage",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "827516792": {
+        "Name": "Force Field",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "275116241": {
+        "Name": "Invisible Player",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1378886418": {
+        "Name": "Invisible Vehicle",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4253468007": {
+        "Name": "No Ragdoll",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3349668277": {
+        "Name": "Fall Modifier",
+        "Toggle_0": false,
+        "Toggle_1": false,
+        "Toggle_2": true,
+        "Toggle_3": false,
+        "Toggle_4": false,
+        "Toggle_5": false,
+        "Toggle_6": false,
+        "Hotkeys": []
+    },
+    "1472061895": {
+        "Name": "Jump Modifier",
+        "Toggle_0": false,
+        "Toggle_1": false,
+        "Toggle_2": false,
+        "Hotkeys": []
+    },
+    "324855476": {
+        "Name": "Seatbelt",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1968779253": {
+        "Name": "Fire Breath",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "600835813": {
+        "Name": "Never Wanted",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3760742175": {
+        "Name": "Max Wanted Level",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1944643313": {
+        "Name": "Los Santos Most Wanted",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3175745673": {
+        "Name": "Fake Wanted Level",
+        "Values": {
+            "Int": 0
+        },
+        "Hotkeys": []
+    },
+    "2682590504": {
+        "Name": "Custom Player Transform",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3244114154": {
+        "Name": "Player Width",
+        "Values": {
+            "Float": 1.0
+        },
+        "Hotkeys": []
+    },
+    "2079241574": {
+        "Name": "Player Thickness",
+        "Values": {
+            "Float": 1.0
+        },
+        "Hotkeys": []
+    },
+    "3468091490": {
+        "Name": "Player Height",
+        "Values": {
+            "Float": 1.0
+        },
+        "Hotkeys": []
+    },
+    "1048156159": {
+        "Name": "Refill Health",
+        "Hotkeys": []
+    },
+    "1184829915": {
+        "Name": "Refill Armour",
+        "Hotkeys": []
+    },
+    "529373709": {
+        "Name": "Refill Snacks",
+        "Hotkeys": []
+    },
+    "3582531306": {
+        "Name": "Clean",
+        "Hotkeys": []
+    },
+    "2547813608": {
+        "Name": "Suicide",
+        "Hotkeys": []
+    },
+    "2578312145": {
+        "Name": "Instant Suicide",
+        "Hotkeys": []
+    },
+    "1035089201": {
+        "Name": "Sky Dive",
+        "Hotkeys": []
+    },
+    "2677471300": {
+        "Name": "Clone Player",
+        "Hotkeys": []
+    },
+    "623787956": {
+        "Name": "Unlimited Special Ability",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "739901407": {
+        "Name": "Unlimited Stamina",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2252198154": {
+        "Name": "Run Speed",
+        "Values": {
+            "Float": 1.0,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4188395739": {
+        "Name": "Swim Speed",
+        "Values": {
+            "Float": 1.0,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "594259910": {
+        "Name": "Unlock Movement In Interiors",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1483250944": {
+        "Name": "Health Recharge",
+        "Values": {
+            "Float": 1.0
+        },
+        "Hotkeys": []
+    },
+    "1720581871": {
+        "Name": "Player Alpha",
+        "Values": {
+            "Int": 255
+        },
+        "Hotkeys": []
+    },
+    "1881789495": {
+        "Name": "Tiny Player",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3143478363": {
+        "Name": "Walk Through Objects",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "547498147": {
+        "Name": "Slide Run",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3160047584": {
+        "Name": "Walk On Air",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "500241670": {
+        "Name": "Super Jump",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1083679285": {
+        "Name": "Beast Jump",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3681133831": {
+        "Name": "Walk Under Water",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3425964406": {
+        "Name": "Walk On Water",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3443129427": {
+        "Name": "Free Cam",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1062977797": {
+        "Name": "No Clip Keep Velocity",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "599001212": {
+        "Name": "No Clip",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1051151625": {
+        "Name": "Speed",
+        "Values": {
+            "Int": 1
+        },
+        "Hotkeys": []
+    },
+    "4165612562": {
+        "Name": "Speed Fast",
+        "Values": {
+            "Int": 5
+        },
+        "Hotkeys": []
+    },
+    "3747547729": {
+        "Name": "Speed Vertical",
+        "Values": {
+            "Int": 1
+        },
+        "Hotkeys": []
+    },
+    "3486012514": {
+        "Name": "Free Cam FOV",
+        "Values": {
+            "Int": 50
+        },
+        "Hotkeys": []
+    },
+    "978359269": {
+        "Name": "Disable Cam Entity Collision",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3659589335": {
+        "Name": "First Person FOV",
+        "Values": {
+            "Int": 120,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2341957805": {
+        "Name": "First Person In Vehicle FOV",
+        "Values": {
+            "Int": 120,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3509560330": {
+        "Name": "Scoped In FOV Multiplier",
+        "Values": {
+            "Float": 2.0,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3333782317": {
+        "Name": "Third Person FOV",
+        "Values": {
+            "Int": 120,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1463993339": {
+        "Name": "Third Person Aim FOV",
+        "Values": {
+            "Int": 120,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "366845516": {
+        "Name": "Third Person In Vehicle FOV",
+        "Values": {
+            "Int": 120,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2429067859": {
+        "Name": "Third Person In Vehicle Aim FOV",
+        "Values": {
+            "Int": 120,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2927144946": {
+        "Name": "Parachute FOV",
+        "Values": {
+            "Int": 120,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2411177850": {
+        "Name": "Clouds Loading Screen FOV",
+        "Values": {
+            "Int": 120,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1898943071": {
+        "Name": "Cinematic FOV",
+        "Values": {
+            "Int": 120,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "556423170": {
+        "Name": "Cutscene FOV",
+        "Values": {
+            "Int": 120,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2964562622": {
+        "Name": "Scripted FOV",
+        "Values": {
+            "Int": 120,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1444229237": {
+        "Name": "Instant Vehicle Enter",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3383293034": {
+        "Name": "Superman",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2785890780": {
+        "Name": "Instant BST",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4145889431": {
+        "Name": "Off The Radar",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1137529078": {
+        "Name": "Reveal All Players",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1176515644": {
+        "Name": "Cops Turn Blind Eye",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1700625672": {
+        "Name": "Thermal Vision",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3016857119": {
+        "Name": "Night Vision",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2411818713": {
+        "Name": "Instant Resurrect",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2044921962": {
+        "Name": "Walk Clip",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3487884753": {
+        "Name": "Set Walk Clip Set",
+        "Hotkeys": []
+    },
+    "1458400536": {
+        "Name": "Reset Walk Clip Set",
+        "Hotkeys": []
+    },
+    "3506597676": {
+        "Name": "Weapon Clip",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3753840282": {
+        "Name": "Set Weapon Clip Set",
+        "Hotkeys": []
+    },
+    "2075613505": {
+        "Name": "Reset Weapon Clip Set",
+        "Hotkeys": []
+    },
+    "3843626595": {
+        "Name": "Scenario",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "412867801": {
+        "Name": "Start Scenario",
+        "Hotkeys": []
+    },
+    "23371497": {
+        "Name": "Stop Scenario",
+        "Hotkeys": []
+    },
+    "865647473": {
+        "Name": "Category",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1176408751": {
+        "Name": "Animation",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3502717631": {
+        "Name": "Loop Animation",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2096564689": {
+        "Name": "Controllable Animation",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "726512683": {
+        "Name": "Start Animation",
+        "Hotkeys": []
+    },
+    "99257813": {
+        "Name": "Stop Animation",
+        "Hotkeys": []
+    },
+    "3941430698": {
+        "Name": "Category",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "860364721": {
+        "Name": "PTFX",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1252201412": {
+        "Name": "PTFX Scale",
+        "Values": {
+            "Float": 0.5
+        },
+        "Hotkeys": []
+    },
+    "1953787269": {
+        "Name": "PTFX Delay",
+        "Values": {
+            "Int": 150
+        },
+        "Hotkeys": []
+    },
+    "4106882285": {
+        "Name": "PTFX Loop",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2738227101": {
+        "Name": "Category",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "886638433": {
+        "Name": "Ped",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2817418740": {
+        "Name": "Swap Model",
+        "Hotkeys": []
+    },
+    "4123815668": {
+        "Name": "Disable Outfit Validation",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2917689840": {
+        "Name": "Disable Outfit Apply Restrictions",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "753136093": {
+        "Name": "Outfit Name",
+        "Values": {
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "231503983": {
+        "Name": "Save Current Outfit",
+        "Hotkeys": []
+    },
+    "2384691091": {
+        "Name": "Outfit",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2285389869": {
+        "Name": "Load Outfit",
+        "Hotkeys": []
+    },
+    "3511139833": {
+        "Name": "Face Feature Selection",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2333581949": {
+        "Name": "Face Feature Value",
+        "Values": {
+            "Float": 0.0,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1016998821": {
+        "Name": "Player Spinbot",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "641072395": {
+        "Name": "Vehicle Spinbot",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3930676349": {
+        "Name": "Peds Spinbot",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3041002525": {
+        "Name": "Vehicles Spinbot",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1916665733": {
+        "Name": "Objects Spinbot",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2317809390": {
+        "Name": "Vehicle God Mode",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1608541812": {
+        "Name": "Repair",
+        "Hotkeys": []
+    },
+    "1427245278": {
+        "Name": "Upgrade Vehicle",
+        "Hotkeys": []
+    },
+    "2730216807": {
+        "Name": "Wash",
+        "Hotkeys": []
+    },
+    "717709333": {
+        "Name": "Dirty",
+        "Hotkeys": []
+    },
+    "3879798068": {
+        "Name": "Burn Vehicle Shell",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2718601735": {
+        "Name": "Auto Repair",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3834018187": {
+        "Name": "Auto Wash",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1661109720": {
+        "Name": "Bypass Max Speed",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "543304386": {
+        "Name": "Stick To The Ground",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1495303736": {
+        "Name": "Engine Always On",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1187676272": {
+        "Name": "Vehicle Fly",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "153814932": {
+        "Name": "Vehicle Fly Speed",
+        "Values": {
+            "Int": 10
+        },
+        "Hotkeys": []
+    },
+    "3543095293": {
+        "Name": "Trick Type",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "867920511": {
+        "Name": "Do Trick",
+        "Hotkeys": []
+    },
+    "2319554775": {
+        "Name": "Destination",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3610123511": {
+        "Name": "Drive Style",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1891853717": {
+        "Name": "Drive Speed",
+        "Values": {
+            "Int": 1
+        },
+        "Hotkeys": []
+    },
+    "3847031595": {
+        "Name": "Stop Auto Pilot",
+        "Hotkeys": []
+    },
+    "2098748086": {
+        "Name": "Start Auto Pilot",
+        "Hotkeys": []
+    },
+    "3621916851": {
+        "Name": "Stop Vehicle",
+        "Hotkeys": []
+    },
+    "3614826478": {
+        "Name": "Flip Up",
+        "Hotkeys": []
+    },
+    "4150046409": {
+        "Name": "Install Subwoofer",
+        "Hotkeys": []
+    },
+    "3286381113": {
+        "Name": "Auto Flip Up",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "343792987": {
+        "Name": "Rainbow Skidmarks",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1512416753": {
+        "Name": "Force Jump Ability",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1562503192": {
+        "Name": "Force Parachute Ability",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3700496990": {
+        "Name": "Force Gliding Ability",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4248409479": {
+        "Name": "Force Rocket Boost Ability",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "373832842": {
+        "Name": "Infinite Rocket Boost",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1138575012": {
+        "Name": "Drive Underwater",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1576032325": {
+        "Name": "Anti Missile Lock On",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1831847070": {
+        "Name": "Make Way",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2318608364": {
+        "Name": "Horn Jump",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2732952078": {
+        "Name": "No Gravity",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "473188107": {
+        "Name": "No Turbulence",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3641167942": {
+        "Name": "Reduced Grip",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "100146349": {
+        "Name": "Disable Full Collision",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4209415746": {
+        "Name": "Disable Vehicle Collision",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4232337056": {
+        "Name": "Disable Prop Collision",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "71205263": {
+        "Name": "Disable Wall Collision",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3167196353": {
+        "Name": "Disable Ped Collision",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3541266225": {
+        "Name": "Hulk Vehicle",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1299002928": {
+        "Name": "Show Bomb Trajectory",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3790702133": {
+        "Name": "Drive On Water",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "783173647": {
+        "Name": "Speedometer Unit",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3726997064": {
+        "Name": "Speedometer",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3057115189": {
+        "Name": "Flash Vehicle Color Delay",
+        "Values": {
+            "Int": 400
+        },
+        "Hotkeys": []
+    },
+    "2861435853": {
+        "Name": "Flash Vehicle Color",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2478780696": {
+        "Name": "Flash Vehicle Wheel Color Delay",
+        "Values": {
+            "Int": 400
+        },
+        "Hotkeys": []
+    },
+    "3920137143": {
+        "Name": "Flash Vehicle Wheel Color",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3474737410": {
+        "Name": "Flash Neon Kits Delay",
+        "Values": {
+            "Int": 400
+        },
+        "Hotkeys": []
+    },
+    "1688373691": {
+        "Name": "Flash Neon Kits",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1096989362": {
+        "Name": "Flash Tyre Smoke Delay",
+        "Values": {
+            "Int": 400
+        },
+        "Hotkeys": []
+    },
+    "833864429": {
+        "Name": "Flash Tyre Smoke",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2628881920": {
+        "Name": "Flash Headlights Delay",
+        "Values": {
+            "Int": 400
+        },
+        "Hotkeys": []
+    },
+    "3515784589": {
+        "Name": "Flash Headlights",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "241860337": {
+        "Name": "Synced Fade Colors Delay",
+        "Values": {
+            "Int": 30
+        },
+        "Hotkeys": []
+    },
+    "2203874762": {
+        "Name": "Synced Fade Colors",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3735280209": {
+        "Name": "Fade Neon Kits",
+        "Values": {
+            "Int": 30
+        },
+        "Hotkeys": []
+    },
+    "3112526430": {
+        "Name": "Fade Neon Kits",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1470565534": {
+        "Name": "Fade Vehicle Color Delay",
+        "Values": {
+            "Int": 30
+        },
+        "Hotkeys": []
+    },
+    "3933465783": {
+        "Name": "Fade Vehicle Color",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1286125882": {
+        "Name": "Fade Tyre Smoke Delay",
+        "Values": {
+            "Int": 30
+        },
+        "Hotkeys": []
+    },
+    "4143520895": {
+        "Name": "Fade Tyre Smoke",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1034789123": {
+        "Name": "Boost FX",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3775835664": {
+        "Name": "Boost FX Sound",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3443880969": {
+        "Name": "Relative Boost",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3887896978": {
+        "Name": "Forward Strength",
+        "Values": {
+            "Int": 10
+        },
+        "Hotkeys": []
+    },
+    "1689312711": {
+        "Name": "Backward Strength",
+        "Values": {
+            "Int": 5
+        },
+        "Hotkeys": []
+    },
+    "3907618986": {
+        "Name": "Boost Forward",
+        "Hotkeys": []
+    },
+    "3977297398": {
+        "Name": "Boost Backward",
+        "Hotkeys": []
+    },
+    "1333242408": {
+        "Name": "Horn Boost",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4074671454": {
+        "Name": "Exclude Me",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2689759434": {
+        "Name": "Kick Everyone From Vehicle",
+        "Hotkeys": []
+    },
+    "1810316582": {
+        "Name": "Kick Driver From Vehicle",
+        "Hotkeys": []
+    },
+    "3673336507": {
+        "Name": "Occupant",
+        "ListIndex": -1,
+        "Hotkeys": []
+    },
+    "2084213132": {
+        "Name": "Kick Occupant",
+        "Hotkeys": []
+    },
+    "4212210011": {
+        "Name": "Impact Type",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2086818662": {
+        "Name": "Custom Impact",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1310773318": {
+        "Name": "Give All Weapons",
+        "Hotkeys": []
+    },
+    "490845193": {
+        "Name": "Give All Weapon Components",
+        "Hotkeys": []
+    },
+    "3460188243": {
+        "Name": "Remove All Weapons",
+        "Hotkeys": []
+    },
+    "3987958325": {
+        "Name": "Bypass C4 Limit",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3082981980": {
+        "Name": "Allow All Weapons Drive By",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3563988338": {
+        "Name": "Allow Weapons In Interiors",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4105025411": {
+        "Name": "Keep Suppressor On In Vehicles",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3240250883": {
+        "Name": "Instant Lock On",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "816708051": {
+        "Name": "Unlimited Ammo Clip",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "855524017": {
+        "Name": "Unlimited Ammo",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2517944816": {
+        "Name": "Rapid Fire",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2619701509": {
+        "Name": "Delete Gun",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1966547462": {
+        "Name": "Ped Gun",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "354350021": {
+        "Name": "Teleport Gun",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1833372816": {
+        "Name": "Airstrike Gun",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "395413256": {
+        "Name": "Block Gun",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1848158289": {
+        "Name": "Grapple Gun",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4079466046": {
+        "Name": "Revive Gun",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3221703535": {
+        "Name": "Soul Switch Gun",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1011313008": {
+        "Name": "Shrink Gun",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2688656509": {
+        "Name": "Gravity Gun",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2015336448": {
+        "Name": "Drive Gun",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "950937895": {
+        "Name": "Recoil",
+        "Values": {
+            "Float": 1.0,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1266914962": {
+        "Name": "Spread",
+        "Values": {
+            "Float": 1.0,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "378227101": {
+        "Name": "Damage",
+        "Values": {
+            "Float": 1.0,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "851365501": {
+        "Name": "Speed",
+        "Values": {
+            "Float": 1.0,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2593851087": {
+        "Name": "Force",
+        "Values": {
+            "Float": 1.0,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4252099700": {
+        "Name": "Force On Ped",
+        "Values": {
+            "Float": 1.0,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3846859030": {
+        "Name": "Force On Vehicle",
+        "Values": {
+            "Float": 1.0,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2885146915": {
+        "Name": "Force On Heli",
+        "Values": {
+            "Float": 1.0,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "445878866": {
+        "Name": "Unlimited Range",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1994860245": {
+        "Name": "Info #1",
+        "ListIndex": 9,
+        "Hotkeys": []
+    },
+    "2285193585": {
+        "Name": "Info #2",
+        "ListIndex": 10,
+        "Hotkeys": []
+    },
+    "3814555584": {
+        "Name": "Info #3",
+        "ListIndex": 24,
+        "Hotkeys": []
+    },
+    "1696564038": {
+        "Name": "Info #4",
+        "ListIndex": 12,
+        "Hotkeys": []
+    },
+    "144820804": {
+        "Name": "Info #5",
+        "ListIndex": 25,
+        "Hotkeys": []
+    },
+    "460091353": {
+        "Name": "Info #6",
+        "ListIndex": 13,
+        "Hotkeys": []
+    },
+    "3843883835": {
+        "Name": "Info #7",
+        "ListIndex": 26,
+        "Hotkeys": []
+    },
+    "4158859463": {
+        "Name": "Info #8",
+        "ListIndex": 14,
+        "Hotkeys": []
+    },
+    "1333876754": {
+        "Name": "Info #9",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1639971983": {
+        "Name": "Info #10",
+        "ListIndex": 15,
+        "Hotkeys": []
+    },
+    "3503783240": {
+        "Name": "Info #11",
+        "ListIndex": 28,
+        "Hotkeys": []
+    },
+    "1477512125": {
+        "Name": "Info #12",
+        "ListIndex": 20,
+        "Hotkeys": []
+    },
+    "1816409123": {
+        "Name": "Info #13",
+        "ListIndex": 29,
+        "Hotkeys": []
+    },
+    "171143167": {
+        "Name": "Info #14",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3622865786": {
+        "Name": "Info #15",
+        "ListIndex": 30,
+        "Hotkeys": []
+    },
+    "2777491124": {
+        "Name": "Info #16",
+        "ListIndex": 31,
+        "Hotkeys": []
+    },
+    "4081336865": {
+        "Name": "Info #17",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1290040680": {
+        "Name": "Info #18",
+        "ListIndex": 32,
+        "Hotkeys": []
+    },
+    "447123693": {
+        "Name": "Info #19",
+        "ListIndex": 33,
+        "Hotkeys": []
+    },
+    "3927191489": {
+        "Name": "Info #20",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "369723027": {
+        "Name": "Info #21",
+        "ListIndex": 34,
+        "Hotkeys": []
+    },
+    "3899337551": {
+        "Name": "Info #22",
+        "ListIndex": 35,
+        "Hotkeys": []
+    },
+    "855031917": {
+        "Name": "Info #23",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1561302174": {
+        "Name": "Info #24",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1735502178": {
+        "Name": "Info #25",
+        "ListIndex": 6,
+        "Hotkeys": []
+    },
+    "2172870021": {
+        "Name": "Info #26",
+        "ListIndex": 36,
+        "Hotkeys": []
+    },
+    "2347528791": {
+        "Name": "Info #27",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1793077319": {
+        "Name": "Info #28",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3233143793": {
+        "Name": "Info #29",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2390456189": {
+        "Name": "Info #30",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "538974644": {
+        "Name": "Info #31",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1836430430": {
+        "Name": "Info #32",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2074366139": {
+        "Name": "Info #33",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3100691219": {
+        "Name": "Info #34",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1594300289": {
+        "Name": "Info #35",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2493579956": {
+        "Name": "Info #36",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2849713448": {
+        "Name": "Info #37",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1865725904": {
+        "Name": "Info #38",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3348523154": {
+        "Name": "Info #39",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2447670575": {
+        "Name": "Info #40",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1587327096": {
+        "Name": "Info #41",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3291488141": {
+        "Name": "Player Maps",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "257871784": {
+        "Name": "Player Tags",
+        "Toggle_0": true,
+        "Toggle_1": true,
+        "Toggle_2": true,
+        "Toggle_3": true,
+        "Toggle_4": true,
+        "Toggle_5": true,
+        "Toggle_6": true,
+        "Toggle_7": true,
+        "Toggle_8": true,
+        "Toggle_9": true,
+        "Toggle_10": true,
+        "Toggle_11": true,
+        "Toggle_12": true,
+        "Toggle_13": true,
+        "Hotkeys": []
+    },
+    "3486009521": {
+        "Name": "Player Map Zoom",
+        "Values": {
+            "Int": 250
+        },
+        "Hotkeys": []
+    },
+    "45920483": {
+        "Name": "Player Map Rounding",
+        "Values": {
+            "Int": 255
+        },
+        "Hotkeys": []
+    },
+    "3626291864": {
+        "Name": "Player Map Mini",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1089108070": {
+        "Name": "Player Extra Window",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "120496784": {
+        "Name": "Local Player [Y]",
+        "Values": {
+            "R": 128,
+            "G": 0,
+            "B": 128,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "2257066379": {
+        "Name": "Host [H]",
+        "Values": {
+            "R": 0,
+            "G": 203,
+            "B": 255,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "379686763": {
+        "Name": "Script Host [SH]",
+        "Values": {
+            "R": 128,
+            "G": 193,
+            "B": 255,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "3580739119": {
+        "Name": "Cheater [C]",
+        "Values": {
+            "R": 255,
+            "G": 0,
+            "B": 0,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "2091521983": {
+        "Name": "Friend [F]",
+        "Values": {
+            "R": 255,
+            "G": 0,
+            "B": 255,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "3858579061": {
+        "Name": "Team [T]",
+        "Values": {
+            "R": 0,
+            "G": 255,
+            "B": 255,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "535388808": {
+        "Name": "Modder [M]",
+        "Values": {
+            "R": 255,
+            "G": 0,
+            "B": 0,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "976522944": {
+        "Name": "God [G]",
+        "Values": {
+            "R": 252,
+            "G": 178,
+            "B": 51,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "4074451801": {
+        "Name": "Interior [I]",
+        "Values": {
+            "R": 198,
+            "G": 198,
+            "B": 198,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "1998588227": {
+        "Name": "Vehicle [V]",
+        "Values": {
+            "R": 198,
+            "G": 198,
+            "B": 198,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "2240072328": {
+        "Name": "Vehicle God [VG]",
+        "Values": {
+            "R": 255,
+            "G": 0,
+            "B": 0,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "3560499911": {
+        "Name": "Vehicle Modded [MV]",
+        "Values": {
+            "R": 255,
+            "G": 0,
+            "B": 0,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "3161126755": {
+        "Name": "High Earner [HE]",
+        "Values": {
+            "R": 252,
+            "G": 178,
+            "B": 51,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "3674126992": {
+        "Name": "Sub-Session [SS]",
+        "Values": {
+            "R": 198,
+            "G": 198,
+            "B": 198,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "922290168": {
+        "Name": "Search",
+        "Values": {
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "1932377274": {
+        "Name": "Sort By",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1924474029": {
+        "Name": "Cage List",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1826096318": {
+        "Name": "Top Speed",
+        "Values": {
+            "Float": 0.0
+        },
+        "Hotkeys": []
+    },
+    "3238814055": {
+        "Name": "Report Type",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2772819450": {
+        "Name": "Commend Type",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1683843087": {
+        "Name": "Vehicle Name",
+        "Values": {
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "2531832032": {
+        "Name": "Notification",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "931799578": {
+        "Name": "Notify Label",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3477825587": {
+        "Name": "Text Preset",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2287974011": {
+        "Name": "Custom Text",
+        "Values": {
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "1623996480": {
+        "Name": "WarpTime",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "381299946": {
+        "Name": "Exclude Me",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1739509518": {
+        "Name": "Exclude Friends",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "369629935": {
+        "Name": "Exclude Other",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3768410355": {
+        "Name": "Bail From Session",
+        "Hotkeys": []
+    },
+    "1583986757": {
+        "Name": "Story Bail From Session",
+        "Hotkeys": []
+    },
+    "1688926107": {
+        "Name": "Super Bail From Session",
+        "Hotkeys": []
+    },
+    "3200091691": {
+        "Name": "Auto Force Script Host",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "2087764882": {
+        "Name": "Block Matchmaking Joins",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "49959509": {
+        "Name": "Advertise Session",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4100757571": {
+        "Name": "Advertise Count",
+        "Values": {
+            "Int": 5
+        },
+        "Hotkeys": []
+    },
+    "14622371": {
+        "Name": "Auto Confirm Join Alerts",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1181010276": {
+        "Name": "Force Script Host",
+        "Hotkeys": []
+    },
+    "1459708218": {
+        "Name": "Corrupt Spoofed Host Keys",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2104525895": {
+        "Name": "Max Players",
+        "Values": {
+            "Int": 32
+        },
+        "Hotkeys": []
+    },
+    "3364415752": {
+        "Name": "Start Session",
+        "Hotkeys": []
+    },
+    "152661453": {
+        "Name": "Session Events",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "305781531": {
+        "Name": "Start Session Event",
+        "Hotkeys": []
+    },
+    "3894506119": {
+        "Name": "Tutorial Team",
+        "Values": {
+            "Int": 2
+        },
+        "Hotkeys": []
+    },
+    "3081164593": {
+        "Name": "Tutorial Instance",
+        "Values": {
+            "Int": 42
+        },
+        "Hotkeys": []
+    },
+    "851943349": {
+        "Name": "Start Tutorial Session",
+        "Hotkeys": []
+    },
+    "1452150885": {
+        "Name": "End Tutorial Session",
+        "Hotkeys": []
+    },
+    "2545788910": {
+        "Name": "Asset Hash",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1649980367": {
+        "Name": "Custom Hash",
+        "Values": {
+            "Int": 12345678
+        },
+        "Hotkeys": []
+    },
+    "1466177874": {
+        "Name": "Hide From Session",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "998395308": {
+        "Name": "Spoof In Tutorial Session",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "854698541": {
+        "Name": "Spoof Position",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1257236374": {
+        "Name": "Set Spoof Position",
+        "Hotkeys": []
+    },
+    "3813974680": {
+        "Name": "Spoof Crew",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1628073932": {
+        "Name": "Name",
+        "Values": {
+            "String": "CoaLwiX"
+        },
+        "Hotkeys": []
+    },
+    "664024531": {
+        "Name": "Tag",
+        "Values": {
+            "String": "CoaLwiX"
+        },
+        "Hotkeys": []
+    },
+    "2541503301": {
+        "Name": "Color",
+        "Values": {
+            "R": 135,
+            "G": 3,
+            "B": 255,
+            "A": 0
+        },
+        "Hotkeys": []
+    },
+    "3025482496": {
+        "Name": "ID",
+        "Values": {
+            "Int": 69420
+        },
+        "Hotkeys": []
+    },
+    "1189600050": {
+        "Name": "Open",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1817860775": {
+        "Name": "System",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1236137092": {
+        "Name": "Rockstar Developer Flag",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "551685437": {
+        "Name": "Rockstar QA Flag",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1470105418": {
+        "Name": "Cheater Flag",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2819727478": {
+        "Name": "Spoof Language",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1378071498": {
+        "Name": "Language",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1702575897": {
+        "Name": "Spoof Rank",
+        "Values": {
+            "Int": 1
+        },
+        "Hotkeys": []
+    },
+    "3730769137": {
+        "Name": "Spoof Kills",
+        "Values": {
+            "Int": 0
+        },
+        "Hotkeys": []
+    },
+    "1163030162": {
+        "Name": "Spoof Deaths",
+        "Values": {
+            "Int": 0
+        },
+        "Hotkeys": []
+    },
+    "324665854": {
+        "Name": "Spoof Wallet",
+        "Values": {
+            "Int": 0
+        },
+        "Hotkeys": []
+    },
+    "1357025507": {
+        "Name": "Spoof Bank",
+        "Values": {
+            "Int": 0
+        },
+        "Hotkeys": []
+    },
+    "3898110216": {
+        "Name": "Spoof Sex Acts",
+        "Values": {
+            "Int": 0
+        },
+        "Hotkeys": []
+    },
+    "2231801161": {
+        "Name": "Spoof Lap Dances",
+        "Values": {
+            "Int": 0
+        },
+        "Hotkeys": []
+    },
+    "2843307194": {
+        "Name": "Spoof Score Data",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3664301379": {
+        "Name": "Get Orignal Score Data",
+        "Hotkeys": []
+    },
+    "1744712656": {
+        "Name": "Block All Joins",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "238683028": {
+        "Name": "Block RID Joins",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "872788705": {
+        "Name": "Redirect RID Joins",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4062708760": {
+        "Name": "Redirect RID",
+        "Values": {
+            "Int": 0
+        },
+        "Hotkeys": []
+    },
+    "971422901": {
+        "Name": "Block Network Bail",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1212412116": {
+        "Name": "Bypass Profanity Filter",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3169151616": {
+        "Name": "Async Broadcast Data",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3150574213": {
+        "Name": "Skip Swoop Down",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "492870554": {
+        "Name": "Skip Freemode Wait",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3228563755": {
+        "Name": "Smooth Transition",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1116626402": {
+        "Name": "Join Full Sessions Bypass",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1983717631": {
+        "Name": "Teleport All To Me",
+        "Hotkeys": []
+    },
+    "1424453881": {
+        "Name": "Send All To My Waypoint",
+        "Hotkeys": []
+    },
+    "3003641260": {
+        "Name": "Send All To Death Barrier",
+        "Hotkeys": []
+    },
+    "626070578": {
+        "Name": "Send All To Secret Lab",
+        "Hotkeys": []
+    },
+    "377661685": {
+        "Name": "Send All To Dark Room",
+        "Hotkeys": []
+    },
+    "3672531359": {
+        "Name": "Send All To Maze Bank",
+        "Hotkeys": []
+    },
+    "3896796201": {
+        "Name": "Send All To Mt. Chilliad",
+        "Hotkeys": []
+    },
+    "2411575944": {
+        "Name": "Send All To Mines",
+        "Hotkeys": []
+    },
+    "2239495524": {
+        "Name": "Send All To Sky",
+        "Hotkeys": []
+    },
+    "3053920969": {
+        "Name": "Teleport All To Casino",
+        "Hotkeys": []
+    },
+    "3922483169": {
+        "Name": "Session Loop Vehicle Kick",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3949149684": {
+        "Name": "Session Bribe Authorities",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1694379066": {
+        "Name": "Session Off The Radar",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2863356577": {
+        "Name": "Session Clear Wanted",
+        "Hotkeys": []
+    },
+    "3869145894": {
+        "Name": "Cage All",
+        "Hotkeys": []
+    },
+    "1629193834": {
+        "Name": "Kick Random",
+        "Hotkeys": []
+    },
+    "999832615": {
+        "Name": "Fake Lag",
+        "Values": {
+            "Int": 5,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1077113191": {
+        "Name": "Kick All",
+        "Hotkeys": []
+    },
+    "2009760616": {
+        "Name": "Crash All",
+        "Hotkeys": []
+    },
+    "1833654819": {
+        "Name": "Disable Traffic",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4145109792": {
+        "Name": "Enable Custom Traffic Variety",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "421893604": {
+        "Name": "Variety Selection",
+        "Toggle_0": false,
+        "Toggle_1": false,
+        "Toggle_2": false,
+        "Toggle_3": false,
+        "Toggle_4": false,
+        "Toggle_5": false,
+        "Toggle_6": false,
+        "Toggle_7": false,
+        "Toggle_8": false,
+        "Toggle_9": false,
+        "Toggle_10": false,
+        "Toggle_11": false,
+        "Toggle_12": false,
+        "Toggle_13": false,
+        "Toggle_14": false,
+        "Toggle_15": false,
+        "Toggle_16": false,
+        "Toggle_17": false,
+        "Hotkeys": []
+    },
+    "3612321729": {
+        "Name": "Fix Asset Hash",
+        "Hotkeys": []
+    },
+    "2225486259": {
+        "Name": "Paste In Chat",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1769067569": {
+        "Name": "Allow Special Chars",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1138127176": {
+        "Name": "Auto Player Name Complete",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "4155774202": {
+        "Name": "Mute Text Chat",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3116312941": {
+        "Name": "Swap Models",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3464865115": {
+        "Name": "Add Model Swap",
+        "Hotkeys": []
+    },
+    "2337431317": {
+        "Name": "Model Swaps",
+        "ListIndex": -1,
+        "Hotkeys": []
+    },
+    "4169510879": {
+        "Name": "Clear Vehicles",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "277053945": {
+        "Name": "Clear Peds",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3675711926": {
+        "Name": "Clear Pickups",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3662524679": {
+        "Name": "Clear Objects",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3873119077": {
+        "Name": "Clear Mission Entities",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1599972290": {
+        "Name": "Clear Distance",
+        "Values": {
+            "Int": 150
+        },
+        "Hotkeys": []
+    },
+    "3017072925": {
+        "Name": "Preview Clear Area",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "53700821": {
+        "Name": "Clear Area",
+        "Hotkeys": []
+    },
+    "3579766462": {
+        "Name": "Show Window",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "643815996": {
+        "Name": "Show Time",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1376812896": {
+        "Name": "Show Entity Pools",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2238154628": {
+        "Name": "Show Render Counts",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2559129101": {
+        "Name": "Hotkey Window",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1779450001": {
+        "Name": "Notify Hotkey Pressed",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3077246711": {
+        "Name": "Clear All Hotkeys",
+        "Hotkeys": []
+    },
+    "2747990711": {
+        "Name": "Screen Filter",
+        "Values": {
+            "R": 0,
+            "G": 0,
+            "B": 0,
+            "A": 0
+        },
+        "Hotkeys": []
+    },
+    "772120948": {
+        "Name": "Display Crosshair",
+        "Values": {
+            "R": 0,
+            "G": 0,
+            "B": 0,
+            "A": 0
+        },
+        "Hotkeys": []
+    },
+    "1930750025": {
+        "Name": "Display Time",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1214028828": {
+        "Name": "Display Watermark",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "784586599": {
+        "Name": "Display FPS",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4154057368": {
+        "Name": "No Idle Cam",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3724646850": {
+        "Name": "No Stunt Cam",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "810217144": {
+        "Name": "Extend Camera Angles",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3573604013": {
+        "Name": "Auto Reject Phone Calls",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1277877807": {
+        "Name": "Disable Various Cooldowns",
+        "Toggle_0": false,
+        "Toggle_1": false,
+        "Toggle_2": false,
+        "Toggle_3": false,
+        "Toggle_4": false,
+        "Toggle_5": false,
+        "Toggle_6": false,
+        "Toggle_7": false,
+        "Toggle_8": false,
+        "Hotkeys": []
+    },
+    "4163805289": {
+        "Name": "Allow All Vehicles For Heists",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "741337654": {
+        "Name": "Disable Seasonal Events",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2814535671": {
+        "Name": "Enable Christmas",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3108190932": {
+        "Name": "Enable Halloween",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3862114219": {
+        "Name": "Override Claw Crane Game",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "601303367": {
+        "Name": "Override Axe Fury Game",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3919539282": {
+        "Name": "Override Love Meter Game",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2121693558": {
+        "Name": "Arcade Games Godmode",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3488993159": {
+        "Name": "Disable Dart Wobble",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2713375162": {
+        "Name": "Override Armwrestling",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2022826608": {
+        "Name": "Disable Golf Wind",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3454315421": {
+        "Name": "Auto Finish Golf Hole",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3215543480": {
+        "Name": "Disable Golf Foliage Collision",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1657166340": {
+        "Name": "Display All Weapon Components",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3678978138": {
+        "Name": "Disable Drone/Missile Distance Limits",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2351563318": {
+        "Name": "Drone Godmode",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "889864416": {
+        "Name": "Disable Prostitute Restrictions",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1079922078": {
+        "Name": "Phone Requests",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "243970849": {
+        "Name": "Request",
+        "Hotkeys": []
+    },
+    "3915926978": {
+        "Name": "Mobile Radio",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3644582534": {
+        "Name": "Disable Flying Music",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "877783918": {
+        "Name": "Disable Wanted Music",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1477353252": {
+        "Name": "Force Lock-On Warning",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1353488194": {
+        "Name": "Rockstar DEV Mode",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1351440442": {
+        "Name": "Anti AFK Kick",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "2916706743": {
+        "Name": "Potato Mode",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2179304914": {
+        "Name": "Performance Mode",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1336847841": {
+        "Name": "GTA 1 Cam",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3018267242": {
+        "Name": "Skip Cutscene",
+        "Hotkeys": []
+    },
+    "577286302": {
+        "Name": "Hud Transition Info State",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2226495423": {
+        "Name": "Auto Skip Cutscene",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1301520771": {
+        "Name": "Allow Skipping Cutscenes",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1839085424": {
+        "Name": "Add Delimiters For Money",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3560393724": {
+        "Name": "Cherax Newsletter",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3909999482": {
+        "Name": "Disable Hud",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "499288719": {
+        "Name": "Disable Busy Spinner",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2773812471": {
+        "Name": "Disable Help Messages",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "608557131": {
+        "Name": "Disable Recordings",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3154323183": {
+        "Name": "Disable Minimap",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2424500355": {
+        "Name": "Hud Elements",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2571699160": {
+        "Name": "Disable Background Script",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1025879713": {
+        "Name": "Disable Restricted Areas",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4051361695": {
+        "Name": "Notify On Player Join",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2293806409": {
+        "Name": "Notify On Player Leave",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1635014621": {
+        "Name": "Notify On Player Spawn",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2171510180": {
+        "Name": "Notify On Player Is Typing",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "220526264": {
+        "Name": "Log Chat Messages",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3734482302": {
+        "Name": "Log Net Messages",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "303658902": {
+        "Name": "Log Net Events",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2900255183": {
+        "Name": "Log Script Starts",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3205407494": {
+        "Name": "Log Script Terminations",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1868907982": {
+        "Name": "Spawn Train",
+        "Hotkeys": []
+    },
+    "2103000485": {
+        "Name": "Get Into Closest Train",
+        "Hotkeys": []
+    },
+    "1753544874": {
+        "Name": "Delete All Trains",
+        "Hotkeys": []
+    },
+    "1648116371": {
+        "Name": "Exit Train",
+        "Hotkeys": []
+    },
+    "253802559": {
+        "Name": "Train Speed",
+        "Values": {
+            "Int": 0
+        },
+        "Hotkeys": []
+    },
+    "32966798": {
+        "Name": "Set Current Train Speed",
+        "Hotkeys": []
+    },
+    "4013071429": {
+        "Name": "Derail Train",
+        "Hotkeys": []
+    },
+    "2088582328": {
+        "Name": "DLC",
+        "ListIndex": -1,
+        "Hotkeys": []
+    },
+    "3992157797": {
+        "Name": "Load DLC",
+        "Hotkeys": []
+    },
+    "2180395378": {
+        "Name": "Load All DLCs",
+        "Hotkeys": []
+    },
+    "391172149": {
+        "Name": "Open Folder",
+        "Hotkeys": []
+    },
+    "2363654364": {
+        "Name": "Type",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3170722516": {
+        "Name": "Disable",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1528405778": {
+        "Name": "Disable",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2696718931": {
+        "Name": "Disable",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2893988311": {
+        "Name": "Disable",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2221797818": {
+        "Name": "Disable",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "572796200": {
+        "Name": "Disable",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1739798597": {
+        "Name": "Disable",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2003916737": {
+        "Name": "Disable",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3481896944": {
+        "Name": "Disable",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3713016701": {
+        "Name": "Disable",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2859576286": {
+        "Name": "Disable",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2122667014": {
+        "Name": "Disable",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1825812643": {
+        "Name": "Disable",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "568990413": {
+        "Name": "Disable",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2437839256": {
+        "Name": "Disable",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "931907088": {
+        "Name": "Disable",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1619553065": {
+        "Name": "Spawn Prostitute",
+        "Hotkeys": []
+    },
+    "2134836233": {
+        "Name": "Drop Kick Doping",
+        "ListIndex": 1,
+        "Hotkeys": []
+    },
+    "2366926389": {
+        "Name": "Desync Auto Rejoin",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "2592674871": {
+        "Name": "Host Drop Kick Events",
+        "Toggle_0": false,
+        "Toggle_1": true,
+        "Toggle_2": false,
+        "Hotkeys": []
+    },
+    "2602820259": {
+        "Name": "Weaken Host Kicks",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3965448424": {
+        "Name": "Freemode Kick Protection",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3898292770": {
+        "Name": "Script Host Kick Protection",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "2672319190": {
+        "Name": "End Session Kick Protection",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1220455397": {
+        "Name": "Net Error Kick Protection",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "419883600": {
+        "Name": "Script Event Crash Protection",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "2355031251": {
+        "Name": "Net Event Crash Protection",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3302407830": {
+        "Name": "Entity Sync Crash Protection",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1569668619": {
+        "Name": "Smart Protection",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "2022901605": {
+        "Name": "Advanced Script Event Protection",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3527676923": {
+        "Name": "Log Bounty",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2812657690": {
+        "Name": "CEO Kick",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3577892900": {
+        "Name": "CEO Ban",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "468827747": {
+        "Name": "Block Modded Session Events",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1245410399": {
+        "Name": "Warn About Kick Vote",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "2976946033": {
+        "Name": "Block Modded Reports",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "2304555914": {
+        "Name": "Block Remote Clear Task",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "554203563": {
+        "Name": "Block Remote Ragdoll",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3066740239": {
+        "Name": "Block Remote Control",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1000665021": {
+        "Name": "Block All Control",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "901010024": {
+        "Name": "Log Cash Spawn",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2289369001": {
+        "Name": "Block Remove Weapon",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "202593125": {
+        "Name": "Block Give Weapon",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3722105558": {
+        "Name": "Attachment Protection",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1708428008": {
+        "Name": "Block Model Swaps",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1348447814": {
+        "Name": "Block World Model Syncs",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1456417717": {
+        "Name": "Block Cages",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3490102780": {
+        "Name": "Block Explosion Spam",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "2560883003": {
+        "Name": "Block PTFX Spam",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "2461252421": {
+        "Name": "Block Stun Gun Spam",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3308124232": {
+        "Name": "Block Bounty Spam",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3785970422": {
+        "Name": "Block Ped Spam",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3895924669": {
+        "Name": "Block Vehicle Spam",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1312440139": {
+        "Name": "Limit Ped Render Count",
+        "Values": {
+            "Int": 60
+        },
+        "Hotkeys": []
+    },
+    "2249557174": {
+        "Name": "Limit Vehicle Render Count",
+        "Values": {
+            "Int": 333
+        },
+        "Hotkeys": []
+    },
+    "1015252076": {
+        "Name": "Limit Object Render Count",
+        "Values": {
+            "Int": 450
+        },
+        "Hotkeys": []
+    },
+    "922032833": {
+        "Name": "Limit Fragment Render Count",
+        "Values": {
+            "Int": 450
+        },
+        "Hotkeys": []
+    },
+    "3662471251": {
+        "Name": "Limit PTFX Render Count",
+        "Values": {
+            "Int": 270
+        },
+        "Hotkeys": []
+    },
+    "2088141662": {
+        "Name": "Limit Entity Render Count",
+        "Values": {
+            "Int": 450
+        },
+        "Hotkeys": []
+    },
+    "2305273295": {
+        "Name": "Block Chat Advertisements",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "2224345995": {
+        "Name": "Block Sound Spam",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "2812374956": {
+        "Name": "Block Infinite Phone Ring",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1615795794": {
+        "Name": "Hide God Mode",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "913779546": {
+        "Name": "Hide Damage Modifier",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "143612091": {
+        "Name": "Hide Spectating Flag",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3890593352": {
+        "Name": "Hide Super Jump Flag",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "951740891": {
+        "Name": "Disable Projectiles",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "460349313": {
+        "Name": "Disable Bullets",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1486010653": {
+        "Name": "Disable Cam Shake",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3021273047": {
+        "Name": "Anti Aim",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "599859354": {
+        "Name": "Anti Shoot",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1979602770": {
+        "Name": "Notify Spectate",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "341487343": {
+        "Name": "Anti Spectate",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2771747027": {
+        "Name": "Vehicle Kick Protection",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "624247502": {
+        "Name": "Log Incoming Script Events",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3956056296": {
+        "Name": "Log Outgoing Script Events",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "925637617": {
+        "Name": "Log Transactions",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1549706923": {
+        "Name": "Log Metrics",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3369008336": {
+        "Name": "Use Relay Connection",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "995486248": {
+        "Name": "Kick Reaction",
+        "Toggle_0": false,
+        "Toggle_1": false,
+        "Toggle_2": false,
+        "Toggle_3": false,
+        "Toggle_4": false,
+        "Toggle_5": false,
+        "Toggle_6": false,
+        "Toggle_7": false,
+        "Toggle_8": false,
+        "Toggle_9": false,
+        "Toggle_10": false,
+        "Toggle_11": false,
+        "Hotkeys": []
+    },
+    "284858031": {
+        "Name": "Crash Reaction",
+        "Toggle_0": false,
+        "Toggle_1": false,
+        "Toggle_2": true,
+        "Toggle_3": false,
+        "Toggle_4": true,
+        "Toggle_5": false,
+        "Toggle_6": false,
+        "Toggle_7": false,
+        "Toggle_8": false,
+        "Toggle_9": false,
+        "Toggle_10": false,
+        "Toggle_11": false,
+        "Hotkeys": []
+    },
+    "3485668716": {
+        "Name": "Bad Script Event Reaction",
+        "Toggle_0": false,
+        "Toggle_1": false,
+        "Toggle_2": false,
+        "Toggle_3": false,
+        "Toggle_4": false,
+        "Toggle_5": false,
+        "Toggle_6": false,
+        "Toggle_7": false,
+        "Toggle_8": false,
+        "Toggle_9": false,
+        "Toggle_10": false,
+        "Toggle_11": false,
+        "Hotkeys": []
+    },
+    "3022660796": {
+        "Name": "Report Reaction",
+        "Toggle_0": false,
+        "Toggle_1": false,
+        "Toggle_2": false,
+        "Toggle_3": false,
+        "Toggle_4": false,
+        "Toggle_5": false,
+        "Toggle_6": false,
+        "Toggle_7": false,
+        "Toggle_8": false,
+        "Toggle_9": false,
+        "Toggle_10": false,
+        "Toggle_11": false,
+        "Hotkeys": []
+    },
+    "2992655928": {
+        "Name": "Vote Kick Reaction",
+        "Toggle_0": true,
+        "Toggle_1": false,
+        "Toggle_2": false,
+        "Toggle_3": false,
+        "Toggle_4": false,
+        "Toggle_5": false,
+        "Toggle_6": false,
+        "Toggle_7": false,
+        "Toggle_8": false,
+        "Toggle_9": false,
+        "Toggle_10": false,
+        "Toggle_11": false,
+        "Hotkeys": []
+    },
+    "1644587175": {
+        "Name": "Chat Spam Reaction",
+        "Toggle_0": true,
+        "Toggle_1": false,
+        "Toggle_2": false,
+        "Toggle_3": false,
+        "Toggle_4": false,
+        "Toggle_5": false,
+        "Toggle_6": false,
+        "Toggle_7": false,
+        "Toggle_8": false,
+        "Toggle_9": false,
+        "Toggle_10": false,
+        "Toggle_11": false,
+        "Hotkeys": []
+    },
+    "1927090630": {
+        "Name": "Chat Banned Word Reaction",
+        "Toggle_0": true,
+        "Toggle_1": false,
+        "Toggle_2": false,
+        "Toggle_3": false,
+        "Toggle_4": false,
+        "Toggle_5": false,
+        "Toggle_6": false,
+        "Toggle_7": false,
+        "Toggle_8": false,
+        "Toggle_9": false,
+        "Toggle_10": false,
+        "Toggle_11": false,
+        "Hotkeys": []
+    },
+    "396272333": {
+        "Name": "Aiming At You",
+        "Toggle_0": false,
+        "Toggle_1": false,
+        "Toggle_2": false,
+        "Toggle_3": false,
+        "Toggle_4": false,
+        "Toggle_5": false,
+        "Toggle_6": false,
+        "Toggle_7": false,
+        "Toggle_8": false,
+        "Toggle_9": false,
+        "Toggle_10": false,
+        "Toggle_11": false,
+        "Hotkeys": []
+    },
+    "2893473703": {
+        "Name": "Shooting At You",
+        "Toggle_0": false,
+        "Toggle_1": false,
+        "Toggle_2": false,
+        "Toggle_3": false,
+        "Toggle_4": false,
+        "Toggle_5": false,
+        "Toggle_6": false,
+        "Toggle_7": false,
+        "Toggle_8": false,
+        "Toggle_9": false,
+        "Toggle_10": false,
+        "Toggle_11": false,
+        "Hotkeys": []
+    },
+    "522312246": {
+        "Name": "Spectating You",
+        "Toggle_0": false,
+        "Toggle_1": false,
+        "Toggle_2": false,
+        "Toggle_3": false,
+        "Toggle_4": false,
+        "Toggle_5": false,
+        "Toggle_6": false,
+        "Toggle_7": false,
+        "Toggle_8": false,
+        "Toggle_9": false,
+        "Toggle_10": false,
+        "Toggle_11": false,
+        "Hotkeys": []
+    },
+    "2319876308": {
+        "Name": "Script Event Timeout Duration",
+        "Values": {
+            "Int": 15
+        },
+        "Hotkeys": []
+    },
+    "3494218176": {
+        "Name": "Entity Sync Timeout Duration",
+        "Values": {
+            "Int": 20
+        },
+        "Hotkeys": []
+    },
+    "4109047979": {
+        "Name": "Vehicle Filter",
+        "Values": {
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "3882997346": {
+        "Name": "Vehicle Preview",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "2076514103": {
+        "Name": "Vehicle List",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "2482365764": {
+        "Name": "Despawn Bypass",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1964143807": {
+        "Name": "In Vehicle",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "453859936": {
+        "Name": "Spawn Plane In The Air",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "2781588979": {
+        "Name": "Keep Vehicle Speed",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3475508524": {
+        "Name": "Delete Old Vehicle",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2236350100": {
+        "Name": "Vehicle God Mode",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "24843272": {
+        "Name": "Vehicle Engine On",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1244479194": {
+        "Name": "Clean Vehicle",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "516854785": {
+        "Name": "Upgraded Vehicle",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3887516889": {
+        "Name": "Cam Smoothing",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1448809167": {
+        "Name": "Radio Off",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "493158989": {
+        "Name": "Spawn Vehicle",
+        "Hotkeys": []
+    },
+    "2162611004": {
+        "Name": "Respawn Vehicle",
+        "Hotkeys": []
+    },
+    "3385011681": {
+        "Name": "Vehicle Name",
+        "Values": {
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "3018382944": {
+        "Name": "Save Current Vehicle",
+        "Hotkeys": []
+    },
+    "514776905": {
+        "Name": "Saved Vehicles",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "521937511": {
+        "Name": "Load Vehicle",
+        "Hotkeys": []
+    },
+    "3651874634": {
+        "Name": "Launch RC Bandito",
+        "Hotkeys": []
+    },
+    "4078367632": {
+        "Name": "Launch RC Tank",
+        "Hotkeys": []
+    },
+    "3383393326": {
+        "Name": "Vehicles",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "126717055": {
+        "Name": "Garages",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1153085963": {
+        "Name": "Request Personal Vehicle",
+        "Hotkeys": []
+    },
+    "2225114950": {
+        "Name": "Put Personal Vehicle Into Garage",
+        "Hotkeys": []
+    },
+    "2816017279": {
+        "Name": "Convert Current Vehicle To PV",
+        "Hotkeys": []
+    },
+    "105643417": {
+        "Name": "Delete Vehicle from Garage",
+        "Hotkeys": []
+    },
+    "2383216635": {
+        "Name": "Time Scale",
+        "Values": {
+            "Float": 1.0
+        },
+        "Hotkeys": []
+    },
+    "2660507417": {
+        "Name": "Freeze Time",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1112346441": {
+        "Name": "Sync Time",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2451154089": {
+        "Name": "Expand World Limits",
+        "Hotkeys": []
+    },
+    "4060200897": {
+        "Name": "Reset World Limits",
+        "Hotkeys": []
+    },
+    "462099769": {
+        "Name": "Enable Wildlife In Online",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "60852084": {
+        "Name": "Reset Water Height",
+        "Hotkeys": []
+    },
+    "2236757560": {
+        "Name": "Disable Sky",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "818586389": {
+        "Name": "Disable Lights",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1617820265": {
+        "Name": "Thunder Lightning",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3584076873": {
+        "Name": "Flash Lightning",
+        "Hotkeys": []
+    },
+    "1266808066": {
+        "Name": "Freeze Weather",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "163139833": {
+        "Name": "Smooth Weather Transition",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4101038612": {
+        "Name": "Enable Snow Footsteps",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "2937578357": {
+        "Name": "Enable Snow Trails",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1976428418": {
+        "Name": "Sky VFX",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1044876032": {
+        "Name": "Azimuth East Color",
+        "Values": {
+            "R": 0,
+            "G": 0,
+            "B": 0,
+            "A": 0
+        },
+        "Hotkeys": []
+    },
+    "1874413695": {
+        "Name": "Azimuth West Color",
+        "Values": {
+            "R": 0,
+            "G": 0,
+            "B": 0,
+            "A": 0
+        },
+        "Hotkeys": []
+    },
+    "2670115477": {
+        "Name": "Azimuth Transition Color",
+        "Values": {
+            "R": 0,
+            "G": 0,
+            "B": 0,
+            "A": 0
+        },
+        "Hotkeys": []
+    },
+    "3936322638": {
+        "Name": "Azimuth Transition Position",
+        "Values": {
+            "Float": 0.0
+        },
+        "Hotkeys": []
+    },
+    "1379881353": {
+        "Name": "Zenith Color",
+        "Values": {
+            "R": 0,
+            "G": 0,
+            "B": 0,
+            "A": 0
+        },
+        "Hotkeys": []
+    },
+    "3025743240": {
+        "Name": "Zenith Transition Color",
+        "Values": {
+            "R": 0,
+            "G": 0,
+            "B": 0,
+            "A": 0
+        },
+        "Hotkeys": []
+    },
+    "1679444964": {
+        "Name": "Zenith Transition Position",
+        "Values": {
+            "Float": 0.0
+        },
+        "Hotkeys": []
+    },
+    "3699228474": {
+        "Name": "Zenith Transition Blend East",
+        "Values": {
+            "Float": 0.0
+        },
+        "Hotkeys": []
+    },
+    "2219583944": {
+        "Name": "Zenith Transition Blend West",
+        "Values": {
+            "Float": 0.0
+        },
+        "Hotkeys": []
+    },
+    "1094892484": {
+        "Name": "Zenith Blend Start",
+        "Values": {
+            "Float": 0.0
+        },
+        "Hotkeys": []
+    },
+    "11054221": {
+        "Name": "HDR Intensity",
+        "Values": {
+            "Float": 0.0
+        },
+        "Hotkeys": []
+    },
+    "3575965978": {
+        "Name": "Sky Plane Color",
+        "Values": {
+            "R": 0,
+            "G": 0,
+            "B": 0,
+            "A": 0
+        },
+        "Hotkeys": []
+    },
+    "1247471837": {
+        "Name": "Sky Plane Offset",
+        "Values": {
+            "Float": 0.0
+        },
+        "Hotkeys": []
+    },
+    "891485471": {
+        "Name": "Sun Color",
+        "Values": {
+            "R": 0,
+            "G": 0,
+            "B": 0,
+            "A": 0
+        },
+        "Hotkeys": []
+    },
+    "3557539369": {
+        "Name": "Sun Disc Color",
+        "Values": {
+            "R": 0,
+            "G": 0,
+            "B": 0,
+            "A": 0
+        },
+        "Hotkeys": []
+    },
+    "454087030": {
+        "Name": "Sun Disc Size",
+        "Values": {
+            "Float": 0.0
+        },
+        "Hotkeys": []
+    },
+    "3152536124": {
+        "Name": "Sun HDR Intensity",
+        "Values": {
+            "Float": 0.0
+        },
+        "Hotkeys": []
+    },
+    "553720345": {
+        "Name": "Sun Azimuth",
+        "Values": {
+            "Float": 0.0
+        },
+        "Hotkeys": []
+    },
+    "1787317326": {
+        "Name": "Sun Zenith",
+        "Values": {
+            "Float": 0.0
+        },
+        "Hotkeys": []
+    },
+    "2213576281": {
+        "Name": "Moon Color",
+        "Values": {
+            "R": 0,
+            "G": 0,
+            "B": 0,
+            "A": 0
+        },
+        "Hotkeys": []
+    },
+    "2829955749": {
+        "Name": "Moon Disc Size",
+        "Values": {
+            "Float": 0.0
+        },
+        "Hotkeys": []
+    },
+    "2743719592": {
+        "Name": "Timecycle",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2110597067": {
+        "Name": "Disable Pickup Glow",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1538089875": {
+        "Name": "Enable Glass Glow",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "821347148": {
+        "Name": "Override Glow Effect",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1871589429": {
+        "Name": "Glow Intensity",
+        "Values": {
+            "Float": 1.0
+        },
+        "Hotkeys": []
+    },
+    "487586448": {
+        "Name": "Glow Frequency",
+        "Values": {
+            "Float": 0.0044999998062849045
+        },
+        "Hotkeys": []
+    },
+    "2075410407": {
+        "Name": "VFX Editor",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "3767831223": {
+        "Name": "RP Level",
+        "Values": {
+            "Int": 1
+        },
+        "Hotkeys": []
+    },
+    "251344530": {
+        "Name": "Set RP Level",
+        "Hotkeys": []
+    },
+    "1991529484": {
+        "Name": "Crew Level",
+        "Values": {
+            "Int": 1
+        },
+        "Hotkeys": []
+    },
+    "716207572": {
+        "Name": "Set Crew Level",
+        "Hotkeys": []
+    },
+    "4278948272": {
+        "Name": "LSCM Level",
+        "Values": {
+            "Int": 0
+        },
+        "Hotkeys": []
+    },
+    "755574384": {
+        "Name": "Set LSCM Level",
+        "Hotkeys": []
+    },
+    "1482002011": {
+        "Name": "Set Prologue Complete",
+        "Hotkeys": []
+    },
+    "1482407973": {
+        "Name": "Set Freemode Intro Complete",
+        "Hotkeys": []
+    },
+    "269578566": {
+        "Name": "Enable Character Redesign",
+        "Hotkeys": []
+    },
+    "1443606204": {
+        "Name": "Allow Gender Change",
+        "Hotkeys": []
+    },
+    "516491915": {
+        "Name": "Modded Run",
+        "Hotkeys": []
+    },
+    "475470000": {
+        "Name": "Max Night Club Popularity",
+        "Hotkeys": []
+    },
+    "1491209855": {
+        "Name": "Unlock Bunker Researches",
+        "Hotkeys": []
+    },
+    "2807933755": {
+        "Name": "Unlock All Media Sticks",
+        "Hotkeys": []
+    },
+    "1426048924": {
+        "Name": "Unlock Car Meet Rewards",
+        "Hotkeys": []
+    },
+    "3517952910": {
+        "Name": "Unlock Achievements",
+        "Hotkeys": []
+    },
+    "3706966968": {
+        "Name": "Unlock Tattoos",
+        "Hotkeys": []
+    },
+    "2632442005": {
+        "Name": "Unlock Tattoos",
+        "Hotkeys": []
+    },
+    "178148010": {
+        "Name": "Unlock Clothing",
+        "Hotkeys": []
+    },
+    "1287352966": {
+        "Name": "Complete Cutscenes",
+        "Hotkeys": []
+    },
+    "1914164600": {
+        "Name": "Unlock CEO/MC Cash Piles",
+        "Hotkeys": []
+    },
+    "129665322": {
+        "Name": "Unlock Trade Prices",
+        "Hotkeys": []
+    },
+    "1951720276": {
+        "Name": "Unlock Hair Cuts",
+        "Hotkeys": []
+    },
+    "1133664955": {
+        "Name": "Unlock Camos",
+        "Hotkeys": []
+    },
+    "3987287340": {
+        "Name": "Unlock Vehicle Mods",
+        "Hotkeys": []
+    },
+    "2421796780": {
+        "Name": "Unlock Seasonal Event Content",
+        "Hotkeys": []
+    },
+    "1280361098": {
+        "Name": "Complete Missions",
+        "Hotkeys": []
+    },
+    "727329774": {
+        "Name": "Unlock Max Abilities",
+        "Hotkeys": []
+    },
+    "3841190552": {
+        "Name": "Give Max Snacks",
+        "Hotkeys": []
+    },
+    "230893831": {
+        "Name": "Give Max Armor",
+        "Hotkeys": []
+    },
+    "3990477818": {
+        "Name": "Character",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "910434283": {
+        "Name": "Character Money",
+        "Values": {
+            "Int": 0
+        },
+        "Hotkeys": []
+    },
+    "2971630954": {
+        "Name": "Set Character Money",
+        "Hotkeys": []
+    },
+    "1742308742": {
+        "Name": "Set Club Membership",
+        "Hotkeys": []
+    },
+    "2585447322": {
+        "Name": "Auto MMI Claim All",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1160306486": {
+        "Name": "Override Roulette",
+        "Values": {
+            "Int": 0,
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3700139916": {
+        "Name": "Override Slot Machines",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "570770408": {
+        "Name": "Override Wheel 1",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "877029482": {
+        "Name": "Override Wheel 2",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1183911167": {
+        "Name": "Override Wheel 3",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2659561405": {
+        "Name": "Override Lucky Wheel",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1057357319": {
+        "Name": "Override Horse Race",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "291349997": {
+        "Name": "Instant Vehicle Delivery",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1554954172": {
+        "Name": "List Hidden Vehicles",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1117206098": {
+        "Name": "Override Blackjack",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2910338337": {
+        "Name": "Unlock DLC Content",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2702385310": {
+        "Name": "Free Shopping",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1627948606": {
+        "Name": "Unlock All Weapons",
+        "Hotkeys": []
+    },
+    "1467226959": {
+        "Name": "Reveal Map",
+        "Hotkeys": []
+    },
+    "2423085190": {
+        "Name": "Win Car Meet Prize Ride",
+        "Hotkeys": []
+    },
+    "3567492133": {
+        "Name": "Unlock All Booty Calls",
+        "Hotkeys": []
+    },
+    "598637670": {
+        "Name": "Unlock All Freemode Missions",
+        "Hotkeys": []
+    },
+    "3493936484": {
+        "Name": "Location",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2462725519": {
+        "Name": "Category",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3780958127": {
+        "Name": "Preview Location",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "3179026214": {
+        "Name": "Map Zoom",
+        "Values": {
+            "Int": 250
+        },
+        "Hotkeys": []
+    },
+    "2005430194": {
+        "Name": "Map Rounding",
+        "Values": {
+            "Int": 255
+        },
+        "Hotkeys": []
+    },
+    "551815784": {
+        "Name": "Map Mini",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1188275673": {
+        "Name": "Teleport",
+        "Hotkeys": []
+    },
+    "3691495476": {
+        "Name": "Teleport All",
+        "Hotkeys": []
+    },
+    "2721468798": {
+        "Name": "Teleport To Waypoint",
+        "Hotkeys": []
+    },
+    "3510401575": {
+        "Name": "Auto Teleport To Waypoint",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2838611190": {
+        "Name": "Teleport To Objective",
+        "Hotkeys": []
+    },
+    "666336599": {
+        "Name": "Teleport To Closest Vehicle",
+        "Hotkeys": []
+    },
+    "1224192105": {
+        "Name": "Teleport Into Closest Vehicle",
+        "Hotkeys": []
+    },
+    "276610903": {
+        "Name": "Teleport To Personal Vehicle",
+        "Hotkeys": []
+    },
+    "3129727358": {
+        "Name": "Teleport Into Personal Vehicle",
+        "Hotkeys": []
+    },
+    "24693643": {
+        "Name": "RID",
+        "Values": {
+            "Int": 12345
+        },
+        "Hotkeys": []
+    },
+    "807534263": {
+        "Name": "Join Rockstar Id",
+        "Hotkeys": []
+    },
+    "1908380245": {
+        "Name": "Join SCTV",
+        "Hotkeys": []
+    },
+    "1744318427": {
+        "Name": "Invite",
+        "Hotkeys": []
+    },
+    "2296637101": {
+        "Name": "Send Friend Request",
+        "Hotkeys": []
+    },
+    "4079723805": {
+        "Name": "Show Profile",
+        "Hotkeys": []
+    },
+    "3583885489": {
+        "Name": "Save Player",
+        "Hotkeys": []
+    },
+    "503433448": {
+        "Name": "Converter Mode",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2563258164": {
+        "Name": "Converter In",
+        "Values": {
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "2627874692": {
+        "Name": "Converter Out",
+        "Values": {
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "3276760136": {
+        "Name": "Convert",
+        "Hotkeys": []
+    },
+    "1418003384": {
+        "Name": "Player Name",
+        "Values": {
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "463146006": {
+        "Name": "Search Results",
+        "ListIndex": -1,
+        "Hotkeys": []
+    },
+    "135319631": {
+        "Name": "Search Player",
+        "Hotkeys": []
+    },
+    "1358100115": {
+        "Name": "Recent Players",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3494434748": {
+        "Name": "Saved Players",
+        "ListIndex": -1,
+        "Hotkeys": []
+    },
+    "3750171181": {
+        "Name": "Friend List",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "930252067": {
+        "Name": "Find Sessions",
+        "Hotkeys": []
+    },
+    "3031388890": {
+        "Name": "Filter Language",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1316745301": {
+        "Name": "Filter Region",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2498350941": {
+        "Name": "Filter Aim Type",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1732123379": {
+        "Name": "Minimum Players",
+        "Values": {
+            "Int": 1
+        },
+        "Hotkeys": []
+    },
+    "2430275197": {
+        "Name": "Maximum Players",
+        "Values": {
+            "Int": 32
+        },
+        "Hotkeys": []
+    },
+    "2472090866": {
+        "Name": "Own Color",
+        "Values": {
+            "R": 153,
+            "G": 50,
+            "B": 204,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "274833558": {
+        "Name": "NPC Color",
+        "Values": {
+            "R": 0,
+            "G": 255,
+            "B": 162,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "3769981046": {
+        "Name": "Cop Color",
+        "Values": {
+            "R": 0,
+            "G": 107,
+            "B": 255,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "309675996": {
+        "Name": "Player Color",
+        "Values": {
+            "R": 255,
+            "G": 0,
+            "B": 0,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "3145842280": {
+        "Name": "Friendly Color",
+        "Values": {
+            "R": 0,
+            "G": 255,
+            "B": 0,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "3256299479": {
+        "Name": "Object Color",
+        "Values": {
+            "R": 64,
+            "G": 224,
+            "B": 208,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "4009972145": {
+        "Name": "On Dead",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2141640003": {
+        "Name": "On NPCs",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3667707830": {
+        "Name": "On Cops",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1409791093": {
+        "Name": "On Players",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1770727076": {
+        "Name": "On Friendly",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2090558941": {
+        "Name": "On Own",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "485704467": {
+        "Name": "On Objects",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3304951047": {
+        "Name": "ESP Distance",
+        "Values": {
+            "Int": 250
+        },
+        "Hotkeys": []
+    },
+    "4019310356": {
+        "Name": "ESP Object Distance",
+        "Values": {
+            "Int": 50
+        },
+        "Hotkeys": []
+    },
+    "1891928612": {
+        "Name": "ESP Box Outline",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2290217718": {
+        "Name": "Draw Bones",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1670465016": {
+        "Name": "Draw Box",
+        "ListIndex": 2,
+        "Hotkeys": []
+    },
+    "91989577": {
+        "Name": "Draw Tracers",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "967947636": {
+        "Name": "Health Bar",
+        "Values": {
+            "R": 0,
+            "G": 255,
+            "B": 162,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "2092913154": {
+        "Name": "Health Bar",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1854896568": {
+        "Name": "Armor Bar",
+        "Values": {
+            "R": 65,
+            "G": 205,
+            "B": 225,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "3666561920": {
+        "Name": "Armor Bar",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2120001061": {
+        "Name": "Name",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4027277184": {
+        "Name": "Weapon",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2195037756": {
+        "Name": "Distance",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2294316928": {
+        "Name": "Player Cam",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2457381324": {
+        "Name": "Bullet Tracers",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3349823786": {
+        "Name": "Tracers Duration",
+        "Values": {
+            "Int": 1750
+        },
+        "Hotkeys": []
+    },
+    "3448015910": {
+        "Name": "Enable Aimbot",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "669277024": {
+        "Name": "Aimbot Key",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2790185552": {
+        "Name": "Smooth Aim",
+        "Values": {
+            "Int": 0
+        },
+        "Hotkeys": []
+    },
+    "4028322853": {
+        "Name": "Target Mode",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3201323910": {
+        "Name": "Target Bone",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "4243041207": {
+        "Name": "Target Switch Delay",
+        "Values": {
+            "Int": 50
+        },
+        "Hotkeys": []
+    },
+    "1105494245": {
+        "Name": "Visible Check",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "2142674441": {
+        "Name": "Bullet Prediction",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "415855969": {
+        "Name": "Frame Prediction",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3628209618": {
+        "Name": "FOV",
+        "Values": {
+            "Int": 20
+        },
+        "Hotkeys": []
+    },
+    "2494577027": {
+        "Name": "Draw FOV",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "630258703": {
+        "Name": "Circle Color",
+        "Values": {
+            "R": 255,
+            "G": 0,
+            "B": 0,
+            "A": 255
+        },
+        "Hotkeys": []
+    },
+    "2149589868": {
+        "Name": "Dead Zone",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1288159949": {
+        "Name": "Dead Zone Radius",
+        "Values": {
+            "Int": 4
+        },
+        "Hotkeys": []
+    },
+    "1293070303": {
+        "Name": "Show Dead Zone",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "685048100": {
+        "Name": "Show Locked On",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1082774211": {
+        "Name": "Silent Bullets",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "148561132": {
+        "Name": "Silent Magic Bullets",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3292112220": {
+        "Name": "Silent FOV",
+        "Values": {
+            "Int": 1
+        },
+        "Hotkeys": []
+    },
+    "1144120726": {
+        "Name": "Draw Silent FOV",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4178550670": {
+        "Name": "Distance",
+        "Values": {
+            "Int": 30
+        },
+        "Hotkeys": []
+    },
+    "2336580540": {
+        "Name": "Auto Distance",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": []
+    },
+    "1045866714": {
+        "Name": "Shoot Dead",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2304369630": {
+        "Name": "Shoot NPCs",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3120357999": {
+        "Name": "Shoot Cops",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2749642178": {
+        "Name": "Shoot Players",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1272811325": {
+        "Name": "Friendly Fire",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "3197310392": {
+        "Name": "Shoot Enemies",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1249784934": {
+        "Name": "Number Plate",
+        "Values": {
+            "String": " 1 KPH  "
+        },
+        "Hotkeys": []
+    },
+    "1878753988": {
+        "Name": "Number Plate",
+        "ListIndex": 1,
+        "Hotkeys": []
+    },
+    "2208718766": {
+        "Name": "Wheel Type",
+        "ListIndex": 7,
+        "Hotkeys": []
+    },
+    "866031942": {
+        "Name": "Wheel Color",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1259447197": {
+        "Name": "Interior Color",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "149786472": {
+        "Name": "Dashboard Color",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1465630097": {
+        "Name": "Tire Smoke",
+        "Values": {
+            "R": 255,
+            "G": 255,
+            "B": 255,
+            "A": 0
+        },
+        "Hotkeys": []
+    },
+    "600025373": {
+        "Name": "Neon Layout##0",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "445486769": {
+        "Name": "Neon Layout##1",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "1067999462": {
+        "Name": "Neon Layout##2",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "895175756": {
+        "Name": "Neon Layout##3",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2505178166": {
+        "Name": "Neon Color",
+        "Values": {
+            "R": 255,
+            "G": 0,
+            "B": 0,
+            "A": 0
+        },
+        "Hotkeys": []
+    },
+    "1906847066": {
+        "Name": "Primary Color Type",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "1578073315": {
+        "Name": "Primary Color",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3384439721": {
+        "Name": "Secondary Color Type",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "539770619": {
+        "Name": "Secondary Color",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2287988605": {
+        "Name": "Custom Primary Color",
+        "Values": {
+            "R": 0,
+            "G": 0,
+            "B": 0,
+            "A": 0
+        },
+        "Hotkeys": []
+    },
+    "391508632": {
+        "Name": "Custom Secondary Color",
+        "Values": {
+            "R": 0,
+            "G": 0,
+            "B": 0,
+            "A": 0
+        },
+        "Hotkeys": []
+    },
+    "4052703776": {
+        "Name": "Tinted Windows",
+        "ListIndex": 1,
+        "Hotkeys": []
+    },
+    "1364587222": {
+        "Name": "Reset Handling",
+        "Hotkeys": []
+    },
+    "1883078435": {
+        "Name": "Reset All Handlings",
+        "Hotkeys": []
+    },
+    "3420219408": {
+        "Name": "Handling Name",
+        "Values": {
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "4173590635": {
+        "Name": "Save Handling",
+        "Hotkeys": []
+    },
+    "1000637477": {
+        "Name": "Handling",
+        "ListIndex": -1,
+        "Hotkeys": []
+    },
+    "4027919386": {
+        "Name": "Load Handling",
+        "Hotkeys": []
+    },
+    "3930768410": {
+        "Name": "Drift Handling Mode",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4271470332": {
+        "Name": "Deluxo Handling Mode",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4262495940": {
+        "Name": "MK2 Handling Mode",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "929589290": {
+        "Name": "Sub Handling",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "39266370": {
+        "Name": "RenderSubHandlingOptions",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "3823043923": {
+        "Name": "Teleport Name",
+        "Values": {
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "1461566178": {
+        "Name": "Save Teleport",
+        "Hotkeys": []
+    },
+    "3824279268": {
+        "Name": "Teleport",
+        "ListIndex": -1,
+        "Hotkeys": []
+    },
+    "1933463185": {
+        "Name": "Teleport",
+        "Hotkeys": []
+    },
+    "4278870756": {
+        "Name": "Teleport All",
+        "Hotkeys": []
+    },
+    "4262170726": {
+        "Name": "Blackhole",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "364605919": {
+        "Name": "Blackhole Texture",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2157294818": {
+        "Name": "Follow Player",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "4150878202": {
+        "Name": "Radius",
+        "Values": {
+            "Int": 100
+        },
+        "Hotkeys": []
+    },
+    "2957728274": {
+        "Name": "Force",
+        "Values": {
+            "Int": 10
+        },
+        "Hotkeys": []
+    },
+    "2171914526": {
+        "Name": "Beyblade Vehicle",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "357184495": {
+        "Name": "Toggle GUI",
+        "Values": {
+            "Bool": true
+        },
+        "Hotkeys": [
+            35
+        ]
+    },
+    "3969542842": {
+        "Name": "Resize To Win DPI",
+        "Values": {
+            "Bool": false
+        },
+        "Hotkeys": []
+    },
+    "2698752027": {
+        "Name": "Scale Factor",
+        "Values": {
+            "Float": 1.0
+        },
+        "Hotkeys": []
+    },
+    "1936652265": {
+        "Name": "Switch To Click GUI",
+        "Hotkeys": []
+    },
+    "415691048": {
+        "Name": "Switch To List GUI",
+        "Hotkeys": []
+    },
+    "3643566995": {
+        "Name": "GUI Mode",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3453159549": {
+        "Name": "Tab Bar Colors",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "1926079132": {
+        "Name": "Title Bar Colors",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "2244852379": {
+        "Name": "Child Title Bar Colors",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "3195111685": {
+        "Name": "Combo Colors",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "2819081200": {
+        "Name": "Other Colors",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "1335697615": {
+        "Name": "Click GUI Colors",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "3318377278": {
+        "Name": "Click Gui Style",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "3616668960": {
+        "Name": "Toast Options",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "3861825346": {
+        "Name": "Toast Colors",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "3578289549": {
+        "Name": "Themes",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "2958805088": {
+        "Name": "Load Theme",
+        "Hotkeys": []
+    },
+    "2155460210": {
+        "Name": "Theme Name",
+        "Values": {
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "944477223": {
+        "Name": "Save Theme",
+        "Hotkeys": []
+    },
+    "4287709965": {
+        "Name": "Open Folder",
+        "Hotkeys": []
+    },
+    "1803885336": {
+        "Name": "Themes",
+        "ListIndex": 0,
+        "Hotkeys": []
+    },
+    "3593947329": {
+        "Name": "Load Theme",
+        "Hotkeys": []
+    },
+    "993840690": {
+        "Name": "Theme Name",
+        "Values": {
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "893374678": {
+        "Name": "Save Theme",
+        "Hotkeys": []
+    },
+    "1036068781": {
+        "Name": "Open Folder",
+        "Hotkeys": []
+    },
+    "4162538712": {
+        "Name": "List GUI Sizes",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "2388304704": {
+        "Name": "Header Colors",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "933473015": {
+        "Name": "Option Bar Colors",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "365516946": {
+        "Name": "Selection Colors",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "3179738906": {
+        "Name": "Selectable Active Colors",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "3110212117": {
+        "Name": "Checkmark Background Colors",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "1942635790": {
+        "Name": "Checkmark Checked Colors",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "2274369335": {
+        "Name": "Scrollbar Background Colors",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "1769418206": {
+        "Name": "Scrollbar Colors",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "3826402517": {
+        "Name": "Description Seperator Colors",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    },
+    "2130336131": {
+        "Name": "Other List GUI Colors",
+        "Values": {
+            "Bool": false,
+            "Int": 0,
+            "Float": 0.0,
+            "String": ""
+        },
+        "Hotkeys": []
+    }
+}

@@ -1,0 +1,54 @@
+Model: dominator8
+Plate Style: 1
+Plate Text:  0 MPH  
+Primary Colour: 111
+Secondary Colour: 0
+Pearl Colour: 35
+Wheel Colour: 160
+Wheel Type: 9
+Spoiler: 3
+Front Bumper: 2
+Rear Bumper: 5
+Sideskirt: 6
+Exhaust: 6
+Chassis: 2
+Grille: 2
+Hood: 15
+Fender: 4
+Roof: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 45
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 93
+Vanity Plates: 6
+Trim: 2
+Door Speaker: 14
+Steering Wheel: 15
+Engine Block: 5
+Air Filter: 14
+Struts: 6
+Arch Cover: 2
+Aerials: 5
+Tank: 2
+Livery: 13
+Tyre Smoke Colour: #8466e2
+Window Tint: 1
+Custom Primary Colour: #2d00ff
+Custom Secondary Colour: #2d00ff
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 134
+Dashboard Colour: 70
+Tyres Mode: 1

@@ -1,0 +1,41 @@
+Model: blimp3
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 40
+Secondary Colour: 44
+Pearl Colour: 0
+Wheel Colour: 0
+Wheel Type: 0
+Front Bumper: 2
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 50
+Livery: 20
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: Yes
+Extra 3: Yes
+Extra 4: Yes
+Extra 5: Yes
+Extra 6: Yes
+Extra 7: Yes
+Extra 8: Yes
+Extra 9: Yes
+Extra 10: Yes
+Extra 12: Yes
+Extra 13: Yes

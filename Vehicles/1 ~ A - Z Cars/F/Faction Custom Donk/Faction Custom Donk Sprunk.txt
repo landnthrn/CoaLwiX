@@ -1,0 +1,50 @@
+Model: faction3
+Plate Style: 12
+Plate Text:  0 MPH  
+Primary Colour: 112
+Secondary Colour: 53
+Pearl Colour: 0
+Wheel Colour: 125
+Wheel Type: 8
+Exhaust: 2
+Hood: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 5
+Front Wheels: 89
+Back Wheels: 0
+Plate Holder: 0
+Vanity Plates: 0
+Trim: 1
+Ornaments: 8
+Dial: 3
+Steering Wheel: 9
+Shifter Leavers: 9
+Plaques: 17
+Speakers: 2
+Trunk: 7
+Engine Block: 4
+Air Filter: 5
+Livery: 6
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #00ff6e
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 132
+Tyres Mode: 1
+Extra 2: Yes
+Extra 3: No

@@ -1,0 +1,44 @@
+Model: paragon2
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 13
+Secondary Colour: 13
+Pearl Colour: 0
+Wheel Colour: 13
+Wheel Type: 0
+Spoiler: 4
+Front Bumper: 8
+Rear Bumper: 3
+Sideskirt: 3
+Exhaust: 5
+Chassis: 6
+Grille: 5
+Hood: 10
+Fender: 2
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 58
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 50
+Livery: 12
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 13
+Dashboard Colour: 111
+Tyres Mode: 1

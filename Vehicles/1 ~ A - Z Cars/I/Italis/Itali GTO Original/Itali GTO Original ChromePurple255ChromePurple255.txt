@@ -1,0 +1,44 @@
+Model: italigto
+Plate Style: 10
+Plate Text:  0 MPH  
+Primary Colour: 120
+Secondary Colour: 120
+Pearl Colour: 111
+Wheel Colour: 148
+Wheel Type: 8
+Spoiler: 1
+Front Bumper: 9
+Rear Bumper: 4
+Sideskirt: 3
+Exhaust: 5
+Chassis: 1
+Grille: 3
+Hood: 9
+Fender: 2
+Roof: 8
+Engine: 4
+Brakes: 3
+Transmission: 4
+Horns: 41
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 13
+Front Wheels: 119
+Livery: 0
+Tyre Smoke Colour: #7800ff
+Window Tint: 1
+Custom Primary Colour: #5000ff
+Custom Secondary Colour: #5000ff
+Neon Colour: #3c00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 148
+Dashboard Colour: 134
+Tyres Mode: 1

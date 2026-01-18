@@ -1,0 +1,207 @@
+-- Translation lib by Hexarobi with the template part from Jerryscript modified by acjoker8818
+
+local translations = {}
+Lang = {}
+Lang.Version = "0.38.0"
+Template = false
+
+translations.current_translations = {}
+translations.missing_translations = {}
+local LANG_STRING_NOT_FOUND = "/!\\ STRING NOT FOUND /!\\"
+
+local LANG_DIR = filesystem.resources_dir() .. 'AcjokerScript\\Modules\\Languages\\'
+
+
+function T(text)
+    if type(Hexarobi_translate) == "function" then
+        return Hexarobi_translate(text)
+    else
+        return text
+    end
+end
+
+function Hexarobi_translate(text)
+    local translated_string = translations.current_translations[text]
+    if translated_string ~= nil and translated_string ~= LANG_STRING_NOT_FOUND then
+        --debug_log("Found local translation for '"..text.."'")
+        return translated_string
+    end
+    local label_id = lang.find(text, "en")
+    if label_id then
+        --debug_log("Found global translation for '"..text.."'")
+        translated_string = lang.get_string(label_id, lang.get_current())
+        if translated_string ~= LANG_STRING_NOT_FOUND then
+            return translated_string
+        end
+    else
+        --debug_log("Missing translation: "..text)
+        translations.missing_translations[text] = text
+    end
+    return text
+end
+
+function EndTranslate()
+    util.toast('closed')
+    local  f = assert(io.open(LANG_DIR .. 'template.lua', 'a+'))
+    f:write('\n }')
+    f:close()
+end
+
+function Str_trans(str)
+    return lang.get_string(Hexarobi_translate(str), lang.get_current())
+end
+
+
+if Template then --credits to Jerry123
+
+    if not filesystem.exists(LANG_DIR .. 'template.lua') then
+        local f = assert(io.open(LANG_DIR .. 'template.lua', 'a'))
+        f:write('translations.lang[""] = --insert lang code here e.x. fr en or de \n\n {} \n' )
+        
+        f:close()
+    end
+    local complete_txt = {}
+    function Hexarobi_translate(txt)
+        if txt == nil or #txt < 1 then return '' end
+       local regis = lang.find_builtin(txt)
+        if regis ~= 0 then
+            return lang.register(txt)
+        end
+       
+        for complete_txt as text do
+            if txt == text then
+                return text
+            end
+        end
+
+        table.insert(complete_txt, txt)
+            local label = lang.find(txt, 'en')
+                f = assert(io.open(LANG_DIR .. 'template.lua', 'a'))
+                local fileTxt = string.gsub(txt, '\'', '\\\'')
+                fileTxt = string.gsub(fileTxt, '\n', '\\n')
+                fileTxt = string.gsub(fileTxt, '\\\\', '\\')
+                f:write('[\''.. fileTxt ..'\'] = \"\",' ..'\n')
+                f:close()
+                label = lang.register(txt)
+        return label
+    end
+
+    local registeredStrings = {}
+    function ReadAll(file)
+        local f = assert(io.open(file, 'rb'))
+        local content = f:read('*all')
+        f:close()
+        return content
+    end
+
+   local script = filesystem.scripts_dir() ..'AcjokerScript.pluto'
+   local script_file = ReadAll(script)
+
+    for _text in string.gmatch(script_file, 'Str_trans%(.-%)') do
+        local text = _text
+        text = string.gsub(text, 'Str_trans%(.', '')
+        text = string.gsub(text, '\'%)', '')
+        text = string.gsub(text, '"%)', '')
+        text = string.gsub(text, '\\\'', '\'')
+        text = string.gsub(text, '\\"', '\"')
+        text = string.gsub(text, '\\\n', '\n')
+        if registeredStrings[text] == nil then
+            registeredStrings[text] = true
+            Hexarobi_translate(text)
+        end
+    end
+    local modulesdir = filesystem.resources_dir() ..'AcjokerScript\\Modules\\'
+    local Modules = filesystem.list_files(modulesdir)
+    for Modules as module do
+        if filesystem.is_regular_file(module) then
+           local mod = modulesdir..module
+           print(mod..'module')
+           local mod_file = ReadAll(module)
+
+            for _text in string.gmatch(mod_file, 'Str_trans%(.-%)') do
+                local text = _text
+                text = string.gsub(text, 'Str_trans%(.', '')
+                text = string.gsub(text, '\'%)', '')
+                text = string.gsub(text, '"%)', '')
+                text = string.gsub(text, '\\\'', '\'')
+                text = string.gsub(text, '\\"', '\"')
+                text = string.gsub(text, '\\\n', '\n')
+                if registeredStrings[text] == nil then
+                    registeredStrings[text] = true
+                    Hexarobi_translate(text)
+                end
+            end
+        end
+    end
+
+
+end
+
+
+
+translations.inject_custom_translations = function()
+    for lang_id, language_key in pairs(translations.GAME_LANGUAGE_IDS) do
+        if translations.lang[lang_id] ~= nil then
+            --debug_log("Processing translations language "..lang_id)
+            lang.set_translate(lang_id)
+            for english_string, translated_string in pairs(translations.lang[lang_id]) do
+                local label_id = lang.find(english_string, "en")
+                --debug_log("Found label for '"..english_string.."' as label "..label_id)
+                if (not label_id) or label_id == 0 then
+                    label_id = lang.register(english_string)
+                    --debug_log("Registered '"..english_string.."' as label "..label_id)
+                end
+                local existing_translation = lang.get_string(label_id, lang_id)
+                if (not existing_translation) or existing_translation == english_string or existing_translation == LANG_STRING_NOT_FOUND then
+                    --debug_log("Adding translation for "..lang_id.." '"..english_string.."' ["..label_id.."] as '"..translated_string.."'  Existing translation: '"..existing_translation.."'")
+                    if label_id > 0 then
+                        local translate_status, translate_response = pcall(lang.translate, label_id, translated_string)
+                        if not translate_status then
+                           -- debug_log("Failed to add translation '"..english_string.."' as label "..label_id)
+                        end
+                    else
+                        --debug_log("Cannot translate internal label")
+                    end
+                    if lang_id == lang.get_current() then
+                        translations.current_translations[english_string] = translated_string
+                    end
+                else
+                    --debug_log("Found translation for "..lang_id.." '"..english_string.."' ["..label_id.."] as '"..existing_translation.."'")
+                end
+            end
+        end
+    end
+end
+
+
+translations.GAME_LANGUAGE_IDS = {
+    ["en"] = "en-US",
+    ["fr"] = "fr-FR",
+    ["de"] = "de-DE",
+    ["it"] = "it-IT",
+    ["es"] = "es-ES",
+    ["pt"] = "pt-BR",
+    ["pl"] = "pl-PL",
+    ["ru"] = "ru-RU",
+    ["ko"] = "ko-KR",
+    ["zh"] = "zh-TW",
+    ["ja"] = "ja-JP",
+    ["lt"] = "lt-LT"
+}
+
+translations.lang = {}
+
+local cur_lang = lang.get_current()
+if cur_lang != 'en' then
+    local status, lang = pcall(require, 'resources\\AcjokerScript\\Languages\\'..cur_lang)
+    if not status then print(lang)
+        return 
+    else 
+        translations.lang[cur_lang] = require('resources\\AcjokerScript\\Languages\\'..cur_lang)
+    end
+end
+
+
+translations.inject_custom_translations()
+return translations
+

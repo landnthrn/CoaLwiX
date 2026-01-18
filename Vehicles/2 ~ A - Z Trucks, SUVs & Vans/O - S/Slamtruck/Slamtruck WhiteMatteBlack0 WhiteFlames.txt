@@ -1,0 +1,40 @@
+Model: slamtruck
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 131
+Secondary Colour: 12
+Pearl Colour: 0
+Wheel Colour: 134
+Wheel Type: 8
+Front Bumper: 7
+Sideskirt: 3
+Exhaust: 3
+Grille: 9
+Hood: 4
+Right Fender: 8
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 14
+Front Wheels: 122
+Back Wheels: 0
+Livery: 15
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #fcf9f1
+Custom Secondary Colour: #000000
+Neon Colour: #ffffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 0
+Tyres Mode: 1

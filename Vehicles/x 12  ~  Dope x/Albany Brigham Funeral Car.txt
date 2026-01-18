@@ -1,0 +1,45 @@
+Model: brigham
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 71
+Secondary Colour: 145
+Pearl Colour: 145
+Wheel Colour: 156
+Wheel Type: 7
+Spoiler: 5
+Front Bumper: 3
+Rear Bumper: 6
+Sideskirt: 1
+Exhaust: 6
+Chassis: 0
+Grille: 9
+Hood: 14
+Fender: 2
+Right Fender: 0
+Roof: 12
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 12
+Suspension: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 1
+Front Wheels: 0
+Livery: 10
+Tyre Smoke Colour: #8466e2
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 0
+Tyres Mode: 1

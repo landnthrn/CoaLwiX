@@ -1,0 +1,46 @@
+Model: driftfr36
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 120
+Secondary Colour: 120
+Pearl Colour: 92
+Wheel Colour: 0
+Wheel Type: 9
+Spoiler: 17
+Front Bumper: 2
+Rear Bumper: 16
+Sideskirt: 15
+Exhaust: 8
+Chassis: 2
+Grille: 4
+Hood: 5
+Fender: 7
+Right Fender: 4
+Roof: 15
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 5
+Front Wheels: 124
+Ornaments: 3
+Livery: 0
+Tyre Smoke Colour: #00ffb1
+Window Tint: 1
+Custom Primary Colour: #48f5bb
+Custom Secondary Colour: #558e5e
+Neon Colour: #01ffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 158
+Dashboard Colour: 158
+Tyres Mode: 1

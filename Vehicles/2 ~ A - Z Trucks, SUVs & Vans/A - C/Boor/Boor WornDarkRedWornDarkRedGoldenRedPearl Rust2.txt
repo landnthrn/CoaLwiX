@@ -1,0 +1,41 @@
+Model: boor
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 12
+Pearl Colour: 47
+Wheel Colour: 134
+Wheel Type: 8
+Spoiler: 0
+Front Bumper: 6
+Rear Bumper: 7
+Exhaust: 4
+Hood: 8
+Fender: 2
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 9
+Front Wheels: 110
+Livery: 12
+Tyre Smoke Colour: #992513
+Window Tint: 1
+Custom Primary Colour: #210804
+Custom Secondary Colour: #210804
+Neon Colour: #c12f19
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 8
+Dashboard Colour: 83
+Tyres Mode: 1

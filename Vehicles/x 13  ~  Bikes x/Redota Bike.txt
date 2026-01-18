@@ -1,0 +1,39 @@
+Model: manchez2
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 118
+Secondary Colour: 12
+Pearl Colour: 0
+Wheel Colour: 156
+Wheel Type: 6
+Spoiler: 0
+Front Bumper: 1
+Exhaust: 0
+Chassis: 0
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 9
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 0
+Front Wheels: 37
+Back Wheels: 0
+Livery: 0
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #ff0a45
+Custom Secondary Colour: #ff0a45
+Neon Colour: #000000
+Neon Front: No
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 1
+Dashboard Colour: 132
+Tyres Mode: 1

@@ -1,0 +1,124 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Co-Loading is having two menu's injected at the same time
+
+The purpose of Co-Loading another menu with Stand + CoaLwiX is because as of now and probably for good Stand doesn't work in Public Sessions, 
+plus no friend's can join your Invite Only's without error.
+
+So long as your other non-bypass menu your using to Co-Load Stand with can do whatever Stand can't do anymore, then it will handle all that instead. 
+Allowing you to use Stand + CoaLwiX on the side, even in Public's and so on. 
+
+Co-Loader Menu + Stand + CoaLwiX  
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+IMPORTANT INFO :
+Co-Loading isn't entirely perfect, it may come with some bugs. Stand has built in Co-Loading properties, and CoaLwiX has updated for it. 
+Things still change overtime through game/menu updates so keep up to date in the CoaLwiX Discord.
+
+It is important to note that there are some Construct spawns hanging around that no longer spawn correctly with Co-Loading.
+These are mainly just a few of the real hardcore spawns, but others as well.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HOW TO CO-LOAD WITH STAND + COALWIX :
+
+~~~~~~~~~~~~
+
+*The process of Co-Loading may differ across different menus, plus not all may not be compatible, especially with menu's that have BE bypass*
+
+~~~~~~~~~~~~
+
+Whatever you may be using to Co-Load Stand with, the process should work one of these ways :
+
+*ITS RECOMMENDED TO KEEP STAND AUTO INJECT DISABLED FOR CO-LOADING SO YOU HAVE MORE CONTROL*
+
+~~~~~~~~~~~~
+
+METHOD #1
+With the other menu you're using that isn't Stand, use that to launch first/inject first 
+
+Once in the start menu (where you choose from Online or Storymode), Either inject Stand then or load into StoryMode and then inject Stand
+**Always first load into StoryMode before loading Online**
+
+~~~~~~~~~~~~
+
+METHOD #2
+If you have issues & errors then try loading it the other way around from Method #1 ^^^
+
+~~~~~~~~~~~~
+
+METHOD #3 (Best for co-loading Yim + Stand)
+Inject the co-loader menu first, use it to create a session, once online in the session then inject Stand. 
+
+~~~~~~~~~~~~
+
+METHOD #4
+If you're still having trouble, the issue may be that you haven't previously initially launched with one or possibly two of the menu's your using to Co-Load with.
+Meaning in some cases you should launch the menu's on their own first if you haven't before. 
+Some menu's don't install their full assets unless launched alone first with no Co-Load
+
+Once you've done that properly try Co-Loading them again starting with Method #1, #2, then #3
+
+~~~~~~~~~~~~
+
+IMPORTANT INFO:
+— For some of these methods it may be best to use FSL with the co-load setup, latest version of course
+https://www.unknowncheats.me/forum/grand-theft-auto-v/616977-fsl-local-gtao-saves.html
+
+— For some of these methods it may be best to wait until your lobby is full with Player Magnet then inject Stand
+If you're doing a invite only with friend's it may be best to inject Stand after your friends make it in the session
+
+~~~~~~~~~~~~
+
+IF NONE OF THESE METHODS WORK:
+Some menu's may not work to be Co-Loaded with Stand, if you've followed all the methods correctly with no success you may be out of luck.
+Of course feel free to do any sort of problem solving tests of your own but the methods stated above are likely the only options. 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can ask questions and get support on CoaLwiX Discord:
+
+https://discord.gg/J6jWpru9nS
+
+If the link is expired add @landn.thrn on Discord 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Find more of my creations on Github:
+https://github.com/landnthrn?tab=repositories
+
+Support me on Buy Me a Coffee
+https://buymeacoffee.com/landn.thrn
+
+Paypal Donation:
+https://www.paypal.com/donate/?hosted_button_id=K4PLHFVBH7X8C
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The purpose of keeping this backup of the Profiles is because it's too easy to accidentally hit Save instead of Load in the menu and only way to fix it is by replacing the Profile with the backup version.
+
+DON'T DRAG THESE FILES INTO STAND PROFILES, ONLY COPY THEM OVER. So that a copy of all of them are stil saved here in the CoaLwiX Package.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HOW TO INSTALL PROFILES:
+
+Everyone has their own preferences so there are different alterations for all the profiles for you to choose from, once you picked your preference (can always change it later)
+
+Open Stand Launchpad and click Open Stand Folder
+
+Drag or Copy the contents from inside the type of profiles you want to use, into the Stand Profiles Folder
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,0 +1,1145 @@
+{
+    "craftlab": [
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": 1.4901161193847656e-08,
+                    "roll": 129.6998291015625,
+                    "x": 0.0,
+                    "y": 6.699995994567871,
+                    "yaw": 90.0,
+                    "z": 5.6999969482421875
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3287988974,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.0020751953125,
+                    "pos_y": -3038.13134765625,
+                    "pos_z": 19.341888427734375,
+                    "rot_pitch": -0.0018486266490072012,
+                    "rot_roll": 129.6941375732422,
+                    "rot_yaw": 89.94778442382813
+                },
+                "string_name": "stt_prop_track_speedup",
+                "type": 5,
+                "unique_number": 1142877101,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": 35.0,
+                    "roll": 0.0,
+                    "x": -7.450580596923828e-08,
+                    "y": 6.299996376037598,
+                    "yaw": 0.0,
+                    "z": 5.899996757507324
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3233397978,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.0025634765625,
+                    "pos_y": -3038.531494140625,
+                    "pos_z": 19.54184913635254,
+                    "rot_pitch": 35.00568771362305,
+                    "rot_roll": -0.0022589697036892176,
+                    "rot_yaw": -0.05091479420661926
+                },
+                "string_name": "lts_prop_lts_ramp_02",
+                "type": 5,
+                "unique_number": 2134356430,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "additional_data": {
+                    "health": 1000
+                },
+                "alpha_level": 255,
+                "collision": true,
+                "dynamic": true,
+                "freeze": false,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": false,
+                "model": 562680400,
+                "placement": {
+                    "pos_x": -1363.008056640625,
+                    "pos_y": -3044.830810546875,
+                    "pos_z": 13.64119815826416,
+                    "rot_pitch": 0.0056887404061853886,
+                    "rot_roll": -0.0018503079190850258,
+                    "rot_yaw": -0.0522104874253273
+                },
+                "string_name": "APC",
+                "type": 3,
+                "unique_number": 1940543718,
+                "vehicle_data": {
+                    "brake_lights": false,
+                    "dashboard_color": 0,
+                    "dirt_level": 0.0,
+                    "doors": {
+                        "is_broken_0": false,
+                        "is_broken_1": false,
+                        "is_broken_2": false,
+                        "is_broken_3": false,
+                        "is_broken_4": false,
+                        "is_broken_5": false,
+                        "is_broken_6": false
+                    },
+                    "enveff_scale": 0.5803921818733215,
+                    "extras": {
+                        "exist_0": false,
+                        "exist_1": false,
+                        "exist_10": false,
+                        "exist_11": false,
+                        "exist_12": false,
+                        "exist_13": false,
+                        "exist_14": false,
+                        "exist_15": false,
+                        "exist_16": false,
+                        "exist_17": false,
+                        "exist_18": false,
+                        "exist_19": false,
+                        "exist_2": false,
+                        "exist_20": false,
+                        "exist_21": false,
+                        "exist_22": false,
+                        "exist_23": false,
+                        "exist_24": false,
+                        "exist_25": false,
+                        "exist_26": false,
+                        "exist_27": false,
+                        "exist_28": false,
+                        "exist_29": false,
+                        "exist_3": false,
+                        "exist_30": false,
+                        "exist_31": false,
+                        "exist_32": false,
+                        "exist_33": false,
+                        "exist_34": false,
+                        "exist_35": false,
+                        "exist_36": false,
+                        "exist_37": false,
+                        "exist_38": false,
+                        "exist_39": false,
+                        "exist_4": false,
+                        "exist_40": false,
+                        "exist_41": false,
+                        "exist_42": false,
+                        "exist_43": false,
+                        "exist_44": false,
+                        "exist_45": false,
+                        "exist_46": false,
+                        "exist_47": false,
+                        "exist_48": false,
+                        "exist_49": false,
+                        "exist_5": false,
+                        "exist_50": false,
+                        "exist_51": false,
+                        "exist_52": false,
+                        "exist_53": false,
+                        "exist_54": false,
+                        "exist_55": false,
+                        "exist_56": false,
+                        "exist_57": false,
+                        "exist_58": false,
+                        "exist_59": false,
+                        "exist_6": false,
+                        "exist_60": false,
+                        "exist_7": false,
+                        "exist_8": false,
+                        "exist_9": false
+                    },
+                    "headlight_color": 255,
+                    "headlight_multiplier": 1.0,
+                    "heli": {
+                        "is_heli": false
+                    },
+                    "indicator_lights": 1,
+                    "interior_color": 0,
+                    "interior_light": false,
+                    "is_convertible": false,
+                    "is_custom_primary_color": false,
+                    "is_custom_secondary_color": false,
+                    "is_engine_running": true,
+                    "is_locked": false,
+                    "is_windscreen_detached": false,
+                    "light_state": 0,
+                    "livery": -277,
+                    "mod_slot": {
+                        "mod_index_0": -1,
+                        "mod_index_1": -1,
+                        "mod_index_10": -1,
+                        "mod_index_11": 3,
+                        "mod_index_12": 2,
+                        "mod_index_13": 2,
+                        "mod_index_14": 46,
+                        "mod_index_15": -1,
+                        "mod_index_16": 4,
+                        "mod_index_2": -1,
+                        "mod_index_23": -1,
+                        "mod_index_24": -1,
+                        "mod_index_25": -1,
+                        "mod_index_26": -1,
+                        "mod_index_27": -1,
+                        "mod_index_28": -1,
+                        "mod_index_29": -1,
+                        "mod_index_3": -1,
+                        "mod_index_30": -1,
+                        "mod_index_31": -1,
+                        "mod_index_32": -1,
+                        "mod_index_33": -1,
+                        "mod_index_34": -1,
+                        "mod_index_35": -1,
+                        "mod_index_36": -1,
+                        "mod_index_37": -1,
+                        "mod_index_38": -1,
+                        "mod_index_39": -1,
+                        "mod_index_4": -1,
+                        "mod_index_40": -1,
+                        "mod_index_41": -1,
+                        "mod_index_42": -1,
+                        "mod_index_43": -1,
+                        "mod_index_44": -1,
+                        "mod_index_45": -1,
+                        "mod_index_46": -1,
+                        "mod_index_47": -1,
+                        "mod_index_48": -1,
+                        "mod_index_5": -1,
+                        "mod_index_6": -1,
+                        "mod_index_7": -1,
+                        "mod_index_8": -1,
+                        "mod_index_9": -1,
+                        "mod_toggle_17": false,
+                        "mod_toggle_18": false,
+                        "mod_toggle_19": false,
+                        "mod_toggle_20": false,
+                        "mod_toggle_21": false,
+                        "mod_toggle_22": false,
+                        "mod_variation_0": 0,
+                        "mod_variation_1": 0,
+                        "mod_variation_10": 0,
+                        "mod_variation_11": 0,
+                        "mod_variation_12": 0,
+                        "mod_variation_13": 0,
+                        "mod_variation_14": 0,
+                        "mod_variation_15": 0,
+                        "mod_variation_16": 0,
+                        "mod_variation_2": 0,
+                        "mod_variation_23": 0,
+                        "mod_variation_24": 0,
+                        "mod_variation_25": 0,
+                        "mod_variation_26": 0,
+                        "mod_variation_27": 0,
+                        "mod_variation_28": 0,
+                        "mod_variation_29": 0,
+                        "mod_variation_3": 0,
+                        "mod_variation_30": 0,
+                        "mod_variation_31": 0,
+                        "mod_variation_32": 0,
+                        "mod_variation_33": 0,
+                        "mod_variation_34": 0,
+                        "mod_variation_35": 0,
+                        "mod_variation_36": 0,
+                        "mod_variation_37": 0,
+                        "mod_variation_38": 0,
+                        "mod_variation_39": 0,
+                        "mod_variation_4": 0,
+                        "mod_variation_40": 0,
+                        "mod_variation_41": 0,
+                        "mod_variation_42": 0,
+                        "mod_variation_43": 0,
+                        "mod_variation_44": 0,
+                        "mod_variation_45": 0,
+                        "mod_variation_46": 0,
+                        "mod_variation_47": 0,
+                        "mod_variation_48": 0,
+                        "mod_variation_5": 0,
+                        "mod_variation_6": 0,
+                        "mod_variation_7": 0,
+                        "mod_variation_8": 0,
+                        "mod_variation_9": 0
+                    },
+                    "neon": {
+                        "is_enabled_0": false,
+                        "is_enabled_1": false,
+                        "is_enabled_2": false,
+                        "is_enabled_3": false
+                    },
+                    "number_plate_text": "07JHU766",
+                    "number_plate_text_index": 0,
+                    "pearl_color": 3,
+                    "primary_colour": 11,
+                    "rgb_colors": {
+                        "custom_primary_colour_b": 16,
+                        "custom_primary_colour_g": 17,
+                        "custom_primary_colour_r": 18,
+                        "custom_secondary_colour_b": 16,
+                        "custom_secondary_colour_g": 17,
+                        "custom_secondary_colour_r": 18,
+                        "neon_lights_colour_b": 255,
+                        "neon_lights_colour_g": 0,
+                        "neon_lights_colour_r": 255,
+                        "tyre_smoke_colour_b": 255,
+                        "tyre_smoke_colour_g": 255,
+                        "tyre_smoke_colour_r": 255
+                    },
+                    "roof_state": 0,
+                    "scorched_render": false,
+                    "secondary_colour": 11,
+                    "siren_light": false,
+                    "tyres": {
+                        "is_burst_left_front": false,
+                        "is_burst_left_mid": false,
+                        "is_burst_left_mid6": false,
+                        "is_burst_left_rear": false,
+                        "is_burst_right_front": false,
+                        "is_burst_right_mid": false,
+                        "is_burst_right_mid6": false,
+                        "is_burst_right_rear": false
+                    },
+                    "tyres_can_burst": false,
+                    "wheel_color": 0,
+                    "wheel_type": 0,
+                    "window_tint": -1,
+                    "windows": {
+                        "is_deleted_left_front": false,
+                        "is_deleted_left_rear": false,
+                        "is_deleted_right_front": false,
+                        "is_deleted_right_rear": false
+                    }
+                },
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": 0.0,
+                    "roll": 0.0,
+                    "x": -3.699998617172241,
+                    "y": -5.999996662139893,
+                    "yaw": 0.0,
+                    "z": 14.800020217895508
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3291218330,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1366.7139892578125,
+                    "pos_y": -3050.828857421875,
+                    "pos_z": 28.440528869628906,
+                    "rot_pitch": 0.0056887404061853886,
+                    "rot_roll": -0.0018503079190850258,
+                    "rot_yaw": -0.0522104874253273
+                },
+                "string_name": "prop_ld_ferris_wheel",
+                "type": 5,
+                "unique_number": 1105019519,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": 0.0,
+                    "roll": 0.0,
+                    "x": 3.699998617172241,
+                    "y": -5.999996662139893,
+                    "yaw": 0.0,
+                    "z": 14.800020217895508
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3291218330,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1359.31396484375,
+                    "pos_y": -3050.835693359375,
+                    "pos_z": 28.44076919555664,
+                    "rot_pitch": 0.0056887404061853886,
+                    "rot_roll": -0.0018503079190850258,
+                    "rot_yaw": -0.0522104874253273
+                },
+                "string_name": "prop_ld_ferris_wheel",
+                "type": 5,
+                "unique_number": 554785761,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": 0.0,
+                    "roll": 0.0,
+                    "x": 0.0,
+                    "y": -8.099994659423828,
+                    "yaw": 0.0,
+                    "z": -0.20000001788139343
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3159768674,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.015380859375,
+                    "pos_y": -3052.9306640625,
+                    "pos_z": 13.440423011779785,
+                    "rot_pitch": 0.0056887404061853886,
+                    "rot_roll": -0.0018503079190850258,
+                    "rot_yaw": -0.0522104874253273
+                },
+                "string_name": "prop_mp_ramp_02_tu",
+                "type": 5,
+                "unique_number": 1704892396,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": 0.0,
+                    "roll": 0.0,
+                    "x": 0.0,
+                    "y": -2.9999992847442627,
+                    "yaw": 0.0,
+                    "z": 1.2000001668930054
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3233397978,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.0108642578125,
+                    "pos_y": -3047.830810546875,
+                    "pos_z": 14.84092903137207,
+                    "rot_pitch": 0.0056887404061853886,
+                    "rot_roll": -0.0018503079190850258,
+                    "rot_yaw": -0.0522104874253273
+                },
+                "string_name": "lts_prop_lts_ramp_02",
+                "type": 5,
+                "unique_number": 543226440,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": 8.299995422363281,
+                    "roll": 0.0,
+                    "x": 1.4901161193847656e-08,
+                    "y": 2.299999952316284,
+                    "yaw": 0.0,
+                    "z": 2.9999992847442627
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3233397978,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.006103515625,
+                    "pos_y": -3042.531005859375,
+                    "pos_z": 16.641454696655273,
+                    "rot_pitch": 8.305684089660645,
+                    "rot_roll": -0.0018699211068451405,
+                    "rot_yaw": -0.05194055289030075
+                },
+                "string_name": "lts_prop_lts_ramp_02",
+                "type": 5,
+                "unique_number": 1900157308,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": 61.099754333496094,
+                    "roll": 0.0,
+                    "x": 0.0,
+                    "y": 8.89999771118164,
+                    "yaw": 0.0,
+                    "z": 10.700004577636719
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3233397978,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.000244140625,
+                    "pos_y": -3035.931884765625,
+                    "pos_z": 24.342113494873047,
+                    "rot_pitch": 61.10544967651367,
+                    "rot_roll": -0.003829281311482191,
+                    "rot_yaw": -0.048858094960451126
+                },
+                "string_name": "lts_prop_lts_ramp_02",
+                "type": 5,
+                "unique_number": 1283918199,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": 85.1000747680664,
+                    "roll": 0.0,
+                    "x": 0.0,
+                    "y": 9.19999885559082,
+                    "yaw": 0.0,
+                    "z": 16.20002555847168
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3233397978,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.000244140625,
+                    "pos_y": -3035.63232421875,
+                    "pos_z": 29.8421630859375,
+                    "rot_pitch": 85.10586547851563,
+                    "rot_roll": -0.02168753370642662,
+                    "rot_yaw": -0.030602216720581055
+                },
+                "string_name": "lts_prop_lts_ramp_02",
+                "type": 5,
+                "unique_number": 1600575387,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": 100.69983673095703,
+                    "roll": 0.0,
+                    "x": 0.0,
+                    "y": 7.39999532699585,
+                    "yaw": 0.0,
+                    "z": 21.600046157836914
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3233397978,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.001953125,
+                    "pos_y": -3037.432861328125,
+                    "pos_z": 35.24200439453125,
+                    "rot_pitch": 79.29451751708984,
+                    "rot_roll": -179.99002075195313,
+                    "rot_yaw": 179.93798828125
+                },
+                "string_name": "lts_prop_lts_ramp_02",
+                "type": 5,
+                "unique_number": 1162103540,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": 120.69953155517578,
+                    "roll": 0.0,
+                    "x": 0.0,
+                    "y": 4.699997901916504,
+                    "yaw": 0.0,
+                    "z": 25.600061416625977
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3233397978,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.004638671875,
+                    "pos_y": -3040.13330078125,
+                    "pos_z": 39.24175262451172,
+                    "rot_pitch": 59.294795989990234,
+                    "rot_roll": -179.99636840820313,
+                    "rot_yaw": 179.94467163085938
+                },
+                "string_name": "lts_prop_lts_ramp_02",
+                "type": 5,
+                "unique_number": 950402339,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": 142.000732421875,
+                    "roll": 0.0,
+                    "x": 0.0,
+                    "y": 0.3000001311302185,
+                    "yaw": 0.0,
+                    "z": 28.600072860717773
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3233397978,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.0086669921875,
+                    "pos_y": -3044.53369140625,
+                    "pos_z": 42.24132537841797,
+                    "rot_pitch": 37.993587493896484,
+                    "rot_roll": -179.99765014648438,
+                    "rot_yaw": 179.9463348388672
+                },
+                "string_name": "lts_prop_lts_ramp_02",
+                "type": 5,
+                "unique_number": 241296507,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": 160.0,
+                    "roll": 0.0,
+                    "x": 0.0,
+                    "y": -5.099997520446777,
+                    "yaw": 0.0,
+                    "z": 30.000078201293945
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3233397978,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.013671875,
+                    "pos_y": -3049.933837890625,
+                    "pos_z": 43.64079666137695,
+                    "rot_pitch": 19.99431800842285,
+                    "rot_roll": -179.99801635742188,
+                    "rot_yaw": 179.9470977783203
+                },
+                "string_name": "lts_prop_lts_ramp_02",
+                "type": 5,
+                "unique_number": 184480625,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": -176.7998046875,
+                    "roll": 0.0,
+                    "x": 0.0,
+                    "y": -10.400003433227539,
+                    "yaw": 0.0,
+                    "z": 29.400075912475586
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3233397978,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.0184326171875,
+                    "pos_y": -3055.233642578125,
+                    "pos_z": 43.04026794433594,
+                    "rot_pitch": -3.2058873176574707,
+                    "rot_roll": -179.99813842773438,
+                    "rot_yaw": 179.9478759765625
+                },
+                "string_name": "lts_prop_lts_ramp_02",
+                "type": 5,
+                "unique_number": 1996768593,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": -156.49917602539063,
+                    "roll": 0.0,
+                    "x": 0.0,
+                    "y": -15.000020980834961,
+                    "yaw": 0.0,
+                    "z": 26.900066375732422
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3233397978,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.0225830078125,
+                    "pos_y": -3059.83349609375,
+                    "pos_z": 40.539798736572266,
+                    "rot_pitch": -23.506521224975586,
+                    "rot_roll": -179.9979705810547,
+                    "rot_yaw": 179.94857788085938
+                },
+                "string_name": "lts_prop_lts_ramp_02",
+                "type": 5,
+                "unique_number": 146576993,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": -137.5992431640625,
+                    "roll": 0.0,
+                    "x": 0.0,
+                    "y": -18.900035858154297,
+                    "yaw": 0.0,
+                    "z": 22.90005111694336
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 1290523964,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.0260009765625,
+                    "pos_y": -3063.733154296875,
+                    "pos_z": 36.539398193359375,
+                    "rot_pitch": -42.40644454956055,
+                    "rot_roll": -179.9974822998047,
+                    "rot_yaw": 179.949462890625
+                },
+                "string_name": "lts_prop_lts_ramp_03",
+                "type": 5,
+                "unique_number": 916194810,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": -122.39950561523438,
+                    "roll": 0.0,
+                    "x": 0.0,
+                    "y": -20.60004234313965,
+                    "yaw": 0.0,
+                    "z": 17.300029754638672
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 1290523964,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.02734375,
+                    "pos_y": -3065.4326171875,
+                    "pos_z": 30.939208984375,
+                    "rot_pitch": -57.60619354248047,
+                    "rot_roll": -179.9965362548828,
+                    "rot_yaw": 179.95069885253906
+                },
+                "string_name": "lts_prop_lts_ramp_03",
+                "type": 5,
+                "unique_number": 1445587350,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": -97.1995849609375,
+                    "roll": 0.0,
+                    "x": 0.0,
+                    "y": -20.60004234313965,
+                    "yaw": 0.0,
+                    "z": 12.10000991821289
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 1290523964,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.0272216796875,
+                    "pos_y": -3065.43212890625,
+                    "pos_z": 25.73918914794922,
+                    "rot_pitch": -82.80615997314453,
+                    "rot_roll": -179.98521423339844,
+                    "rot_yaw": 179.9624481201172
+                },
+                "string_name": "lts_prop_lts_ramp_03",
+                "type": 5,
+                "unique_number": 229302344,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": -57.79972839355469,
+                    "roll": 0.0,
+                    "x": 0.0,
+                    "y": -18.300033569335938,
+                    "yaw": 0.0,
+                    "z": 8.099994659423828
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3233397978,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.0250244140625,
+                    "pos_y": -3063.131591796875,
+                    "pos_z": 21.739402770996094,
+                    "rot_pitch": -57.79405212402344,
+                    "rot_roll": -0.003471732372418046,
+                    "rot_yaw": -0.05514823645353317
+                },
+                "string_name": "lts_prop_lts_ramp_02",
+                "type": 5,
+                "unique_number": 1423868920,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": -31.800045013427734,
+                    "roll": 0.0,
+                    "x": 0.0,
+                    "y": -13.00001335144043,
+                    "yaw": 0.0,
+                    "z": 4.499998092651367
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 1290523964,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.02001953125,
+                    "pos_y": -3057.831298828125,
+                    "pos_z": 18.139934539794922,
+                    "rot_pitch": -31.794357299804688,
+                    "rot_roll": -0.0021769742015749216,
+                    "rot_yaw": -0.05335766077041626
+                },
+                "string_name": "lts_prop_lts_ramp_03",
+                "type": 5,
+                "unique_number": 1245451647,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": -38.4000244140625,
+                    "roll": 0.0,
+                    "x": 0.0,
+                    "y": -16.000024795532227,
+                    "yaw": 0.0,
+                    "z": 6.099996566772461
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3233397978,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.0228271484375,
+                    "pos_y": -3060.83154296875,
+                    "pos_z": 19.739633560180664,
+                    "rot_pitch": -38.39433288574219,
+                    "rot_roll": -0.0023608242627233267,
+                    "rot_yaw": -0.05367690324783325
+                },
+                "string_name": "lts_prop_lts_ramp_02",
+                "type": 5,
+                "unique_number": 1932153725,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 255,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": -15.000020980834961,
+                    "roll": 0.0,
+                    "x": 0.0,
+                    "y": -11.100006103515625,
+                    "yaw": 0.0,
+                    "z": 4.399998188018799
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3233397978,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.018310546875,
+                    "pos_y": -3055.93115234375,
+                    "pos_z": 18.040122985839844,
+                    "rot_pitch": -14.994330406188965,
+                    "rot_roll": -0.0019155277404934168,
+                    "rot_yaw": -0.052706263959407806
+                },
+                "string_name": "lts_prop_lts_ramp_02",
+                "type": 5,
+                "unique_number": 973610340,
+                "visible": true
+            }
+        },
+        {
+            "entity": {
+                "alpha_level": 201,
+                "attach_data": {
+                    "attached_to_bone": 0,
+                    "attached_to_number": 1940543718,
+                    "attached_to_type": "vehicle",
+                    "pitch": 1.4901161193847656e-08,
+                    "roll": 79.60015869140625,
+                    "x": 0.0,
+                    "y": 9.399999618530273,
+                    "yaw": 90.0,
+                    "z": 17.200029373168945
+                },
+                "collision": true,
+                "dynamic": false,
+                "freeze": true,
+                "gravity": true,
+                "invincible": true,
+                "is_attached": true,
+                "model": 3287988974,
+                "object_data": {
+                    "Lights": true
+                },
+                "placement": {
+                    "pos_x": -1363.0,
+                    "pos_y": -3035.4326171875,
+                    "pos_z": 30.842185974121094,
+                    "rot_pitch": -0.0018503082683309913,
+                    "rot_roll": 79.59447479248047,
+                    "rot_yaw": 89.94778442382813
+                },
+                "string_name": "stt_prop_track_speedup",
+                "type": 5,
+                "unique_number": 710362339,
+                "visible": true
+            }
+        }
+    ],
+    "other_data": null,
+    "self_ped_data": {
+        "is_active": false
+    }
+}

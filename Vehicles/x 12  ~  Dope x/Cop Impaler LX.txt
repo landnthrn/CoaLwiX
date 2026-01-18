@@ -1,0 +1,53 @@
+Model: polimpaler6
+Plate Style: 4
+Plate Text:  0 KPH  
+Primary Colour: 0
+Secondary Colour: 111
+Pearl Colour: 0
+Wheel Colour: 0
+Wheel Type: 7
+Spoiler: 12
+Front Bumper: 11
+Rear Bumper: 9
+Sideskirt: 2
+Exhaust: 7
+Grille: 10
+Hood: 8
+Fender: 3
+Right Fender: 13
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 58
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 40
+Arch Cover: 8
+Trim2: 6
+Livery: 13
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 2
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: No
+Extra 2: No
+Extra 3: No
+Extra 4: Yes
+Extra 5: No
+Extra 6: No
+Extra 7: No
+Extra 8: No

@@ -1,0 +1,38 @@
+Model: hakuchou2
+Plate Style: 12
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 140
+Wheel Colour: 54
+Wheel Type: 6
+Front Bumper: 5
+Exhaust: 4
+Chassis: 0
+Roof: 1
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 5
+Front Wheels: 46
+Back Wheels: 46
+Livery: 0
+Tyre Smoke Colour: #00ffb9
+Window Tint: 1
+Custom Primary Colour: #001900
+Custom Secondary Colour: #001900
+Neon Colour: #00ffaf
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 158
+Dashboard Colour: 158
+Tyres Mode: 1

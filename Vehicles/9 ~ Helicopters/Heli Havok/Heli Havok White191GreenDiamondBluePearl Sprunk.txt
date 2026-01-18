@@ -1,0 +1,36 @@
+Model: havok
+Plate Style: 0
+Plate Text:  21 KPH 
+Primary Colour: 38
+Secondary Colour: 5
+Pearl Colour: 67
+Wheel Colour: 0
+Wheel Type: 0
+Front Bumper: 2
+Roof: 1
+Engine: 4
+Brakes: 3
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 50
+Livery: 3
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #c1bfff
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: No
+Neon Left: No
+Neon Right: No
+Interior Colour: 111
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: Yes
+Extra 2: Yes
+Extra 7: Yes

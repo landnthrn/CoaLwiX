@@ -1,0 +1,45 @@
+Model: driftyosemite
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 118
+Secondary Colour: 120
+Pearl Colour: 140
+Wheel Colour: 134
+Wheel Type: 8
+Spoiler: 4
+Front Bumper: 11
+Rear Bumper: 0
+Sideskirt: 10
+Exhaust: 1
+Chassis: 3
+Grille: 4
+Hood: 1
+Fender: 1
+Roof: 0
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 4
+Front Wheels: 81
+Livery: 0
+Tyre Smoke Colour: #00ffff
+Window Tint: 1
+Custom Primary Colour: #000a19
+Custom Secondary Colour: #5870a1
+Neon Colour: #00ffff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 111
+Tyres Mode: 1
+Extra 1: Yes

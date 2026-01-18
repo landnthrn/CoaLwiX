@@ -1,0 +1,44 @@
+Model: coquette4
+Plate Style: 6
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 161
+Pearl Colour: 44
+Wheel Colour: 134
+Wheel Type: 8
+Spoiler: 8
+Front Bumper: 5
+Rear Bumper: 4
+Sideskirt: 3
+Exhaust: 6
+Chassis: 1
+Grille: 3
+Hood: 4
+Roof: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 10
+Front Wheels: 122
+Livery: 0
+Tyre Smoke Colour: #e20606
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #780000
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 27
+Dashboard Colour: 0
+Tyres Mode: 1
+Extra 1: No

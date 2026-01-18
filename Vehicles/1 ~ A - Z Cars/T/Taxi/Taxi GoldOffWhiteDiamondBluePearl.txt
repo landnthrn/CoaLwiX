@@ -1,0 +1,41 @@
+Model: taxi
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 158
+Secondary Colour: 0
+Pearl Colour: 67
+Wheel Colour: 134
+Wheel Type: 9
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 124
+Livery: -1
+Tyre Smoke Colour: #ffffff
+Window Tint: 1
+Custom Primary Colour: #7a6440
+Custom Secondary Colour: #c1bfff
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 158
+Dashboard Colour: 158
+Tyres Mode: 1
+Extra 5: No
+Extra 6: Yes
+Extra 7: No
+Extra 8: No
+Extra 9: No
+Extra 10: Yes
+Extra 11: No

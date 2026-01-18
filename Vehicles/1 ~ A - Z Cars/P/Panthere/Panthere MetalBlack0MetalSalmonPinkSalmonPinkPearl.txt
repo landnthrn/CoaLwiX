@@ -1,0 +1,45 @@
+Model: panthere
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 161
+Secondary Colour: 117
+Pearl Colour: 136
+Wheel Colour: 134
+Wheel Type: 8
+Spoiler: 9
+Front Bumper: 15
+Rear Bumper: 8
+Sideskirt: 8
+Exhaust: 2
+Chassis: 2
+Grille: 9
+Hood: 17
+Fender: 6
+Right Fender: 4
+Roof: 8
+Engine: 5
+Brakes: 3
+Transmission: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 11
+Front Wheels: 122
+Livery: 0
+Tyre Smoke Colour: #ff9b9b
+Window Tint: 1
+Custom Primary Colour: #000000
+Custom Secondary Colour: #ff9b9b
+Neon Colour: #ff9b9b
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 157
+Dashboard Colour: 158
+Tyres Mode: 1

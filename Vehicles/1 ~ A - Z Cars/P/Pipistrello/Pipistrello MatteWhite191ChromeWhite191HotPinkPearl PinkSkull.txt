@@ -1,0 +1,42 @@
+Model: pipistrello
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 12
+Secondary Colour: 120
+Pearl Colour: 135
+Wheel Colour: 135
+Wheel Type: 8
+Spoiler: 22
+Sideskirt: 3
+Chassis: 3
+Grille: 12
+Hood: 16
+Fender: 4
+Right Fender: 3
+Roof: 12
+Engine: 4
+Brakes: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 12
+Front Wheels: 119
+Tank: 20
+Livery: 11
+Tyre Smoke Colour: #ff00ff
+Window Tint: 1
+Custom Primary Colour: #c1bfff
+Custom Secondary Colour: #c1bfff
+Neon Colour: #ff00ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 134
+Dashboard Colour: 9
+Tyres Mode: 1

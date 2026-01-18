@@ -1,0 +1,54 @@
+Model: voodoo
+Plate Style: 0
+Plate Text:  1 KPH  
+Primary Colour: 111
+Secondary Colour: 0
+Pearl Colour: 0
+Wheel Colour: 0
+Wheel Type: 9
+Front Bumper: 2
+Exhaust: 2
+Chassis: 1
+Grille: 3
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 0
+Armor: 0
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 1
+Front Wheels: 115
+Back Wheels: 0
+Plate Holder: 1
+Vanity Plates: 1
+Trim: 6
+Ornaments: 1
+Dial: 8
+Steering Wheel: 13
+Shifter Leavers: 13
+Plaques: 22
+Trunk: 5
+Hydraulics: 5
+Engine Block: 4
+Air Filter: 3
+Arch Cover: 3
+Aerials: 3
+Trim2: 0
+Tank: 3
+Livery: 5
+Tyre Smoke Colour: #00aeef
+Window Tint: 0
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #0215ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 1
+Dashboard Colour: 70
+Tyres Mode: 1

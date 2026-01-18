@@ -1,0 +1,44 @@
+Model: dynasty
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 61
+Secondary Colour: 60
+Pearl Colour: 131
+Wheel Colour: 0
+Wheel Type: 2
+Spoiler: 5
+Front Bumper: 6
+Rear Bumper: 6
+Sideskirt: 8
+Exhaust: 4
+Grille: 6
+Hood: 6
+Fender: 6
+Right Fender: 6
+Roof: 7
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 58
+Suspension: 5
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 1
+Front Wheels: 30
+Livery: 10
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: #5619ff
+Custom Secondary Colour: #00ffe9
+Neon Colour: #000000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 13
+Dashboard Colour: 111
+Tyres Mode: 1

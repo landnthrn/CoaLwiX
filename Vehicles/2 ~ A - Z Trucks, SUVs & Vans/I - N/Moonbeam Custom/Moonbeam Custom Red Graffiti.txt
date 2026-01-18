@@ -1,0 +1,53 @@
+Model: moonbeam2
+Plate Style: 7
+Plate Text:  0 MPH  
+Primary Colour: 34
+Secondary Colour: 32
+Pearl Colour: 29
+Wheel Colour: 88
+Wheel Type: 9
+Spoiler: 1
+Exhaust: 1
+Chassis: 1
+Grille: 2
+Roof: 2
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 41
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 124
+Back Wheels: 0
+Plate Holder: 13
+Vanity Plates: 16
+Trim: 4
+Ornaments: 45
+Dial: 14
+Seats: 5
+Door Speaker: 1
+Steering Wheel: 16
+Shifter Leavers: 15
+Plaques: 22
+Trunk: 5
+Hydraulics: 4
+Engine Block: 4
+Air Filter: 3
+Livery: 9
+Tyre Smoke Colour: #ffffff
+Window Tint: 0
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #ff0000
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 34
+Dashboard Colour: 42
+Tyres Mode: 1

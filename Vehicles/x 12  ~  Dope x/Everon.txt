@@ -1,0 +1,42 @@
+Model: everon
+Plate Style: 0
+Plate Text:  0 KPH  
+Primary Colour: 12
+Secondary Colour: 0
+Pearl Colour: 71
+Wheel Colour: 81
+Wheel Type: 4
+Spoiler: 1
+Front Bumper: 10
+Rear Bumper: 2
+Sideskirt: 2
+Exhaust: 2
+Hood: 19
+Right Fender: 1
+Roof: 7
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 0
+Suspension: 0
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: No
+Unk21: No
+Headlights: 14
+Front Wheels: 32, Custom
+Livery: 0
+Tyre Smoke Colour: #8466e2
+Window Tint: 1
+Custom Primary Colour: 
+Custom Secondary Colour: 
+Neon Colour: #0f03ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 8
+Dashboard Colour: 0
+Tyres Mode: 1

@@ -1,0 +1,45 @@
+Model: envisage
+Plate Style: 11
+Plate Text:  0 MPH  
+Primary Colour: 117
+Secondary Colour: 117
+Pearl Colour: 88
+Wheel Colour: 134
+Wheel Type: 8
+Spoiler: 9
+Front Bumper: 0
+Rear Bumper: 2
+Sideskirt: 2
+Chassis: 2
+Grille: 7
+Hood: 8
+Fender: 4
+Right Fender: 0
+Roof: 1
+Engine: 4
+Brakes: 3
+Horns: 41
+Suspension: 4
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 8
+Front Wheels: 110
+Arch Cover: 3
+Trim2: 0
+Livery: 2
+Tyre Smoke Colour: #8e7137
+Window Tint: 1
+Custom Primary Colour: #332813
+Custom Secondary Colour: #332813
+Neon Colour: #a07f3e
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 111
+Dashboard Colour: 0
+Tyres Mode: 1

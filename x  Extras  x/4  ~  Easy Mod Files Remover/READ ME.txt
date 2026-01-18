@@ -1,0 +1,60 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+CREDIT: 
+
+ChaosPlayer
+Gang11111 on 5mods
+
+https://discord.com/invite/pRrz2mwaen
+https://chaosplayer.de/forum/
+https://www.youtube.com/user/LPChaosPlayer
+https://www.youtube.com/user/LPChaosPlayer
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Download:
+https://www.gta5-mods.com/tools/gta-v-mod-remove-tool
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**This is mainly for those that mess with ASI Mods, or those that have put non GTA files in the GTA V Directory and can't member what ones to remove**
+
+Don't worry this isn't gonna remove your all your mod related files, just the ones you may have in the GTA V Game Files Directory 
+
+~~~~~~~~~~~~~~~
+
+This is very useful for:
+
+~ Convience of automated deletion 
+
+~ If you forgot the names of the mod related files you may of placed in GTA V Directory and need to remove them
+
+~ If you've gotten an error about detected unwanted files when launching GTA 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Download Link ~ https://www.gta5-mods.com/tools/gta-v-mod-remove-tool
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+_________ System Requirement _________  
+--- Microsoft .NET Framework 4.8  (or higher)            ~    https://dotnet.microsoft.com/en-us/download/dotnet-framework
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

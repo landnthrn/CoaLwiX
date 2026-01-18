@@ -1,0 +1,39 @@
+Model: deveste
+Plate Style: 0
+Plate Text: CHUB RUB
+Primary Colour: 0
+Secondary Colour: 0
+Pearl Colour: 4
+Wheel Colour: 1
+Wheel Type: 7
+Spoiler: 9
+Front Bumper: 4
+Rear Bumper: 5
+Exhaust: 8
+Chassis: 5
+Engine: 4
+Brakes: 3
+Transmission: 3
+Horns: 45
+Suspension: 1
+Armor: 5
+Nitrous: No
+Turbo: Yes
+Subwoofer: No
+Tiresmoke: Yes
+Unk21: No
+Headlights: 1
+Front Wheels: 40
+Livery: 10
+Tyre Smoke Colour: #00fff2
+Window Tint: 0
+Custom Primary Colour: #19ffb2
+Custom Secondary Colour: #00f2ff
+Neon Colour: #0400ff
+Neon Front: Yes
+Neon Back: Yes
+Neon Left: Yes
+Neon Right: Yes
+Interior Colour: 0
+Dashboard Colour: 0
+Tyres Mode: 1
