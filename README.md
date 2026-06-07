@@ -2,8 +2,8 @@
 
 ![Stand + CoaLwiX Animated Header GIF](https://github.com/user-attachments/assets/1f9424e2-2463-4428-8da2-1eff509b5721)
 
-# ENJOY ALL THE BEST GTA V MODS FOR STAND  
-# ALL IN ONE & MORE FOR FREE    
+### ENJOY ALL THE BEST GTA V MODS FOR STAND  
+### ALL IN ONE & MORE FOR FREE    
 
 <div style="display:flex; align-items:center; gap:12px;">
   <img src="https://raw.githubusercontent.com/landnthrnnn/DUMP/refs/heads/main/CoaLwiX%20PFP%20GIF.gif" width="140" />
@@ -15,7 +15,7 @@
 
 <br>
 
->**All CoaLwiX features work on [Stand's Free Edition](https://stand.sh/)**    
+>**All CoaLwiX features playable on [Stand's Free Edition](https://stand.sh/)** or higher  
 >*ZERO RISK on Storymode, use it Online with a paid Stand Account*  
 
 CoaLwiX is most known for all its wild, random, fun-play type mods, but is also packed and loaded with every best Stand Add-on. Everything + more all in one place, and heavily organized down to a T so that everything is very simple to use and navigate.  
@@ -28,8 +28,6 @@ Allowing you to pull off the wildest of mods, even in public's with others using
 Co-Loading with Cherax + Stand has become very popular since Stand no longer works for playing with others.  
 
 Truly providing maximum modding capabilities for an ultimate modding experience!  
-
----
 
 ## FULL ALL-IN-ONE COLLECTIONS OF:  
 - 40 Menu Profiles  
@@ -44,18 +42,14 @@ Truly providing maximum modding capabilities for an ultimate modding experience!
 *Plenty of extras as well*  
 *Simple tutorials for everything included*  
 
----
-
-### <img src="https://raw.githubusercontent.com/landnthrnnn/DUMP/refs/heads/main/CoaLwiX%20PFP%20GIF.gif" width="40"> Links 
-
-——————————
+## Links 
 
 ### [JOIN COALWIX DISCORD SERVER](https://discord.gg/J6jWpru9nS)
-**(Central Hub for GTA Modders)**  
-**Share Files Together • Mod Support • Keep Up to Date**  
-**Get loaded with Menu Addons, Lua scripts, Vehicles, Outfits, All in One Packs, & more**  
+- **Central Hub for GTA Modders**
+- **Share Files • Mod Support • Keep Up to Date**  
+- **Get loaded with Menu Addons, Lua scripts, Vehicles, Outfits, All in One Packs, & more**  
 
-——————————
+———
 
 ### DOWNLOAD:
 
@@ -65,19 +59,103 @@ Truly providing maximum modding capabilities for an ultimate modding experience!
 
 ### [**Google Drive**](https://drive.google.com/file/d/1cPBiIpoGe_V1yHa8LO5rIcE7Eo0M8Uj9/view?usp=sharing)
 
-——————————
+———
 
 ### [**Twitch**](https://twitch.tv/coalwix)
 
 ### [**Kick**](https://kick.com/coalwix)
 
-——————————
 
-### [**Stand Menu**](https://stand.sh) - `*Use VPN to Access*`
+# See Also
+### [Improved Stand + Patch](https://github.com/landnthrn/Stand-OSS)
+> The `.dll` releases in this repo will grant you ability to play Online with players again.   
+> Also includes a patch to play Stand Ultimate Edition online for free  
+> All thanks to **[Calamity, Inc.](https://github.com/calamity-inc)** & **[Nuiiv (nui)](https://github.com/nuiiv)**
 
----
+# Credits
 
-## Found this useful?<img src="https://media.tenor.com/23NitOvEEkMAAAAj/optical-illusion-rotating-head.gif" width="30"><br>
+**CoaLwiX couldn't of been made without the following:**
+
+### Stand Guilded Page
+- [Stand's Guilded.gg Page](https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs)
+
+### Addict Script
+- **Creator:** [candyy1934](https://discord.com/users/1054774874524098632)
+- [Discord Server](https://discord.gg/Wv7dgDGMJT)
+
+### Constructor
+- **Creator:** [hexarobi](https://discord.com/users/342056088637669376)
+- [Constructor - GitHub](https://github.com/hexarobi/stand-lua-constructor)
+- [The Curated Bundle for Constructor](https://github.com/hexarobi/stand-curated-constructs)
+- [Discord Server](https://discord.gg/ktg8N7WEDJ)
+
+### AcjokerScript
+- [AcjokerScript - GitHub](https://github.com/acjoker8818/AcjokerScript)
+- [Discord Server](https://discord.gg/fn4uBbFNnA)
+
+### Dashmaster
+- [Dashmaster - GitHub](https://github.com/calamity-inc/Dashmaster)
+
+### JerryScript
+- [JerryScript - Stand Guilded Page](https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/328473)
+- [JerryScript - GitHub](https://github.com/Jerrrry123/JerryScript)
+- [Discord Server](https://discord.gg/QzqBdHQC9S)
+
+### JinxScript
+- [JinxScript - GitHub](https://github.com/Prisuhm/JinxScript)
+
+### LanceScript
+- [LanceScript - Stand Guilded Page](https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/324498)
+
+### NovaScript
+- [NovaScript - Stand Guilded Page](https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/368046)
+
+### WiriScript
+- [WiriScript - Stand Guilded Page](https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/278381)
+
+### Additional Lua Scripts
+*(Couldn't find links for)*
+- Advanced Chat
+- Anticrash
+- AR-GPS
+- BallDrop
+- Dolos
+- Ji9sw - Gun Van
+- KTFHO
+- Peds Ignore Me
+- PTFXPET
+- RandomTraffic
+- RocketLeague
+- train_control
+- WordForge
+
+### Many items can be found in [Constructor Discord](https://discord.gg/ktg8N7WEDJ) channels
+- https://discord.com/channels/1013639500947271690/1041111984990605312
+- https://discord.com/channels/1013639500947271690/1021242470647992370
+- https://discord.com/channels/1013639500947271690/1029184962391441488
+- https://discord.com/channels/1013639500947271690/1017216481207013416
+
+### Many items can be found in the Stand Discord channels
+
+- https://discord.com/channels/956618713157763072/956618713908539409
+- https://discord.com/channels/956618713157763072/956618713908539405
+- https://discord.com/channels/956618713157763072/956618713908539408
+- https://discord.com/channels/956618713157763072/1036177573878714368
+- https://discord.com/channels/956618713157763072/1036177592283303946
+- https://discord.com/channels/956618713157763072/1078848016892563466
+- https://discord.com/channels/956618713157763072/1036177547181969478
+- https://discord.com/channels/956618713157763072/1036177489963253781
+- https://discord.com/channels/956618713157763072/956618713908539407
+
+### Other items can be found on these sites
+- https://www.gta5-mods.com
+- https://www.gta5-mods.com/vehicles/funny-vehicles-pack-1-menyoo
+- https://www.gta5-mods.com/vehicles/funny-vehicles-pack-2-menyoo
+- https://www.gta5-mods.com/vehicles/nukito-s-funny-vehicles-pack-menyoo
+- https://www.reddit.com/r/Gta5Modding/
+- https://www.reddit.com/r/GTAV_Mods/
+
+## Found CoaLwiX useful?<img src="https://media.tenor.com/23NitOvEEkMAAAAj/optical-illusion-rotating-head.gif" width="30"><br>
 
 [![Follow Me <3](https://img.shields.io/badge/Follow%20Me%20%3C3-000000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/landnthrn)   
 [![Find More of my Creations on GitHub](https://img.shields.io/badge/Find%20More%20of%20my%20Creations%20on%20GitHub-311A82?style=for-the-badge&logo=github&logoColor=white)](https://github.com/landnthrn?tab=repositories)  
