@@ -170,4 +170,3 @@ Truly providing maximum modding capabilities for an ultimate modding experience!
 [![PayPal](https://img.shields.io/badge/PayPal-311A82?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=K4PLHFVBH7X8C)
 
 ![](https://github-view-counter-1-0-0.vercel.app/api?username=landnthrn-CoaLwiX&label=false&bgColor=20164C&color=6a5acd&iconColor=6a5acd)
----
