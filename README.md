@@ -16,16 +16,17 @@
 <br>
 
 >**All CoaLwiX features playable on [Stand's Free Edition](https://stand.sh/)** or higher  
->*ZERO RISK on Storymode, use it Online with a paid Stand Account*  
+>*ZERO RISK on Storymode, use it Online with Stand Basic Edition or higher*  
+> [See this repo](https://github.com/landnthrn/Stand-OSS) to obtain Stand Ultimate Edition for free  
+
+
+> The modding game changes once in a while, if you're wondering what the state of playing Stand with others is currently, then join the CoaLwiX Discord Server to ask any modding questions. See link below.
 
 CoaLwiX is most known for all its wild, random, fun-play type mods, but is also packed and loaded with every best Stand Add-on. Everything + more all in one place, and heavily organized down to a T so that everything is very simple to use and navigate.  
 Allowing you & your friends to enjoy Rockstar's Los Santos in a whole nother way.  
 
 This has been recognized as the most capable setup in GTA V Modding that isn't ASI/ScriptHookV.  
-Allowing you to pull off the wildest of mods, even in public's with others using a working co-load setup  
-*(Mostly Cherax + Stand , or Yim + Stand)*  
-
-Co-Loading with Cherax + Stand has become very popular since Stand no longer works for playing with others.  
+Allowing you to pull off the wildest of mods  
 
 Truly providing maximum modding capabilities for an ultimate modding experience!  
 
@@ -40,7 +41,6 @@ Truly providing maximum modding capabilities for an ultimate modding experience!
 - Lua Scripts  
 
 *Plenty of extras as well*  
-*Simple tutorials for everything included*  
 
 ## Links 
 
