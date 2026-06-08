@@ -77,7 +77,7 @@ Truly providing maximum modding capabilities for an ultimate modding experience!
 **CoaLwiX couldn't of been made without the following:**
 
 ### Stand Guilded Page
-- [Stand's Guilded.gg Page](https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs)
+- [Stand Guilded Page](https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs)
 
 ### Addict Script
 - **Creator:** [candyy1934](https://discord.com/users/1054774874524098632)
@@ -85,33 +85,33 @@ Truly providing maximum modding capabilities for an ultimate modding experience!
 
 ### Constructor
 - **Creator:** [hexarobi](https://discord.com/users/342056088637669376)
-- [Constructor - GitHub](https://github.com/hexarobi/stand-lua-constructor)
-- [The Curated Bundle for Constructor](https://github.com/hexarobi/stand-curated-constructs)
+- [GitHub](https://github.com/hexarobi/stand-lua-constructor)
+- [Curated Bundle](https://github.com/hexarobi/stand-curated-constructs)
 - [Discord Server](https://discord.gg/ktg8N7WEDJ)
 
 ### AcjokerScript
-- [AcjokerScript - GitHub](https://github.com/acjoker8818/AcjokerScript)
+- [GitHub](https://github.com/acjoker8818/AcjokerScript)
 - [Discord Server](https://discord.gg/fn4uBbFNnA)
 
 ### Dashmaster
-- [Dashmaster - GitHub](https://github.com/calamity-inc/Dashmaster)
+- [GitHub](https://github.com/calamity-inc/Dashmaster)
 
 ### JerryScript
-- [JerryScript - Stand Guilded Page](https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/328473)
-- [JerryScript - GitHub](https://github.com/Jerrrry123/JerryScript)
+- [Stand Guilded Page](https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/328473)
+- [GitHub](https://github.com/Jerrrry123/JerryScript)
 - [Discord Server](https://discord.gg/QzqBdHQC9S)
 
 ### JinxScript
-- [JinxScript - GitHub](https://github.com/Prisuhm/JinxScript)
+- [GitHub](https://github.com/Prisuhm/JinxScript)
 
 ### LanceScript
-- [LanceScript - Stand Guilded Page](https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/324498)
+- [Stand Guilded Page](https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/324498)
 
 ### NovaScript
-- [NovaScript - Stand Guilded Page](https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/368046)
+- [Stand Guilded Page](https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/368046)
 
 ### WiriScript
-- [WiriScript - Stand Guilded Page](https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/278381)
+- [Stand Guilded Page](https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/278381)
 
 ### Additional Lua Scripts
 *(Couldn't find links for)*
