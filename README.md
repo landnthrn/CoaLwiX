@@ -19,14 +19,12 @@
 >*ZERO RISK on Storymode, use it Online with Stand Basic Edition or higher*  
 > [See this repo](https://github.com/landnthrn/Stand-OSS) to obtain Stand Ultimate Edition for free  
 
-
 > The modding game changes once in a while, if you're wondering what the state of playing Stand with others is currently, then join the CoaLwiX Discord Server to ask any modding questions. See link below.
 
 CoaLwiX is most known for all its wild, random, fun-play type mods, but is also packed and loaded with every best Stand Add-on. Everything + more all in one place, and heavily organized down to a T so that everything is very simple to use and navigate.  
-Allowing you & your friends to enjoy Rockstar's Los Santos in a whole nother way.  
+Enjoy Rockstar's Los Santos in a whole nother way entirely free!
 
-This has been recognized as the most capable setup in GTA V Modding that isn't ASI/ScriptHookV.  
-Allowing you to pull off the wildest of mods  
+With over 2,500 downloads across sites, this has been recognized as the most capable setup in GTA V Modding that isn't ASI/ScriptHookV.  
 
 Truly providing maximum modding capabilities for an ultimate modding experience!  
 
