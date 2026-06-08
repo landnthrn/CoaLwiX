@@ -45,7 +45,7 @@ Truly providing maximum modding capabilities for an ultimate modding experience!
 
 *Plenty of extras as well*  
 
-## Links 
+# Links 
 
 ### [JOIN COALWIX DISCORD SERVER](https://discord.gg/J6jWpru9nS)
 - **Central Hub for GTA Modders**
