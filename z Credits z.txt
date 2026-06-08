@@ -3,158 +3,169 @@
 
 CREDITS:
 
-Creator of CoaLwiX    ~    landn.thrn 
+CoaLwiX
+- Creator/Organizer: landn.thrn 
+  https://discord.com/users/831735011588964392
 
-All Menu Profiles ~ landn.thrn
+  - All Menu Profiles
+  - Mass Collecting & Organizing
+  - Easy Teleporting / Places
+  - CoaLwiX Constructor Pack Collector, Organizer, & Partial Creator
+  - Garage Vehicles Collector, Organizer, & Partial creator
+  - File Testing / Correcting / Bug Fixing
+  - All Tutorials/Youtube Videos
+  - Developer of CoaLwiX Website
+  - Developer of CoaLwiX Discord Server
+  - Developer of CoaLwiX Discord Bot
+  - Running Customer Support
+  - Ran the Menu Status Update WebPage
+  - Stand + CoaLwiX Animated Header
+  - Publishing & Marketing
 
-Easy Teleporting / Places ~ landn.thrn
+- Discord Server: 
+  https://discord.gg/J6jWpru9nS
 
-CoaLwiX Constructor Pack Collector, Organizer, & Partial Creator ~ landn.thrn
+- GitHub:
+  https://github.com/landnthrn/CoaLwiX
 
-Garage Vehicles Collector, Organizer, & Partial creator ~ landn.thrn
+- Buy Me a Coffee:
+  https://buymeacoffee.com/landn.thrn/extras
 
-File Testing / Correcting / Bug Fixing ~ landn.thrn
+- Website: (Offline)
+  https://coalwixpack.com/
 
-Mass Collecting & Organizing ~ landn.thrn
+---
 
-All Tutorials/Youtube Videos ~ landn.thrn
+CoaLwiX couldn't of been made without the following:
 
-Developer of CoaLwiX Discord Server ~ landn.thrn
+Stand Guilded Page
+- https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs
 
-Developer of CoaLwiX Discord Bot ~ landn.thrn
+Addict Script
 
-Running Customer Support ~ landn.thrn
+- Creator: candyy1934
+  https://discord.com/users/1054774874524098632
 
-Menu Status Update Page Run by ~ landn.thrn
+- Discord Server:
+  https://discord.gg/Wv7dgDGMJT
 
-Stand + CoaLwiX Animated Header ~ landn.thrn
+Constructor
 
-Publishing & Marketing ~ landn.thrn
+- Creator: hexarobi
+  https://discord.com/users/342056088637669376
 
-~~~~~~~~~~~~~~~~
+- GitHub:
+  https://github.com/hexarobi/stand-lua-constructor
 
-Stand   ~   https://stand.sh
+- Curated Bundle:
+  https://github.com/hexarobi/stand-curated-constructs
 
-~~~~~~~~~~~~~~~~
+- Discord Server:
+  https://discord.gg/ktg8N7WEDJ
 
-A lot of CoaLwiX Creations wouldn't of been able to be made without:
+AcjokerScript
 
-~~~~~~~~~~~~~~~~
+- GitHub:
+  https://github.com/acjoker8818/AcjokerScript
 
-LUA SCRIPTS:
+- Discord Server:
+  https://discord.gg/fn4uBbFNnA
 
-*CoaLwiX did not create the lua scripts or change any of their names*
+Dashmaster
 
-Addict Script ~ candyy1934  on Discord 
-Addict Script Discord Server ~ https://discord.gg/Wv7dgDGMJT
+- GitHub:
+  https://github.com/calamity-inc/Dashmaster
 
-Stand's Guilded.gg Page ~ https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs
+JerryScript
 
-AcjokerScript ~ https://github.com/acjoker8818/AcjokerScript  
+- Stand Guilded Page:
+  https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/328473
 
-      Discord ~ https://discord.gg/fn4uBbFNnA
+- GitHub:
+  https://github.com/Jerrrry123/JerryScript
 
-Constructor - Hexas Scripts ~ https://github.com/hexarobi/stand-lua-constructor 
+- Discord Server:
+  https://discord.gg/QzqBdHQC9S
 
-                    Discord ~ https://discord.gg/2u5HbHPB9y
+JinxScript
 
-Dashmaster ~ https://github.com/calamity-inc/Dashmaster
+- GitHub:
+  https://github.com/Prisuhm/JinxScript
 
-JerryScript ~ https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/328473
+LanceScript
 
-            ~ https://github.com/Jerrrry123/JerryScript 
+- Stand Guilded Page:
+  https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/324498
 
-    Discord ~ https://discord.gg/QzqBdHQC9S
+NovaScript
 
-JinxScript ~ https://github.com/Prisuhm/JinxScript
+- Stand Guilded Page:
+  https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/368046
 
-LanceScript ~ https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/324498
+WiriScript
 
-NovaScript ~ https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/368046
+- Stand Guilded Page:
+  https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/278381
 
-WiriScript ~ https://www.guilded.gg/stand/groups/x3ZgB10D/channels/7430c963-e9ee-40e3-ab20-190b8e4a4752/docs/278381
+Additional Lua Scripts
+(Couldn't find links for)
+- Advanced Chat
+- Anticrash
+- AR-GPS
+- BallDrop
+- Dolos
+- Ji9sw - Gun Van
+- KTFHO
+- Peds Ignore Me
+- PTFXPET
+- RandomTraffic
+- RocketLeague
+- train_control
+- WordForge
 
-Advanced Chat
+Many items can be found in Constructor Discord channels
 
-Anticrash
+Constructor Discord:
+https://discord.gg/ktg8N7WEDJ
 
-AR-GPS
+- https://discord.com/channels/1013639500947271690/1041111984990605312
+- https://discord.com/channels/1013639500947271690/1021242470647992370
+- https://discord.com/channels/1013639500947271690/1029184962391441488
+- https://discord.com/channels/1013639500947271690/1017216481207013416
 
-BallDrop
+Many items can be found in the Stand Discord channels
 
-Dolos
+- https://discord.com/channels/956618713157763072/956618713908539409
+- https://discord.com/channels/956618713157763072/956618713908539405
+- https://discord.com/channels/956618713157763072/956618713908539408
+- https://discord.com/channels/956618713157763072/1036177573878714368
+- https://discord.com/channels/956618713157763072/1036177592283303946
+- https://discord.com/channels/956618713157763072/1078848016892563466
+- https://discord.com/channels/956618713157763072/1036177547181969478
+- https://discord.com/channels/956618713157763072/1036177489963253781
+- https://discord.com/channels/956618713157763072/956618713908539407
 
-Ji9sw - Gun Van
+Other items can be found on these sites
 
-KTFHO
+- https://www.gta5-mods.com
+- https://www.gta5-mods.com/vehicles/funny-vehicles-pack-1-menyoo
+- https://www.gta5-mods.com/vehicles/funny-vehicles-pack-2-menyoo
+- https://www.gta5-mods.com/vehicles/nukito-s-funny-vehicles-pack-menyoo
+- https://www.reddit.com/r/Gta5Modding/
+- https://www.reddit.com/r/GTAV_Mods/
 
-Peds Ignore Me
 
-PTFXPET
 
-RandomTraffic
 
-RocketLeague
 
-train_control
 
-WordForge
 
-~~~~~~~~~~~~~~~~
 
-The Curated Bundle for Constructor  ~  https://github.com/hexarobi/stand-curated-constructs
 
-~~~~~~~~~~~~~~~~
 
-Many Items can be found on Constructor Discord channels :
 
-https://discord.com/channels/1013639500947271690/1041111984990605312
 
-https://discord.com/channels/1013639500947271690/1021242470647992370
 
-https://discord.com/channels/1013639500947271690/1029184962391441488
-
-https://discord.com/channels/1013639500947271690/1017216481207013416
-
-~~~~~~~~~~~~~~~~
-
-Many Items can found on Stand Discord :
-
-https://discord.com/channels/956618713157763072/956618713908539409
-
-https://discord.com/channels/956618713157763072/956618713908539405
-
-https://discord.com/channels/956618713157763072/956618713908539408
-
-https://discord.com/channels/956618713157763072/1036177573878714368
-
-https://discord.com/channels/956618713157763072/1036177592283303946
-
-https://discord.com/channels/956618713157763072/1078848016892563466
-
-https://discord.com/channels/956618713157763072/1036177547181969478
-
-https://discord.com/channels/956618713157763072/1036177489963253781
-
-https://discord.com/channels/956618713157763072/956618713908539407
-
-~~~~~~~~~~~~~~~~
-
-Other items can be found on these websites :
-
-https://www.gta5-mods.com
-
-https://www.gta5-mods.com/vehicles/funny-vehicles-pack-1-menyoo
-
-https://www.gta5-mods.com/vehicles/funny-vehicles-pack-2-menyoo
-
-https://www.gta5-mods.com/vehicles/nukito-s-funny-vehicles-pack-menyoo
-
-https://www.reddit.com/r/Gta5Modding/
-
-https://www.reddit.com/r/GTAV_Mods/
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
