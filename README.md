@@ -55,6 +55,8 @@ Truly providing maximum modding capabilities for an ultimate modding experience!
 
 ### DOWNLOAD:
 
+### [GitHub Release](https://github.com/landnthrn/CoaLwiX/releases)
+
 ### [**Website**](https://coalwixpack.com) - `*Offline*`
 
 ### [**Buy Me a Coffee**](https://buymeacoffee.com/landn.thrn/e/449826)
