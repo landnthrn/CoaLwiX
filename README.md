@@ -28,7 +28,7 @@
 CoaLwiX is most known for all its wild, random, fun-play type mods, but is also packed and loaded with every best Stand Add-on. Everything + more all in one place, and heavily organized down to a T so that everything is very simple to use and navigate.  
 Enjoy Rockstar's Los Santos in a whole nother way entirely free!
 
-**With over 2,500 downloads across sites, this has been recognized as the most capable setup in GTA V Modding.**  
+**With over 2,500+ downloads across sites, this has been recognized as the most capable setup in GTA V Modding.**  
 *(Other than ASI/ScriptHookV StoryMode-only mods, which are very difficult to setup and use)*  
 
 Truly providing maximum modding capabilities for an ultimate modding experience!  
@@ -66,9 +66,9 @@ Truly providing maximum modding capabilities for an ultimate modding experience!
 
 ———
 
-### [**Twitch**](https://twitch.tv/coalwix)
+### [**CoaLwiX Twitch**](https://twitch.tv/coalwix)
 
-### [**Kick**](https://kick.com/coalwix)
+### [**CoaLwiX Kick**](https://kick.com/coalwix)
 
 
 # See Also
