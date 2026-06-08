@@ -1,6 +1,10 @@
-<img width="965" height="769" alt="CoaLwiX Collage" src="https://github.com/user-attachments/assets/e339a916-4ae7-451e-85f8-b91f5b85dd92" />
+<p align="center">
+  <img width="965" height="769" alt="CoaLwiX Collage" src="https://github.com/user-attachments/assets/e339a916-4ae7-451e-85f8-b91f5b85dd92" />
+</p>
 
-![Stand + CoaLwiX Animated Header GIF](https://github.com/user-attachments/assets/1f9424e2-2463-4428-8da2-1eff509b5721)
+<p align="center">
+  <img width="965" alt="Stand + CoaLwiX Animated Header GIF" src="https://github.com/user-attachments/assets/1f9424e2-2463-4428-8da2-1eff509b5721" />
+</p>
 
 ### ENJOY ALL THE BEST GTA V MODS FOR STAND  
 ### ALL IN ONE & MORE FOR FREE    
