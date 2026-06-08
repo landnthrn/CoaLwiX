@@ -1,0 +1,30 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+MUST READ:
+
+WHAT ARE ALL THESE FOLDERS?
+These are profile settings for Stand, adjusted for different use cases.
+Everyone has their own preferences so there are different alterations for all the profiles for you to choose from
+
+WHY ARE THEY ZIPPED UP?
+Because for some of these, their folders extend far thus creating a very long folder name path, Windows doesn't like that. 
+If your getting errors while extracting, see the note in the how to install section below.
+
+NOTE:
+You may find that with the Stand Menu layout its easy to accidentally hit Save instead of Load when switching between Profiles, 
+this ends up saving a new set settings to the profile ruining its intended use,
+so keep in mind that there's a backup of Profiles in the `z Other z` Folder of this package, incase that happens. 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HOW TO INSTALL:
+
+— Pick your preferance of profiles, if your getting extraction errors, extract a .zip in a shallow folder path the least you can go is C:\
+
+— Open Stand Launchpad and click Open Stand Folder
+
+— Drag or Copy the contents inside the type of Profiles you want to use, into the Stand Profiles Folder
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+

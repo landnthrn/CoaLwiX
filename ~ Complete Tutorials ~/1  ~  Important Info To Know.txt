@@ -1,56 +1,54 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Stand Mod Menu is required,
-The Free Edition covers all CoaLwiX features 
-Free is StoryMode only, use it Online with a paid Stand account
-
+Stand Mod Menu is required
 https://stand.sh
+
+All CoaLwiX features playable on Stand's Free Edition or higher
+ZERO RISK on Storymode, use it Online with Stand Basic Edition or higher
+
+See this repo to get any Stand Edition + Online access for free, (read repo to see the status)
+https://github.com/landnthrn/Stand-OSS
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**It's difficult to keep all info in these .txt documents fully up to date, the best thing you can do is join the CoaLwiX Discord Server to find out anything**
+https://discord.gg/J6jWpru9nS
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 IF YOU'RE NEW TO MODDING:
-Word of Advice, don't get too carried away and go crazy all at once in terms of money, levels all that, if you want to give yourself loads of money, or levels spread it out a bit, don't just button mash those features in one day. Be more careful, you can get away with a lot with Stand but my point is too still be reasonable, 
-Just don't go too over the top crazy with it in a small amount of time, there is more in info on how to be safe 
+Word of Advice, don't get too carried away and go crazy all at once in terms of money, levels all that, if you want to give yourself loads of money, or levels spread it out a bit, don't just button mash those features in one day. Be more careful, you can get away with a lot with Stand but the point is too still be reasonable.
+There is more in info posted on how to be safe in the CoaLwiX Discord Server.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 IF YOU HAVE OR PLAN TO PURCHASE STAND:
-DONT LOSE YOUR STAND KEYS, save them somewhere safe, and the email
-
-SUGGESTION FOR AN ADDITIONAL ACCOUNT:
-If you own a account you care about, it's better to not risk modding Online with it. Lots of modders get a second account and leave one as a primary safe account. 
-Up to you! if you want to buy another account, suggest you get it from G2A or CDKeys 
-
-https://www.g2a.com/grand-theft-auto-v-rockstar-key-global-i10000000788017?suid=12150212-8713-4e26-8c02-3201ed7d7407 
-
-Scroll down and add the GamersUniverse one to your cart. 
+DONT LOSE YOUR ACCOUNT ID AND ACTIVATION KEY save them somewhere safe, and the email.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-KEEP UP TO DATE WITH MENU STATUS:
-It's very important you check the Working Status of the menu regulary to be safe,
-Stand Discord Server channels : 
+You can stay up to date with the status of the menu in these Stand Discord Channels:
+(Must be a paid user to access their Discord)
 
 — Annoucements channel
 — Support and Help channel
 — Share Discussions
 
+Keep in mind that the Stand Discord Moderators are complete assholes and ban you over petty shit so try to be on topic in the right channels.
+
+The CoaLwiX Discord Server is always here to keep you up to date as well:
+https://discord.gg/J6jWpru9nS
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 BUGS SUGGESTIONS:
-After you been playing for around 3 1/2 ish hours without a session restart, game restart, or maybe pc restart. Then bugs tend to start happening to you or maybe other players, 
-this mainly only happens because over that 2 1/2 ish hours you've likely pressed so many buttons and spawned so many things by then. 
-So do a session, game, or pc restart once these things happen
+If your session becomes buggy for you or others, it's likely you have just spawned/done so much by then, or other modders are screwing with the lobby.
+So do a session or game restart once these things happen.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If you have any questions you can ask in the Stand Discord Server 
-
-— Support and Help Channel 		
-— Share Discussions Channel
-
-Keep in mind that the Stand Discord Moderators are complete assholes and ban you over petty shit so try to be on topic in the right channels 
+CONSTRUCTOR POSSIBLE BUG INFO:
+If you've spawned many items with Constructor at once, espiecally heavy duty ones you may run into bugs at some point. 
+It's very helpful to use the Delete All Loaded Constructs button, and defiently the `cleanup` command after deleting all for a more thorough removal.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -61,7 +59,7 @@ Get loaded with Menu Addons, Lua scripts, Vehicles, Outfits, All in One Packs, &
 
 https://discord.gg/J6jWpru9nS
 			
-~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 				
 JOIN OUR DISCORD GAMING COMMUNITY:
 https://discord.gg/GZUnX6UHyT

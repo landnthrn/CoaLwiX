@@ -1,15 +1,6 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-(Paid Stand Users)
-You can stay up to date with the status of the menu in their Discord Channels:
-
-— Annoucements channel
-— Support and Help channel
-— Share Discussions
-
-~~~~~~~~~~~~
-
 JOIN COALWIX DISCORD SERVER (Central Hub for GTA Modders)
 
 Share Files Together • Mod Support • Keep Up to Date
@@ -19,16 +10,30 @@ https://discord.gg/J6jWpru9nS
 
 ~~~~~~~~~~~~
 
-JOIN OUR DISCORD GAMING COMMUNITY:
-https://discord.gg/GZUnX6UHyT
-
-~~~~~~~~~~~~
-
 CoaLwiX Discord Forum about Stand:
 https://discord.com/channels/1326307079329157233/1408723397252222976
 
 CoaLwiX Discord Forum about CoaLwiX
 https://discord.com/channels/1326307079329157233/1408723397252222976
+
+~~~~~~~~~~~~
+
+JOIN OUR DISCORD GAMING COMMUNITY:
+https://discord.gg/GZUnX6UHyT
+
+~~~~~~~~~~~~
+
+You can stay up to date with the status of the menu in these Stand Discord Channels:
+(Must be a paid user to access their Discord)
+
+— Annoucements channel
+— Support and Help channel
+— Share Discussions
+
+~~~~~~~~~~~~
+
+GET AN IMPROVED STAND + ANY EDITION FOR FREE (read repo to see status)
+https://github.com/landnthrn/Stand-OSS
 
 ~~~~~~~~~~~~
 
@@ -50,7 +55,7 @@ https://stand.sh/help/command-list
 
 ~~~~~~~~~~~~
 
-Error Solutions :
+ERROR SOLUTIONS :
 
 Stand Discord Channel Links:
 https://discord.com/channels/956618713157763072/1328378183329910895

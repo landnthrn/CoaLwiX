@@ -5,22 +5,28 @@ YOUTUBE VIDEO TUTORIAL: https://www.youtube.com/watch?v=yIvCCmym0Ow
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-IMPORTANT INFO:
-The Quick TP Places may have a initial install bug where you can't use some of them by the command line, there's an easy fix :
+HOW TO INSTALL COALWIX:
 
-— Open Stand Menu navigate to World > Places > Teleport To > Saved Places
+— If you haven't already, inject & load Stand menu in game so it creates the source folders/files in `Appdata\Roaming\Stand`
 
-— Simply scroll fast through all of them till your back at the top 
-  If that doesn't work then spam teleport through the list of the Saved Places 
+— Load the Constructor Lua as well so it creates the `Constructs` folder bin
 
-From then on out that weird initial install bug shouldn't occur again
+— Simply place the CoaLwiX downloaded folders & files into the corresponding places in Stand source folder located here:
+  C:\Users\%USERNAME%\AppData\Roaming\Stand
 
-~~~~~~~~~~~~
+— For `Profile Alterations` choose your desired type and place the folders/files inside into `Appdata\Roaming\Stand\Profiles`
+  
+NOTE:
+— If you have your own collection/setup of Stand add-ons, don't lose them by replacing folders and such.
 
-CONSTRUCTOR POSSIBLE BUG INFO:
-If you've spawned many items with Constructor at once, espeically heavy duty ones you will run into bugs at some point with too many things spawned at once. 
-It's very helpful to use the Delete All Loaded Constructs button if you're Construct spawn count it above around 25-35 ish of regular sized spawns, 
-also use the command `Clean Up` after deleting all for a more thorough removal
+— The Quick TP Places may have a initial install bug where you can't use some of them by the command line, there's an easy fix :
+
+  - Open Stand Menu navigate to World > Places > Teleport To > Saved Places
+
+  - Simply scroll fast through all of them till your back at the top 
+    If that doesn't work then spam teleport through the list of the Saved Places 
+
+    From then on that weird initial install bug shouldn't occur again.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -11,18 +11,18 @@ https://drive.google.com/file/d/1Y83qY3Snk3M7am295t4QdB-XqYrckbR-/view?usp=shari
 
 — Start by temporaily turning Real Time Protection off in your Windows Security settings
 
-— This is because of something called False Positives, you can do more research on it to feel more comfortable if you'd like
-  Stand doesn't release anything that would harm your computer
+  - This is because of something called False Positives, you can do more research on it to feel more comfortable if you'd like
+    Stand doesn't release anything that would harm your computer
 
 — Windows Search > Windows Security > Virus & Threat Protection > Manage Settings > Disable Real Time Protection 
 
-— Minimize Windows Security 
+— Minimize Windows Security for now
 
 ~~~~~~~~~~~~
 
-— Make a central folder for all Gta Mod Files so everything can be in one place.
+— Make a central folder for all GTA Mod Files so everything can be in one place.
 
-— Download Launchpad (Free or if you have a paid Edition)
+— Download Stand Launchpad (Free or if you have a paid Edition)
   Go to the Stand website ( Stand.gg or .sh in your browser ) 
   If you have a paid edition of Stand then login into your account and download the Launchpad in the account page,
   All CoaLwiX features work on Stand's Free version but is Story Mode only.
@@ -81,24 +81,24 @@ HOW TO LAUNCH STAND:
 
 — Once in Story Mode and injected Stand, Press F4, Use Shift, Crtl, ↑, and ↓ arrows to move through the Menu
 
-~~~~~~~~~~~~
-
-— If this is your first launch and you purchased a Stand account, you will have to Activate the Menu by copying your Activation Key from the Stand website and paste it in the Menu in game
-
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-GETTING ONLINE: (If you have a paid activated Stand account)
+GETTING ONLINE: (If you have Stand Basic Edition or higher)
 
-— In the Stand Menu, Go to Online > New Session > Create a Invite Only, or Solo Session (Stand's no supports Public's unless you use FSL or a working Co-Load setup
+— Paste your activation key from your purchased Stand Account, into the menu
 
-Back at the Stand website under Account, join the Stand Community Discord to keep up to date with everything
+  - See this repo to get a patched/cracked version of Stand allowing you to play Stand Ultimate Edition online for free, **read repo to see the status of it**
+    https://github.com/landnthrn/Stand-OSS
+
+— In the Stand Menu, Go to Online > New Session > Create a Invite Only, or Solo Session (Stand's doesn't supports Public's unless you use FSL or a working Co-Load setup)
+
+If you have purchased a Stand Edition, go to stand.sh website under Account, join the Stand Community Discord to keep up to date with everything
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ERROR SOLUTIONS :
 
-ACTIVATING KEY ISSUE:
-Use CloudFlare 1.1.1.1 this free VPN will very likely fix this issue
+Use CloudFlare 1.1.1.1 this free VPN will likely fix a number of Stand issues
 https://one.one.one.one
 
 Troubleshooting
@@ -113,28 +113,25 @@ https://discord.com/channels/956618713157763072/956618713396822038/1346496542583
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-See the Helpful Links text document in this package if you need more help or info
+See the `x Helpful Links x.txt` in this package if you need more help or info
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 KEEP UP TO DATE WITH MENU STATUS: 
 
-You can check Stand Menu Working Status in their Discord Server channels : 
+You can stay up to date with the status of the menu in these Stand Discord Channels:
+(Must be a paid user to access their Discord)
+
 — Annoucements channel
 — Support and Help channel
 — Share Discussions
 
-Things don't change too often but it's especially important to check menu status when Rockstar updates GTA or Rockstar Launcher 
+Keep in mind that the Stand Discord Moderators are complete assholes and ban you over petty shit so try to be on topic in the right channels.
 
-~~~~~~~~~~~~
-
-If you have any questions ask the people in the Stand Discord Server 
-
-— Support and Help Channel 
-			
-— Share Discussions Channel
-
+Things don't change too often but it's especially important to check menu status when Rockstar updates GTA or Rockstar Launcher.
 Keep in mind that the Stand Discord Moderators are complete assholes and ban you over petty shit so try to be on topic in the right channels 
+
+The CoaLwiX Discord Server is always here to keep you up to date as well, see link below
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -9,20 +9,18 @@ Just make sure to save all the image frames of the Stand + CoaLwiX one into a fo
 ~~~~~~~~~~~~~~~
 
 HOW TO CHANGE HEADERS :
-just drag the one you want into the Custom Header Folder and move out the one that's already in there (there can only be one header in the folder at once)
+
+- Drag the one you want into the Custom Header Folder and move out the one that's already in there (there can only be one header in the folder at once)
+
+- Enable in Stand Menu menu settings, or use the `Profiles with Headers ON` from this package
 
 ~~~~~~~~~~~~~~~
 
 FOR ANIMATED HEADERS:
-They work by image frames so don't drag a Animated Header Folder inside, just drag ALL the image frames into the Custom Header Folder
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
-
-**DISCLAIMER** 
-Make sure you're using the Profile Alteration that is for Headers ON
+- They work by image frames so don't drag a Animated Header Folder inside, just drag ALL the image frames into the Custom Header Folder
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
 
 
 

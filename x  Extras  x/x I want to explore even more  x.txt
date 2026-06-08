@@ -32,7 +32,7 @@ https://github.com/hexarobi/stand-curated-constructs
 Even More Constructor Constructs:
 https://drive.google.com/file/d/1ckZwN98gTaIVwThWMLrpLTRe7s8PJf4v/view?usp=sharing
 
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 More Stand Lua Scripts:
 https://drive.google.com/file/d/19gIdPMz9VrmeT35zVg2JFOcQPpEjNeCp/view?usp=sharing

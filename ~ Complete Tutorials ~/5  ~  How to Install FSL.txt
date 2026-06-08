@@ -1,8 +1,15 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**FSL IS IN NO WAY REQUIRED TO RUN STAND + COALWIX, FSL was great for running modded sessions since your lobby would be practically undetectable, 
-but its absoluetly pointless if you're trying to mod out your account (s)**
+**FSL IS IN NO WAY REQUIRED TO RUN STAND + COALWIX**
+
+FSL is still useful for these use cases: 
+
+- Allowing non-bypass menus to create Public Sessions again, and friends being able to your invite only sessions 
+- Making your modded sessions become undetectable
+- Being able to play on a banned account
+
+But its absoluetly pointless when modding out your account(s) cause it will only save locally, not in Rockstar cloud.
 
 **IMPORTANT TO LOOK AND ASK AROUND ABOUT THE CURRENT WORKING STATUS OF FSL BEFORE USING IT**
 
@@ -15,7 +22,8 @@ YOUTUBE VIDEO IN DEPTH TUTORIAL: https://www.youtube.com/watch?v=KOIclqjP79E
 What is FSL ?
 
 A tool that allows you to store your online save data locally, gain infinite money, and much more!  
-All the money, properties, cars, and such you make while using FSL are kinda faked, they dont save on your Rockstar account saves but to your local computer saves instead. So say if you load up without FSL injected then all the money and cars and things you made with FSL won't be there, its only there when you launch with FSL injected.
+All the money, properties, cars, and such you make while using FSL are kinda faked, they only save locally, not in Rockstar cloud.
+So say if you load up without FSL injected then all the money and cars and things you made with FSL won't be there, its only there when you launch with FSL injected.
 
 While using it don't join sessions, players invites, with FSL you have to stay within Los Santos in session that you created.
 
@@ -27,8 +35,8 @@ HOW TO INSTALL FSL:  (SAME PROCESS FOR BOTH LEGACY & ENHANCED)
 
 — Start by temporaily turning Real Time Protection off in your Windows Security settings
 
-— This is because of something called False Positives, you can do more research on it to feel more comfortable if you'd like
-  Stand doesn't release anything that would harm your computer
+— This is because of something called False Positives which is very common in the world of game modding, you can do more research on it to feel more comfortable if you'd like
+  It is highly praised and used by many, so you don't have anything to worry about.
 
 — Windows Search > Windows Security > Virus & Threat Protection > Manage Settings > Disable Real Time Protection 
 
@@ -36,22 +44,22 @@ HOW TO INSTALL FSL:  (SAME PROCESS FOR BOTH LEGACY & ENHANCED)
 
 ~~~~~~~~~~~~
 
-— Make a central folder for all Gta Mod Files so everything can be in one place.
-
-~~~~~~~~~~~~
+— Make a central folder for all GTA Mod Files so everything can be in one place.
 
 — Download the latest FSL File from the offical page:
   https://www.unknowncheats.me/forum/grand-theft-auto-v/616977-fsl-local-gtao-saves.html
 
-— Open your GTA Game Files Folder, which can be done 3 different ways depending on what Launcher you use GTA V on
+— Rename the .dll file so it's just `WINMM.dll`
 
-— For Rockstar Launcher ~ go to settings > Grand Theft Auto 5 at bottom left > View Installion Folder
+— Open your GTA Game Files Folder, which can be done 3 different ways depending on what Launcher you use GTA V on:
 
-— For Steam ~ Select GTA V in your games, click the gear icon > Manage > Browse Local Files 
+  - For Rockstar Launcher ~ go to settings > Grand Theft Auto 5 at bottom left > View Installion Folder
 
-— For Epic Games Launcher ~ Select the 3 Dots icon beside the game > Manage > The folder icon to the left of the Uninstall button is the Game Files Folder
+  - For Steam ~ Select GTA V in your games, click the gear icon > Manage > Browse Local Files 
 
-— Drag the .dll ( FSL ) into that folder. 
+  - For Epic Games Launcher ~ Select the 3 Dots icon beside the game > Manage > The folder icon to the left of the Uninstall button is the Game Files Folder
+
+— Drag the WINMM.dll into that folder. 
 
 SUGGESTION:
 — Create a shortcut to the GTA V Game Files Folder and put the shortcut in your central GTA Mod Files Folder so it's easily accessable
@@ -76,21 +84,12 @@ SUGGESTION:
 
 — Play it safe and Add another Folder Exclusion your central GTA Mod Files Folder
 
-~~~~~~~~~~~~
-
 — You can now turn Real Time Protection back on
 
-~~~~~~~~~~~~
-
-— Open Rockstar Launcher > Settings > Turn BattlEye OFF ( For FSL BattlEye OFF Always ) 
-
-~~~~~~~~~~~~
-
-— Restart PC to reset cache ( Optional )
+— Turn BattlEye OFF in Rockstar Launcher (even if you own the game on Epic games it still uses R* Launcher)
+  - If you have the game on Steam, add "-nobattleye" to the launch arguments
 
 ~~~~~~~~~~~~
-
-**If you want to use a VPN turn it on now**
 
 — Open the Stand Launchpad
 
@@ -100,14 +99,16 @@ SUGGESTION:
 
 ~~~~~~~~~~~~
 
-GETTING ONLINE: (If you have a paid activated Stand account)
+GETTING ONLINE: (If you have Stand Basic Edition or higher)
 
-— In the Stand Menu, Go to Online > New Session > Create a Public or Invite Only Session 
+— Paste your activation key from your purchased Stand Account, into the menu
 
-— DO NOT Join any invites to anything, FSL is Host Only, 
-  you must create the Public or Invite-Only Session 
+  - See this repo to get a patched/cracked version of Stand allowing you to play Stand Ultimate Edition online for free, **read repo to see the status of it**
+    https://github.com/landnthrn/Stand-OSS
 
-— FSL despite being great, safer, and less buggy, it only allows for you to stay within Los Santos in sessions you created so don't join anything 
+— In the Stand Menu, Go to Online > New Session > Create a Invite Only, or Solo Session (Stand's doesn't supports Public's unless you use FSL or a working Co-Load setup)
+
+If you have purchased a Stand Edition, go to stand.sh website under Account, join the Stand Community Discord to keep up to date with everything
 
 — For Public Sessions use the Player Magnet Feature to flood players in quick ( speed is based off wifi speed )
   In Stand Menu,  Online > Session > scroll to bottom make sure Player Magnet is checked on 
@@ -119,42 +120,20 @@ FSL MONEY:
 — Give yourself a quick 5m, 10m, 50m, 100m, 1b, or 10b, Press the ' ~ ' key and type ' 10b ' for example
 
 — There's also a FSL Money Lua Script in this package that you'll have in the Lua Scripts menu section once you've installed CoaLwiX, which you can use to get $ Quintillions easily
-  Or you can use the FSL Save files stored in the z Extras z Folder of this package for a $ Quintillion, 
+  Or you can use the FSL Save files stored in the `z Extras z` Folder of this package for a $ Quintillion, 
 
 — Just drag the FSL Save files into your FSL Folder > Located in   %appdata%   (if you don't see it there just create a Folder and title it FSL)
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-EERROR SOLUTIONS :
+KEEP UP TO DATE WITH FSL STATUS: 
 
-Stand Discord Channel Links:
-https://discord.com/channels/956618713157763072/1328378183329910895
-https://discord.com/channels/956618713157763072/956618713396822038/1345145198187118673
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-See the Helpful Links text document in this package if you need more help or info
+The best way to do this is by reading the last/most recent page on the Unknown Cheats forum:
+https://www.unknowncheats.me/forum/grand-theft-auto-v/616977-fsl-local-gtao-saves.html
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-KEEP UP TO DATE WITH MENU STATUS:
-
-You can check Stand Menu Working Status in their Discord Server channels : 
-— Annoucements channel
-— Support and Help channel
-— Share Discussions
-
-Things don't change too often but it's especially important to check menu status when Rockstar updates GTA or Rockstar Launcher 
-
-~~~~~~~~~~~~
-
-If you have any questions ask the people in the Stand Discord Server 
-
-— Support and Help Channel 
-			
-— Share Discussions Channel
-
-Keep in mind that the Stand Discord Moderators are complete assholes and ban you over petty shit so try to be on topic in the right channels 
+See the `x Helpful Links x.txt` in this package if you need more help or info
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

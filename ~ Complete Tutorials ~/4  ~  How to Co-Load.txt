@@ -1,24 +1,28 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Co-Loading is having two menu's injected at the same time
+Co-Loading is having multiple menu's injected at the same time
 
-The purpose of Co-Loading another menu with Stand + CoaLwiX is because as of now and probably for good Stand doesn't work in Public Sessions, 
-plus no friend's can join your Invite Only's without error.
+The purpose of Co-Loading another menu with Stand is because as of now and for good Stand doesn't support Public Sessions, plus no friend's can join your Invite Only's without error. Using FSL or a working co-load setup fixes this.
 
-So long as your other non-bypass menu your using to Co-Load Stand with can do whatever Stand can't do anymore, then it will handle all that instead. 
+So long as your other menu your using to co-load Stand with can do whatever Stand can't do anymore, then it will handle all that instead. 
 Allowing you to use Stand + CoaLwiX on the side, even in Public's and so on. 
 
+So essientially:
 Co-Loader Menu + Stand + CoaLwiX  
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 IMPORTANT INFO :
-Co-Loading isn't entirely perfect, it may come with some bugs. Stand has built in Co-Loading properties, and CoaLwiX has updated for it. 
-Things still change overtime through game/menu updates so keep up to date in the CoaLwiX Discord.
+- Co-loading isn't entirely perfect, it may come with some bugs. Stand has built in co-loading properties, and CoaLwiX has updated for it. 
+  Things still change overtime through game/menu updates so keep up to date in the CoaLwiX Discord.
 
-It is important to note that there are some Construct spawns hanging around that no longer spawn correctly with Co-Loading.
-These are mainly just a few of the real hardcore spawns, but others as well.
+- There are some Construct spawns hanging around that no longer spawn correctly while Co-Loading.
+  These are mainly just a few of the real hardcore spawns, but others as well.
+
+- You can't co-load a non-BE-bypass menu like Stand, with a BE-bypass menu 
+
+- Co-loading with Stand may possibly worsen desync kicks, so sometimes it may be better to just use Stand + FSL 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -26,11 +30,11 @@ HOW TO CO-LOAD WITH STAND + COALWIX :
 
 ~~~~~~~~~~~~
 
-*The process of Co-Loading may differ across different menus, plus not all may not be compatible, especially with menu's that have BE bypass*
+*The process of co-loading may differ across different menus, plus not all may not be compatible, especially with menu's that have BE bypass*
 
 ~~~~~~~~~~~~
 
-Whatever you may be using to Co-Load Stand with, the process should work one of these ways :
+Whatever you may be using to co-load Stand with, the process should work one of these ways :
 
 *ITS RECOMMENDED TO KEEP STAND AUTO INJECT DISABLED FOR CO-LOADING SO YOU HAVE MORE CONTROL*
 
@@ -55,15 +59,15 @@ Inject the co-loader menu first, use it to create a session, once online in the 
 ~~~~~~~~~~~~
 
 METHOD #4
-If you're still having trouble, the issue may be that you haven't previously initially launched with one or possibly two of the menu's your using to Co-Load with.
+If you're still having trouble, the issue may be that you haven't previously initially launched with one or possibly two of the menu's your using to co-load with.
 Meaning in some cases you should launch the menu's on their own first if you haven't before. 
-Some menu's don't install their full assets unless launched alone first with no Co-Load
+Some menu's don't install their full assets unless launched alone first with no co-load
 
-Once you've done that properly try Co-Loading them again starting with Method #1, #2, then #3
+Once you've done that properly try co-loading them again starting with Method #1, #2, then #3
 
 ~~~~~~~~~~~~
 
-IMPORTANT INFO:
+EXTRA INFO:
 — For some of these methods it may be best to use FSL with the co-load setup, latest version of course
 https://www.unknowncheats.me/forum/grand-theft-auto-v/616977-fsl-local-gtao-saves.html
 
@@ -73,7 +77,7 @@ If you're doing a invite only with friend's it may be best to inject Stand after
 ~~~~~~~~~~~~
 
 IF NONE OF THESE METHODS WORK:
-Some menu's may not work to be Co-Loaded with Stand, if you've followed all the methods correctly with no success you may be out of luck.
+Some menu's may not work to be co-loaded with Stand, if you've followed all the methods correctly with no success you may be out of luck.
 Of course feel free to do any sort of problem solving tests of your own but the methods stated above are likely the only options. 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

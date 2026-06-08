@@ -2,18 +2,17 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **CoaLwiX Discord has a FAQ channel you can use as well**
+https://discord.gg/J6jWpru9nS
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Some of these features may not work anymore for modding GTA V Online with Stand,
-as modding Online with Stand has been fairly comprimised**
+**Some of these features may not work anymore for modding GTA V Online with Stand**
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 CONSTRUCTOR BUGS :
-When you spawn lots of complicated Constructs after enough time bugs tend to happen, maybe you can't spawn anymore, maybe other players can't see what you spawned, so on.
-
-Once you have around 25 Loaded Constructs or so, utilize Deleting all spawned Constructs and then pressing ' U ' and type Clean Up, Do this often anyway to prevent bugs
+If you've spawned many items with Constructor at once, espiecally heavy duty ones you may run into bugs at some point. 
+It's very helpful to use the Delete All Loaded Constructs button, and defiently the `cleanup` command after deleting all for a more thorough removal.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -169,15 +168,18 @@ ENJOY :)
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-IF YOU HAVE ANY QUESTIONS :
+IF YOU HAVE ANY QUESTIONS:
 
-in the Stand Discord Server 
+Join the Stand Discord server, and see these channels:
+(Must be paid user to access their Discord)
 
-— Support and Help Channel 
+— Annoucements channel
+— Support and Help channel
+— Share Discussions
 
-— Share Discussions Channel 
+Keep in mind that the Stand Discord Moderators are complete assholes and ban you over petty shit so try to be on topic in the right channels.
 
-Keep in mind that the Stand Discord Moderators are complete assholes and ban you over petty shit so try to be on topic in the right channels
+The CoaLwiX Discord Server is always here to keep you up to date as well, see link below.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
